@@ -1,5 +1,5 @@
 // std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport: hang a new node for v under y (left when y is the header, x is set or v's key is less than y's, unless w forces right), fix the leftmost/rightmost links, rebalance, count it
-// Leaf: _M_insert
+// Leaf: ?_M_insert@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$less@VCCharString@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCCharString@@J@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004759AD, 164 bytes, `ret 14h` (thiscall: the hidden iterator result, x, y, v, w).
 // Identity: the catalog's "RBTree_InsertOrUpdateScript" is behavioural. Same map<CCharString, long> tree as _M_find
 //   @ 0x00475861; called by insert_unique @ 0x004758E3.
@@ -91,7 +91,9 @@ public:
     __forceinline _Rb_tree_node_base*& _M_leftmost() const { return _M_header->_M_left; }
     __forceinline _Rb_tree_node_base*& _M_rightmost() const { return _M_header->_M_right; }
     static __forceinline const Key& _S_key(_Rb_tree_node_base* x) { return static_cast<_Link_type>(x)->_M_value_field.first; }
+protected:
     _Link_type _M_create_node(const Value& x);     // 0x0046ECE7
+private:
     iterator _M_insert(_Rb_tree_node_base* x_, _Rb_tree_node_base* y_, const Value& v, _Rb_tree_node_base* w_);
 };
 

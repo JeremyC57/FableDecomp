@@ -93,7 +93,9 @@ public:
     _Rb_tree_node_base*& _M_rightmost() const { return _M_header->_M_right; }
     iterator begin() { return iterator(_M_leftmost()); }
     iterator end() { return iterator(_M_header); }
+private:
     void _M_erase(_Rb_tree_node_base* x);                    // 0x004DFB8F
+public:
     void clear()
     {
         if (_M_node_count != 0) {

@@ -63,12 +63,14 @@ public:
     static const Key& _S_key(_Link_type x) { return KeyOfValue()(x->_M_value_field); }
 
     static bool& _S_color(_Link_type x) { return x->_M_color; }
+protected:
     _Link_type _M_create_node(const Value& x)
     {
         _Link_type tmp = (_Link_type)malloc(sizeof(_Rb_tree_node<Value>));
         new (&tmp->_M_value_field) Value(x);
         return tmp;
     }
+protected:
     _Link_type _M_clone_node(_Link_type x)
     {
         _Link_type tmp = _M_create_node(x->_M_value_field);
@@ -77,6 +79,7 @@ public:
         _S_right(tmp) = 0;
         return tmp;
     }
+private:
     _Link_type _M_copy(_Link_type x, _Link_type p);
 };
 }

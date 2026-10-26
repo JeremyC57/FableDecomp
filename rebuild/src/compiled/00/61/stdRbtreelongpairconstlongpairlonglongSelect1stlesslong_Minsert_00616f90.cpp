@@ -79,13 +79,16 @@ public:
     _Rb_tree_node_base*& _M_leftmost() const { return _M_header->_M_left; }
     _Rb_tree_node_base*& _M_rightmost() const { return _M_header->_M_right; }
 
+protected:
     _Link_type _M_create_node(const _Value& __x)
     {
         _Link_type __tmp = (_Link_type)malloc(sizeof(_Rb_tree_node<_Value>));
         new (&__tmp->_M_value_field) _Value(__x);
         return __tmp;
     }
+public:
 
+private:
     iterator _M_insert(_Rb_tree_node_base* __x_, _Rb_tree_node_base* __y_, const _Value& __v,
                        _Rb_tree_node_base* __w_ = 0);
 };

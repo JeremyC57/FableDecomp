@@ -14,6 +14,10 @@
 // against a {c, 0} buffer homed in a dead temporary slot, `__forceinline`). The help is assigned under nested ifs
 // with an early return and one trailing `HelpBarString = ""` for every failure: if/else arms that each assign ""
 // are cross-jumped too, but with `lea ecx` scheduled above the literal push.
+// Fix (sweep 3): CCharString and CParsedItem are classes (the PDB keys) and the two accessors are const, so they bind
+// the PDB symbols ?GetString@CParsedItem@@QBEABVCCharString@@XZ 0x009B9880 / ?GetSymbol@...@@QBE... 0x009B9870 (retail body
+// order = the PDB member run GetSymbol, GetString, GetInteger, GetFloat). CBaseClass's destructor is virtual, so the
+// inlined parser teardown binds ??1CBaseClass@@UAE@XZ 0x0099A2E0 (was the non-virtual QAE spelling). Same bytes.
 // Layout: the retail CConsole offsets of the landed rows (0x009EA660): FrontCommandLine +0x1c, HelpBarString
 // +0x3c; CStringParser as the landed 0x00CB7CB0 (0x28 bytes).
 extern "C" int __cdecl strcmp(const char* a, const char* b);
@@ -24,7 +28,8 @@ struct CCharStringData {
     const char*   PData;                    // +0
     unsigned long StringLength;             // +4
 };
-struct CCharString {
+class CCharString {
+public:
     CCharStringData* PStringData;
     CCharString();                          // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -50,7 +55,7 @@ extern CCharString g_CCharString_013caa48;  // 0x013CAA48 ("(")
 
 struct CBaseClass {
     virtual void v00();
-    ~CBaseClass();                          // 0x0099A2E0
+    virtual ~CBaseClass();                  // 0x0099A2E0
 };
 struct CStringParserCommentList {           // retail std::list<CStringParserCommentBoundaries>: sentinel only
     void* m_pHead;
@@ -66,14 +71,15 @@ struct CStringParser : CBaseClass {         // retail 0x28 bytes
     long                     CursorPos[3];  // +0x1c CCursorPos
     CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
                   long baseLineOffset);     // 0x00404720
-    bool ReadNextItem(struct CParsedItem& item);    // 0x009BA080
+    bool ReadNextItem(class CParsedItem& item);     // 0x009BA080
 };
-struct CParsedItem {                        // 12 bytes
+class CParsedItem {                         // 12 bytes (Ego_r.pdb)
+public:
     long        Type;                       // +0x00 (1 = symbol, 2 = identifier, 3 = number)
     long        Value;                      // +0x04
     CCharString Text;                       // +0x08
-    const CCharString& GetString();         // 0x009B9880
-    const CCharString& GetSymbol();         // 0x009B9870
+    const CCharString& GetString() const;   // 0x009B9880
+    const CCharString& GetSymbol() const;   // 0x009B9870
 };
 struct CConsoleInputBase {
     virtual void v00();

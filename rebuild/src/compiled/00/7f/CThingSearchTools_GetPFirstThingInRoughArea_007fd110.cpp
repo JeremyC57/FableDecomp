@@ -1,7 +1,9 @@
-// CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out) -- return the first thing of type T in the mapwho cells under the area that passes the filter (the scratch map list is left uncleared on a hit); instance <CThingFilter_HasScriptData, CThing>
-// Leaf: GetPFirstThingInRoughArea
+// CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out) -- return the first thing of type T in the mapwho cells under the area that passes the filter (the scratch map list is left uncleared on a hit); instance <CThingFilter_HasScriptName, CThing>
+// Leaf: ??$GetPFirstThingInRoughArea@UCThingFilter_HasScriptName@@UCThing@@@CThingSearchTools@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FD110, length 542 bytes (`ret 0xc`).
-// Callees: GetMapsInArea 0x0049C6F0 (forwarder), GetCellExtents 0x0049C700 (C2DBoxI by value), memmove 0x00BFEAE6 (scratch-list clear); filter/compare: CThingFilter_HasScriptData 0x006A7E30.
+// Callees: GetMapsInArea 0x0049C6F0 (forwarder), GetCellExtents 0x0049C700 (C2DBoxI by value), memmove 0x00BFEAE6 (scratch-list clear); filter/compare: CThingFilter_HasScriptName::operator() 0x006A7E30
+//   (sweep3: it compares the thing's ScriptName, retail CThing +0x74 = Ego_r +0x84; HasScriptData's operator() is the next
+//   function 0x006A7E70 reading +0x78; Ego_r/FableWin name ??$GetPFirstThingInRoughArea@VCThingFilter_HasScriptName@@VCThing@@@...).
 // Globals: search stamps 0x013B89A8 (+0 searches, +4 found, +8 stamp), mapwho level count 0x013BA848, level shift table 0x0137DADC (16-byte stride).
 // Layout: engine/CThingSearchTools.h gives AreaMaps (+0x0c) the PDB's 16-byte vector; the retail STLport vector is 12 bytes, so the
 //   search tools, the thing map (+0x04 level infos, +0x14 cell vectors) and the cell entries are modelled locally.
@@ -34,8 +36,8 @@ template <class T> inline bool IsThingOfType(const CThing* thing)
 }
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
-struct CThingFilter_HasScriptData {
-    bool operator()(const CThing* thing) const;   // 0x006A7E30
+struct CThingFilter_HasScriptName {
+    bool operator()(const CThing& thing) const;   // 0x006A7E30 (PDB takes the thing by reference)
 };
 // One mapwho cell list node: {entry, next}; the entry holds the thing (+4) and its search stamp (+0x4c).
 struct CThingMapEntry {
@@ -124,7 +126,7 @@ template<class F, class T> bool CThingSearchTools::GetPFirstThingInRoughArea(con
                             if (entry->SearchStamp < g_SearchStamps.Stamp) {
                                 entry->SearchStamp = g_SearchStamps.Stamp;
                                 CThing* thing = entry->Thing;
-                                if (IsThingOfType<T>(thing) && filter(thing)) {
+                                if (IsThingOfType<T>(thing) && filter(*thing)) {
                                 *out = static_cast<T*>(thing);
                                 return true;
                             }
@@ -138,4 +140,4 @@ template<class F, class T> bool CThingSearchTools::GetPFirstThingInRoughArea(con
     AreaMaps.clear();
     return false;
 }
-template bool CThingSearchTools::GetPFirstThingInRoughArea<CThingFilter_HasScriptData, CThing >(const C2DBoxI& area, const CThingFilter_HasScriptData& filter, CThing** out);
+template bool CThingSearchTools::GetPFirstThingInRoughArea<CThingFilter_HasScriptName, CThing >(const C2DBoxI& area, const CThingFilter_HasScriptName& filter, CThing** out);

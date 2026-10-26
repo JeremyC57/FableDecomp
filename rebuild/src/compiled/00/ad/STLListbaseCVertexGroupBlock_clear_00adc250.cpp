@@ -96,7 +96,9 @@ public:
     static _Link_type& _S_left(_Base_ptr x) { return (_Link_type&)x->_M_left; }
     static _Link_type& _S_right(_Base_ptr x) { return (_Link_type&)x->_M_right; }
 
+private:
     void _M_erase(_Link_type __x);                          // 0x004507A1
+public:
     void clear()
     {
         if (_M_node_count != 0) {

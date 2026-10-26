@@ -69,12 +69,14 @@ public:
     _Compare _M_key_compare;                                            // +0x08
 
     static const _Key& _S_key(_Rb_tree_node_base* __x) { return _KeyOfValue()(((_Link_type)__x)->_M_value_field); }
+protected:
     _Link_type _M_create_node(const _Value& __x)
     {
         _Link_type __tmp = this->_M_header.allocate(1);
         _Construct(&__tmp->_M_value_field, __x);
         return __tmp;
     }
+private:
     iterator _M_insert(_Rb_tree_node_base* __x, _Rb_tree_node_base* __y, const _Value& __v, _Rb_tree_node_base* __w = 0);
 };
 

@@ -1,5 +1,5 @@
 // std::_Rb_tree<long, pair<const long, list<long> >, ...>::erase(iterator first, iterator last) -- STLport map erase(first, last): clear() when the range is the whole tree, else erase(first++) node by node (each node's list destroyed and freed)
-// Leaf: ?erase@?$_Rb_tree@
+// Leaf: ?erase@?$_Rb_tree@JU?$pair@$$CBJV?$list@JV?$allocator@J@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBJV?$list@JV?$allocator@J@std@@@std@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJV?$list@JV?$allocator@J@std@@@std@@@std@@@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBJV?$list@JV?$allocator@J@std@@@std@@@std@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051AF80, 288 bytes, thiscall `ret 8` (two 4-byte iterators by value). Callers:
 //   0x005034F6 (a local map in the CWorldMap level-loading TU) and 0x0051B8C4 (map::erase(const key&): equal_range,
 //   distance, erase(first, last)). The catalog label "TreeNode_EraseRange" is descriptive. Key and list element types are
@@ -150,7 +150,9 @@ public:
     _Base_ptr& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
     _Base_ptr& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
 
+private:
     void _M_erase(_Link_type __x);                    // 0x00519970
+public:
     void clear()
     {
         if (_M_node_count != 0) {

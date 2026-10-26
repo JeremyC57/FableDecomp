@@ -5,8 +5,8 @@
 // interface 8 (const LowerBound 0x004365B0, key in the frame) with its bool result IGNORED -- when the hero lacks the
 // interface the component pointer is uninitialised, and VC7.1 reuses the hidden-result load for it (`mov ecx,[esp+0xc]`);
 // target = component->slot 33 (+0x84); if target, return target->GetScriptThing() (0x004C7E50, labelled GFPredicateAnd by
-// folding, as the landed 0x004AFA60 / 0x006E7480 rows model it); otherwise return CScriptThing() (0x008CFF40, the null
-// script thing, labelled operator&& by folding).
+// folding, as the landed 0x004AFA60 / 0x006E7480 rows model it); otherwise return CGameScriptThing::CreateNullThing() (0x008CFF40, the null
+// script thing; the manifest's operator&& label is propagated).
 // Layout: Ego_r.pdb CGameScriptInterface PlayerManager +0x14; CThing as the matched 0x00899E90 row. The interface-8 class
 // is CTCTargetingBase (landed 0x006E5690 OnCleanup; vtable 0x01271E74); the slot-33 name is not confirmed.
 // Shape: /O2 (16-aligned entry); the PeekTC out-pointer form, with the end-or-mismatch choice written as one ternary
@@ -64,10 +64,13 @@ public:
 };
 class CScriptThing {
 public:
-    CScriptThing();                                      // 0x008CFF40
     CScriptThing(const CScriptThing& other);
     virtual ~CScriptThing();
     void* Data;
+};
+class CGameScriptThing : public CScriptThing {      // Ego_r.pdb: CGameScriptThing derives from CScriptThing
+public:
+    static CScriptThing __fastcall CreateNullThing(); // 0x008CFF40 (?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ)
 };
 class CTCTargetingBase {                                // interface 8 (class not confirmed)
 public:
@@ -109,5 +112,5 @@ CScriptThing CGameScriptInterface::GetHeroTargetedThing() const
         if (target)
             return target->GetScriptThing();
     }
-    return CScriptThing();
+    return CGameScriptThing::CreateNullThing();
 }

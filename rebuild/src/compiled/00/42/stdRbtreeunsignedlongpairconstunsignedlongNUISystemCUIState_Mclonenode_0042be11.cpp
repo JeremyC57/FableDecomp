@@ -1,5 +1,5 @@
 // std::_Rb_tree<unsigned long, pair<const unsigned long, NUISystem::CUIState>, ...>::_M_clone_node(_Link_type x) -- copies a node's value and colour into a fresh childless node
-// Leaf: _M_clone_node
+// Leaf: ?_M_clone_node@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@PAU32@@Z
 // Retail: Fable.exe @ 0x0042BE11, 30 bytes, `ret 4`. Catalog label CSurface::GetHeight is wrong. STLport _M_clone_node:
 // _M_create_node(x->_M_value_field) (0x0042BDF0), then color = x's (byte at +0), left = right = 0 (`and dword ptr`).
 // Callers: the recursive subtree copy _M_copy 0x0042CB90 (0x0042CB9D, 0x0042CBCD).
@@ -44,12 +44,14 @@ public:
     typedef _Rb_tree_node<V>* _Link_type;
     _Rb_tree_node_base* _M_header;
     size_t              _M_node_count;
+protected:
     _Link_type _M_create_node(const V& x)
     {
         _Link_type tmp = (_Link_type)malloc(sizeof(_Rb_tree_node<V>));
         _Construct(&tmp->_M_value_field, x);
         return tmp;
     }
+protected:
     _Link_type _M_clone_node(_Link_type x)
     {
         _Link_type tmp = _M_create_node(x->_M_value_field);

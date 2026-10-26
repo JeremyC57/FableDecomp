@@ -2,7 +2,7 @@
 // Retail: Fable.exe @ 0x007D4E30, 153 bytes (CTCTavernGameCardSorting vtable 0x0126F5B4).
 // Callees: CTCTavernGameCardBase::EnterGame() 0x008F1E30; CTCTavernGameCardBase::GetCardDef(CDefPointer*) 0x008F0B20;
 //          CTCTavernGame::CreateGamePiece(long model) 0x005EA9B0 (returns CThingObject*);
-//          PositionMesh(CThingObject*, const C3DVector& pos, const CRightHandedSet& rh, const C3DVector& offset, long, long)
+//          CTCTavernGame::PositionMesh(CThing*, const C3DVector& pos, const CRightHandedSet& rh, const C3DVector& offset, long, long)
 //          0x005EABC0 (__fastcall global); the def's virtual slot 1 when its count reaches 0.
 // Layout (retail CTCTavernGameCardBase, 0x18..0x24 below Ego_r.pdb): GamePositionRHSet +0xf0, GamePositionPos +0x108,
 //          NumCards +0x300, Pointer +0x140. Def (engine/CTavernGameCardBaseDef.h offsets hold in retail): PointerModel
@@ -10,12 +10,17 @@
 // Shape: NumCards = 1 precedes the def temporary (its store sits before the zeroing of the out pointer); the offset vector
 //        is a 3-float temporary; the CDefPointer dtor is null-tested and calls the def's inline ReleaseTemporary().
 // Leaf: EnterGame
-struct CThingObject;
-struct C3DVector {
+// PositionMesh (sweep3, FINDINGS chunk 481 "PositionMesh's 5th parameter is float"): Ego_r/FableWin
+//   ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z -- a static __fastcall member taking
+//   (CThing*, const C3DVector&, const CRightHandedSet&, const C3DVector&, float, float); C3DVector, CRightHandedSet and CThing
+//   are classes (V in every PDB signature).
+class CThing { };
+class CThingObject : public CThing { };              // CThingObject derives from CThing (PositionMesh takes the base)
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRightHandedSet { float m[6]; };
+class CRightHandedSet { public: float m[6]; };
 
 struct CRefCounted {
     long m_count;
@@ -46,8 +51,11 @@ struct CDefPointer {
     CTavernGameCardBaseDef* operator->() const { return Object; }
 };
 
-void __fastcall PositionMesh(CThingObject* piece, const C3DVector& pos, const CRightHandedSet& rh,
-                             const C3DVector& offset, long a, long b);   // 0x005EABC0
+class CTCTavernGame {
+public:
+    static void __fastcall PositionMesh(CThing* thing, const C3DVector& position, const CRightHandedSet& orientation,
+                                        const C3DVector& offset, float tilt, float angle);   // 0x005EABC0
+};
 
 struct CTCTavernGameCardBase {
     virtual void v00();
@@ -74,5 +82,5 @@ void CTCTavernGameCardSorting::EnterGame()
     CDefPointer def;
     GetCardDef(&def);
     Pointer = CreateGamePiece(def->PointerModel);
-    PositionMesh(Pointer, GamePositionPos, GamePositionRHSet, C3DVector(0.0f, 0.0f, def->PointerHeightOffset), 0, 0);
+    CTCTavernGame::PositionMesh(Pointer, GamePositionPos, GamePositionRHSet, C3DVector(0.0f, 0.0f, def->PointerHeightOffset), 0.0f, 0.0f);
 }

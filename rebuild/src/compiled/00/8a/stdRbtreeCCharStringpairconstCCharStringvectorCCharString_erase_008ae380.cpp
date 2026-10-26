@@ -139,7 +139,9 @@ public:
     iterator begin() { return iterator(_M_leftmost()); }
     iterator end() { return iterator(this->_M_header._M_data); }
 
+private:
     void _M_erase(_Link_type __x);                          // 0x007AE0E0
+public:
     void erase(iterator __position);                        // 0x008AE1E0
     void erase(iterator __first, iterator __last);
     void clear()

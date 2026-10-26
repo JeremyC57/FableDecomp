@@ -115,7 +115,9 @@ public:
         _M_leftmost() = (_Link_type)this->_M_header._M_data;
         _M_rightmost() = (_Link_type)this->_M_header._M_data;
     }
+private:
     void _M_erase(_Link_type __x);                      // 0x004CF810 for set<unsigned long>
+public:
     void clear()
     {
         if (_M_node_count != 0) {

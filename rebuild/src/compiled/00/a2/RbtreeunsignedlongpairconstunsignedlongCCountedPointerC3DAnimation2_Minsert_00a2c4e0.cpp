@@ -1,5 +1,5 @@
 // _Rb_tree<unsigned long, pair<const unsigned long, CCountedPointer<C3DAnimation2>>>::_M_insert(x, y, v, w) -- link a new node holding v under parent y (left or right by the hint and key order), then rebalance
-// Leaf: ?_M_insert@?$_Rb_tree@KU?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@U?$_Select1st@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@2@0@Z
+// Leaf: ?_M_insert@?$_Rb_tree@KU?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@U?$_Select1st@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2C4E0, 211 bytes, `ret 14h` (hidden iterator pointer + x, y, &v, w). Nine
 //   call sites in the tree's insert_unique(v) 0x00A2C5C0 and insert_unique(hint, v) 0x00A2CCF0, which serves
 //   map::operator[] 0x00A2D810 from CMeshDataBank's BuildAnimationInstance (0x00A26BDE, map at CAnimationData+0x1C).
@@ -85,12 +85,14 @@ public:
     unsigned int _M_node_count;
     _Compare     _M_key_compare;
 
+protected:
     _Link_type _M_create_node(const value_type& __x)
     {
         _Link_type __tmp = this->_M_header.allocate(1);
         _Construct(&__tmp->_M_value_field, __x);
         return __tmp;
     }
+public:
     _Rb_tree_node_base*& _M_root() const { return this->_M_header._M_data->_M_parent; }
     _Rb_tree_node_base*& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
     _Rb_tree_node_base*& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
@@ -99,6 +101,7 @@ public:
     static _Rb_tree_node_base*& _S_parent(_Rb_tree_node_base* __x) { return __x->_M_parent; }
     static const _Key& _S_key(_Rb_tree_node_base* __x) { return _KeyOfValue()(((_Link_type)__x)->_M_value_field); }
 
+private:
     iterator _M_insert(_Rb_tree_node_base* __x, _Rb_tree_node_base* __y, const value_type& __v, _Rb_tree_node_base* __w = 0);
 };
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

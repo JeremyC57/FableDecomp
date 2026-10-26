@@ -96,13 +96,16 @@ namespace std
         static _Link_type& _S_right(_Base_ptr __x) { return (_Link_type&)(__x->_M_right); }
         static _Color_type& _S_color(_Base_ptr __x) { return __x->_M_color; }
 
+    protected:
         _Link_type _M_create_node(const _Value& __x)
         {
             _Link_type __tmp = this->_M_header.allocate(1);
             _Construct(&__tmp->_M_value_field, __x);
             return __tmp;
         }
+    public:
 
+    protected:
         _Link_type _M_clone_node(_Link_type __x)
         {
             _Link_type __tmp = _M_create_node(__x->_M_value_field);
@@ -111,7 +114,9 @@ namespace std
             _S_right(__tmp) = 0;
             return __tmp;
         }
+    public:
 
+    private:
         _Link_type _M_copy(_Link_type __x, _Link_type __p);
     };
 

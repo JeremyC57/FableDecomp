@@ -1,5 +1,7 @@
 // std::list<NUISystem::CComponent*>::~list() -- STLport list destructor: unlink and free every node (0x0042A18F, the inline _List_base::clear), then free the sentinel node
-// Leaf: ??1?$list@PAVCComponent@NUISystem@@U?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+// Leaf: ??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+// Leaf fix (sweep 3): STLport's allocator is a class, so the instantiation mangles V?$allocator (was U); the clear callee
+//   binds the same way. Same bytes.
 // Flags: /O2 /Oy /W3
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042ABCA, 23 bytes (`ret`); 117 callers (NUISystem::CManager 0x0041E6D3 /
 // 0x00423AF7.., CComponent destructors ..). Label correction (chunk 345 report): the manifest's "CFileInstaller::
@@ -21,7 +23,8 @@ template <class T> struct _List_node {
     _List_node* _M_prev;
     T           _M_data;
 };
-template <class T> struct allocator {
+template <class T> class allocator {                     // STLport: a class (V)
+public:
     void deallocate(_List_node<T>* p, unsigned long) { if (p) ::free(p); }
 };
 template <class T, class A> class list {

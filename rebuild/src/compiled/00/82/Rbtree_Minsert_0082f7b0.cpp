@@ -94,12 +94,14 @@ public:
     static _Base_ptr& _S_right(_Base_ptr x) { return x->_M_right; }
     static _Base_ptr& _S_parent(_Base_ptr x) { return x->_M_parent; }
     static const _Key& _S_key(_Base_ptr x) { return _KeyOfValue()(((_Link_type)x)->_M_value_field); }
+protected:
     __declspec(noinline) _Link_type _M_create_node(const _Value& x)   // 0x00824FB0 for the movement map
     {
         _Link_type tmp = this->_M_header.allocate(1);
         _Construct(&tmp->_M_value_field, x);
         return tmp;
     }
+private:
     iterator _M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const _Value& v, _Rb_tree_node_base* w = 0);
 };
 

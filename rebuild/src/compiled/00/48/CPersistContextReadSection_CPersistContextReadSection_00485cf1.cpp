@@ -1,5 +1,5 @@
 // CPersistContextReadSection::~CPersistContextReadSection() -- destroy a persist read section: its text, its string parser, then its memory input stream
-// Leaf: ??1CPersistContextReadSection
+// Leaf: ??1CPersistContextReadSection@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00485CF1, length 28 bytes, `jmp` tail. Callers: 0x0047F8BB / 0x0047FDF6
 // (CFrontEndManager), 0x004A2CCA, 0x00597558 / 0x00597A93 -- each on a stack local first built by the landed constructor
 // 0x00485CD2 (`lea ecx,[ebp-0xb0] ; call 0x485CD2` ... `call 0x485CF1`), which this destructor directly follows.
@@ -11,6 +11,8 @@
 // propagated: +0x14 member, two CCharStrings, CBaseClass root), CMemoryDataInputStream::~CMemoryDataInputStream @ 0x00993B10
 // (folded with ~CDataStream: vtable 0x0129A69C, tail to the root).
 // Shape: members in reverse order; the input stream is the tail jmp.
+// sweep3: CStringParser's destructor is virtual (both PDBs: ??1CStringParser@@UAE@XZ; it derives from CBaseClass), so
+// the member destructor call binds the UAE spelling that the landed 0x004047A0 defines; the direct call is unchanged.
 class CPersistContext {
 public:
     unsigned char Data[0x2c];                                // Ego_r.pdb 44 bytes, no destructor code here
@@ -22,8 +24,8 @@ public:
 };
 class CStringParser {
 public:
-    unsigned char Data[0x28];
-    ~CStringParser();                                        // 0x004047A0
+    virtual ~CStringParser();                                // 0x004047A0 (Ego_r.pdb/FableWin.pdb ??1CStringParser@@UAE@XZ)
+    unsigned char Data[0x24];                                // after the vptr: retail 0x28 bytes in all
 };
 class CCharString {
 public:

@@ -94,13 +94,16 @@ public:
     static _Base_ptr& _S_parent(_Base_ptr x) { return x->_M_parent; }
     static const K& _S_key(_Base_ptr x) { return KeyOfValue()(((_Link_type)x)->_M_value_field); }
 
+protected:
     _Link_type _M_create_node(const V& __x)
     {
         _Link_type __tmp = this->_M_header.allocate(1);
         _Construct(&__tmp->_M_value_field, __x);
         return __tmp;
     }
+public:
 
+private:
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const V& __v, _Base_ptr __w = 0);
 };
 

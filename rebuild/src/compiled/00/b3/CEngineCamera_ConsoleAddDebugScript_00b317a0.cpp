@@ -8,16 +8,16 @@
 // LookVector +0xC, float FOV +0x18, float TimeToNextElement +0x1C} (32 bytes); CGenericVar is 0x1C bytes with ValFloat at
 // +0x18 (the `0x18 + k*0x1C` loads). The catalog name AddCameraKey and the manifest CTCActionUseReadable::OnCreate were
 // descriptive / propagated. No direct xref: console commands are registered through function pointers built elsewhere.
-// Callees: C3DVector::Normalise() @ 0x00A14440 (in place; catalog label "C3DVector::GetScaled"), the DebugScript vector's
+// Callees: C3DVector::AccurateNormalise @ 0x00A14440 (in place; catalog label "C3DVector::GetScaled"), the DebugScript vector's
 // push_back @ 0x00B31C10 (its only caller is this function).
 // Shape: the two vectors are `element.V = C3DVector(a, b, c)` with only the 3-float ctor declared: the temporary is built in
 // a shared frame slot and block-copied through integer registers (a user copy ctor or operator= turns the copies into x87
 // loads/stores).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    void Normalise();                              // 0x00A14440
+    C3DVector& AccurateNormalise();                              // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 
 class CGenericVar {                                // 0x1C bytes (struct_layouts_egor)
@@ -57,6 +57,6 @@ void __fastcall CEngineCamera::ConsoleAddDebugScript(CEngineCamera& camera, cons
     element.LookVector = C3DVector(params[3].ValFloat, params[4].ValFloat, params[5].ValFloat);
     element.FOV = params[6].ValFloat;
     element.TimeToNextElement = params[7].ValFloat;
-    element.LookVector.Normalise();
+    element.LookVector.AccurateNormalise();
     camera.DebugScript.push_back(element);
 }

@@ -1,6 +1,6 @@
 // NCameraModes::CScriptModuleBase::GetViewPosInFocalPlane(const C3DVector& pos, const C3DVector& dir) -- pos + dir, or, with a live origin thing, the point where the ray from pos along dir meets the camera plane (through CoordOrigin, normal Forward x Up) when it lies beyond pos + dir
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00853320, `ret 0Ch` (hidden result pointer, pos, dir).
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (twice, the inline IS_THING_ALIVE), C3DVector::Normalise 0x00A14440.
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (twice, the inline IS_THING_ALIVE), C3DVector::AccurateNormalise @ 0x00A14440.
 // Layout: CScriptModuleBase PCamPoint +0x04, PThingOrigin +0x0c, CoordOrigin +0x14, CoordAxis +0x20 (CRightHandedSet: Up +0,
 //   Forward +0xc, Ego_r.pdb); the camera module class is modelled locally (no shared header).
 // Shape: the origin and the two axes are copied into locals in the order origin, forward, up (VC7.1 then keeps Forward
@@ -12,7 +12,7 @@
 #pragma intrinsic(fabs)
 extern const float g_epsilon_0129ba3c;               // 0x0129BA3C (1e-4f)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -21,7 +21,7 @@ struct C3DVector {
     __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     __forceinline C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-    void Normalise();                                // 0x00A14440
+    C3DVector& AccurateNormalise();                                // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 {
@@ -70,7 +70,7 @@ C3DVector CScriptModuleBase::GetViewPosInFocalPlane(const C3DVector& pos, const 
         C3DVector up = CoordAxis.Up;
         C3DVector normal = CrossProduct(forward, up);
         if (normal.GetLengthSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c) {
-            normal.Normalise();
+            normal.AccurateNormalise();
             float denominator = DotProduct(normal, dir);
             if (fabs(denominator) > g_epsilon_0129ba3c) {
                 float t = DotProduct(origin - pos, normal) / denominator;

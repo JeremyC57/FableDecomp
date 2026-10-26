@@ -165,14 +165,17 @@ public:
         return __y;
     }
     iterator lower_bound(const _Key& __k) { return iterator(_M_lower_bound(__k)); }
+protected:
     _Link_type _M_create_node(const _Value& __x)
     {
         _Link_type __tmp = (_Link_type)malloc(sizeof(_Rb_tree_node<_Value>));
         _Construct(&__tmp->_M_value_field, __x);
         return __tmp;
     }
+private:
     iterator _M_insert(_Rb_tree_node_base* __x, _Rb_tree_node_base* __y, const _Value& __v,
                        _Rb_tree_node_base* __w = 0);                     // 0x0047C500
+public:
     iterator insert_unique(iterator __position, const _Value& __v);     // 0x0047C8C0
 };
 

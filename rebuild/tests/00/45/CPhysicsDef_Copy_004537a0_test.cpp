@@ -1,34 +1,29 @@
-#include <cstdio>
-
-struct CPhysicsDef { int a; int b; };
-
-static int g_calls = 0;
-static CPhysicsDef* g_lastSelf = 0;
-static const CPhysicsDef* g_lastOther = 0;
-
-extern "C" void __fastcall CPhysicsDef_CopyImpl(CPhysicsDef* self, void* /*edx*/, const CPhysicsDef* other)
+// Test for 0x004537A0 CPhysicsDef::Copy(const CDefClassBase*): through the base pointer, assigns the other def to this one
+// (exactly one operator= call, with this and the other object).
+#include <stdio.h>
+static const void* g_lhs; static const void* g_rhs; static int g_calls;
+class CDefClassBase {
+public:
+    int Base;
+    virtual ~CDefClassBase() { }
+    virtual void Copy(const CDefClassBase* other) { Base = other->Base; }
+};
+class CPhysicsDef : public CDefClassBase {
+public:
+    int Value;
+    CPhysicsDef& operator=(const CPhysicsDef& other) { ++g_calls; g_lhs = this; g_rhs = &other; Base = other.Base; Value = other.Value; return *this; }
+    virtual void Copy(const CDefClassBase* other);
+};
+void CPhysicsDef::Copy(const CDefClassBase* other)
 {
-    g_calls++;
-    g_lastSelf = self;
-    g_lastOther = other;
-    self->a = other->a;
-    self->b = other->b;
+    *this = *static_cast<const CPhysicsDef*>(other);
 }
-
-void __fastcall CPhysicsDef_Copy(CPhysicsDef* self, void* edx, const CPhysicsDef* other)
-{
-    CPhysicsDef_CopyImpl(self, edx, other);
-}
-
 int main()
 {
-    CPhysicsDef dst; dst.a = 0; dst.b = 0;
-    CPhysicsDef src; src.a = 7; src.b = 42;
-    CPhysicsDef_Copy(&dst, 0, &src);
-    if (g_calls == 1 && g_lastSelf == &dst && g_lastOther == &src && dst.a == 7 && dst.b == 42) {
-        std::printf("CPhysicsDef_004537a0_TEST PASS\n");
-        return 0;
-    }
-    std::printf("FAIL calls=%d a=%d b=%d\n", g_calls, dst.a, dst.b);
-    return 1;
+    CPhysicsDef a, b; a.Base = 1; a.Value = 2; b.Base = 30; b.Value = 40;
+    CDefClassBase* pa = &a;
+    pa->Copy(&b);
+    if (g_calls != 1 || g_lhs != &a || g_rhs != &b || a.Base != 30 || a.Value != 40) { printf("004537a0_TEST FAIL\n"); return 1; }
+    printf("004537a0_TEST PASS\n");
+    return 0;
 }

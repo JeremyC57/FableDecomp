@@ -110,10 +110,15 @@ public:
     _Compare _M_key_compare;                            // +8
 
     _Node* _M_allocate() { return (_Node*)malloc(sizeof(_Node)); }
+protected:
     _Link_type _M_create_node(const value_type& __x);
+protected:
     _Link_type _M_clone_node(_Link_type __x);
+private:
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const value_type& __v, _Base_ptr __w);
+private:
     _Link_type _M_copy(_Link_type __x, _Link_type __p);
+public:
 
     _Base_ptr& _M_root() const { return _M_header->_M_parent; }
     _Base_ptr& _M_leftmost() const { return _M_header->_M_left; }

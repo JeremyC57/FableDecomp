@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E80F0, 383 bytes (385 incl. a padding byte). `ret 10h` (`this` unused).
 // Callees: CThing::GetPosition 0x004C73D0, CWorld's random-seed accessor 0x0049D810 (catalogued
 //          CVertexBufferWin32::DoSizeof), `__fastcall` GFFloatRandom(float, unsigned long*) 0x004978A0,
-//          C3DVector::Rotate(const C3DVector&, float) 0x00A13C60, C3DVector::Normalise 0x00A14440 (catalogued
+//          C3DVector::Rotate(const C3DVector&, float) 0x00A13C60, C3DVector::AccurateNormalise @ 0x00A14440 (catalogued
 //          GetScaled), _ftol2 0x00BFEA70. Globals: 1e-4f 0x0129BA3C (read as a variable), 0.25f 0x0123078C,
 //          5.0f 0x01261D64, the integer frame rate 0x01375550.
 //
@@ -15,13 +15,13 @@ struct C2DVector {
     float X;
     float Y;
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-    void Normalise();                                   // 0x00A14440
+    C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     void Rotate(const C3DVector& axis, float angle);    // 0x00A13C60
 };
 extern float g_Epsilon;                     // 0x0129BA3C (1e-4f)
@@ -65,7 +65,7 @@ void CCombatWheel::ReassignAttacker(CWorld* world, CCombatantInfo* attacker, CCo
             dolly.Rotate(C3DVector(0.0f, 0.0f, 1.0f), GFFloatRandom(0.5f, world->GetRandomSeed()) + 0.25f);
     }
     if (dolly.GetLengthSquared() > g_Epsilon * g_Epsilon) {
-        dolly.Normalise();
+        dolly.AccurateNormalise();
         attacker->AttackerInfo.PreferredAttackDollySet = true;
         attacker->AttackerInfo.PreferredAttackDollyTimer = (long)(g_framesPerSecond * 5.0f);
         attacker->AttackerInfo.PreferredAttackDollyVector.X = dolly.X;

@@ -77,7 +77,9 @@ public:
     _Rb_tree_node_base* _M_header;           // +0x00 _STLP_alloc_proxy::_M_data
     unsigned int        _M_node_count;       // +0x04
 
+private:
     void _M_erase(_Node* x);                 // 0x004ABA70
+public:
     __forceinline iterator begin() { return iterator(_M_header->_M_left); }
     __forceinline iterator end() { return iterator(_M_header); }
     __forceinline void clear()

@@ -23,7 +23,7 @@ public:
         if (--m_count == 0)
             Destroy();
     }
-    void ReleaseTemporary() const          // CDefPointer<const CDefClassBase>: the manager's temporary
+    void ReleaseTemporary() const          // CDefPointer<CDefClassBase>: the manager's temporary
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -36,9 +36,9 @@ class CEntitySoundDef : public CDefBase { };
 
 template <class T> class CDefPointer;
 
-template <> class CDefPointer<const CDefClassBase> {   // the manager's return type
+template <> class CDefPointer<CDefClassBase> {         // the manager's (protected overload's) return type
 public:
-    const CDefBase* m_p;
+    CDefBase* m_p;
     CDefPointer() { }
     __forceinline ~CDefPointer()                       // forced: the size TU would call it out of line
     {
@@ -53,7 +53,7 @@ template <class T> class CDefPointer {
 public:
     T* m_p;
     CDefPointer() { }
-    CDefPointer(const CDefPointer<const CDefClassBase>& other) : m_p((T*)other.m_p) { if (m_p) ++m_p->m_count; }
+    CDefPointer(const CDefPointer<CDefClassBase>& other) : m_p((T*)other.m_p) { if (m_p) ++m_p->m_count; }
     ~CDefPointer()
     {
         if (m_p)
@@ -75,8 +75,9 @@ public:
 };
 
 class CDefinitionManager {
-public:
-    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009ADA10 (hidden result pointer)
+    friend class CDefClassBase;
+protected:
+    CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (protected non-const overload; hidden result pointer)
 };
 
 class CDefClassBase {
@@ -97,7 +98,7 @@ public:
     virtual void v34();
     virtual const long* GetSubDefIndex(const CCharString& name) const;   // slot 14 (+0x38)
     unsigned char _pad[0x1c - 4];
-    CDefinitionManager* m_pManager;        // +0x1C
+    CDefinitionManager* PDefManager;       // +0x1C (Ego_r CDefClassBase::PDefManager)
     template <class T> bool GetSubDef(CDefPointer<const T>* out) const;
 };
 
@@ -114,9 +115,9 @@ void CDefClassBase::v30() { } void CDefClassBase::v34() { }
 const long* CDefClassBase::GetSubDefIndex(const CCharString&) const { return 0; }
 void CDefVirtual::Destroy() const { ++g_destroyed; }
 static CEntitySoundDef g_def, g_old;
-CDefPointer<const CDefClassBase> CDefinitionManager::GetPDefFromGlobalIndex(long index) const
+CDefPointer<CDefClassBase> CDefinitionManager::GetPDefFromGlobalIndex(long index)
 {
-    static CDefPointer<const CDefClassBase> s_r;      // copied out bitwise; no local destructor runs here
+    static CDefPointer<CDefClassBase> s_r;      // copied out bitwise; no local destructor runs here
     s_r.m_p = index == 7 ? &g_def : 0;
     if (s_r.m_p) ++s_r.m_p->m_count;                  // the manager hands out a counted reference
     return s_r;
@@ -132,7 +133,7 @@ public:
 int main()
 {
     CDefinitionManager mgr;
-    CTestDef d; d.m_pManager = &mgr; d.index = 7; d.has = true;
+    CTestDef d; d.PDefManager = &mgr; d.index = 7; d.has = true;
     g_def.m_count = 1; g_old.m_count = 1;
     CDefPointer<const CEntitySoundDef> out; out.m_p = &g_old; ++g_old.m_count;
     if (!d.GetSubDef<CEntitySoundDef>(&out)) return 1;

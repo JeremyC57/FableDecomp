@@ -1,7 +1,7 @@
 // CTCTavernGameCoinBase::UpdateMeshes() -- place every live, owned coin's mesh on the board at its 2D position, its angle turned into revolutions
 // Leaf: UpdateMeshes
 // Retail: Fable.exe @ 0x008EF2F0, 158 bytes.
-// Callees: CBaseIntelligentPointer::GetPItem() 0x00A01B50 (x3: alive test, dead test, mesh); PositionMesh(CThingObject*,
+// Callees: CBaseIntelligentPointer::GetPItem() 0x00A01B50 (x3: alive test, dead test, mesh); CTCTavernGame::PositionMesh(CThing*,
 //          const C3DVector& pos, const CRightHandedSet& rh, const C3DVector& offset, long, float) 0x005EABC0 (__fastcall
 //          global). Float pool 0x01237F08 = 1/(2*pi).
 // Layout: retail CTCTavernGameCoinBase = Ego_r.pdb minus 0x18: Coins (vector<Coin>, 12 bytes) +0xfc, BoardPos +0x10c,
@@ -10,19 +10,24 @@
 // Shape: the board offset and the mesh are named locals built before the call (the mesh's GetPItem precedes the float
 //        argument); the loop keeps the coin and &coin->Thing in two
 //        strength-reduced registers.
-struct CThingObject;
+// PositionMesh (sweep3, FINDINGS chunk 481 "PositionMesh's 5th parameter is float"): Ego_r/FableWin
+//   ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z -- a static __fastcall member taking
+//   (CThing*, const C3DVector&, const CRightHandedSet&, const C3DVector&, float, float); C3DVector, CRightHandedSet and CThing
+//   are classes (V in every PDB signature).
+class CThingObject;
 struct C2DVector { float X, Y; };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRightHandedSet { float m[6]; };
+class CRightHandedSet { public: float m[6]; };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x91];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
 };
+class CThingObject : public CThing { };              // CThingObject derives from CThing (PositionMesh takes the base)
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -46,8 +51,11 @@ struct Coin {                                   // 0x3c bytes
 };
 #pragma pack(pop)
 
-void __fastcall PositionMesh(CThingObject* piece, const C3DVector& pos, const CRightHandedSet& rh,
-                             const C3DVector& offset, long a, float angle);   // 0x005EABC0
+class CTCTavernGame {
+public:
+    static void __fastcall PositionMesh(CThing* thing, const C3DVector& position, const CRightHandedSet& orientation,
+                                        const C3DVector& offset, float tilt, float angle);   // 0x005EABC0
+};
 
 struct CTCTavernGameCoinBase {
     unsigned char   _pad_0x00[0xfc];
@@ -66,7 +74,7 @@ void CTCTavernGameCoinBase::UpdateMeshes()
         if (coin->Thing.GetPItem() && !coin->Thing.GetPItem()->IsDead() && coin->Owned) {
             C3DVector offset(coin->Pos.X, coin->Pos.Y, 0.0f);
             CThingObject* mesh = (CThingObject*)coin->Thing.GetPItem();
-            PositionMesh(mesh, BoardPos, BoardRHSet, offset, 0, coin->Angle * 0.15915494f);
+            CTCTavernGame::PositionMesh(mesh, BoardPos, BoardRHSet, offset, 0.0f, coin->Angle * 0.15915494f);
         }
     }
 }

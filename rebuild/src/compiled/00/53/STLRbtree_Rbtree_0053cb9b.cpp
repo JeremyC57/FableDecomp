@@ -62,7 +62,9 @@ public:
     static bool& _S_color(_Rb_tree_node_base* x) { return x->_M_color; }
     static _Link_type _S_minimum(_Link_type x) { return (_Link_type)_Rb_tree_node_base::_S_minimum(x); }
     static _Link_type _S_maximum(_Link_type x) { return (_Link_type)_Rb_tree_node_base::_S_maximum(x); }
+private:
     _Link_type _M_copy(_Link_type x, _Link_type p);      // 0x0042CB90
+public:
     _Rb_tree(const _Rb_tree& x);
 };
 template <class K, class V, class KoV, class C, class A>

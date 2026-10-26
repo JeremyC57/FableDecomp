@@ -64,7 +64,9 @@ public:
     _Base_ptr& _M_root() const { return (_Base_ptr&)(this->_M_header._M_data->_M_parent); }
     _Base_ptr& _M_leftmost() const { return (_Base_ptr&)(this->_M_header._M_data->_M_left); }
     _Base_ptr& _M_rightmost() const { return (_Base_ptr&)(this->_M_header._M_data->_M_right); }
+private:
     void _M_erase(_Link_type x);                          // out of line (0x00CD2919 / 0x00CD29F0)
+public:
     void clear();
     ~_Rb_tree();
 };

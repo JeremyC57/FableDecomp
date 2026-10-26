@@ -2,8 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089BC50, length 122 bytes.
 // Callees: the script thing's slots 75 (+0x12c) and 11 (+0x2c), the const component-map LowerBound @ 0x004365B0,
 //          CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the object-to-script-thing conversion @ 0x004C7E50
-//          (manifest label "GFPredicateAnd<...>" is propagated), CScriptThing::CScriptThing() @ 0x008CFF40.
-// Shape: a CScriptThing returned by hidden pointer; both returns construct straight into it.
+//          (manifest label "GFPredicateAnd<...>" is propagated), CGameScriptThing::CreateNullThing() @ 0x008CFF40.
+// Shape: a CScriptThing returned by hidden pointer; both returns forward it to the callee.
 // Leaf: ?EntityGetStandingInsideBuilding@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@@Z
 struct CTCBase_Retail;
 struct STCEntry_Retail {                           // one CVectorMap<ETCInterfaceType, CTCBase*> element
@@ -45,7 +45,8 @@ struct CThing_Retail {
 };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-struct CScriptThing {
+class CScriptThing {
+public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;       // slot 11 (+0x2c)
@@ -58,7 +59,10 @@ struct CScriptThing {
     virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067();
     virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
-    CScriptThing();                                // 0x008CFF40 (the null script thing)
+};
+class CGameScriptThing : public CScriptThing {      // Ego_r.pdb: CGameScriptThing derives from CScriptThing
+public:
+    static CScriptThing __fastcall CreateNullThing(); // 0x008CFF40 (?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ)
 };
 struct CPlayer_Retail {
     CThing_Retail* GetHeroCreature();              // 0x00487DC0
@@ -136,5 +140,5 @@ CScriptThing CGameScriptInterface::EntityGetStandingInsideBuilding(const CScript
                 return building->GetScriptThing();
         }
     }
-    return CScriptThing();
+    return CGameScriptThing::CreateNullThing();
 }

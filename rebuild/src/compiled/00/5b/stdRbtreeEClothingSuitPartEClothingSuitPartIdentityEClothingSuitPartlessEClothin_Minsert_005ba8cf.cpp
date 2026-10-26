@@ -1,5 +1,5 @@
 // std::_Rb_tree<EClothingSuitPart, EClothingSuitPart, _Identity<EClothingSuitPart>, less<EClothingSuitPart>, allocator<EClothingSuitPart> >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const EClothingSuitPart& v, _Rb_tree_node_base* w) -- the set<EClothingSuitPart> tree's node insert: create the node, link it left or right of y (fixing the header's root/leftmost/rightmost), rebalance, count it
-// Leaf: ?_M_insert@?$_Rb_tree@W4EClothingSuitPart@@W41@U?$_Identity@W4EClothingSuitPart@@@std@@U?$less@W4EClothingSuitPart@@@3@V?$allocator@W4EClothingSuitPart@@@3@@std@@QAE?AU?$_Rb_tree_iterator@W4EClothingSuitPart@@U?$_Nonconst_traits@W4EClothingSuitPart@@@std@@@2@PAU_Rb_tree_node_base@2@0ABW4EClothingSuitPart@@0@Z
+// Leaf: ?_M_insert@?$_Rb_tree@W4EClothingSuitPart@@W41@U?$_Identity@W4EClothingSuitPart@@@std@@U?$less@W4EClothingSuitPart@@@3@V?$allocator@W4EClothingSuitPart@@@3@@std@@AAE?AU?$_Rb_tree_iterator@W4EClothingSuitPart@@U?$_Nonconst_traits@W4EClothingSuitPart@@@std@@@2@PAU_Rb_tree_node_base@2@0ABW4EClothingSuitPart@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005BA8CF, 136 bytes, thiscall `ret 14h` (hidden iterator result + x, y, v, w),
 //   ebp frame, in the packed size-TU run of set<EClothingSuitPart> instantiations.
 // Identity (sweep1, 2026-10-25): its only caller is the tree's insert_unique 0x005BAD5B (call at 0x005BADBD; FINDINGS
@@ -84,7 +84,9 @@ public:
     static _Link_type& _S_right(_Base_ptr __x) { return (_Link_type&)(__x->_M_right); }
     static const _Key& _S_key(_Base_ptr __x) { return _KeyOfValue()(((_Link_type)__x)->_M_value_field); }
 
+protected:
     _Link_type _M_create_node(const value_type& __x);                                                 // 0x005BA3AC
+private:
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const value_type& __v, _Base_ptr __w = 0);
 };
 

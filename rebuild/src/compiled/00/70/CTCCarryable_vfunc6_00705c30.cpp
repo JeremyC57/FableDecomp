@@ -14,10 +14,10 @@
 // right after the call and released by hand at the end (null test, `dec [edi+4] ; jne`). The
 // vector is the implicit C3DVector assignment, then the landed GetLengthSquared > eps*eps test
 // (0x008059F0 form).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-    C3DVector& Normalise();                        // 0x00A14440
+    C3DVector& AccurateNormalise();                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 extern const float g_minLength_0129ba3c;           // 0x0129BA3C (0.0001f)
 
@@ -70,7 +70,7 @@ void CTCCarryable::vfunc_6()
     {
         OffsetCoordRelativeToAttachToDummy = def->OffsetCoordRelativeToAttachToDummy;
         if (OffsetCoordRelativeToAttachToDummy.GetLengthSquared() > g_minLength_0129ba3c * g_minLength_0129ba3c)
-            OffsetCoordRelativeToAttachToDummy.Normalise();
+            OffsetCoordRelativeToAttachToDummy.AccurateNormalise();
     }
     if (def && --def->m_refCount == 0)
         def->Delete();

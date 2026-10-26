@@ -1,5 +1,5 @@
 // std::_Rb_tree<unsigned long, pair<const unsigned long, NUISystem::CUIState>, ...>::_M_create_node(const value_type&) -- mallocs a 0x38-byte node and copy-constructs the pair into it
-// Leaf: _M_create_node
+// Leaf: ?_M_create_node@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@ABU?$pair@$$CBKVCUIState@NUISystem@@@2@@Z
 // Retail: Fable.exe @ 0x0042BDF0, 33 bytes, `ret 4`. Catalog label NScript::CDanyalTestScriptsData::Alloc is wrong. STLport
 // _M_create_node: allocate(1) through the malloc import 0x00BFEA0E (`push 38h`), then _Construct = placement new (null test)
 // with pair<const unsigned long, CUIState>'s copy ctor 0x0042A944 on node +0x10. Callers: _M_clone_node 0x0042BE11 and the
@@ -45,12 +45,14 @@ public:
     typedef _Rb_tree_node<V>* _Link_type;
     _Rb_tree_node_base* _M_header;
     size_t              _M_node_count;
+protected:
     _Link_type _M_create_node(const V& x)
     {
         _Link_type tmp = (_Link_type)malloc(sizeof(_Rb_tree_node<V>));
         _Construct(&tmp->_M_value_field, x);
         return tmp;
     }
+protected:
     _Link_type _M_clone_node(_Link_type x)
     {
         _Link_type tmp = _M_create_node(x->_M_value_field);

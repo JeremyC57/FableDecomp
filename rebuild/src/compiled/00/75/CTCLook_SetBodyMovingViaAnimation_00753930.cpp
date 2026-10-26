@@ -5,7 +5,7 @@
 //   CTCAnimationComplex::GetAnimation @ 0x0070B460 (CAnimateThing&, called twice), CAnimateThing::GetMeshBank @ 0x0070C0D0,
 //   CMeshDataBank::PeekAnimation @ 0x00A242C0, C3DAnimationInfo::IsLoaded @ 0x00A23F50, GetAnimDuration @ 0x0070B4A0,
 //   the turning anim entry @ 0x005DC000 (manifest "_Cons_val"; takes (from, to, float* turn)), physics slots 72 / 75 (+0x120 /
-//   +0x12c, get / set the right-handed set), C3DVector::Rotate @ 0x00A13C60, C3DVector::Normalise @ 0x00A14440.
+//   +0x12c, get / set the right-handed set), C3DVector::Rotate @ 0x00A13C60, C3DVector::AccurateNormalise @ 0x00A14440.
 // Shape: forward is copied before up (two named vectors from the const reference), forward.Z is cleared before up is set to
 //   (0,0,1) through a temporary, and SetRHSet gets a CRightHandedSet(up, forward) temporary (the second 24-byte copy).
 //   GetTC stores the component as ONE ternary (`(it == last || type < it->type) ? last : it`), and the duration's anim
@@ -13,13 +13,13 @@
 // Layout (retail, local model): CAnimSet in CAnimateThing at +0 (Anims vector<short> +0x04, CurrentPercentageComplete +0x1c,
 //   LastPercentageComplete +0x20, Type +0x50; PDB +0x58 with 16-byte vectors); CTCLook FractionOfTurningToAcceptEachFrame +0x44,
 //   PCurrentTurningAnim +0x9c (PDB +0xa0).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     void Rotate(const C3DVector& axis, float angle);   // 0x00A13C60
-    void Normalise();                                  // 0x00A14440
+    C3DVector& AccurateNormalise();                                  // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct CRightHandedSet {
     C3DVector Up;                                      // +0x00
@@ -152,7 +152,7 @@ void CTCLook::SetBodyMovingViaAnimation()
         forward.Z = 0.0f;
         up = C3DVector(0.0f, 0.0f, 1.0f);
         forward.Rotate(up, angle);
-        forward.Normalise();
+        forward.AccurateNormalise();
         physics->SetRHSet(CRightHandedSet(up, forward));
     }
 }

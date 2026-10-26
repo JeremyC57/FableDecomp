@@ -12,6 +12,7 @@
 // Shape: the bounds are named locals (LowerBound called first), then STLport's inline `vector::erase(first, last)`:
 //   `i = copy(last, _M_finish, first); _Destroy(i, _M_finish); _M_finish = i;`. Both empty tags are homed on the dead
 //   key slot because __copy and __destroy_aux have same-TU noinline bodies that never touch their tags.
+// Fix (sweep 3): pair is a struct, so the __copy / __destroy_aux 0x00A80E40 bindings spell U?$pair (was V?$pair).
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
 struct SCountBlock {
@@ -60,8 +61,7 @@ namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 
-template <class _T1, class _T2> class pair {
-public:
+template <class _T1, class _T2> struct pair {                // STLport pair is a struct (Ego_r U?$pair)
     _T1 first;
     _T2 second;
 };

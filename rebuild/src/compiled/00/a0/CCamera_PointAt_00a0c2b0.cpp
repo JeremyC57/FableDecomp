@@ -1,7 +1,7 @@
 // CCamera::PointAt(const C3DVector& target) -- aims the camera: Forward = target - WorldPosition (Z flattened to 0 when ViewVecZLocked), then Up = world Z minus its projection on Forward, both normalised
 // Leaf: PointAt
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A0C2B0, 208 bytes incl. padding (ret 4).
-// Callees: C3DVector::Normalise @ 0x00A14440 (manifest "GetScaled" is propagated), four times through the inline
+// Callees: C3DVector::AccurateNormalise @ 0x00A14440 (manifest "GetScaled" is propagated), four times through the inline
 //          CRightHandedSet::Normalise (Up then Forward). Float pool: 0.0f @ 0x0122DEDC, 1.0f @ 0x0122DED8.
 // Layout (Ego_r.pdb CCamera, 56 bytes): WorldPosition +0, RHSet +0xC {Up +0xC, Forward +0x18}, HeightLocked +0x24,
 //          ViewVecZLocked +0x25.
@@ -9,12 +9,12 @@
 //          x87 work): locked builds C3DVector(dx, dy, 0), unlocked uses target - WorldPosition; VC7.1 merges the common X/Y
 //          head above the branch. C3DVector has a user ctor + user copy ctor and no operator=, so each assignment builds a frame temporary and
 //          copies it through a pointer register; Dot with (0,0,1) keeps the 0.0f products (x87, no fast-math).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    void Normalise();                           // 0x00A14440
+    C3DVector& AccurateNormalise();             // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 inline C3DVector operator*(const C3DVector& a, float s) { return C3DVector(a.X * s, a.Y * s, a.Z * s); }
@@ -23,7 +23,7 @@ inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.
 struct CRightHandedSet {
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0C
-    void Normalise() { Up.Normalise(); Forward.Normalise(); }
+    void Normalise() { Up.AccurateNormalise(); Forward.AccurateNormalise(); }
 };
 
 struct CCamera {

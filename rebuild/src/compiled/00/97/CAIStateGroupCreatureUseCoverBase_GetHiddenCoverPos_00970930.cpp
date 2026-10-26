@@ -1,7 +1,7 @@
 // CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPos(C3DVector&, CThing*) -- with a live enemy, aim behind the cover (away from the enemy, 0.75 of twice the cover radius, at least 1.5) and ask the creature's navigation for a nearby wander position it can reach
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00970930, length 384 bytes (`ret 8`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound const @ 0x004365B0 (interface 7 =
-//          CTCCreatureNavigation, bit 7 of +0x20), CThing::GetPosition @ 0x004C73D0, C3DVector::Normalise @ 0x00A14440
+//          CTCCreatureNavigation, bit 7 of +0x20), CThing::GetPosition @ 0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440
 //          (manifest "GetScaled" is wrong: in place, no args), CTCCreatureNavigation::GetNearbyWanderPosition @ 0x006CB6E0,
 //          CTCCreatureNavigation::IsAbleToNavigateFromPosToPos @ 0x006CB620.
 // Globals: 1.5f @ 0x0125AADC, 0.75f @ 0x01238174, 0.15f @ 0x012786A8.
@@ -12,11 +12,11 @@
 //          +0x34 float is its radius (descriptive).
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) { X = x; Y = y; Z = z; }
-    void Normalise();                           // 0x00A14440
+    C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
 };
 
@@ -88,7 +88,7 @@ bool CAIStateGroupCreatureUseCoverBaseMethods::GetHiddenCoverPos(C3DVector& resu
     const C3DVector& enemyPos = Enemy().GetPItem()->GetPosition();
     const C3DVector& coverPos = cover->GetPosition();
     C3DVector away(coverPos.X - enemyPos.X, coverPos.Y - enemyPos.Y, 0.0f);
-    away.Normalise();
+    away.AccurateNormalise();
     float radius = cover->PBounds->Radius * 2.0f;
     if (radius < 1.5f)
         radius = 1.5f;

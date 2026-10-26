@@ -1,4 +1,4 @@
-// behaviour test for 0x004AC530 std::vector<const CThingBuilding*>::_M_insert_overflow: middle insert of n copies (head, fill, tail), append-at-end without the tail copy, growth to size + max(size, n), old block freed
+// behaviour test for 0x004AC530 std::vector<CThingBuilding*>::_M_insert_overflow: middle insert of n copies (head, fill, tail), append-at-end without the tail copy, growth to size + max(size, n), old block freed
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -51,7 +51,7 @@ protected:
     }
 };
 }
-typedef const CThingBuilding* T;
+typedef CThingBuilding* T;
 static T mk(unsigned int v) { return (T)(size_t)v; }
 class CProbe : public stlp_test::vector<T> {
 public:

@@ -68,6 +68,7 @@ public:
     unsigned long _M_node_count;                           // +0x4
     static _Node* _S_left(_Node* x) { return (_Node*)x->_M_left; }
     static _Node* _S_right(_Node* x) { return (_Node*)x->_M_right; }
+private:
     void _M_erase(_Node* x);
 };
 

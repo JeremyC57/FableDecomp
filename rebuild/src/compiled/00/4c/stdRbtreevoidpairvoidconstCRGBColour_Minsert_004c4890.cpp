@@ -1,5 +1,5 @@
 // std::_Rb_tree<void*, pair<void* const, CRGBColour>, ...>::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport: link a new tint-colour node left or right of y, fix the header links, rebalance, count it
-// Leaf: _M_insert
+// Leaf: ?_M_insert@?$_Rb_tree@PAXU?$pair@QAXVCRGBColour@@@std@@U?$_Select1st@U?$pair@QAXVCRGBColour@@@std@@@2@U?$less@PAX@2@U?$allocator@U?$pair@QAXVCRGBColour@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@QAXVCRGBColour@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAXVCRGBColour@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C4890, length 208 bytes (194 + int3 padding), `ret 14h` (hidden iterator result, x, y, v, w).
 // Identity: the tree behind CTCGraphicAppearance::TintColours (+0x18, map<void*, CRGBColour>): the landed SetTintColour
 // 0x004C00B0 calls its operator[] 0x004C5890, which calls insert_unique(hint) 0x004C4D50, which calls this row (and
@@ -60,7 +60,9 @@ public:
     unsigned int _M_node_count;                                         // +0x04
     C            _M_key_compare;                                        // +0x08
 
+protected:
     _Link_type _M_create_node(const V& x);                              // 0x004C41D0
+public:
     __forceinline _Link_type _M_create_node_inline(const V& x)
     {
         _Link_type tmp = static_cast<_Link_type>(malloc(sizeof(_Rb_tree_node<V>)));
@@ -72,6 +74,7 @@ public:
     _Rb_tree_node_base*& _M_rightmost() const { return _M_header._M_data->_M_right; }
     static const K& _S_key(_Rb_tree_node_base* x) { return static_cast<_Link_type>(x)->_M_value_field.first; }
 
+private:
     iterator _M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const V& v, _Rb_tree_node_base* w);
 };
 

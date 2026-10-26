@@ -4,11 +4,14 @@
 //   std::string result in ecx, &text in edx, &key on the stack).
 // Callers: 0x0055F27D (the CCharString DecryptString front end 0x0055F1F0; not in the manifest), 0x00560FFD (CTCHeroOnlineScoreboard::ProcessLogin 0x00560D00).
 // Callees: std::vector<char>(n, const char&, const allocator&) 0x00567560 (catalogued "Vector_Fill_Byte"),
-//   CryptoMatic 0x0055E2C0 (DecryptBuffer 0x0055E4F0 inlined), basic_string::_M_range_initialize(f, l,
+//   CryptoMatic 0x0055E2C0 (DecryptBuffer 0x0055E4F0 inlined), basic_string::_M_range_initialize<char*>(f, l,
 //   const forward_iterator_tag&) 0x00567D00 (twice: the local, then the copy into the result), free 0x00BFEA14.
 // Label correction: catalogued as "CryptoDecrypt_ToStruct"; Ego_r.pdb
 //   `?StdDecryptString@?A0xf010c0d0@@YI?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@0@Z`
 //   (the retail STLport build mangles into `std`; our anonymous-namespace hash differs, so the leaf is a prefix).
+// Instance: STLport 4.6's range constructor and `_M_range_initialize` are member templates and `char_traits` is a class:
+//   both strings are built from `char*` ranges (`&buffer[0]`, then the copy constructor's `__s._M_start`), so both calls
+//   are the `<char*>` instance 0x00567D00 (`??$_M_range_initialize@PAD@...`); `<const char*>` is 0x005672D0.
 // Layout: STLport 4.x 12-byte string / vector { _M_start, _M_finish, _STLP_alloc_proxy _M_end_of_storage }.
 // Same-TU stand-ins (as retail's whole-program view, GOTCHAS "same-TU auto_inline(off) stand-ins"): the vector fill
 //   constructor (grades RELOCATION_MATCH against 0x00567560 itself), `_M_range_initialize` (the landed 0x00567D00 body)
@@ -32,7 +35,7 @@ struct forward_iterator_tag : input_iterator_tag { forward_iterator_tag() { } };
 struct bidirectional_iterator_tag : forward_iterator_tag { bidirectional_iterator_tag() { } };
 struct random_access_iterator_tag : bidirectional_iterator_tag { random_access_iterator_tag() { } };
 
-template <class T> struct char_traits { };
+template <class T> class char_traits { };
 template <class T> class allocator {
 public:
     allocator() { }
@@ -52,7 +55,7 @@ public:
     C* _M_finish;                                               // +0x04
     _STLP_alloc_proxy<C*, A> _M_end_of_storage;                 // +0x08
 
-    basic_string(const C* f, const C* l, const A& a = A()) : _M_start(0), _M_finish(0), _M_end_of_storage(a, (C*)0)
+    template <class It> basic_string(It f, It l, const A& a = A()) : _M_start(0), _M_finish(0), _M_end_of_storage(a, (C*)0)
     {
         _M_range_initialize(f, l);
     }
@@ -83,7 +86,7 @@ public:
         return last == first ? result : (C*)memmove(result, first, (last - first) * sizeof(C)) + (last - first);
     }
     void _M_terminate_string() { *_M_finish = 0; }
-    __declspec(noinline) void _M_range_initialize(const C* f, const C* l, const forward_iterator_tag&)   // 0x00567D00 (same-TU body)
+    template <class It> __declspec(noinline) void _M_range_initialize(It f, It l, const forward_iterator_tag&)   // <char*> 0x00567D00 (same-TU body)
     {
         int n = l - f;
         _M_allocate_block(n + 1);

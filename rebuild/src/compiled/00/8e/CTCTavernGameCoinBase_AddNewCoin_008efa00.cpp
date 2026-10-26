@@ -6,7 +6,7 @@
 //          CTCTavernGame::CreateGamePiece(long) 0x005EA9B0; Coin::Coin(float radius, float density, CThing*, bool owned)
 //          0x008EF200; Coin::Coin(const Coin&) 0x008EFF40; vector<Coin>::_M_insert_overflow 0x008F0450 (the landed
 //          InsertGrow spelling); ~CBaseIntelligentPointer 0x00A01C10 (the temporary coin's Thing);
-//          CBaseIntelligentPointer::GetPItem() 0x00A01B50; PositionMesh(CThingObject*, const C3DVector&, const
+//          CBaseIntelligentPointer::GetPItem() 0x00A01B50; CTCTavernGame::PositionMesh(CThing*, const C3DVector&, const
 //          CRightHandedSet&, const C3DVector&, long, float) 0x005EABC0 (__fastcall global); the def's slot 1 on release.
 // Layout (retail, as the landed UpdateMeshes 0x008EF2F0): CTCTavernGameCoinBase Coins +0xfc, Held +0x108, BoardPos +0x10c,
 //          BoardRHSet +0x118; Coin (0x3c, packed) Pos +0x04, Owned +0x24, Thing +0x25; CTavernGameCoinBaseDef CoinIDensity
@@ -18,14 +18,19 @@
 //        The tag shares the argument slot only with a same-TU noinline stand-in for _M_insert_overflow (the const-ref
 //        taker of the coin; extern, the tag gets its own frame byte, frame 0x50). The mesh call reaches the coin's
 //        thing pointer through a reference local, so its address is formed before the stack arguments (retail).
+// PositionMesh (sweep3, FINDINGS chunk 481 "PositionMesh's 5th parameter is float"): Ego_r/FableWin
+//   ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z -- a static __fastcall member taking
+//   (CThing*, const C3DVector&, const CRightHandedSet&, const C3DVector&, float, float); C3DVector, CRightHandedSet and CThing
+//   are classes (V in every PDB signature).
 class CThing;
-struct CThingObject;
+class CThing { };
+class CThingObject : public CThing { };              // CThingObject derives from CThing (PositionMesh takes the base)
 struct C2DVector { float X, Y; };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRightHandedSet { float m[6]; };
+class CRightHandedSet { public: float m[6]; };
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -77,8 +82,6 @@ __declspec(noinline) void CCoinVector::_M_insert_overflow(Coin* position, const 
     InsertOverflow_008f0450(this, position, &x);
 }
 #pragma auto_inline(on)
-void __fastcall PositionMesh(CThingObject* piece, const C3DVector& pos, const CRightHandedSet& rh,
-                             const C3DVector& offset, long a, float angle);   // 0x005EABC0
 
 struct CTavernGameCoinBaseDef {
     virtual void v00();
@@ -127,6 +130,9 @@ struct CThingDefOwner {
 };
 
 struct CTCTavernGame {
+    static void __fastcall PositionMesh(CThing* thing, const C3DVector& position, const CRightHandedSet& orientation,
+                                        const C3DVector& offset, float tilt, float angle);   // 0x005EABC0
+
     virtual void v00();
     CThingDefOwner* ParentThing;                // +0x04
     CThing* CreateGamePiece(long model);        // 0x005EA9B0 (CThingObject*)
@@ -149,5 +155,5 @@ void CTCTavernGameCoinBase::AddNewCoin(const C2DVector& position)
     Held = Coins._M_finish - 1;
     Held->Pos = position;
     CBaseIntelligentPointer& thing = Held->Thing;
-    PositionMesh((CThingObject*)thing.GetPItem(), BoardPos, BoardRHSet, C3DVector(Held->Pos.X, Held->Pos.Y, 0.0f), 0, 0.0f);
+    CTCTavernGame::PositionMesh((CThingObject*)thing.GetPItem(), BoardPos, BoardRHSet, C3DVector(Held->Pos.X, Held->Pos.Y, 0.0f), 0.0f, 0.0f);
 }

@@ -13,10 +13,13 @@ struct _Rb_tree_iterator {
  void _M_decrement();
 };
 template<class A,class B> struct pair {A first;B second;__forceinline pair(const A&a,const B&b):first(a),second(b){}};
-struct _Rb_tree {
+class _Rb_tree {
+public:
  _Rb_tree_node* Header;
  CComparePointer<CBasicString<char> > Compare;
+private:
  _Rb_tree_iterator _M_insert(_Rb_tree_node*,_Rb_tree_node*,CBasicString<char>*const&,bool);
+public:
  pair<_Rb_tree_iterator,bool> insert_unique(CBasicString<char>*const&);
 };
 pair<_Rb_tree_iterator,bool> _Rb_tree::insert_unique(CBasicString<char>*const& value){

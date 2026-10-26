@@ -15,18 +15,22 @@
 //        `eased * 0.5f` multiplies by the dword 0.5f before the double 2*pi, the angle is duplicated for cos and sin; the
 //        offset is a C3DVector temporary built after the two trailing float pushes; the def stays in esi to the short `dec [esi+4] ; jne` release only when VC7.1 sees the
 //        GetSubDef body (a stand-in compiled above under `#pragma auto_inline(off)`); only PositionCover is graded.
+// PositionMesh (sweep3, FINDINGS chunk 481 "PositionMesh's 5th parameter is float"): Ego_r/FableWin
+//   ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z -- a static __fastcall member taking
+//   (CThing*, const C3DVector&, const CRightHandedSet&, const C3DVector&, float, float); C3DVector, CRightHandedSet and CThing
+//   are classes (V in every PDB signature).
 #include <math.h>
 #pragma intrinsic(cos, sin)
 
 const float TWO_PI = 6.2831855f;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRightHandedSet { float Up[3], Forward[3]; };
-struct CThing;
+class CRightHandedSet { public: float Up[3], Forward[3]; };
+class CThing;
 
 struct CDefVirtual {
     virtual void v00();
@@ -79,7 +83,7 @@ bool CDefClassBase::GetSubDef_007d9a80(CSpotTheAdditionDefPointer& out)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PDef;                        // +0x70
 };
@@ -89,7 +93,7 @@ struct CTCTavernGame {
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0xe8];
     static void __fastcall PositionMesh(CThing* thing, const C3DVector& position, const CRightHandedSet& orientation,
-                                        const C3DVector& offset, float a, float b);   // 0x005EABC0
+                                        const C3DVector& offset, float tilt, float angle);   // 0x005EABC0
 };
 struct CTCTavernGameSpotTheAddition : CTCTavernGame {
     long          CurrentRound;                 // +0xf0
@@ -116,6 +120,6 @@ void CTCTavernGameSpotTheAddition::PositionCover(float fraction)
         float angle = (float)(eased * 0.5f * (double)TWO_PI);
         float along = (float)((1.0 - cos(angle)) * def->LengthMovementScale * def->CoverLength);
         float up = (float)(sin(angle) * def->HeightMovementScale * def->CoverLength);
-        PositionMesh(Cover, BoardPos, BoardRHSet, C3DVector(0.0f, along, up), 0.0f, 0.0f);
+        CTCTavernGame::PositionMesh(Cover, BoardPos, BoardRHSet, C3DVector(0.0f, along, up), 0.0f, 0.0f);
     }
 }

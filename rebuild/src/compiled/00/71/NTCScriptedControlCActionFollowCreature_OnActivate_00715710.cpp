@@ -1,6 +1,11 @@
 // NTCScriptedControl::CActionFollowCreature::OnActivate() -- make the creature able to move, swap its physics component for a navigator (keeping the old one), start sneaking behind a sneaking target, and remember/clear the pushable flag
 // Layout: CActionFollowCreature offsets are the PDB's (+0xC PTargetThing, +0x18 PTCOldPhysics, +0x25/+0x26); +8 is the base's activated flag;
 // the creature is re-read through the owning control at +4 (its +4), as in the landed CActionLeadCreature::OnActivate 0x007122D0.
+// Leaf: ?OnActivate@CActionFollowCreature@NTCScriptedControl@@UAEXXZ
+// PDB spelling (sweep 3): the class lives in namespace NTCScriptedControl with the Ego_r CActionBase member PTCScript (+0x04);
+//   OnActivate is its virtual (?OnActivate@CActionFollowCreature@NTCScriptedControl@@UAEXXZ) and 0x00713D50 is the private
+//   SetAsSneaking (?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z, was an invented global SetSneaking).
+//   Same bytes.
 class CCharString {
 public:
     void* PStringData;
@@ -100,12 +105,13 @@ struct CScriptThing {
     long _a, _b;
 };
 
-struct CCreaturePointer { void* __vftable; CThing* PThing; };
+struct CTCScriptedControl { void* __vftable; CThing* ParentThing; };   // CTCBase: ParentThing +0x04
 
+namespace NTCScriptedControl {
 class CActionFollowCreature {
 public:
-    void* __vftable;                                 // +0x00
-    CCreaturePointer* PControl;                      // +0x04
+    virtual void OnActivate();                       // vptr +0x00 (UAE: the action's virtual OnActivate)
+    CTCScriptedControl* PTCScript;                   // +0x04 (Ego_r CActionBase)
     bool Activated;                                  // +0x08
     CScriptThing PTargetThing;                       // +0x0C
     CTCPhysicsBase* PTCOldPhysics;                   // +0x18
@@ -115,30 +121,31 @@ public:
     bool AvoidDynamicObstacles;                      // +0x25
     bool PreviousPushableByHero;                     // +0x26
     bool Running;                                    // +0x27
-    void SetSneaking(bool sneaking);                 // 0x00713D50
-    void OnActivate();
+private:
+    void SetAsSneaking(bool sneaking);               // 0x00713D50 (Ego_r ?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z)
 };
+} // namespace NTCScriptedControl
 
-void CActionFollowCreature::OnActivate()
+void NTCScriptedControl::CActionFollowCreature::OnActivate()
 {
     Activated = true;
-    if (!IsAbleToMove(PControl->PThing))
-        RemoveMovementBlockingModes(PControl->PThing);
+    if (!IsAbleToMove(PTCScript->ParentThing))
+        RemoveMovementBlockingModes(PTCScript->ParentThing);
     PTCOldPhysics = 0;
-    CTCPhysicsBase* physics = PControl->PThing->PPhysics;
+    CTCPhysicsBase* physics = PTCScript->ParentThing->PPhysics;
     if (physics->GetName() != "CTCPhysicsNavigator") {
         PTCOldPhysics = physics->Clone();
         C3DVector position = physics->Position;
         CBoundingBox bounds = physics->GetBounds();
         CPhysicsSnapshot snapshot(position, bounds);
         CCharString navigatorName("CTCPhysicsNavigator");
-        PControl->PThing->AddTC(navigatorName, true, snapshot);
+        PTCScript->ParentThing->AddTC(navigatorName, true, snapshot);
     }
     CTCStealth* stealth;
     if (PTargetThing.IsAlive() && PTargetThing.GetThing()->GetInterface(&stealth, 0x36) && stealth->Sneaking)
-        SetSneaking(true);
+        SetAsSneaking(true);
     if (!AvoidDynamicObstacles) {
-        PreviousPushableByHero = PControl->PThing->PPhysics->IsPushableByHero();
-        PControl->PThing->PPhysics->SetPushableByHero(false);
+        PreviousPushableByHero = PTCScript->ParentThing->PPhysics->IsPushableByHero();
+        PTCScript->ParentThing->PPhysics->SetPushableByHero(false);
     }
 }

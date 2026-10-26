@@ -1,5 +1,5 @@
 // std::_Rb_tree<EClothingSuitPart, EClothingSuitPart, _Identity<EClothingSuitPart>, less<EClothingSuitPart>, allocator<EClothingSuitPart> >::_M_create_node(const EClothingSuitPart& x) -- malloc a 0x14-byte tree node and placement-copy the suit part into its value field (the links are set by the caller)
-// Leaf: ?_M_create_node@?$_Rb_tree@W4EClothingSuitPart@@W41@U?$_Identity@W4EClothingSuitPart@@@std@@U?$less@W4EClothingSuitPart@@@3@V?$allocator@W4EClothingSuitPart@@@3@@std@@QAEPAU?$_Rb_tree_node@W4EClothingSuitPart@@@2@ABW4EClothingSuitPart@@@Z
+// Leaf: ?_M_create_node@?$_Rb_tree@W4EClothingSuitPart@@W41@U?$_Identity@W4EClothingSuitPart@@@std@@U?$less@W4EClothingSuitPart@@@3@V?$allocator@W4EClothingSuitPart@@@3@@std@@IAEPAU?$_Rb_tree_node@W4EClothingSuitPart@@@2@ABW4EClothingSuitPart@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005BA3AC, 26 bytes, thiscall `ret 4` (`this` unused), size TU.
 // Identity (sweep1, 2026-10-25): both callers (0x005BA8F7, 0x005BA910) are the two arms of the set<EClothingSuitPart>
 //   tree's _M_insert 0x005BA8CF (whose only caller is insert_unique 0x005BAD5B, FINDINGS chunk 454); the 0x14-byte
@@ -74,6 +74,7 @@ public:
     static const _Key& _S_key(_Base_ptr __x) { return _KeyOfValue()(((_Link_type)__x)->_M_value_field); }
 
     _Link_type _M_allocate_node() { return (_Link_type)malloc(sizeof(_Node)); }
+protected:
     _Link_type _M_create_node(const value_type& __x);
 };
 

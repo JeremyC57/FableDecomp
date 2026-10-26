@@ -2,7 +2,7 @@
 // Leaf: GetTransformFrameEnd
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BCF930, 464 bytes, `ret 4`. Ego_r.pdb:
 //   ?GetTransformFrameEnd@CEngineInternalPrimitive2DAnimatedMesh@@UBE_NAAVCMatrix3x4@@@Z (virtual, const).
-// Callees: CRightHandedSet::MakePerpendicular 0x00A22E10, C3DVector::Normalise 0x00A14440 (x2; the manifest's "GetScaled" is
+// Callees: CRightHandedSet::MakePerpendicular 0x00A22E10, C3DVector::AccurateNormalise @ 0x00A14440 (x2; the manifest's "GetScaled" is
 //   propagated), CalcObjectMatrix 0x00BEBAA0 (`__fastcall`: matrix in ecx, position in edx, orientation and scale pushed).
 //   Constants: 0.01f 0x01230A5C, 0.0f 0x0122DEDC, 1.0f 0x0122DED8.
 // Layout: engine/CEngineInternalPrimitive2DAnimatedMesh.h is flattened, so the base members are read from its pad words:
@@ -17,11 +17,11 @@
 //   (CSE'd across a row, one spilled to the dead argument slot) and turns `+ y * -1.0f` into `- y * 1.0f`.
 #include "engine/CEngineInternalPrimitive2DAnimatedMesh.h"
 #include "engine/C3DMeshInfo.h"
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    void Normalise();                              // 0x00A14440
+    C3DVector& AccurateNormalise();                              // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct CRightHandedSet {
     C3DVector Up;                                  // +0x00
@@ -65,8 +65,8 @@ bool __fastcall GetTransformFrameEnd(const CEngineInternalPrimitive2DAnimatedMes
     {
         CRightHandedSet orientation(*(const CRightHandedSet*)self->_pad_0xbc);
         orientation.MakePerpendicular();
-        orientation.Up.Normalise();
-        orientation.Forward.Normalise();
+        orientation.Up.AccurateNormalise();
+        orientation.Forward.AccurateNormalise();
         const C3DMeshInfo* info = *(C3DMeshInfo* const*)self->_pad_0x50;
         CalcObjectMatrix(transform, *(const C3DVector*)self->_pad_0x94, orientation, ((const float*)info->BoundingSphere)[3] * 0.01f);
     }

@@ -119,7 +119,9 @@ public:
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
     iterator begin() { return iterator((_Link_type)this->_M_header._M_data->_M_left); }
+private:
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const _Value& __v, _Base_ptr __w = 0);   // 0x009AB120
+public:
     pair<iterator, bool> insert_unique(const _Value& __v);
 };
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

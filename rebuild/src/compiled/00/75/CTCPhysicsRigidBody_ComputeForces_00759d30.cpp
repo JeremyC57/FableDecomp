@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00759D30, 400 bytes (`ret 4`).
 // Callees: CInputEvent ctor 0x00A04410 / dtor 0x00A03B30; CInputManager::IsKeyboardEventInQueue 0x009F50A0 (g_pInputManager
 //          0x013B8388, its +0x28 word gates the key test); CTCBase::GetWorld() 0x00686A70; CWorld random-seed accessor 0x0049D810;
-//          GFFloatRandom 0x004978A0 (__fastcall); C3DVector::Normalise 0x00A14440; virtual slot 48 (+0xc0, affected by gravity).
+//          GFFloatRandom 0x004978A0 (__fastcall); C3DVector::AccurateNormalise @ 0x00A14440; virtual slot 48 (+0xc0, affected by gravity).
 // Layout: retail Body.OneOverMass +0xa0 (PDB +0xac: the three STLport vectors at +0x40/+0x50/+0x60 are 12 bytes in release,
 //          not 16, so engine/CTCPhysicsRigidBody.h does not hold); CRigidBodyConfig as the PDB (CMVelocity +0x3c, CMForce +0x54,
 //          Torque +0x60, AngularVelocity +0x9c).
@@ -23,13 +23,13 @@ struct CInputManager {
 };
 extern CInputManager* g_pInputManager;             // 0x013B8388
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     void Zero() { X = Y = Z = 0.0f; }
     void operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; }
-    void Normalise();                              // 0x00A14440
+    C3DVector& AccurateNormalise();                              // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct CRigidBodyConfig {
     C3DVector     CMPosition;                      // +0x00
@@ -71,7 +71,7 @@ void CTCPhysicsRigidBody::ComputeForces(CRigidBodyConfig& config)
         config.Torque.X = GFFloatRandom(100.0f, GetWorld()->GetRandomSeed());
         config.Torque.Y = GFFloatRandom(100.0f, GetWorld()->GetRandomSeed());
         config.Torque.Z = GFFloatRandom(100.0f, GetWorld()->GetRandomSeed());
-        config.Torque.Normalise();
+        config.Torque.AccurateNormalise();
     }
     if (IsAffectedByGravity()) {
         float mass = 1.0f / OneOverMass;

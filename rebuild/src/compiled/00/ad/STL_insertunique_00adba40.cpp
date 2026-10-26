@@ -1,6 +1,6 @@
 // 00adba40 std::_Rb_tree::insert_unique
 // Flags: /O2 /Oy /W3
-// Leaf: ?insert_unique@_Rb_tree
+// Leaf: ?insert_unique@_Rb_tree@RecutTree_00adba40@@QAE?AU_Rb_tree_iterator@2@U32@ABU?$pair@IUCGroupInfo@CVertexGroupBlockOptimiser@RecutTree_00adba40@@@std@2@@Z
 #include <stdlib.h>
 #include <new>
 namespace RecutTree_00adba40 {
@@ -21,9 +21,12 @@ struct _Rb_tree_iterator: _Rb_tree_base_iterator {
 __declspec(noinline) void _Rb_tree_iterator::_M_increment(){if(Node->Right){Node=Node->Right;while(Node->Left)Node=Node->Left;}else{_Rb_tree_node* p=Node->Parent;while(Node==p->Right){Node=p;p=p->Parent;}if(Node->Right!=p)Node=p;}}
 __declspec(noinline) void _Rb_tree_iterator::_M_decrement(){if(Node->Colour==0 && Node->Parent->Parent==Node){Node=Node->Right;return;}if(Node->Left){Node=Node->Left;while(Node->Right)Node=Node->Right;}else{_Rb_tree_node* p=Node->Parent;while(Node==p->Left){Node=p;p=p->Parent;}Node=p;}}
 typedef std::pair<_Rb_tree_iterator,bool> _Rb_tree_insert_result;
-struct _Rb_tree {
+class _Rb_tree {
+public:
  _Rb_tree_node* Header;unsigned Count;std::less<unsigned> _M_key_compare;
+private:
  _Rb_tree_iterator _M_insert(_Rb_tree_node*,_Rb_tree_node*,const value_type&, _Rb_tree_node*);
+public:
  _Rb_tree_insert_result insert_unique(const value_type&);
  _Rb_tree_iterator insert_unique(_Rb_tree_iterator,const value_type&);
 };

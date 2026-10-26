@@ -42,7 +42,9 @@ public:
     _Rb_tree_node_base*& _M_root() const { return _M_header->_M_parent; }
     _Rb_tree_node_base*& _M_leftmost() const { return _M_header->_M_left; }
     _Rb_tree_node_base*& _M_rightmost() const { return _M_header->_M_right; }
+private:
     void _M_erase(_Node* __x);                                   // per instantiation (0x004CF810 / 0x00AD5240)
+public:
     void clear()
     {
         if (_M_node_count != 0) {

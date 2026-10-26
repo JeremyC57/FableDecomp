@@ -7,9 +7,12 @@
 // Globals: 0x013B89A8 (zeroed), 0x013B8690 (update time), 0x013B8698 (render time), all doubles but the first.
 // Shape: size TU with a frame pointer (`optimize("s", on)` + `("y", off)`: `push ecx ; push ecx` for the 8-byte
 // start time, `and [g],0`, `leave`); the start time is one double local reused for both measurements.
+// Binding (sweep 3): CSystemManager is class-keyed, so the callee binds Ego_r ?GFGetSystemManager@@YIPAVCSystemManager@@XZ
+//   (was ...PAUCSystemManager...). Same bytes.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-struct CSystemManager {
+class CSystemManager {
+public:
     bool IsApplicationActive();                    // 0x009A57B0
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0

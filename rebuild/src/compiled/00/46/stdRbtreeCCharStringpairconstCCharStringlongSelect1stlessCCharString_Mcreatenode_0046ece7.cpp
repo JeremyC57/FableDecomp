@@ -1,5 +1,5 @@
 // std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >::_M_create_node(const value_type& v) -- STLport: malloc one 0x18-byte map node and copy-construct the (CCharString, long) value into it
-// Leaf: _M_create_node
+// Leaf: ?_M_create_node@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@2@ABU?$pair@$$CBVCCharString@@J@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0046ECE7, 46 bytes, `ret 4` (thiscall: the value by reference; the empty allocator `this` is unused).
 // Callees: malloc @ 0x00BFEA0E, CCharString::CCharString(const CCharString&) @ 0x0099EC30.
 // Identity: the catalog's "Alloc" is behavioural. Callers: _Rb_tree::_M_copy @ 0x0046EC57 (landed as "CRetailTree_0046ece7::Copy",
@@ -53,6 +53,7 @@ public:
     _Rb_tree_node_base* _M_header;                  // +0x00
     unsigned int        _M_node_count;              // +0x04
     __forceinline _Link_type _M_allocate_node() { return static_cast<_Link_type>(malloc(sizeof(_Rb_tree_node<Value>))); }
+protected:
     _Link_type _M_create_node(const Value& x);
 };
 

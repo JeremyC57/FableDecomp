@@ -146,6 +146,7 @@ public:
     }
     _Rb_tree();
     void erase(iterator position);
+private:
     void _M_erase(_Link_type x);
 };
 }

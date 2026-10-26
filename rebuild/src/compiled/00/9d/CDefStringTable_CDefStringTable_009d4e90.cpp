@@ -102,7 +102,9 @@ namespace std
         _Base_ptr& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
         _Base_ptr& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
 
+    private:
         void _M_erase(_Link_type __x);                 // 0x0043020A
+    public:
 
         ~_Rb_tree() { clear(); }
 

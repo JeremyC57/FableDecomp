@@ -3,9 +3,11 @@
 // Callees: CAIStateGroupBase::IsStopping @ 0x008FD010, CThingCreatureBase::IsFreeToPerformAction(const CCreatureActionBase*)
 // @ 0x00662210, PBrain virtual slot 2 (+0x08, yield), CBrainOutput::CBrainOutput @ 0x00835620, the action's virtual slot 11
 // (+0x2c, a counted copy of itself), CCountedPointer<..>::Reset @ 0x00668D90 (output +0x20; manifest label names the
-// CIPhysicsFacesSegmentBase instantiation), CAIBrain::SetBrainOutput @ 0x0088B8F0, ~CBrainOutput @ 0x006D60C0.
+// CIPhysicsFacesSegmentBase instantiation), CAIBrain::SetOutput @ 0x0088B8F0, ~CBrainOutput @ 0x006D60C0.
 // Shape: `while (!free && !IsStopping()) Yield();` rotates into retail's loop; the CBrainOutput dtor is emitted out of
 // line here (the sibling 0x0097D980 inlines it) and shared by both returns (`lea ecx` before the `je`).
+// Fix (sweep 3): the callee 0x0088B8F0 is CAIBrain::SetOutput (PDB name; FINDINGS chunk 482), bound with the PDB class keys
+//   (class CAIBrain / CBrainOutput) instead of the invented SetBrainOutput. Same bytes.
 struct CThing;
 
 struct CBaseIntelligentPointer
@@ -43,8 +45,9 @@ struct CCountedPointer                              // CCountedPointer<..> {obje
     }
 };
 
-struct CBrainOutput                                 // 0x48 bytes
+class CBrainOutput                                  // 0x48 bytes
 {
+public:
     unsigned long Flags;                            // +0x00 (8: perform action, 0x20: pump combat actions)
     unsigned char _pad04[0x20 - 0x04];
     CCountedPointer PAction;                        // +0x20
@@ -54,13 +57,15 @@ struct CBrainOutput                                 // 0x48 bytes
     ~CBrainOutput();                                // 0x006D60C0
 };
 
-struct CAIBrain
+class CAIBrain
 {
+public:
     virtual void v00(); virtual void v01();
     virtual void Yield();                           // slot 2 (+0x08)
     unsigned char _pad04[0x18 - 0x04];
     CThing* Creature;                               // +0x18
-    void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0 (manifest "CQuestManager::RemoveAvailableQuestCardType" is propagated)
+    void SetOutput(const CBrainOutput& output);     // 0x0088B8F0 (Ego_r/FableWin ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z; the
+                                                    // manifest's "CQuestManager::RemoveAvailableQuestCardType" is propagated)
 };
 
 struct CCreatureActionBase
@@ -96,7 +101,7 @@ long CAIStateGroupBase::AIAction_PerformAction(CCreatureActionBase* action)
     CBrainOutput output;
     output.Flags |= 8;
     output.PAction.Reset(action->Clone());
-    PBrain->SetBrainOutput(output);
+    PBrain->SetOutput(output);
     PBrain->Yield();
     if (IsStopping())
         return 1;

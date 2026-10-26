@@ -1,6 +1,6 @@
 // 009efb80 CCacheInfo_InsertOrFind
 // Flags: /O2 /Oy /W3 
-// Leaf: insert_unique
+// Leaf: ?insert_unique@_Rb_tree@std@CacheTree@@QAE?AUpair@23@ABUCCharString@3@@Z
 // Layout: header pointer at+0; RB node color,parent,left,right,key at0,4,8,c,10. CCharString is one pointer to CBasicString<char>.
 namespace CacheTree {
 template<class C>struct CBasicString{C*data;bool operator<(const CBasicString&)const;};
@@ -10,7 +10,8 @@ namespace std {
 struct _Rb_tree_node{unsigned color;_Rb_tree_node*parent,*left,*right;CCharString key;unsigned value;};
 struct _Rb_tree_iterator{_Rb_tree_node*node;void _M_decrement();};
 struct pair{_Rb_tree_iterator first;bool second;pair(_Rb_tree_iterator a,bool b):first(a),second(b){}};
-struct _Rb_tree{_Rb_tree_node*header;unsigned count;_Rb_tree_iterator _M_insert(_Rb_tree_node*,_Rb_tree_node*,const CCharString&,bool);pair insert_unique(const CCharString&);};
+class _Rb_tree{
+public:_Rb_tree_node*header;unsigned count;private: _Rb_tree_iterator _M_insert(_Rb_tree_node*,_Rb_tree_node*,const CCharString&,bool); public:pair insert_unique(const CCharString&);};
 pair _Rb_tree::insert_unique(const CCharString&value){
  _Rb_tree_node*y=header;_Rb_tree_node*x=header->parent;bool comp=true;
  while(x){y=x;comp=value<x->key;x=comp?x->left:x->right;}

@@ -83,7 +83,9 @@ public:
 
     iterator begin() { return iterator(_M_leftmost()); }
 
+private:
     iterator _M_insert(_Base_ptr x, _Base_ptr y, const value_type& v, _Base_ptr w = 0);
+public:
     pair<iterator, bool> insert_unique(const value_type& v);
 };
 

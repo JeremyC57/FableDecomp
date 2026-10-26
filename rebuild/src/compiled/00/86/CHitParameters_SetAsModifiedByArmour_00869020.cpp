@@ -4,9 +4,9 @@
 // Shape notes (what the lane needs to reproduce retail's register/schedule choices):
 //  * same-TU `__declspec(noinline)` stand-ins under `#pragma auto_inline(off)` for three callees whose retail bodies sat
 //    in the same TU: the multimap _M_insert (0x00869CA0; only READS the pair, so the converted pair's key stays in esi
-//    through the insert and both CDefPointer releases), GetArmourDefsForThing (0x00868E50; writes the multiplier by
+//    through the insert and both CDefPointer releases), GetArmourWeightsFromThing (0x00868E50; writes the multiplier by
 //    reference without letting its address escape, which lets the `it->second = 0` store and the map-ctor stores sink
-//    below the argument pushes as retail's do) and AccumulateMeleeBuffFromTree (0x00868A80; writes only its float&, so
+//    below the argument pushes as retail's do) and GetArmourResponseAugmentationDamageMultiplier (0x00868A80; writes only its float&, so
 //    the augmentation loop's `Augmentations._M_finish` re-read is hoisted into edi after the entry test's eax load).
 //    They are not inlined and are not part of the graded leaf.
 //  * the augmentation loop runs on its own `float current = damage;` copy declared inside `if (numAugmentations > 0)`
@@ -202,11 +202,15 @@ struct CBaseIntelligentPointer {
     CThing* operator->() const { return GetPItem(); }
 };
 
-void __fastcall GetArmourDefsForThing(const CThing& thing, CArmourMap& armours, float& multiplier);   // 0x00868E50
-float __fastcall CalculateEffectiveDamageMultiplier(const CThing& thing);                             // 0x00868B40
-float __fastcall CalculateDamageFromArmourTree(EDamageAttribute attribute, const CArmourMap& armours, float multiplier);   // 0x008686E0
-bool __fastcall AccumulateDamageModifierFromTree(EDamageAttribute attribute, const CArmourMap& armours, float multiplier, float& damage);   // 0x008687A0
-void __fastcall AccumulateMeleeBuffFromTree(EObjectAugmentationType type, const CArmourMap& armours, float multiplier, float& damage);    // 0x00868A80
+// The armour helpers sit in this TU's anonymous namespace (Ego_r.pdb ?...@?A0x23f4dc30@@YI..., all taking the armour
+// multimap<CDefPointer<const CArmourDef>, float, CCompareDefPointer<const CArmourDef> >; sweep3, FINDINGS chunk 481).
+namespace {
+void __fastcall GetArmourWeightsFromThing(const CThing& thing, CArmourMap& armours, float& multiplier);   // 0x00868E50
+float __fastcall GetToughnessDamageReductionFactorForThing(const CThing& thing);                       // 0x00868B40
+float __fastcall GetArmourThresholdValueFromArmourWeights(EDamageAttribute attribute, const CArmourMap& armours, float multiplier);   // 0x008686E0
+bool __fastcall GetArmourResponseDamageAttributeDamageMultiplier(EDamageAttribute attribute, const CArmourMap& armours, float multiplier, float& damage);   // 0x008687A0
+bool __fastcall GetArmourResponseAugmentationDamageMultiplier(EObjectAugmentationType type, const CArmourMap& armours, float multiplier, float& damage);    // 0x00868A80
+}
 
 // Layout: retail CHitParameters keeps the PDB bool/float offsets up to +0x2c, then 12-byte STLport containers:
 // DamageMap +0x30, Augmentations +0x3c, PHitLocation +0x48, PHitMaterialDef +0x4c, PThingHitting +0x50, PWeapon +0x58.
@@ -231,16 +235,19 @@ public:
 
 // Same-TU read-mostly stand-ins for the __fastcall armour helpers (retail bodies are elsewhere; not inlined, not part of the leaf).
 #pragma auto_inline(off)
-__declspec(noinline) void __fastcall GetArmourDefsForThing(const CThing& thing, CArmourMap& armours, float& multiplier)
+namespace {
+__declspec(noinline) void __fastcall GetArmourWeightsFromThing(const CThing& thing, CArmourMap& armours, float& multiplier)
 {
     multiplier = thing.ArmourAbsorb;
     if (thing.Flags6c & 1)
         armours.clear();
 }
-__declspec(noinline) void __fastcall AccumulateMeleeBuffFromTree(EObjectAugmentationType type, const CArmourMap& armours, float multiplier, float& damage)
+__declspec(noinline) bool __fastcall GetArmourResponseAugmentationDamageMultiplier(EObjectAugmentationType type, const CArmourMap& armours, float multiplier, float& damage)
 {
     if (type > 0)
         damage += multiplier * (float)armours._M_node_count;
+    return false;
+}
 }
 #pragma auto_inline(on)
 
@@ -280,7 +287,7 @@ void CHitParameters::SetAsModifiedByArmour(const CThing& thing, CArmourDefPointe
 {
     CArmourMap armours;
     float multiplier = 0.0f;
-    GetArmourDefsForThing(thing, armours, multiplier);
+    GetArmourWeightsFromThing(thing, armours, multiplier);
     if (armours.empty()) {
         armours.insert(MakeArmourPair(armour, 1.0f));
         multiplier = 1.0f;
@@ -294,7 +301,7 @@ void CHitParameters::SetAsModifiedByArmour(const CThing& thing, CArmourDefPointe
     if (thing.ThingType == 1 && (thing.Flags1c8 & 0x40))
         HitNegated = true;
 
-    float damageMultiplier = CalculateEffectiveDamageMultiplier(thing);
+    float damageMultiplier = GetToughnessDamageReductionFactorForThing(thing);
     long numAugmentations = Augmentations._M_finish - Augmentations._M_start;
     bool anyDamage = false;
     float total = 0.0f;
@@ -303,11 +310,11 @@ void CHitParameters::SetAsModifiedByArmour(const CThing& thing, CArmourDefPointe
         CRbNode* end = DamageMap._M_header;
         EDamageAttribute attribute = ((CDamageNode*)it)->first;
         if (DamageMap.find(4) != end && IsAlive(PWeapon.GetPItem()) && PWeapon->IsRangedWeapon()) {
-            if (CalculateDamageFromArmourTree(attribute, armours, multiplier) > ShotBuildupTime)
+            if (GetArmourThresholdValueFromArmourWeights(attribute, armours, multiplier) > ShotBuildupTime)
                 HitNegated = true;
         }
         ((CDamageNode*)it)->second = 0.0f;
-        if (AccumulateDamageModifierFromTree(attribute, armours, multiplier, damage)) {
+        if (GetArmourResponseDamageAttributeDamageMultiplier(attribute, armours, multiplier, damage)) {
             float value = damage;
             if (numAugmentations > 0) {
                 float current = damage;
@@ -315,7 +322,7 @@ void CHitParameters::SetAsModifiedByArmour(const CThing& thing, CArmourDefPointe
                 for (; aug != Augmentations._M_finish; ++aug)
                 {
                     float buff = current;
-                    AccumulateMeleeBuffFromTree(*aug, armours, multiplier, buff);
+                    GetArmourResponseAugmentationDamageMultiplier(*aug, armours, multiplier, buff);
                     current = buff;
                 }
                 value = current;

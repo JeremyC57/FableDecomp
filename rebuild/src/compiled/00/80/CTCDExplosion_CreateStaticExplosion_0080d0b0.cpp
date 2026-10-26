@@ -4,7 +4,7 @@
 // Leaf: CreateStaticExplosion
 //
 // Retail 0x0080D0B0, 580 bytes, plain `ret` (8-aligned frame).
-// Callees: CParticleEmitterManager::Get @ 0x00AEAAF0 (static), __ftol2 @ 0x00BFEA70, C3DVector::Normalise @ 0x00A14440, the
+// Callees: CParticleEmitterManager::Get @ 0x00AEAAF0 (static), __ftol2 @ 0x00BFEA70, C3DVector::AccurateNormalise @ 0x00A14440, the
 // explosion def's emitter spacing @ 0x0080C190, the emitter creator @ 0x006E11F0 (__fastcall), CTCBase::GetWorld
 // @ 0x00686A70, GetWorldFrame @ 0x0049D870 (static), CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 /
 // GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10 (vtable 0x01238C6C), the emitter vector's push_back @ 0x00789515,
@@ -14,13 +14,13 @@
 // +0x66, shake strength +0x68 / +0x6c (descriptive).
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     float MagnitudeSquared() const { return Z * Z + Y * Y + X * X; }
     float Magnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-    void Normalise();                                        // 0x00A14440
+    C3DVector& AccurateNormalise();                                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
@@ -97,7 +97,7 @@ void CTCDExplosion::CreateStaticExplosion()
         long count = (long)((EndPos - StartPos).Magnitude() / radius + 1.0f);
         C3DVector direction = EndPos - StartPos;
         if (direction.MagnitudeSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c)
-            direction.Normalise();
+            direction.AccurateNormalise();
         float spacing = PExplosionDef->GetEmitterSpacing(radius);
         for (long i = 0; i != count; ++i) {
             C3DVector pos = StartPos + direction * (float)i * radius;

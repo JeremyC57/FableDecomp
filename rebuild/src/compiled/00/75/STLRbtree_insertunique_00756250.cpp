@@ -1,6 +1,6 @@
 // 00756250 std::_Rb_tree::insert_unique
 // Flags: /O2 /Oy /W3
-// Leaf: insert_unique
+// Leaf: ?insert_unique@_Rb_tree@std@X_00756250@@QAE?AU?$pair@U_Rb_tree_iterator@std@X_00756250@@_N@23@ABU?$pair@UCCharString@X_00756250@@U?$pair@JJ@std@2@@23@@Z
 namespace X_00756250 {
 // Layout: packed CBasicString<char> data0/length4/capacity8/owns12; CCharString data refcount13, from99ec30.
 #pragma pack(push,1)
@@ -15,7 +15,8 @@ typedef pair<CCharString,pair<long,long> > value_type;
 struct _Rb_tree_node {unsigned char Colour;unsigned char Pad[3];_Rb_tree_node*Parent,*Left,*Right;value_type Value;};
 struct _Rb_tree_iterator {_Rb_tree_node*Node;void _M_decrement();};
 __declspec(noinline) void _Rb_tree_iterator::_M_decrement(){if(Node->Colour==0&&Node->Parent->Parent==Node){Node=Node->Right;return;}if(Node->Left){Node=Node->Left;while(Node->Right)Node=Node->Right;}else{_Rb_tree_node*p=Node->Parent;while(Node==p->Left){Node=p;p=p->Parent;}Node=p;}}
-struct _Rb_tree {_Rb_tree_node*Header;unsigned Count;_Rb_tree_iterator _M_insert(_Rb_tree_node*,_Rb_tree_node*,const value_type&,_Rb_tree_node*);pair<_Rb_tree_iterator,bool> insert_unique(const value_type&);};
+class _Rb_tree {
+public:_Rb_tree_node*Header;unsigned Count;private: _Rb_tree_iterator _M_insert(_Rb_tree_node*,_Rb_tree_node*,const value_type&,_Rb_tree_node*); public:pair<_Rb_tree_iterator,bool> insert_unique(const value_type&);};
 pair<_Rb_tree_iterator,bool> _Rb_tree::insert_unique(const value_type&value){_Rb_tree_node*parent=Header,*node=Header->Parent;bool goLeft=true;while(node){parent=node;goLeft=value.first<node->Value.first;node=goLeft?node->Left:node->Right;}_Rb_tree_iterator previous;previous.Node=parent;if(goLeft){if(previous.Node==Header->Left){return pair<_Rb_tree_iterator,bool>(_M_insert(parent,parent,value,0),true);}previous._M_decrement();}if(previous.Node->Value.first<value.first){return pair<_Rb_tree_iterator,bool>(_M_insert(node,parent,value,0),true);}return pair<_Rb_tree_iterator,bool>(previous,false);}
 }
 }

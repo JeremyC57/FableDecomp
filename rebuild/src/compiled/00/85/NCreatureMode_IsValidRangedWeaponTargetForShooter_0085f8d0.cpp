@@ -1,12 +1,12 @@
 // NCreatureMode::IsValidRangedWeaponTargetForShooter(const CThing& shooter, const CThing& target, float angle) -- whether a ranged shot from the shooter can take the target: when the shooter's player is in lock-on mode its targeted thing must exist and be alive, and the direction to the target must lie within `angle` degrees of the shooter's facing
-// Leaf: ?IsValidRangedWeaponTargetForShooter@NCreatureMode@@
+// Leaf: ?IsValidRangedWeaponTargetForShooter@NCreatureMode@@YI_NABVCThing@@0M@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0085F8D0, 304 bytes, /Gr __fastcall (shooter in ecx, target in edx, angle on the
 //   stack), `ret 4`.
 // Identity: Ego_r.pdb ?IsValidRangedWeaponTargetForShooter@NCreatureMode@@YI_NABVCThing@@0M@Z; caller
 //   NCreatureMode::CModeStrafe::GetBestFrameInAimingAnim 0x008E9460 (landed, 45 degrees).
 // Callees: CVectorMap::LowerBound const 0x004365B0 (the inline GetTC 8: CTCTargeting), CTCTargeting slot 36 (+0x90)
-//   GetTargetedThing, CThing::GetPlayer 0x004C7A10, CThing::GetPosition 0x004C73D0 (x2), the physics TC's slot 70
-//   (+0x118) GetFacingVector (C3DVector by hidden pointer), C3DVector::Normalise 0x00A14440.
+//   GetTargetedThing, CThing::PeekPlayer 0x004C7A10 (Ego_r ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ; sweep3 RENAMES), CThing::GetPosition 0x004C73D0 (x2), the physics TC's slot 70
+//   (+0x118) GetFacingVector (C3DVector by hidden pointer), C3DVector::AccurateNormalise @ 0x00A14440.
 // Data: g_Epsilon 0x0129BA3C (1e-4f), 1/360 0x01238E00 (`/ 360.0f` as a reciprocal multiply), 2pi (double) 0x0124F2B8.
 // Layout: CThing interface bitset +0x20, interface map +0x44, physics TC +0x60, flags +0x91 (bit 0 dead); CPlayer +0x20a
 //   (the lock-on byte of the landed 0x0087C900 model; no PDB name, CPlayer is padding there).
@@ -19,14 +19,14 @@
 extern "C" double __cdecl cos(double);
 #pragma intrinsic(cos)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float operator*(const C3DVector& o) const { return X * o.X + (Y * o.Y + Z * o.Z); }   // dot product
     float GetLengthSquared() const { return *this * *this; }
-    void Normalise();                                   // 0x00A14440
+    C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 
 extern const float g_Epsilon;                           // 0x0129BA3C (1e-4f)
@@ -73,7 +73,8 @@ struct CTCTargeting {                                   // interface 8
     virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
     virtual const CThing* GetTargetedThing() const;     // slot 36 (+0x90)
 };
-struct CPlayer {
+class CPlayer {
+public:
     unsigned char _pad0[0x20a];
     unsigned char m_lockedOnTarget;                     // +0x20a (name descriptive)
 };
@@ -99,7 +100,7 @@ public:
         const CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    CPlayer* GetPlayer() const;                         // 0x004C7A10
+    const CPlayer& PeekPlayer() const;                  // 0x004C7A10
     const C3DVector& GetPosition() const;               // 0x004C73D0
 };
 
@@ -109,15 +110,15 @@ bool __fastcall IsValidRangedWeaponTargetForShooter(const CThing& shooter, const
     const CThing* targeted = 0;
     if (shooter.HasTC(8))
         targeted = shooter.GetTC<CTCTargeting>(8)->GetTargetedThing();
-    CPlayer* player = shooter.GetPlayer();
-    if (player->m_lockedOnTarget) {
+    const CPlayer& player = shooter.PeekPlayer();
+    if (player.m_lockedOnTarget) {
         if (!targeted || (targeted->m_flags91 & 1))
             return false;
     }
     C3DVector offset = target.GetPosition() - shooter.GetPosition();
     C3DVector facing = shooter.PTCPhysics->GetFacingVector();
     if (offset.GetLengthSquared() > g_Epsilon * g_Epsilon)
-        offset.Normalise();
+        offset.AccurateNormalise();
     if (facing * offset < cos(angle / 360.0f * 6.2831854820251465))
         return false;
     return true;

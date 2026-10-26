@@ -1,14 +1,14 @@
-// CGameScriptInterface::EntityGetStandingOnThing(const CScriptThing& thing) const -- the script thing of whatever the valid script thing's thing stands on (the thing's virtual slot 38, CThing::GetScriptThing @ 0x004C7E50 into the hidden result); a default-constructed script thing (0x008CFF40) otherwise
+// CGameScriptInterface::EntityGetStandingOnThing(const CScriptThing& thing) const -- the script thing of whatever the valid script thing's thing stands on (the thing's virtual slot 38, CThing::GetScriptThing @ 0x004C7E50 into the hidden result); the null script thing (CGameScriptThing::CreateNullThing @ 0x008CFF40) otherwise
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00892220, length 73 bytes.
-// Callees: the script thing validated through its virtual slot 75 (+0x12c), the thing fetched through slot 11 (+0x2c), the thing's virtual slot 38 (+0x98), CThing::GetScriptThing @ 0x004C7E50 (hidden result pointer), CScriptThing::CScriptThing @ 0x008CFF40. Shape: the hidden result pointer read into esi on each path and returned in eax, `ret 8`.
-// Leaf: EntityGetStandingOnThing
+// Callees: the script thing validated through its virtual slot 75 (+0x12c), the thing fetched through slot 11 (+0x2c), the thing's virtual slot 38 (+0x98), CThing::GetScriptThing @ 0x004C7E50 (hidden result pointer), CGameScriptThing::CreateNullThing @ 0x008CFF40. Shape: the hidden result pointer read into esi on each path and returned in eax, `ret 8`.
+// Leaf: ?EntityGetStandingOnThing@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@@Z
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
 struct CDefinitionManager_Retail;
 struct CWorld;
 struct CCharString;
-struct CScriptThing;
+class CScriptThing;
 struct CDefPointer_Retail;
 struct CTCBase_Retail;
 struct CInterfaceMap_Retail {                 // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
@@ -61,7 +61,8 @@ struct CThing_Retail {
     }
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }   // the masked word (a bool would narrow the test)
 };
-struct CScriptThing {
+class CScriptThing {
+public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
@@ -76,7 +77,10 @@ struct CScriptThing {
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
     CThing_Retail* PImp_Data;                      // +0x04 (engine/CScriptThing.h: CCountedPointer<CScriptThing>::Data)
     void*          PImp_Info;                      // +0x08
-    CScriptThing();                                // 0x008CFF40 (the default constructor)
+};
+class CGameScriptThing : public CScriptThing {      // Ego_r.pdb: CGameScriptThing derives from CScriptThing
+public:
+    static CScriptThing __fastcall CreateNullThing(); // 0x008CFF40 (?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ)
 };
 struct CGameScriptInterface {
     virtual void v000();
@@ -88,7 +92,7 @@ struct CGameScriptInterface {
     long GetTextIDFromSymbol(const CCharString& symbol) const;   // 0x006E77F0 (labelled LTextSystem::GetIDFromSymbol; `this` is unused)
     long GetCurrentWorldFrameForMessages() const;   // 0x006E7510 (labelled GetMaxWorldFrameForMessages)
     long GetMaxWorldFrameForMessages() const;       // 0x006E7530
-    CScriptThing EntityGetStandingOnThing(const CScriptThing& thing) const;
+    virtual CScriptThing EntityGetStandingOnThing(const CScriptThing& thing) const;   // Ego_r.pdb UBE (virtual)
 };
 
 CScriptThing CGameScriptInterface::EntityGetStandingOnThing(const CScriptThing& thing) const
@@ -98,5 +102,5 @@ CScriptThing CGameScriptInterface::EntityGetStandingOnThing(const CScriptThing& 
         if (on)
             return on->GetScriptThing();
     }
-    return CScriptThing();
+    return CGameScriptThing::CreateNullThing();
 }

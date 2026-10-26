@@ -1,5 +1,5 @@
 // std::deque<C2DVector>::erase(iterator first, iterator last) -- STLport deque range erase: the whole deque is a clear(); otherwise shift the shorter side over the gap (copy_backward the front part up, or copy the back part down), destroy the vacated elements, free their node buffers and move the start or finish; returns start + elems_before
-// Leaf: ?erase@
+// Leaf: ?erase@?$deque@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A0F040, 663 bytes, thiscall `ret 24h` (hidden result pointer, first, last; the
 //   16-byte iterators by value). Single caller 0x00A0FCE8 (the deque's resize). The catalog label
 //   "RenderList_ProcessIteration" is a guess: the landed deque<C2DVector> model 0x00A0F350 already names this address
@@ -7,8 +7,8 @@
 // Callees: clear() @ 0x00A0EAA0 -> 0x00A0EA90 (landed), copy_backward(first, last, result) @ 0x00A0EF90 (landed,
 //   /Gr `__fastcall`, hidden result in ecx), copy(first, last, result) @ 0x00A0EB40 (landed), the iterator's
 //   operator+(int) const @ 0x00A0E980 and operator-(int) const @ 0x00A0EA30 (landed; out of line in this function),
-//   _Destroy(first, last) @ 0x0048D490 (landed, COMDAT from another TU), _M_destroy_nodes(nstart, nfinish)
-//   @ 0x0048C820 (shared COMDAT, landed as a free-function twin).
+//   _Destroy(first, last) @ 0x0048D490 (landed, COMDAT from another TU), _Deque_base::_M_destroy_nodes(nstart, nfinish)
+//   @ 0x0048C820 (shared COMDAT; protected _Deque_base member in STLport 4.6, sweep3 RENAMES).
 // Model: the landed deque<C2DVector> TU model (0x00A0F350; _M_map / _M_map_size as _STLP_alloc_proxy, see 0x00A0EE50).
 // Shape: STLport 4.6 `erase(first, last)` verbatim (copy / copy_backward are same-TU noinline stand-ins: with
 //   declarations only VC7.1 gives their unused results and new_start / new_finish a fresh 16-byte frame slot instead
@@ -138,7 +138,19 @@ inline bool __fastcall operator==(const _Deque_iterator<_Tp, _Traits1>& __x, con
 template <class _Tp, class _Traits1, class _Traits2>
 inline bool __fastcall operator!=(const _Deque_iterator<_Tp, _Traits1>& __x, const _Deque_iterator<_Tp, _Traits2>& __y) { return __x._M_cur != __y._M_cur; }
 
-template <class _Tp, class _Alloc = allocator<_Tp> > class deque {
+template <class _Tp, class _Alloc> class _Deque_base {      // STLport 4.6: the map, the two iterators and the node helpers
+public:
+    typedef _Deque_iterator<_Tp, _Nonconst_traits<_Tp> > iterator;
+    static unsigned int buffer_size() { return (unsigned int)_Deque_iterator_base<_Tp>::__buffer_size; }
+protected:
+    void _M_destroy_nodes(_Tp** __nstart, _Tp** __nfinish);                            // 0x0048C820
+    iterator     _M_start;                                  // +0x00
+    iterator     _M_finish;                                 // +0x10
+    _STLP_alloc_proxy<_Tp**, _Tp*, allocator<_Tp*> > _M_map;            // +0x20
+    _STLP_alloc_proxy<unsigned int, _Tp, _Alloc>     _M_map_size;       // +0x24
+};
+
+template <class _Tp, class _Alloc = allocator<_Tp> > class deque : protected _Deque_base<_Tp, _Alloc> {
 public:
     typedef _Tp value_type;
     typedef unsigned int size_type;
@@ -146,13 +158,9 @@ public:
     typedef _Tp** _Map_pointer;
     typedef _Deque_iterator<_Tp, _Nonconst_traits<_Tp> > iterator;
     typedef _Deque_iterator<_Tp, _Const_traits<_Tp> > const_iterator;
+    typedef _Deque_base<_Tp, _Alloc> _Base;
 
-    iterator     _M_start;                                  // +0x00
-    iterator     _M_finish;                                 // +0x10
-    _STLP_alloc_proxy<_Map_pointer, _Tp*, allocator<_Tp*> > _M_map;   // +0x20
-    _STLP_alloc_proxy<size_type, _Tp, _Alloc> _M_map_size;            // +0x24
-
-    static size_type buffer_size() { return (size_type)_Deque_iterator_base<_Tp>::__buffer_size; }
+    static size_type buffer_size() { return _Base::buffer_size(); }
     size_type size() const { return this->_M_finish - this->_M_start; }
 
     void push_front(const value_type& __t)
@@ -177,7 +185,6 @@ public:
     void insert(iterator __pos, size_type __n, const value_type& __x) { _M_fill_insert(__pos, __n, __x); }
     void resize(size_type __new_size, const value_type& __x);
     void clear();                                                                        // 0x00A0EA90
-    void _M_destroy_nodes(_Map_pointer __nstart, _Map_pointer __nfinish);              // 0x0048C820
 
     void _M_fill_insert(iterator __pos, size_type __n, const value_type& __x);          // 0x00A0FAA0
     void _M_push_front_aux_v(const value_type& __t);                                     // 0x00A0F3B0

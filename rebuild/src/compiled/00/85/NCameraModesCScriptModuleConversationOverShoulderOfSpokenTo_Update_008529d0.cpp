@@ -1,13 +1,13 @@
 // NCameraModes::CScriptModuleConversationOverShoulderOfSpokenTo::Update() -- with two distinct conversation things, put the camera over the spoken-to's shoulder (2 units back along the speaker-to-spoken-to XY direction, sideways by 2 x RandomDirection, 4 up) looking at the speaker's focal point
 // Leaf: ?Update@CScriptModuleConversationOverShoulderOfSpokenTo
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    void Normalise();                                // 0x00A14440
+    C3DVector& AccurateNormalise();                                // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
 
@@ -75,7 +75,7 @@ void CScriptModuleConversationOverShoulderOfSpokenTo::Update()
 {
     if (IsThingsOk()) {
         C3DVector direction = PSpeaker->GetXYDirectionTo(PSpokenTo->GetPosition());
-        direction.Normalise();
+        direction.AccurateNormalise();
         C3DVector side(direction.Y, -direction.X, 0.0f);
         C3DVector spokenToPos = PSpokenTo->GetPosition();
         float scale = RandomDirection * 2.0f;

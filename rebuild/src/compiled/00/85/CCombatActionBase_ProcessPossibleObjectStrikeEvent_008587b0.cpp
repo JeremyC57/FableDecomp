@@ -5,16 +5,16 @@
 //   GetMeleeHitParameters / OnHit from the landed CTCMultiStrike::FrameUpdate 0x007CCE20.
 // Callees: IsThingInStruckThingList 0x00856F00, LowerBound 0x0040F020,
 //   GetPCombatFirstHitLocationIntersectionWithFiniteLine 0x008168B0 (x4), GetPActiveStrikeEvent 0x00856E50,
-//   _M_insert_overflow 0x00788FFC, C3DVector::Normalise 0x00A14440, GetWeaponUsedInStrikeAction 0x00857070,
+//   _M_insert_overflow 0x00788FFC, C3DVector::AccurateNormalise @ 0x00A14440, GetWeaponUsedInStrikeAction 0x00857070,
 //   CHitParameters ctor 0x007A3BC0 / dtor 0x00789358, GetPItem 0x00A01B50, GetMeleeHitParameters 0x00838BC0,
 //   OnHit (slot 65), ProcessFramesRunningForOnHitWithParams 0x00856040.
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 (CRT import thunk)
 struct CTCBase;
 namespace NHitLocations { struct CHitLocation; }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
-    void Normalise();                           // 0x00A14440 (manifest "GetScaled" is propagated)
+    C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 namespace std {
 template <class A, class B> struct pair { A first; B second; };
@@ -266,7 +266,7 @@ void CCombatActionBase::ProcessPossibleObjectStrikeEvent(float time, const std::
         direction.Y = current.first.Y - previous.first.Y;
         direction.Z = current.first.Z - previous.first.Z;
         if (direction.Z * direction.Z + direction.Y * direction.Y + direction.X * direction.X > g_Epsilon * g_Epsilon)
-            direction.Normalise();
+            direction.AccurateNormalise();
         CThing* weapon = GetWeaponUsedInStrikeAction();
         CHitParameters params;
         thing.GetMeleeHitParameters(hit, *PCreature.GetPItem(), weapon, hitPosition, direction, params);

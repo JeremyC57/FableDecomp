@@ -1,5 +1,5 @@
 // std::_Rb_tree<CDateAndTime, CDateWideStringPair, less<CDateAndTime>>::insert_unique(const value_type& v) -- insert a (date, wide string) entry unless the date is already present; returns (position, inserted)
-// Leaf: insert_unique
+// Leaf: ?insert_unique@?$_Rb_tree@VCDateAndTime@@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@U?$less@VCDateAndTime@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@@std@@_N@2@ABU?$pair@$$CBVCDateAndTime@@VCWideString@@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00593D76, 146 bytes, `ret 8` (thiscall; the pair<iterator, bool> result through
 // the hidden pointer at [ebp+8], then v).
 // Tree: map<CDateAndTime, CWideString> (Ego_r.pdb / FableWin.pdb `??A?$map@VCDateAndTime@@VCWideString@@...`), key at
@@ -70,7 +70,9 @@ public:
     static const _Key& _S_key(_Base_ptr __x) { return ((_Link_type)__x)->_M_value_field.first; }
     iterator begin() { return iterator(_M_leftmost()); }
 
+private:
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const _Value& __v, _Base_ptr __w = 0);   // 0x00593CE4
+public:
     pair<iterator, bool> insert_unique(const _Value& __v);
 };
 

@@ -2,7 +2,7 @@
 // Leaf: ?SetDiffVector@CEnvironment@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B3460, length 87 bytes, private static __fastcall (`CI`):
 //   ecx = env, edx = args, plain `ret`.
-// Callees: C3DVector::Normalise() @ 0x00A14440 (in place; the manifest's "GetScaled" is a propagated label,
+// Callees: C3DVector::AccurateNormalise @ 0x00A14440 (in place; the manifest's "GetScaled" is a propagated label,
 //   corrected by chunks 217/239/262/270/273).
 // Identity: Ego_r.pdb `?SetDiffVector@CEnvironment@@CIXAAV1@ABV?$vector@VCGenericVar@@...@Z` (name set only).
 // Layout (local model): retail CEnvironment puts GameTickState at +0x54 and PrevGameTickState at +0xc74 (the
@@ -39,7 +39,7 @@ public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    void Normalise();                                       // 0x00A14440
+    C3DVector& AccurateNormalise();                                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 
 class CEnvironmentGameTickState {                           // retail 0xc20 bytes
@@ -61,7 +61,7 @@ private:
 void __fastcall CEnvironment::SetDiffVector(CEnvironment& env, const vector<CGenericVar>& args)
 {
     C3DVector diffuse(args[0].ValFloat, args[1].ValFloat, args[2].ValFloat);
-    diffuse.Normalise();
+    diffuse.AccurateNormalise();
     env.GameTickState.DiffuseVector = diffuse;
     env.PrevGameTickState.DiffuseVector = diffuse;
 }

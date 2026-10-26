@@ -4,7 +4,7 @@
 // Callees: CCombatActionBase::FinishAction 0x00859A20 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8,
 //   PTarget +0xa8), SetThingAsNotBloodyWillableAtAll 0x007E4040 (__fastcall, dl = false), the physics TC's slots 84 SetFlying
 //   (+0x150), 31 SetPosition (+0x7c) and 75 SetRHSet (+0x12c), CTCGraphicAppearance::SetAlpha 0x004BFAC0, CThing::GetPosition
-//   0x004C73D0, C3DVector::Normalise 0x00A14440, CVectorMap::LowerBound 0x0040F020 (inlined GetInterface: 0x31
+//   0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440, CVectorMap::LowerBound 0x0040F020 (inlined GetInterface: 0x31
 //   CTCCreatureModeManager bit 17 of +0x24, 0x82 attached particles bit 2 of +0x30), CDefClassBase::GetSubDef
 //   <CBalverineBattleDef> 0x008CD0D0 ("CBalverineBattleDef" 0x01243B94; manifest "<CAICreatureWillPowerIndicatorDef>" is
 //   propagated), operator new 0x00BFEA1A, CCreatureAction_BalverineLungeAttack(owner, target) 0x008CCC10 and
@@ -23,12 +23,12 @@
 //   action takes PCreature through an inline `operator CThingCreatureBase*()` -- the creature is fetched BEFORE the
 //   target's GetPItem, which also gives retail's register map (direct GetPItem arguments put the mode manager in ebp).
 struct CTCBase;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    void Normalise();                                   // 0x00A14440
+    C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct CRightHandedSet {
     C3DVector Up;
@@ -205,7 +205,7 @@ void CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction()
             const C3DVector& from = PCreature.GetPItem()->GetPosition();
             const C3DVector& to = target->GetPosition();
             C3DVector forward(to.X - from.X, to.Y - from.Y, 0.0f);
-            forward.Normalise();
+            forward.AccurateNormalise();
             physics->SetRHSet(CRightHandedSet(C3DVector(0.0f, 0.0f, 1.0f), forward));
         }
         CTCCreatureModeManager* modeManager;

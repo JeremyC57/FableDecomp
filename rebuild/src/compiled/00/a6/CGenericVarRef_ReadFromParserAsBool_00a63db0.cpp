@@ -5,9 +5,11 @@
 #include "engine/CStringParser.h"
 #undef CStringParser
 // Native parser is0x28 vs donor0x30 due to the native list. Only the true thiscall member is used.
-struct CParsedItem;
+class CParsedItem;
 struct CStringParser {CStringParser();void*VTable;unsigned char NativeState[0x24];bool ReadNextItem(CParsedItem&);}; // ctor PDB00492230, ReadNextItem009BA080/PDB00B0EB60
-struct CParsedItem {CParsedItem(){} long Type;long Value;CCharString String;const CCharString& GetSymbol()const;}; // real ctor PDB01911740 constructs only String; GetSymbol009B9880/PDB00B0E400
+class CParsedItem {public:CParsedItem(){} long Type;long Value;CCharString String;const CCharString& GetString()const;}; // real ctor PDB01911740 constructs only String; GetString009B9880/PDB00B0E410
+// Fix (sweep 3): the callee 0x009B9880 is CParsedItem::GetString, not GetSymbol (0x009B9870): retail's run 0x009B9870..0x009B98A0
+// follows the PDB member order GetSymbol, GetString, GetInteger, GetFloat, and this reads a type-2 item (InitAsString's type).
 extern char EmptyString[]; //0129AAF4
 __forceinline CCharString::operator const char*()const{return !storage_?EmptyString:storage_->text;}
 extern "C" int __cdecl _stricmp(const char*,const char*); // MSVCR71.dll IAT014400EC via00BFEBA8
@@ -18,9 +20,9 @@ struct CGenericVarRef {CGenericVarRef(bool&);long Type;union{bool*ValBool;void*V
 bool CGenericVarRef::ReadFromParserAsBool(CStringParser& parser){
  CParsedItem item;
  if(parser.ReadNextItem(item)&&item.Type==2){
- bool same;{CCharString text("TRUE",-1);same=item.GetSymbol()==text;}
+ bool same;{CCharString text("TRUE",-1);same=item.GetString()==text;}
  if(same){*ValBool=true;return true;}
- {CCharString text("FALSE",-1);same=item.GetSymbol()==text;}
+ {CCharString text("FALSE",-1);same=item.GetString()==text;}
  if(same){*ValBool=false;return true;}
  }return false;
 }

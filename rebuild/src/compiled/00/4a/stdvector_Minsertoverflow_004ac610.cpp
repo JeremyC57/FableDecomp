@@ -1,7 +1,11 @@
-// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<CUnprovenElement_004ac610*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
-// Leaf: ?_M_insert_overflow@?$vector@PAVCUnprovenElement_004ac610@@V?$allocator@PAVCUnprovenElement_004ac610@@@std@@@std@@IAEX
+// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<const CThingBuilding*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
+// Leaf: ?_M_insert_overflow@?$vector@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@IAEX
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AC610, 216 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
-// Identity: element `CUnprovenElement_004ac610*` -- DESCRIPTIVE element type: `CUnprovenElement_004ac610*` is a placeholder for an unidentified 4-byte pointer element; evidence: the landed rough-area queries declare it over an invented `CThingMask47*` element; the real element is not named.
+// Identity: element `const CThingBuilding*` (sweep3; the landed row had a placeholder element type). Its
+//   callers are GetAllLeafThings<const CThingBuilding, vector<const CThingBuilding*>, CThingFilter_HasTC> 0x004AD780 (type list 3,
+//   filter 0x006A80A0 CThingFilter_HasTC::operator()), vector<const CThingBuilding*>::push_back 0x004AD260 and
+//   GetAllThingsInRoughArea<const CThingBuilding, vector<const CThingBuilding*>, CThingFilter_None> 0x006B2720 (mask 0x47);
+//   all three are named with vector<const CThingBuilding*> in the FableWin/Ego_r name sets, and retail has no ICF.
 //   Family F007 (32 byte-identical bodies; the same STLport source as family F005, split from it only by the int3 padding):
 //   the manifest label "Std_Vector_Insert_Range" is propagated and wrong (no range is inserted). STLport 4.6 `vector<_Tp>::_M_insert_overflow(pos, x,
 //   const __true_type&, fill_len, atend)` (the protected POD overload, defined in the class body) verbatim.
@@ -14,7 +18,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
 
-class CUnprovenElement_004ac610;
+class CThingBuilding;
 
 namespace std {
 
@@ -89,6 +93,6 @@ protected:
     }
 };
 
-template void vector<CUnprovenElement_004ac610* >::_M_insert_overflow(CUnprovenElement_004ac610**, CUnprovenElement_004ac610* const&, const __true_type&, unsigned int, bool);
+template void vector<const CThingBuilding* >::_M_insert_overflow(const CThingBuilding**, const CThingBuilding* const&, const __true_type&, unsigned int, bool);
 
 } // namespace std

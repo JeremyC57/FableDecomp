@@ -111,7 +111,9 @@ public:
     static _Link_type& _S_right(_Link_type __x) { return (_Link_type&)(__x->_M_right); }
     static const _Key& _S_key(_Link_type __x) { return _KeyOfValue()(__x->_M_value_field); }
 
+private:
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const value_type& __v, _Base_ptr __w = 0);   // 0x004316CF
+public:
 
     iterator insert_equal(const value_type& __v)
     {

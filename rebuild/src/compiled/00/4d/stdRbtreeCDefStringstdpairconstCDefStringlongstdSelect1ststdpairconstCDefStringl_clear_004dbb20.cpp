@@ -35,7 +35,9 @@ public:
     _Rb_tree_node_base*& _M_root() const { return _M_header->_M_parent; }
     _Rb_tree_node_base*& _M_leftmost() const { return _M_header->_M_left; }
     _Rb_tree_node_base*& _M_rightmost() const { return _M_header->_M_right; }
+private:
     void _M_erase(_Link_type __x);                      // 0x004DA3BA for this tree
+public:
     void clear()
     {
         if (_M_node_count != 0) {

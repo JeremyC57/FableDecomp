@@ -23,10 +23,14 @@ __declspec(noinline) void _Rb_tree_base_iterator::_M_increment(){if(Node->Right)
 __declspec(noinline) void _Rb_tree_base_iterator::_M_decrement(){if(Node->Colour==0 && Node->Parent->Parent==Node){Node=Node->Right;return;}if(Node->Left){Node=Node->Left;while(Node->Right)Node=Node->Right;}else{_Rb_tree_node_base* p=Node->Parent;while(Node==p->Left){Node=p;p=p->Parent;}Node=p;}}
 struct _Rb_tree_insert_result { _Rb_tree_iterator First;bool Second;};
 void __cdecl _Rb_tree_rebalance(_Rb_tree_node_base*,_Rb_tree_node_base*&);
-struct _Rb_tree {
+class _Rb_tree {
+protected:
  _Rb_tree_node_base*_M_create_node(const value_type&);
+public:
  _Rb_tree_node_base* Header;unsigned Count;
+private:
  _Rb_tree_iterator _M_insert(_Rb_tree_node_base*,_Rb_tree_node_base*,const value_type&, _Rb_tree_node_base*);
+public:
  _Rb_tree_insert_result insert_unique(const value_type&);
  _Rb_tree_iterator insert_unique(_Rb_tree_iterator,const value_type&);
 };

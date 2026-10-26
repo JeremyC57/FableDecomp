@@ -75,7 +75,7 @@ template <class T> void CResultVector<T>::_M_insert_overflow(T* position, const 
     free(_M_start);
     _M_start = mem; _M_finish = out; _M_end_of_storage = mem + cap;
 }
-struct CThingBuilding : CThing { enum { ThingListType = 0x4 }; };
+struct CThingVillage : CThing { enum { ThingListType = 0x4 }; };
 struct CThingFilter_None {
     bool operator()(const CThing&) const { return true; }
 };
@@ -140,12 +140,12 @@ static int RunOnce(bool second)
     CThingSearchToolsMethods tools;
     tools.AllThings = &list; tools.TypeList = &list; tools.LastType = -1;
     CThingFilter_None filt1;
-    CResultVector<CThingBuilding*> result;
-    result._M_start = (CThingBuilding**)malloc(2 * sizeof(CThingBuilding*));
+    CResultVector<CThingVillage*> result;
+    result._M_start = (CThingVillage**)malloc(2 * sizeof(CThingVillage*));
     result._M_finish = result._M_start;
     result._M_end_of_storage = result._M_start + 2;
-    tools.GetAllLeafThings<CThingBuilding >(filt1, result);
-    if (tools.LastType != CThingBuilding::ThingListType) return 0;
+    tools.GetAllLeafThings<CThingVillage >(filt1, result);
+    if (tools.LastType != CThingVillage::ThingListType) return 0;
     int count = 0;
     int got = 0;
     {

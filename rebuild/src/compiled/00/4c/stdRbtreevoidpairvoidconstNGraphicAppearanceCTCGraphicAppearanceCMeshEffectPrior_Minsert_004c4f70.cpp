@@ -1,5 +1,5 @@
 // std::_Rb_tree<void*, pair<void* const, NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>, ...>::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport: link a new mesh-effect node left or right of y, fix the header links, rebalance, count it
-// Leaf: _M_insert
+// Leaf: ?_M_insert@?$_Rb_tree@PAXU?$pair@QAXVCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@U?$_Select1st@U?$pair@QAXVCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@U?$less@PAX@2@U?$allocator@U?$pair@QAXVCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@QAXVCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAXVCMeshEffectPriorityEntry@CTCGraphicAppearance@NGraphicAppearance@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C4F70, length 208 bytes (201 + int3 padding), `ret 14h` (hidden iterator result, x, y, v, w).
 // Identity: the MeshEffects map (CTCGraphicAppearance +0x0c, map<void*, CMeshEffectPriorityEntry>): called by insert_unique(v)
 // 0x004C5040 and insert_unique(hint, v) 0x004C5480, under the landed SetPMeshEffect 0x004C0240's operator[] 0x004C5B90.
@@ -81,7 +81,9 @@ public:
     unsigned int _M_node_count;                                         // +0x04
     C            _M_key_compare;                                        // +0x08
 
+protected:
     _Link_type _M_create_node(const V& x);                              // 0x004C41D0
+public:
     __forceinline _Link_type _M_create_node_inline(const V& x)
     {
         _Link_type tmp = static_cast<_Link_type>(malloc(sizeof(_Rb_tree_node<V>)));
@@ -93,6 +95,7 @@ public:
     _Rb_tree_node_base*& _M_rightmost() const { return _M_header._M_data->_M_right; }
     static const K& _S_key(_Rb_tree_node_base* x) { return static_cast<_Link_type>(x)->_M_value_field.first; }
 
+private:
     iterator _M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const V& v, _Rb_tree_node_base* w);
 };
 

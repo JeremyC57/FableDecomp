@@ -156,12 +156,14 @@ public:
 
     _Link_type _M_allocate_node() { return (_Link_type)malloc(sizeof(_Node)); }
     void _M_deallocate_node(_Link_type __p) { if (__p != 0) free(__p); }
+protected:
     _Link_type _M_create_node(const value_type& __x)
     {
         _Link_type __tmp = _M_allocate_node();
         new (&__tmp->_M_value_field) value_type(__x);
         return __tmp;
     }
+protected:
     _Link_type _M_clone_node(_Link_type __x)
     {
         _Link_type __tmp = _M_create_node(__x->_M_value_field);
@@ -170,6 +172,7 @@ public:
         __tmp->_M_right = 0;
         return __tmp;
     }
+public:
     _Link_type& _M_root() const { return (_Link_type&)_M_header._M_data->_M_parent; }
     _Link_type& _M_leftmost() const { return (_Link_type&)_M_header._M_data->_M_left; }
     _Link_type& _M_rightmost() const { return (_Link_type&)_M_header._M_data->_M_right; }
@@ -182,8 +185,11 @@ public:
     iterator begin() { return iterator(_M_leftmost()); }
     iterator end() { return iterator(_M_header._M_data); }
 
+private:
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const value_type& __v, _Base_ptr __w = 0);
+private:
     _Link_type _M_copy(_Link_type __x, _Link_type __p);
+public:
     pair<iterator, bool> insert_unique(const value_type& __x);
     iterator insert_unique(iterator __position, const value_type& __x);
     unsigned int size() const { return _M_node_count; }

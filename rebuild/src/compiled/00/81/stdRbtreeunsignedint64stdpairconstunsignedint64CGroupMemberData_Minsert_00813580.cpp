@@ -96,7 +96,9 @@ public:
     _Rb_tree_node_base*& _M_rightmost() const { return _M_header->_M_right; }
     iterator begin() { return iterator(_M_leftmost()); }
     iterator end() { return iterator(_M_header); }
+private:
     void _M_erase(_Rb_tree_node_base* x);                    // 0x004DFB8F
+public:
     void clear()
     {
         if (_M_node_count != 0) {
@@ -118,12 +120,14 @@ public:
     }
     void erase(iterator first, iterator last);
     static const Key& _S_key(_Rb_tree_node_base* x) { return KeyOfValue()(((_Link_type)x)->_M_value_field); }
+protected:
     _Link_type _M_create_node(const Value& x)
     {
         _Link_type tmp = (_Link_type)malloc(sizeof(_Rb_tree_node<Value>));
         _Construct(&tmp->_M_value_field, x);
         return tmp;
     }
+private:
     iterator _M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const Value& v, _Rb_tree_node_base* w);
 };
 template <class Pair> struct _Select1st { const typename Pair::first_type& operator()(const Pair& x) const { return x.first; } };

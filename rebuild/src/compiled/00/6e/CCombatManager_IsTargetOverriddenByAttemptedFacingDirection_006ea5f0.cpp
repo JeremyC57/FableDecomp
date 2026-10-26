@@ -1,7 +1,7 @@
 // CCombatManager::IsTargetOverriddenByAttemptedFacingDirection(const CThingCreatureBase&, const CThing&, const C3DVector&) const -- true when the target lies outside the cone (the controlling thing's combat override angle, default 60 degrees) around the direction the creature tries to face
 // Leaf: IsTargetOverriddenByAttemptedFacingDirection
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EA5F0, 383 bytes (384 with padding). `ret 0Ch`.
-// Callees: CThing::GetPosition 0x004C73D0 (twice), C3DVector::Normalise 0x00A14440 (catalogued GetScaled),
+// Callees: CThing::GetPosition 0x004C73D0 (twice), C3DVector::AccurateNormalise @ 0x00A14440 (catalogued GetScaled),
 //          CVectorMap::LowerBound 0x004365B0 (inlined GetInterface, type 0x46 = CTCCarrying, bit 6 of the bitset byte
 //          +0x28), CTCCarrying::GetThingInPrimarySlot 0x006A1440, CDefClassBase::GetSubDef<T> 0x0042B1A6 (same-TU
 //          stand-in below), the defs' virtual slot 1 on release; the fcos intrinsic. Globals: 1e-4f 0x0129BA3C,
@@ -19,13 +19,13 @@
 #pragma intrinsic(cos)
 extern float g_Epsilon;                     // 0x0129BA3C (1e-4f)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-    void Normalise();                       // 0x00A14440
+    C3DVector& AccurateNormalise();                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
@@ -126,7 +126,7 @@ bool CCombatManager::IsTargetOverriddenByAttemptedFacingDirection(const CThingCr
     C3DVector targetPosition = target.GetPosition();
     C3DVector direction = targetPosition - creature.GetPosition();
     if (direction.GetLengthSquared() > g_Epsilon * g_Epsilon) {
-        direction.Normalise();
+        direction.AccurateNormalise();
         const CThing* controller = &creature;
         CTCCarrying* carrying;
         if (creature.GetInterface(&carrying, 0x46)) {

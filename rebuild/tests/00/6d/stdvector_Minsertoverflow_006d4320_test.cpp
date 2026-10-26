@@ -1,9 +1,9 @@
-// behaviour test for 0x006D4320 std::vector<CThingBuilding*>::_M_insert_overflow: middle insert of n copies (head, fill, tail), append-at-end without the tail copy, growth to size + max(size, n), old block freed
+// behaviour test for 0x006D4320 std::vector<CThingVillage*>::_M_insert_overflow: middle insert of n copies (head, fill, tail), append-at-end without the tail copy, growth to size + max(size, n), old block freed
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <stddef.h>
-class CThingBuilding;
+class CThingVillage;
 namespace stlp_test {
 struct __true_type { };
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
@@ -51,7 +51,7 @@ protected:
     }
 };
 }
-typedef CThingBuilding* T;
+typedef CThingVillage* T;
 static T mk(unsigned int v) { return (T)(size_t)v; }
 class CProbe : public stlp_test::vector<T> {
 public:

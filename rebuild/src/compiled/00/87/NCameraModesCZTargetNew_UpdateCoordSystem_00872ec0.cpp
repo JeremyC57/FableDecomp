@@ -4,7 +4,7 @@
 //   NCameraModes::CZTargetNew (called through +0x60 by the landed OnInit 0x00872A20).
 // Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0 (twice), the const CVectorMap::LowerBound 0x004365B0
 //   (interface lookup, key 8 = the targeting TC), the TC's virtual slot 36 (+0x90) GetTargetedThing, CThing::GetPosition
-//   0x004C73D0 (const C3DVector&, twice), C3DVector::Normalise 0x00A14440, CZTargetNew::InitialiseTransitionVariables
+//   0x004C73D0 (const C3DVector&, twice), C3DVector::AccurateNormalise @ 0x00A14440, CZTargetNew::InitialiseTransitionVariables
 //   0x00872490, CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10;
 //   CIntelligentPointer<const CThing> vtable 0x01237F1C; 1e-4f @ 0x0129BA3C (squared at run time).
 // Layout (retail NCameraModes::CBase is 0xA4 bytes, PDB 0xC8): CZTargetNew PTargetedThing +0xA4 (PDB +0xC8),
@@ -14,12 +14,12 @@
 //   length squared compared against epsilon squared; the axes are stored through the implicit operator= and the inline
 //   (Y, -X, 0) perpendicular; `PTargetedThing = target` builds a CIntelligentPointer temporary (base ctor, vtable store,
 //   SetPItem) and assigns it through `SetPItem(other.GetPItem())`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    void Normalise();                                   // 0x00A14440
+    C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     float GetLengthSquaredXY() const { return X * X + Y * Y; }
     C3DVector GetPerpendicularXY() const { return C3DVector(Y, -X, 0.0f); }
 };
@@ -126,7 +126,7 @@ void NCameraModes::CZTargetNew::UpdateCoordSystem()
             const C3DVector& pos = GetObservedThing()->GetPosition();
             C3DVector axis(pos.X - targetPos.X, pos.Y - targetPos.Y, 0.0f);
             if (axis.GetLengthSquaredXY() > g_epsilon_0129ba3c * g_epsilon_0129ba3c) {
-                axis.Normalise();
+                axis.AccurateNormalise();
                 XAxis = axis;
                 YAxis = XAxis.GetPerpendicularXY();
             }

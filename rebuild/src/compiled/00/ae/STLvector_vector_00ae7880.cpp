@@ -78,7 +78,9 @@ public:
     _Base_ptr& _M_root() const { return this->_M_header._M_data->_M_parent; }
     _Base_ptr& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
     _Base_ptr& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+private:
     void _M_erase(_Link_type __x);                                                             // 0x004CF810
+public:
     void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;

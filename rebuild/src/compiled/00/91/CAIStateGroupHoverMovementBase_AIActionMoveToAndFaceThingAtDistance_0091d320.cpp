@@ -1,6 +1,6 @@
 // CAIStateGroup_HoverMovementBase::AIAction_MoveToAndFaceThingAtDistance(EAIActionRepeat, CIntelligentPointer<CThingCreatureBase>&, float, bool&, EMovementType) -- move to the point `distance` out from the thing along the thing-to-creature direction (flattened), facing the thing; once (with movement 8) or repeated while the move reports 4; 3 for a dead/missing thing or another repeat mode
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091D320, length 491 bytes (+ int3 padding).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0, C3DVector::Normalise @ 0x00A14440,
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440,
 // own virtual slot 22 (+0x58) AIAction_MoveToPosAndFacePos(EAIActionRepeat, const C3DVector&, const C3DVector&, bool&,
 // EMovementType) (FableWin.pdb mangled names for both prototypes).
 // Shape: the alive test is an inline bool helper (a plain `GetPItem() == 0 || Dead` early return is laid out at the end
@@ -12,11 +12,11 @@ typedef long EAIActionRepeat;
 typedef long EMovementType;
 typedef long EAIActionReturn;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    void Normalise();                           // 0x00A14440
+    C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     C3DVector operator*(float scale) const { return C3DVector(X * scale, Y * scale, Z * scale); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
@@ -60,7 +60,7 @@ EAIActionReturn CAIStateGroup_HoverMovementBase::AIAction_MoveToAndFaceThingAtDi
         const C3DVector& thingPos = thing.GetPItem()->GetPosition();
         const C3DVector& myPos = me->GetPosition();
         C3DVector dir(myPos.X - thingPos.X, myPos.Y - thingPos.Y, 0.0f);
-        dir.Normalise();
+        dir.AccurateNormalise();
         C3DVector offset = dir * distance;
         C3DVector target = thing.GetPItem()->GetPosition() + offset;
         return AIAction_MoveToPosAndFacePos(2, target, thing.GetPItem()->GetPosition(), arrived, 8);
@@ -71,7 +71,7 @@ EAIActionReturn CAIStateGroup_HoverMovementBase::AIAction_MoveToAndFaceThingAtDi
             const C3DVector& thingPos = thing.GetPItem()->GetPosition();
             const C3DVector& myPos = me->GetPosition();
             C3DVector dir(myPos.X - thingPos.X, myPos.Y - thingPos.Y, 0.0f);
-            dir.Normalise();
+            dir.AccurateNormalise();
             C3DVector offset = dir * distance;
             C3DVector target = thing.GetPItem()->GetPosition() + offset;
             EAIActionReturn result = AIAction_MoveToPosAndFacePos(1, target, thing.GetPItem()->GetPosition(), arrived, movement);

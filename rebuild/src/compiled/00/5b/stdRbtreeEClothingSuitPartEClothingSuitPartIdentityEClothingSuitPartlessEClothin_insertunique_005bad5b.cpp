@@ -85,7 +85,9 @@ public:
     static const _Key& _S_key(_Base_ptr __x) { return _KeyOfValue()(((_Link_type)__x)->_M_value_field); }
     iterator begin() { return iterator(_M_leftmost()); }
 
+private:
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const value_type& __v, _Base_ptr __w = 0);   // 0x005BA8CF
+public:
     pair<iterator, bool> insert_unique(const value_type& __v);
 };
 

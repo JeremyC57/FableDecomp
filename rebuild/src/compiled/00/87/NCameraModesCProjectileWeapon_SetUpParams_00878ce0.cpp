@@ -4,7 +4,7 @@
 // while the inline setter's stores stay together ahead of the YAxis `lea ecx,[esi+0B5h]` as in retail
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00878CE0, length 208 bytes, plain `ret`.
 // Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, the thing's physics component GetFacing (slot 70,
-// +0x118, C3DVector by hidden pointer), C3DVector::Normalise 0x00A14440; the float constant 1/360 0x01238E00.
+// +0x118, C3DVector by hidden pointer), C3DVector::AccurateNormalise @ 0x00A14440; the float constant 1/360 0x01238E00.
 // Layout (retail = Ego_r.pdb CProjectileWeapon - 0x24, byte-packed axes as the landed GetRotatedPosition 0x00878A80):
 // CBase PCameraModeDef +0x44, XAxis +0xA9, YAxis +0xB5, ZAxis +0xC1, Phi +0xD0, HeightParam +0xD4, DeltaPhi +0xD8,
 // DeltaHeightParam +0xDC, LockDeltaPhi +0xE0, LockDeltaHeightParam +0xE4, DeltaLockDeltaPhi +0xE8,
@@ -16,12 +16,12 @@
 // it and XAxis copies a (Y, -X, 0) temporary through pointer registers (C3DVector has a user copy ctor and no
 // operator=); ZAxis is set through the inline Set(x, y, z).
 #pragma pack(push, 1)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector& Normalise();                             // 0x00A14440
+    C3DVector& AccurateNormalise();                             // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     void Set(float x, float y, float z) { X = x; Y = y; Z = z; }
 };
 #pragma pack(pop)
@@ -95,7 +95,7 @@ void NCameraModes::CProjectileWeapon::SetUpParams()
     DeltaHeightParam = DeltaPhi = DeltaLockDeltaHeightParam = DeltaLockDeltaPhi = LockDeltaHeightParam = LockDeltaPhi = 0.0f;
     C3DVector facing = GetObservedThing()->GetPhysicsTC()->GetFacing();
     facing.Z = 0.0f;
-    facing.Normalise();
+    facing.AccurateNormalise();
     ZAxis.Set(0.0f, 0.0f, 1.0f);
     YAxis = facing;
     XAxis = C3DVector(facing.Y, -facing.X, 0.0f);

@@ -1,5 +1,5 @@
 // _Rb_tree::_Rb_tree(const _Rb_tree& other) -- STLport red-black tree copy constructor (a map with 8-byte values): allocate the header node, then either mark the tree empty or clone the other tree's nodes and set leftmost/rightmost, finally take the node count
-// Leaf: ??0_Rb_tree
+// Leaf: ??0_Rb_tree@NPairLongMapTree@@QAE@ABV01@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004F97B3, length 126 bytes (ret 4). Callers: 0x004F9955 (a node
 // constructor copying a pair<long, map> whose map sits at +4) and eight sites in 0x006DBCC8..0x006DD2E0.
 // Callees: malloc @ 0x00BFEA0E (the 0x18-byte header node, `__cdecl`, `pop ecx`), _Rb_tree::_M_copy(x, p) @ 0x00461533
@@ -41,7 +41,9 @@ class _Rb_tree : public _Rb_tree_base {
 public:
     unsigned long NodeCount;                  // +0x04
     _Rb_tree(const _Rb_tree& other);
+private:
     SRbNode* _M_copy(SRbNode* x, SRbNode* p); // 0x00461533 (this tree type's _M_copy)
+public:
     static SRbNode* _S_minimum(SRbNode* x) { while (x->Left != 0) x = x->Left; return x; }
     static SRbNode* _S_maximum(SRbNode* x) { while (x->Right != 0) x = x->Right; return x; }
     SRbNode*& _M_root() const { return Header->Parent; }

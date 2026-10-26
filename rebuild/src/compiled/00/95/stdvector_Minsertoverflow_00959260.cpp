@@ -1,7 +1,10 @@
-// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<CThingDeadCreature*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
-// Leaf: ?_M_insert_overflow@?$vector@PAVCThingDeadCreature@@V?$allocator@PAVCThingDeadCreature@@@std@@@std@@IAEX
+// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<const CThingDeadCreature*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
+// Leaf: ?_M_insert_overflow@?$vector@PBVCThingDeadCreature@@V?$allocator@PBVCThingDeadCreature@@@std@@@std@@IAEX
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00959260, 216 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
-// Identity: element `CThingDeadCreature*`; evidence: the landed rough-area query caller (`_M_insert_overflow(CThingDeadCreature** ...) // 0x00959260`).
+// Identity: element `const CThingDeadCreature*` (sweep3; the landed row said CThingDeadCreature*). Its callers are
+//   GetAllThingsInRoughArea<const CThingDeadCreature, vector<const CThingDeadCreature*>, CThingFilter_None> 0x009595C0 (mask 0x87)
+//   and the out-of-line push_back 0x00959340; Ego_r/FableWin hold only vector<const CThingDeadCreature*> (that GetAllThingsInRoughArea
+//   instance, ?push_back@?$vector@PBVCThingDeadCreature@@... and the rest of its members), never vector<CThingDeadCreature*>.
 //   Family F007 (32 byte-identical bodies; the same STLport source as family F005, split from it only by the int3 padding):
 //   the manifest label "Std_Vector_Insert_Range" is propagated and wrong (no range is inserted). STLport 4.6 `vector<_Tp>::_M_insert_overflow(pos, x,
 //   const __true_type&, fill_len, atend)` (the protected POD overload, defined in the class body) verbatim.
@@ -89,6 +92,6 @@ protected:
     }
 };
 
-template void vector<CThingDeadCreature* >::_M_insert_overflow(CThingDeadCreature**, CThingDeadCreature* const&, const __true_type&, unsigned int, bool);
+template void vector<const CThingDeadCreature* >::_M_insert_overflow(const CThingDeadCreature**, const CThingDeadCreature* const&, const __true_type&, unsigned int, bool);
 
 } // namespace std

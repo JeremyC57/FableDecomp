@@ -1,11 +1,16 @@
-// std::__median(CThing* const& a, CThing* const& b, CThing* const& c, CThingCompare_Nearest comp) -- STLport median of three for the nearest-first sort: the middle element by the comparator, returned by reference
+// std::__median(const CThingObject* const& a, const CThingObject* const& b, const CThingObject* const& c, CThingCompare_Nearest comp) -- STLport median of three for the nearest-first sort: the middle element by the comparator, returned by reference
 // Leaf: ??$__median@
+// Element (sweep3, FINDINGS "Family pass 2" G015): the sorted range is const CThingObject* -- the caller
+//   CAIStateGroup_TestTestTest::Update 0x0091F140 fills it with GetAllThingsInRoughArea 0x00920200 (type mask 0x807 =
+//   CThingObject) before sort 0x009206A0, and FableWin.pdb has sort<vector<const CThingObject*>, CThingCompare_Nearest> /
+//   sort_heap<const CThingObject**, CThingCompare_Nearest>; the comparator 0x0091F740 is therefore
+//   operator()<const CThingObject> (??$?R$$CBVCThingObject@@@CThingCompare_Nearest@@...), not operator()<CThing> (0x004A8D80).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091FA00, 132 bytes, __fastcall (&a in ecx, &b in edx; &c and the
 //   comparator on the stack), `ret 10h`.
-// Identity: STLport 4.6 __median<CThing*, CThingCompare_Nearest>; single caller __introsort_loop 0x009205D0 (call at
+// Identity: STLport 4.6 __median<const CThingObject*, CThingCompare_Nearest>; single caller __introsort_loop 0x009205D0 (call at
 //   0x0092063C). The catalog label "Sort_Partition_MedianOfThree" is an autoname.
 // Callees: CThingCompare_Nearest::operator() 0x0091F740 (on the comparator's own argument slot).
-// Family: the STLport sort<CThing**, CThingCompare_Nearest> instantiation of this TU (CAIStateGroup_TestTestTest::Update
+// Family: the STLport sort<const CThingObject**, CThingCompare_Nearest> instantiation of this TU (CAIStateGroup_TestTestTest::Update
 //   0x0091F140 sorts its things by distance to the creature, call at 0x0091F2EF); /Gr algorithm TU: every free template is
 //   __fastcall (first in ecx, second in edx when it is a pointer/int, the rest -- the 12-byte comparator last -- on the
 //   stack). Same family as the landed CThingCompare_NearestToPos sort (0x007A4260 / 0x007A3B60). The comparator's
@@ -23,7 +28,7 @@ public:
 };
 #pragma pack(pop)
 
-class CThing;
+class CThingObject;
 
 class CThingCompare_Nearest {                   // Ego_r.pdb, 12 bytes, passed by value
 public:
@@ -51,7 +56,7 @@ const _Tp& __fastcall __median(const _Tp& __a, const _Tp& __b, const _Tp& __c, _
         return __b;
 }
 
-template CThing* const& __fastcall __median<CThing*, CThingCompare_Nearest>(CThing* const&, CThing* const&, CThing* const&,
+template const CThingObject* const& __fastcall __median<const CThingObject*, CThingCompare_Nearest>(const CThingObject* const&, const CThingObject* const&, const CThingObject* const&,
     CThingCompare_Nearest);
 
 }

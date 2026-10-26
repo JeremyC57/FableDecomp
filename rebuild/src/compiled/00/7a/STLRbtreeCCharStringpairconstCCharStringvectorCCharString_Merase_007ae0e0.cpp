@@ -61,6 +61,7 @@ public:
     unsigned long       _M_node_count;                      // +0x04
     static _Link_type _S_left(_Link_type x) { return (_Link_type)x->_M_left; }
     static _Link_type _S_right(_Link_type x) { return (_Link_type)x->_M_right; }
+private:
     void _M_erase(_Link_type x);
 };
 

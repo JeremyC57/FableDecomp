@@ -196,6 +196,7 @@ public:
         }
     }
     pair<iterator, bool> insert_unique(const _Value& __v);                             // 0x004AC380
+private:
     void _M_erase(_Link_type __x);                                                     // 0x004ABA70
 };
 

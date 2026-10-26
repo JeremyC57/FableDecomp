@@ -93,7 +93,9 @@ public:
 
     // _M_insert returns its iterator through the hidden pointer; spelled as the explicit out-pointer (same ABI) so the
     // result lands in j's slot as in retail (GOTCHAS wave 17).
+private:
     iterator* _M_insert(iterator* result, _Base_ptr x, _Base_ptr y, const value_type& v, _Base_ptr w);   // 0x00B2F060
+public:
     pair<iterator, bool> insert_unique(const value_type& v);
 };
 

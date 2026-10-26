@@ -38,7 +38,7 @@ struct CCharString { CCharStringData* Data; CCharString(); CCharString(const CCh
 struct CGame;struct CFontBank;struct CLUA;struct CGraphicDataBank;struct CCPPointerInfo;
 namespace NGameText {struct CDataBank;}
 struct CBaseClass { CBaseClass(); virtual ~CBaseClass() {} };
-struct CBaseClassNonCopyable : CBaseClass { CBaseClassNonCopyable(); virtual ~CBaseClassNonCopyable(); /* 0x0099A300: byte twin of ~CBaseClass 0x0099A2E0 (its own vtable store is dead) */ private:CBaseClassNonCopyable(const CBaseClassNonCopyable&);CBaseClassNonCopyable&operator=(const CBaseClassNonCopyable&); };
+struct CBaseClassNonCopyable : CBaseClass { protected: CBaseClassNonCopyable(); virtual ~CBaseClassNonCopyable(); /* 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (protected virtual; byte twin of ~CBaseClass 0x0099A2E0, its own vtable store is dead) */ private:CBaseClassNonCopyable(const CBaseClassNonCopyable&);CBaseClassNonCopyable&operator=(const CBaseClassNonCopyable&); };
 struct CDeviceResetCallback {CDeviceResetCallback();virtual void OnPreDeviceReset()=0;virtual bool OnPostDeviceReset()=0;};
 struct CGameComponent : CBaseClassNonCopyable,CDeviceResetCallback {
  bool Quit,Running; CGame* Game;

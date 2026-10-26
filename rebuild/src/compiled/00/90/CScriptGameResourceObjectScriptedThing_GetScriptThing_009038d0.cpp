@@ -1,24 +1,28 @@
 // CScriptGameResourceObjectScriptedThing::GetScriptThing() -- the CScriptThing handle of the scripted thing when it exists and is not dead; else a null CScriptThing
-// Leaf: GetScriptThing
+// Leaf: ?GetScriptThing@CScriptGameResourceObjectScriptedThing_Methods@@QAE?AVCScriptThing@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009038D0, length 75 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 three times (on PThing at +0x14), the thing's
 // script-handle factory @ 0x004C7E50 (a CThing member returning CScriptThing by hidden pointer: it asks
 // the script interface at [0x013B89FC]+4 to build the handle; labelled "GFPredicateAnd<...>", propagated),
-// the out-of-line CScriptThing default constructor @ 0x008CFF40 (null handle; labelled "operator&&<...>").
+// CGameScriptThing::CreateNullThing @ 0x008CFF40 (static __fastcall, the null handle; labelled "operator&&<...>", propagated).
 // Shape: the hidden result pointer is read late in each arm (edi in the live arm, esi in the null arm)
 // because both arms construct it in place: `return thing->GetScriptThing();` forwards the caller's
-// result slot, `return CScriptThing();` constructs into it directly (no copy, VC7.1 RVO of a temporary).
+// result slot, `return CGameScriptThing::CreateNullThing();` constructs into it directly (no copy, VC7.1 RVO of a temporary).
 // `this` uses engine/CScriptGameResourceObjectScriptedThing.h; the returned CScriptThing needs its
 // out-of-line constructors, so it is a local model with engine/CScriptThing.h's {vftable, PImp_Data,
 // PImp_Info} layout.
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
-struct CScriptThing {
+class CScriptThing {
+public:
     void* __vftable;
     void* PImp_Data;
     void* PImp_Info;
-    CScriptThing();                                // 0x008CFF40
     CScriptThing(const CScriptThing& other);
+};
+class CGameScriptThing : public CScriptThing {      // Ego_r.pdb: CGameScriptThing derives from CScriptThing
+public:
+    static CScriptThing __fastcall CreateNullThing(); // 0x008CFF40 (?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ)
 };
 
 struct CThing_Retail {
@@ -44,5 +48,5 @@ CScriptThing CScriptGameResourceObjectScriptedThing_Methods::GetScriptThing()
         if (!thing->GetPItem()->m_dead)
             return thing->GetPItem()->GetScriptThing();
     }
-    return CScriptThing();
+    return CGameScriptThing::CreateNullThing();
 }

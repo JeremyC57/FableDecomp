@@ -4,7 +4,7 @@
 // Callees: malloc 0x00BFEA0E, CCharString copy ctor 0x0099EC30 (ShortName, LongName).
 // Shape: STLport 4.5 _M_create_node: allocate(1), then the placement-new null test around the implicit pair /
 //   CSectionDesc copy (key dword, two strings, the bool as a byte, Size); no left/right zeroing here (_M_insert does it).
-// Leaf: ?_M_create_node@?$_Rb_tree@KU?$pair@$$CBKUCSectionDesc@@@std@@U?$_Select1st@U?$pair@$$CBKUCSectionDesc@@@std@@@2@U?$less@K@2@@std@@QAEPAU?$_Rb_tree_node@U?$pair@$$CBKUCSectionDesc@@@std@@@2@ABU?$pair@$$CBKUCSectionDesc@@@2@@Z
+// Leaf: ?_M_create_node@?$_Rb_tree@KU?$pair@$$CBKUCSectionDesc@@@std@@U?$_Select1st@U?$pair@$$CBKUCSectionDesc@@@std@@@2@U?$less@K@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBKUCSectionDesc@@@std@@@2@ABU?$pair@$$CBKUCSectionDesc@@@2@@Z
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
@@ -97,7 +97,9 @@ public:
     static _Base_ptr& _S_parent(_Base_ptr __x) { return (_Base_ptr&)(__x->_M_parent); }
     static const _Key& _S_key(_Base_ptr __x) { return _KeyOfValue()(((_Link_type)__x)->_M_value_field); }
 
+protected:
     _Link_type _M_create_node(const _Value& __x);
+private:
     iterator _M_insert(_Base_ptr __x_, _Base_ptr __y_, const _Value& __v, _Base_ptr __w_);
 };
 

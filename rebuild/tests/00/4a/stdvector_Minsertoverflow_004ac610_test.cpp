@@ -1,9 +1,9 @@
-// behaviour test for 0x004AC610 std::vector<CUnprovenElement_004ac610*>::_M_insert_overflow: middle insert of n copies (head, fill, tail), append-at-end without the tail copy, growth to size + max(size, n), old block freed
+// behaviour test for 0x004AC610 std::vector<const CThingBuilding*>::_M_insert_overflow: middle insert of n copies (head, fill, tail), append-at-end without the tail copy, growth to size + max(size, n), old block freed
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <stddef.h>
-class CUnprovenElement_004ac610;
+class CThingBuilding;
 namespace stlp_test {
 struct __true_type { };
 template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
@@ -51,7 +51,7 @@ protected:
     }
 };
 }
-typedef CUnprovenElement_004ac610* T;
+typedef const CThingBuilding* T;
 static T mk(unsigned int v) { return (T)(size_t)v; }
 class CProbe : public stlp_test::vector<T> {
 public:

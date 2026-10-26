@@ -15,6 +15,8 @@
 //          Terminated +9}; CActionFollowCreature PTargetThing +0xc, PTCOldPhysics +0x18, Sneaking +0x1c, FollowRange +0x20,
 //          AddedStealthTC +0x24, AvoidDynamicObstacles +0x25, PreviousPushableByHero +0x26, Running +0x27. CThing +0x60 is
 //          the physics component (position +0xc).
+// PDB spelling (sweep 3): CActionFollowCreature is class-keyed, OnCleanup virtual and SetAsSneaking private, as Ego_r spells
+//   them (?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z; was QAE). Same bytes.
 struct CTCBase;
 struct CThing;
 struct C3DVector {
@@ -102,7 +104,8 @@ struct CScriptThing { unsigned char _body[12]; };
 
 namespace NTCScriptedControl {
 
-struct CActionFollowCreature {
+class CActionFollowCreature {
+public:
     virtual ~CActionFollowCreature();
     CTCScriptedControl* PTCScript;              // +0x04
     bool Activated;                             // +0x08
@@ -115,8 +118,9 @@ struct CActionFollowCreature {
     bool AvoidDynamicObstacles;                 // +0x25
     bool PreviousPushableByHero;                // +0x26
     bool Running;                               // +0x27
-    void SetAsSneaking(bool sneaking);          // 0x00713D50
-    void OnCleanup();
+    virtual void OnCleanup();                   // (Ego_r ?OnCleanup@CActionFollowCreature@NTCScriptedControl@@UAEXXZ)
+private:
+    void SetAsSneaking(bool sneaking);          // 0x00713D50 (Ego_r ...@NTCScriptedControl@@AAEX_N@Z: private)
 };
 
 void CActionFollowCreature::OnCleanup()

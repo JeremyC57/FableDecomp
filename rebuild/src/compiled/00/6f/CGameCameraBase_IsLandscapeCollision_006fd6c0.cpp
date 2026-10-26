@@ -1,13 +1,13 @@
 // CGameCameraBase::IsLandscapeCollision() -- march from the camera position towards the point it looks at in quarter-unit steps, sampling the ground height; if the ground rises above the camera anywhere on the way, lift the camera to two units above the highest sample and report a collision
 // Leaf: IsLandscapeCollision
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FD6C0, 498 bytes, `ret`.
-// Callees: the world's map accessor (virtual slot 12), C3DVector::Normalise 0x00A14440 (catalog label GetScaled),
+// Callees: the world's map accessor (virtual slot 12), C3DVector::AccurateNormalise @ 0x00A14440 (catalog label GetScaled),
 //   CWorldMap::GetGroundSizeZAt 0x0063A300; constants 0.25f 0x0123078C, 1.0f 0x0122DED8, 2.0f 0x0122DCDC.
 // Layout: local projection -- the generated CGameCameraBase header flattens the camera position and PointingAt into
 //   scalar floats, which cannot carry the C3DVector arithmetic; offsets match it (position +0x04, PointingAt +0x80,
 //   World +0x8c).
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -16,7 +16,7 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
     float Length() const { return (float)sqrt(X * X + (Y * Y + Z * Z)); }
-    void Normalise();                                    // 0x00A14440
+    C3DVector& AccurateNormalise();                                    // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct CWorldMap { float GetGroundSizeZAt(const C3DVector& pos) const; };   // 0x0063A300
 struct CWorld {
@@ -42,7 +42,7 @@ bool CGameCameraBase::IsLandscapeCollision()
     C3DVector target = PointingAt;
     C3DVector delta = target - start;
     C3DVector dir = delta;
-    dir.Normalise();
+    dir.AccurateNormalise();
     C3DVector step = dir * 0.25f;
     C3DVector pos = start;
     C3DVector highest = start;

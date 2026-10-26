@@ -1,29 +1,29 @@
-#include "rebuild_abi.h"
-#include <cstdio>
-
-struct CLightningDef { int x; };
-
-static CLightningDef* g_last_this = 0;
-static void* g_last_src = 0;
-
-extern "C" void __fastcall CLightningDef_Copy_impl(CLightningDef* thisptr, void* src)
+// Test for 0x00461ED3 CLightningDef::Copy(const CDefClassBase*): through the base pointer, assigns the other def to this one
+// (exactly one operator= call, with this and the other object).
+#include <stdio.h>
+static const void* g_lhs; static const void* g_rhs; static int g_calls;
+class CDefClassBase {
+public:
+    int Base;
+    virtual ~CDefClassBase() { }
+    virtual void Copy(const CDefClassBase* other) { Base = other->Base; }
+};
+class CLightningDef : public CDefClassBase {
+public:
+    int Value;
+    CLightningDef& operator=(const CLightningDef& other) { ++g_calls; g_lhs = this; g_rhs = &other; Base = other.Base; Value = other.Value; return *this; }
+    virtual void Copy(const CDefClassBase* other);
+};
+void CLightningDef::Copy(const CDefClassBase* other)
 {
-    g_last_this = thisptr;
-    g_last_src = src;
+    *this = *static_cast<const CLightningDef*>(other);
 }
-
-void __fastcall CLightningDef_Copy(CLightningDef* thisptr, void* src);
-
 int main()
 {
-    CLightningDef obj;
-    obj.x = 7;
-    int srcbuf = 0;
-    CLightningDef_Copy(&obj, &srcbuf);
-    if (g_last_this == &obj && g_last_src == &srcbuf) {
-        printf("PASS_00461ed3\n");
-    } else {
-        printf("FAIL_00461ed3\n");
-    }
+    CLightningDef a, b; a.Base = 1; a.Value = 2; b.Base = 30; b.Value = 40;
+    CDefClassBase* pa = &a;
+    pa->Copy(&b);
+    if (g_calls != 1 || g_lhs != &a || g_rhs != &b || a.Base != 30 || a.Value != 40) { printf("00461ed3_TEST FAIL\n"); return 1; }
+    printf("00461ed3_TEST PASS\n");
     return 0;
 }

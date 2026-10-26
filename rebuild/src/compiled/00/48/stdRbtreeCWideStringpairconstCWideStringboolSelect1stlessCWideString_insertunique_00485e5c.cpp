@@ -9,7 +9,7 @@
 // pushed from the exhausted `__x` register), else `--__j`; insert when key(j) < v, otherwise return (j, false).
 // `_M_insert`'s iterator result is homed in the dead `v` argument slot. Size TU with a frame pointer.
 // Label correction: catalog "RBTree_LowerBound_Iterator" is a guess.
-// Leaf: insert_unique
+// Leaf: ?insert_unique@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@_N@std@@U?$less@VCWideString@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCWideString@@_N@std@@@std@@_N@2@ABU?$pair@$$CBVCWideString@@_N@2@@Z
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -74,8 +74,10 @@ public:
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
     iterator begin() { return iterator(_M_leftmost()); }
+private:
     iterator _M_insert(_Rb_tree_node_base* __x, _Rb_tree_node_base* __y, const _Value& __v,
                        _Rb_tree_node_base* __w = 0);                     // 0x00485BF0
+public:
     pair<iterator, bool> insert_unique(const _Value& __v);
 };
 

@@ -99,7 +99,9 @@ public:
     _Base_ptr& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
     _Base_ptr& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
     ~_Rb_tree() { clear(); }
+private:
     void _M_erase(_Link_type __x);                          // 0x00882BC0
+public:
     void clear()
     {
         if (_M_node_count != 0) {

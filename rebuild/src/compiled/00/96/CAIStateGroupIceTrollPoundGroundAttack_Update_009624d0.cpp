@@ -12,13 +12,13 @@
 // Layout: Ego_r.pdb CAIStateGroup_IceTrollPoundGroundAttack PTarget +0x14.
 #include <math.h>
 #pragma intrinsic(cos)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     float MagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
-    void Normalise();                           // 0x00A14440
+    C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 extern float g_epsilon_0129ba3c;                // 0x0129BA3C (1e-4f)
@@ -212,11 +212,11 @@ void CAIStateGroup_IceTrollPoundGroundAttack::Update()
             C3DVector toTarget(targetPos.X - myPos.X, targetPos.Y - myPos.Y, targetPos.Z - myPos.Z);
             toTarget.Z = 0.0f;
             if (toTarget.MagnitudeSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c)
-                toTarget.Normalise();
+                toTarget.AccurateNormalise();
             C3DVector facing = GetCreature()->PhysicsBody->GetFacing();
             facing.Z = 0.0f;
             if (facing.MagnitudeSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c)
-                facing.Normalise();
+                facing.AccurateNormalise();
             if (Dot(facing, toTarget) < cos(1.0471976115464443)) {
                 long result = AIAction_PerformActionAndWait(
                     &CCreatureAction_PlayCombatAnimation(GetCreature(), "LOOK_BACKWARD", true), false);

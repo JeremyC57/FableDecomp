@@ -8,7 +8,7 @@
 // pointer: the node stays out of line, `__w`/`__x` are tested in their argument slots, the zero links are `and
 // [esi+8],0` and the root/rightmost stores are tail-merged; the count is `inc dword ptr [edi+4]`.
 // Label correction: catalog "CMemoryAllocatorVariableSize_InsertNode" is propagated; the key compare is CWideString's.
-// Leaf: _M_insert
+// Leaf: ?_M_insert@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@_N@std@@U?$less@VCWideString@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCWideString@@_N@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCWideString@@_N@2@0@Z
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -63,7 +63,9 @@ public:
     _Compare _M_key_compare;                                            // +0x08
 
     static const _Key& _S_key(_Rb_tree_node_base* __x) { return ((_Link_type)__x)->_M_value_field.first; }
+protected:
     _Link_type _M_create_node(const _Value& __x);                       // 0x00485A46
+private:
     iterator _M_insert(_Rb_tree_node_base* __x, _Rb_tree_node_base* __y, const _Value& __v,
                        _Rb_tree_node_base* __w = 0);
 };

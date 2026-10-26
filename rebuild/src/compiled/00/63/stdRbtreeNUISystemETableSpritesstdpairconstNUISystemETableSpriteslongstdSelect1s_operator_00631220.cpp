@@ -58,8 +58,11 @@ public:
     _Base_ptr& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
     _Base_ptr& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
 
+private:
     void _M_erase(_Link_type x);                                // 0x00630A10
+private:
     _Link_type _M_copy(_Link_type x, _Link_type p);             // 0x00631020
+public:
     void clear()
     {
         if (_M_node_count != 0) {

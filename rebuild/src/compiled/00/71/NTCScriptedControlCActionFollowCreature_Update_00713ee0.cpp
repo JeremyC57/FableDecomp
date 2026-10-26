@@ -1,9 +1,9 @@
 // NTCScriptedControl::CActionFollowCreature::Update() -- keep the follow target valid, ignore it for navigation, mirror its sneaking, then pick a speed from the gap to the target (stop, slow, match or run) and steer along the nav route, looking where it goes
-// Leaf: ?Update@CActionFollowCreature@@
+// Leaf: ?Update@CActionFollowCreature@NTCScriptedControl@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00713EE0, length 1153 bytes.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (interface 7 CTCCreatureNavigation) and its const twin @ 0x004365B0
 // (interface 0x36 CTCStealth, through the const lookup), CTCCreatureNavigation::SetThingToIgnore @ 0x006CBE30 /
-// GetNextNavPosOnRoute @ 0x006CBAC0 / SetNavigationTarget @ 0x006CB960, SetSneaking @ 0x00713D50, the 2D distance @ 0x009E1AD0
+// GetNextNavPosOnRoute @ 0x006CBAC0 / SetNavigationTarget @ 0x006CB960, SetAsSneaking @ 0x00713D50, the 2D distance @ 0x009E1AD0
 // (__fastcall), the thing's current speed @ 0x00661CD0, sneak speed @ 0x00664CB0 / virtual max speed (slot 81, +0x144),
 // CThing::GetPosition @ 0x004C73D0, IsPerformingAnyAction @ 0x006622A0, CTCLook::LookAtPos @ 0x00753E90 / IsPosInViewRange
 // @ 0x007534B0; the script thing's slots 11/71/76/77 (+0x2c/+0x11c/+0x130/+0x134) and the physics slots 33/70 (+0x84/+0x118).
@@ -14,6 +14,10 @@
 // sit in their own block; the look-ahead point is `delta + pos` through a helper taking (pos, velocity) so the velocity
 // virtual is called first; the clamp keeps `const float&` from Min; the epsilon is an extern float squared at run time; the
 // squared length is written Y*Y + Z*Z + X*X (emitted X, Z, Y); the facing point is a named local over a named physics pointer.
+// PDB spelling (sweep 3): the class lives in namespace NTCScriptedControl with Ego_r member names (CActionBase PTCScript +0x04,
+//   Activated +0x08, Terminated +0x09), Update is its virtual (?Update@CActionFollowCreature@NTCScriptedControl@@UAEXXZ) and
+//   0x00713D50 is the private SetAsSneaking (?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z, was an
+//   invented global SetSneaking). Same bytes.
 template<class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
 template<class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
 struct CTCBase;
@@ -141,13 +145,14 @@ struct CScriptThing {
     virtual bool IsValid() const;       // slot 77 (+0x134)
     long _a, _b;
 };
-struct CCreaturePointer { void* __vftable; CThing* PThing; };
+struct CTCScriptedControl { void* __vftable; CThing* ParentThing; };   // CTCBase: ParentThing +0x04
+namespace NTCScriptedControl {
 class CActionFollowCreature {
 public:
-    void* __vftable;                                 // +0x00
-    CCreaturePointer* PControl;                      // +0x04
+    virtual void Update();                           // vptr +0x00 (UAE: the action's virtual Update)
+    CTCScriptedControl* PTCScript;                   // +0x04 (Ego_r CActionBase)
     bool Activated;                                  // +0x08
-    bool Finished;                                   // +0x09
+    bool Terminated;                                 // +0x09
     CScriptThing PTargetThing;                       // +0x0C
     void* PTCOldPhysics;                             // +0x18
     bool Sneaking;                                   // +0x1C
@@ -156,30 +161,31 @@ public:
     bool AvoidDynamicObstacles;                      // +0x25
     bool PreviousPushableByHero;                     // +0x26
     bool Running;                                    // +0x27
-    void SetSneaking(bool sneaking);                 // 0x00713D50
-    CThing* GetCreature() const { return PControl->PThing; }
-    void Update();
+    CThing* GetCreature() const { return PTCScript->ParentThing; }
+private:
+    void SetAsSneaking(bool sneaking);               // 0x00713D50 (Ego_r ?SetAsSneaking@CActionFollowCreature@NTCScriptedControl@@AAEX_N@Z)
 };
+} // namespace NTCScriptedControl
 
-void CActionFollowCreature::Update()
+void NTCScriptedControl::CActionFollowCreature::Update()
 {
     if (!PTargetThing.IsValid())
         PTargetThing.Refresh();
     CThing* target = PTargetThing.GetThing();
     CTCCreatureNavigation* navigation;
-    if (PControl->PThing->GetInterface(&navigation, 7))
+    if (PTCScript->ParentThing->GetInterface(&navigation, 7))
         navigation->SetThingToIgnore(target);
     if (PTargetThing.IsDead()) {
-        Finished = true;
+        Terminated = true;
         return;
     }
     CTCStealth* stealth;
-    SetSneaking(PTargetThing.GetThing()->GetInterfaceC(&stealth, 0x36) && stealth->Sneaking);
+    SetAsSneaking(PTargetThing.GetThing()->GetInterfaceC(&stealth, 0x36) && stealth->Sneaking);
     CTCCreatureNavigation* nav;
-    PControl->PThing->GetInterface(&nav, 7);
+    PTCScript->ParentThing->GetInterface(&nav, 7);
     PTargetThing.GetThing();
     float followRange = FollowRange;
-    CTCPhysicsBase* myPhysics = PControl->PThing->PPhysics;
+    CTCPhysicsBase* myPhysics = PTCScript->ParentThing->PPhysics;
     float radii = PTargetThing.GetThing()->PPhysics->Radius + myPhysics->Radius + 0.7f;
     float distance;
     {
@@ -188,7 +194,7 @@ void CActionFollowCreature::Update()
         targetPos.X = tp.X;
         targetPos.Y = tp.Y;
         C2DVector myPos;
-        const C3DVector& mp = PControl->PThing->PPhysics->Position;
+        const C3DVector& mp = PTCScript->ParentThing->PPhysics->Position;
         myPos.X = mp.X;
         myPos.Y = mp.Y;
         distance = Get2DDistance(myPos, targetPos);
@@ -196,9 +202,9 @@ void CActionFollowCreature::Update()
     float targetSpeed = PTargetThing.GetThing()->GetCurrentSpeed();
     if (targetSpeed == 0.0f) {
         CThing* t = PTargetThing.GetThing();
-        targetSpeed = t->GetMaxSpeedTowards(PControl->PThing->GetPosition());
+        targetSpeed = t->GetMaxSpeedTowards(PTCScript->ParentThing->GetPosition());
     }
-    CThing* me = PControl->PThing;
+    CThing* me = PTCScript->ParentThing;
     C3DVector ahead = Offset(me->GetPosition(), me->PPhysics->GetVelocity());
     float maxSpeed;
     if (Sneaking)
@@ -230,15 +236,15 @@ void CActionFollowCreature::Update()
     CCreatureNavOutput output = nav->GetNextNavPosOnRoute(input, false, AvoidDynamicObstacles, true, false, false);
     nav->SetNavigationTarget(input);
     nav->Active = true;
-    if (!PControl->PThing->IsPerformingAnyAction() && output.Status == 2
+    if (!PTCScript->ParentThing->IsPerformingAnyAction() && output.Status == 2
         && output.Offset.Y * output.Offset.Y + output.Offset.Z * output.Offset.Z + output.Offset.X * output.Offset.X > g_navEpsilon * g_navEpsilon) {
-        C3DVector lookPos = output.Offset + PControl->PThing->PPhysics->Position;
+        C3DVector lookPos = output.Offset + PTCScript->ParentThing->PPhysics->Position;
         CTCLook* look;
-        if (PControl->PThing->GetInterface(&look, 0x43)) {
+        if (PTCScript->ParentThing->GetInterface(&look, 0x43)) {
             look->LookAtPos(&lookPos, 0x21);
             if (look->IsPosInViewRange(lookPos, 0.41666666f, false, false))
             {
-                CTCPhysicsBase* phys = PControl->PThing->PPhysics;
+                CTCPhysicsBase* phys = PTCScript->ParentThing->PPhysics;
                 C3DVector facing = output.Offset + phys->Position;
                 phys->SetFacingPos(facing);
             }

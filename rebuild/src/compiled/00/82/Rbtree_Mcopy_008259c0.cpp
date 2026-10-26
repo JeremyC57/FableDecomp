@@ -53,12 +53,14 @@ public:
     static _Link_type& _S_left(_Link_type x) { return (_Link_type&)(x->_M_left); }
     static _Link_type& _S_right(_Link_type x) { return (_Link_type&)(x->_M_right); }
     static bool& _S_color(_Link_type x) { return x->_M_color; }
+protected:
     _Link_type _M_create_node(const _Value& x)
     {
         _Link_type tmp = this->_M_header.allocate(1);
         _Construct(&tmp->_M_value_field, x);
         return tmp;
     }
+protected:
     _Link_type _M_clone_node(_Link_type x)
     {
         _Link_type tmp = _M_create_node(x->_M_value_field);
@@ -67,6 +69,7 @@ public:
         _S_right(tmp) = 0;
         return tmp;
     }
+private:
     _Link_type _M_copy(_Link_type x, _Link_type p);
 };
 

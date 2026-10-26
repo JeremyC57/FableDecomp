@@ -94,7 +94,9 @@ public:
     static _Rb_tree_node_base::_Color_type& _S_color(_Base_ptr __x) { return __x->_M_color; }
     static _Link_type _S_minimum(_Link_type __x) { return (_Link_type)_Rb_tree_node_base::_S_minimum(__x); }
     static _Link_type _S_maximum(_Link_type __x) { return (_Link_type)_Rb_tree_node_base::_S_maximum(__x); }
+private:
     _Link_type _M_copy(_Link_type __x, _Link_type __p);   // 0x008260C0
+public:
     void _M_empty_initialize()
     {
         _S_color(this->_M_header._M_data) = _S_rb_tree_red;   // used to distinguish header from root in iterator.operator++

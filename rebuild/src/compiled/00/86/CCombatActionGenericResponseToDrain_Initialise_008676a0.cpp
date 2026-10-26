@@ -2,7 +2,7 @@
 // Leaf: ?Initialise@CCombatAction_GenericResponseToDrain@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008676A0, 379 bytes (384 with padding), virtual Initialise.
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("GENERIC_RESPONSE_DRAIN" 0x012771D0), SetAnimationName 0x008574D0,
-//   CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPosition 0x004C73D0, C3DVector::Normalise 0x00A14440 (catalog
+//   CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPosition 0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440 (catalog
 //   label C3DVector::GetScaled), the physics virtual slot 32 (+0x80, orientation from a CRightHandedSet), CVectorMap::LowerBound
 //   0x0040F020 (inlined GetInterface 0x31; the absent arm reads the never-set out pointer from its shared frame word),
 //   operator new 0x00BFEA1A (0x80 bytes), NCreatureMode::CModeDrained(CThing*, CThing*) 0x00868220 (landed),
@@ -19,12 +19,12 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-    C3DVector& Normalise();                     // 0x00A14440
+    C3DVector& AccurateNormalise();                     // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct CRightHandedSet { C3DVector Up, Forward; };
 struct CTCPhysicsBase {
@@ -139,7 +139,7 @@ void CCombatAction_GenericResponseToDrain::Initialise()
         const C3DVector& drainerPosition = PTarget.GetPItem()->GetPosition();
         const C3DVector& position = creature->GetPosition();
         C3DVector away(position.X - drainerPosition.X, position.Y - drainerPosition.Y, 0.0f);
-        away.Normalise();
+        away.AccurateNormalise();
         CTCPhysicsBase& physics = *PCreature.GetPItem()->GetPhysics();
         CRightHandedSet set;
         set.Up.X = 0; set.Up.Y = 0; set.Up.Z = 1;

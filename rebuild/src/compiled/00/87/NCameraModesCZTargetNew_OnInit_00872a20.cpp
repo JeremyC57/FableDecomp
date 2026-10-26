@@ -3,7 +3,7 @@
 // Retail: Fable.exe @ 0x00872A20, 206 bytes, `ret`. PDB ?OnInit@CZTargetNew@NCameraModes@@UAEXXZ (vtable 0x0127754C slot 21).
 // Callees: CGameCameraManager::ResetRightStickLookAroundVector() 0x006976B0 (manifest "CQ_GuildTrainingSkillScript::Init"),
 // NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, the thing physics' virtual slot 70 (+0x118, GetFacingVector,
-// C3DVector by hidden pointer), C3DVector::Normalise 0x00A14440, CZTargetNew::InitialiseTransitionVariables 0x00872490,
+// C3DVector by hidden pointer), C3DVector::AccurateNormalise @ 0x00A14440, CZTargetNew::InitialiseTransitionVariables 0x00872490,
 // virtual slot 24 UpdateCoordSystem (+0x60, 0x00872EC0). Float pool 0x0122DEE0 = -1.0f.
 // Retail layout (NCameraModes::CBase is 0xA4 bytes in retail, PDB 0xC8; see the landed CFirstPerson::OnInit 0x008735D0):
 // CBase CameraManager +0x40, ObservedPositionZOffset +0x8C (PDB +0xB0); CZTargetNew XAxis +0xD4, YAxis +0xE0 (PDB
@@ -11,13 +11,13 @@
 // Shape: C3DVector has a user copy ctor and the implicit operator= (the `lea` pointer-register copies) and a scaling
 // operator* written `return C3DVector(X * f, Y * f, Z * f);` (a named result keeps the products on the x87 stack); the X axis's Z is cleared through the member before Normalise;
 // the Y axis comes from an inline XAxis member returning (Y, -X, 0) (both reads through the XAxis pointer in edi).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    void Normalise();                                        // 0x00A14440
+    C3DVector& AccurateNormalise();                                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     C3DVector GetPerpendicularXY() const { return C3DVector(Y, -X, 0.0f); }   // inline (name descriptive)
 };
 
@@ -89,7 +89,7 @@ void NCameraModes::CZTargetNew::OnInit()
     CameraManager->ResetRightStickLookAroundVector();
     XAxis = GetObservedThing()->GetPhysics()->GetFacingVector() * -1.0f;
     XAxis.Z = 0.0f;
-    XAxis.Normalise();
+    XAxis.AccurateNormalise();
     YAxis = XAxis.GetPerpendicularXY();
     InitialiseTransitionVariables();
     UpdateCoordSystem();

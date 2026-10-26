@@ -8,7 +8,7 @@
 // the vector copy constructor); the node goes left when y is the header, or (w null) when x is set or v's key orders
 // before y's (signed `jl`: the enum key). Speed TU (the CHeroLogBook module, map CHeroLogBook::LogEntries).
 // Label correction: catalog "ListNode_Insert" is a guess.
-// Leaf: _M_insert
+// Leaf: ?_M_insert@?$_Rb_tree@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@@std@@@2@0@Z
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 
@@ -77,12 +77,14 @@ public:
     _STLP_alloc_proxy<_Link_type, _Rb_tree_node<_Value> > _M_header;   // +0x00
     unsigned int _M_node_count;                                         // +0x04
 
+protected:
     _Link_type _M_create_node(const _Value& __x)
     {
         _Link_type __tmp = (_Link_type)malloc(sizeof(_Rb_tree_node<_Value>));
         _Construct(&__tmp->_M_value_field, __x);
         return __tmp;
     }
+private:
     iterator _M_insert(_Rb_tree_node_base* __x, _Rb_tree_node_base* __y, const _Value& __v,
                        _Rb_tree_node_base* __w = 0);
 };

@@ -1,24 +1,32 @@
-// CThingSearchTools::GetAllThings(const TFilter& filter, TContainer& result) [TThing = CThing, TContainer = std::vector<CThing*>, TFilter = CThingFilter_HasTCOfLeafType_CTCActionUseScriptedHook] -- append every scan-visible thing passing the filter to the result vector
+// CThingSearchTools::GetAllThings(const TFilter& filter, TContainer& result) [TThing = CThing, TContainer = std::vector<CThing*>, TFilter = CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>] -- append every scan-visible thing passing the filter to the result vector
 // Leaf: GetAllThings
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005198B0, 140 bytes (`ret 8`).
-// Callees: PeekAllThings 0x0049C770, filter 0x00518DC0, vector<CThing*>::_M_insert_overflow 0x00436AC0.
+// Callees: PeekAllThings 0x0049C770, CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>::operator() 0x00518DC0 (landed; its
+// exact leaf is bound), vector<CThing*>::_M_insert_overflow 0x00436AC0 (landed F005 row; its leaf is bound).
+// Identity (sweep3, family pass 1 "conflicting vector<CThing*> claims"): this row's claim is the right one -- the overflow
+//   callee 0x00436AC0 is vector<CThing*>'s (0x00518850's 0x0049C370 is vector<const CThing*>'s), and the Ego_r name set holds
+//   ??$GetAllThings@VCThing@@V?$vector@PAVCThing@@...V?$CThingFilter_HasTCOfLeafType@VCTCActionUseScriptedHook@@@@@CThingSearchTools@@QBEX...
+//   The filter is the class template CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook> (operator() takes CThing&).
+//   The method itself still sits on the local CThingSearchToolsMethods (header debt, see 0x00518850).
 // Model: CThingSearchTools from engine/CThingSearchTools.h (`this` is only passed through to the list getter);
 // CThing, the thing lists, the result container and the filters are local retail-layout models.
 // Shape: scan test, then the type-mask test (mask copied into a local), then the filter on the thing reference.
 // A vector push takes a by-value ThingCast<T> temporary (homed in the dead argument slot and shared with the
-// __true_type tag: the same-TU noinline overflow stand-in shows VC7.1 the tag is never read); a list push
+// __true_type tag: the same-TU noinline STLport overflow body shows VC7.1 the tag is never read); a list push
 // inserts before end() reading end()->prev once; an intelligent-pointer push builds a named temporary.
 #include "engine/CThingSearchTools.h"
 #include <stdlib.h>
 
 inline void* operator new(unsigned int, void* where) { return where; }
-struct __true_type { __true_type() {} };
+namespace std { struct __true_type { __true_type() {} }; }
+using std::__true_type;
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
 // Retail CThing sits 0x10 below the PDB from ThingTypeFlags on: UsingComponents +0x20 [PDB +0x20],
 // ThingTypeFlags +0x6c [PDB +0x7c], the state bit byte +0x91 [PDB +0xa1] = Dead 0x01,
 // IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-struct CThing {
+class CThing {                                        // PDB def type: class
+public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned char UsingComponents[0x24];              // +0x20 bitset<274> of present thing components
@@ -64,34 +72,97 @@ struct CThingList {
     iterator end() { return iterator(m_pHead); }
 };
 
-// The result: STLport vector<T*>; the overflow path is out of line (a same-TU stand-in below, so VC7.1 knows it
-// never reads the __true_type tag and homes the tag and the pushed value in the dead argument slot as retail does).
-template <class T> struct CResultVector {
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    void _M_insert_overflow(T* position, const T& x, const __true_type&, unsigned long fill_len, bool atend);   // 0x00436AC0
-    void push_back(const T& x)
+// The result: STLport 4.6 std::vector<CThing*> (_Vector_base + _STLP_alloc_proxy); push_back's growth path is the
+// protected POD `_M_insert_overflow`, defined in the class body in STLport and kept out of line by VC7.1 (0x00436AC0). Its
+// verbatim body sits in this TU under auto_inline(off) + noinline, so VC7.1 sees that the __true_type tag is never read and
+// homes the tag and the pushed value in the dead argument slot as retail does.
+extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
+extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
+extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
+namespace std {
+template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
+inline void* __copy_trivial(const void* __first, const void* __last, void* __result)
+{
+    return (__last == __first) ? __result
+                               : ((char*)memmove(__result, __first, ((const char*)__last - (const char*)__first)))
+                                     + ((const char*)__last - (const char*)__first);
+}
+template <class _OutputIter, class _Size, class _Tp>
+inline _OutputIter fill_n(_OutputIter __first, _Size __n, const _Tp& __value)
+{
+    for (; __n > 0; --__n, ++__first)
+        *__first = __value;
+    return __first;
+}
+template <class _Tp> class allocator {
+public:
+    _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
+    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
+};
+template <class _Value, class _Alloc> class _STLP_alloc_proxy : public _Alloc {
+public:
+    _Value _M_data;
+};
+template <class _Tp, class _Alloc> class _Vector_base {
+public:
+    _Tp* _M_start;                                          // +0x00
+    _Tp* _M_finish;                                         // +0x04
+    _STLP_alloc_proxy<_Tp*, _Alloc> _M_end_of_storage;      // +0x08
+};
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
+public:
+    typedef _Tp* pointer;
+    typedef unsigned int size_type;
+    size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    void push_back(const _Tp& __x)
     {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) T(x);
-            ++_M_finish;
+        if (this->_M_finish != this->_M_end_of_storage._M_data) {
+            new (this->_M_finish) _Tp(__x);
+            ++this->_M_finish;
         }
         else
-            _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
+            _M_insert_overflow(this->_M_finish, __x, __true_type(), 1UL, true);
     }
+protected:
+    void _M_clear()
+    {
+        this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
+    }
+    void _M_set(pointer __s, pointer __f, pointer __e)
+    {
+        this->_M_start = __s;
+        this->_M_finish = __f;
+        this->_M_end_of_storage._M_data = __e;
+    }
+    void _M_insert_overflow(pointer __position, const _Tp& __x, const __true_type&, size_type __fill_len,
+                            bool __atend = false);   // 0x00436AC0 for vector<CThing*>
 };
 #pragma auto_inline(off)
-template <class T> __declspec(noinline) void CResultVector<T>::_M_insert_overflow(T* position, const T& x, const __true_type&, unsigned long fill_len, bool atend)
+template <class _Tp, class _Alloc> __declspec(noinline)
+void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x, const __true_type&, size_type __fill_len,
+                                             bool __atend)
 {
-    if (atend && fill_len == 1)
-        _M_finish = position + (x != 0);
+    const size_type __old_size = size();
+    const size_type __len = __old_size + (max)(__old_size, __fill_len);
+
+    pointer __new_start = this->_M_end_of_storage.allocate(__len);
+    pointer __new_finish = (pointer)__copy_trivial(this->_M_start, __position, __new_start);
+    // handle insertion
+    __new_finish = fill_n(__new_finish, __fill_len, __x);
+    if (!__atend)
+        // copy remainder
+        __new_finish = (pointer)__copy_trivial(__position, this->_M_finish, __new_finish);
+    _M_clear();
+    _M_set(__new_start, __new_finish, __new_start + __len);
 }
 #pragma auto_inline(on)
+}
 
-struct CThingFilter_HasTCOfLeafType_CTCActionUseScriptedHook {
+class CTCActionUseScriptedHook;
+template <class TLeaf> class CThingFilter_HasTCOfLeafType {
+public:
     long Data;
-    bool operator()(const CThing& thing) const;       // 0x00518DC0
+    bool operator()(CThing& thing) const;             // 0x00518DC0 for CTCActionUseScriptedHook (PDB: QBE_NAAVCThing@@)
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
@@ -112,4 +183,4 @@ void CThingSearchToolsMethods::GetAllThings(const TFilter& filter, TContainer& r
     }
 }
 
-template void CThingSearchToolsMethods::GetAllThings<CThing, CResultVector<CThing*>, CThingFilter_HasTCOfLeafType_CTCActionUseScriptedHook >(const CThingFilter_HasTCOfLeafType_CTCActionUseScriptedHook&, CResultVector<CThing*>&);
+template void CThingSearchToolsMethods::GetAllThings<CThing, std::vector<CThing*>, CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook> >(const CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>&, std::vector<CThing*>&);

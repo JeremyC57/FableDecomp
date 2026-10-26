@@ -6,7 +6,7 @@
 // deallocate(x); x = y;`; the pair destructor inlines ~vector (`_Destroy(start, finish)` -> the __destroy_aux loop,
 // aligned) and ~_Vector_base; `this` lives in a frame slot across the recursion. Speed TU (CHeroLogBook LogEntries).
 // Label correction: catalog "TreeNode_RecursiveDelete" is a behavioural guess; the STLport member is _M_erase.
-// Leaf: _M_erase
+// Leaf: ?_M_erase@?$_Rb_tree@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@2@@Z
 #include <stdlib.h>
 
 class CWideStringData;
@@ -91,6 +91,7 @@ public:
 
     static _Link_type& _S_left(_Rb_tree_node_base* __x) { return (_Link_type&)(__x->_M_left); }
     static _Link_type& _S_right(_Rb_tree_node_base* __x) { return (_Link_type&)(__x->_M_right); }
+private:
     void _M_erase(_Link_type __x);
 };
 

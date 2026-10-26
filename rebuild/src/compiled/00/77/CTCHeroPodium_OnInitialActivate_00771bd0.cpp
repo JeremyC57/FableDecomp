@@ -9,12 +9,12 @@
 // written in the caller reads Y through esi+0x2c.
 // Layout: retail NumberOfCrowdOccupants +0x0c, CrowdOccupation +0x10 (12-byte vector), E_X +0x1c, E_Y +0x28; the parent's
 // physics component CThing +0x60.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector& Normalise();                     // 0x00A14440
+    C3DVector& AccurateNormalise();                     // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     C3DVector GetPerpendicularXY() const { return C3DVector(Y, -X, 0.0f); }
 };
 class CTCPhysicsBase {
@@ -53,6 +53,6 @@ void CTCHeroPodium::OnInitialActivate()
 {
     E_Y = ParentThing->PhysicsTC->GetFacing() * -1.0f;
     E_Y.Z = 0.0f;
-    E_Y.Normalise();
+    E_Y.AccurateNormalise();
     E_X = E_Y.GetPerpendicularXY();
 }

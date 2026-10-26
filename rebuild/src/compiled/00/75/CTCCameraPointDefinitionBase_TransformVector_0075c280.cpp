@@ -1,7 +1,7 @@
 // CTCCameraPointDefinitionBase::TransformVector(const C3DVector& v, const CRightHandedSet* axes) -- with relative orientation on, turn the vector about world Z by the flat angle from the given axes' forward (else the point's own) to the point's own forward; otherwise return it unchanged
 // Leaf: ?TransformVector@CTCCameraPointDefinitionBase@@IBE?AVC3DVector@@ABV2@PBVCRightHandedSet@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075C280, 410 bytes, `ret 0Ch`.
-// Callees: C3DVector::Normalise 0x00A14440 (x2; catalog "GetScaled" is propagated), _CIacos 0x00BFEBA2 (intrinsic acos),
+// Callees: C3DVector::AccurateNormalise @ 0x00A14440 (x2; catalog "GetScaled" is propagated), _CIacos 0x00BFEBA2 (intrinsic acos),
 //   C3DVector::Rotate(const C3DVector&, float) 0x00A13C60; constants -1.0 0x0122DEE0, 1.0 0x0122DED8, 0.0 0x0122DEDC,
 //   1/(2*pi) 0x01237F08.
 // Layout: CTCCameraPointDefinitionBase is byte-packed (Ego_r.pdb): CoordAxis CRightHandedSet +0x22 (Forward +0x2e),
@@ -13,12 +13,12 @@
 extern "C" double __cdecl acos(double);
 #pragma intrinsic(acos)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    void Normalise();                                        // 0x00A14440
+    C3DVector& AccurateNormalise();                                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     void Rotate(const C3DVector& axis, float angle);         // 0x00A13C60
 };
 struct CRightHandedSet {
@@ -57,9 +57,9 @@ C3DVector CTCCameraPointDefinitionBase::TransformVector(const C3DVector& v, cons
         set = *axes;
     C3DVector from = set.Forward;
     from.Z = 0.0f;
-    from.Normalise();
+    from.AccurateNormalise();
     C3DVector to(CoordAxis.Forward.X, CoordAxis.Forward.Y, 0.0f);
-    to.Normalise();
+    to.AccurateNormalise();
     float dot = from.Z * to.Z + from.X * to.X + from.Y * to.Y;
     if (dot < -1.0f)
         dot = -1.0f;

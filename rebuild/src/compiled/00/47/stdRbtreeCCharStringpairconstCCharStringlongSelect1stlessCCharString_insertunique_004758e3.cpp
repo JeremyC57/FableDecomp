@@ -1,5 +1,5 @@
 // std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >::insert_unique(const value_type& v) -- STLport: descend to the insertion leaf, step back one node when it went left, and insert v only if that predecessor's key is less than v's; returns (iterator, inserted)
-// Leaf: insert_unique
+// Leaf: ?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$less@VCCharString@@@3@@std@@QAE?AU?$_Pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@@std@@_N@2@ABU?$pair@$$CBVCCharString@@J@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004758E3, 202 bytes, `ret 8` (thiscall: the hidden pair<iterator, bool> result, v).
 // Identity: the catalog's "RBTree_InsertOrUpdate" is behavioural. Same map<CCharString, long> tree as _M_insert @ 0x004759AD.
 // Callees: CBasicString<char> compare @ 0x00411570, _Rb_global<bool>::_M_decrement(node) @ 0x004294E2 (__cdecl,
@@ -98,7 +98,9 @@ public:
     __forceinline _Rb_tree_node_base*& _M_root() const { return _M_header->_M_parent; }
     static __forceinline const Key& _S_key(_Rb_tree_node_base* x) { return static_cast<_Link_type>(x)->_M_value_field.first; }
     iterator begin() { return iterator(_M_header->_M_left); }
+private:
     iterator _M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const Value& v, _Rb_tree_node_base* w = 0);   // 0x004759AD
+public:
     _Pair<iterator, bool> insert_unique(const Value& v);
 };
 

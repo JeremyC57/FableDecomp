@@ -165,7 +165,9 @@ public:
     static _Link_type& _S_right(_Base_ptr __x) { return (_Link_type&)(__x->_M_right); }
     static const _Key& _S_key(_Base_ptr __x) { return ((_Link_type)__x)->_M_value_field.first; }
 
+private:
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const value_type& __v, _Base_ptr __w = 0);   // 0x00990830
+public:
     pair<iterator, bool> insert_unique(const value_type& __x);                                     // 0x00990900
     iterator insert_unique(iterator __position, const value_type& __x);
     unsigned int size() const { return _M_node_count; }

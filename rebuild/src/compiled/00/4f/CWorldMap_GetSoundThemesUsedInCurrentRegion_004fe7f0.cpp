@@ -124,7 +124,9 @@ public:
     iterator begin() { return iterator(_M_leftmost()); }
     iterator end() { return iterator(this->_M_header._M_data); }
 
+private:
     void _M_erase(_Link_type __x);
+public:
     pair<iterator, bool> insert_unique(const _Value& __v);   // 0x00514B50 (char) / 0x00514C10 (unsigned long)
     void clear()
     {

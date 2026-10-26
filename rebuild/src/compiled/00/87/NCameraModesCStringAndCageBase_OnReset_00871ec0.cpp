@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00871EC0, 270 bytes (+2 int3 padding), `ret`.
 // Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, CThing::GetPosition() const 0x004C73D0
 //   (const C3DVector&), the thing physics' virtual slot 70 (+0x118, GetFacingVector, C3DVector by hidden pointer),
-//   C3DVector::Normalise 0x00A14440, CTCGraphicAppearance::GetCameraFocalPos(float) const 0x004C12D0 (thing +0x64).
+//   C3DVector::AccurateNormalise @ 0x00A14440, CTCGraphicAppearance::GetCameraFocalPos(float) const 0x004C12D0 (thing +0x64).
 //   Float pool 0x0122DEDC = 0.0f.
 // Layout: as the landed UpdateZVars 0x00872050 (retail CBase = PDB - 0x24): CBase LookAt +0x10, Position +0x54,
 //   CameraManager +0x40; DesiredHeightOffset +0xA4, DesiredStringLength +0xA8. CThing physics +0x60, appearance +0x64.
@@ -11,7 +11,7 @@
 //   C3DVector(0, 0, 1) * offset (1 * offset folds, 0 * offset is computed once and reused for X and Y). The focal point
 //   is a named local in an inner block, so VC7.1 gives it the dead raise temporary's 12 bytes (0x3C frame); at function
 //   scope it takes its own slot (0x48), and assigning LookAt straight from the call copies through eax.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -19,7 +19,7 @@ struct C3DVector {
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    void Normalise();                                        // 0x00A14440
+    C3DVector& AccurateNormalise();                                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct CThingPhysics {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -70,7 +70,7 @@ void CStringAndCageBase::OnReset()
     C3DVector thingPos = GetObservedThing()->GetPosition();
     C3DVector facing = GetObservedThing()->GetPhysics()->GetFacingVector();
     facing.Z = 0.0f;
-    facing.Normalise();
+    facing.AccurateNormalise();
     Position = thingPos - facing * DesiredStringLength + C3DVector(0.0f, 0.0f, 1.0f) * DesiredHeightOffset;
     const CThingGameObject* thing = GetObservedThing();
     {

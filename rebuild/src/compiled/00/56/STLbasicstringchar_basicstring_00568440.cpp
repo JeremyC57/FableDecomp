@@ -1,10 +1,14 @@
 // std::basic_string<char>::basic_string(const char*, const allocator<char>&) -- construct a string from a C string: empty storage, then copy [s, s + strlen(s)) into a fresh block
-// Leaf: ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBDABV?$allocator@D@1@@Z
+// Leaf: ??0?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBDABV?$allocator@D@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00568440, 65 bytes, `__fastcall`, `ret 8`, returns `this`.
 // Identity: the manifest label (basic_string<char, char_traits<char>, allocator<char> >::basic_string) agrees with
 //   the body: STLport `_String_base(const allocator&)` (start, finish, end_of_storage zeroed), the strlen intrinsic,
 //   then `_M_range_initialize(first, last, const forward_iterator_tag&)` @ 0x005672D0 (out of line: allocates
 //   size + 1 through malloc, copies the range, terminates). 11 callers (0x005611EF, 0x0084089E .. 0x008F9900).
+// Instance: STLport 4.6 `char_traits` is a class (`V?$char_traits@D@std@@`, as every other landed STLport string row
+//   spells it) and `_M_range_initialize(_ForwardIter, _ForwardIter, const forward_iterator_tag&)` a member template:
+//   from `const char*` this is the `<const char*>` instance 0x005672D0, `??$_M_range_initialize@PBD@...` (the `<char*>`
+//   instance 0x00567D00 is the copy constructor's).
 // Shape: the iterator-tag temporary is homed in the argument slot of `s` (already in edx) and passed by
 //   address; `s + strlen(s)` sits in the same argument list as the tag, so its `add` follows the tag push.
 #include <string.h>
@@ -15,7 +19,8 @@ namespace std {
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { };
 
-template <class _CharT> struct char_traits {
+template <class _CharT> class char_traits {
+public:
     static unsigned int length(const char* __s) { return strlen(__s); }
 };
 
@@ -51,7 +56,8 @@ public:
     {
         _M_range_initialize(__s, __s + traits_type::length(__s), forward_iterator_tag());
     }
-    void _M_range_initialize(const _CharT* __f, const _CharT* __l, const forward_iterator_tag&);   // 0x005672D0
+    template <class _ForwardIter>
+    void _M_range_initialize(_ForwardIter __f, _ForwardIter __l, const forward_iterator_tag&);   // <const char*> 0x005672D0
 };
 
 template basic_string<char>::basic_string(const char*, const allocator<char>&);

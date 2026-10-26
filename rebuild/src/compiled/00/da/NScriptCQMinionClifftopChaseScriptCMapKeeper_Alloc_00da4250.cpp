@@ -8,7 +8,7 @@
 //   Family F014 (15 bodies, one per entity class): the manifest label "CTriangleList::CTriangleList" is propagated and
 //   wrong; the landed twins of this shape (0x00D62360 etc.) are named by vtable address (Create_CVtable_...).
 // Callees: scalar operator new 0x00BFEA1A (0x2C = sizeof(CMapKeeper), then 0x0C for the count block),
-//   CScriptThing::CScriptThing(const CScriptThing&) 0x004ABE90 (Me), CScriptThing::CScriptThing() 0x006E7B40 (called through the catalog's stand-in name, see below) (ImprisonedFX +0x20), and the
+//   CScriptThing::CScriptThing(const CScriptThing&) 0x004ABE90 (Me), CScriptThing::CScriptThing() 0x006E7B40 (ImprisonedFX +0x20), and the
 //   count block's deleter 0x00CDEE00 (stored, not called: `if (p) p->~CEntityScriptBase()` deleting, `__fastcall`).
 // Data: vtables CEntityScriptBase 0x012C3224 (stored before the Me copy) and CMapKeeper 0x012D73E0.
 // Layout: Ego_r.pdb CQ_MinionClifftopChaseScript::CMapKeeper (44 bytes = the retail new size): ParentClass +0x14, PMasterData +0x18, DoneIntro +0x1C, ImprisonedFX +0x20.
@@ -46,15 +46,8 @@ class CScriptThing {                                    // 12 bytes (Ego_r): vpt
 public:
     virtual ~CScriptThing();
     CCountedPointer<CScriptThing> PImp;                 // +0x04
+    CScriptThing();                                     // 0x006E7B40 (base ctor 0x0099A2D0, vtable 0x01238C8C, PImp nulled)
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-};
-// 0x006E7B40 is CScriptThing::CScriptThing() (base ctor 0x0099A2D0, the CScriptThing vtable 0x01238C8C, PImp nulled).
-// The relocation catalog binds that address as ??0CMember_006e7b40@@QAE@XZ and holds ??0CScriptThing@@QAE@XZ for
-// 0x008CFF40 (landed 0x00892220, which is not a constructor), so the default-constructed CScriptThing members use
-// this same-layout stand-in until that binding is corrected.
-class CMember_006e7b40 : public CScriptThing {
-public:
-    CMember_006e7b40();                                 // 0x006E7B40
 };
 
 class CEntityScriptBase {                               // 20 bytes (Ego_r)
@@ -85,7 +78,7 @@ public:
         CQ_MinionClifftopChaseScript* ParentClass;      // +0x14
         CQ_SunnyvaleMasterData* PMasterData;            // +0x18
         bool DoneIntro;                                 // +0x1C
-        CMember_006e7b40 ImprisonedFX;                  // +0x20 CScriptThing (Ego_r)
+        CScriptThing ImprisonedFX;                      // +0x20 CScriptThing (Ego_r)
         CMapKeeper(CQ_MinionClifftopChaseScript& parent, CScriptDataBase* data, const CScriptThing& me)
             : CEntityScriptBase(*parent.Game, me), ParentClass(&parent)
         {

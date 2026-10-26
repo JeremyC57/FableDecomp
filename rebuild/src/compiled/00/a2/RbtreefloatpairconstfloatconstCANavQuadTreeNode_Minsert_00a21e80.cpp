@@ -1,5 +1,5 @@
 // _Rb_tree<float, pair<const float, const CANavQuadTreeNode*>>::_M_insert(x, y, v, w) -- link a new cost-ordered nav-node entry under parent y (left or right by the hint and key order), then rebalance
-// Leaf: ?_M_insert@?$_Rb_tree@MU?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@U?$_Select1st@U?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@@2@U?$less@M@2@V?$allocator@U?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBMPBVCANavQuadTreeNode@@@2@0@Z
+// Leaf: ?_M_insert@?$_Rb_tree@MU?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@U?$_Select1st@U?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@@2@U?$less@M@2@V?$allocator@U?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBMPBVCANavQuadTreeNode@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBMPBVCANavQuadTreeNode@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A21E80, 196 bytes, `ret 14h`. Callers 0x00A1D8D4, 0x00A1DC14 and 0x00A222E4
 //   (the tree's insert_equal). The catalog label "RBTree_InsertNodeFloat2" is descriptive.
 // Identity: the tree under multimap<float, const CANavQuadTreeNode*> (node 0x18; the same container whose
@@ -63,12 +63,14 @@ public:
     unsigned int _M_node_count;
     _Compare     _M_key_compare;
 
+protected:
     _Link_type _M_create_node(const value_type& __x)
     {
         _Link_type __tmp = this->_M_header.allocate(1);
         _Construct(&__tmp->_M_value_field, __x);
         return __tmp;
     }
+public:
     _Rb_tree_node_base*& _M_root() const { return this->_M_header._M_data->_M_parent; }
     _Rb_tree_node_base*& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
     _Rb_tree_node_base*& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
@@ -77,6 +79,7 @@ public:
     static _Rb_tree_node_base*& _S_parent(_Rb_tree_node_base* __x) { return __x->_M_parent; }
     static const _Key& _S_key(_Rb_tree_node_base* __x) { return _KeyOfValue()(((_Link_type)__x)->_M_value_field); }
 
+private:
     iterator _M_insert(_Rb_tree_node_base* __x, _Rb_tree_node_base* __y, const value_type& __v, _Rb_tree_node_base* __w = 0);
 };
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

@@ -1,20 +1,21 @@
-// CDefClassBase::GetSubDef<CEntitySoundDef>(CDefPointer<const CEntitySoundDef>* out) const -- the thing def's
-// CEntitySoundDef sub-def: look the sub-def index up by class name, fetch the def from the definition manager into *out;
-// false when the def has no such sub-def
+// CDefClassBase::GetSubDef<CEntitySoundDef>(CDefPointer<const CEntitySoundDef>* out) const -- the def's CEntitySoundDef sub-def: look the sub-def
+// index up by class name, fetch the def from the definition manager into *out; false when the def has no such sub-def
 // Leaf: ??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065F604, 162 bytes, thiscall `ret 4`, frame-pointer size TU.
-// Identity (FINDINGS chunk 384; was the address-named GetSubDef_0065f604, manifest GetSubDef<CAbilityDef>): Ego_r.pdb
-//   `??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z` (name set) and the
-//   class-name literal the body builds, 'CEntitySoundDef'; its 17 callers are sound paths (CTCSoundPlayer::
-//   PlayAttachedSoundEvent 0x0066B1D0, CTCDoor::PlaySound, CTCTalk::PlaySpeech, CThingCreatureBase::
-//   PlayCreatureContinuousSounds, ...) that read CEntitySoundDef::SoundIdentifier from the result. The manager call is
-//   Ego_r.pdb `?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z` (the const
-//   overload, as `this` is const) @ 0x009ADA10; the index lookup is the def's virtual slot 14 (+0x38, descriptive name).
-// Body/shape (unchanged from the landed model): a block-scoped CCharString("CEntitySoundDef", -1) for the virtual lookup;
-//   the manager's CDefPointer<const CDefClassBase> temporary (hidden result homed in the dead string slot) is
-//   converting-copied into the typed local (addref), then released through the ref-count base's two inline accessors and
-//   nulled; `*out = result` is the inlined assignment (release old, store, addref); the local's destructor releases
-//   (`dec [esi+4] ; jne`). The reference count is `mutable` (the pointers hold const defs).
+// Identity (FINDINGS chunk 384; manifest GetSubDef<CAbilityDef>): Ego_r.pdb / FableWin.pdb name set
+//   `??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z`
+//   and the class-name literal 'CEntitySoundDef' the body builds for the lookup (one retail body per T: no ICF, so each
+//   instantiation is its own address); the model of the sweep3 GetSubDef family.
+//   The manager call @ 0x009ADA10 is Ego_r `?GetPDefFromGlobalIndex@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@J@Z`,
+//   the protected non-const overload: PDefManager (+0x1C) is a plain CDefinitionManager*, and Ego_r / FableWin list
+//   the public const overload (QBE, CDefPointer<const CDefClassBase>) first, 0x30 bytes before it, as retail 0x009AD9E0
+//   (called by the const CDefinitionManager::GetDef<T>) precedes 0x009ADA10. The index lookup is the def's virtual
+//   slot 14 (+0x38, descriptive name).
+// Body/shape (unchanged from the landed model): a block-scoped CCharString("CEntitySoundDef", -1) for the virtual lookup; the
+//   manager's CDefPointer<CDefClassBase> temporary (hidden result homed in the dead string slot) is
+//   converting-copied into the typed local (addref), then released through the ref-count base's two inline accessors
+//   and nulled; `*out = result` is the inlined assignment (release old, store, addref); the local's destructor
+//   releases (`dec [esi+4] ; jne`). The reference count is `mutable` (the pointers hold const defs). Frame pointer and size optimisation from the TU's pragmas (the two forced inlines keep the size TU from calling them out of line).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -38,7 +39,7 @@ public:
         if (--m_count == 0)
             Destroy();
     }
-    void ReleaseTemporary() const          // CDefPointer<const CDefClassBase>: the manager's temporary
+    void ReleaseTemporary() const          // CDefPointer<CDefClassBase>: the manager's temporary
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -51,9 +52,9 @@ class CEntitySoundDef : public CDefBase { };
 
 template <class T> class CDefPointer;
 
-template <> class CDefPointer<const CDefClassBase> {   // the manager's return type
+template <> class CDefPointer<CDefClassBase> {         // the manager's (protected overload's) return type
 public:
-    const CDefBase* m_p;
+    CDefBase* m_p;
     CDefPointer() { }
     __forceinline ~CDefPointer()                       // forced: the size TU would call it out of line
     {
@@ -68,7 +69,7 @@ template <class T> class CDefPointer {
 public:
     T* m_p;
     CDefPointer() { }
-    CDefPointer(const CDefPointer<const CDefClassBase>& other) : m_p((T*)other.m_p) { if (m_p) ++m_p->m_count; }
+    CDefPointer(const CDefPointer<CDefClassBase>& other) : m_p((T*)other.m_p) { if (m_p) ++m_p->m_count; }
     ~CDefPointer()
     {
         if (m_p)
@@ -90,8 +91,9 @@ public:
 };
 
 class CDefinitionManager {
-public:
-    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009ADA10 (hidden result pointer)
+    friend class CDefClassBase;
+protected:
+    CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (protected non-const overload; hidden result pointer)
 };
 
 class CDefClassBase {
@@ -112,7 +114,7 @@ public:
     virtual void v34();
     virtual const long* GetSubDefIndex(const CCharString& name) const;   // slot 14 (+0x38)
     unsigned char _pad[0x1c - 4];
-    CDefinitionManager* m_pManager;        // +0x1C
+    CDefinitionManager* PDefManager;       // +0x1C (Ego_r CDefClassBase::PDefManager)
     template <class T> bool GetSubDef(CDefPointer<const T>* out) const;
 };
 
@@ -125,7 +127,7 @@ bool CDefClassBase::GetSubDef<CEntitySoundDef>(CDefPointer<const CEntitySoundDef
         pIndex = GetSubDefIndex(name);
     }
     if (pIndex) {
-        CDefPointer<const CEntitySoundDef> result(m_pManager->GetPDefFromGlobalIndex(*pIndex));
+        CDefPointer<const CEntitySoundDef> result(PDefManager->GetPDefFromGlobalIndex(*pIndex));
         *out = result;
         return true;
     }

@@ -115,13 +115,16 @@ public:
     _Rb_tree_node_base*& _M_root() const { return _M_header->_M_parent; }
     _Rb_tree_node_base*& _M_leftmost() const { return _M_header->_M_left; }
     _Rb_tree_node_base*& _M_rightmost() const { return _M_header->_M_right; }
+protected:
     _Link_type _M_create_node(const V& x)
     {
         _Link_type tmp = (_Link_type)malloc(sizeof(_Rb_tree_node<V>));
         _Copy_Construct(&tmp->_M_value_field, x);
         return tmp;
     }
+private:
     iterator _M_insert(_Rb_tree_node_base* x_, _Rb_tree_node_base* y_, const V& v, _Rb_tree_node_base* w_ = 0);
+public:
     iterator begin() { return iterator(_M_header->_M_left); }
     iterator end() { return iterator(_M_header); }
     void erase(iterator position)

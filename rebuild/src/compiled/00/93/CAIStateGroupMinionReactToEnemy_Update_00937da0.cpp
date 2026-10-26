@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00937DA0, length 450 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy), IsToAttackTarget(CThingAICreature*, CThingCreatureBase*)
 // @ 0x00864D00 (__fastcall), CThing::GetPosition @ 0x004C73D0 (the XY distance helper), CThingCreatureBase::GetPosition
-// @ 0x006A4D00, C3DVector::Normalise @ 0x00A14440, AIAction_MoveToPosProximity @ 0x0097E890, CBaseIntelligentPointer ctor
+// @ 0x006A4D00, C3DVector::AccurateNormalise @ 0x00A14440, AIAction_MoveToPosProximity @ 0x0097E890, CBaseIntelligentPointer ctor
 // @ 0x00A01B10 / SetPItem @ 0x00A01B90 (CIntelligentPointer<const CThing> vtable 0x01237F1C, by value),
 // AIAction_LookAtThing @ 0x0097D6F0, Terminate @ 0x008FCF40.
 // Data: 25.0f @ 0x0123003C, 2.4f @ 0x0129234C.
@@ -11,7 +11,7 @@
 // constructor, so `creature position + away` is built straight into the argument slot; the back-off is `away *= 2.4f`
 // in place after the out-of-line Normalise; the look target converts through a template copy constructor.
 // Layout: Ego_r.pdb CAIStateGroup_MinionReactToEnemy (PEnemy +0x14, CIntelligentPointer<CThingCreatureBase>).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -21,7 +21,7 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     float GetLengthSquaredXY() const { return X * X + Y * Y; }
-    void Normalise();                           // 0x00A14440
+    C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct CThing {
     unsigned char _pad0[0x91];
@@ -86,7 +86,7 @@ void CAIStateGroup_MinionReactToEnemy::Update()
         float distanceSquared = GetDistanceSquaredXY(GetCreature(), PEnemy.GetPItem());
         if (distanceSquared < 25.0f) {
             C3DVector away = GetCreature()->GetPosition() - PEnemy.GetPItem()->GetPosition();
-            away.Normalise();
+            away.AccurateNormalise();
             away *= 2.4f;
             bool arrived;
             if (AIAction_MoveToPosProximity(1, GetCreature()->GetPosition() + away, 0.5f, arrived, 3, true, false, true, 0,

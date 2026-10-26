@@ -7,7 +7,7 @@
 //
 // Shape: the body assigns RollMode, then the two facings (implicit copies through `lea` + eax: an init list
 // would put the byte store after them); both Z components are cleared in the body (OriginalFacing first); each facing is
-// `if (v.GetLengthSquared() > eps * eps) v.Normalise(); else v = owner->PhysicsBody->GetFacing();`.
+// `if (v.GetLengthSquared() > eps * eps) v.AccurateNormalise(); else v = owner->PhysicsBody->GetFacing();`.
 // Layout: local model. engine/CCombatAction_ControlledStrafeJump.h is the Ego_r PDB view (RequiredFacing +0x12c,
 // OriginalFacing +0x138, AddedRollMode +0x144 over a 0x12c-byte CCombatActionBase); retail's CCombatActionBase is
 // 0x114 bytes (the landed CCombatAction ctors, e.g. 0x008C94D0), so the members sit 0x18 lower: RequiredFacing
@@ -15,9 +15,9 @@
 struct CThing;
 extern float g_Epsilon;                     // 0x0129BA3C (1e-4f)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
-    void Normalise();                       // 0x00A14440
+    C3DVector& AccurateNormalise();                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 struct CSoundPair {                         // the zeroed two-dword sound argument of CCombatActionBase
@@ -59,11 +59,11 @@ CCombatAction_ControlledStrafeJump::CCombatAction_ControlledStrafeJump(CThingCre
     OriginalFacing.Z = 0.0f;
     RequiredFacing.Z = 0.0f;
     if (RequiredFacing.GetLengthSquared() > g_Epsilon * g_Epsilon)
-        RequiredFacing.Normalise();
+        RequiredFacing.AccurateNormalise();
     else
         RequiredFacing = owner->PhysicsBody->GetFacing();
     if (OriginalFacing.GetLengthSquared() > g_Epsilon * g_Epsilon)
-        OriginalFacing.Normalise();
+        OriginalFacing.AccurateNormalise();
     else
         OriginalFacing = owner->PhysicsBody->GetFacing();
 }

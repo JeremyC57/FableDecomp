@@ -1,6 +1,6 @@
 // boost::checked_delete<CGameTimeManager>(CGameTimeManager* x) -- the scoped_ptr<CGameTimeManager> deleter: destroy the game-time manager (its set<long> StopTimeIndexes cleared and its header node freed) and free it
 // Flags: /Gr
-// Leaf: checked_delete
+// Leaf: ??$checked_delete@VCGameTimeManager@@@boost@@YIXPAVCGameTimeManager@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004ADD30, 84 bytes (96 with padding), plain `ret` (__fastcall x in ecx).
 // Identity: FableWin.pdb `??$checked_delete@VCGameTimeManager@@@boost@@YIXPAVCGameTimeManager@@@Z`; callers are
 //   scoped_ptr<CGameTimeManager>::~scoped_ptr 0x004ADEA0 (`mov ecx,[ecx] ; jmp`) and ::reset 0x004ADEB0, and CWorld
@@ -46,14 +46,17 @@ template <class _Tp> struct _Rb_tree_base {
 };
 
 template <class _Key, class _Value, class _Compare>
-struct _Rb_tree : public _Rb_tree_base<_Value> {
+class _Rb_tree : public _Rb_tree_base<_Value> {
+public:
     typedef _Rb_tree_node<_Value>* _Link_type;
     unsigned int _M_node_count;                       // +0x04
     _Compare     _M_key_compare;                      // +0x08
     _Rb_tree_node_base*& _M_root() const { return this->_M_header._M_data->_M_parent; }
     _Rb_tree_node_base*& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
     _Rb_tree_node_base*& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+private:
     void _M_erase(_Link_type __x);                    // out-of-line COMDAT (address per instantiation)
+public:
     void clear()
     {
         if (_M_node_count != 0) {

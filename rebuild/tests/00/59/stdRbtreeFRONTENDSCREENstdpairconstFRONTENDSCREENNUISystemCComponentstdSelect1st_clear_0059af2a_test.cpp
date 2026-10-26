@@ -22,7 +22,9 @@ public:
     typedef _Rb_tree_node<_Value>* _Link_type;
     _Rb_tree_node_base*    _M_header;
     unsigned int           _M_node_count;
+private:
     void _M_erase(_Link_type __x);
+public:
     void clear();
 };
 typedef pair<const FRONTEND_SCREEN, NUISystem::CComponent*> TScreenValue;

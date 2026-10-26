@@ -64,8 +64,11 @@ public:
     _Link_type& _M_rightmost() const { return (_Link_type&)this->_M_header._M_data->_M_right; }
     static _Link_type _S_minimum(_Link_type __x) { return (_Link_type)_Rb_tree_node_base::_S_minimum(__x); }
     static _Link_type _S_maximum(_Link_type __x) { return (_Link_type)_Rb_tree_node_base::_S_maximum(__x); }
+private:
     _Link_type _M_copy(_Link_type __x, _Link_type __p);   // 0x00A547C0
+private:
     void _M_erase(_Link_type __x);                   // 0x00A54240
+public:
     void clear()
     {
         if (_M_node_count != 0) {

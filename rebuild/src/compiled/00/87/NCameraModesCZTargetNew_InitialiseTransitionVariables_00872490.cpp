@@ -2,7 +2,7 @@
 // Leaf: InitialiseTransitionVariables
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00872490, 405 bytes (+ int3 padding), plain `ret`.
 // Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, CThing::GetPosition 0x004C73D0 (const C3DVector&),
-//   C3DVector::Normalise 0x00A14440, _CIacos 0x00BFEBA2 (acos intrinsic); constants 1e-4f @ 0x0129BA3C (squared at run
+//   C3DVector::AccurateNormalise @ 0x00A14440, _CIacos 0x00BFEBA2 (acos intrinsic); constants 1e-4f @ 0x0129BA3C (squared at run
 //   time), 0.0f @ 0x0122DEDC, -1.0f @ 0x0122DEE0, 1.0f @ 0x0122DED8, 1/(2*pi) @ 0x01237F08.
 // Layout (retail NCameraModes::CBase is 0xA4 bytes, PDB 0xC8; as the landed OnInit 0x00872A20 / Update 0x00873030):
 //   PCameraModeDef +0x44, GoTo.Position +0x54; CZTargetNew BaseOffsetXY +0xAC, BaseHeightOffset +0xB0, Theta +0xB4,
@@ -19,13 +19,13 @@ extern "C" double __cdecl acos(double);
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(acos, sqrt)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    void Normalise();                                   // 0x00A14440
+    C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
 
@@ -97,7 +97,7 @@ void NCameraModes::CZTargetNew::InitialiseTransitionVariables()
     CageRadius = PCameraModeDef->CageRadius;
     offset.Z = 0.0f;
     if (lengthSquaredXY > g_epsilon_0129ba3c * g_epsilon_0129ba3c)
-        offset.Normalise();
+        offset.AccurateNormalise();
     float sign = 1.0f;
     if (!(offset.X * XAxis.Y - offset.Y * XAxis.X > 0.0f))
         sign = -1.0f;

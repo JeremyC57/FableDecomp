@@ -4,7 +4,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, three times), CVectorMap::LowerBound
 //          @ 0x0040F020 (inlined GetInterface for type 0x31), CTCCreatureModeManager::RemoveMode @ 0x0073ABA0, the physics
 //          body's (+0x60) virtual slots 70 (+0x118, GetFacing: C3DVector by hidden pointer) and 75 (+0x12c, the up/forward
-//          orientation by reference), C3DVector::Normalise @ 0x00A14440, CCombatActionBase::FinishAction @ 0x00859A20.
+//          orientation by reference), C3DVector::AccurateNormalise @ 0x00A14440, CCombatActionBase::FinishAction @ 0x00859A20.
 //          Data: the minimum facing length 0x0129BA3C (1e-4f).
 // Model: engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h is the flattened PDB layout (CCombatActionBase
 //          0x12c there, 0x114 in retail) and names nothing used here, so `this` is the local CCombatActionBase model of the
@@ -22,11 +22,11 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* end;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    void Normalise();                       // 0x00A14440
+    C3DVector& AccurateNormalise();                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct CUpForward {                         // the up/forward pair handed to the physics body
     C3DVector Up;
@@ -91,7 +91,7 @@ void CCombatAction_GenericStrikeResponseKnockdownRecoverBase::FinishAction()
     C3DVector forward = PCreature.GetPItem()->GetBody()->GetFacing();
     forward.Z = 0.0f;
     if (forward.X * forward.X + forward.Y * forward.Y > g_fMinFacingLength * g_fMinFacingLength)
-        forward.Normalise();
+        forward.AccurateNormalise();
     else
         forward = C3DVector(1.0f, 0.0f, 0.0f);
     PCreature.GetPItem()->GetBody()->SetOrientation(CUpForward(forward));

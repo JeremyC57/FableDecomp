@@ -51,7 +51,9 @@ public:
     static _Link_type& _S_left(_Rb_tree_node_base* x) { return (_Link_type&)(x->_M_left); }
     static _Link_type& _S_right(_Rb_tree_node_base* x) { return (_Link_type&)(x->_M_right); }
     static _Link_type& _S_parent(_Rb_tree_node_base* x) { return (_Link_type&)(x->_M_parent); }
+protected:
     _Link_type _M_clone_node(_Link_type x);              // 0x0042BE11
+private:
     _Link_type _M_copy(_Link_type x, _Link_type p);
 };
 template <class K, class V, class KoV, class C, class A>

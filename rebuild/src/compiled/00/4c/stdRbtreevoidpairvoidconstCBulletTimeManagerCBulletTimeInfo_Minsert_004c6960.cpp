@@ -1,5 +1,5 @@
 // std::_Rb_tree<void*, pair<void* const, CBulletTimeManager::CBulletTimeInfo>, ...>::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport: link a new bullet-time entry node left or right of y, fix the header links, rebalance, count it
-// Leaf: _M_insert
+// Leaf: ?_M_insert@?$_Rb_tree@PAXU?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@U?$_Select1st@U?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@@2@U?$less@PAX@2@U?$allocator@U?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C6960, length 208 bytes (203 + int3 padding), `ret 14h` (hidden iterator result, x, y, v, w).
 // Identity: CBulletTimeManager::BulletTimeInfoMap (map<void*, CBulletTimeInfo>, 0x1c-byte nodes): called by insert_unique(v)
 // 0x004C6A30 and insert_unique(hint, v) 0x004C6BC0, under the landed map operator[] 0x004C6E00 that
@@ -59,17 +59,20 @@ public:
     unsigned int _M_node_count;                                         // +0x04
     C            _M_key_compare;                                        // +0x08
 
+protected:
     _Link_type _M_create_node(const V& x)
     {
         _Link_type tmp = static_cast<_Link_type>(malloc(sizeof(_Rb_tree_node<V>)));
         new (&tmp->_M_value_field) V(x);
         return tmp;
     }
+public:
     _Rb_tree_node_base*& _M_root() const { return _M_header._M_data->_M_parent; }
     _Rb_tree_node_base*& _M_leftmost() const { return _M_header._M_data->_M_left; }
     _Rb_tree_node_base*& _M_rightmost() const { return _M_header._M_data->_M_right; }
     static const K& _S_key(_Rb_tree_node_base* x) { return static_cast<_Link_type>(x)->_M_value_field.first; }
 
+private:
     iterator _M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const V& v, _Rb_tree_node_base* w);
 };
 

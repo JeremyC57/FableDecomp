@@ -18,11 +18,11 @@
 // cut is an inline manager member (CCamera's implicit assignment, `rep movsd` x 0xE, then SingleCut), which lets
 // `this` live in esi.
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    void Normalise();                       // 0x00A14440
+    C3DVector& AccurateNormalise();                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct C2DVector {
     float X, Y;
@@ -90,7 +90,7 @@ void NCameraModes::CFirstPerson::OnInit()
     Base = GetObservedThing()->GetPosition();
     PrincipleAxis = GetObservedThing()->GetPhysics()->GetFacingVector();
     PrincipleAxis.Z = 0.0f;
-    PrincipleAxis.Normalise();
+    PrincipleAxis.AccurateNormalise();
     Theta = 0.0f;
     Phi = 0.0f;
     CylinderRadius = 0.015f;

@@ -10,15 +10,18 @@
 // Shape: the period test is a __forceinline helper that names the creature's 64-bit offset before the frame call (retail
 //   loads it into callee-saved registers first); the group-name copy sits in its own {} block so it shares the dead
 //   `distance` argument slot with the top-level output flag (retail frame is one word).
+// Fix (sweep 3): the callee 0x0088C840 is the landed CBrainOutput::operator= (no CBrainOutput::Merge exists in Ego_r /
+//   FableWin); the three `output.Merge(Output)` calls are the assignment `output = Output`. Same bytes.
 struct CCharStringData;
 struct CCharString {
     CCharStringData* PStringData;
     CCharString(const CCharString& o);                  // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CBrainOutput {
+class CBrainOutput {
+public:
     unsigned char _body[0x48];
-    void Merge(const CBrainOutput& other);              // 0x0088C840
+    CBrainOutput& operator=(const CBrainOutput& other); // 0x0088C840 (the landed CBrainOutput::operator=)
 };
 struct CMainGameComponent {
     unsigned long GetWorldFrame() const;                // 0x004167C8
@@ -128,7 +131,7 @@ bool CAIBrain::Update(long distance, CBrainOutput& output)
                 PActiveStateGroup->Stop();
                 if (OutputValid) {
                     outputCopied = OutputValid;
-                    output.Merge(Output);
+                    output = Output;
                 }
                 OutputValid = false;
             }
@@ -148,7 +151,7 @@ bool CAIBrain::Update(long distance, CBrainOutput& output)
     SuspendableProcess();
     StateGroupUpdated = true;
     if (OutputValid) {
-        output.Merge(Output);
+        output = Output;
         return true;
     }
     if (!UpdatingStateGroup && PActiveStateGroup->Terminated) {
@@ -156,7 +159,7 @@ bool CAIBrain::Update(long distance, CBrainOutput& output)
         PActiveStateGroup->Stop();
         if (OutputValid) {
             copied = OutputValid;
-            output.Merge(Output);
+            output = Output;
         }
         OutputValid = false;
         PLastStateGroup = PActiveStateGroup;

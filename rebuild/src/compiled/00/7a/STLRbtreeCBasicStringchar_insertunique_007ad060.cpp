@@ -1,6 +1,6 @@
 // 007ad060 std::_Rb_tree<CBasicString<char>*>::insert_unique
 // Flags: /Gr
-// Leaf: insert_unique
+// Leaf: ?insert_unique@_Rb_tree@FableTree_007ad060@@QAE?AU?$pair@U_Rb_tree_iterator@FableTree_007ad060@@_N@2@ABQAU?$CBasicString@D@2@@Z
 // Layout: tree Header+0; node parent+4/left+8/right+12/value+16; iterator one pointer, pair<iterator,bool>8 bytes.
 namespace FableTree_007ad060 {
 template<class C> struct CBasicString {C* Data;bool operator<(const CBasicString&)const;};
@@ -13,10 +13,13 @@ struct _Rb_tree_iterator {
  void _M_decrement();
 };
 template<class A,class B> struct pair {A first;B second;__forceinline pair(const A&a,const B&b):first(a),second(b){}};
-struct _Rb_tree {
+class _Rb_tree {
+public:
  _Rb_tree_node* Header;
  CComparePointer<CBasicString<char> > Compare;
+private:
  _Rb_tree_iterator _M_insert(_Rb_tree_node*,_Rb_tree_node*,CBasicString<char>*const&,bool);
+public:
  pair<_Rb_tree_iterator,bool> insert_unique(CBasicString<char>*const&);
 };
 pair<_Rb_tree_iterator,bool> _Rb_tree::insert_unique(CBasicString<char>*const& value){

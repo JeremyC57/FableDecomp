@@ -56,7 +56,9 @@ public:
     _Rb_tree_node_base*& _M_rightmost() const { return _M_header->_M_right; }
     static _Link_type _S_minimum(_Link_type x) { return (_Link_type)_Rb_tree_node_base::_S_minimum(x); }
     static _Link_type _S_maximum(_Link_type x) { return (_Link_type)_Rb_tree_node_base::_S_maximum(x); }
+private:
     _Link_type _M_copy(_Link_type x, _Link_type p);      // 0x0042CB90
+public:
     void clear();                                        // 0x0042ABE1
     _Rb_tree& operator=(const _Rb_tree& x);
 };

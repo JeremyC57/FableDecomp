@@ -1,13 +1,18 @@
-// std::__partial_sort(CThing** first, CThing** middle, CThing** last, CThing**, CThingCompare_Nearest comp) -- STLport partial sort for the nearest-first sort: heapify [first, middle), sift every nearer element of [middle, last) in, then sort_heap
+// std::__partial_sort(const CThingObject** first, const CThingObject** middle, const CThingObject** last, const CThingObject**, CThingCompare_Nearest comp) -- STLport partial sort for the nearest-first sort: heapify [first, middle), sift every nearer element of [middle, last) in, then sort_heap
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- port of the landed byte-identical twin 0x0095DE60 (relocations aside); see Twin below
-// Leaf: ??$__partial_sort@PAPAVCThing@@PAV1@VCThingCompare_Nearest@@@std@@YIXPAPAVCThing@@000VCThingCompare_Nearest@@@Z
+// Leaf: ??$__partial_sort@PAPBVCThingObject@@
+// Element (sweep3, FINDINGS "Family pass 2" G015): the sorted range is const CThingObject* -- the caller
+//   CAIStateGroup_TestTestTest::Update 0x0091F140 fills it with GetAllThingsInRoughArea 0x00920200 (type mask 0x807 =
+//   CThingObject) before sort 0x009206A0, and FableWin.pdb has sort<vector<const CThingObject*>, CThingCompare_Nearest> /
+//   sort_heap<const CThingObject**, CThingCompare_Nearest>; the comparator 0x0091F740 is therefore
+//   operator()<const CThingObject> (??$?R$$CBVCThingObject@@@CThingCompare_Nearest@@...), not operator()<CThing> (0x004A8D80).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009204F0, 172 bytes, __fastcall (first in ecx, middle in edx; last, the value-type
 //   tag and the 12-byte comparator on the stack), `ret 14h`.
-// Identity: STLport 4.6 __partial_sort<CThing**, CThing*, CThingCompare_Nearest>; callers: __introsort_loop 0x009205D0
+// Identity: STLport 4.6 __partial_sort<const CThingObject**, const CThingObject*, CThingCompare_Nearest>; callers: __introsort_loop 0x009205D0
 //   (depth-limit fallback, 0x009205C1) and partial_sort 0x00920692. The catalog label "Sort_IntroSort" is an autoname.
-// Callees: __make_heap<CThing**, CThingCompare_Nearest, CThing*, int> 0x0091FDB0 (two null type tags), CThingCompare_Nearest::
+// Callees: __make_heap<const CThingObject**, CThingCompare_Nearest, const CThingObject*, int> 0x0091FDB0 (two null type tags), CThingCompare_Nearest::
 //   operator() 0x0091F740, __adjust_heap 0x0091FB30, sort_heap 0x00920160.
-// Family: the STLport sort<CThing**, CThingCompare_Nearest> instantiation of this TU (CAIStateGroup_TestTestTest::Update
+// Family: the STLport sort<const CThingObject**, CThingCompare_Nearest> instantiation of this TU (CAIStateGroup_TestTestTest::Update
 //   0x0091F140 sorts its things by distance to the creature, call at 0x0091F2EF); /Gr algorithm TU: every free template is
 //   __fastcall (first in ecx, second in edx when it is a pointer/int, the rest -- the 12-byte comparator last -- on the
 //   stack). Same family as the landed CThingCompare_NearestToPos sort (0x007A4260 / 0x007A3B60). The comparator's
@@ -35,6 +40,7 @@ class CThing {
 public:
     const C3DVector& GetPosition() const;                 // 0x004C73D0
 };
+class CThingObject : public CThing { };              // mask 0x807
 
 // Ego_r.pdb CThingCompare_Nearest: 12 bytes, Pos (C3DVector) +0x00. Its operator() returns the NEARER of the two
 // things (T*, not bool); this TU hands the functor to the STL directly (no CAdaptThingCompareToSTLComparitor),
@@ -45,7 +51,7 @@ public:
     template <class T> __declspec(noinline) T* operator()(T* a, T* b) const;   // 0x0091F740
 };
 
-// Same-TU stand-in for the template operator() (retail 0x004A8D80, folded with the other T = CThing copies; outside
+// Same-TU stand-in for the template operator() (retail 0x0091F740, operator()<const CThingObject>; outside
 // these bytes): with the body in the TU VC7.1 knows the call keeps the comparator intact and pipelines its copies.
 #pragma auto_inline(off)
 template <class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
@@ -74,7 +80,7 @@ void __fastcall sort_heap(_RandomAccessIterator __first, _RandomAccessIterator _
 template <class _RandomAccessIterator, class _Compare>
 inline void make_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Compare __comp)
 {
-    __make_heap(__first, __last, __comp, (CThing**)0, (int*)0);
+    __make_heap(__first, __last, __comp, (const CThingObject**)0, (int*)0);
 }
 template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
 inline void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __result,
@@ -93,5 +99,5 @@ void __fastcall __partial_sort(_RandomAccessIter __first, _RandomAccessIter __mi
             __pop_heap(__first, __middle, __i, _Tp(*__i), __comp, (int*)0);
     sort_heap(__first, __middle, __comp);
 }
-template void __fastcall __partial_sort<CThing**, CThing*, TComp>(CThing**, CThing**, CThing**, CThing**, TComp);
+template void __fastcall __partial_sort<const CThingObject**, const CThingObject*, TComp>(const CThingObject**, const CThingObject**, const CThingObject**, const CThingObject**, TComp);
 } // namespace std

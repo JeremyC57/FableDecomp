@@ -171,7 +171,9 @@ public:
     _Base_ptr& _M_root() const { return this->_M_header._M_data->_M_parent; }
     _Base_ptr& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
     _Base_ptr& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+private:
     void _M_erase(_Link_type __x);
+public:
     iterator begin() { return iterator((_Link_type)_M_leftmost()); }
     iterator end() { return iterator(this->_M_header._M_data); }
     const_iterator begin() const { return const_iterator((_Link_type)_M_leftmost()); }

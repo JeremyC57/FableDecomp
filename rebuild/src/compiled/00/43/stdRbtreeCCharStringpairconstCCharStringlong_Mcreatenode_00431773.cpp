@@ -50,6 +50,7 @@ public:
     _Base_ptr _M_header;                                 // +0x00
     size_t    _M_node_count;                             // +0x04
     C         _M_key_compare;
+protected:
     _Link_type _M_create_node(const V& x)
     {
         _Link_type tmp = (_Link_type)malloc(sizeof(_Rb_tree_node<V>));

@@ -1,14 +1,19 @@
-// std::__adjust_heap(CThing** first, int holeIndex, int len, CThing* value, CThingCompare_Nearest comp) -- STLport heap sift-down for the nearest-first sort: move the hole to a leaf through the preferred children, then push the value back up
+// std::__adjust_heap(const CThingObject** first, int holeIndex, int len, const CThingObject* value, CThingCompare_Nearest comp) -- STLport heap sift-down for the nearest-first sort: move the hole to a leaf through the preferred children, then push the value back up
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- port of the landed byte-identical twin 0x0095CFE0 (relocations aside); see Twin below
-// Leaf: ??$__adjust_heap@PAPAVCThing@@HPAV1@VCThingCompare_Nearest@@@std@@YIXPAPAVCThing@@HHPAV1@VCThingCompare_Nearest@@@Z
+// Leaf: ??$__adjust_heap@PAPBVCThingObject@@
+// Element (sweep3, FINDINGS "Family pass 2" G015): the sorted range is const CThingObject* -- the caller
+//   CAIStateGroup_TestTestTest::Update 0x0091F140 fills it with GetAllThingsInRoughArea 0x00920200 (type mask 0x807 =
+//   CThingObject) before sort 0x009206A0, and FableWin.pdb has sort<vector<const CThingObject*>, CThingCompare_Nearest> /
+//   sort_heap<const CThingObject**, CThingCompare_Nearest>; the comparator 0x0091F740 is therefore
+//   operator()<const CThingObject> (??$?R$$CBVCThingObject@@@CThingCompare_Nearest@@...), not operator()<CThing> (0x004A8D80).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091FB30, 135 bytes, __fastcall (first in ecx, holeIndex in edx; len, value and the
 //   12-byte comparator on the stack), `ret 14h`.
-// Identity: STLport 4.6 __adjust_heap<CThing**, int, CThing*, CThingCompare_Nearest>; callers: __make_heap 0x0091FDB0
+// Identity: STLport 4.6 __adjust_heap<const CThingObject**, int, const CThingObject*, CThingCompare_Nearest>; callers: __make_heap 0x0091FDB0
 //   (0x0091FD7F), the 0x0091FDF2/0x0091FE3F/0x0091FF9F heap users, sort_heap 0x00920160, __partial_sort 0x009204F0. The
 //   catalog label is the Dinkumware spelling `_Adjust_heap<...>` of the same instantiation.
-// Callees: CThingCompare_Nearest::operator() 0x0091F740, __push_heap<CThing**, int, CThing*, CThingCompare_Nearest>
+// Callees: CThingCompare_Nearest::operator() 0x0091F740, __push_heap<const CThingObject**, int, const CThingObject*, CThingCompare_Nearest>
 //   0x0091F870 (its catalog label "_Push_heap<float*,...>" is propagated).
-// Family: the STLport sort<CThing**, CThingCompare_Nearest> instantiation of this TU (CAIStateGroup_TestTestTest::Update
+// Family: the STLport sort<const CThingObject**, CThingCompare_Nearest> instantiation of this TU (CAIStateGroup_TestTestTest::Update
 //   0x0091F140 sorts its things by distance to the creature, call at 0x0091F2EF); /Gr algorithm TU: every free template is
 //   __fastcall (first in ecx, second in edx when it is a pointer/int, the rest -- the 12-byte comparator last -- on the
 //   stack). Same family as the landed CThingCompare_NearestToPos sort (0x007A4260 / 0x007A3B60). The comparator's
@@ -36,6 +41,7 @@ class CThing {
 public:
     const C3DVector& GetPosition() const;                 // 0x004C73D0
 };
+class CThingObject : public CThing { };              // mask 0x807
 
 // Ego_r.pdb CThingCompare_Nearest: 12 bytes, Pos (C3DVector) +0x00. Its operator() returns the NEARER of the two
 // things (T*, not bool); this TU hands the functor to the STL directly (no CAdaptThingCompareToSTLComparitor),
@@ -46,7 +52,7 @@ public:
     template <class T> __declspec(noinline) T* operator()(T* a, T* b) const;   // 0x0091F740
 };
 
-// Same-TU stand-in for the template operator() (retail 0x004A8D80, folded with the other T = CThing copies; outside
+// Same-TU stand-in for the template operator() (retail 0x0091F740, operator()<const CThingObject>; outside
 // these bytes): with the body in the TU VC7.1 knows the call keeps the comparator intact and pipelines its copies.
 #pragma auto_inline(off)
 template <class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
@@ -86,5 +92,5 @@ void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeInd
     }
     __push_heap(__first, __holeIndex, __topIndex, __val, __comp);
 }
-template void __fastcall __adjust_heap<CThing**, int, CThing*, TComp>(CThing**, int, int, CThing*, TComp);
+template void __fastcall __adjust_heap<const CThingObject**, int, const CThingObject*, TComp>(const CThingObject**, int, int, const CThingObject*, TComp);
 } // namespace std

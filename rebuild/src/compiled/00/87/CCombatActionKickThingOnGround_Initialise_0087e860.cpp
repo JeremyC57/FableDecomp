@@ -7,7 +7,7 @@
 //   0x004C9D60 ("CTCSolidToThing"), CTCSolidToThing::AddThingNotSolidTo 0x00770FA0, the interface-map LowerBound
 //   0x004365B0 (interface 0x7F), its component's hit-location getter 0x00814BF0 (`mov eax,[ecx+18h]`),
 //   CHitLocation::GetClosestPointToPos2D 0x00815370 (hidden C3DVector result, position and direction by reference),
-//   C3DVector::Normalise 0x00A14440 (fsqrt form). Data: epsilon 1e-4f 0x0129BA3C (read as a variable, squared at run time).
+//   C3DVector::AccurateNormalise @ 0x00A14440 (fsqrt form). Data: epsilon 1e-4f 0x0129BA3C (read as a variable, squared at run time).
 // Layout: retail CCombatActionBase is 0x114 bytes (PTarget +0xa8); Ego_r.pdb KickThingOnGround MoveToPos / Movement /
 //   MaxRunningSpeed at PDB +0x12c/+0x138/+0x144 sit 0x18 lower in retail (+0x114/+0x120/+0x12c, cf. the landed ctor
 //   0x0087FD20). CThing: ThingType byte +0x10, interface bits +0x20, map +0x44, physics +0x60, dead flag +0x91 bit 0.
@@ -18,7 +18,7 @@
 //   C3DVector(direction.Y, -direction.X, 0.0f) * side` (the perpendicular term first, then the forward sum).
 extern float g_epsilon_0129ba3c;                        // 0x0129BA3C (1e-4f)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -26,7 +26,7 @@ struct C3DVector {
     C3DVector operator-() const { return C3DVector(-X, -Y, -Z); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    void Normalise();                                   // 0x00A14440
+    C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 
 struct CCharString {
@@ -168,7 +168,7 @@ void CCombatAction_KickThingOnGround::Initialise()
     MoveToPos = position;
     direction.Z = 0.0f;
     if (direction.X * direction.X + direction.Y * direction.Y > g_epsilon_0129ba3c * g_epsilon_0129ba3c) {
-        direction.Normalise();
+        direction.AccurateNormalise();
         MoveToPos = direction * forward + position + C3DVector(direction.Y, -direction.X, 0.0f) * side;
     }
     CCombatActionBase::Initialise();

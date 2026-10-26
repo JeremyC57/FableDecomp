@@ -73,12 +73,14 @@ public:
     static _Link_type& _S_left(_Rb_tree_node_base* x) { return (_Link_type&)(x->_M_left); }
     static _Link_type& _S_right(_Rb_tree_node_base* x) { return (_Link_type&)(x->_M_right); }
 
+protected:
     _Link_type _M_create_node(const Value& x)
     {
         _Link_type tmp = _M_header.allocate(1);
         _Construct(&tmp->_M_value_field, x);
         return tmp;
     }
+protected:
     _Link_type _M_clone_node(_Link_type x)
     {
         _Link_type tmp = _M_create_node(x->_M_value_field);
@@ -87,6 +89,7 @@ public:
         tmp->_M_right = 0;
         return tmp;
     }
+private:
     _Link_type _M_copy(_Link_type x, _Link_type p);
 };
 

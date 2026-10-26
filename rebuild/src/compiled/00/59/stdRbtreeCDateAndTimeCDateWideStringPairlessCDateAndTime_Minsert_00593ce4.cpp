@@ -1,5 +1,5 @@
 // std::_Rb_tree<CDateAndTime, CDateWideStringPair, less<CDateAndTime>>::_M_insert(x, y, const value_type& v, w) -- link a new (date, wide string) node under y, fix the header links, rebalance and count it
-// Leaf: _M_insert
+// Leaf: ?_M_insert@?$_Rb_tree@VCDateAndTime@@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@U?$less@VCDateAndTime@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCDateAndTime@@VCWideString@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00593CE4, 146 bytes, `ret 14h` (thiscall; the iterator result through the hidden
 // pointer at [ebp+8], then x, y, v, w).
 // Tree: map<CDateAndTime, CWideString> (Ego_r.pdb / FableWin.pdb `??A?$map@VCDateAndTime@@VCWideString@@...`), 0x30-byte
@@ -61,7 +61,9 @@ public:
     size_t    _M_node_count;                         // +0x04
     _Compare  _M_key_compare;                        // +0x08
 
+protected:
     _Link_type _M_create_node(const _Value& __x);    // 0x005938B1
+public:
     _Base_ptr& _M_root() const { return _M_header->_M_parent; }
     _Base_ptr& _M_leftmost() const { return _M_header->_M_left; }
     _Base_ptr& _M_rightmost() const { return _M_header->_M_right; }
@@ -70,6 +72,7 @@ public:
     static _Base_ptr& _S_parent(_Base_ptr __x) { return __x->_M_parent; }
     static const _Key& _S_key(_Base_ptr __x) { return ((_Link_type)__x)->_M_value_field.first; }
 
+private:
     iterator _M_insert(_Base_ptr __x_, _Base_ptr __y_, const _Value& __v, _Base_ptr __w_);
 };
 

@@ -1,7 +1,7 @@
 // CTCCreatureItemLevitationNymph::SetTarget(CThing* target, float xyMagnitude, float heightOffset) -- remember the hover target and offsets and point the hover direction from the target towards the nymph (XY plane, normalised)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F83F0, length 157 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 (temporary, then PTarget) / GetPItem @ 0x00A01B50 /
-// dtor @ 0x00A01C10, CThing::GetPosition @ 0x004C73D0 (target, then the parent), C3DVector::Normalise @ 0x00A14440.
+// dtor @ 0x00A01C10, CThing::GetPosition @ 0x004C73D0 (target, then the parent), C3DVector::AccurateNormalise @ 0x00A14440.
 // Shape: `PTarget = CIntelligentPointer<const CThing>(target)` -- an inline converting ctor (base ctor, vtable store, SetPItem)
 // and an inline operator= (`SetPItem(other.GetPItem())`); the direction is a C3DVector(dx, dy, 0) temporary (arguments
 // evaluated right to left: the y difference first), normalised (void), then copied into the C2DVector member by an inline
@@ -10,10 +10,10 @@
 // Layout: Ego_r.pdb CTCCreatureItemLevitationNymph (retail 8 bytes lower: the base list is one pointer, PDB 12):
 // NymphHoverXYDirectionFromTarget +0x18 (C2DVector), NymphHoverHeightOffset +0x20, NymphHoverXYMagnitude +0x24,
 // PTarget +0x28 (CIntelligentPointer<const CThing>, vtable 0x01237F1C). Local polymorphic model.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    void Normalise();                           // 0x00A14440 (the manifest's "GetScaled" is propagated)
+    C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct C2DVector {
     float X, Y;
@@ -71,6 +71,6 @@ void CTCCreatureItemLevitationNymph::SetTarget(CThing* target, float xyMagnitude
     const C3DVector& targetPosition = target->GetPosition();
     const C3DVector& position = parent->GetPosition();
     C3DVector direction(position.X - targetPosition.X, position.Y - targetPosition.Y, 0.0f);
-    direction.Normalise();
+    direction.AccurateNormalise();
     NymphHoverXYDirectionFromTarget.Set(direction.X, direction.Y);
 }

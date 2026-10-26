@@ -96,12 +96,14 @@ public:
     static _Base_ptr& _S_parent(_Base_ptr x) { return x->_M_parent; }
     static const K& _S_key(_Base_ptr x) { return KoV()(((_Link_type)x)->_M_value_field); }
 
+protected:
     _Link_type _M_create_node(const V& x)
     {
         _Link_type tmp = (_Link_type)malloc(sizeof(_Rb_tree_node<V>));
         _Construct(&tmp->_M_value_field, x);
         return tmp;
     }
+private:
     iterator _M_insert(_Base_ptr x_, _Base_ptr y_, const V& v, _Base_ptr w_);
 };
 

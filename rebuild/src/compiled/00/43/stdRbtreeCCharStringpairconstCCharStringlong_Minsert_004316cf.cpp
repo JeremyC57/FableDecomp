@@ -1,5 +1,5 @@
 // std::_Rb_tree<CCharString, pair<const CCharString, long>, ...>::_M_insert(_Rb_tree_node_base*, _Rb_tree_node_base*, const value_type&, _Rb_tree_node_base*) -- link a new node for the value under y (left or right by the key order) and rebalance
-// Leaf: _M_insert
+// Leaf: ?_M_insert@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCCharString@@J@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004316CF, length 164 bytes, `ret 0x14` (__fastcall: hidden iterator result, x, y, v, w).
 // Name: STLport 4.x `_Rb_tree::_M_insert(x, y, v, w)` of the map<CCharString, long> tree whose _M_create_node is the landed 0x00431773;
 // called by that tree's insert_unique 0x00431606 (previous row, both exits). The catalog's "BinaryTree_InsertDigScriptNode" is a label.
@@ -84,7 +84,9 @@ public:
     static _Base_ptr& _S_parent(_Base_ptr x) { return x->_M_parent; }
     static const K& _S_key(_Base_ptr x) { return KoV()(((_Link_type)x)->_M_value_field); }
 
+protected:
     _Link_type _M_create_node(const V& x);              // 0x00431773
+private:
     iterator _M_insert(_Base_ptr x_, _Base_ptr y_, const V& v, _Base_ptr w_);
 };
 

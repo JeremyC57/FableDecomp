@@ -67,7 +67,9 @@ public:
     static _Base_ptr& _S_right(_Base_ptr x) { return x->_M_right; }
     static const K& _S_key(_Base_ptr x) { return KeyOfValue()(((_Node*)x)->_M_value_field); }
 
+private:
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const V& __v, _Base_ptr __w = 0);   // 0x00AD4540
+public:
     iterator insert_equal(const V& __v);
 };
 

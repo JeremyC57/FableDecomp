@@ -1,5 +1,5 @@
 // CArray<unsigned char>::DeallocateUnusedMemory() -- shrink the array to fit: when it has spare capacity, copy the elements into an exactly reserved temporary, release the old storage and adopt the temporary's
-// Leaf: ?DeallocateUnusedMemory@
+// Leaf: ?DeallocateUnusedMemory@?$CArray@E@@QAEXXZ
 // Grade: RELOCATION_MATCH (agent902) -- the agent422 recipe (0x00A74EA0): STLport vector base + `CArray<T> temp;
 //   temp.reserve(size()); temp.insert(temp.begin(), begin(), end()); DeallocateMemory(); swap(temp);` with same-TU noinline
 //   bodies for reserve, the forward _M_range_insert (tag never touched) and the out-of-line DeallocateMemory: VC7.1 then
@@ -7,8 +7,8 @@
 //   words, free the old start" (retail's order; the Exchange hand-over loaded the temporary's start first).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B5DB0, length 129 bytes (+ int3 padding); called from CDefinitionManager::SaveBinaryDefinitions (0x009AFA86) and
 // CCompressorZlib::InternalCompress (0x00A3AE5B, landed); byte element, so size/capacity are plain differences.
-// Callees: vector::reserve 0x009B4E20 (on the temporary), vector::_M_range_insert(pos, first, last, forward_iterator_tag)
-// 0x009B3630, CArray::DeallocateMemory 0x009B4AE0, free 0x00BFEA14.
+// Callees: vector::reserve 0x009B4E20 (on the temporary), the member template vector::_M_range_insert<const unsigned char*>(pos,
+// first, last, forward_iterator_tag) 0x009B3630, CArray::DeallocateMemory 0x009B4AE0, free 0x00BFEA14.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -54,7 +54,8 @@ public:
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
     void reserve(size_type __n);
-    void _M_range_insert(iterator __pos, const_iterator __first, const_iterator __last, const forward_iterator_tag&);
+    template <class _ForwardIterator>
+    void _M_range_insert(iterator __pos, _ForwardIterator __first, _ForwardIterator __last, const forward_iterator_tag&);
     void insert(iterator __pos, const_iterator __first, const_iterator __last)
     {
         _M_range_insert(__pos, __first, __last, forward_iterator_tag());
@@ -83,10 +84,11 @@ __declspec(noinline) void vector<_Tp, _Alloc>::reserve(size_type __n)
         this->_M_end_of_storage._M_data = __tmp + __n;
     }
 }
-// vector::_M_range_insert(pos, first, last, forward_iterator_tag) -- same-TU noinline stand-in (append into the reserved
-// room; never touches the tag).
-template <class _Tp, class _Alloc>
-__declspec(noinline) void vector<_Tp, _Alloc>::_M_range_insert(iterator __pos, const_iterator __first, const_iterator __last, const forward_iterator_tag&)
+// vector::_M_range_insert<const T*>(pos, first, last, forward_iterator_tag) -- STLport 4.6 member template (the landed
+// callee 0x009B3630 defines ??$_M_range_insert@PBE@...); same-TU noinline stand-in body (append into the reserved room;
+// never touches the tag).
+template <class _Tp, class _Alloc> template <class _ForwardIterator>
+__declspec(noinline) void vector<_Tp, _Alloc>::_M_range_insert(iterator __pos, _ForwardIterator __first, _ForwardIterator __last, const forward_iterator_tag&)
 {
     for (; __first != __last; ++__first, ++this->_M_finish)
         new (this->_M_finish) _Tp(*__first);

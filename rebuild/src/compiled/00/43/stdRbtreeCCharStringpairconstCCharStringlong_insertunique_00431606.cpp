@@ -66,12 +66,15 @@ template <class A, class B> struct pair {
     B second;
     pair(const A& a, const B& b) : first(a), second(b) {}
 };
-struct _Rb_tree {
+class _Rb_tree {
+public:
     typedef CBasicString<char>* value_type;
     _Rb_tree_node*                       _M_header;      // +0x00
     unsigned long                        _M_node_count;  // +0x04
     CComparePointer<CBasicString<char> > _M_key_compare;
+private:
     _Rb_tree_iterator _M_insert(_Rb_tree_node* x, _Rb_tree_node* y, const value_type& v, _Rb_tree_node* w);   // 0x004316CF
+public:
     pair<_Rb_tree_iterator, bool> insert_unique(const value_type& v);
 };
 

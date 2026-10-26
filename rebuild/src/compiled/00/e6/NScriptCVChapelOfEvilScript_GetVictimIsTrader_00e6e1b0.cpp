@@ -1,0 +1,53 @@
+// CV_ChapelOfEvilScript::GetVictimIsTrader(CCharString victim_def) -- true when the victim's definition name contains "CREATURE_BANDIT" (the literal retail uses here, shared with GetVictimIsBandit) and the script thread is not terminating
+// Leaf: GetVictimIsTrader
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00E6E1B0, length 123 bytes (padded to 128), `ret 4` (the string by value).
+// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("CREATURE_BANDIT" @ 0x012E8B00), strstr
+// @ 0x00BFEB3A (inline contains test, "" = 0x0129AAF4), ~CCharString @ 0x0099EAE0, CScriptBase::IsActiveThreadTerminating
+// @ 0x00CB7940.
+// Shape: as GetVictimIsBandit (0x00E6E120): the pattern is a named local in its own block, the result a bool
+// (`setne bl`).
+// Shape: the strstr test into a NAMED bool, then THREE destructor sites for the by-value parameter (`return true`, the
+// terminating `return false` inside the found block, the not-found `return false`): the lea of sites 1/2 is hoisted above the
+// terminating `jne` and site 2 cross-jumps into site 3 past its own lea (the `found && !term` form puts the lea after the jne).
+// NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
+//   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
+//   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int n);   // 0x00BFEAF8
+extern "C" char* __cdecl strstr(const char* text, const char* pattern);          // 0x00BFEB3A
+struct CCharStringData {                           // the shared string block
+    char* m_pData;                                 // +0x00
+    long  m_length;                                // +0x04
+};
+struct CCharString {
+    CCharStringData* PStringData;
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    CCharString(const CCharString& other);
+    ~CCharString();                                // 0x0099EAE0
+    const char* GetPString() const { return PStringData == 0 ? "" : PStringData->m_pData; }   // "" = 0x0129AAF4
+    long Length() const { return PStringData == 0 ? 0 : PStringData->m_length; }
+};
+struct CScriptBase {
+    unsigned char _body[0x40];
+    bool IsActiveThreadTerminating() const;        // 0x00CB7940
+};
+namespace NScript {
+class CV_ChapelOfEvilScript : public CScriptBase {
+public:
+    bool GetVictimIsTrader(CCharString victim_def);
+};
+} // namespace NScript
+using NScript::CV_ChapelOfEvilScript;
+bool NScript::CV_ChapelOfEvilScript::GetVictimIsTrader(CCharString victim_def)
+{
+    bool found;
+    {
+        CCharString pattern("CREATURE_BANDIT");
+        found = strstr(victim_def.GetPString(), pattern.GetPString()) != 0;
+    }
+    if (found) {
+        if (!IsActiveThreadTerminating())
+            return true;
+        return false;
+    }
+    return false;
+}

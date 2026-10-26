@@ -1,5 +1,5 @@
 // std::_Rb_tree<long, pair<const long, SEntry_00be0ac0>, ...>::_M_create_node(const value_type&) -- malloc a 0x24-byte tree node and copy-construct the {key, entry} pair into it
-// Leaf: _M_create_node
+// Leaf: ?_M_create_node@?$_Rb_tree@JU?$pair@$$CBJUSEntry_00be0ac0@@@std@@U?$_Select1st@U?$pair@$$CBJUSEntry_00be0ac0@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJUSEntry_00be0ac0@@@std@@@2@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBJUSEntry_00be0ac0@@@std@@@2@ABU?$pair@$$CBJUSEntry_00be0ac0@@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE0AC0, 64 bytes, `__fastcall`, `ret 4`. Callee: malloc import @ 0x00BFEA0E (`add esp,4`:
 //   not a size TU).
 // Identity: the propagated label `CPredicate_And<NScript::CIsThingAlive...>::Clone` is wrong. The only caller is the tree's
@@ -53,6 +53,7 @@ public:
     typedef _Rb_tree_node<V>* _Link_type;
     _Rb_tree_node_base* _M_header;
     size_t              _M_node_count;
+protected:
     _Link_type _M_create_node(const V& x)
     {
         _Link_type tmp = (_Link_type)malloc(sizeof(_Rb_tree_node<V>));

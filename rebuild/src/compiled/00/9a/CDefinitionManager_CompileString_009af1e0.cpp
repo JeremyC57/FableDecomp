@@ -1,5 +1,5 @@
 // CDefinitionManager::CompileString(const char* text, const CCharString& defType) -- parse a definitions text: compile every #definition_template block first, then rewind and compile every #definition block, keeping only blocks whose class matches defType (case-insensitively) unless defType is empty
-// Leaf: ?CompileString@
+// Leaf: ?CompileString@CDefinitionManager@@IAEXPBDABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009AF1E0, 672 bytes (incl. int3 padding), thiscall `ret 8`. FableWin.pdb
 //   `?CompileString@CDefinitionManager@@IAEXPBDABVCCharString@@@Z`; the only caller is the file loader 0x009AF480. The
 //   catalog's "CDefinitionManager_LoadDefinitions" is descriptive.
@@ -18,8 +18,14 @@
 //   marker goes through the implicit const char* -> CCharString conversion (an explicit CCharString("...") temporary
 //   takes the dead `text` slot from the loop's class-name string), and CBasicString<char>::operator== has a same-TU
 //   noinline body so VC7.1 keeps defType's data pointer in ebx across the call (declaration-only reloads it).
+// Fix (sweep 3, FINDINGS chunk 482): `this` is CDefinitionManager itself -- the engine header's struct is included under a
+//   layout name and CDefinitionManager derives from it -- so the function and its CompileDefinition callee bind the PDB
+//   symbols ?CompileString@CDefinitionManager@@IAE... / ?CompileDefinition@CDefinitionManager@@IAEXAAVCStringParser@@...
+//   (protected, FableWin/Ego_r name sets) instead of the CDefinitionManager_Methods wrapper's. Same bytes.
 #include <string.h>
+#define CDefinitionManager CDefinitionManagerLayout
 #include "engine/CDefinitionManager.h"
+#undef CDefinitionManager
 #pragma intrinsic(strcmp)
 
 extern "C" void* __cdecl malloc(unsigned int size);                 // 0x00BFEA0E
@@ -127,14 +133,16 @@ public:
     void SetStringPos(unsigned long position);          // 0x009B9940
 };
 
-struct CDefinitionManager_Methods : CDefinitionManager
+class CDefinitionManager : public CDefinitionManagerLayout   // the engine header's layout, the PDB's methods
 {
+public:
     const CCharString& CurrentFilename() const { return *(const CCharString*)&CurrentFilename_PStringData; }
+protected:
     void CompileDefinition(CStringParser& parser, const CCharString& defType, const CCharString& defName);   // 0x009AE7C0
     void CompileString(const char* text, const CCharString& defType);
 };
 
-void CDefinitionManager_Methods::CompileString(const char* text, const CCharString& defType)
+void CDefinitionManager::CompileString(const char* text, const CCharString& defType)
 {
     CStringParser parser(text, (TParserErrorCallback)ErrorCallback, CurrentFilename(), 0);
     while (parser.SkipPastWholeString("#definition_template")) {

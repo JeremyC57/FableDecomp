@@ -1,7 +1,12 @@
-// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<const CThingBuilding*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
-// Leaf: ?_M_insert_overflow@?$vector@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@IAEX
+// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<CThingBuilding*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
+// Leaf: ?_M_insert_overflow@?$vector@PAVCThingBuilding@@V?$allocator@PAVCThingBuilding@@@std@@@std@@IAEX
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AC530, 216 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
-// Identity: element `const CThingBuilding*`; evidence: the landed CThingSearchTools::GetAllLeafThings 0x004AD700 (TContainer = std::vector<const CThingBuilding*>) right after it in the same TU.
+// Identity: element `CThingBuilding*` (sweep3; the landed row said `const CThingBuilding*`). Its callers are
+//   GetAllThings<CThingBuilding, vector<CThingBuilding*>, CThingFilter_None> 0x0066E5A0 (mask 0x47 = CThingBuilding),
+//   GetAllLeafThings<CThingBuilding, vector<CThingBuilding*>, CThingFilter_None> 0x004AD700 (type list 3, no filter call) and
+//   vector<CThingBuilding*>::push_back 0x004AD220; Ego_r/FableWin name both templates only with vector<CThingBuilding*>, the
+//   const-element GetAllLeafThings exists only with CThingFilter_HasTC (0x004AD780, whose overflow is 0x004AC610), and
+//   retail has no ICF, so this address is the vector<CThingBuilding*> instantiation.
 //   Family F005 (40 byte-identical bodies, each its own COMDAT next to the TU that first instantiated it): the manifest
 //   label "Vector_InsertN" is propagated and behavioural. STLport 4.6 `vector<_Tp>::_M_insert_overflow(pos, x,
 //   const __true_type&, fill_len, atend)` (the protected POD overload, defined in the class body) verbatim.
@@ -89,6 +94,6 @@ protected:
     }
 };
 
-template void vector<const CThingBuilding* >::_M_insert_overflow(const CThingBuilding**, const CThingBuilding* const&, const __true_type&, unsigned int, bool);
+template void vector<CThingBuilding* >::_M_insert_overflow(CThingBuilding**, CThingBuilding* const&, const __true_type&, unsigned int, bool);
 
 } // namespace std

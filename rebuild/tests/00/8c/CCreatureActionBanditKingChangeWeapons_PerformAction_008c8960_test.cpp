@@ -51,24 +51,25 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem(0) { }
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CTCBanditKingWeapons : CTCBase { long m_weaponDef; };
+struct CTCBoss : CTCBase { long NextWeapon; long GetNextWeapon() { return NextWeapon; } };
 static int g_created = 0; static CThing* g_createdFor[2]; static long g_createdDef[2];
-void FASTCALL CreateWeaponForThingFromDef(CThing* thing, long def) { if (g_created < 2) { g_createdFor[g_created] = thing; g_createdDef[g_created] = def; } ++g_created; }
+struct CThingCreatureBase { static void FASTCALL CreateWeaponForThingFromDef(CThing& thing, long def); };
+void FASTCALL CThingCreatureBase::CreateWeaponForThingFromDef(CThing& thing, long def) { if (g_created < 2) { g_createdFor[g_created] = &thing; g_createdDef[g_created] = def; } ++g_created; }
 struct CCombatActionBase { virtual ~CCombatActionBase() { } CBaseIntelligentPointer PCreature; };
 struct CCreatureAction_BanditKingChangeWeapons : CCombatActionBase { void PerformAction(); };
 void CCreatureAction_BanditKingChangeWeapons::PerformAction()
 {
-    CTCBanditKingWeapons* pWeapons;
-    if (PCreature.GetPItem()->GetInterface(&pWeapons, 173)) {
-        long def = pWeapons->m_weaponDef;
-        CreateWeaponForThingFromDef(PCreature.GetPItem(), def);
-        long def2 = pWeapons->m_weaponDef;
-        CreateWeaponForThingFromDef(PCreature.GetPItem(), def2);
+    CTCBoss* pBoss;
+    if (PCreature.GetPItem()->GetInterface(&pBoss, 173)) {
+        long def = pBoss->GetNextWeapon();
+        CThingCreatureBase::CreateWeaponForThingFromDef(*PCreature.GetPItem(), def);
+        long def2 = pBoss->GetNextWeapon();
+        CThingCreatureBase::CreateWeaponForThingFromDef(*PCreature.GetPItem(), def2);
     }
 }
 int main()
 {
-    CThing creature; CTCBanditKingWeapons weapons; weapons.m_weaponDef = 4242; creature.Add(173, &weapons); creature.Add(1, 0);
+    CThing creature; CTCBoss weapons; weapons.NextWeapon = 4242; creature.Add(173, &weapons); creature.Add(1, 0);
     CCreatureAction_BanditKingChangeWeapons action; action.PCreature.m_pItem = &creature;
     action.PerformAction();
     bool ok = g_created == 2 && g_createdFor[0] == &creature && g_createdFor[1] == &creature && g_createdDef[0] == 4242 && g_createdDef[1] == 4242;

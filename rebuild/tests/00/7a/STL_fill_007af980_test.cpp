@@ -1,4 +1,4 @@
-// Behaviour test for 0x007AF980 std::fill(CIntelligentPointer<CThing>*, ...): every intelligent pointer of the range is pointed at the value's thing (SetPItem(other.GetPItem()) per element)
+// Behaviour test for 0x007AF980 std::fill(CIntelligentPointer<CThingAICreature>*, ...): every intelligent pointer of the range is pointed at the value's thing (SetPItem(other.GetPItem()) per element)
 #include <stdio.h>
 #if !defined(_MSC_VER)
 #define __fastcall
@@ -7,7 +7,7 @@
 #endif
 static int gAssigns = 0;
 static int gGets = 0;
-class CThing;
+class CThingAICreature;
 class CBaseObject { public: int Id; };
 class CBaseIntelligentPointer {
 public:
@@ -31,10 +31,10 @@ void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val
 }
 int main()
 {
-    CIntelligentPointer<CThing> arr[4];
+    CIntelligentPointer<CThingAICreature> arr[4];
     int i;
     for (i = 0; i < 4; ++i) arr[i].PItem = 0;
-    CIntelligentPointer<CThing> v; v.PItem = &gTarget;
+    CIntelligentPointer<CThingAICreature> v; v.PItem = &gTarget;
     bool ok = true;
     std::fill(arr, arr + 3, v);
     for (i = 0; i < 3; ++i)

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B314E0, length 541 bytes (`ret 4`).
 // Callees: CEngineCamera::ProcessDebugScript 0x00B31160, GFVBoxToABox 0x009E1E70 (__fastcall), CCamera FOV/flag getters
 // 0x00A0BE90 (horizontal FOV), 0x00A0BE80 (FOV flags), 0x00A0BEA0 (vertical FOV) (catalog labels CMap/CWorld "DrawGet*" are
-// propagated), C3DVector::Normalise 0x00A14440 (catalog "GetScaled" is propagated), CEngineCamera::SetCameraState
+// propagated), C3DVector::AccurateNormalise @ 0x00A14440 (catalog "GetScaled" is propagated), CEngineCamera::SetCameraState
 // 0x00B30B50. Constants 360.0f 0x01238020, 1/360 0x01238E00, 2*pi 0x0128F608; default z-buffer start global 0x01399D44.
 // Layout: engine/CEngineCamera.h for GameCamera +0x0c, GameWindow +0x10, ConsoleOverrideViewPortWidth/Height +0x200/+0x204;
 // the header's DebugScript is the PDB's 16-byte CArray, retail's is 12 bytes, so DebugScriptRunning (PDB +0x21c) sits at
@@ -13,11 +13,11 @@
 // the three pooled constants (written as literals VC7.1 folds `* 360 / 360` away, so they are named constants); up and
 // forward are copied with C3DVector's user copy ctor and normalised in the frame; the right axis comes from an inline
 // out-parameter cross product (forward x up), which keeps retail's x87 operand order; the rotation is stored column-wise.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    void Normalise();                                   // 0x00A14440
+    C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 __forceinline void CrossProduct(C3DVector& r, const C3DVector& a, const C3DVector& b)
 {
@@ -103,11 +103,11 @@ void CEngineCamera::Process(bool flag)
     desc.WorldPosition = GameCamera->WorldPosition;
     C3DVector up = GameCamera->RHSet.Up;
     C3DVector forward = GameCamera->RHSet.Forward;
-    up.Normalise();
-    forward.Normalise();
+    up.AccurateNormalise();
+    forward.AccurateNormalise();
     C3DVector right;
     CrossProduct(right, forward, up);
-    right.Normalise();
+    right.AccurateNormalise();
     desc.RotationMatrix.m[0] = right.X;
     desc.RotationMatrix.m[3] = right.Y;
     desc.RotationMatrix.m[6] = right.Z;

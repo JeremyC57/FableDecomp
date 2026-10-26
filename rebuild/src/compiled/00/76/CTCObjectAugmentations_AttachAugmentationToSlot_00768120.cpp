@@ -1,9 +1,10 @@
 // CTCObjectAugmentations::AttachAugmentationToSlot(long defIndex, long slot) -- fetch the thing def for the global index; when it carries an augmentation sub-def, store it in the slot; then re-attach the augmentation particles and sounds
-// Leaf: AttachAugmentationToSlot
+// Leaf: ?AttachAugmentationToSlot@CTCObjectAugmentations@@QAEXJJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00768120, 166 bytes (`ret 8`; PDB ?AttachAugmentationToSlot@CTCObjectAugmentations@@QAEXJJ@Z).
 // Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0, CGameDefinitionManager::GetDef<T> @ 0x0042AF3C, CDefClassBase::
 //   GetSubDef<CAugmentationDef> @ 0x0042B248, AttachAugmentationParticles() @ 0x007677E0, SetupAugmentationSounds() @ 0x00766C00
-//   (manifest "CTCObjectAugmentations_UpdateParticleMorphs"; the body looks sounds up through CDefStringTable::GetString), the
+//   (manifest "CTCObjectAugmentations_UpdateParticleMorphs"; the body looks sounds up through CDefStringTable::GetString; both
+//   callees private in Ego_r/FableWin, ?...@CTCObjectAugmentations@@AAEXXZ, as 0x768210 binds them), the
 //   def release through vtable slot 1.
 // Tried: RAII out pointer + holder (extra zero store), plain out slot + holder + entry reference, non-const def types.
 //   Next: the augmentation slot as a plain CDefSlot released by hand at the end (`if (p) { if (--p->m_refCount == 0) ... }`
@@ -102,9 +103,10 @@ struct CTCObjectAugmentations {
     bool          LoadedFromSaveGame;                   // +0x10
     vector< CDefPointer<const CThingBaseDef> > Augmentations;   // +0x14
     const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
-    void AttachAugmentationParticles();                 // 0x007677E0
-    void SetupAugmentationSounds();                     // 0x00766C00
     void AttachAugmentationToSlot(long defIndex, long slot);
+private:
+    void AttachAugmentationParticles();                 // 0x007677E0 (private in Ego_r/FableWin: AAEXXZ)
+    void SetupAugmentationSounds();                     // 0x00766C00 (private in Ego_r/FableWin: AAEXXZ)
 };
 
 void CTCObjectAugmentations::AttachAugmentationToSlot(long defIndex, long slot)

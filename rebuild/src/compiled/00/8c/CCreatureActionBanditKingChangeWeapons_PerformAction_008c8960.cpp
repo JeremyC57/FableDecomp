@@ -1,8 +1,12 @@
-// CCreatureAction_BanditKingChangeWeapons::PerformAction() -- if the creature has an interface-173 component, create its weapon def (the word at +0x1c of the component) for the creature twice
+// CCreatureAction_BanditKingChangeWeapons::PerformAction() -- if the creature has a CTCBoss component (interface 173), create its next weapon def for the creature twice
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C8960, length 108 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, three times), CVectorMap::LowerBound @ 0x0040F020 (the inlined
-// GetInterface lookup for type 173 = bit 13 of the bitset dword at +0x34, `test ch,20h`), CreateWeaponForThingFromDef(CThing*, long)
-// @ 0x00663990 (`__fastcall`: ecx thing, edx def; twice).
+// GetInterface lookup for type 173 = bit 13 of the bitset dword at +0x34, `test ch,20h`), CThingCreatureBase::CreateWeaponForThingFromDef(CThing&, long)
+// @ 0x00663990 (static `__fastcall`: ecx thing, edx def; twice).
+// Identity of the component (sweep3, FINDINGS chunk 481 "interface 0xAD has two names"): interface 173 = 0xAD is CTCBoss
+//   (CTCBoss::GetInterfaceType 0x007AFCD0 returns 0xAD; CTCBoss vtable 0x0126D494), and +0x1c is Ego_r CTCBoss::NextWeapon
+//   (PBossDef +0x0C, GenericCounter, StrikesSinceHit, currentBossPhase, NextWeapon +0x1C); FableWin ?GetNextWeapon@CTCBoss@@QAEJXZ
+//   is a header inline. The creator is Ego_r/FableWin ?CreateWeaponForThingFromDef@CThingCreatureBase@@SIXAAVCThing@@J@Z.
 // Shape: `this` is never saved (only the PCreature address, in edi); ebx/esi are pushed inside the lookup block; for each
 // `__fastcall` the def word is read first (right to left) into a callee-saved register, then the creature fetched into ecx.
 // Retail CCreatureActionBase/CCombatActionBase place PCreature at +8; no engine header for this class, so `this` is modelled locally.
@@ -15,7 +19,8 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
 };
 struct CTCPhysicsBase;
 struct CTCGraphicAppearance;
-struct CThing {
+class CThing {
+public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -43,11 +48,16 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatur
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCBanditKingWeapons {               // the interface-173 component: its weapon def index at +0x1c
-    unsigned char _pad[0x1c];
-    long m_weaponDef;                       // +0x1c
+class CTCBoss {                             // interface 173 (0xAD)
+public:
+    unsigned char _pad[0x1c];               // CTCBase (vptr, ParentThing, flags), PBossDef +0x0C, GenericCounter, StrikesSinceHit, currentBossPhase
+    long NextWeapon;                        // +0x1c
+    long GetNextWeapon() { return NextWeapon; }
 };
-void __fastcall CreateWeaponForThingFromDef(CThing* thing, long def);   // 0x00663990
+class CThingCreatureBase {
+public:
+    static void __fastcall CreateWeaponForThingFromDef(CThing& thing, long def);   // 0x00663990
+};
 
 struct CCombatActionBase {                  // retail sizeof 0x114
     virtual void v00();
@@ -62,11 +72,11 @@ struct CCreatureAction_BanditKingChangeWeapons : CCombatActionBase {
 
 void CCreatureAction_BanditKingChangeWeapons::PerformAction()
 {
-    CTCBanditKingWeapons* pWeapons;
-    if (PCreature.GetPItem()->GetInterface(&pWeapons, 173)) {
-        long def = pWeapons->m_weaponDef;       // named: retail reads the def into a callee-saved register before the creature fetch
-        CreateWeaponForThingFromDef(PCreature.GetPItem(), def);   // one weapon per hand
-        long def2 = pWeapons->m_weaponDef;
-        CreateWeaponForThingFromDef(PCreature.GetPItem(), def2);
+    CTCBoss* pBoss;
+    if (PCreature.GetPItem()->GetInterface(&pBoss, 173)) {
+        long def = pBoss->GetNextWeapon();      // named: retail reads the def into a callee-saved register before the creature fetch
+        CThingCreatureBase::CreateWeaponForThingFromDef(*PCreature.GetPItem(), def);   // one weapon per hand
+        long def2 = pBoss->GetNextWeapon();
+        CThingCreatureBase::CreateWeaponForThingFromDef(*PCreature.GetPItem(), def2);
     }
 }

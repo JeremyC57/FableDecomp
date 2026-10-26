@@ -1,5 +1,5 @@
 // _Rb_tree<long, pair<const long, CAStarState>>::_M_insert(x, y, v, w) -- link a new A* state node under parent y (left or right by the hint and key order), then rebalance
-// Leaf: ?_M_insert@?$_Rb_tree@JU?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@U?$_Select1st@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBJVCAStarState@CNavigatorAStar@@@2@0@Z
+// Leaf: ?_M_insert@?$_Rb_tree@JU?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@U?$_Select1st@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBJVCAStarState@CNavigatorAStar@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A21D90, 180 bytes, `ret 14h`. Callers 0x00A22203 / 0x00A2223B (the tree's
 //   insert_unique paths). The catalog label "RBTree_InsertNodeAStar" is descriptive.
 // Identity: the tree under CNavigatorAStar's state map (map<long, CAStarState>, node 0x28; see _M_erase 0x00A21640).
@@ -79,12 +79,14 @@ public:
     unsigned int _M_node_count;
     _Compare     _M_key_compare;
 
+protected:
     _Link_type _M_create_node(const value_type& __x)
     {
         _Link_type __tmp = this->_M_header.allocate(1);
         _Construct(&__tmp->_M_value_field, __x);
         return __tmp;
     }
+public:
     _Rb_tree_node_base*& _M_root() const { return this->_M_header._M_data->_M_parent; }
     _Rb_tree_node_base*& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
     _Rb_tree_node_base*& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
@@ -93,6 +95,7 @@ public:
     static _Rb_tree_node_base*& _S_parent(_Rb_tree_node_base* __x) { return __x->_M_parent; }
     static const _Key& _S_key(_Rb_tree_node_base* __x) { return _KeyOfValue()(((_Link_type)__x)->_M_value_field); }
 
+private:
     iterator _M_insert(_Rb_tree_node_base* __x, _Rb_tree_node_base* __y, const value_type& __v, _Rb_tree_node_base* __w = 0);
 };
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

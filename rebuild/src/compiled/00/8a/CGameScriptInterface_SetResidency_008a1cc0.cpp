@@ -5,7 +5,7 @@
 //   OverrideAutomaticHouseLocking(const CScriptThing&, bool) (0x0088E030), CThingBuilding::SetIsAvailableForResidency(bool)
 //   @ 0x0082E090, the component-map LowerBound @ 0x0040F020, the TC 0x23 village accessor @ 0x007EE540 (manifest
 //   "IS_THING_ALIVE<...>" is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80,
-//   CThing::GetScriptThing @ 0x004C7E50 (into the hidden result), CScriptThing::CScriptThing() @ 0x008CFF40.
+//   CThing::GetScriptThing @ 0x004C7E50 (into the hidden result), CGameScriptThing::CreateNullThing() @ 0x008CFF40.
 // Layout: CThing flags +0x6C (bit 6 = building), UsingComponents +0x20, component map +0x44, dead flags +0x91 bit 0,
 //   home building pointer +0x168 and second residence pointer +0x170 (CIntelligentPointer, 8 bytes); the village's
 //   resident list (STLport list of CIntelligentPointer<CThing>) at +0x2C.
@@ -37,7 +37,7 @@ struct CInterfaceMap_Retail {
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CScriptThing;
+class CScriptThing;
 struct CThing_Retail {
     unsigned char           _pad00[0x20];
     unsigned long           m_presentBits[9];       // +0x20
@@ -66,7 +66,8 @@ struct CThing_Retail {
     void Kill(bool flag);                               // 0x004C9B80
     CScriptThing GetScriptThing();                      // 0x004C7E50
 };
-struct CScriptThing {
+class CScriptThing {
+public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
@@ -81,7 +82,10 @@ struct CScriptThing {
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
     void* PImp_Data;
     void* PImp_Info;
-    CScriptThing();                                // 0x008CFF40
+};
+class CGameScriptThing : public CScriptThing {      // Ego_r.pdb: CGameScriptThing derives from CScriptThing
+public:
+    static CScriptThing __fastcall CreateNullThing(); // 0x008CFF40 (?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ)
 };
 
 #define VPAD1(a) virtual void a();
@@ -129,5 +133,5 @@ CScriptThing CGameScriptInterface::SetResidency(const CScriptThing& building, bo
     }
     if (evictedTo)
         return evictedTo->GetScriptThing();
-    return CScriptThing();
+    return CGameScriptThing::CreateNullThing();
 }

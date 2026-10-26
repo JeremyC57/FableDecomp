@@ -108,14 +108,17 @@ public:
     static const Key& _S_key(_Rb_tree_node_base* x) { return KeyOfValue()(((_Node*)x)->_M_value_field); }
     _Node* _M_root() const { return (_Node*)_M_header->_M_parent; }
     iterator begin() { return iterator(_M_header->_M_left); }
+protected:
     _Node* _M_create_node(const Value& x)
     {
         _Node* tmp = (_Node*)malloc(sizeof(_Node));
         new (&tmp->_M_value_field) Value(x);
         return tmp;
     }
+private:
     __declspec(noinline) iterator _M_insert(_Rb_tree_node_base* x_, _Rb_tree_node_base* y_, const Value& v,
                                             _Rb_tree_node_base* w_ = 0);   // 0x00A61270 (same-TU body)
+public:
     pair<iterator, bool> insert_unique(const Value& v);
 };
 

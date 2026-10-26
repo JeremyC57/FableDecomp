@@ -4,14 +4,14 @@
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 #include "engine/CTCPhysicsBase.h"
-struct C3DVector {
+class C3DVector { public:
  float X,Y,Z;
  C3DVector() {}
  C3DVector(float x,float y,float z):X(x),Y(y),Z(z) {}
  C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z) {}
  C3DVector operator+(const C3DVector& b) const { return C3DVector(X+b.X,Y+b.Y,Z+b.Z); }
  C3DVector operator*(float factor) const { return C3DVector(X*factor,Y*factor,Z*factor); }
- void Normalise(); // 00A14440, called with no arguments; propagated GetScaled signature disagrees.
+ C3DVector& AccurateNormalise(); // 00A14440, called with no arguments; propagated GetScaled signature disagrees.
 };
 struct CGeometryThing {
  unsigned char _beforePhysics[0x60]; CTCPhysicsBase* PhysicsTC;
@@ -33,7 +33,7 @@ C3DVector CBalverineLandMethods::GetLandPos(CGeometryThing* target) {
  C3DVector targetPos=target->GetPosition();
  const C3DVector& mine=((CGeometryThing*)PBrain->Creature)->GetPosition();
  C3DVector direction(targetPos.X-mine.X,targetPos.Y-mine.Y,0.0f);
- direction.Normalise();
+ direction.AccurateNormalise();
  C3DVector result=targetPos+direction*radius;
  result.Z=GetPWorld()->PeekWorldMap().GetHeightZBelowPos(result);
  return result;

@@ -96,8 +96,10 @@ public:
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
     iterator begin() { return iterator(_M_leftmost()); }
+private:
     iterator _M_insert(_Rb_tree_node_base* __x, _Rb_tree_node_base* __y, const _Value& __v,
                        _Rb_tree_node_base* __w = 0);                     // 0x009AA900
+public:
     pair<iterator, bool> insert_unique(const _Value& __v);
 };
 

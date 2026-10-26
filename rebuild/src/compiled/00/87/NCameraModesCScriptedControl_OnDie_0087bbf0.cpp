@@ -13,7 +13,7 @@
 #include <math.h>
 #pragma intrinsic(sqrt)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -23,7 +23,7 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
     float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-    void Normalise();                       // 0x00A14440
+    C3DVector& AccurateNormalise();                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 struct CRightHandedSet {
     C3DVector Up;                           // +0x00
