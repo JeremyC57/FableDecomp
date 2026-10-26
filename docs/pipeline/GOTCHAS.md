@@ -1506,3 +1506,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - A test mock that stands in for a base destructor needs `__declspec(novtable)` or it re-stores its own vptr over the row's.
 - Wine: a test exe can spawn `explorer.exe /desktop` that inherits vland's stdout pipe, so vland waits forever on a zombie test; kill that explorer PID (check its FABLE_ROOT env is yours).
 - The lane's recheck copy rewrites `__thiscall` to `__fastcall` inside comments; compare graded copies to repo sources modulo comments.
+- STLport `__copy` const-ness follows the caller (vector::operator= gives `const T*`, erase/resize `T*`), so one element type can own two retail `__copy` functions; `~vector` vs `_M_clear` are byte-identical and named by caller context; a helper named `dis.py` shadows Python's `dis` and breaks capstone (agent953 LESSONS.md).

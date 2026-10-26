@@ -1,0 +1,111 @@
+// std::vector::erase(iterator __first, iterator __last) -- (vector<CPrizeScoreDef >) STLport range erase: assign the tail [last, finish) down over first, destroy the leftover elements, pull finish back, return first
+// Flags: /Gr
+// Leaf: ?erase@?$vector@VCPrizeScoreDef@@V?$allocator@VCPrizeScoreDef@@@std@@@std@@QAEPAVCPrizeScoreDef@@PAV3@0@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004EDAB7, 60 bytes (size-optimised TU with a frame pointer), thiscall, `ret 8`.
+// Identity (proven): std::vector<CPrizeScoreDef >::erase(iterator, iterator); evidence: its only caller is std::vector<CPrizeScoreDef >::resize 0x004EDA6C (n < size(): erase(begin() + n, end()), the size by `idiv 0x30`) through resize(n) 0x004EDA32, called from CPersistContext::TransferVectorOfSubComponents<CPrizeScoreDef> 0x004ED953 of CTavernGameDef::Transfer 0x004ED472 (slot 18 of vtable 0x012424BC, RTTI .?AVCTavernGameDef@@) on CTavernGameDef::PrizeScores at this+0x174 (Ego_r.pdb +0x174, vector<CPrizeScoreDef>; site 0x004ED8CB); the element is CPrizeScoreDef (vtable 0x012437D4)
+// Label: the manifest's "Vector_InsertRange_0x30" is a behavioural label; this row is vector<CPrizeScoreDef >::erase(first, last) (family J068: five 60-byte bodies, each its own element).
+// Callees: __copy_ptrs(first, last, result, const __false_type&) 0x004EDAF3 (out of line, __fastcall in this /Gr TU, `ret 8`: the
+//   implicit CPrizeScoreDef::operator= inlined every 0x30 bytes after CDefClassBase::operator= 0x00431F10), __destroy_aux(first, last, const __false_type&)
+//   0x004DA5E2 (__fastcall, `ret 4`: the virtual destructor, slot 0 with flag 0, every 0x30 bytes; spelled as the bound siblings 0x004DA5BD / 0x004DA61A / 0x004DA636).
+// Shape: STLport 4.6 vector.h `erase` verbatim. The _TrivialAss() tag is a constructor-less empty __false_type, value-initialised
+//   (`stosb`) in its own frame byte for the unseen __copy_ptrs; the _Trivial_destructor() tag of __destroy_aux, whose body this
+//   TU compiles first, gets no store and is homed in the top byte of the `first` slot (`lea eax,[ebp+0Bh]`).
+// Element: CPrizeScoreDef, 0x30 bytes in retail (vtable 0x012437D4 slot 20 returns 0x30, base CSubDefClassBase), Ego_r.pdb members
+//   rebased to retail (retail offset = Ego_r offset).
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+namespace std {
+struct __false_type { };
+template <class _Tp> struct __type_traits {                // a class element: nothing is trivial
+    typedef __false_type has_trivial_assignment_operator;
+    typedef __false_type has_trivial_destructor;
+};
+template <class _Tp> class allocator { };
+template <class _Tp> struct less { };
+template <class _T1, class _T2> struct pair {
+    _T1 first;
+    _T2 second;
+};
+template <class _Value, class _Alloc> class _STLP_alloc_proxy : public _Alloc {
+public:
+    _Value _M_data;
+};
+template <class _InputIter, class _OutputIter>
+_OutputIter __copy_ptrs(_InputIter __first, _InputIter __last, _OutputIter __result, const __false_type&);   // 0x004EDAF3
+template <class _Tp>
+void __destroy_aux(_Tp* __first, _Tp* __last, const __false_type&);   // 0x004DA5E2 (defined below, ahead of erase)
+template <class _Tp>
+__forceinline void __destroy(_Tp* __first, _Tp* __last, _Tp*)
+{
+    typedef typename __type_traits<_Tp>::has_trivial_destructor _Trivial_destructor;
+    __destroy_aux(__first, __last, _Trivial_destructor());
+}
+template <class _Tp>
+__forceinline void _Destroy(_Tp* __first, _Tp* __last)
+{
+    __destroy(__first, __last, (_Tp*)0);
+}
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {          // STLport, 12 bytes
+public:
+    typedef _Tp* pointer;
+    typedef _Tp* iterator;
+    typedef typename __type_traits<_Tp>::has_trivial_assignment_operator _TrivialAss;
+    pointer _M_start;
+    pointer _M_finish;
+    _STLP_alloc_proxy<pointer, _Alloc> _M_end_of_storage;
+    iterator erase(iterator __first, iterator __last)
+    {
+        pointer __i = __copy_ptrs(__last, this->_M_finish, __first, _TrivialAss());
+        _Destroy(__i, this->_M_finish);
+        this->_M_finish = __i;
+        return __first;
+    }
+};
+}   // namespace std
+class CResourceList;
+class CResource {                                        // Ego_r.pdb 0x1C (CIVCountedPointeeBase: vptr, IVRefCount)
+public:
+    virtual ~CResource();                                // 0x009FC550
+    unsigned long  IVRefCount;                           // +0x04
+    CResourceList* ResourceList;                         // +0x08
+    CResource*     PrevResource;                         // +0x0C
+    CResource*     NextResource;                         // +0x10
+    unsigned long  ResourceSize;                         // +0x14
+    unsigned long  LastUsedFrame;                        // +0x18
+};
+class CDefPointeeBase : public CResource {               // vtable 0x01230BA0
+public:
+    virtual ~CDefPointeeBase() { }
+};
+class CDefinitionManager;
+#pragma pack(push, 1)
+class CDefClassBase : public CDefPointeeBase {           // vtable 0x01230BCC
+public:
+    class CSubDefInfo { public:
+        long DefIndex;
+        long OriginalParentDefIndex;
+    };
+    CDefinitionManager* PDefManager;                     // +0x1C
+    unsigned long       GlobalIndex;                     // +0x20
+    unsigned char       Setup : 1;                       // +0x24
+    unsigned char       Template : 1;
+    unsigned char       DefaultValsApplied : 1;
+};
+class CSubDefClassBase : public CDefClassBase {         // vtable 0x01231D54, Ego_r.pdb 0x25 (packed, no members of its own)
+};
+#pragma pack(pop)
+class CPrizeScoreDef : public CSubDefClassBase {   // vtable 0x012437D4, retail 0x30 bytes
+public:
+    float Score;                                       // +0x28
+    long Mult;                                         // +0x2C
+};
+namespace std {
+template <class _Tp>
+void __destroy_aux(_Tp* __first, _Tp* __last, const __false_type&)
+{
+    for (; __first != __last; ++__first)
+        __first->~_Tp();
+}
+template void __destroy_aux<CPrizeScoreDef >(CPrizeScoreDef*, CPrizeScoreDef*, const __false_type&);
+template vector<CPrizeScoreDef >::iterator vector<CPrizeScoreDef >::erase(iterator, iterator);
+}

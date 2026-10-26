@@ -1,0 +1,605 @@
+address	status	bytes	test	note	family
+0065f856	RELOCATION_MATCH	46v46	PASS	2 grade runs in the ledger, family stamp included; family representative; CTCVillage::GetBestTaskForThing<CVillageTaskPatrol>; proven	J001
+0065f884	RELOCATION_MATCH	46v46	PASS	1 grade run in the ledger, family stamp included; CTCVillage::GetBestTaskForThing<CVillageTaskCarryCrate>; proven	J001
+00660034	RELOCATION_MATCH	46v46	PASS	1 grade run in the ledger, family stamp included; CTCVillage::GetBestTaskForThing<CVillageTaskTorch>; proven	J001
+00660062	RELOCATION_MATCH	46v46	PASS	1 grade run in the ledger, family stamp included; CTCVillage::GetBestTaskForThing<CVillageTaskHorn>; proven	J001
+00660090	RELOCATION_MATCH	46v46	PASS	1 grade run in the ledger, family stamp included; CTCVillage::GetBestTaskForThing<CVillageTaskPickCrops>; proven	J001
+006600be	RELOCATION_MATCH	46v46	PASS	1 grade run in the ledger, family stamp included; CTCVillage::GetBestTaskForThing<CVillageTaskSecuritySweep>; proven	J001
+00660787	RELOCATION_MATCH	118v118	PASS	3 grade runs in the ledger, family stamp included; family representative; CTCVillage::RemoveThingFromTaskList<CVillageTaskTorch>; proven	J002
+00660894	RELOCATION_MATCH	118v118	PASS	1 grade run in the ledger, family stamp included; CTCVillage::RemoveThingFromTaskList<CVillageTaskHorn>; proven	J002
+0066090a	RELOCATION_MATCH	118v118	PASS	1 grade run in the ledger, family stamp included; CTCVillage::RemoveThingFromTaskList<CVillageTaskPatrol>; proven	J002
+00660980	RELOCATION_MATCH	118v118	PASS	1 grade run in the ledger, family stamp included; CTCVillage::RemoveThingFromTaskList<CVillageTaskPickCrops>; proven	J002
+006609f6	RELOCATION_MATCH	118v118	PASS	1 grade run in the ledger, family stamp included; CTCVillage::RemoveThingFromTaskList<CVillageTaskSecuritySweep>; proven	J002
+00660a6c	RELOCATION_MATCH	118v118	PASS	1 grade run in the ledger, family stamp included; CTCVillage::RemoveThingFromTaskList<CVillageTaskCarryCrate>; proven	J002
+00660ae2	DIFFER	123v123	-	5 grade runs in the ledger, family stamp included; family representative; CTCVillage::RemoveThingFromTask<CVillageTaskTorch>; proven; parked in differ/: erase's hidden iterator result is homed at [ebp+14h] (the dead list slot) where retail reuses [ebp+10h], the find_if result's slot	J003
+00660b5d	DIFFER	123v123	-	1 grade run in the ledger, family stamp included; CTCVillage::RemoveThingFromTask<CVillageTaskHorn>; proven; parked in differ/: erase's hidden iterator result is homed at [ebp+14h] (the dead list slot) where retail reuses [ebp+10h], the find_if result's slot	J003
+00660bd8	DIFFER	123v123	-	1 grade run in the ledger, family stamp included; CTCVillage::RemoveThingFromTask<CVillageTaskPatrol>; proven; parked in differ/: erase's hidden iterator result is homed at [ebp+14h] (the dead list slot) where retail reuses [ebp+10h], the find_if result's slot	J003
+00660c53	DIFFER	123v123	-	1 grade run in the ledger, family stamp included; CTCVillage::RemoveThingFromTask<CVillageTaskPickCrops>; proven; parked in differ/: erase's hidden iterator result is homed at [ebp+14h] (the dead list slot) where retail reuses [ebp+10h], the find_if result's slot	J003
+00660cce	DIFFER	123v123	-	1 grade run in the ledger, family stamp included; CTCVillage::RemoveThingFromTask<CVillageTaskSecuritySweep>; proven; parked in differ/: erase's hidden iterator result is homed at [ebp+14h] (the dead list slot) where retail reuses [ebp+10h], the find_if result's slot	J003
+00660d49	DIFFER	123v123	-	1 grade run in the ledger, family stamp included; CTCVillage::RemoveThingFromTask<CVillageTaskCarryCrate>; proven; parked in differ/: erase's hidden iterator result is homed at [ebp+14h] (the dead list slot) where retail reuses [ebp+10h], the find_if result's slot	J003
+00672820	RELOCATION_MATCH	227v227	PASS	1 grade run in the ledger, family stamp included; family representative; std::vector<ENavigatorType>::_M_insert_overflow(pointer, const value_type&, const __false_type&, size_type, bool); proven	J004
+0068fd80	RELOCATION_MATCH	227v227	PASS	1 grade run in the ledger, family stamp included; std::vector<EGameAction>::_M_insert_overflow(pointer, const value_type&, const __false_type&, size_type, bool); proven	J004
+00711080	RELOCATION_MATCH	227v227	PASS	1 grade run in the ledger, family stamp included; std::vector<std::_List_iterator<CAnimSet, std::_Const_traits<CAnimSet> >>::_M_insert_overflow(pointer, const value_type&, const __false_type&, size_type, bool); proven	J004
+009c2ca0	RELOCATION_MATCH	227v227	PASS	1 grade run in the ledger, family stamp included; std::vector<ESurfaceMultisampleType>::_M_insert_overflow(pointer, const value_type&, const __false_type&, size_type, bool); proven	J004
+009c2e30	RELOCATION_MATCH	227v227	PASS	1 grade run in the ledger, family stamp included; std::vector<CPixelFormat>::_M_insert_overflow(pointer, const value_type&, const __false_type&, size_type, bool); proven	J004
+009ef900	RELOCATION_MATCH	227v227	PASS	1 grade run in the ledger, family stamp included; std::vector<EGenericVarType>::_M_insert_overflow(pointer, const value_type&, const __false_type&, size_type, bool); proven	J004
+00696970	RELOCATION_MATCH	92v92	PASS	1 grade run in the ledger, family stamp included; family representative; std::_Rb_tree<EActionRegisteredType, std::pair<const EActionRegisteredType, CCountedPointer<CCreatureActionBase> >, ...>::_M_erase(_Rb_tree_node<value_type>*) [std::map<EActionRegisteredType, CCountedPointer<CCreatureActionBase> >]; proven	J005
+00ad3fb0	RELOCATION_MATCH	92v92	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<float, std::pair<const float, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> >, ...>::_M_erase(_Rb_tree_node<value_type>*) [std::multimap<float, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> >]; proven	J005
+00ad5240	RELOCATION_MATCH	92v92	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<unsigned long, std::pair<const unsigned long, QuadricOptimiserInternals::CContractionReference >, ...>::_M_erase(_Rb_tree_node<value_type>*) [std::map<unsigned long, QuadricOptimiserInternals::CContractionReference >]; proven	J005
+00b441f0	RELOCATION_MATCH	92v92	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<long, std::pair<const long, CEngineStaticMapFileBlockManager::CFileBlock >, ...>::_M_erase(_Rb_tree_node<value_type>*) [std::map<long, CEngineStaticMapFileBlockManager::CFileBlock >]; proven	J005
+00b97580	RELOCATION_MATCH	92v92	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<long, std::pair<const long, CCountedPointer<CEngineSceneMap> >, ...>::_M_erase(_Rb_tree_node<value_type>*) [std::map<long, CCountedPointer<CEngineSceneMap> >]; proven	J005
+00bce4b0	RELOCATION_MATCH	92v92	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<unsigned long, std::pair<const unsigned long, CCountedPointer<CVertexBufferWin32> >, ...>::_M_erase(_Rb_tree_node<value_type>*) [std::map<unsigned long, CCountedPointer<CVertexBufferWin32> >]; proven	J005
+006a29b0	MATCH	82v82	PASS	1 grade run in the ledger, family stamp included; family representative; CVectorMap<long, CIntelligentPointer<CThing>, CKeyPairCompareLess<long, CIntelligentPointer<CThing> > >::LowerBound(const long&); proven	J006
+00827b00	MATCH	82v82	PASS	1 grade run in the ledger, family stamp included; CVectorMap<long, CCountedPointer<CRegionConnectionNode>, CKeyPairCompareLess<long, CCountedPointer<CRegionConnectionNode> > >::LowerBound(const long&); proven	J006
+0086f180	MATCH	82v82	PASS	1 grade run in the ledger, family stamp included; CVectorMap<EExpressionType, CExpressionSet::CEntry, CKeyPairCompareLess<EExpressionType, CExpressionSet::CEntry > >::LowerBound(const EExpressionType&) const; proven	J006
+00a7dd40	MATCH	82v82	PASS	1 grade run in the ledger, family stamp included; CVectorMap<long, CCountedPointer<CNavConnectorNode>, CKeyPairCompareLess<long, CCountedPointer<CNavConnectorNode> > >::LowerBound(const long&); proven	J006
+00ae9520	MATCH	82v82	PASS	1 grade run in the ledger, family stamp included; CVectorMap<long, CCountedPointer<NParticleEngine::CParticleEmitter>, CKeyPairCompareLess<long, CCountedPointer<NParticleEngine::CParticleEmitter> > >::LowerBound(const long&); proven	J006
+00ae9580	MATCH	82v82	PASS	1 grade run in the ledger, family stamp included; CVectorMap<long, CCountedPointer<NParticleEngine::CParticleEmitter>, CKeyPairCompareLess<long, CCountedPointer<NParticleEngine::CParticleEmitter> > >::LowerBound(const long&) const; probable	J006
+006a3770	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; family representative; std::vector<NScreenEffect::CScreenEffectPriorityStack::CThingGraphicArgPasser>::~vector(); proven	J007
+006c39a0	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; std::vector<C3DSkeletalBoneMorph>::~vector(); probable	J007
+006e54d0	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; std::vector<CLipSyncPhoneme>::~vector(); probable	J007
+006fbe60	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; std::vector<std::pair<CCharString, float>>::_M_clear(); proven	J007
+0088b4a0	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; std::vector<C3DSkeletalBoneMorph>::_M_clear(); proven	J007
+009f6a70	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; std::vector<CInputEvent>::~vector(); probable	J007
+006b8a80	MATCH	82v82	PASS	1 grade run in the ledger, family stamp included; family representative; CVectorMap<unsigned long, CCountedPointer<CFaction>, CKeyPairCompareLess<unsigned long, CCountedPointer<CFaction> > >::LowerBound(const unsigned long&); proven	J008
+006faf20	MATCH	82v82	PASS	1 grade run in the ledger, family stamp included; CVectorMap<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32>, CKeyPairCompareLess<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32> > >::LowerBound(const unsigned long&); proven	J008
+006faf80	MATCH	82v82	PASS	1 grade run in the ledger, family stamp included; CVectorMap<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32>, CKeyPairCompareLess<unsigned long, CSmallVector<NAnimationEvents::CEvent, 32> > >::LowerBound(const unsigned long&) const; proven	J008
+00819f70	MATCH	82v82	PASS	2 grade runs in the ledger, family stamp included; CVectorMap<unsigned long, CSkeletalMorphs::CEntry, CKeyPairCompareLess<unsigned long, CSkeletalMorphs::CEntry > >::LowerBound(const unsigned long&) const; proven	J008
+009b20d0	MATCH	82v82	PASS	1 grade run in the ledger, family stamp included; CVectorMap<unsigned long, CDefClassBase::CSubDefInfo, CKeyPairCompareLess<unsigned long, CDefClassBase::CSubDefInfo > >::LowerBound(const unsigned long&); proven	J008
+009b2130	MATCH	82v82	PASS	1 grade run in the ledger, family stamp included; CVectorMap<unsigned long, CDefClassBase::CSubDefInfo, CKeyPairCompareLess<unsigned long, CDefClassBase::CSubDefInfo > >::LowerBound(const unsigned long&) const; proven	J008
+006c8560	RELOCATION_MATCH	114v114	PASS	1 grade run in the ledger, family stamp included; family representative; std::vector<pair<long, COpinionDeed*>>::reserve(unsigned int); proven	J009
+00710b00	RELOCATION_MATCH	114v114	PASS	1 grade run in the ledger, family stamp included; std::vector<_List_iterator<CAnimSet, _Const_traits<CAnimSet> >>::reserve(unsigned int); proven	J009
+009b4eb0	RELOCATION_MATCH	114v114	PASS	1 grade run in the ledger, family stamp included; std::vector<pair<unsigned long, unsigned long>>::reserve(unsigned int); proven	J009
+009c2780	RELOCATION_MATCH	114v114	PASS	1 grade run in the ledger, family stamp included; std::vector<ESurfaceMultisampleType>::reserve(unsigned int); proven	J009
+00a39590	RELOCATION_MATCH	114v114	PASS	1 grade run in the ledger, family stamp included; std::vector<pair<unsigned long, long>>::reserve(unsigned int); proven	J009
+00ad4010	RELOCATION_MATCH	114v114	PASS	1 grade run in the ledger, family stamp included; std::vector<QuadricOptimiserInternals::COptimisedVertex::CGroup>::reserve(unsigned int); proven	J009
+006cb2d0	RELOCATION_MATCH	99v99	PASS	2 grade runs in the ledger, family stamp included; family representative; std::vector<CEngineTextureMorph >::erase(iterator, iterator); proven	J010
+0070b150	RELOCATION_MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<CEngineTextureDecal >::erase(iterator, iterator); proven	J010
+0086e150	RELOCATION_MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<CRandomAppearanceMorph::CBodyPartMesh >::erase(iterator, iterator); proven	J010
+00889ab0	RELOCATION_MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry >::erase(iterator, iterator); proven	J010
+00ae7f30	RELOCATION_MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<C3DGroup2 >::erase(iterator, iterator); proven	J010
+00bef510	RELOCATION_MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<std::pair<std::pair<long, long>, CEngineTextureDecal> >::erase(iterator, iterator); proven	J010
+006f19f0	RELOCATION_MATCH	87v87	PASS	1 grade run in the ledger, family stamp included; family representative; std::vector<CCountedPointer<CCombatSequenceBase> >::vector(const vector&); proven	J011
+0082c8a0	RELOCATION_MATCH	87v87	PASS	1 grade run in the ledger, family stamp included; std::vector<CRGBColour >::vector(const vector&); proven	J011
+008ac540	RELOCATION_MATCH	87v87	PASS	1 grade run in the ledger, family stamp included; std::vector<CIntelligentPointer<CThingAICreature> >::vector(const vector&); proven	J011
+00a2b970	RELOCATION_MATCH	87v87	PASS	1 grade run in the ledger, family stamp included; std::vector<CMeshDataBank::CLipSyncEntry >::vector(const vector&); proven	J011
+00a83170	RELOCATION_MATCH	87v87	PASS	1 grade run in the ledger, family stamp included; std::vector<std::list<C2DLineF> >::vector(const vector&); proven	J011
+00ad26d0	RELOCATION_MATCH	87v87	PASS	1 grade run in the ledger, family stamp included; std::vector<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> >::vector(const vector&); proven	J011
+00749050	RELOCATION_MATCH	77v77	PASS	1 grade run in the ledger, family stamp included; family representative; std::__make_heap<const CThing**, CCompare_FurthestFromInitPos2D, const CThing*, int>; proven	J012
+0087e0d0	RELOCATION_MATCH	77v77	PASS	1 grade run in the ledger, family stamp included; std::__make_heap<const CAnimationEntry**, CTurningAnimCompare, const CAnimationEntry*, int>; proven	J012
+00932540	RELOCATION_MATCH	77v77	PASS	1 grade run in the ledger, family stamp included; std::__make_heap<const CThing**, bool (__fastcall*)(const CThing*, const CThing*), const CThing*, int>; proven	J012
+0096d900	RELOCATION_MATCH	77v77	PASS	1 grade run in the ledger, family stamp included; std::__make_heap<CThing**, CAdaptThingCompareToSTLComparitor<CThingCompare_Nearest>, CThing*, int>; proven	J012
+009d3cf0	RELOCATION_MATCH	77v77	PASS	1 grade run in the ledger, family stamp included; std::__make_heap<unsigned long*, CBankFile::CompareDataOffset, unsigned long, int>; proven	J012
+00a5a660	RELOCATION_MATCH	77v77	PASS	1 grade run in the ledger, family stamp included; std::__make_heap<float*, less<float>, float, int>; proven	J012
+00758350	MATCH	57v57	PASS	2 grade runs in the ledger, family stamp included; family representative; std::swap<std::pair<CUnprovenKey_00758350, CUnprovenValue_00758350> >; descriptive	J013
+00758860	MATCH	57v57	PASS	1 grade run in the ledger, family stamp included; std::swap<std::pair<CUnprovenKey_00758860, CUnprovenValue_00758860> >; descriptive	J013
+008199b0	MATCH	57v57	PASS	1 grade run in the ledger, family stamp included; std::swap<std::pair<CUnprovenKey_008199b0, CUnprovenValue_008199b0> >; descriptive	J013
+0081a900	MATCH	57v57	PASS	1 grade run in the ledger, family stamp included; std::swap<std::pair<CUnprovenKey_0081a900, CUnprovenValue_0081a900> >; descriptive	J013
+00a312e0	MATCH	57v57	PASS	1 grade run in the ledger, family stamp included; std::swap<std::pair<CUnprovenKey_00a312e0, CUnprovenValue_00a312e0> >; descriptive	J013
+00a32390	MATCH	57v57	PASS	1 grade run in the ledger, family stamp included; std::swap<std::pair<CUnprovenKey_00a32390, CUnprovenValue_00a32390> >; descriptive	J013
+0075d0f0	RELOCATION_MATCH	73v73	PASS	1 grade run in the ledger, family stamp included; family representative; CTCCameraPointTrack::OnSerialseLeaf(CPersistContext&); proven	J014
+00d3bc10	RELOCATION_MATCH	73v73	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_GuildTrainingScript::OnPersist(CPersistContext&); proven	J014
+00d44650	RELOCATION_MATCH	73v73	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_GuildTrainingScript::CAppleGirl::OnPersist(CPersistContext&); proven	J014
+00d44c60	RELOCATION_MATCH	73v73	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_GuildTrainingScript::CBirdKiller::OnPersist(CPersistContext&); proven	J014
+00dcc720	RELOCATION_MATCH	73v73	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_OrchardFarmRaidScript::OnPersist(CPersistContext&); proven	J014
+00ef5450	RELOCATION_MATCH	73v73	PASS	1 grade run in the ledger, family stamp included; NScript::CPersonalScript_EmptyScript::CTestPos::OnPersist(CPersistContext&); proven	J014
+00777a90	MATCH	99v99	PASS	3 grade runs in the ledger, family stamp included; family representative; std::vector<CTCShop::GoodsPlace >::erase(iterator, iterator); proven	J015
+0081bfe0	MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<std::pair<EHeroMorphType, CParticleMorphs::CEntry> >::erase(iterator, iterator); proven	J015
+00aafd10	MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<CMatrix3x4 >::erase(iterator, iterator); proven	J015
+00ad3d60	MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<QuadricOptimiserInternals::COptimisedFace >::erase(iterator, iterator); proven	J015
+00b7c120	MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<CPreTransposedBoneMatrix >::erase(iterator, iterator); proven	J015
+00f37ee0	MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<CGPUScratchBufferTextureManager::CResourceEntry >::erase(iterator, iterator); proven	J015
+00778e70	RELOCATION_MATCH	127v127	PASS	1 grade run in the ledger, family stamp included; family representative; CTCDRegionEntrance::Construct(const C3DVector&); proven	J016
+00779000	RELOCATION_MATCH	127v127	PASS	1 grade run in the ledger, family stamp included; CTCDRegionExit::Construct(const C3DVector&); proven	J016
+007e8870	RELOCATION_MATCH	127v127	PASS	3 grade runs in the ledger, family stamp included; CTCDCameraPoint::Construct(const C3DVector&); proven	J016
+007f18b0	RELOCATION_MATCH	127v127	PASS	1 grade run in the ledger, family stamp included; CTCDRumble::Construct(const C3DVector&); proven	J016
+007fd430	RELOCATION_MATCH	127v127	PASS	1 grade run in the ledger, family stamp included; CTCDPhysicalObstruction::Construct(const C3DVector&); proven	J016
+00870b30	RELOCATION_MATCH	127v127	PASS	1 grade run in the ledger, family stamp included; CTCDInternalMarker::Construct(const C3DVector&); proven	J016
+007e82c0	RELOCATION_MATCH	65v65	PASS	2 grade runs in the ledger, family stamp included; family representative; CCreatureAction_Read::Clone() const; proven	J017
+008ae2a0	RELOCATION_MATCH	65v65	PASS	1 grade run in the ledger, family stamp included; CCreatureAction_SitDown::Clone() const; proven	J017
+008c9930	RELOCATION_MATCH	65v65	PASS	1 grade run in the ledger, family stamp included; CCreatureAction_BanditKingStuckGetHit::Clone() const; proven	J017
+008cc5a0	RELOCATION_MATCH	65v65	PASS	1 grade run in the ledger, family stamp included; CCreatureAction_SummonerLightningOrbInto::Clone() const; proven	J017
+00916710	RELOCATION_MATCH	65v65	PASS	1 grade run in the ledger, family stamp included; CCreatureAction_PickUpGoods::Clone() const; proven	J017
+00953a80	RELOCATION_MATCH	65v65	PASS	1 grade run in the ledger, family stamp included; CCreatureAction_DragonRearUpFull::Clone() const; proven	J017
+008a4560	RELOCATION_MATCH	240v240	PASS	7 grade runs in the ledger, family stamp included; family representative; CGameScriptInterface::GetFaceHeroForAction(CScriptThing); proven	J018
+008a4da0	RELOCATION_MATCH	240v240	PASS	1 grade run in the ledger, family stamp included; CGameScriptInterface::GetAttackHeroOnSight(CScriptThing); proven	J018
+008a5890	RELOCATION_MATCH	240v240	PASS	1 grade run in the ledger, family stamp included; CGameScriptInterface::GetStealStealableItems(CScriptThing); proven	J018
+008a5b50	RELOCATION_MATCH	240v240	PASS	1 grade run in the ledger, family stamp included; CGameScriptInterface::GetRecoverStealableItems(CScriptThing); proven	J018
+008a5e10	RELOCATION_MATCH	240v240	PASS	1 grade run in the ledger, family stamp included; CGameScriptInterface::GetTakeStealableItemToRandomDestination(CScriptThing); proven	J018
+008a6bf0	RELOCATION_MATCH	240v240	PASS	1 grade run in the ledger, family stamp included; CGameScriptInterface::GetDisableHeadLooking(CScriptThing); proven	J018
+008c1e00	RELOCATION_MATCH	117v117	PASS	1 grade run in the ledger, family stamp included; family representative; CCreatureAction_BriarRoseConcentrateOutof::Initialise(); proven	J019
+008c7200	RELOCATION_MATCH	117v117	PASS	3 grade runs in the ledger, family stamp included; CCreatureAction_IceTrollIcicleAssaultOutOf::Initialise(); proven	J019
+008cb120	RELOCATION_MATCH	117v117	PASS	1 grade run in the ledger, family stamp included; CCreatureAction_SummonerSummonOutOf::Initialise(); proven	J019
+008f3a50	RELOCATION_MATCH	117v117	PASS	1 grade run in the ledger, family stamp included; CCreatureAction_SnapDragonOutOf::Initialise(); proven	J019
+008f42a0	RELOCATION_MATCH	117v117	PASS	1 grade run in the ledger, family stamp included; CCreatureAction_DragonFireBeamOutOf::Initialise(); proven	J019
+008f4570	RELOCATION_MATCH	117v117	PASS	1 grade run in the ledger, family stamp included; CCreatureAction_DragonStrafeOutOf::Initialise(); proven	J019
+00909690	RELOCATION_MATCH	71v71	PASS	2 grade runs in the ledger, family stamp included; family representative; CCombatSequence_WillLightning::OnStart(); proven	J020
+00909730	RELOCATION_MATCH	71v71	PASS	1 grade run in the ledger, family stamp included; CCombatSequence_WillEnflame::OnStart(); proven	J020
+009097e0	RELOCATION_MATCH	71v71	PASS	1 grade run in the ledger, family stamp included; CCombatSequence_WillPhysicalShield::OnStart(); proven	J020
+00909890	RELOCATION_MATCH	71v71	PASS	1 grade run in the ledger, family stamp included; CCombatSequence_WillPhysicalShieldNonMelee::OnStart(); proven	J020
+009099b0	RELOCATION_MATCH	71v71	PASS	1 grade run in the ledger, family stamp included; CCombatSequence_WillForcePush::OnStart(); proven	J020
+00909b50	RELOCATION_MATCH	71v71	PASS	1 grade run in the ledger, family stamp included; CCombatSequence_WillForcePushLongRange::OnStart(); proven	J020
+0090c160	RELOCATION_MATCH	46v46	PASS	1 grade run in the ledger, family stamp included; family representative; CAIStateGroup_MinionGuardFollowPlayer::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); proven	J021
+00939270	RELOCATION_MATCH	46v46	PASS	1 grade run in the ledger, family stamp included; CAIStateGroup_SitRoundCampfire::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); proven	J021
+00953f70	RELOCATION_MATCH	46v46	PASS	1 grade run in the ledger, family stamp included; CAIStateGroup_MazeRangedCombat::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); proven	J021
+0095a380	RELOCATION_MATCH	46v46	PASS	1 grade run in the ledger, family stamp included; CAIStateGroup_HoverHornetQueenTakeDamage::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); proven	J021
+0096c1b0	RELOCATION_MATCH	46v46	PASS	1 grade run in the ledger, family stamp included; CAIStateGroup_Thunder::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); proven	J021
+00977730	RELOCATION_MATCH	46v46	PASS	1 grade run in the ledger, family stamp included; CAIStateGroup_Guildmaster::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); proven	J021
+00a2dbc0	RELOCATION_MATCH	88v88	PASS	2 grade runs in the ledger, family stamp included; family representative; std::vector<CCountedPointer<CMeshDataBankEntry> >::resize(size_type, const value_type&); proven	J022
+00a43f20	RELOCATION_MATCH	88v88	PASS	1 grade run in the ledger, family stamp included; std::vector<CLipSyncDataBankEntry >::resize(size_type, const value_type&); proven	J022
+00a6c020	RELOCATION_MATCH	88v88	PASS	1 grade run in the ledger, family stamp included; std::vector<CIVCountedPointer<CManagedTextureData> >::resize(size_type, const value_type&); proven	J022
+00a98540	RELOCATION_MATCH	88v88	PASS	1 grade run in the ledger, family stamp included; std::vector<CCountedPointer<C3DClothPrimitive> >::resize(size_type, const value_type&); proven	J022
+00a985a0	RELOCATION_MATCH	88v88	PASS	1 grade run in the ledger, family stamp included; std::vector<CCountedPointer<C3DGroup2> >::resize(size_type, const value_type&); proven	J022
+00b840c0	RELOCATION_MATCH	88v88	PASS	1 grade run in the ledger, family stamp included; std::vector<CCountedPointer<CEngineSimulationBase> >::resize(size_type, const value_type&); proven	J022
+00abc4a0	RELOCATION_MATCH	33v33	PASS	2 grade runs in the ledger, family stamp included; family representative; C3DMeshFileSmoothingGroupsChunk::~C3DMeshFileSmoothingGroupsChunk(); proven	J023
+00abc590	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; C3DMeshFileUniqueVerticesChunk::~C3DMeshFileUniqueVerticesChunk(); proven	J023
+00abc680	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; C3DMeshFileGroupChunk::~C3DMeshFileGroupChunk(); proven	J023
+00abc7b0	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; C3DMeshFileVerticesChunk::~C3DMeshFileVerticesChunk(); proven	J023
+00abc890	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; C3DMeshFileTrianglesChunk::~C3DMeshFileTrianglesChunk(); proven	J023
+00b29780	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; CEngineLayerRenderer::~CEngineLayerRenderer(); proven	J023
+00add1c0	RELOCATION_MATCH	34v34	PASS	1 grade run in the ledger, family stamp included; family representative; CLHFileCompletionCallback::CLHFileCompletionCallback(void*, void*); proven class; parameter types descriptive	J024
+00cdd160	RELOCATION_MATCH	34v34	PASS	1 grade run in the ledger, family stamp included; CLevelScriptBase<NScript::CQ_SunnyvaleMasterData>::CLevelScriptBase(CScriptDataBase*, CGameScriptInterfaceBase&); probable	J024
+00cdd190	RELOCATION_MATCH	34v34	PASS	1 grade run in the ledger, family stamp included; CLevelScriptBase<NScript::CalextestData>::CLevelScriptBase(CScriptDataBase*, CGameScriptInterfaceBase&); probable	J024
+00cdd1c0	RELOCATION_MATCH	34v34	PASS	1 grade run in the ledger, family stamp included; CLevelScriptBase<NScript::CEmptyData>::CLevelScriptBase(CScriptDataBase*, CGameScriptInterfaceBase&); probable	J024
+00cdd1f0	RELOCATION_MATCH	34v34	PASS	1 grade run in the ledger, family stamp included; CLevelScriptBase<NScript::Cjoss_test_scriptsData>::CLevelScriptBase(CScriptDataBase*, CGameScriptInterfaceBase&); probable	J024
+00cdd220	RELOCATION_MATCH	34v34	PASS	1 grade run in the ledger, family stamp included; CLevelScriptBase<NScript::CDanyalTestScriptsData>::CLevelScriptBase(CScriptDataBase*, CGameScriptInterfaceBase&); probable	J024
+00af8620	RELOCATION_MATCH	41v41	PASS	2 grade runs in the ledger, family stamp included; family representative; NParticleEngine::CRandomAcceleration::operator delete(void*); proven	J025
+00af8650	RELOCATION_MATCH	41v41	PASS	1 grade run in the ledger, family stamp included; NParticleEngine::CParticle::operator delete(void*); proven	J025
+00af8ad0	RELOCATION_MATCH	41v41	PASS	1 grade run in the ledger, family stamp included; NParticleEngine::CDecal::operator delete(void*); proven	J025
+00b49a40	RELOCATION_MATCH	41v41	PASS	2 grade runs in the ledger, family stamp included; CEngineLightingManager::CManagerLocalLight::Delete(); proven	J025
+00b49a70	RELOCATION_MATCH	41v41	PASS	1 grade run in the ledger, family stamp included; CEngineLightingManager::CManagerShadowedSpotLight::Delete(); proven	J025
+00b49aa0	RELOCATION_MATCH	41v41	PASS	1 grade run in the ledger, family stamp included; CEngineLightingManager::CLocalLightElementLink::Delete(); proven	J025
+00b29d90	RELOCATION_MATCH	160v160	PASS	1 grade run in the ledger, family stamp included; family representative; CEngine::AddEngineComponent<CEngineBillboardGenerator>; proven	J026
+00b29f70	RELOCATION_MATCH	160v160	PASS	1 grade run in the ledger, family stamp included; CEngine::AddEngineComponent<CEngineSubPrimitiveRenderer>; proven	J026
+00b2a160	RELOCATION_MATCH	160v160	PASS	1 grade run in the ledger, family stamp included; CEngine::AddEngineComponent<CEngineLightingManager>; proven	J026
+00b2a200	RELOCATION_MATCH	160v160	PASS	1 grade run in the ledger, family stamp included; CEngine::AddEngineComponent<CEnginePrimitiveAttachmentManager>; proven	J026
+00b2a2a0	RELOCATION_MATCH	160v160	PASS	1 grade run in the ledger, family stamp included; CEngine::AddEngineComponent<CEngineSurfaceCompositionManager>; proven	J026
+00b2a340	RELOCATION_MATCH	160v160	PASS	1 grade run in the ledger, family stamp included; CEngine::AddEngineComponent<CEngineSimulationManager>; proven	J026
+00b48220	RELOCATION_MATCH	122v122	PASS	2 grade runs in the ledger, family stamp included; family representative; CEngineLightingManager::GetSupportedTypes; proven	J027
+00bb8610	RELOCATION_MATCH	122v122	PASS	1 grade run in the ledger, family stamp included; CEnginePrimitiveManagerParticleDecalGroup::GetSupportedTypes; proven	J027
+00bc13a0	RELOCATION_MATCH	122v122	PASS	1 grade run in the ledger, family stamp included; CEnginePrimitiveManagerParticleSpriteGroup::GetSupportedTypes; proven	J027
+00bc3390	RELOCATION_MATCH	122v122	PASS	1 grade run in the ledger, family stamp included; CEnginePrimitiveManagerParticleMeshGroup::GetSupportedTypes; proven	J027
+00bc4c50	RELOCATION_MATCH	122v122	PASS	1 grade run in the ledger, family stamp included; CEnginePrimitiveManagerParticleLineGroup::GetSupportedTypes; proven	J027
+00bd28a0	RELOCATION_MATCH	122v122	PASS	1 grade run in the ledger, family stamp included; CEnginePrimitiveManager2DAnimatedMeshes::GetSupportedTypes; proven	J027
+00bc56a0	MATCH	44v44	PASS	2 grade runs in the ledger, family stamp included; family representative; CEngineInternalPrimitiveChanger::GetWorldPosition; proven	J028
+00bc56d0	MATCH	44v44	PASS	1 grade run in the ledger, family stamp included; CEngineInternalPrimitiveChanger::GetBoundingBoxTransform; proven	J028
+00bc5700	MATCH	44v44	PASS	1 grade run in the ledger, family stamp included; CEngineInternalPrimitiveChanger::GetBoundingBoxWorldSpace; proven	J028
+00bc5730	MATCH	44v44	PASS	1 grade run in the ledger, family stamp included; CEngineInternalPrimitiveChanger::GetBoundingSphereWorldSpace; proven	J028
+00bc5760	MATCH	44v44	PASS	1 grade run in the ledger, family stamp included; CEngineInternalPrimitiveChanger::GetBoundingSphereRadiusWorldSpace; proven	J028
+00bc5790	MATCH	44v44	PASS	1 grade run in the ledger, family stamp included; CEngineInternalPrimitiveChanger::IsInsideFrustum; proven	J028
+00c09d90	RELOCATION_MATCH	24v24	PASS	4 grade runs in the ledger, family stamp included; family representative; CUnprovenKeyedList_00c09d90::IsKeyLess; descriptive	J029
+00c0a080	RELOCATION_MATCH	24v24	PASS	3 grade runs in the ledger, family stamp included; CUnprovenKeyedList_00c0a080::IsKeyLess; descriptive	J029
+00c24d80	RELOCATION_MATCH	24v24	PASS	3 grade runs in the ledger, family stamp included; CUnprovenKeyedList_00c24d80::IsKeyLess; descriptive	J029
+00c24ee0	RELOCATION_MATCH	24v24	PASS	3 grade runs in the ledger, family stamp included; CUnprovenKeyedList_00c24ee0::IsKeyLess; descriptive	J029
+00c3afb0	RELOCATION_MATCH	24v24	PASS	5 grade runs in the ledger, family stamp included; CUnprovenKeyedList_00c3afb0::IsKeyLess; descriptive	J029
+00c3b540	RELOCATION_MATCH	24v24	PASS	5 grade runs in the ledger, family stamp included; CUnprovenKeyedList_00c3b540::IsKeyLess; descriptive	J029
+00c24760	RELOCATION_MATCH	25v25	PASS	2 grade runs in the ledger, family stamp included; family representative; CUnprovenKeyedList_00c24760::IsEqual; descriptive	J030
+00c24780	RELOCATION_MATCH	25v25	PASS	1 grade run in the ledger, family stamp included; CUnprovenKeyedList_00c24760::IsLess; descriptive	J030
+00c2c250	RELOCATION_MATCH	25v25	PASS	1 grade run in the ledger, family stamp included; CUnprovenKeyedList_00c2c250::IsEqual; descriptive	J030
+00c2c270	RELOCATION_MATCH	25v25	PASS	1 grade run in the ledger, family stamp included; CUnprovenKeyedList_00c2c250::IsLess; descriptive	J030
+00c46c40	RELOCATION_MATCH	25v25	PASS	1 grade run in the ledger, family stamp included; CUnprovenKeyedList_00c46c40::IsEqual; descriptive	J030
+00c46c60	RELOCATION_MATCH	25v25	PASS	1 grade run in the ledger, family stamp included; CUnprovenKeyedList_00c46c40::IsLess; descriptive	J030
+00c247a0	RELOCATION_MATCH	22v22	PASS	1 grade run in the ledger, family stamp included; family representative; CUnprovenKeyedList_00c24760::IsKeyEqual; descriptive	J031
+00c247c0	RELOCATION_MATCH	22v22	PASS	1 grade run in the ledger, family stamp included; CUnprovenKeyedList_00c24760::IsKeyLess; descriptive	J031
+00c2c290	RELOCATION_MATCH	22v22	PASS	1 grade run in the ledger, family stamp included; CUnprovenKeyedList_00c2c250::IsKeyEqual; descriptive	J031
+00c2c2b0	RELOCATION_MATCH	22v22	PASS	1 grade run in the ledger, family stamp included; CUnprovenKeyedList_00c2c250::IsKeyLess; descriptive	J031
+00c46c80	RELOCATION_MATCH	22v22	PASS	1 grade run in the ledger, family stamp included; CUnprovenKeyedList_00c46c40::IsKeyEqual; descriptive	J031
+00c46ca0	RELOCATION_MATCH	22v22	PASS	1 grade run in the ledger, family stamp included; CUnprovenKeyedList_00c46c40::IsKeyLess; descriptive	J031
+00c40e60	DIFFER	109v75	-	2 grade runs in the ledger, family stamp included; family representative; Pow10_00c40e60; descriptive; parked in differ/: retail_asm candidate: retail inline x87 asm (frndint, fld1/fscale, f2xm1, fwait after each fst) that VC7.1 cannot emit from C++; this pass forbids __asm	J032
+00c42c30	DIFFER	109v75	-	2 grade runs in the ledger, family stamp included; Pow10_00c42c30; descriptive; parked in differ/: retail_asm candidate: retail inline x87 asm (frndint, fld1/fscale, f2xm1, fwait after each fst) that VC7.1 cannot emit from C++; this pass forbids __asm	J032
+00c54a80	DIFFER	109v75	-	2 grade runs in the ledger, family stamp included; Pow10_00c54a80; descriptive; parked in differ/: retail_asm candidate: retail inline x87 asm (frndint, fld1/fscale, f2xm1, fwait after each fst) that VC7.1 cannot emit from C++; this pass forbids __asm	J032
+00c5c0b0	DIFFER	109v75	-	2 grade runs in the ledger, family stamp included; Pow10_00c5c0b0; descriptive; parked in differ/: retail_asm candidate: retail inline x87 asm (frndint, fld1/fscale, f2xm1, fwait after each fst) that VC7.1 cannot emit from C++; this pass forbids __asm	J032
+00c6bf60	DIFFER	109v75	-	2 grade runs in the ledger, family stamp included; Pow10_00c6bf60; descriptive; parked in differ/: retail_asm candidate: retail inline x87 asm (frndint, fld1/fscale, f2xm1, fwait after each fst) that VC7.1 cannot emit from C++; this pass forbids __asm	J032
+00c77690	DIFFER	109v75	-	2 grade runs in the ledger, family stamp included; Pow10_00c77690; descriptive; parked in differ/: retail_asm candidate: retail inline x87 asm (frndint, fld1/fscale, f2xm1, fwait after each fst) that VC7.1 cannot emit from C++; this pass forbids __asm	J032
+00d372f0	MATCH	22v22	PASS	1 grade run in the ledger, family stamp included; family representative; NScript::CQ_FireHeartScript::CFH_BriarRose::Init(); proven	J033
+00d79c40	MATCH	22v22	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_HeroSoulsScript::CNotForODG::Main(); proven	J033
+00d7dc50	MATCH	22v22	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_HeroSoulsArenaScript::CNotForODG::Main(); proven	J033
+00dfbda0	MATCH	22v22	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_TraderConflictGoodScript::CBCMTrader::Main(); proven	J033
+00dfbe90	MATCH	22v22	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_TraderConflictGoodScript::CBCGameMaster::Main(); proven	J033
+00ea8f00	MATCH	22v22	PASS	1 grade run in the ledger, family stamp included; NScript::CV_MurderTwistScript::CMurderTwistLeader::Init(); proven	J033
+00d50600	RELOCATION_MATCH	71v71	PASS	1 grade run in the ledger, family stamp included; family representative; NScript::CQ_GuildTrainingScript::Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J034
+00d89cf0	RELOCATION_MATCH	71v71	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_HeroSoulsNostroScript::Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J034
+00d99dc0	RELOCATION_MATCH	71v71	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_HobbeCaveScript::Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J034
+00d9e190	RELOCATION_MATCH	71v71	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_HobbeToothContestScript::Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J034
+00df4070	RELOCATION_MATCH	71v71	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_SummoningTheShipScript::Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J034
+00e0e9f0	RELOCATION_MATCH	71v71	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_WaspBossScript::Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J034
+00d7aa30	RELOCATION_MATCH	541v541	PASS	2 grade runs in the ledger, family stamp included; family representative; NScript::CQ_HeroSoulsScript::PlayCutscene(CCharString); proven	J035
+00d7fc70	RELOCATION_MATCH	541v541	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_HeroSoulsArenaScript::PlayCutscene(CCharString); proven	J035
+00d89ad0	RELOCATION_MATCH	541v541	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_HeroSoulsNostroScript::PlayCutscene(CCharString); proven	J035
+00df3e50	RELOCATION_MATCH	541v541	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_SummoningTheShipScript::PlayCutscene(CCharString); proven	J035
+00df9e00	RELOCATION_MATCH	541v541	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_TraderConflictEvilScript::PlayCutscene(CCharString); proven	J035
+00dfded0	RELOCATION_MATCH	541v541	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_TraderConflictGoodScript::PlayCutscene(CCharString); proven	J035
+00dddc90	RELOCATION_MATCH	60v60	PASS	1 grade run in the ledger, family stamp included; family representative; NScript::CQ_PrisonWardenGameScript::CQ_PrisonWardenGameScript(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J036
+00df40f0	RELOCATION_MATCH	60v60	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_TentacleKrakenBossFightScript::CQ_TentacleKrakenBossFightScript(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J036
+00e13c20	RELOCATION_MATCH	60v60	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_WhiteBalverineKnotholeGladeScript::CQ_WhiteBalverineKnotholeGladeScript(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J036
+00e18440	RELOCATION_MATCH	60v60	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_WhiteBalverineWWScript::CQ_WhiteBalverineWWScript(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J036
+00e9fbd0	RELOCATION_MATCH	60v60	PASS	1 grade run in the ledger, family stamp included; NScript::CV_KnotholeGladeGatesScript::CV_KnotholeGladeGatesScript(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J036
+00eb6b90	RELOCATION_MATCH	60v60	PASS	1 grade run in the ledger, family stamp included; NScript::CV_MayorsInvitationScript::CV_MayorsInvitationScript(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J036
+00de0290	RELOCATION_MATCH	84v84	PASS	1 grade run in the ledger, family stamp included; family representative; NScript::CQ_PrisonWardenGameScript::Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J037
+00df5c00	RELOCATION_MATCH	84v84	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_TentacleKrakenBossFightScript::Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J037
+00e183b0	RELOCATION_MATCH	84v84	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_WhiteBalverineKnotholeGladeScript::Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J037
+00e1a770	RELOCATION_MATCH	84v84	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_WhiteBalverineWWScript::Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J037
+00ea2c60	RELOCATION_MATCH	84v84	PASS	1 grade run in the ledger, family stamp included; NScript::CV_KnotholeGladeGatesScript::Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J037
+00ebcc10	RELOCATION_MATCH	84v84	PASS	1 grade run in the ledger, family stamp included; NScript::CV_MayorsInvitationScript::Alloc(CScriptDataBase*, CGameScriptInterfaceBase&); proven	J037
+00de1cc0	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; family representative; NScript::CQ_RansomVictimScript::CRansommer::Init(); proven	J038
+00de1e20	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_RansomVictimScript::CRansomHelper::Init(); proven	J038
+00de1f70	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_RansomVictimScript::CVictimsBrother::Init(); proven	J038
+00de20c0	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; NScript::CQ_RansomVictimScript::CVictimsBrotherHelper::Init(); proven	J038
+00ec5c90	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; NScript::CV_SickChildScript::CSickChildsMother::Init(); proven	J038
+00ec5da0	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; NScript::CV_SickChildScript::CSickChild::Init(); proven	J038
+00f26b30	RELOCATION_MATCH	92v92	PASS	4 grade runs in the ledger, family stamp included; family representative; std::__copy_ptrs<const CArenaRoundDef*, CArenaRoundDef*>; proven	J039
+00f27da0	RELOCATION_MATCH	92v92	PASS	2 grade runs in the ledger, family stamp included; std::__copy_ptrs<const CHeroSoulsWaveDef*, CHeroSoulsWaveDef*>; proven	J039
+00f27e00	RELOCATION_MATCH	92v92	PASS	2 grade runs in the ledger, family stamp included; std::__copy_ptrs<const CHeroSoulsRoundDef*, CHeroSoulsRoundDef*>; proven	J039
+00f28930	RELOCATION_MATCH	92v92	PASS	3 grade runs in the ledger, family stamp included; std::__copy_ptrs<CHeroSoulsWaveDef*, CHeroSoulsWaveDef*>; proven	J039
+00f34d10	RELOCATION_MATCH	92v92	PASS	3 grade runs in the ledger, family stamp included; std::__copy_ptrs<CArenaRoundDef*, CArenaRoundDef*>; proven	J039
+00f35510	RELOCATION_MATCH	92v92	PASS	3 grade runs in the ledger, family stamp included; std::__copy_ptrs<CHeroSoulsRoundDef*, CHeroSoulsRoundDef*>; proven	J039
+0040e0d0	RELOCATION_MATCH	37v37	PASS	2 grade runs in the ledger, family stamp included; family representative; std::fill<CWideString*, CWideString>; proven	J040
+00517060	RELOCATION_MATCH	37v37	PASS	2 grade runs in the ledger, family stamp included; std::fill<std::set<unsigned long>*, std::set<unsigned long>>; probable	J040
+00ad78d0	RELOCATION_MATCH	40v40	PASS	2 grade runs in the ledger, family stamp included; std::fill<QuadricOptimiserInternals::COptimisedVertex*, QuadricOptimiserInternals::COptimisedVertex>; proven	J040
+00afe660	RELOCATION_MATCH	37v37	PASS	2 grade runs in the ledger, family stamp included; std::fill<CArray<long>*, CArray<long>>; probable	J040
+00f3b850	RELOCATION_MATCH	37v37	PASS	2 grade runs in the ledger, family stamp included; std::fill<CArray<unsigned short>*, CArray<unsigned short>>; probable	J040
+0042a961	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; family representative; std::pair<const CCharString, CCountedPointer<NUISystem::CComponent> >::pair(const pair&); proven	J041
+004d788d	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; std::pair<CCharString, CTCBase::CRegisteredTCInfo>::pair(const pair&); proven	J041
+004da56a	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; std::pair<CCharString, CTCBase::CRegisteredTCInfo>::operator=(const pair&); proven	J041
+0059256c	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; std::pair<CCharString, CCharString>::pair(const pair&); proven	J041
+00cd2cab	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; std::pair<const CCharString, CScriptGameResourceObjectScriptedThingBase>::pair(const pair&); proven	J041
+0042ad34	RELOCATION_MATCH	56v56	PASS	1 grade run in the ledger, family stamp included; family representative; std::_Rb_tree<CCharString, pair<const CCharString, unsigned long>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_lower_bound(const CCharString&) const; proven	J042
+0042ae58	RELOCATION_MATCH	56v56	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CCountedPointer<NUISystem::CComponent>>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_lower_bound(const CCharString&) const; proven	J042
+0057fe4a	RELOCATION_MATCH	56v56	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CTCHeroStats::MirroredCriminalStatus>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_lower_bound(const CCharString&) const; proven	J042
+00cd2884	RELOCATION_MATCH	56v56	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, EScriptActiveStatus>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_lower_bound(const CCharString&) const; proven	J042
+00cd28bc	RELOCATION_MATCH	56v56	PASS	2 grade runs in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CScriptGameResourceObjectScriptedThingBase>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_lower_bound(const CCharString&) const; proven	J042
+0042aeb5	MATCH	37v37	PASS	2 grade runs in the ledger, family stamp included; family representative; std::_Rb_tree<NUISystem::CComponent*, pair<NUISystem::CComponent* const, NUISystem::CComponent*>, _Select1st<...>, less<NUISystem::CComponent*>, allocator<...> >::_M_upper_bound(const key_type&) const; proven	J043
+005b18aa	MATCH	37v37	PASS	2 grade runs in the ledger, family stamp included; std::_Rb_tree<NUISystem::CComponent*, pair<NUISystem::CComponent* const, pair<long, long>>, _Select1st<...>, less<NUISystem::CComponent*>, allocator<...> >::_M_upper_bound(const key_type&) const; proven	J043
+005b18d7	MATCH	37v37	PASS	2 grade runs in the ledger, family stamp included; std::_Rb_tree<NUISystem::CComponent*, pair<NUISystem::CComponent* const, NUISystem::CList*>, _Select1st<...>, less<NUISystem::CComponent*>, allocator<...> >::_M_upper_bound(const key_type&) const; proven	J043
+005cbf72	MATCH	37v37	PASS	2 grade runs in the ledger, family stamp included; std::_Rb_tree<NUISystem::CComponent*, pair<NUISystem::CComponent* const, long>, _Select1st<...>, less<NUISystem::CComponent*>, allocator<...> >::_M_upper_bound(const key_type&) const; proven	J043
+005d8446	MATCH	37v37	PASS	2 grade runs in the ledger, family stamp included; std::_Rb_tree<unsigned long, pair<unsigned long const, long>, _Select1st<...>, less<unsigned long>, allocator<...> >::_M_upper_bound(const key_type&) const; proven	J043
+0042bcb5	RELOCATION_MATCH	149v149	PASS	2 grade runs in the ledger, family stamp included; family representative; std::_Rb_tree<CCharString, pair<const CCharString, unsigned long>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_insert(_Rb_tree_node_base*, _Rb_tree_node_base*, const value_type&, _Rb_tree_node_base*); proven	J044
+0042cc03	RELOCATION_MATCH	149v149	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CCountedPointer<NUISystem::CComponent>>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_insert(_Rb_tree_node_base*, _Rb_tree_node_base*, const value_type&, _Rb_tree_node_base*); proven	J044
+00580765	RELOCATION_MATCH	149v149	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CTCHeroStats::MirroredCriminalStatus>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_insert(_Rb_tree_node_base*, _Rb_tree_node_base*, const value_type&, _Rb_tree_node_base*); proven	J044
+00cd2ecb	RELOCATION_MATCH	149v149	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, EScriptActiveStatus>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_insert(_Rb_tree_node_base*, _Rb_tree_node_base*, const value_type&, _Rb_tree_node_base*); proven	J044
+00cd3867	RELOCATION_MATCH	149v149	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CScriptGameResourceObjectScriptedThingBase>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_insert(_Rb_tree_node_base*, _Rb_tree_node_base*, const value_type&, _Rb_tree_node_base*); proven	J044
+0042bd4a	RELOCATION_MATCH	166v166	PASS	4 grade runs in the ledger, family stamp included; family representative; std::_Rb_tree<CCharString, pair<const CCharString, unsigned long>, _Select1st<...>, less<CCharString>, allocator<...> >::insert_unique(const value_type&); proven	J045
+0042cc98	RELOCATION_MATCH	166v166	PASS	3 grade runs in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CCountedPointer<NUISystem::CComponent>>, _Select1st<...>, less<CCharString>, allocator<...> >::insert_unique(const value_type&); proven	J045
+005807fa	RELOCATION_MATCH	166v166	PASS	3 grade runs in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CTCHeroStats::MirroredCriminalStatus>, _Select1st<...>, less<CCharString>, allocator<...> >::insert_unique(const value_type&); proven	J045
+00cd2f60	RELOCATION_MATCH	166v166	PASS	3 grade runs in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, EScriptActiveStatus>, _Select1st<...>, less<CCharString>, allocator<...> >::insert_unique(const value_type&); proven	J045
+00cd38fc	RELOCATION_MATCH	166v166	PASS	3 grade runs in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CScriptGameResourceObjectScriptedThingBase>, _Select1st<...>, less<CCharString>, allocator<...> >::insert_unique(const value_type&); proven	J045
+0042c940	RELOCATION_MATCH	456v456	PASS	3 grade runs in the ledger, family stamp included; family representative; std::_Rb_tree<CCharString, pair<const CCharString, unsigned long>, _Select1st<...>, less<CCharString>, allocator<...> >::insert_unique(iterator, const value_type&); proven	J046
+0042cf69	RELOCATION_MATCH	456v456	PASS	2 grade runs in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CCountedPointer<NUISystem::CComponent>>, _Select1st<...>, less<CCharString>, allocator<...> >::insert_unique(iterator, const value_type&); proven	J046
+00580b59	RELOCATION_MATCH	456v456	PASS	2 grade runs in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CTCHeroStats::MirroredCriminalStatus>, _Select1st<...>, less<CCharString>, allocator<...> >::insert_unique(iterator, const value_type&); proven	J046
+00cd3282	RELOCATION_MATCH	456v456	PASS	2 grade runs in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, EScriptActiveStatus>, _Select1st<...>, less<CCharString>, allocator<...> >::insert_unique(iterator, const value_type&); proven	J046
+00cd3ab6	RELOCATION_MATCH	456v456	PASS	2 grade runs in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CScriptGameResourceObjectScriptedThingBase>, _Select1st<...>, less<CCharString>, allocator<...> >::insert_unique(iterator, const value_type&); proven	J046
+004312b4	RELOCATION_MATCH	175v175	PASS	7 grade runs in the ledger, family stamp included; family representative; GFSerialiseMapBinaryIn<unsigned long, unsigned long, less<unsigned long> >(CMemoryDataInputStream&, map<unsigned long, unsigned long>&) (FableWin.pdb name set); proven	J047
+0045c95a	RELOCATION_MATCH	175v175	PASS	3 grade runs in the ledger, family stamp included; GFSerialiseMapBinaryIn<long, unsigned long, less<unsigned long> >(CMemoryDataInputStream&, map<unsigned long, long>&) (FableWin.pdb name set); proven	J047
+0046fa94	RELOCATION_MATCH	175v175	PASS	3 grade runs in the ledger, family stamp included; GFSerialiseMapBinaryIn<long, ECombatCreatureType, less<ECombatCreatureType> >(CMemoryDataInputStream&, map<ECombatCreatureType, long>&) (FableWin.pdb name set); proven	J047
+004e52f0	RELOCATION_MATCH	175v175	PASS	3 grade runs in the ledger, family stamp included; GFSerialiseMapBinaryIn<long, long, less<long> >(CMemoryDataInputStream&, map<long, long>&) (FableWin.pdb name set); proven	J047
+004e9393	RELOCATION_MATCH	175v175	PASS	3 grade runs in the ledger, family stamp included; GFSerialiseMapBinaryIn<long, EObjectAugmentationType, less<EObjectAugmentationType> >(CMemoryDataInputStream&, map<EObjectAugmentationType, long>&) (FableWin.pdb name set); proven	J047
+00431be0	RELOCATION_MATCH	51v51	PASS	2 grade runs in the ledger, family stamp included; family representative; NUISystem::CUIIconsDef::CUIIconsDef(); proven	J048
+00433f90	RELOCATION_MATCH	51v51	PASS	1 grade run in the ledger, family stamp included; CEngineDef::CEngineDef(); proven	J048
+004340d0	RELOCATION_MATCH	51v51	PASS	1 grade run in the ledger, family stamp included; CEngineVideoOptionsDef::CEngineVideoOptionsDef(); proven	J048
+00434240	RELOCATION_MATCH	51v51	PASS	1 grade run in the ledger, family stamp included; CConfigOptionsDefaultsDef::CConfigOptionsDefaultsDef(); proven	J048
+00f29c10	RELOCATION_MATCH	51v51	PASS	1 grade run in the ledger, family stamp included; CRegionScriptDef::CRegionScriptDef(); proven	J048
+004427d0	DIFFER	116v150	-	5 grade runs in the ledger, family stamp included; family representative; std::deque<CSubtitleRenderer::CSetTextInfo>::~deque(); proven; parked in differ/: the inlined _Destroy/__destroy pass the iterators straight into the argument slots; retail first copies _M_finish into four registers and _M_start into a 0x10-byte frame temp, then pushes them (frame 0x14 vs 4, 116 vs...	J049
+004432b0	DIFFER	116v150	-	1 grade run in the ledger, family stamp included; std::deque<std::pair<CCharString, long>>::~deque(); proven; parked in differ/: the inlined _Destroy/__destroy pass the iterators straight into the argument slots; retail first copies _M_finish into four registers and _M_start into a 0x10-byte frame temp, then pushes them (frame 0x14 vs 4, 116 vs...	J049
+0048d520	DIFFER	116v150	-	1 grade run in the ledger, family stamp included; std::deque<C2DVector>::~deque(); proven; parked in differ/: the inlined _Destroy/__destroy pass the iterators straight into the argument slots; retail first copies _M_finish into four registers and _M_start into a 0x10-byte frame temp, then pushes them (frame 0x14 vs 4, 116 vs...	J049
+007b4d60	DIFFER	116v150	-	1 grade run in the ledger, family stamp included; std::deque<CCrimeWaitingForBribe>::~deque(); proven; parked in differ/: the inlined _Destroy/__destroy pass the iterators straight into the argument slots; retail first copies _M_finish into four registers and _M_start into a 0x10-byte frame temp, then pushes them (frame 0x14 vs 4, 116 vs...	J049
+00913cc0	DIFFER	116v150	-	1 grade run in the ledger, family stamp included; std::deque<CBezierCurve>::~deque(); proven; parked in differ/: the inlined _Destroy/__destroy pass the iterators straight into the argument slots; retail first copies _M_finish into four registers and _M_start into a 0x10-byte frame temp, then pushes them (frame 0x14 vs 4, 116 vs...	J049
+00448520	RELOCATION_MATCH	186v186	PASS	2 grade runs in the ledger, family stamp included; family representative; std::__unguarded_linear_insert<pair<EGameAction, CCountedPointer<const CInputTypeBase> >*, ...>; proven	J050
+008251b0	RELOCATION_MATCH	186v186	PASS	1 grade run in the ledger, family stamp included; std::__unguarded_linear_insert<pair<long, CCountedPointer<CContainmentVolume> >*, ...>; proven	J050
+008280a0	RELOCATION_MATCH	186v186	PASS	1 grade run in the ledger, family stamp included; std::__unguarded_linear_insert<pair<long, CCountedPointer<CRegionConnectionNode> >*, ...>; proven	J050
+00a7ff40	RELOCATION_MATCH	186v186	PASS	1 grade run in the ledger, family stamp included; std::__unguarded_linear_insert<pair<long, CCountedPointer<CNavConnectorNode> >*, ...>; proven	J050
+00ae9a40	RELOCATION_MATCH	186v186	PASS	1 grade run in the ledger, family stamp included; std::__unguarded_linear_insert<pair<long, CCountedPointer<NParticleEngine::CParticleEmitter> >*, ...>; proven	J050
+004486e0	RELOCATION_MATCH	149v149	PASS	2 grade runs in the ledger, family stamp included; family representative; std::__copy_backward<pair<EGameAction, CCountedPointer<const CInputTypeBase> >*, ...>; proven	J051
+00825370	RELOCATION_MATCH	149v149	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<pair<long, CCountedPointer<CContainmentVolume> >*, ...>; proven	J051
+00828260	RELOCATION_MATCH	149v149	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<pair<long, CCountedPointer<CRegionConnectionNode> >*, ...>; proven	J051
+00ae9c00	RELOCATION_MATCH	149v149	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<pair<long, CCountedPointer<NParticleEngine::CParticleEmitter> >*, ...>; proven	J051
+00b8ef60	RELOCATION_MATCH	149v149	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<pair<unsigned long, CCountedPointer<CVertexBufferWin32> >*, ...>; proven	J051
+00448ab0	RELOCATION_MATCH	103v103	PASS	2 grade runs in the ledger, family stamp included; family representative; std::__unguarded_partition<pair<EGameAction, CCountedPointer<const CInputTypeBase> >*, ...>; proven	J052
+00826180	RELOCATION_MATCH	103v103	PASS	1 grade run in the ledger, family stamp included; std::__unguarded_partition<pair<long, CCountedPointer<CContainmentVolume> >*, ...>; proven	J052
+00828f60	RELOCATION_MATCH	103v103	PASS	1 grade run in the ledger, family stamp included; std::__unguarded_partition<pair<long, CCountedPointer<CRegionConnectionNode> >*, ...>; proven	J052
+00a81bc0	RELOCATION_MATCH	103v103	PASS	1 grade run in the ledger, family stamp included; std::__unguarded_partition<pair<long, CCountedPointer<CNavConnectorNode> >*, ...>; proven	J052
+00ae9f40	RELOCATION_MATCH	103v103	PASS	1 grade run in the ledger, family stamp included; std::__unguarded_partition<pair<long, CCountedPointer<NParticleEngine::CParticleEmitter> >*, ...>; proven	J052
+00449270	RELOCATION_MATCH	104v104	PASS	3 grade runs in the ledger, family stamp included; family representative; std::__partial_sort<pair<EGameAction, CCountedPointer<const CInputTypeBase> >*, ...>; proven	J053
+00827130	RELOCATION_MATCH	104v104	PASS	2 grade runs in the ledger, family stamp included; std::__partial_sort<pair<long, CCountedPointer<CContainmentVolume> >*, ...>; proven	J053
+00829630	RELOCATION_MATCH	104v104	PASS	2 grade runs in the ledger, family stamp included; std::__partial_sort<pair<long, CCountedPointer<CRegionConnectionNode> >*, ...>; proven	J053
+00a83e80	RELOCATION_MATCH	104v104	PASS	2 grade runs in the ledger, family stamp included; std::__partial_sort<pair<long, CCountedPointer<CNavConnectorNode> >*, ...>; proven	J053
+00aea580	RELOCATION_MATCH	104v104	PASS	2 grade runs in the ledger, family stamp included; std::__partial_sort<pair<long, CCountedPointer<NParticleEngine::CParticleEmitter> >*, ...>; proven	J053
+00449320	RELOCATION_MATCH	64v64	PASS	2 grade runs in the ledger, family stamp included; family representative; std::vector<CCountedPointer<const CInputTypeBase> >::push_back(const CCountedPointer<const CInputTypeBase>&); proven	J054
+00535ad0	RELOCATION_MATCH	64v64	PASS	1 grade run in the ledger, family stamp included; std::vector<CCountedPointer<NUISystem::CComponent> >::push_back(const CCountedPointer<NUISystem::CComponent>&); proven	J054
+0054a3b0	RELOCATION_MATCH	64v64	PASS	1 grade run in the ledger, family stamp included; std::vector<CCountedPointer<NUISystem::CAction> >::push_back(const CCountedPointer<NUISystem::CAction>&); proven	J054
+00696fe0	RELOCATION_MATCH	64v64	PASS	1 grade run in the ledger, family stamp included; std::vector<CCountedPointer<NCreatureAction::CActionEventBase> >::push_back(const CCountedPointer<NCreatureAction::CActionEventBase>&); proven	J054
+007f48d0	RELOCATION_MATCH	64v64	PASS	1 grade run in the ledger, family stamp included; std::vector<CCountedPointer<CTCLightningNode::CLightningBranch> >::push_back(const CCountedPointer<CTCLightningNode::CLightningBranch>&); proven	J054
+004494d0	RELOCATION_MATCH	250v250	PASS	3 grade runs in the ledger, family stamp included; family representative; std::__introsort_loop<pair<EGameAction, CCountedPointer<const CInputTypeBase> >*, ...>; proven	J055
+008274b0	RELOCATION_MATCH	250v250	PASS	2 grade runs in the ledger, family stamp included; std::__introsort_loop<pair<long, CCountedPointer<CContainmentVolume> >*, ...>; proven	J055
+008297f0	RELOCATION_MATCH	250v250	PASS	2 grade runs in the ledger, family stamp included; std::__introsort_loop<pair<long, CCountedPointer<CRegionConnectionNode> >*, ...>; proven	J055
+00a847c0	RELOCATION_MATCH	250v250	PASS	2 grade runs in the ledger, family stamp included; std::__introsort_loop<pair<long, CCountedPointer<CNavConnectorNode> >*, ...>; proven	J055
+00aea780	RELOCATION_MATCH	250v250	PASS	2 grade runs in the ledger, family stamp included; std::__introsort_loop<pair<long, CCountedPointer<NParticleEngine::CParticleEmitter> >*, ...>; proven	J055
+0044c108	RELOCATION_MATCH	39v39	PASS	3 grade runs in the ledger, family stamp included; family representative; CInventoryItemDef::CInventoryItemDef(); proven	J056
+00454d9e	RELOCATION_MATCH	39v39	PASS	2 grade runs in the ledger, family stamp included; CThingHolySiteDef::CThingHolySiteDef(); proven	J056
+00454df4	RELOCATION_MATCH	39v39	PASS	2 grade runs in the ledger, family stamp included; CThingMarkerDef::CThingMarkerDef(); proven	J056
+00454f32	RELOCATION_MATCH	39v39	PASS	2 grade runs in the ledger, family stamp included; CThingVillageDef::CThingVillageDef(); proven	J056
+00459102	RELOCATION_MATCH	39v39	PASS	2 grade runs in the ledger, family stamp included; CThingObjectDef::CThingObjectDef(); proven	J056
+00453014	RELOCATION_MATCH	167v167	PASS	3 grade runs in the ledger, family stamp included; family representative; CSnowTrollDef::Transfer(CPersistContext&); proven	J057
+00463bff	RELOCATION_MATCH	167v167	PASS	3 grade runs in the ledger, family stamp included; CMeleeCombatAbilityDef::Transfer(CPersistContext&); proven	J057
+0046fc51	RELOCATION_MATCH	167v167	PASS	2 grade runs in the ledger, family stamp included; CAppearanceModifierDef::Transfer(CPersistContext&); proven	J057
+00472415	RELOCATION_MATCH	173v173	PASS	3 grade runs in the ledger, family stamp included; CSpecialAbilitiesMultiStrikeDef::Transfer(CPersistContext&); proven	J057
+004df050	RELOCATION_MATCH	167v167	PASS	2 grade runs in the ledger, family stamp included; CKrakenTentacleDef::Transfer(CPersistContext&); proven	J057
+004530dc	RELOCATION_MATCH	156v156	PASS	2 grade runs in the ledger, family stamp included; family representative; CSummonerDef::Transfer(CPersistContext&); proven	J058
+0046a260	RELOCATION_MATCH	156v156	PASS	2 grade runs in the ledger, family stamp included; CSpecialAbilitiesMultiArrowDef::Transfer(CPersistContext&); proven	J058
+004dec86	RELOCATION_MATCH	156v156	PASS	2 grade runs in the ledger, family stamp included; CTavernGameCoinGolfDef::Transfer(CPersistContext&); proven	J058
+004df658	RELOCATION_MATCH	156v156	PASS	2 grade runs in the ledger, family stamp included; COracleMinigameDef::Transfer(CPersistContext&); proven	J058
+004e5d08	RELOCATION_MATCH	156v156	PASS	2 grade runs in the ledger, family stamp included; CTrapDef::Transfer(CPersistContext&); proven	J058
+00453b4d	RELOCATION_MATCH	69v69	PASS	1 grade run in the ledger, family stamp included; family representative; CCreatureStatsDef::operator=(const CCreatureStatsDef&); proven	J059
+0046f43e	RELOCATION_MATCH	69v69	PASS	1 grade run in the ledger, family stamp included; CAbilityButtonGuiDef::operator=(const CAbilityButtonGuiDef&); proven	J059
+004e042a	RELOCATION_MATCH	69v69	PASS	1 grade run in the ledger, family stamp included; CStealthDef::operator=(const CStealthDef&); proven	J059
+004e0923	RELOCATION_MATCH	69v69	PASS	1 grade run in the ledger, family stamp included; CHighlightItemDef::operator=(const CHighlightItemDef&); proven	J059
+004e18ce	RELOCATION_MATCH	69v69	PASS	1 grade run in the ledger, family stamp included; CWillResponseDef::operator=(const CWillResponseDef&); proven	J059
+0045dadb	RELOCATION_MATCH	180v180	PASS	5 grade runs in the ledger, family stamp included; family representative; GFSerialiseMapBinaryIn<float, ETargetingType, less<ETargetingType> >(CMemoryDataInputStream&, map<ETargetingType, float>&) (FableWin.pdb name set); proven	J060
+0045f360	RELOCATION_MATCH	180v180	PASS	1 grade run in the ledger, family stamp included; GFSerialiseMapBinaryIn<float, EOpinion, less<EOpinion> >(CMemoryDataInputStream&, map<EOpinion, float>&) (FableWin.pdb name set); proven	J060
+004e6801	RELOCATION_MATCH	180v180	PASS	1 grade run in the ledger, family stamp included; GFSerialiseMapBinaryIn<float, EQuakeStrength, less<EQuakeStrength> >(CMemoryDataInputStream&, map<EQuakeStrength, float>&) (FableWin.pdb name set); proven	J060
+004e6a9c	RELOCATION_MATCH	180v180	PASS	1 grade run in the ledger, family stamp included; GFSerialiseMapBinaryIn<float, EQuakeLength, less<EQuakeLength> >(CMemoryDataInputStream&, map<EQuakeLength, float>&) (FableWin.pdb name set); proven	J060
+004ecdac	RELOCATION_MATCH	180v180	PASS	1 grade run in the ledger, family stamp included; GFSerialiseMapBinaryIn<float, EOpinionAttitudeType, less<EOpinionAttitudeType> >(CMemoryDataInputStream&, map<EOpinionAttitudeType, float>&) (FableWin.pdb name set); proven	J060
+00463d18	RELOCATION_MATCH	179v179	PASS	1 grade run in the ledger, family stamp included; family representative; GFSerialiseMapBinaryIn<long, EHeroTrainableStatType, less<EHeroTrainableStatType> >(CMemoryDataInputStream&, map<EHeroTrainableStatType, long>&) (FableWin.pdb name set); proven	J061
+0046461d	RELOCATION_MATCH	179v179	PASS	1 grade run in the ledger, family stamp included; GFSerialiseMapBinaryIn<unsigned long, EWorldMapNameGraphic, less<EWorldMapNameGraphic> >(CMemoryDataInputStream&, map<EWorldMapNameGraphic, unsigned long>&) (FableWin.pdb name set); proven	J061
+004e5673	RELOCATION_MATCH	179v179	PASS	1 grade run in the ledger, family stamp included; GFSerialiseMapBinaryIn<long, EClothingSuitPart, less<EClothingSuitPart> >(CMemoryDataInputStream&, map<EClothingSuitPart, long>&) (FableWin.pdb name set); proven	J061
+004e62ca	RELOCATION_MATCH	179v179	PASS	1 grade run in the ledger, family stamp included; GFSerialiseMapBinaryIn<long, EIdleStateGroup, less<EIdleStateGroup> >(CMemoryDataInputStream&, map<EIdleStateGroup, long>&) (FableWin.pdb name set); proven	J061
+004e7a9f	RELOCATION_MATCH	179v179	PASS	1 grade run in the ledger, family stamp included; GFSerialiseMapBinaryIn<long, EQuestCardPrerequisite, less<EQuestCardPrerequisite> >(CMemoryDataInputStream&, map<EQuestCardPrerequisite, long>&) (FableWin.pdb name set); proven	J061
+004648a1	RELOCATION_MATCH	144v144	PASS	2 grade runs in the ledger, family stamp included; family representative; GFSerialiseVectorBinaryIn<unsigned long>(CMemoryDataInputStream&, vector<unsigned long>&) (FableWin.pdb name set); proven	J062
+00466aa7	RELOCATION_MATCH	144v144	PASS	1 grade run in the ledger, family stamp included; GFSerialiseVectorBinaryIn<long>(CMemoryDataInputStream&, vector<long>&) (FableWin.pdb name set); proven	J062
+0046caf4	RELOCATION_MATCH	144v144	PASS	1 grade run in the ledger, family stamp included; GFSerialiseVectorBinaryIn<EActionRegisteredType>(CMemoryDataInputStream&, vector<EActionRegisteredType>&) (FableWin.pdb name set); proven	J062
+00472123	RELOCATION_MATCH	144v144	PASS	1 grade run in the ledger, family stamp included; GFSerialiseVectorBinaryIn<EOpinionAttitudeType>(CMemoryDataInputStream&, vector<EOpinionAttitudeType>&) (FableWin.pdb name set); proven	J062
+004e89f7	RELOCATION_MATCH	144v144	PASS	1 grade run in the ledger, family stamp included; GFSerialiseVectorBinaryIn<CDefIndex>(CMemoryDataInputStream&, vector<CDefIndex>&) (FableWin.pdb name set); proven	J062
+00464be9	RELOCATION_MATCH	214v214	PASS	2 grade runs in the ledger, family stamp included; family representative; CSpecialAbilitiesAssassinRushDef::Transfer(CPersistContext&); proven	J063
+0046a178	RELOCATION_MATCH	232v232	PASS	2 grade runs in the ledger, family stamp included; CSpecialAbilitiesBattleChargeDef::Transfer(CPersistContext&); proven	J063
+004e795a	RELOCATION_MATCH	211v211	PASS	2 grade runs in the ledger, family stamp included; CQuestCardDef::Transfer(CPersistContext&); proven	J063
+004eb02f	RELOCATION_MATCH	211v211	PASS	2 grade runs in the ledger, family stamp included; CExplosionDef::Transfer(CPersistContext&); proven	J063
+004f9a90	RELOCATION_MATCH	211v211	PASS	2 grade runs in the ledger, family stamp included; CTavernGameCardBaseDef::Transfer(CPersistContext&); proven	J063
+00469e74	RELOCATION_MATCH	305v305	PASS	2 grade runs in the ledger, family stamp included; family representative; std::vector<CTextureReplacementDef::CEntry >::_M_fill_insert(iterator, size_type, const value_type&); proven	J064
+0046b1b8	RELOCATION_MATCH	305v305	PASS	1 grade run in the ledger, family stamp included; std::vector<CAtmosBankEntry >::_M_fill_insert(iterator, size_type, const value_type&); proven	J064
+0046c4a4	RELOCATION_MATCH	305v305	PASS	1 grade run in the ledger, family stamp included; std::vector<CObjectFamilyEntry >::_M_fill_insert(iterator, size_type, const value_type&); proven	J064
+00470a9c	RELOCATION_MATCH	305v305	PASS	1 grade run in the ledger, family stamp included; std::vector<pair<unsigned long, CDefString> >::_M_fill_insert(iterator, size_type, const value_type&); proven	J064
+00475ed0	RELOCATION_MATCH	305v305	PASS	1 grade run in the ledger, family stamp included; std::vector<C2DVector >::_M_fill_insert(iterator, size_type, const value_type&); proven	J064
+0046cdfc	RELOCATION_MATCH	44v44	PASS	2 grade runs in the ledger, family stamp included; family representative; CAppearanceDef::`scalar deleting destructor'; proven	J065
+004d8072	RELOCATION_MATCH	44v44	PASS	1 grade run in the ledger, family stamp included; CChestDef::`scalar deleting destructor'; proven	J065
+004e2869	RELOCATION_MATCH	44v44	PASS	1 grade run in the ledger, family stamp included; CFlammableDef::`scalar deleting destructor'; proven	J065
+0065dd4a	RELOCATION_MATCH	44v44	PASS	1 grade run in the ledger, family stamp included; CVillageTaskSecuritySweep::`scalar deleting destructor'; proven	J065
+0090292e	RELOCATION_MATCH	44v44	PASS	1 grade run in the ledger, family stamp included; CAIStateGroup_HoverWanderAroundThing::`scalar deleting destructor'; proven	J065
+0046f020	RELOCATION_MATCH	74v74	PASS	2 grade runs in the ledger, family stamp included; family representative; std::vector<CQuickAccessItemButtonGuiDef >::_M_allocate_and_copy<const CQuickAccessItemButtonGuiDef*>(size_type, const CQuickAccessItemButtonGuiDef*, const CQuickAccessItemButtonGuiDef*); proven	J066
+0047204b	RELOCATION_MATCH	74v74	PASS	1 grade run in the ledger, family stamp included; std::vector<COpinionDeedReactionDef >::_M_allocate_and_copy<const COpinionDeedReactionDef*>(size_type, const COpinionDeedReactionDef*, const COpinionDeedReactionDef*); proven	J066
+00478533	RELOCATION_MATCH	74v74	PASS	1 grade run in the ledger, family stamp included; std::vector<CAppearanceModifierScalingDef >::_M_allocate_and_copy<const CAppearanceModifierScalingDef*>(size_type, const CAppearanceModifierScalingDef*, const CAppearanceModifierScalingDef*); proven	J066
+00478a1e	RELOCATION_MATCH	74v74	PASS	1 grade run in the ledger, family stamp included; std::vector<CAbilityTrackLevelDef >::_M_allocate_and_copy<const CAbilityTrackLevelDef*>(size_type, const CAbilityTrackLevelDef*, const CAbilityTrackLevelDef*); proven	J066
+00478a6d	RELOCATION_MATCH	74v74	PASS	1 grade run in the ledger, family stamp included; std::vector<CAbilityTrackDef >::_M_allocate_and_copy<const CAbilityTrackDef*>(size_type, const CAbilityTrackDef*, const CAbilityTrackDef*); proven	J066
+004711b3	RELOCATION_MATCH	66v66	PASS	3 grade runs in the ledger, family stamp included; family representative; std::sort<std::pair<unsigned long, CDefString >*, CKeyPairCompareLess<unsigned long, CDefString> >(pair*, pair*, CKeyPairCompareLess<unsigned long, CDefString>); proven	J067
+004eb9a6	RELOCATION_MATCH	66v66	PASS	1 grade run in the ledger, family stamp included; std::sort<std::pair<CCharString, CTCBase::CRegisteredTCInfo >*, CKeyPairCompareLess<CCharString, CTCBase::CRegisteredTCInfo> >(pair*, pair*, CKeyPairCompareLess<CCharString, CTCBase::CRegisteredTCInfo>); proven	J067
+00594ed4	RELOCATION_MATCH	66v66	PASS	1 grade run in the ledger, family stamp included; std::sort<std::pair<long, CDefPointer<const CContextSensitiveItemDef> >*, CContextSensitivePriorityCompare >(pair*, pair*, CContextSensitivePriorityCompare); proven	J067
+005fa3dd	RELOCATION_MATCH	66v66	PASS	1 grade run in the ledger, family stamp included; std::sort<std::pair<long, EHeroAbility >*, CKeyPairCompareLess<long, EHeroAbility> >(pair*, pair*, CKeyPairCompareLess<long, EHeroAbility>); proven	J067
+005fa41f	RELOCATION_MATCH	66v66	PASS	1 grade run in the ledger, family stamp included; std::sort<std::pair<long, long >*, CKeyPairCompareLess<long, long> >(pair*, pair*, CKeyPairCompareLess<long, long>); proven	J067
+0047616e	RELOCATION_MATCH	60v60	PASS	2 grade runs in the ledger, family stamp included; family representative; std::vector<CQuickAccessItemButtonGuiDef >::erase(iterator, iterator); proven	J068
+004ed0c6	RELOCATION_MATCH	60v60	PASS	1 grade run in the ledger, family stamp included; std::vector<CShopItemDef >::erase(iterator, iterator); proven	J068
+004edab7	RELOCATION_MATCH	60v60	PASS	1 grade run in the ledger, family stamp included; std::vector<CPrizeScoreDef >::erase(iterator, iterator); proven	J068
+004f9d7b	RELOCATION_MATCH	60v60	PASS	1 grade run in the ledger, family stamp included; std::vector<CCardPositionsDef >::erase(iterator, iterator); proven	J068
+004fa1f0	RELOCATION_MATCH	60v60	PASS	1 grade run in the ledger, family stamp included; std::vector<CCardDef >::erase(iterator, iterator); proven	J068
+004861f7	RELOCATION_MATCH	72v72	PASS	2 grade runs in the ledger, family stamp included; family representative; std::vector<CDateAndTime >::resize(size_type, const CDateAndTime&); probable	J069
+004ea3c3	RELOCATION_MATCH	72v72	PASS	1 grade run in the ledger, family stamp included; std::vector<CEngineGraphic >::resize(size_type, const CEngineGraphic&); proven	J069
+004edf44	RELOCATION_MATCH	72v72	PASS	1 grade run in the ledger, family stamp included; std::vector<CMultiStaticMeshEntryDef >::resize(size_type, const CMultiStaticMeshEntryDef&); proven	J069
+004fa1a8	RELOCATION_MATCH	72v72	PASS	1 grade run in the ledger, family stamp included; std::vector<CCardDef >::resize(size_type, const CCardDef&); proven	J069
+00594cee	RELOCATION_MATCH	72v72	PASS	1 grade run in the ledger, family stamp included; std::vector<CFadeInFadeOutBase >::resize(size_type, const CFadeInFadeOutBase&); proven	J069
+00493a5a	RELOCATION_MATCH	50v50	PASS	2 grade runs in the ledger, family stamp included; family representative; std::__copy<CSubtitleRenderer::CEmbeddedHighlight*, CSubtitleRenderer::CEmbeddedHighlight*, int>(first, last, result, const random_access_iterator_tag&, int*); proven	J070
+0053cc38	RELOCATION_MATCH	50v50	PASS	1 grade run in the ledger, family stamp included; std::__copy<std::map<unsigned long, NUISystem::CUIState>*, std::map<unsigned long, NUISystem::CUIState>*, int>(first, last, result, const random_access_iterator_tag&, int*); proven	J070
+005c12fa	RELOCATION_MATCH	50v50	PASS	1 grade run in the ledger, family stamp included; std::__copy<NInventory::CItem*, NInventory::CItem*, int>(first, last, result, const random_access_iterator_tag&, int*); proven	J070
+005c132c	RELOCATION_MATCH	50v50	PASS	1 grade run in the ledger, family stamp included; std::__copy<const NInventory::CItem*, NInventory::CItem*, int>(first, last, result, const random_access_iterator_tag&, int*); proven	J070
+00788f76	RELOCATION_MATCH	50v50	PASS	1 grade run in the ledger, family stamp included; std::__copy<std::pair<CIntelligentPointer<CThing>, long>*, std::pair<CIntelligentPointer<CThing>, long>*, int>(first, last, result, const random_access_iterator_tag&, int*); proven	J070
+004941f2	RELOCATION_MATCH	176v176	PASS	3 grade runs in the ledger, family stamp included; family representative; std::vector<CSubtitleRenderer::CEmbeddedHighlight >::_M_insert_overflow(pointer, const CSubtitleRenderer::CEmbeddedHighlight&, const __false_type&, size_type, bool); proven	J071
+0053cef6	RELOCATION_MATCH	176v176	PASS	1 grade run in the ledger, family stamp included; std::vector<std::map<unsigned long, NUISystem::CUIState> >::_M_insert_overflow(pointer, const std::map<unsigned long, NUISystem::CUIState>&, const __false_type&, size_type, bool); proven	J071
+005bc0fb	RELOCATION_MATCH	176v176	PASS	1 grade run in the ledger, family stamp included; std::vector<std::vector<std::pair<long, long> > >::_M_insert_overflow(pointer, const std::vector<std::pair<long, long> >&, const __false_type&, size_type, bool); probable	J071
+005c276c	RELOCATION_MATCH	176v176	PASS	1 grade run in the ledger, family stamp included; std::vector<NInventory::CItem >::_M_insert_overflow(pointer, const NInventory::CItem&, const __false_type&, size_type, bool); proven	J071
+007893ae	RELOCATION_MATCH	176v176	PASS	1 grade run in the ledger, family stamp included; std::vector<std::pair<CIntelligentPointer<CThing>, long> >::_M_insert_overflow(pointer, const std::pair<CIntelligentPointer<CThing>, long>&, const __false_type&, size_type, bool); proven	J071
+004a7750	RELOCATION_MATCH	51v51	PASS	1 grade run in the ledger, family stamp included; family representative; CTestQuest::~CTestQuest(); probable	J072
+004aa750	RELOCATION_MATCH	51v51	PASS	1 grade run in the ledger, family stamp included; CUnprovenRecord_004AA750::~CUnprovenRecord_004AA750() (class unproven); descriptive	J072
+008fdcca	RELOCATION_MATCH	51v51	PASS	2 grade runs in the ledger, family stamp included; CAIStateGroup_GoToPub::~CAIStateGroup_GoToPub(); proven	J072
+00901750	RELOCATION_MATCH	51v51	PASS	1 grade run in the ledger, family stamp included; CAIStateGroup_TavernServer::~CAIStateGroup_TavernServer(); proven	J072
+00903046	RELOCATION_MATCH	51v51	PASS	1 grade run in the ledger, family stamp included; CAIStateGroup_JackOfBladesBase::~CAIStateGroup_JackOfBladesBase(); proven	J072
+004aa190	DIFFER	62v62	-	5 grade runs in the ledger, family stamp included; family representative; std::__uninitialized_fill_n<CIntelligentPointer<CThing>*, unsigned int, CIntelligentPointer<CThing> >; proven; parked in differ/: register choice only: retail keeps n in ebx and x in edi (x loaded first, 'mov edi,[esp+10h] ; mov ebx,edx'); VC7.1 here assigns x to ebx and n to edi, every other byte equal	J073
+007377a0	DIFFER	62v62	-	2 grade runs in the ledger, family stamp included; std::__uninitialized_fill_n<CIntelligentPointer<const CThing>*, unsigned int, CIntelligentPointer<const CThing> >; proven; parked in differ/: register choice only: retail keeps n in ebx and x in edi (x loaded first, 'mov edi,[esp+10h] ; mov ebx,edx'); VC7.1 here assigns x to ebx and n to edi, every other byte equal	J073
+0074cd10	DIFFER	62v62	-	2 grade runs in the ledger, family stamp included; std::__uninitialized_fill_n<CIntelligentPointer<CThingCreatureBase>*, unsigned int, CIntelligentPointer<CThingCreatureBase> >; proven; parked in differ/: register choice only: retail keeps n in ebx and x in edi (x loaded first, 'mov edi,[esp+10h] ; mov ebx,edx'); VC7.1 here assigns x to ebx and n to edi, every other byte equal	J073
+007b6d70	DIFFER	62v62	-	2 grade runs in the ledger, family stamp included; std::__uninitialized_fill_n<CIntelligentPointer<CThingMarker>*, unsigned int, CIntelligentPointer<CThingMarker> >; proven; parked in differ/: register choice only: retail keeps n in ebx and x in edi (x loaded first, 'mov edi,[esp+10h] ; mov ebx,edx'); VC7.1 here assigns x to ebx and n to edi, every other byte equal	J073
+007b8230	DIFFER	62v62	-	2 grade runs in the ledger, family stamp included; std::__uninitialized_fill_n<CIntelligentPointer<CThingObject>*, unsigned int, CIntelligentPointer<CThingObject> >; proven; parked in differ/: register choice only: retail keeps n in ebx and x in edi (x loaded first, 'mov edi,[esp+10h] ; mov ebx,edx'); VC7.1 here assigns x to ebx and n to edi, every other byte equal	J073
+004ad9e0	RELOCATION_MATCH	77v77	PASS	1 grade run in the ledger, family stamp included; family representative; std::__destroy_aux<std::pair<unsigned long, CCountedPointer<CFaction> >*>; proven	J074
+00519050	RELOCATION_MATCH	77v77	PASS	1 grade run in the ledger, family stamp included; std::__destroy_aux<std::pair<long, CCountedPointer<CRegionConnectionNode> >*>; proven	J074
+00825ae0	RELOCATION_MATCH	77v77	PASS	1 grade run in the ledger, family stamp included; std::__destroy_aux<std::pair<long, CCountedPointer<CContainmentVolume> >*>; proven	J074
+00ae9d50	RELOCATION_MATCH	77v77	PASS	1 grade run in the ledger, family stamp included; std::__destroy_aux<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter> >*>; proven	J074
+00b8f470	RELOCATION_MATCH	77v77	PASS	1 grade run in the ledger, family stamp included; std::__destroy_aux<std::pair<unsigned long, CCountedPointer<CVertexBufferWin32> >*>; proven	J074
+004c37b0	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; family representative; CUnprovenIVCountedRecord_004c37b0::`scalar deleting destructor'; descriptive	J075
+005e0420	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; CUnprovenIVCountedRecord_005e0420::`scalar deleting destructor'; descriptive	J075
+009b28d0	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; CUnprovenIVCountedRecord_009b28d0::`scalar deleting destructor'; descriptive	J075
+009b3ea0	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; CUnprovenIVCountedRecord_009b3ea0::`scalar deleting destructor'; descriptive	J075
+00a962f0	RELOCATION_MATCH	49v49	PASS	1 grade run in the ledger, family stamp included; CUnprovenIVCountedRecord_00a962f0::`scalar deleting destructor'; descriptive	J075
+004cc290	RELOCATION_MATCH	118v118	PASS	1 grade run in the ledger, family stamp included; family representative; std::vector<std::pair<ETCInterfaceType, CTCBase*>>::vector(const vector&); proven	J076
+004d07a0	RELOCATION_MATCH	118v118	PASS	1 grade run in the ledger, family stamp included; std::vector<std::pair<float, EConversationAttitude>>::vector(const vector&); proven	J076
+007101a0	RELOCATION_MATCH	118v118	PASS	1 grade run in the ledger, family stamp included; std::vector<CTransitionBlendAlpha>::vector(const vector&); proven	J076
+00a5e0a0	RELOCATION_MATCH	118v118	PASS	1 grade run in the ledger, family stamp included; std::vector<CVertexStreamFormat::CDataElement>::vector(const vector&); proven	J076
+00ae5d80	RELOCATION_MATCH	118v118	PASS	1 grade run in the ledger, family stamp included; std::vector<C3DVertexBlend2>::vector(const vector&); proven	J076
+004d1f10	RELOCATION_MATCH	69v69	PASS	1 grade run in the ledger, family stamp included; family representative; std::vector<std::pair<float, CCharString>>::push_back(const std::pair<float, CCharString>&); proven	J077
+005699e0	RELOCATION_MATCH	69v69	PASS	1 grade run in the ledger, family stamp included; std::vector<std::pair<float, CWideString>>::push_back(const std::pair<float, CWideString>&); proven	J077
+0074fe50	RELOCATION_MATCH	69v69	PASS	1 grade run in the ledger, family stamp included; std::vector<std::pair<long, CCharString>>::push_back(const std::pair<long, CCharString>&); proven	J077
+008268f0	RELOCATION_MATCH	69v69	PASS	1 grade run in the ledger, family stamp included; std::vector<CMap::CScriptedMapBrushUpdateArea>::push_back(const CMap::CScriptedMapBrushUpdateArea&); proven	J077
+00bf96f0	RELOCATION_MATCH	69v69	PASS	1 grade run in the ledger, family stamp included; std::vector<CEngineTexturePalette::CPaletteEntry>::push_back(const CEngineTexturePalette::CPaletteEntry&); proven	J077
+004da738	RELOCATION_MATCH	47v47	PASS	1 grade run in the ledger, family stamp included; family representative; std::__copy_backward<std::pair<CCharString, CTCBase::CRegisteredTCInfo>*, std::pair<CCharString, CTCBase::CRegisteredTCInfo>*, int>; proven	J078
+005930c4	RELOCATION_MATCH	47v47	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<std::pair<long, CDefPointer<const CContextSensitiveItemDef> >*, std::pair<long, CDefPointer<const CContextSensitiveItemDef> >*, int>; proven	J078
+00655855	RELOCATION_MATCH	47v47	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<CIntelligentPointer<NParticleEngine::CParticleEmitter>*, CIntelligentPointer<NParticleEngine::CParticleEmitter>*, int>; proven	J078
+00655884	RELOCATION_MATCH	47v47	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<CIntelligentPointer<CThing>*, CIntelligentPointer<CThing>*, int>; proven	J078
+00cd2c7c	RELOCATION_MATCH	47v47	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<CScriptGameResourceObjectScriptedThingBase*, CScriptGameResourceObjectScriptedThingBase*, int>; proven	J078
+004db050	RELOCATION_MATCH	28v28	PASS	1 grade run in the ledger, family stamp included; family representative; CTCExpression::CTCExpression(CThing&); proven	J079
+004db0ca	RELOCATION_MATCH	28v28	PASS	1 grade run in the ledger, family stamp included; CTCInterestingToVillagers::CTCInterestingToVillagers(CThing&); proven	J079
+004db2b5	RELOCATION_MATCH	28v28	PASS	1 grade run in the ledger, family stamp included; CTCResurrectionItem::CTCResurrectionItem(CThing&); proven	J079
+004db399	RELOCATION_MATCH	28v28	PASS	1 grade run in the ledger, family stamp included; CTCDRumble::CTCDRumble(CThing&); proven	J079
+004db543	RELOCATION_MATCH	28v28	PASS	1 grade run in the ledger, family stamp included; CTCHasName::CTCHasName(CThing&); proven	J079
+004de9d2	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; family representative; CTavernTableDef::Transfer(CPersistContext&); proven	J080
+004e448d	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; CClockDef::Transfer(CPersistContext&); proven	J080
+004e676a	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; CRumbleDef::Transfer(CPersistContext&); proven	J080
+004e77c8	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; CCarryingDef::Transfer(CPersistContext&); proven	J080
+0057cb2a	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; CTCHeroStats::GetStatsStatus(std::vector<long>&) const; proven	J080
+004e7578	RELOCATION_MATCH	40v40	PASS	4 grade runs in the ledger, family stamp included; family representative; CTCBoastingPodium::~CTCBoastingPodium(); proven	J081
+004e7e7f	RELOCATION_MATCH	40v40	PASS	2 grade runs in the ledger, family stamp included; CTCHitLocations::~CTCHitLocations(); proven	J081
+005c2739	RELOCATION_MATCH	40v40	PASS	2 grade runs in the ledger, family stamp included; NInventory::CCategory::~CCategory(); proven	J081
+00902eef	RELOCATION_MATCH	40v40	PASS	2 grade runs in the ledger, family stamp included; CAIStateGroup_SummonerLightningAttack::~CAIStateGroup_SummonerLightningAttack(); proven	J081
+00902f49	RELOCATION_MATCH	40v40	PASS	2 grade runs in the ledger, family stamp included; CAIStateGroup_SummonerCharge::~CAIStateGroup_SummonerCharge(); proven	J081
+00513e20	RELOCATION_MATCH	126v126	PASS	1 grade run in the ledger, family stamp included; family representative; std::__unguarded_partition<CThingBuilding**, CThingBuilding*, CIsHouseLargerThan>; proven	J082
+00748b60	RELOCATION_MATCH	126v126	PASS	1 grade run in the ledger, family stamp included; std::__unguarded_partition<const CThing**, const CThing*, CCompare_FurthestFromInitPos2D>; proven	J082
+007a36a0	RELOCATION_MATCH	126v126	PASS	1 grade run in the ledger, family stamp included; std::__unguarded_partition<CThing**, CThing*, CThingCompare_NearestToPos>; proven	J082
+0091fca0	RELOCATION_MATCH	126v126	PASS	1 grade run in the ledger, family stamp included; std::__unguarded_partition<const CThingObject**, const CThingObject*, CThingCompare_Nearest>; probable	J082
+0095d790	RELOCATION_MATCH	126v126	PASS	1 grade run in the ledger, family stamp included; std::__unguarded_partition<CThing**, CThing*, CThingCompare_Nearest>; proven	J082
+005157a0	RELOCATION_MATCH	73v73	PASS	1 grade run in the ledger, family stamp included; family representative; CArray<long>::DeallocateMemory(); probable	J083
+009b4a90	RELOCATION_MATCH	73v73	PASS	1 grade run in the ledger, family stamp included; CArray<unsigned long>::DeallocateMemory(); proven	J083
+009b4b80	RELOCATION_MATCH	73v73	PASS	1 grade run in the ledger, family stamp included; CArray<CDefinitionManager::CInstantiatedDefInfo*>::DeallocateMemory(); proven	J083
+009d3160	RELOCATION_MATCH	73v73	PASS	1 grade run in the ledger, family stamp included; CArray<CBankFileEntryUpdateData*>::DeallocateMemory(); probable	J083
+00a812f0	RELOCATION_MATCH	73v73	PASS	1 grade run in the ledger, family stamp included; CArray<CANavQuadTreeNode*>::DeallocateMemory(); probable	J083
+0051b880	DIFFER	83v83	-	2 grade runs in the ledger, family stamp included; family representative; std::_Rb_tree<CThingBuilding*, CUnprovenValue_0051b880, CUnprovenKeyOfValue_0051b880, CUnprovenCompare_0051b880>::erase(const key_type&); descriptive; parked in differ/: DIFFER(83v83): one swapped pair -- retail loads the first by-value iterator (mov ecx,[esp+10h]) before storing the second into its argument slot (mov [eax],edx); every model stores first	J084
+0052afb0	DIFFER	83v83	-	2 grade runs in the ledger, family stamp included; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CThing*>, _Select1st<pair<const unsigned __int64, CThing*> >, less<unsigned __int64>>::erase(const key_type&); proven; parked in differ/: DIFFER(83v83): one swapped pair -- retail loads the first by-value iterator (mov ecx,[esp+10h]) before storing the second into its argument slot (mov [eax],edx); every model stores first	J084
+00639590	DIFFER	83v83	-	5 grade runs in the ledger, family stamp included; std::_Rb_tree<long, long, _Identity<long>, less<long>>::erase(const key_type&); proven; parked in differ/: DIFFER(83v83): one swapped pair -- retail loads the first by-value iterator (mov ecx,[esp+10h]) before storing the second into its argument slot (mov [eax],edx); every model stores first	J084
+006f50b0	DIFFER	83v83	-	2 grade runs in the ledger, family stamp included; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CCombatantInfo>, _Select1st<pair<const unsigned __int64, CCombatantInfo> >, less<unsigned __int64>>::erase(const key_type&); proven; parked in differ/: DIFFER(83v83): one swapped pair -- retail loads the first by-value iterator (mov ecx,[esp+10h]) before storing the second into its argument slot (mov [eax],edx); every model stores first	J084
+00777b30	DIFFER	83v83	-	2 grade runs in the ledger, family stamp included; std::_Rb_tree<long, pair<const long, CShopItem>, _Select1st<pair<const long, CShopItem> >, less<long>>::erase(const key_type&); proven; parked in differ/: DIFFER(83v83): one swapped pair -- retail loads the first by-value iterator (mov ecx,[esp+10h]) before storing the second into its argument slot (mov [eax],edx); every model stores first	J084
+0051c470	RELOCATION_MATCH	286v286	PASS	2 grade runs in the ledger, family stamp included; family representative; std::vector<set<unsigned long> >::_M_insert_overflow; proven	J085
+0076c470	RELOCATION_MATCH	286v286	PASS	1 grade run in the ledger, family stamp included; std::vector<vector<ParticleAndEndPoints> >::_M_insert_overflow; proven	J085
+0076c590	RELOCATION_MATCH	286v286	PASS	1 grade run in the ledger, family stamp included; std::vector<vector<AttackParticleAndEndPoints> >::_M_insert_overflow; proven	J085
+00a37e20	RELOCATION_MATCH	286v286	PASS	1 grade run in the ledger, family stamp included; std::vector<CClassTypeInfo >::_M_insert_overflow; proven	J085
+00a4af00	RELOCATION_MATCH	286v286	PASS	1 grade run in the ledger, family stamp included; std::vector<CLipSyncFrameData >::_M_insert_overflow; proven	J085
+0051d030	RELOCATION_MATCH	104v104	PASS	1 grade run in the ledger, family stamp included; family representative; std::vector<set<unsigned long> >::resize(unsigned int, const set<unsigned long>&); proven	J086
+0086ede0	RELOCATION_MATCH	104v104	PASS	1 grade run in the ledger, family stamp included; std::vector<CArray<CRandomAppearanceMorph::CBodyPartMesh> >::resize(unsigned int, const CArray<CRandomAppearanceMorph::CBodyPartMesh>&); proven	J086
+0088a9c0	RELOCATION_MATCH	104v104	PASS	1 grade run in the ledger, family stamp included; std::vector<NEnvironmentInternal::CEnvironmentThemeSetDay >::resize(unsigned int, const NEnvironmentInternal::CEnvironmentThemeSetDay&); proven	J086
+00a4b160	RELOCATION_MATCH	104v104	PASS	1 grade run in the ledger, family stamp included; std::vector<CLipSyncFrameData >::resize(unsigned int, const CLipSyncFrameData&); proven	J086
+00af2170	RELOCATION_MATCH	104v104	PASS	1 grade run in the ledger, family stamp included; std::vector<NParticleEngine::CParticleEmitterInfo >::resize(unsigned int, const NParticleEngine::CParticleEmitterInfo&); proven	J086
+0051d800	RELOCATION_MATCH	105v105	PASS	1 grade run in the ledger, family stamp included; family representative; std::vector<CNavigationAreaUpdate::CNavigationLayerUpdate >::resize(unsigned int, const CNavigationAreaUpdate::CNavigationLayerUpdate&); proven	J087
+0052c630	RELOCATION_MATCH	105v105	PASS	1 grade run in the ledger, family stamp included; std::vector<NThingManager::CEntityRuntimePersistence::CEntityScriptInfo >::resize(unsigned int, const NThingManager::CEntityRuntimePersistence::CEntityScriptInfo&); proven	J087
+005e39e0	RELOCATION_MATCH	105v105	PASS	1 grade run in the ledger, family stamp included; std::vector<pair<unsigned long, CAnimationEntry> >::resize(unsigned int, const pair<unsigned long, CAnimationEntry>&); proven	J087
+00a380e0	RELOCATION_MATCH	105v105	PASS	1 grade run in the ledger, family stamp included; std::vector<CClassTypeInfo >::resize(unsigned int, const CClassTypeInfo&); proven	J087
+00a85ec0	RELOCATION_MATCH	105v105	PASS	1 grade run in the ledger, family stamp included; std::vector<CNavQuadTree::CNavigationLayer >::resize(unsigned int, const CNavQuadTree::CNavigationLayer&); proven	J087
+00527eb0	RELOCATION_MATCH	80v80	PASS	1 grade run in the ledger, family stamp included; family representative; std::__copy<CThingTypeInfo*, CThingTypeInfo*, int>; proven	J088
+006cb200	RELOCATION_MATCH	81v81	PASS	1 grade run in the ledger, family stamp included; std::__copy<CEngineTextureMorph*, CEngineTextureMorph*, int>; proven	J088
+0070ad20	RELOCATION_MATCH	81v81	PASS	1 grade run in the ledger, family stamp included; std::__copy<CEngineTextureDecal*, CEngineTextureDecal*, int>; proven	J088
+00728680	RELOCATION_MATCH	81v81	PASS	1 grade run in the ledger, family stamp included; std::__copy<const CEngineTextureMorph*, CEngineTextureMorph*, int>; proven	J088
+0077b7a0	RELOCATION_MATCH	81v81	PASS	1 grade run in the ledger, family stamp included; std::__copy<const CEngineTextureDecal*, CEngineTextureDecal*, int>; proven	J088
+00528650	MATCH	55v55	PASS	1 grade run in the ledger, family stamp included; family representative; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CThing* >, ...>::_M_lower_bound; proven	J089
+006f0c70	MATCH	55v55	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CThingCreatureBase* >, ...>::_M_lower_bound; proven	J089
+006f0cf0	MATCH	55v55	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CCombatantInfo >, ...>::_M_lower_bound; proven	J089
+00813200	MATCH	55v55	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CGroupMemberData >, ...>::_M_lower_bound; proven	J089
+0082f0d0	MATCH	55v55	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation >, ...>::_M_lower_bound; proven	J089
+005286d0	RELOCATION_MATCH	70v70	PASS	1 grade run in the ledger, family stamp included; family representative; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, pair<CCharString, CWideString> >, ...>::_M_erase; proven	J090
+00792300	RELOCATION_MATCH	70v70	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<CThingCreatureBase*, pair<const CThingCreatureBase*, CTCDivineWrath::PerCreatureInfo >, ...>::_M_erase; proven	J090
+00797840	RELOCATION_MATCH	70v70	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<CThingCreatureBase*, pair<const CThingCreatureBase*, CTCUnholyPower::PerCreatureInfo >, ...>::_M_erase; proven	J090
+009aa830	RELOCATION_MATCH	70v70	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<CCharString, pair<const CCharString, CCharString >, ...>::_M_erase; proven	J090
+009f0d40	RELOCATION_MATCH	70v70	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<unsigned long, pair<const unsigned long, CCodeSectionManager::CSectionDesc >, ...>::_M_erase; proven	J090
+0052a130	RELOCATION_MATCH	198v198	PASS	1 grade run in the ledger, family stamp included; family representative; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity >, ...>::insert_unique; proven	J091
+0052a200	RELOCATION_MATCH	198v198	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CThing* >, ...>::insert_unique; proven	J091
+006f4f30	RELOCATION_MATCH	198v198	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CCombatantInfo >, ...>::insert_unique; proven	J091
+00784040	RELOCATION_MATCH	198v198	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CIntelligentPointer<CThing> >, ...>::insert_unique; proven	J091
+0082f860	RELOCATION_MATCH	198v198	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation >, ...>::insert_unique; proven	J091
+0052b100	RELOCATION_MATCH	77v77	PASS	4 grade runs in the ledger, family stamp included; family representative; std::vector<CThingTypeInfo >::erase(CThingTypeInfo*, CThingTypeInfo*); proven	J092
+00616d50	RELOCATION_MATCH	77v77	PASS	3 grade runs in the ledger, family stamp included; std::vector<CTCInventoryMap::CUIMiniMapMarker >::erase(CTCInventoryMap::CUIMiniMapMarker*, CTCInventoryMap::CUIMiniMapMarker*); proven	J092
+006249e0	RELOCATION_MATCH	77v77	PASS	3 grade runs in the ledger, family stamp included; std::vector<CQuestCardItem >::erase(CQuestCardItem*, CQuestCardItem*); proven	J092
+00825cf0	RELOCATION_MATCH	77v77	PASS	3 grade runs in the ledger, family stamp included; std::vector<CMap::CScriptedMapBrushUpdateArea >::erase(CMap::CScriptedMapBrushUpdateArea*, CMap::CScriptedMapBrushUpdateArea*); proven	J092
+009cacd0	RELOCATION_MATCH	77v77	PASS	3 grade runs in the ledger, family stamp included; std::vector<NGameText::CTextTag >::erase(NGameText::CTextTag*, NGameText::CTextTag*); proven	J092
+00533b50	RELOCATION_MATCH	78v78	PASS	1 grade run in the ledger, family stamp included; family representative; NUISystem::CComponent::AddChild(CCountedPointer<NUISystem::CComponent>&); proven	J093
+0054a3f0	RELOCATION_MATCH	78v78	PASS	1 grade run in the ledger, family stamp included; NUISystem::CTextSlider::AddAction(CCountedPointer<NUISystem::CAction>&); proven	J093
+0054c160	RELOCATION_MATCH	78v78	PASS	1 grade run in the ledger, family stamp included; NUISystem::CSlider::AddAction(CCountedPointer<NUISystem::CAction>&); proven	J093
+0054e1e0	RELOCATION_MATCH	78v78	PASS	1 grade run in the ledger, family stamp included; NUISystem::CFrontEndButton::AddAction(CCountedPointer<NUISystem::CAction>&); proven	J093
+0054e230	RELOCATION_MATCH	78v78	PASS	1 grade run in the ledger, family stamp included; NUISystem::CFrontEndButton::AddActionOnDelete(CCountedPointer<NUISystem::CAction>&); proven	J093
+00534f80	RELOCATION_MATCH	119v119	PASS	1 grade run in the ledger, family stamp included; family representative; std::__copy_backward<CCountedPointer<NUISystem::CComponent>*, CCountedPointer<NUISystem::CComponent>*, int>; proven	J094
+00764640	RELOCATION_MATCH	119v119	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<CCountedPointer<NShape::CShape>*, CCountedPointer<NShape::CShape>*, int>; proven	J094
+00a95d10	RELOCATION_MATCH	119v119	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<CCountedPointer<C3DClothPrimitive>*, CCountedPointer<C3DClothPrimitive>*, int>; proven	J094
+00b82fa0	RELOCATION_MATCH	119v119	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<CCountedPointer<CParticleSimulation>*, CCountedPointer<CParticleSimulation>*, int>; proven	J094
+00b83020	RELOCATION_MATCH	119v119	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<CCountedPointer<CEngineSimulationBase>*, CCountedPointer<CEngineSimulationBase>*, int>; proven	J094
+005354e0	RELOCATION_MATCH	97v97	PASS	2 grade runs in the ledger, family stamp included; family representative; std::vector<CCountedPointer<NUISystem::CComponent> >::erase(iterator); proven	J095
+00764d10	RELOCATION_MATCH	97v97	PASS	2 grade runs in the ledger, family stamp included; std::vector<CCountedPointer<NShape::CShape> >::erase(iterator); proven	J095
+00aa91f0	RELOCATION_MATCH	97v97	PASS	2 grade runs in the ledger, family stamp included; std::vector<CCountedPointer<CChunkedFileChunk> >::erase(iterator); proven	J095
+00af0e10	RELOCATION_MATCH	97v97	PASS	2 grade runs in the ledger, family stamp included; std::vector<CCountedPointer<NParticleEngine::CParticleSystem> >::erase(iterator); proven	J095
+00b835d0	RELOCATION_MATCH	97v97	PASS	2 grade runs in the ledger, family stamp included; std::vector<CCountedPointer<CParticleSimulation> >::erase(iterator); proven	J095
+00535f5a	MATCH	100v100	PASS	1 grade run in the ledger, family stamp included; family representative; std::__find<const unsigned long*, unsigned long>(first, last, const unsigned long&, const random_access_iterator_tag&); proven	J096
+00535fe4	MATCH	100v100	PASS	1 grade run in the ledger, family stamp included; std::__find<NUISystem::CComponent**, NUISystem::CComponent*>(first, last, const NUISystem::CComponent*&, const random_access_iterator_tag&); proven	J096
+005ba30d	MATCH	100v100	PASS	1 grade run in the ledger, family stamp included; std::__find<EClothingSuitPart*, EClothingSuitPart>(first, last, const EClothingSuitPart&, const random_access_iterator_tag&); proven	J096
+005f7acc	MATCH	100v100	PASS	1 grade run in the ledger, family stamp included; std::__find<EHeroAbility*, EHeroAbility>(first, last, const EHeroAbility&, const random_access_iterator_tag&); proven	J096
+0065d9ee	MATCH	100v100	PASS	1 grade run in the ledger, family stamp included; std::__find<const EVillageTaskType*, EVillageTaskType>(first, last, const EVillageTaskType&, const random_access_iterator_tag&); proven	J096
+005460c0	RELOCATION_MATCH	39v39	PASS	1 grade run in the ledger, family stamp included; family representative; NUISystem::CComponentContainer::CComponentContainer(long defIndex); proven	J097
+00546f40	RELOCATION_MATCH	39v39	PASS	1 grade run in the ledger, family stamp included; NUISystem::CScrollingComponent::CScrollingComponent(long defIndex); proven	J097
+0054c1d0	RELOCATION_MATCH	39v39	PASS	1 grade run in the ledger, family stamp included; NUISystem::CListArrow::CListArrow(long defIndex); proven	J097
+0054c3a0	RELOCATION_MATCH	39v39	PASS	1 grade run in the ledger, family stamp included; NUISystem::CFrontEndList::CFrontEndList(long defIndex); proven	J097
+00558bc0	RELOCATION_MATCH	39v39	PASS	1 grade run in the ledger, family stamp included; NUISystem::CNavButton::CNavButton(const NUISystem::CNavButton& other); proven	J097
+0056d4f0	RELOCATION_MATCH	202v202	PASS	1 grade run in the ledger, family stamp included; family representative; std::_Rb_tree::_M_insert [map<NUISystem::CMenuEntry*, CQuestManager::CBoast>]; proven	J098
+00632d30	RELOCATION_MATCH	202v202	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree::_M_insert [map<unsigned long, CCharString>]; proven	J098
+007929a0	RELOCATION_MATCH	202v202	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree::_M_insert [map<CThingCreatureBase*, CTCDivineWrath::PerCreatureInfo>]; proven	J098
+00797ca0	RELOCATION_MATCH	202v202	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree::_M_insert [map<CThingCreatureBase*, CTCUnholyPower::PerCreatureInfo>]; proven	J098
+00bd8a60	RELOCATION_MATCH	202v202	PASS	1 grade run in the ledger, family stamp included; std::_Rb_tree::_M_insert [map<unsigned long, CArray<C3DVector>>]; proven	J098
+005d91f0	MATCH	32v32	PASS	4 grade runs in the ledger, family stamp included; family representative; CTCInventoryItem::GetInventoryCategory() const; proven	J099
+005d92b0	MATCH	32v32	PASS	2 grade runs in the ledger, family stamp included; CTCInventoryItem::GetTutorialCategory() const; proven	J099
+005da810	MATCH	32v32	PASS	2 grade runs in the ledger, family stamp included; CTCWeapon::GetDamageType() const; proven	J099
+005da830	MATCH	32v32	PASS	2 grade runs in the ledger, family stamp included; CTCWeapon::GetExplosionType() const; proven	J099
+005da890	MATCH	35v35	PASS	2 grade runs in the ledger, family stamp included; CTCWeapon::GetTargetingRange() const; proven	J099
+005ed240	RELOCATION_MATCH	32v32	PASS	1 grade run in the ledger, family stamp included; family representative; NCameraModes::CScriptModuleTavernGame::CScriptModuleTavernGame(const C3DVector& goTo, const C3DVector& lookDirection); proven	J100
+007f05c0	RELOCATION_MATCH	32v32	PASS	1 grade run in the ledger, family stamp included; CCombatAction_GenericStrikeResponseKnockdownRecover::CCombatAction_GenericStrikeResponseKnockdownRecover(CThingCreatureBase& creature, bool flip); proven	J100
+008ae1b0	RELOCATION_MATCH	32v32	PASS	1 grade run in the ledger, family stamp included; CCombatAction_RecoverFromStunned::CCombatAction_RecoverFromStunned(CThingCreatureBase& creature, bool flip); proven	J100
+00953750	RELOCATION_MATCH	32v32	PASS	1 grade run in the ledger, family stamp included; CCreatureAction_DragonFireBlastForward::CCreatureAction_DragonFireBlastForward(CThingCreatureBase& creature, CThing& target); proven	J100
+00953780	RELOCATION_MATCH	32v32	PASS	1 grade run in the ledger, family stamp included; CCreatureAction_DragonFireBlastLeft::CCreatureAction_DragonFireBlastLeft(CThingCreatureBase& creature, CThing& target); proven	J100
+00613420	MATCH	68v68	PASS	2 grade runs in the ledger, family stamp included; family representative; std::__copy_backward<CTCInventoryMap::CUIRegionInfo*, CTCInventoryMap::CUIRegionInfo*, int>; probable	J101
+007582e0	MATCH	68v68	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<std::pair<EBodyLocation, CWoundMorphs::CEntry>*, std::pair<EBodyLocation, CWoundMorphs::CEntry>*, int>; probable	J101
+00819810	MATCH	68v68	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<CParticleMorphs::CEntry*, CParticleMorphs::CEntry*, int>; probable	J101
+00ab1200	MATCH	68v68	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<N3DAnimationBuilder::CSequenceInfo*, N3DAnimationBuilder::CSequenceInfo*, int>; probable	J101
+00f37b30	MATCH	68v68	PASS	1 grade run in the ledger, family stamp included; std::__copy_backward<CGPUScratchBufferTextureManager::CResourceEntry*, CGPUScratchBufferTextureManager::CResourceEntry*, int>; probable	J101
+00616da0	MATCH	99v99	PASS	4 grade runs in the ledger, family stamp included; family representative; std::vector<CTCInventoryMap::CUIRegionInfo>::erase(iterator, iterator); proven	J102
+0069d180	MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<CGameCameraManager::CQuake>::erase(iterator, iterator); proven	J102
+00758f50	MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<std::pair<EBodyLocation, CWoundMorphs::CEntry>>::erase(iterator, iterator); proven	J102
+0081c0f0	MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<CParticleMorphs::CEntry>::erase(iterator, iterator); proven	J102
+00ab2c70	MATCH	99v99	PASS	1 grade run in the ledger, family stamp included; std::vector<N3DAnimationBuilder::CSequenceInfo>::erase(iterator, iterator); proven	J102
+006174f0	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; family representative; CCountedPointer<std::vector<unsigned __int64>>::DeleteData(void*); proven	J103
+00674e50	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; CCountedPointer<CWoundMorphs>::DeleteData(void*); proven	J103
+0075f830	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; CCountedPointer<CCardinalSpline>::DeleteData(void*); proven	J103
+00771b30	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; CCountedPointer<COpinionSet>::DeleteData(void*); proven	J103
+00ac3a10	RELOCATION_MATCH	33v33	PASS	1 grade run in the ledger, family stamp included; CCountedPointer<CArray<C3DTriangle2>>::DeleteData(void*); proven	J103
+00635080	RELOCATION_MATCH	145v145	PASS	3 grade runs in the ledger, family stamp included; family representative; CPlayer::InitModeNavigateInventoryExperienceScreen(EPlayerMode, CProcessedInput*); proven	J104
+00635190	RELOCATION_MATCH	148v148	PASS	2 grade runs in the ledger, family stamp included; CPlayer::InitModeNavigateInventoryTradeScreen(EPlayerMode, CProcessedInput*); proven	J104
+006352a0	RELOCATION_MATCH	145v145	PASS	2 grade runs in the ledger, family stamp included; CPlayer::InitModeNavigateInventoryStatsScreen(EPlayerMode, CProcessedInput*); proven	J104
+006353b0	RELOCATION_MATCH	145v145	PASS	2 grade runs in the ledger, family stamp included; CPlayer::InitModeNavigateInventoryMagicScreen(EPlayerMode, CProcessedInput*); proven	J104
+006354c0	RELOCATION_MATCH	148v148	PASS	2 grade runs in the ledger, family stamp included; CPlayer::InitModeNavigateInventoryQuestsScreen(EPlayerMode, CProcessedInput*); proven	J104
+006584c5	RELOCATION_MATCH	52v52	PASS	4 grade runs in the ledger, family stamp included; family representative; CTCVillage::SetTorchTaskAsAcceptedByThing(CVillageTaskTorch&, const CThing&); proven	J105
+006584f9	RELOCATION_MATCH	52v52	PASS	1 grade run in the ledger, family stamp included; CTCVillage::SetHornTaskAsAcceptedByThing(CVillageTaskHorn&, const CThing&); proven	J105
+0065852d	RELOCATION_MATCH	52v52	PASS	1 grade run in the ledger, family stamp included; CTCVillage::SetPatrolTaskAsAcceptedByThing(CVillageTaskPatrol&, const CThing&); proven	J105
+00658586	RELOCATION_MATCH	52v52	PASS	1 grade run in the ledger, family stamp included; CTCVillage::SetSecuritySweepTaskAsAcceptedByThing(CVillageTaskSecuritySweep&, const CThing&); proven	J105
+006585ba	RELOCATION_MATCH	52v52	PASS	1 grade run in the ledger, family stamp included; CTCVillage::SetCrateTaskAsAcceptedByThing(CVillageTaskCarryCrate&, const CThing&); proven	J105
+00659fed	RELOCATION_MATCH	34v34	PASS	2 grade runs in the ledger, family stamp included; family representative; CTCVillage::SetTorchTaskAsCompleted(CIntelligentPointer<CVillageTaskTorch>); proven	J106
+0065a00f	RELOCATION_MATCH	34v34	PASS	1 grade run in the ledger, family stamp included; CTCVillage::SetHornTaskAsCompleted(CIntelligentPointer<CVillageTaskHorn>); proven	J106
+0065a031	RELOCATION_MATCH	34v34	PASS	1 grade run in the ledger, family stamp included; CTCVillage::SetSecuritySweepTaskAsCompleted(CIntelligentPointer<CVillageTaskSecuritySweep>); proven	J106
+0065a053	RELOCATION_MATCH	34v34	PASS	1 grade run in the ledger, family stamp included; CTCVillage::SetCrateTaskAsCompleted(CIntelligentPointer<CVillageTaskCarryCrate>); proven	J106
+008ceb50	RELOCATION_MATCH	34v34	PASS	2 grade runs in the ledger, family stamp included; CTCBulletTime::SetPItemRemoved(CIntelligentPointer<CThing>); probable	J106
+006603a0	RELOCATION_MATCH	61v61	PASS	2 grade runs in the ledger, family stamp included; family representative; std::list<CCountedPointer<CVillageTaskTorch> >::remove_if<CIsNotValid<CVillageTaskTorch> >(CIsNotValid<CVillageTaskTorch>); proven	J107
+006603dd	RELOCATION_MATCH	61v61	PASS	1 grade run in the ledger, family stamp included; std::list<CCountedPointer<CVillageTaskHorn> >::remove_if<CIsNotValid<CVillageTaskHorn> >(CIsNotValid<CVillageTaskHorn>); proven	J107
+0066041a	RELOCATION_MATCH	61v61	PASS	1 grade run in the ledger, family stamp included; std::list<CCountedPointer<CVillageTaskPatrol> >::remove_if<CIsNotValid<CVillageTaskPatrol> >(CIsNotValid<CVillageTaskPatrol>); proven	J107
+00660457	RELOCATION_MATCH	61v61	PASS	1 grade run in the ledger, family stamp included; std::list<CCountedPointer<CVillageTaskPickCrops> >::remove_if<CIsNotValid<CVillageTaskPickCrops> >(CIsNotValid<CVillageTaskPickCrops>); proven	J107
+00660494	RELOCATION_MATCH	61v61	PASS	1 grade run in the ledger, family stamp included; std::list<CCountedPointer<CVillageTaskSecuritySweep> >::remove_if<CIsNotValid<CVillageTaskSecuritySweep> >(CIsNotValid<CVillageTaskSecuritySweep>); proven	J107
+00669300	RELOCATION_MATCH	80v80	PASS	3 grade runs in the ledger, family stamp included; family representative; NEntityEvents::CEventDied::CEventDied(CThing*, CThing*); proven	J108
+0084aee0	RELOCATION_MATCH	80v80	PASS	2 grade runs in the ledger, family stamp included; NEntityEvents::CEventShownItem::CEventShownItem(CThing&, CThing&); proven	J108
+008ab7b0	RELOCATION_MATCH	80v80	PASS	2 grade runs in the ledger, family stamp included; NEntityEvents::CEventHeroHasBeenSpottedPickpocketing::CEventHeroHasBeenSpottedPickpocketing(CThing*, CThing*); proven	J108
+008ab840	RELOCATION_MATCH	80v80	PASS	2 grade runs in the ledger, family stamp included; NEntityEvents::CEventHeroHasBeenSpottedPickingLock::CEventHeroHasBeenSpottedPickingLock(CThing*, CThing*); proven	J108
+008ab8d0	RELOCATION_MATCH	80v80	PASS	2 grade runs in the ledger, family stamp included; NEntityEvents::CEventHeroHasBeenSpottedStealing::CEventHeroHasBeenSpottedStealing(CThing*, CThing*); proven	J108
+00669360	RELOCATION_MATCH	47v47	PASS	2 grade runs in the ledger, family stamp included; family representative; NEntityEvents::CEventDied::`scalar deleting destructor'; proven	J109
+0073ea40	RELOCATION_MATCH	47v47	PASS	2 grade runs in the ledger, family stamp included; CAnimFilterOf2Groups::`scalar deleting destructor'; proven	J109
+008ab810	RELOCATION_MATCH	47v47	PASS	1 grade run in the ledger, family stamp included; NEntityEvents::CEventHeroHasBeenSpottedPickpocketing::`scalar deleting destructor'; proven	J109
+008ab8a0	RELOCATION_MATCH	47v47	PASS	1 grade run in the ledger, family stamp included; NEntityEvents::CEventHeroHasBeenSpottedPickingLock::`scalar deleting destructor'; proven	J109
+008ab930	RELOCATION_MATCH	47v47	PASS	1 grade run in the ledger, family stamp included; NEntityEvents::CEventHeroHasBeenSpottedStealing::`scalar deleting destructor'; proven	J109
+00669af0	RELOCATION_MATCH	85v85	PASS	2 grade runs in the ledger, family stamp included; family representative; std::list<CCountedPointer<CCreatureActionBase> >::erase(iterator); proven	J110
+006c2ba0	RELOCATION_MATCH	85v85	PASS	1 grade run in the ledger, family stamp included; std::list<CCountedPointer<CLevelLoader::CObject> >::erase(iterator); proven	J110
+007a38b0	RELOCATION_MATCH	85v85	PASS	1 grade run in the ledger, family stamp included; std::list<CCountedPointer<CTCWillLightning::CLightningBeam> >::erase(iterator); proven	J110
+008ebf30	RELOCATION_MATCH	85v85	PASS	1 grade run in the ledger, family stamp included; std::list<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim> >::erase(iterator); proven	J110
+009c6c60	RELOCATION_MATCH	85v85	PASS	1 grade run in the ledger, family stamp included; std::list<CCountedPointer<const CFileInstaller::CFileInfo> >::erase(iterator); proven	J110
+00669b50	RELOCATION_MATCH	89v89	PASS	2 grade runs in the ledger, family stamp included; family representative; std::_List_base<CCountedPointer<CCreatureActionBase> >::clear(); proven	J111
+009aae50	RELOCATION_MATCH	89v89	PASS	1 grade run in the ledger, family stamp included; std::_List_base<CCountedPointer<NBankFileManager::CRetailBank> >::clear(); proven	J111
+009d7db0	RELOCATION_MATCH	89v89	PASS	1 grade run in the ledger, family stamp included; std::_List_base<CCountedPointer<CBankFileAsyncData> >::clear(); proven	J111
+00aacc60	RELOCATION_MATCH	89v89	PASS	1 grade run in the ledger, family stamp included; std::_List_base<CCountedPointer<CSoundEmitterLH::CActiveSound> >::clear(); proven	J111
+00aec840	RELOCATION_MATCH	89v89	PASS	1 grade run in the ledger, family stamp included; std::_List_base<CCountedPointer<NParticleEngine::CParticleEmitter> >::clear(); proven	J111
+00672f40	MATCH	74v74	PASS	2 grade runs in the ledger, family stamp included; family representative; std::__copy<const std::pair<EExpressionType, CExpressionSet::CEntry>*, std::pair<EExpressionType, CExpressionSet::CEntry>*, int>; proven	J112
+0075b560	MATCH	74v74	PASS	1 grade run in the ledger, family stamp included; std::__copy<const C3DVector*, C3DVector*, int>; proven	J112
+0086efa0	MATCH	74v74	PASS	1 grade run in the ledger, family stamp included; std::__copy<std::pair<EExpressionType, CExpressionSet::CEntry>*, std::pair<EExpressionType, CExpressionSet::CEntry>*, int>; proven	J112
+00885e10	MATCH	74v74	PASS	1 grade run in the ledger, family stamp included; std::__copy<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::CThemeWeight*, NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::CThemeWeight*, int>; proven	J112
+008f6630	MATCH	74v74	PASS	1 grade run in the ledger, family stamp included; std::__copy<const CHeightMapCell*, CHeightMapCell*, int>; proven	J112
+00687180	RELOCATION_MATCH	57v57	PASS	2 grade runs in the ledger, family stamp included; family representative; std::vector<std::pair<CCharString, CTCBase::CRegisteredTCInfo>>::~vector(); proven	J113
+00743a90	RELOCATION_MATCH	57v57	PASS	1 grade run in the ledger, family stamp included; std::vector<NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CIcicleData>::~vector(); proven	J113
+008e38d0	RELOCATION_MATCH	57v57	PASS	1 grade run in the ledger, family stamp included; std::vector<NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CIcicleData>::_M_clear(); proven	J113
+009e7250	RELOCATION_MATCH	57v57	PASS	1 grade run in the ledger, family stamp included; std::vector<CSymbolMap::CSymbolInfo>::_M_clear(); proven	J113
+00a40d00	RELOCATION_MATCH	57v57	PASS	1 grade run in the ledger, family stamp included; std::vector<CUnprovenElement_00a40d00>::_M_clear(); descriptive	J113
