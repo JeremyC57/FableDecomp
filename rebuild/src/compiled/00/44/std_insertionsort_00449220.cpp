@@ -1,0 +1,81 @@
+// std::__insertion_sort(_RandomAccessIter first, _RandomAccessIter last, _Compare comp) -- (pair<EGameAction, CCountedPointer<const CInputTypeBase> > under CKeyPairCompareLess) insert each entry after the first into the sorted run before it
+// Leaf: ??$__insertion_sort@PAU?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@std@@V?$CKeyPairCompareLess@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@@@std@@YIXPAU?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@0@0V?$CKeyPairCompareLess@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00449220, 74 bytes, /Gr `__fastcall` (first in ecx, last in edx, the empty
+//   comparator on the stack), `ret 4`.
+// Identity (proven): std::__insertion_sort<pair<EGameAction, CCountedPointer<const CInputTypeBase> >*, CKeyPairCompareLess<EGameAction, CCountedPointer<const CInputTypeBase> > >; evidence: reached from the sort 0x004495D0 whose element H047 proves (CGamePlayerInterface::Controls (+0x7A8, SetControlScheme); swap 0x00448450) by direct calls 0x004495D0 -> 0x004493B0 -> 0x00449220 (sort -> __final_insertion_sort -> this); its callers 0x004493D9, 0x004493F7 are the __final_insertion_sort (and inlined sorts) over the same element.
+// Label: the manifest's "Heap_BuildFromElements" is propagated (family H050: six byte-identical bodies, each its own COMDAT; retail has
+//   no identical-code folding, so each address is one element type).
+// Callee: __linear_insert 0x00448E90 (out of line here: __fastcall first ecx, i edx, then the 12-byte value
+//   copy-constructed in its argument slot (`inc [Info]`) and the comparator).
+// Shape: STLport 4.6 _algo.c __insertion_sort (landed 0x00ADBE70 model) with __linear_insert left out of line:
+//   `if (first == last) return; for (i = first + 1; i != last; ++i) __linear_insert(first, i, *i, comp);`.
+struct CCPPointerInfo {                                    // CCountedPointer's shared block
+    long  RefCount;                                        // +0x0
+    void  (__fastcall* DeleteFunc)(void* data);            // +0x4
+    void* Data;                                            // +0x8
+};
+template <class T> class CCountedPointer {
+public:
+    T*              Data;                                  // +0x0
+    CCPPointerInfo* Info;                                  // +0x4
+    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
+    ~CCountedPointer()
+    {
+        if (Info) {
+            if (--Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+    }
+    CCountedPointer& operator=(const CCountedPointer& o)
+    {
+        T* const              data = o.Data;
+        CCPPointerInfo* const info = o.Info;
+        if (Info != info) {
+            if (Info) {
+                --Info->RefCount;
+                if (Info->RefCount == 0) {
+                    Info->DeleteFunc(Info->Data);
+                    delete Info;
+                }
+            }
+            Data = data;
+            Info = info;
+            if (info)
+                ++info->RefCount;
+        }
+        return *this;
+    }
+};
+enum EGameAction { EGameAction_Force32 = 0x7fffffff };   // enumerators not needed
+class CInputTypeBase;
+
+namespace std {
+template <class _T1, class _T2> struct pair {
+    _T1 first;                                             // +0x0
+    _T2 second;                                            // +0x4
+    pair(const _T1& __a, const _T2& __b) : first(__a), second(__b) { }
+    pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }   // STLport 4.6 _pair.h
+};
+}
+template <class K, class V> class CKeyPairCompareLess {    // Ego_r.pdb: orders vector-map entries by key
+public:
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+};
+namespace std {
+template <class _RandomAccessIter, class _Tp, class _Compare>
+void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __val,
+                                _Compare __comp);          // 0x00448E90
+template <class _RandomAccessIter, class _Compare>
+void __fastcall __insertion_sort(_RandomAccessIter __first, _RandomAccessIter __last, _Compare __comp)
+{
+    if (__first == __last)
+        return;
+    for (_RandomAccessIter __i = __first + 1; __i != __last; ++__i)
+        __linear_insert(__first, __i, *__i, __comp);
+}
+typedef pair<EGameAction, CCountedPointer<const CInputTypeBase> > _Elem;
+typedef CKeyPairCompareLess<EGameAction, CCountedPointer<const CInputTypeBase> > _Cmp;
+template void __fastcall __insertion_sort<_Elem*, _Cmp>(_Elem*, _Elem*, _Cmp);
+} // namespace std

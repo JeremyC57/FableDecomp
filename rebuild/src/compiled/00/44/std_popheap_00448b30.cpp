@@ -1,0 +1,81 @@
+// std::__pop_heap(_RandomAccessIterator first, _RandomAccessIterator last, _RandomAccessIterator result, _Tp val, _Compare comp, _Distance*) -- (pair<EGameAction, CCountedPointer<const CInputTypeBase> > under CKeyPairCompareLess) move the heap top to result, then sift the saved value into the hole
+// Leaf: ??$__pop_heap@PAU?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@std@@U12@V?$CKeyPairCompareLess@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@@H@std@@YIXPAU?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@0@00U10@V?$CKeyPairCompareLess@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@@PAH@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00448B30, 175 bytes, /Gr `__fastcall` (first in ecx, last in edx; result, the
+//   12-byte value, the empty comparator and the dead distance tag on the stack), `ret 18h`.
+// Identity (proven): std::__pop_heap<pair<EGameAction, CCountedPointer<const CInputTypeBase> >*, pair<...>, CKeyPairCompareLess<EGameAction, CCountedPointer<const CInputTypeBase> >, int>; evidence: reached from the sort 0x004495D0 whose element H047 proves (CGamePlayerInterface::Controls (+0x7A8, SetControlScheme); swap 0x00448450) by direct calls 0x004495D0 -> 0x004494D0 -> 0x00449270 -> 0x00448B30 (sort -> introsort_loop -> partial_sort -> this); its four callers 0x00448C98, 0x00448D38, 0x00448F63, 0x004492B7 are that TU's heap code.
+// Label: the manifest's "_Pop_heap<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>*,int,std::pair<class_CCharString,class_CCountedPointer<class_CEntityScriptBindingBase>_>,CCompareString<CCountedPointer<CEntityScriptBindingBase>_>_>" is propagated (family H048: six byte-identical bodies, each its own COMDAT; retail has
+//   no identical-code folding, so each address is one element type).
+// Callees: __adjust_heap 0x00448950 (__fastcall: first, hole 0, len, the value copied into its argument slot, comp) and
+//   operator delete 0x00BFE9BC (the releases in the inline pair assignment and in the by-value parameter's destructor).
+// Shape: STLport 4.6 _heap.h __pop_heap verbatim: `*result = *first; __adjust_heap(first, 0, last - first, val, comp);`
+//   (len by the 0x2AAAAAAB reciprocal, 12-byte stride); the pair's implicit assignment inlines CCountedPointer::operator=
+//   (landed 0x00448380 body), and the callee-destroyed `val` is released after the call.
+struct CCPPointerInfo {                                    // CCountedPointer's shared block
+    long  RefCount;                                        // +0x0
+    void  (__fastcall* DeleteFunc)(void* data);            // +0x4
+    void* Data;                                            // +0x8
+};
+template <class T> class CCountedPointer {
+public:
+    T*              Data;                                  // +0x0
+    CCPPointerInfo* Info;                                  // +0x4
+    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
+    ~CCountedPointer()
+    {
+        if (Info) {
+            if (--Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+    }
+    CCountedPointer& operator=(const CCountedPointer& o)
+    {
+        T* const              data = o.Data;
+        CCPPointerInfo* const info = o.Info;
+        if (Info != info) {
+            if (Info) {
+                --Info->RefCount;
+                if (Info->RefCount == 0) {
+                    Info->DeleteFunc(Info->Data);
+                    delete Info;
+                }
+            }
+            Data = data;
+            Info = info;
+            if (info)
+                ++info->RefCount;
+        }
+        return *this;
+    }
+};
+enum EGameAction { EGameAction_Force32 = 0x7fffffff };   // enumerators not needed
+class CInputTypeBase;
+
+namespace std {
+template <class _T1, class _T2> struct pair {
+    _T1 first;                                             // +0x0
+    _T2 second;                                            // +0x4
+    pair(const _T1& __a, const _T2& __b) : first(__a), second(__b) { }
+    pair(const pair<_T1, _T2>& __o) : first(__o.first), second(__o.second) { }   // STLport 4.6 _pair.h
+};
+}
+template <class K, class V> class CKeyPairCompareLess {    // Ego_r.pdb: orders vector-map entries by key
+public:
+    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
+};
+namespace std {
+template <class _RandomAccessIterator, class _Distance, class _Tp, class _Compare>
+void __fastcall __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex, _Distance __len, _Tp __val,
+                              _Compare __comp);            // 0x00448950
+template <class _RandomAccessIterator, class _Tp, class _Compare, class _Distance>
+inline void __fastcall __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last,
+                                  _RandomAccessIterator __result, _Tp __val, _Compare __comp, _Distance*)
+{
+    *__result = *__first;
+    __adjust_heap(__first, _Distance(0), _Distance(__last - __first), __val, __comp);
+}
+typedef pair<EGameAction, CCountedPointer<const CInputTypeBase> > _Elem;
+typedef CKeyPairCompareLess<EGameAction, CCountedPointer<const CInputTypeBase> > _Cmp;
+template void __fastcall __pop_heap<_Elem*, _Elem, _Cmp, int>(_Elem*, _Elem*, _Elem*, _Elem, _Cmp, int*);
+} // namespace std

@@ -1,0 +1,126 @@
+# Chunk 952 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+## Codegen (source form -> retail shape)
+
+- **Branchless bool conversion is a size TU.** A `neg / sbb / and` pointer-to-bool return needs `#pragma optimize("s", on)`; the default speed TU branches (H012 0x0056EECA).
+- **Frame-pointer, unaligned TUs** are `#pragma optimize("y", off)` + `#pragma optimize("s", on)` (H014 0x0057FD32, H061 0x00485FF3, H092 0x0065DDDB, H093 0x0065E854).
+- **Def TUs are /Os everywhere.** Emit `optimize("s", on)` for every def Transfer, even when the entry is 16-aligned. Without it 0x0046A0B0 (H058) was DIFFER(123v123): ecx/edx instead of eax.
+- **/Os TUs need `__forceinline` on STLport's plain-inline helpers.** Without it VC7.1 leaves them as out-of-line cdecl calls:
+  - the __uninitialized_copy -> __copy_aux -> __copy_ptrs -> __copy_trivial chain (H056 0x0045493E, 17v35 -> MATCH);
+  - allocate / _Construct / __uninitialized_copy in `_M_allocate_and_copy` (H059 0x0046F4A4, 43v71 -> MATCH);
+  - __copy_backward (H041 0x0040FBF0, 25v49 -> MATCH).
+- **The same `_M_allocate_and_copy` in a speed TU takes no pragma and plain inline** (H088 0x00631590, 77 bytes). H059's grade 2 without the pragma produced exactly this shape. Choose by the retail length: 71 bytes is size, 77 is speed.
+- **16-byte `_M_insert_overflow` (209 bytes) needs the PDB memberwise user copy constructor.** That constructor makes the fill_len == 1 construct alternate two registers; the implicit copy uses one register (207v209).
+  - A nested C3DVector also needs its own PDB copy constructor (213v209 without it) (H043 0x004124C0).
+  - Pairs use STLport 4.6's `pair(const pair<_T1,_T2>&)` over the C3DVector copy (H089 0x0076ADA0, 0x007EAA40, 0x0084F5E0).
+- **An escaped temporary is reloaded after every `inc` / `dec [Info]` when its address goes to an unknown out-of-line callee.** Define the callee's body in the TU and the reload disappears. For CVectorMap::Insert, define STLport's _M_insert_overflow with its __uninitialized_copy / __uninitialized_fill_n / __destroy_aux helpers; retail emits them in that TU too (H051 0x00449440, 166v133 -> RELOCATION_MATCH on grade 3).
+- **CVectorMap::Insert over 8-byte pairs uses a same-TU `__declspec(noinline)` template stand-in of _M_insert_overflow under `auto_inline(off)`.** The stand-in is what makes the placement copy forward from ecx/edx (H069 0x004CD400, the landed 0x00A83770 shape).
+- **Tag homing in a dead argument slot needs the out-of-line helper's body in the TU, never touching the tag.**
+  - __copy goes under `#pragma auto_inline(off)`, the GOTCHAS 2026-10-20 rule. Its tag moved from [ebp+0Fh] to retail's [ebp+0Bh] (H062 0x00493E2C).
+  - __destroy_aux needs a **non-template** same-TU stand-in. A template stand-in is inlined despite auto_inline(off), and inline_depth or a POD tag does not help. The tag then sits on the live flags slot (`lea eax,[esp+8]`) instead of a fresh `push ecx` (H064 0x004AE4D0).
+  - An out-of-line `__declspec(noinline) __fastcall` __destroy_aux template stand-in puts the tag in the `push ecx` slot (`lea eax,[esp+7]`) (H077 0x00535900, H086 0x005E3040).
+- **VC7.1 emits a `??_G` COMDAT for every `delete p` and for every explicit `p->~T()` of a class with a destructor.** An unreferenced ??_G is therefore the deleting destructor of a type that some container's `_Destroy` or a deleter destroys (two-line probe; H064, H067 0x004B9320, H021 0x00708DA0).
+- **A compiler-generated ??_G with an inline base virtual destructor** comes from:
+  - no user destructor in the derived class, so it has no own vtable store;
+  - an inline `virtual ~Base() { }`, whose vtable store follows the member destructor;
+  - a `new T` helper, which emits the vtable and the ??_G.
+
+  (H085 0x005E0030, the landed CEventHitBase 0x00811C30 technique.)
+- **A CIVCountedPointer destructor that copies Object to a local** gives retail's one-load `dec [ecx+4] ; jne` (H021 0x00708DA0).
+- **`find` result tests:** write `it = m.find(k); if (it == m.end()) return false; return true;`. `return m.find(k) != m.end()` reads end() first and zero-extends the bool (H028 0x008688C0, 49v48 -> MATCH).
+- **The engine's free `operator==(const CIntelligentPointer<T>&, const CBaseObject*)` must be declared `__fastcall`** (the PDB's YI). Plain `inline` stays out of line in a size TU (H019 0x0065575F, grade 3).
+- **STLport _Rb_tree hinted insert_unique in a size TU** (H039 0x0042C082, 294v319 -> 317v319 -> MATCH):
+  - define `_Rb_global<bool>::_M_increment` / `_M_decrement` in the TU, as STLport's _tree.c does;
+  - spell the node key `node->_M_value_field.first` (the `_KeyOfValue()` temporary loads the node key first).
+- **STLport `equal_range` builds `pair<iterator, iterator>(lower_bound(k), upper_bound(k))`.** Arguments are evaluated right to left, so the upper_bound walk comes first in the body and is stored at result+4 (H068 0x004C6900).
+- **An STLport list iterator needs its user copy constructor `_List_iterator(const iterator&)`.** With it, a by-value iterator argument is built in its slot (`push ecx ; mov eax,esp ; mov [eax],esi`), and `push ebx` moves into the prologue. Without it the argument is pushed from a register (H092 0x0065DDDB, 62v66 -> RELOCATION_MATCH).
+- **STLport algorithms in this codebase are `__fastcall`** (H093 0x0065E854 for_each, H094 0x0065EAD6 __find_if, the landed 0x00A13440):
+  - a hidden result pointer (the returned functor or iterator) goes in ecx;
+  - class-type iterator arguments go on the stack;
+  - the iterator-tag reference goes in edx.
+- **A converted temporary that lives only in the right operand of `&&` gets a conditional-destruction flag at [ebp-4]** (`while (first != last && !pred(*first))` with a converting CCountedPointer<Base> argument; H094 0x0065EAD6).
+- **`T const&` in explicit instantiations.** Explicit instantiations of pointer-element templates must spell the parameter `T const&`, or go through typedefs: a textual `const T1&` is wrong for a `T* const` first (H046 0x005B17C6 SRC_FAIL -> MATCH, H061 0x00485FF3).
+- **Overload ambiguity on a literal default:** a literal `0` default makes `Transfer<T>(T&, T)` ambiguous against `long&`. Write `0L` (H036, six SRC_FAIL rows -> MATCH).
+- **Class keys:** CThing and CThingCreatureBase are `class` (V). Declared as `struct`, the grade still MATCHes, but the leaf is wrong and bindchk reports NOLEAF (H030).
+- **A one-condition `&&` test** (completed && flag) re-evaluates the completed query on the fall-through, as retail does (H034 0x00CE62D0).
+
+## Identity
+
+- **Retail has no ICF.** Byte-identical bodies are separate COMDATs, even two anonymous-namespace copies of one comparator in two TUs (H005 0x00978920 / 0x0097AD10). The 602 rows here are 602 distinct functions.
+- **Masked diffs inside a family reveal real shape splits.** Families grouped by the masked hash still hid differences in destructor offsets or member positions, and those differences pin the type (two-shape families):
+  - H063 0x004ABA70 (+0x10 / +0x14 / +0x18 destructor offsets);
+  - H067, H070, H079, H081, H084.
+- **Twin functions.**
+  - STLport has two erase(iterator) bodies per tree: `_Rb_tree::erase` and the container's forwarding erase (H065 0x006E6DD0 / landed 0x006E6E50).
+  - `~vector` and `_M_clear` are byte-identical. Pick by caller kind: deleting destructors and local teardown call `~vector`; operator=, reserve and _M_insert_overflow call `_M_clear` (H071 0x00722EB0 / 0x00722EF0, H072, H077, H086).
+- **`__uninitialized_copy` input constness follows the caller.** _M_insert_overflow, _M_fill_insert and push_back pass `pointer`; operator= and the copy constructor pass `const_pointer`. One element can therefore have two COMDATs (H076 0x00A51BE0 / 0x00A51FA0).
+- **Use `xr.fstart2`, not `xr.fstart`, for caller identity.** fstart2 scans back to int3 padding. fstart only knows labelled starts, so it attributes a call inside an unlabelled wrapper or push_back stub to the previous labelled function (H070).
+- **The script-def region has no RTTI.** Vtables at 0xE5xxxxx / 0xF2xxxxx have a zero complete-object locator. Prove the element instead from the members its copy constructor copies (`gen/ccsig.py`): they match exactly one Ego_r class, rebased to retail (STLport containers 12 bytes, parent-def base 4 shorter) at the `imul` stride (H088 CConversation, CArenaCreatureDef, CArenaWaveDef, CHeroSoulsCreatureDef, CFeatDef).
+- **CVectorMap sort helpers.** Each CVectorMap<K, CCountedPointer<T> > sort TU proves its element once, from its SortIfDirty site. swap, __pop_heap, __make_heap and __insertion_sort then follow by direct-call reachability from that sort entry (`down.py`), not by address (H047-H050).
+- **CVectorMap::Insert rows with no callers** are proven through their own grow callee (_M_insert_overflow). The owner of a proven map also calls that callee when appending (H051, H069).
+- **PDB names.** Load both PDBs' name sets:
+  - some symbols exist only in FableWin.pdb (CVictimsBrother::OnPredicateFail, H035);
+  - FableWin.pdb's STL is Dinkumware (`_Pop_heap`, `_For_each`, `_Find_if`, `$$Q` rvalue references), so those names are type evidence only and never retail leaves. Read the STLport leaf with a compile-only pass (`gen/mangle.py`; H047, H093, H094).
+- **Capstone formats displacements below 10 in decimal** (`[esi + 8]`) and larger ones in hex (`[esi + 0x18]`). Match both forms in shape asserts.
+- **RTTI-less vtables.** `vt.vtables_of` can misread the RTTI of a slot deep in a long vtable. Scan back to the vtable start, the first slot preceded by a locator, before trusting the RTTI (H078 0x00546B80).
+- **Reuse models across passes.** An identical masked body is the same recipe: H080 0x00553C50 reused agent951 G069 verbatim, and H082 0x005686C0 reused G001.
+- **Catalog names catch wrong element guesses.** H060 0x00CD2BF1 was first stamped as CScriptThing; bindchk rejected it because the CScriptThing __copy is already bound to the landed 0x008AC2A0 with a 12-byte stride.
+- **Retail `vector<bool>` is a plain byte vector** (12 bytes, one byte per element). Ego_r's 20-byte vector<bool> is the PDB build's library (H056 0x00462E78 / 0x004676EF).
+- **Line 1 must not carry a `::`-qualified template argument before the first `(`.** Pointer-element rows say `std::vector::push_back(...) -- (vector<T>)`. `gen/line1chk.py` checks this.
+
+Review at landing:
+
+- **No row needed more than 4 grades.** Representatives used at most 4 grades, plus the family-stamp grade that `gen/ledger_raw.tsv` also counts.
+  - Non-representative rows with 3-4 ledger runs (e.g. H043, H046, H060, H070) are re-grades after header-comment regeneration; the results are identical.
+  - The exception is 0x005B17C6 (H046): two SRC_FAIL stamps (a textual `const T1&` in the explicit instantiation), then RELOCATION_MATCH with typedefs. That is one try over the 2-try budget for an instance.
+- **Local models next to existing engine headers:**
+  - H029: CTCHeroStats.h carries Ego_r offsets, 0x14 / 0x18 above retail.
+  - H052-H058: four def headers are data-only views without the virtual Transfer.
+  - H087: the engine header's `struct CGameEvent` mangles U, but the PDB has V.
+- **Local models with no engine header to compare against:**
+  - H017, H025, H073, H074: CTCBase, CIntelligentPointer and CBaseIntelligentPointer.
+  - H037: CScriptBase, CLevelScriptBase and CTimer, padded.
+  - H078: NUISystem::CZoomingComponent, CScrollBar and CDraggable.
+  - H084: CAnimComponent*.
+  - H085: NEntityEvents.
+  - H090: NPlayerGui::CDraw*.
+  - H091-H094: CVillageTask*, CGetBestTaskForThing and CIsTask.
+  - H040 / H042: size-only element stand-ins.
+- **Engine CPersistContext:** the def Transfer sources (H052-H058, via `gen/binxfer.py`) declare CPersistContext's typed transfers as non-template overloads, one per retail callee. Reconcile them with the engine CPersistContext header.
+- **Catalog binding errors:**
+  - `?Transfer@CPersistContext@@QAEXAAUCDefString@@@Z` (0x0045228F) has the struct key U; both PDBs mangle `VCDefString@@`.
+  - 0x00456B7D is bound as the placeholder `?TransferOpinionDeed@...AAH@Z`; it is Transfer(EOpinionDeedType&).
+  - `??_7CInputProcessManager@@6B@` is bound to 0x0124DDDC; the real vtable is 0x0129CA38.
+  - `??_7CScriptDefinitionManager@@6B@` is bound to 0x012B4F74; the real vtable is 0x012C2648.
+  - `??1CBaseClass@@UAE@XZ` is bound to 0x0099A300, which is ~CBaseClassNonCopyable; ~CBaseClass is 0x0099A2E0.
+  - Many placeholder push_back / _M_insert_overflow names (CRetailVector, CLongVector, ThingVector ...) are bound to the H061 rows and their overflows.
+- **Conflict: the landed 0x00A54FA0 and H089 0x00A13800.** The landed 0x00A54FA0 binds `__uninitialized_copy` / `__uninitialized_fill_n<C2DLineF*>` to 0x00A51BE0 / 0x00A51C20, which conflicts with H089 0x00A13800 (vector<C2DLineF>'s helpers are 0x00A13490 / 0x00A134D0).
+  - 0x00A54FA0's own header says its element is only "modelled as C2DLineF".
+  - Its 207-byte body has the one-register implicit copy, while C2DLineF has a user copy constructor.
+  - H076's caller chain makes 0x00A54FA0 / 0x00A55190 / 0x00A54BB0 vector<CQuaternion>'s overflow / fill_insert / operator=.
+- **Errors in already-landed sources:**
+  - 0x00448380 is pair<EGameAction, CCountedPointer<const CInputTypeBase> >::operator=.
+  - 0x009937D0 declares `struct CKeyPairCompareLess`; the PDB has V.
+  - 0x00477428 is vector<float>'s copy constructor, not a shared vector<void*> one.
+  - 0x0065533C is CIntelligentPointer<NParticleEngine::CParticleEmitter>::operator=, not <CThingCreatureBase>.
+  - 0x004936BA is the CSubtitleRenderer::CEmbeddedGraphic __copy; it is not "COMDAT-folded".
+  - 0x005926CE is the CFadeInFadeOutBase __copy.
+  - 0x004C6140 is CBulletTimeManager::RemoveBulletTimeSlowdownMultiplier.
+  - 0x004CCCE0 and 0x0088CC20 are vector<pair<ETCInterfaceType, CTCBase*> > and vector<pair<long, CAIStateGroupBase*> >::_M_insert_overflow.
+  - 0x00AE8540 spells C3DGroup2 as a struct; both PDBs have class.
+  - 0x00AD75F0 uses `const COptimisedSubMesh*` although its caller is an overflow, which passes `pointer`. This is a constness question.
+  - The CDrawHealth-family constructors (e.g. 0x0064E1E4) use pointer parameters and Dinkumware-style local vectors; the PDB has `CPlayerGui&, vector<CDrawBase*>&` (H090).
+  - The full list is under NOTES.md "Label corrections".
+- **~vector vs ~CArray:** 0x00787340, 0x00AD83A0, 0x00B83DF0 and 0x00B97AF0 destroy CArray members but are modelled as ~vector, following the landed precedent. A ~CArray<T> would have the same body.
+- **The H064 non-template __destroy_aux stand-ins** carry a symbol that differs from retail's template leaf. Only the callers are graded.
+- **STLport list, for_each and __find_if leaves have no PDB form** (the PDBs are Dinkumware). The leaves of H092-H094 are STLport manglings read with mangle.py.
+- **Probable and descriptive rows** (NOTES.md lists the evidence):
+  - Probable: H015 0x005D9970 IsBook (parked), H046 0x00579CA4 / 0x00579CC1 / 0x00CD20CE, H060 0x0048528F (iterator constness unpinned), H062 0x0058034C (CHeroMarriageInfo), H066 0x006C7670.
+  - Descriptive: H002 0x00A40590, H004 0x004CBF40, H009 0x00A40CB0, H010 0x00AACCC0, H021 (seven rows), H024 0x00A52210, H033 (seven libpk EAX setters), H044 0x00CD237A, H065 0x004B8B10 / 0x00883B70, H067 (six rows), H076 0x005269B0.
+  - H083 0x005F9E60's symbol is absent from the Ego_r name set.
+- **fstart citations:** the evidence in the H003, H006, H009, H024, H040, H042, H043 and H065 source headers still cites some `xr.fstart` caller starts (listed in STATE.md). The identities rest on the containers, not on those starts, but the cited addresses may be wrong.
+- **Exact leaves:** 152 sources (H001-H011, H014, H016, H018-H020, H022-H024, H027, H040, H041) carried prefix `// Leaf:` lines such as `??$__median@`.
+  - In the final pass each was replaced by the exact symbol that the grade had selected from the graded object (`gen/leaf_plan.tsv`), and the 152 rows were regraded (`gen/leaffix_grades.txt`).
+  - Their generators still stamp the prefixes, so re-running one needs the same fix.
+- **H043 / H089 header fix:** the size line was corrected to "209 bytes (+ int3 padding to 224)" and the six H043 rows were re-promoted. Code is unchanged.
+- **H028:** the EDamageAttribute enumerator names are not recovered; keys are written as values. The same applies to the H038 ESheriffState / EAssassinState defaults `(E)0`.
