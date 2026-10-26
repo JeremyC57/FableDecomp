@@ -34,7 +34,10 @@ struct CFindFileHandle {
 };
 bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760
 bool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850
-bool __fastcall PathExists(const CWideString& path);                                 // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};                                 // 0x00999230
 bool __fastcall IsPathFile(const CWideString& path);                                 // 0x00999A30
 
 class CSystemManager;
@@ -64,7 +67,7 @@ void CUserProfileManager::DeleteProfile(const CWideString& profileName)
     CFindFileData data;
     if (FindFirstFile(pattern, handle, data)) {
         do {
-            bool isFile = PathExists(data.FileName) && IsPathFile(data.FileName);
+            bool isFile = CAFile::PathExists(data.FileName) && IsPathFile(data.FileName);
             if (isFile)
                 g_pDriveManager->DeleteFile(data.FileName);
         } while (FindNextFile(pattern, handle, data));

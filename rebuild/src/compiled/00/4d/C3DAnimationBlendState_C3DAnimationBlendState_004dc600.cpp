@@ -2,6 +2,10 @@
 // Leaf: ??1C3DAnimationBlendState@
 // Byte-exact reconstruction of C3DAnimationBlendState::~C3DAnimationBlendState @ 0x004dc600
 
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 struct RefObj;
 
 struct RefVtbl {
@@ -20,7 +24,6 @@ class C3DAnimationBlendState { public:
 };
 
 // base/member dtor chained via tail jmp @ 0x00686830
-extern void __fastcall Base_dtor(C3DAnimationBlendState* self);
 
 void __fastcall dtor_C3DAnimationBlendState(C3DAnimationBlendState* self)
 {
@@ -31,5 +34,5 @@ void __fastcall dtor_C3DAnimationBlendState(C3DAnimationBlendState* self)
         }
         self->ptr = 0;                // and [esi+0xc],0
     }
-    Base_dtor(self);                  // mov ecx,esi; jmp 0x686830
+    ((CTCBase*)(self))->CTCBase::~CTCBase();                  // mov ecx,esi; jmp 0x686830
 }

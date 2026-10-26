@@ -18,15 +18,29 @@ class CCharString { public:
     ~CCharString();                                              // 0x0099EAE0
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);     // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;     // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 class CThing;
-struct CTCInventoryClothing_Retail {
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+struct CTCInventoryClothing_Retail : public NInventory::CTCInventoryBase {
     void*         __vftable;                                     // +0x000
     CThing*       Owner;                                         // +0x004
     unsigned char _pad_0x008[0x154];
     bool          UseMannequin;                                  // +0x15C
-    CDefinitionManager* GetDefinitionManager();                  // 0x006869D0 (Owner->... out of line)
     void SelectItemWithDefIndex(long defIndex);                  // 0x005BDFB1 (CTCInventoryBase)
     void SetThingAsWearingSelectedClothes(CThing* thing);        // 0x005B406D
     void RemoveAllClothing();
@@ -34,7 +48,7 @@ struct CTCInventoryClothing_Retail {
 void CTCInventoryClothing_Retail::RemoveAllClothing()
 {
     UseMannequin = false;
-    long suitIndex = GetDefinitionManager()->GetDefGlobalIndexFromName("HERO_SUIT_NAKED");
+    long suitIndex = GetDefinitionManager().GetDefGlobalIndexFromName("HERO_SUIT_NAKED");
     SelectItemWithDefIndex(suitIndex);
     SetThingAsWearingSelectedClothes(Owner);
     UseMannequin = true;

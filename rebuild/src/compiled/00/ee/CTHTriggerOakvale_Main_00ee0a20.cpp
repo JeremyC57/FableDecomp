@@ -14,13 +14,14 @@
 // Shape: the gossip trigger's body (0x00EE06B0) with the creature spawn in place of the gossip set-up: the two literal
 //   names are implicit CCharString conversions built before the other arguments (right to left), the created creature a
 //   discarded temporary destroyed first; the handled arm keeps its own RemoveThing + return.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
     unsigned char _body[8];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CCharString { public:
     void* PStringData;
@@ -93,8 +94,14 @@ class CGameScriptInterface { public:                     // vtable 0x01260F0C (r
     virtual void v469(); virtual void v470(); virtual void v471(); virtual void v472(); virtual void v473(); virtual void v474(); virtual void v475(); virtual void v476();
     virtual void SetThingPersistent(const CScriptThing& thing, bool persistent) const;   // slot 477 (+0x774)
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
@@ -107,15 +114,20 @@ struct CTravellingHeroesMasterData {
 };
 class CV_TravellingHeroesScript;
 
-class CTH_Trigger_Oakvale {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CTH_Trigger_Oakvale : public CEntityScriptBase {
 public:
     void*                  __vftable;              // +0x00
     CGameScriptInterface*  Game;                   // +0x04
     CScriptThing           Me;                     // +0x08
     CV_TravellingHeroesScript* ParentClass;        // +0x14
     CTravellingHeroesMasterData* PMasterData;      // +0x18
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -123,22 +135,22 @@ void CTH_Trigger_Oakvale::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->SetThingPersistent(Me, true);
     if (PMasterData->Clock > 900 && PMasterData->Clock < 2300) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         if (PMasterData->WhisperHandled) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             Game->RemoveThing(Me, false, true);
             return;
         }
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         Game->CreateCreature("CREATURE_RIVAL_HERO_WHISPER", Me.GetPos(), "TH_Whisper", false);
         Game->RemoveThing(Me, false, true);

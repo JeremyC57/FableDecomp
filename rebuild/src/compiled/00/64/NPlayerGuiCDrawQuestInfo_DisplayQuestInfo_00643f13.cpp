@@ -14,7 +14,10 @@ class CPlayerGuiDef { public:
     float         QuestInfoMiniModeDelaySeconds;   // +0x588
 };
 
-extern CPlayerGuiDef* __fastcall PeekGuiDef();     // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};     // 0x00438570
 extern long g_framesPerSecond;                     // 0x01375550
 
 namespace NPlayerGui {
@@ -38,7 +41,7 @@ void CDrawQuestInfo::DisplayQuestInfo(bool display)
             MiniMode = false;
             MiniModeTimer = 0.0f;
             long framesPerSecond = g_framesPerSecond;
-            FramesUntilMiniMode = (long)(framesPerSecond * PeekGuiDef()->QuestInfoMiniModeDelaySeconds);
+            FramesUntilMiniMode = (long)(framesPerSecond * CPlayerGui::PeekGuiDef().QuestInfoMiniModeDelaySeconds);
         }
     }
     else {

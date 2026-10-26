@@ -32,13 +32,13 @@ struct CComponentVector {                                   // std::vector<NUISy
     }
 };
 
-struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
+class CTCBase { public:                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
     unsigned char _pad04[0x8];                              // ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
-    ~CTCBase_Calls();                                       // 0x00686830
+    virtual ~CTCBase();                                       // 0x00686830
 };
 
-struct __declspec(novtable) CTCCreditsUI : CTCBase_Calls {
+struct __declspec(novtable) CTCCreditsUI : CTCBase {
     bool             Active;                                // +0x0c
     CComponentVector Components;                            // +0x10
     bool             Quitting;                              // +0x1c

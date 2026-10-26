@@ -8,19 +8,25 @@
 // Model: local (engine/CAIStateGroup_EnemyCreatureBase.h flattens the base).
 class CThingCreatureBase;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                  // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThingCreatureBase* GetPItem() const;           // 0x00A01B50
-    void SetPItem(CThingCreatureBase* item);        // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
-    virtual void v00();
-    CIntelligentPointerCreature(CThingCreatureBase* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CAIStateGroupBase { public:
@@ -40,7 +46,7 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase {
-    CIntelligentPointerCreature PEnemy;             // +0x14
+    CIntelligentPointer<CThingCreatureBase> PEnemy;             // +0x14
     CThingCreatureBase* GetEnemy();                 // 0x0091DB50
     virtual bool IsRunnable();
 };
@@ -49,7 +55,7 @@ bool CAIStateGroup_EnemyCreatureBase::IsRunnable()
 {
     CThingCreatureBase* enemy = GetEnemy();
     if (enemy != 0) {
-        PEnemy = CIntelligentPointerCreature(enemy);
+        PEnemy = CIntelligentPointer<CThingCreatureBase>(enemy);
         if (IsStateGroupStillValid())
             return true;
     }

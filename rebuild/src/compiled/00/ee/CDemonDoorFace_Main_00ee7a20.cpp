@@ -15,6 +15,7 @@
 //   PMasterData +0x18, TimesSpoken +0x1c. CQ_SunnyvaleMasterData TrophyDealerHeroSpokenToDemonDoors +0x7C, SingingStonesInSync +0x140 (PDB +0x144; one STLport vector earlier). Handle hierarchy as the landed
 //   CMeleeThunder::Main 0x00D58080.
 // Shape: the CMeleeThunder handle model (implicit handle dtor expanded only at the first return, inline_depth(0) elsewhere).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -64,18 +65,25 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     ~CScriptThing();                                    // 0x004AA840
 };
-struct CIsThingAlive {                                  // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                   // 0x00E241B0
 };
-namespace N_0099a380 { struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-}; } using N_0099a380::CBaseIntelligentPointer;
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
+};
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -87,9 +95,10 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     // implicit destructor (stores no vptr); out-of-line copy 0x007E74D0
     bool IsScripting();                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    CScriptThing GetScriptThing() const;                // 0x007E7490
     void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
-    bool IsPerformingScriptTask() const;                // 0x007E7450
+public:
+    virtual CScriptThing GetScriptThing() const;   // 0x007E7490
+    virtual bool IsPerformingScriptTask() const;   // 0x007E7450
 };
 class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
@@ -142,8 +151,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CV_TrophyDealerScript;
 struct CDemonDoorFace : CEntityScriptBase {
@@ -158,7 +168,7 @@ void CDemonDoorFace::Main()
     CScriptGameResourceObjectScriptedThingBase face;
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

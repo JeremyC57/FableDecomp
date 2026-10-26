@@ -34,12 +34,12 @@ struct CIntelligentPointerNode {                    // list<CIntelligentPointer<
     CIntelligentPointerNode* _M_prev;
     unsigned char _M_data[8];
 };
-void* __cdecl NodeAllocate(unsigned int size);      // 0x00BFEA0E
+extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (MSVCR71)
 struct CInstanceList {                              // STLport list: the sentinel node pointer
     CIntelligentPointerNode* _M_node;
     CInstanceList() : _M_node(0)
     {
-        CIntelligentPointerNode* node = (CIntelligentPointerNode*)NodeAllocate(sizeof(CIntelligentPointerNode));
+        CIntelligentPointerNode* node = (CIntelligentPointerNode*)malloc(sizeof(CIntelligentPointerNode));
         node->_M_next = node;
         node->_M_prev = node;
         _M_node = node;

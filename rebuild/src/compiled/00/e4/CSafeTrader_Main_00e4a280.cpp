@@ -15,6 +15,7 @@
 // "TEXT_QST_011_SAFE_TRADER_WARNING_10_HATE" 0x012E4F30, "SCRIPT_NAME_HERO" 0x0125D1C8.
 // Layout: Ego_r.pdb CSafeTrader (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14
 // (CV_BanditTollScript*, byte +0x4d set on the warning), PMasterData +0x18, WarnedHero +0x1c, AttackedByHero +0x1d.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -35,10 +36,16 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;                     // slot 42 (+0xa8)
     void* PImp[2];
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                  // 0x00E241B0
@@ -48,8 +55,9 @@ enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_0 };
 struct CCountedPointerWords { void* Data; void* Info; };
 class CBaseObject { public:
     void* m_pIntelligentPointer;
-    CBaseObject();                                     // 0x0099A380
-    virtual ~CBaseObject();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
@@ -104,8 +112,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void RegisterFilter(CIsThingAlive& filter);        // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CSafeTrader : CEntityScriptBase {
     CV_BanditTollScript* ParentClass;                  // +0x14
@@ -119,7 +128,7 @@ void CSafeTrader::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

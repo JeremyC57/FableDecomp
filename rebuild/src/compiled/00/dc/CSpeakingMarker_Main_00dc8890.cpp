@@ -16,6 +16,7 @@
 //   CScriptThing model as the landed CSecretPassageFirstGate::Main 0x00DC8030; the STLport vector is 12 bytes.
 // Shape: a default-constructed CScriptThing local lives for the whole body (constructed after the warning number is read,
 //   destroyed at every exit); the warning number selects through an if/else-if chain.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -150,7 +151,8 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
 };
 struct CSpeakingMarker : CEntityScriptBase {
     CQ_OpeningGraveyardSecretPassageScript* ParentClass;   // +0x14

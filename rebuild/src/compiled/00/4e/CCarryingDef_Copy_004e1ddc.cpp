@@ -10,7 +10,7 @@
 class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                   // +0x04..+0x27
-    void Copy(const CDefClassBase& other);       // 0x00431F10
+    CDefClassBase& operator=(const CDefClassBase& other);       // 0x00431F10
 };
 
 struct CLongVector {                             // retail std::vector<long>: {first, last, end}
@@ -28,7 +28,7 @@ class CCarryingDef : public CDefClassBase { public:
 
 void CCarryingDef::Copy(const CCarryingDef& other)
 {
-    CDefClassBase::Copy(other);
+    CDefClassBase::operator=((const CDefClassBase&)(other));
     AvailableCarrySlots = other.AvailableCarrySlots;
     OverriddenDummyObject_TablePos = other.OverriddenDummyObject_TablePos;
 }

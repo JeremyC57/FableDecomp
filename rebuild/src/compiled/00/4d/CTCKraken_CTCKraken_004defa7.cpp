@@ -22,14 +22,23 @@ class CTCBase { public:
     bool    IsInGlobalUpdateTCs;                // +0x09
     CTCBase(CThing* parent);                    // 0x00686800
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {     // vtable 0x01238C6C
-    virtual void v01();
-    CIntelligentPointerThing() {}
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {     // vtable 0x01238C6C
+public:
+    CIntelligentPointer() {}
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CThingPointerAllocator {                 // std::allocator<CIntelligentPointer<CThing> > (empty)
     CThingPointerAllocator() {}
@@ -45,12 +54,12 @@ struct CDefPointer_CKrakenDef {
 class CTCBoss;
 class CTCKraken : public CTCBase { public:
     CDefPointer_CKrakenDef PKrakenDef;          // +0x0c
-    CIntelligentPointerThing PChamber;          // +0x10
-    CIntelligentPointerThing PCentreMarker;     // +0x18
-    CIntelligentPointerThing PTarget;           // +0x20
-    CIntelligentPointerThing PHeadEffect;       // +0x28
+    CIntelligentPointer<CThing> PChamber;          // +0x10
+    CIntelligentPointer<CThing> PCentreMarker;     // +0x18
+    CIntelligentPointer<CThing> PTarget;           // +0x20
+    CIntelligentPointer<CThing> PHeadEffect;       // +0x28
     CThingPointerList ExplosionList;            // +0x30
-    CIntelligentPointerThing PBeamWeaponEffect; // +0x34
+    CIntelligentPointer<CThing> PBeamWeaponEffect; // +0x34
     long DelayBeforeBeam;                       // +0x3c
     CTCBoss* PTCBoss;                           // +0x40
     CThingPointerList Tentacles;                // +0x44

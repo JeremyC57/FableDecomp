@@ -106,12 +106,17 @@ class CWorld { public:
     static long GetWorldFrame();                            // 0x0049D870
 };
 
-class CTCHeroStats { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCHeroStats : public CTCBase { public:
     void*           __vftable;                              // +0x00
     CThing*         ParentThing;                            // +0x04 CTCBase
     unsigned char   _pad_0x08[0x4];
     CCrimeStatusMap OutstandingCrimes;                      // +0x0C
-    CWorld* GetWorld() const;                               // 0x00686A70
     void UpdateOutstandingCrimes(const CCharString& region);
 };
 
@@ -126,7 +131,7 @@ void CTCHeroStats::UpdateOutstandingCrimes(const CCharString& region)
             deedLog->GetDeedEffectsDef(crime);
             long expiry = deedLog->GetDeedEffectsDef(crime)->KnowledgeLifeInSeconds * 15
                         + OutstandingCrimes[region].LastTimeSeenByGuard;
-            if (expiry < GetWorld()->GetWorldFrame())
+            if (expiry < GetWorld().GetWorldFrame())
                 OutstandingCrimes[region].Crimes[crime] = 0;
         }
     }

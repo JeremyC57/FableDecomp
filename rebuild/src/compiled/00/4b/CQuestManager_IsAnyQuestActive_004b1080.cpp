@@ -27,7 +27,7 @@ struct CTCMap_Retail {                             // the thing's component map 
         return it->m_pTC;
     }
 };
-struct CThing_Retail {
+class CBaseObject { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -37,7 +37,7 @@ struct CThing_Retail {
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCBase_Retail* GetTC(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+__forceinline CTCBase_Retail* GetTC(const CBaseObject* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CQuestCardDef { public:                             // intrusively counted (vptr, count +4)
     virtual void v00();
     virtual void Release();                        // slot 1 (+4)
@@ -58,17 +58,18 @@ class CTCQuestCard { public:
     unsigned char    _pad10[4];
     long             QuestNumber;                  // +0x14
 };
-struct CIntelligentPointer_CThing {
+class CBaseIntelligentPointer { public:
     void* __vftable;
     void* m_pItem;
-    CThing_Retail* GetPItem() const;               // 0x00A01B50
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
 };
 struct CCardNode {                                 // STLport list node
     CCardNode*                 next;
     CCardNode*                 prev;
-    CIntelligentPointer_CThing value;              // +0x08
+    CBaseIntelligentPointer value;              // +0x08
 };
-__forceinline CTCQuestCard* GetQuestCard(CThing_Retail* thing)
+__forceinline CTCQuestCard* GetQuestCard(CBaseObject* thing)
 {
     CTCQuestCard* tc;
     if (thing->HasTC(0x6c))

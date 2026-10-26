@@ -1,9 +1,16 @@
 #include "engine/CTavernDef.h"
 #include <cstdio>
-class CDefClassBase;
+class CDefClassBase {
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);
+};
 struct CTavernDef_Methods : CTavernDef { void base_clone(const CDefClassBase* src); };
 static void* g_self; static const void* g_src;
-void CTavernDef_Methods::base_clone(const CDefClassBase* src) { g_self = this; g_src = src; }
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+{
+    const CDefClassBase* src = (const CDefClassBase*)&other_; (void)src; g_self = ((CTavernDef_Methods*)this); g_src = src;
+    return *this;
+}
 void __fastcall CTavernDef_Copy(CTavernDef* self, int, const CDefClassBase* src);
 int main()
 {

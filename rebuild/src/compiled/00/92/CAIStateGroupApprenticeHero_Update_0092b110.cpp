@@ -54,11 +54,15 @@ class CTCVillage { public:
     bool IsCookTime();                               // 0x00658B20
 };
 class CTCVillageMember { public:
-    CTCVillage* GetPVillage();                       // 0x007EE540
+public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540
 };
 
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
-long __fastcall GFGetCurrentFrame();                     // 0x0049D870
+long __fastcall GFROR13(unsigned long);   // 0x00497890
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                     // 0x0049D870
 extern long g_framesPerSecond;                           // 0x01375550
 
 class CAIBrain { public:
@@ -129,6 +133,6 @@ void CAIStateGroup_ApprenticeHero::Update()
         }
     }
     long framesPerSecond = g_framesPerSecond;
-    NextFramePractice = GFGetCurrentFrame() + framesPerSecond * 60;
+    NextFramePractice = CWorld::GetFrame() + framesPerSecond * 60;
     Terminate();
 }

@@ -1,7 +1,18 @@
 // CAIStateGroup_MinionLeaveRegion::Update() -- leave through exit, suspend in limbo, then relocate to a random entrance
 // Retail0x0091E4B0,273 bytes. Callees MoveToPos97EC00,SetInLimbo4C8CF0,DoNothing97E200,
 // GetPWorld8FCFC0,GetAllRegionNodes91E660,GetPWorldSeed8FCFD0,GFROR13497890,GetPosition4C73D0,Terminate8FCF40.
+#define CAIStateGroup_MinionLeaveRegion CAIStateGroup_MinionLeaveRegionLayout
 #include "engine/CAIStateGroup_MinionLeaveRegion.h"
+#undef CAIStateGroup_MinionLeaveRegion
+
+class CAIStateGroupBase
+{
+public:
+    void Terminate();   // 0x008FCF40
+};
+class CAIStateGroup_MinionLeaveRegion : public CAIStateGroupBase, public CAIStateGroup_MinionLeaveRegionLayout
+{
+};
 #include "engine/CAIBrain.h"
 #include "engine/CWorld.h"
 #include "engine/CThingSearchTools.h"
@@ -45,12 +56,12 @@ struct CBrainVirtual { virtual void v0(); virtual void v1(); virtual bool Suspen
 struct ThingVector { CThing** first; CThing** last; CThing** capacity; ThingVector():first(0),last(0),capacity(0){}  };
 struct CThingFilter_IsRegionNode { bool Exit; CThingFilter_IsRegionNode(bool exit):Exit(exit){} };
 struct CThingSearchToolsMethods : CThingSearchTools { void GetAllRegionNodes(const CThingFilter_IsRegionNode&,ThingVector*); };
-unsigned long __fastcall GFROR13(unsigned long);
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 struct CAIStateGroup_MinionLeaveRegion_Adapter : CAIStateGroup_MinionLeaveRegion {
  CAIBrain* Brain() { return *(CAIBrain**)&_pad_0x04[0]; }
  C3DVector& ExitPosition() { return *(C3DVector*)&ExitPoint_X; }
  long AIAction_MoveToPos(long,C3DVector,bool*,long,bool,bool,CThing*,bool,float);
- long AIAction_DoNothing(); CWorld* GetPWorld(); unsigned long* GetPWorldSeed(); void Terminate(); void Update();
+ long AIAction_DoNothing(); CWorld* GetPWorld(); unsigned long* GetPWorldSeed(); void Update();
  __forceinline void GetNodes(const CThingFilter_IsRegionNode& filter,ThingVector* nodes) { CWorld* world=GetPWorld(); ((CThingSearchToolsMethods*)world->PThingSearchTools_ptr)->GetAllRegionNodes(filter,nodes); }
 };
 void CAIStateGroup_MinionLeaveRegion_Adapter::Update() {

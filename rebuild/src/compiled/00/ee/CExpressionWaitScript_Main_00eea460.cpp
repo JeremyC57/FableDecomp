@@ -26,9 +26,9 @@ class CRGBColour { public:
 };
 
 class CScriptThing { public:                                      // 12 bytes
-    unsigned char _body[0xc];
+    unsigned char _body[0xc - 4];
     CScriptThing(const CScriptThing& other);               // 0x004ABE90
-    ~CScriptThing();                                       // 0x004AA840
+    virtual ~CScriptThing();                                       // 0x004AA840
 };
 
 struct CIsThingConscious {                                 // vtable 0x012C2FE8

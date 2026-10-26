@@ -1,5 +1,5 @@
 // CRegion::SaveBinary(CDataOutputStream*) -- write the region's map lists, names, flags, minimap/world offsets and exit-text offsets
-// Retail 0x006BBFD0, 400 bytes, ret 4. Callees: CDataOutputStream::WriteLong 0x00993EB0 (catalog "WriteCBYTE"),
+// Retail 0x006BBFD0, 400 bytes, ret 4. Callees: CDataOutputStream::WriteSLONG 0x00993EB0 (catalog "WriteCBYTE"),
 // WriteFloat 0x00993EE0, WriteBool 0x00993E30, WritePresizedString 0x00995A80, Write2DVector 0x00993F90; __ftol2 0x00BFEA70.
 // Layout: retail CRegion is 0x58 bytes (GOTCHAS: "CRegion 0x58 bytes with Name +0x18"): its STLport vectors and map are
 // 12 bytes where engine/CRegion.h (PDB) has 16, so every member after Maps sits below the header's offset:
@@ -13,11 +13,12 @@ class CCharString { public: void* PStringData; };
 class C2DVector { public: float X, Y; };
 
 class CDataOutputStream { public:
-    void WriteBool(bool value);                         // 0x00993E30
-    void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
     void Write2DVector(const C2DVector& value);         // 0x00993F90
     void WritePresizedString(const CCharString& s);     // 0x00995A80
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 struct _Rb_tree_node_base {
@@ -81,26 +82,26 @@ class CRegion { public:
 void CRegion::SaveBinary(CDataOutputStream* stream)
 {
     long mapCount = Maps.size();
-    stream->WriteLong(mapCount);
+    stream->WriteSLONG(mapCount);
     long visCount = VisMaps.size();
-    stream->WriteLong(visCount);
+    stream->WriteSLONG(visCount);
     for (long i = 0; i < mapCount; ++i)
-        stream->WriteLong(Maps[i]);
+        stream->WriteSLONG(Maps[i]);
     for (long j = 0; j < visCount; ++j)
-        stream->WriteLong(VisMaps[j]);
+        stream->WriteSLONG(VisMaps[j]);
     stream->WritePresizedString(Name);
     stream->WritePresizedString(DisplayName);
     stream->WritePresizedString(RegionDefName);
     stream->WritePresizedString(MiniMapGraphic);
-    stream->WriteBool(AppearOnWorldMap);
-    stream->WriteBool(CreatureGenerationEnabled);
-    stream->WriteBool(SoundThemesEnabled);
+    stream->WriteEBOOL(AppearOnWorldMap);
+    stream->WriteEBOOL(CreatureGenerationEnabled);
+    stream->WriteEBOOL(SoundThemesEnabled);
     stream->WriteFloat(MiniMapScale);
-    stream->WriteLong((long)MiniMapOffset.X);
-    stream->WriteLong((long)MiniMapOffset.Y);
-    stream->WriteLong((long)WorldMapOffset.X);
-    stream->WriteLong((long)WorldMapOffset.Y);
-    stream->WriteLong(MiniMapRegionExitTextOffsets.NodeCount);
+    stream->WriteSLONG((long)MiniMapOffset.X);
+    stream->WriteSLONG((long)MiniMapOffset.Y);
+    stream->WriteSLONG((long)WorldMapOffset.X);
+    stream->WriteSLONG((long)WorldMapOffset.Y);
+    stream->WriteSLONG(MiniMapRegionExitTextOffsets.NodeCount);
     for (_Rb_tree_node_base* it = MiniMapRegionExitTextOffsets.Header->Left;
          it != MiniMapRegionExitTextOffsets.Header;
          it = _Rb_tree_node_base::Increment(it)) {

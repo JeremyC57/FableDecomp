@@ -16,8 +16,9 @@ class CThing { public:
 };
 
 class CNavigatorManager { public:
-    bool IsNavigationMapActivated(long mapIndex);                                    // 0x00A14EB0
     void SetSwitchableNodesAsBlocked(long mapIndex, unsigned __int64 id, bool blocked);   // 0x00A15470
+public:
+    bool IsNavigationMapActivated(long) const;   // 0x00A14EB0
 };
 
 class CWorld { public:
@@ -30,8 +31,9 @@ class CTCBase { public:
     CThing* ParentThing;                     // +0x04
     bool    ToBeRemoved;                     // +0x08
     bool    IsInGlobalUpdateTCs;             // +0x09
-    CWorld* GetWorld();                      // 0x00686A70
-    ~CTCBase();                              // 0x00686830
+    virtual ~CTCBase();                              // 0x00686830
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 
 class CTCSwitchableNavigation : public CTCBase { public:   // vtable 0x0123C02C
@@ -42,7 +44,7 @@ class CTCSwitchableNavigation : public CTCBase { public:   // vtable 0x0123C02C
 
 CTCSwitchableNavigation::~CTCSwitchableNavigation()
 {
-    CNavigatorManager* navigator = GetWorld()->PNavigatorManager;
+    CNavigatorManager* navigator = GetWorld().PNavigatorManager;
     if (navigator->IsNavigationMapActivated(MapIndex))
         navigator->SetSwitchableNodesAsBlocked(MapIndex, ParentThing->m_id & 0xFFFFFFFFFFui64, false);
 }

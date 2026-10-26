@@ -24,9 +24,10 @@ class CWorldMap { public:
 class CTCBase { public:
     CTCBase(CThing* owner);                        // 0x00686800
     virtual ~CTCBase();                            // 0x00686830
-    CWorldMap* GetWorldMap_00686d30();                      // 0x00686D30
     CThing* m_pThing;                              // +0x04
     long    m_baseWord;                            // +0x08
+protected:
+    CWorldMap& GetWorldMap();   // 0x00686D30
 };
 
 struct CMapwhoNode {
@@ -56,7 +57,7 @@ class CTCMapwho : public CTCBase { public:
     __forceinline void RemoveFromMapwho()
     {
         if (InMapwho) {
-            CWorldMap* map = GetWorldMap_00686d30();
+            CWorldMap* map = (&GetWorldMap());
             map->m_pThingMapManager->DestroyMapwhoNode(this);
         }
     }

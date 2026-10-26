@@ -35,10 +35,21 @@ public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {                // CIntelligentPointer<CThingAICreature>: 8 bytes
-    void* m_vfptr;
-    void* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CTCMinionTimer {                         // interface 0x9B component
     unsigned char _pad00[0x0c];
@@ -54,19 +65,19 @@ class CTCSummonSpell { public:
     unsigned char _base08[4];
     void* PDef;                                 // +0x0c CDefPointer<const CSpecialAbilitiesSummonSpellDef>
     bool  JustReleased;                         // +0x10
-    CBaseIntelligentPointer Minion;             // +0x11
+    CIntelligentPointer<CThing> Minion;             // +0x11
     void CancelMove();
 };
 #pragma pack(pop)
 
-static inline bool IsThingAlive(const CBaseIntelligentPointer& p)
+static inline bool IsThingAlive(const CIntelligentPointer<CThing>& p)
 {
     return p.GetPItem() && !(p.GetPItem()->m_flags91 & 1);
 }
 
 void CTCSummonSpell::CancelMove()
 {
-    CBaseIntelligentPointer& minion = Minion;
+    CIntelligentPointer<CThing>& minion = Minion;
     CTCMinionTimer* timer;
     if (IsThingAlive(minion) && minion.GetPItem()->GetInterface(&timer, 0x9b)) {
         if (!timer->Stopped) {

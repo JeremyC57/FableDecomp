@@ -55,7 +55,7 @@ class CEntityScriptBase;
 class CActiveEntityScriptBase;
 template <class T> class CCountedPointer { public: T* Data; void* Info; };
 
-struct __declspec(novtable) CEntityScriptBindingBase {
+class __declspec(novtable) CEntityScriptBindingBase { public:
     virtual const CCharString& GetEntityScriptName() const = 0;
 };
 template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
@@ -72,9 +72,10 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
 };
 
 class CBaseObject { public:                                    // vtable 0x0129A7D8
-    CBaseObject();                                      // 0x0099A380
-    virtual ~CBaseObject();                             // 0x0099A430
     void* IntelligentPointer;                           // +0x04
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}

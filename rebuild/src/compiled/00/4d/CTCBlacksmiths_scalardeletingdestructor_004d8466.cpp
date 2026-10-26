@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCBlacksmiths_Destruct(void* blacksmiths);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCBlacksmiths_ScalarDeletingDestructor(void* blacksmiths, int, unsigned int flags)
 {
-    CTCBlacksmiths_Destruct(blacksmiths);
+    ((CTCBase*)(blacksmiths))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(blacksmiths);
+        operator delete(blacksmiths);
     return blacksmiths;
 }

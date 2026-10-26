@@ -9,7 +9,10 @@
 // HeroBoasted +0x34, HeroMadeGoodBoast +0x35, FrameToLeavePostBoastState +0x44.
 // Shape: the frame rate is read into a local before the seed call (it feeds `fimul` from the frame); the delay is a named
 // float local spilled across the frame call; the state advance is a switch (`sub eax,2 ; je ; dec eax ; jne`); the bool result of the boast test feeds `setne ; add ecx,5`.
-long __fastcall GFGetCurrentFrame();                                // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                                // 0x0049D870
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 extern long g_framesPerSecond;                                      // 0x01375550
 
@@ -17,8 +20,19 @@ struct CBoast {
     unsigned char _pad00[0x18];
     bool Evil;                              // +0x18
 };
-class CTCCreatureGroupBoastingCrowd { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x00686DA0
+};
+class CTCCreatureGroup : public CTCBase
+{
+public:
+};
+
+class CTCCreatureGroupBoastingCrowd : public CTCCreatureGroup { public:
     unsigned char _pad04[0x2c - 0x04];          // CTCBase, CTCCreatureGroup, PHero
     long CrowdState;                            // +0x2c
     long CurrentEncouragementState;             // +0x30
@@ -28,7 +42,6 @@ class CTCCreatureGroupBoastingCrowd { public:
     long HeroOpinionSourcesPushed;              // +0x3c
     long FrameToClearRemainingOpinionSources;   // +0x40
     long FrameToLeavePostBoastState;            // +0x44
-    unsigned long* GetPRandomSeed();            // 0x00686DA0 (CTCBase)
     void EnterCrowdState(long state);           // 0x00784260
     void OnHeroBoast(const CBoast* boast);
 };
@@ -45,8 +58,8 @@ void CTCCreatureGroupBoastingCrowd::OnHeroBoast(const CBoast* boast)
         break;
     }
     long framesPerSecond = g_framesPerSecond;
-    float delay = (GFFloatRandom(0.5f, GetPRandomSeed()) + 0.5f) * framesPerSecond * 10.0f;
-    FrameToLeavePostBoastState = (long)(GFGetCurrentFrame() + delay);
+    float delay = (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * framesPerSecond * 10.0f;
+    FrameToLeavePostBoastState = (long)(CWorld::GetFrame() + delay);
     bool flagged;
     if (boast && boast->Evil)
         flagged = true;

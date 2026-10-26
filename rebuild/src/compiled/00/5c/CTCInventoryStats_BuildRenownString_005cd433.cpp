@@ -56,9 +56,12 @@ CCharString __fastcall GFIntToCharString(long value);             // 0x0099F830
 class CWideString { public:
     void* m_pStringData;
 };
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);       // 0x009C95E0
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;       // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 struct CEngineGlobals {
     unsigned char _pad[0x14];
     CDataBank*    m_pTextBank;                                    // +0x14

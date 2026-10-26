@@ -143,7 +143,7 @@ class CCreatureActionBase { public:
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCreatureAction_IceTrollIcicleAttack : public CCombatActionBase { public:   // vtable 0x012960C4
     virtual void v00();

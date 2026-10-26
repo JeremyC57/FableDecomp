@@ -105,12 +105,23 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public:
     bool GetPossibleCombatAnimations(const CCharString& name, CAnimationEntryVector& out);   // 0x006668A0
 };
-struct CBaseIntelligentPointer {
-    void*               __vftable;
-    CThingCreatureBase* m_pItem;                        // +0x04
-    CThingCreatureBase* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThingCreatureBase>& p)
 {
     return p.GetPItem() && !(p.GetPItem()->m_flags91 & 1);
 }
@@ -119,14 +130,15 @@ class CCombatActionBase {
 public:
     virtual void Initialise();
     unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;                  // +0x08
+    CIntelligentPointer<CThingCreatureBase> PCreature;                  // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
-    CBaseIntelligentPointer PTarget;                    // +0xa8
+    CIntelligentPointer<CThingCreatureBase> PTarget;                    // +0xa8
     unsigned char           _padb0[0xdd - 0xb0];
     bool                    PreferredFinalPosSet;       // +0xdd
     unsigned char           _padde[0x114 - 0xde];
-    void SetAnimationName(const CCharString& name);     // 0x008574D0
     void SetCombatAnimations(const CAnimationEntryVector& animations);   // 0x00857DC0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 class CCreatureAction_BlockBase : public CCombatActionBase {
 public:
@@ -181,7 +193,7 @@ void CCreatureAction_BlockRespond::Initialise()
     } else {
         {
             CCharString name("BLOCK_FRONT_RESPONSE");
-            SetAnimationName(name);
+            SetCombatAnimation(name);
         }
         FaceTargetAtStart = true;
     }

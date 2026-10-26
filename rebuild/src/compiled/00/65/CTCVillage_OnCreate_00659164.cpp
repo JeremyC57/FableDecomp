@@ -1,13 +1,13 @@
 // CTCVillage::OnCreate() -- takes the village def from the thing's def, copies its default stance to the hero, clears the guard respawn and curfew state, schedules the next guard respawn from the hero's renown ratio when the hero is alive, sets the light state from the time of day and resets the crier
 // Leaf: ?OnCreate@CTCVillage
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00659164, 305 bytes (plain `ret`, `leave`).
-// Callees: CTCBase::GetDefinitions() const 0x006869D0; CDefinitionManager::GetDef<T>(long, CDefPointer<T>*) 0x0042AF3C;
+// Callees: CTCBase::GetDefinitionManager() const 0x006869D0; CDefinitionManager::GetDef<T>(long, CDefPointer<T>*) 0x0042AF3C;
 //          CDefClassBase::GetSubDef<CVillageDef>(CDefPointer<const CVillageDef>*) 0x0065F440 (into PDef);
 //          CWorld::GetCurrentPlayer() const 0x0049D9D0; CPlayer::GetCharacterThing() 0x00487DC0;
 //          CDefClassBase::GetSubDef<CVillagePeopleDef> 0x00512FE0; IS_THING_ALIVE<const CThing*>(const CThing* const&) 0x0043DBD0
 //          (`__fastcall`); std::bitset<>::test(size_t) const 0x00410DE0 (interface 0x14); CVectorMap<ETCInterfaceType,
 //          CTCBase*>::LowerBound 0x0040F020; the interface-0x14 component's ratio getter 0x005CDBBE (manifest
-//          "ETCInterface_CalculateRatio"); __ftol2 0x00BFEA70; CTCBase::GetWorld() const 0x00686A80; CGameTimeManager::
+//          "ETCInterface_CalculateRatio"); __ftol2 0x00BFEA70; CTCBase::PeekWorld() const 0x00686A80; CGameTimeManager::
 //          IsDay() const 0x006BB2C0; CTCVillage::ResetCrier() 0x00658E73; the defs' slot 1 on release.
 // Layout (retail CTCVillage: one-pointer lists, so Ego_r.pdb - 0x8c from Initialised on; engine/CTCVillage.h carries PDB
 //          offsets, hence a local model): InCurfew +0x84, PDef +0x94, StanceToHero +0x98, NextGuardRespawn +0xa4,
@@ -54,6 +54,9 @@ struct CThingDef : CDefBase {
 };
 class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out) const;   // 0x0042AF3C
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 CThingDef* FindRef_CDefinitionManager_GetDef_0(long index);   // stand-in callees of the stand-in bodies below
 CVillagePeopleDef* FindRef_CThingDef_GetSubDef_0(CThingDef* def);
@@ -138,8 +141,20 @@ class CMainGameComponent { public:
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
-class CTCVillage { public:
+class CTCBase
+{
+public:
     virtual void v00();
+    virtual void OnCreate();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCVillage : public CTCBase {
+public:
+    virtual void OnCreate();
+ public:
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x7c];
     bool          InCurfew;                     // +0x84
@@ -152,16 +167,13 @@ class CTCVillage { public:
     unsigned char _pad_0xa8[0x24];
     bool          LightActiveStateToChange;     // +0xcc
     long          MaxFrameToAssignTask;         // +0xd0
-    const CDefinitionManager* GetDefinitions() const;   // 0x006869D0 (CTCBase)
-    const CWorld* GetWorld() const;             // 0x00686A80 (CTCBase)
     void ResetCrier();                          // 0x00658E73
-    virtual void OnCreate();
 };
 
 void CTCVillage::OnCreate()
 {
     CDefPointer<CThingDef> thingDef;
-    GetDefinitions()->GetDef(ParentThing->DefIndex, &thingDef);
+    GetDefinitionManager().GetDef(ParentThing->DefIndex, &thingDef);
     thingDef->GetSubDef(&PDef);
     StanceToHero = PDef->DefaultStanceToHero;
     NextGuardRespawn = 0;
@@ -171,7 +183,7 @@ void CTCVillage::OnCreate()
     if (thingDef->GetSubDef(&peopleDef) && IS_THING_ALIVE(hero) && hero->HasTC(0x14))
         NextGuardRespawn = (long)(((CTCRenownRatio*)hero->GetTC(0x14))->CalculateRatio()
                                   * peopleDef->GuardRespawnMaxRenownBasedOffset);
-    LightActiveStateToChange = !GetWorld()->PGameTimeManager->IsDay();
+    LightActiveStateToChange = !PeekWorld().PGameTimeManager->IsDay();
     MaxFrameToAssignTask = -1;
     ResetCrier();
 }

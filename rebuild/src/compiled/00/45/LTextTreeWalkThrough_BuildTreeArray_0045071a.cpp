@@ -9,7 +9,7 @@ struct CTree {
     void Handle(int v);
 };
 
-extern void __cdecl FreeNode(Node* n);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall LTextTreeWalkThrough_BuildTreeArray(CTree* self, void* edx, Node* node)
 {
@@ -17,7 +17,7 @@ void __fastcall LTextTreeWalkThrough_BuildTreeArray(CTree* self, void* edx, Node
     while (node != 0) {
         self->Handle(node->value);
         Node* nxt = node->next;
-        FreeNode(node);
+        free(node);
         node = nxt;
     }
 }

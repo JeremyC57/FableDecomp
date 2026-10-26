@@ -214,7 +214,9 @@ template<class T>struct DefPointer {
 
 class CMeleeCombatAbilityDef:public NativeCountedDef { public:}; // borrowed native lifetime view, no definition fields accessed
 
-class CTCCarrying { public:CThing* GetThingInPrimarySlot();}; //006A1440
+class CTCCarrying { public:public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
+}; //006A1440
 __forceinline CThing* CThingCreatureBase::GetPrimaryHeldThing()const {CThing* held=0;CTCCarrying* carrying;if(GetInterface(&carrying,70))held=carrying->GetThingInPrimarySlot();return held;}
 class CRightHandedSet;
 CThing* __fastcall CreateShot(long,CThing*,CThing*,const CThing*,float,float,float,const DefPointer<CMeleeCombatAbilityDef>&,const C3DVector*,const CRightHandedSet*); //007C0AD0

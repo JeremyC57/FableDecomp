@@ -30,12 +30,23 @@ class CThing { public:
     void RemoveTC(long interfaceType);             // 0x004C9840
 };
 class CThingCreatureBase : public CThing { public: };
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;
-    CThing* GetPItem() const;                      // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -100,9 +111,9 @@ struct CModeJackOfBladesFlash {
     long                    BurnCounter;           // +0x6c
     unsigned char           Filter[0xc];           // +0x70 CAnimFilterOfGroup
     CThingCreatureBase*     PCreature;             // +0x7c
-    CBaseIntelligentPointer PTarget;               // +0x80
-    CBaseIntelligentPointer PEmitter;              // +0x88
-    CBaseIntelligentPointer PSpotLight;            // +0x90
+    CIntelligentPointer<CThing> PTarget;               // +0x80
+    CIntelligentPointer<CThing> PEmitter;              // +0x88
+    CIntelligentPointer<CThing> PSpotLight;            // +0x90
     CWorld* GetWorld();                            // 0x0073A680
     void ExtinguishFlames();
 };

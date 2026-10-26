@@ -15,11 +15,14 @@ class CCharString
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CDataBank
-{
+namespace NGameText {
+class CDataBank
+{ public:
     // struct-returning member: helper 0x5c29c0, __fastcall(this, hidden_ret, CWideString* fmt)
-    CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 
 struct NodeA { char pad[0x14]; CDataBank* obj14; };   // esi->[0x14]
 struct NodeB { char pad[0x60]; CDataBank* obj60; };   // esi->[0x60]

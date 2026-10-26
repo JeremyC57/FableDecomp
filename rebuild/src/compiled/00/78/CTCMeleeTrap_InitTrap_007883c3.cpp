@@ -17,8 +17,9 @@ struct CTCMeleeTrap {
     bool          PlayingContinuous;               // +0x60
     bool          StrikeAnimation;                 // +0x61
     void StartType3Trap();                         // 0x00788198
-    void InitialiseAnimation(const CCharString& animationName, bool loop);   // 0x0078809B
     void InitTrap();
+private:
+    void InitialiseAnimation(const CCharString&, bool);   // 0x0078809B
 };
 
 void CTCMeleeTrap::InitTrap()

@@ -37,9 +37,13 @@ class CThing { public:
     ComponentMap   Components;                           // +0x44
     const C3DVector& GetPosition() const;                // 0x004C73D0
 };
-struct CTCHeroCombat { void ResetProjectileWeaponMode(); };   // 0x00789B30
+class CTCHeroRangedAttacks { public: public:
+    void ResetProjectileWeaponMode();   // 0x00789B30
+};   // 0x00789B30
 class CPlayer { public: CThing* GetHeroThing(); };              // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };     // 0x00449970
+class CPlayerManager { public: public:
+    CPlayer& GetMainPlayer();   // 0x00449970
+};     // 0x00449970
 struct CRenderer {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -141,14 +145,14 @@ template <class T, long TYPE> __forceinline T* GetComponent(CThing* thing)
 
 void CGameCameraManager::ResetCamera()
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetHeroThing();
     SetThingToFollow(hero);
     SetThingToLookAt(hero);
     MinWorldHeight = hero->GetPosition().Z;
     MaxWorldHeight = MinWorldHeight + 10.0f;
     ResetFlags();
     if (hero->UsingComponents[4] & 2)
-        GetComponent<CTCHeroCombat, 0x81>(hero)->ResetProjectileWeaponMode();
+        GetComponent<CTCHeroRangedAttacks, 0x81>(hero)->ResetProjectileWeaponMode();
     CurrentMode.Reset();
     PCurrentScriptModule.Reset();
     PPendingScriptModule.Reset();

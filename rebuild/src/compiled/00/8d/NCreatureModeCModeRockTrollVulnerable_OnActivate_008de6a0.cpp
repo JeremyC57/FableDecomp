@@ -1,7 +1,7 @@
 // NCreatureMode::CModeRockTrollVulnerable::OnActivate() -- set the recovery count to five seconds of frames, base activation, then suspend the troll's animation and set it performing the "vulnerable into" action
 // Leaf: ?OnActivate@CModeRockTrollVulnerable
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DE6A0, 90 bytes (+ int3 padding), `ret`; vtable 0x01285774 slot 5.
-// Callees: __ftol2 @ 0x00BFEA70, CModeBase::OnActivate @ 0x0073AAC0 (qualified), CThingAnimatable::SetSuspendAnimation(bool,
+// Callees: __ftol2 @ 0x00BFEA70, CModeBase::OnActivate @ 0x0073AAC0 (qualified), CThingAICreature::SetSuspendAnimation(bool,
 //   long) @ 0x00833A10, CCreatureAction_TrollVulnerableInto(CThingCreatureBase*) @ 0x008E4420 (landed; manifest
 //   "CCreatureAction_BattleChargeTurnLeft" is propagated), CThingCreatureBase::SetCurrentAction @ 0x006644F0,
 //   ~CCombatActionBase @ 0x0062E900.
@@ -13,10 +13,11 @@
 //   edi for the suspend and the SetCurrentAction receiver and re-read for the action's ctor argument.
 class CCreatureActionBase;
 
-struct CThingAnimatable {
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
+class CThingAICreature { public:
+public:
+    void SuspendAI(bool, void*);   // 0x00833A10
 };
-class CThingCreatureBase : public CThingAnimatable { public:
+class CThingCreatureBase : public CThingAICreature { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
@@ -26,7 +27,7 @@ class CCreatureActionBase { public:               // retail sizeof 0xa8
 };
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
-    ~CCombatActionBase();                  // 0x0062E900
+    virtual ~CCombatActionBase();                  // 0x0062E900
 };
 class CCreatureAction_TrollVulnerableInto : public CCombatActionBase { public:
     CCreatureAction_TrollVulnerableInto(CThingCreatureBase* owner);   // 0x008E4420
@@ -56,6 +57,6 @@ void NCreatureMode::CModeRockTrollVulnerable::OnActivate()
     RecoveryCount = (long)(g_FramesPerSecond * 5.0f);
     CModeBase::OnActivate();
     CThingCreatureBase* creature = PCreature;
-    creature->SetSuspendAnimation(true, 0);
+    creature->SuspendAI(true, 0);
     creature->SetCurrentAction(CCreatureAction_TrollVulnerableInto(PCreature));
 }

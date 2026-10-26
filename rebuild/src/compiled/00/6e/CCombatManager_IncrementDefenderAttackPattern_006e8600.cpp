@@ -8,7 +8,10 @@
 //          inlined CCombatWheel::GetRing(0) (size test then null test of the data pointer, the /28 reciprocal
 //          multiply). AttackPatternIdleStandardInterval is CCombatManager +0x30 (PDB +0x38: retail maps are 12 bytes).
 extern long g_framesPerSecond;                  // 0x01375550
-long GetWorldFrame();                           // 0x0049D870 (returns the global @ 0x013B89BC; label "GFGetPreMainMemoryUsed" propagated)
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                           // 0x0049D870 (returns the global @ 0x013B89BC; label "GFGetPreMainMemoryUsed" propagated)
 
 template<class T> struct CRetailVector {        // retail std::vector: {first, last, end_of_storage}, 12 bytes
     T* first;
@@ -67,7 +70,7 @@ void CCombatManager::IncrementDefenderAttackPattern(CCombatantInfo& info)
     if ((unsigned long)++info.AttackPatternIndex >= pattern.size())
         info.AttackPatternIndex = 0;
     long framesPerSecond = g_framesPerSecond;
-    info.FrameForNextInstruction = (long)(GetWorldFrame() + framesPerSecond * AttackPatternIdleStandardInterval);
+    info.FrameForNextInstruction = (long)(CWorld::GetFrame() + framesPerSecond * AttackPatternIdleStandardInterval);
     if (pattern[info.AttackPatternIndex] > 0) {
         CCombatRing* ring = info.CombatWheel.GetRing(0);
         if (ring)

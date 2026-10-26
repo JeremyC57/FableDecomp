@@ -62,10 +62,15 @@ class CTCVillageMember { public: CVillage* GetPVillage(); };   // 0x007EE540
 struct CTCHeroBuilding { unsigned char _pad00[0x0c]; CBaseIntelligentPointer Building; };   // TC 0x75, +0x0c
 class CPlayer { public: CThing* GetHeroCreature(); };      // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
-class CTCShopKeeper { public:
+class CTCBase
+{
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCShopKeeper : public CTCBase { public:
     void*   __vftable;
     CThing* ParentThing;                            // +0x04
-    CPlayerManager* GetPlayerManager();             // 0x00686D40
     bool CalcAreOtherPeopleInShop();
 };
 
@@ -101,7 +106,7 @@ bool CTCShopKeeper::CalcAreOtherPeopleInShop()
             }
         }
     }
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer()->GetHeroCreature();
     CTCHeroBuilding* heroBuilding;
     if (hero && !hero->Dead && hero->GetInterface(0x75, &heroBuilding))
     {

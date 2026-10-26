@@ -4,7 +4,7 @@
 //   slot-10 virtual ?IsHoldWeaponWithBothHands@CModeBase@CTCCreatureModeManager@@UBE_NXZ (the only `bool () const` virtual
 //   left once IsIdleMode / IsRemoveOnDeactivate / IsAllowingPlayerSpecialMovementMoves are placed); the manifest has vfunc_10.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0 (the const instantiation, inlined GetTC for CTCCarrying
-//   0x46 and CTCWeapon 0x48), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CThing::GetDefinitionManager
+//   0x46 and CTCWeapon 0x48), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CThing::PeekDefinitionManager
 //   0x004C7990, CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, the carry-slot lookup CTCCarrying::GetThingInCarrySlot
 //   (long slot) 0x006A11F0 (manifest label CThing_Array_FindByID is propagated), CTCWeapon::IsUsableBy(CThing*) 0x005DAB10.
 // Layout: CModeBase ParentThing +0x04 (as the landed CModeStrafe::UpdateWeaponState 0x008E9950, whose thing model this reuses):
@@ -21,7 +21,10 @@ class CCharString { public:
 };
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -38,7 +41,6 @@ class CThing { public:
     unsigned char  _pad4c[0x91 - 0x4c];
     unsigned char  m_lifeFlags;            // +0x91 (bit 0: dead)
     bool IsDead() const { return (m_lifeFlags & 1) != 0; }
-    CDefinitionManager* GetDefinitionManager();   // 0x004C7990
     __forceinline bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
@@ -53,6 +55,8 @@ class CThing { public:
         const CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->type) ? map->last : it;
         return (const T*)sel->component;
     }
+public:
+    const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x004C7990
 };
 
 class CTCCarrying { public:                       // interface type 0x46
@@ -76,7 +80,7 @@ bool CModeBase::IsHoldWeaponWithBothHands() const
     if (ParentThing->HasTC(0x46))
     {
         const CTCCarrying* carrying = ParentThing->GetTC<CTCCarrying>(0x46);
-        long slot = ParentThing->GetDefinitionManager()->GetDefGlobalIndexFromName("CARRY_SLOT_BOTH_HANDS");
+        long slot = ParentThing->PeekDefinitionManager().GetDefGlobalIndexFromName("CARRY_SLOT_BOTH_HANDS");
         CThing* weapon = carrying->GetThingInCarrySlot(slot);
         if (weapon && !weapon->IsDead() && weapon->HasTC(0x48))
         {

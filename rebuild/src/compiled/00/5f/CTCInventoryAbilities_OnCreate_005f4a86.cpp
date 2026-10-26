@@ -6,7 +6,7 @@
 // Callees: CPlayerGui::GetPHeroInfoScreensManager() const @ 0x00437CD0 (through g_pPlayerGui @ 0x013B8790),
 //          NHeroInformationScreens::CManager::RegisterScreen(const CBase*) @ 0x0066EB11, CDefClassBase::GetSubDef<T>
 //          (CDefPointer<const T>*) @ 0x00485815, CTCInventoryBase::SetPDef(long) @ 0x005BDB4D, CTCInventoryBase::
-//          OnCreate() @ 0x005C0121, CTCBase::GetWorld() const @ 0x00686A80, InitialiseAbilities() @ 0x005EEDE2,
+//          OnCreate() @ 0x005C0121, CTCBase::PeekWorld() const @ 0x00686A80, InitialiseAbilities() @ 0x005EEDE2,
 //          InitialiseExpressions() @ 0x005F3E3E; the defs' slot 1 on release.
 // Shape: the screen argument is the null-safe conversion to the NHeroInformationScreens::CBase secondary base at
 // +0x130 (`neg ; sbb ; and`); the owner's def is add-ref'd and released by hand around GetSubDef (both null-tested,
@@ -75,16 +75,24 @@ class CWorld : public CWorldDonor {
  public:
 };
 
-struct CTCInventoryBase_Abilities {                  // retail 0x130 bytes
+class CTCBase
+{
+public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
     virtual void v03();
     virtual void OnCreate();                         // slot 4
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+struct CTCInventoryBase_Abilities : public CTCBase {
+    virtual void OnCreate();
+                  // retail 0x130 bytes
     CThing* ParentThing;                             // +0x04
     unsigned char _pad08[0x130 - 0x08];
     void SetPDef(long globalDefIndex);               // 0x005BDB4D
-    CWorld* GetWorld() const;                        // 0x00686A80 (CTCBase)
 };
 
 class CTCInventoryAbilities : public CTCInventoryBase_Abilities, public NHeroInformationScreens::CBase {
@@ -111,7 +119,7 @@ void CTCInventoryAbilities::OnCreate()
     SetPDef(abilitiesDef->InventoryDefIndex);
     CTCInventoryBase_Abilities::OnCreate();
     if (!Initialised) {
-        if (!GetWorld()->SerialisingAboutToLoadHeroState) {
+        if (!PeekWorld().SerialisingAboutToLoadHeroState) {
             InitialiseAbilities();
             InitialiseExpressions();
             Initialised = true;

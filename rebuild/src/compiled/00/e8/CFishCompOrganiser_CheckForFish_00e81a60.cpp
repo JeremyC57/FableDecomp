@@ -6,6 +6,7 @@
 // FishTypesInGame +0x54, RodDef +0x60, FishDef +0x6c (vectors of CCharString).
 // Shape: the bool result is a frame byte (spilled across the calls) tested in the loop condition with the count re-read every pass;
 // the nested `Game->Query(Def[i], Game->GetHero())` fetches the outer vtable into ebx before the inner call; the done check before the store returns TRUE here (the twin 0x00E81AD0 returns false): `mov al,1` is shared by the exit and the store.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
 };
@@ -73,7 +74,13 @@ struct CCharStringVector {                    // retail STLport vector<CCharStri
     CCharString& operator[](long n) { return *(begin() + n); }
 };
 
-class CFishCompOrganiser {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CFishCompOrganiser : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     CGameScriptInterface* Game;               // +0x04
@@ -91,7 +98,6 @@ public:
     CCharString           CompetitionEntry;   // +0x5c
     CCharStringVector     RodDef;             // +0x60
     CCharStringVector     FishDef;            // +0x6c
-    bool IsDone();                            // 0x00F35B30
     bool CheckForFish();
 };
 
@@ -100,7 +106,7 @@ bool CFishCompOrganiser::CheckForFish()
     bool found = false;
     for (long i = 0; i < FishingRodsInGame && !found; ++i) {
         if (Game->IsThingCarryingItem(RodDef[i], Game->GetHero())) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return true;
             found = true;
         }

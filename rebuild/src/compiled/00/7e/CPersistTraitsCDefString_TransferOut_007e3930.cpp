@@ -21,7 +21,8 @@ CCharString __fastcall operator+(const CCharString& left, const char* right);   
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 
 struct CDefStringTable {
-    CCharString GetString(long id);                     // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
 

@@ -16,11 +16,11 @@ struct SRenderDevice_Retail {
     unsigned char             _pad[8];
     CRenderStatistics_Retail* m_pStatistics;       // +0x08
 };
-struct SDeviceRecord_013ca618 {
+class CSystemManager { public:
     unsigned char          _pad[0x60];
     SRenderDevice_Retail*  m_pRender;              // +0x60
 };
-SDeviceRecord_013ca618* __cdecl GetDeviceRecord_009a4ec0();   // 0x009A4EC0 (labelled "GFGetSystemManager")
+CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0 (labelled "GFGetSystemManager")
 class CIndexBuffer { public:
     virtual void v00();
     IDirect3DIndexBuffer_Retail* m_pBuffer;        // +0x04
@@ -34,7 +34,7 @@ void* CIndexBuffer::Lock(unsigned long flags, unsigned long offset, unsigned lon
         m_pBuffer->GetDesc(&desc);
         size = desc.Size;
     }
-    SDeviceRecord_013ca618* record = GetDeviceRecord_009a4ec0();   // the call first, the argument next, then the chain
+    CSystemManager* record = GFGetSystemManager();   // the call first, the argument next, then the chain
     record->m_pRender->m_pStatistics->NotifyLock(m_pBuffer, 1.0f);
     void* data;
     m_pBuffer->Lock(offset, size, &data, flags);

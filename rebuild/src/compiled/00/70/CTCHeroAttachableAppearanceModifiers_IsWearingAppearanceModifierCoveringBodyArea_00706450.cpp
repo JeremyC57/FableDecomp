@@ -5,7 +5,7 @@
 //         AttachableAppearanceModifierType@@@Z`. Label: the catalog's "CTCGold::GetGold" is propagated; the row sits in the
 //         appearance-modifier TU (0x00706370 / 0x00706880 AddAppearanceModifier) and its caller (CTCHeroStats, 0x0057D462)
 //         passes (def +0x40 flags, 2).
-// Callees: CTCBase::GetDefinitions() const @ 0x006869D0, CDefinitionManager::GetDef<CThingObjectDef>(long, CDefPointer<const
+// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0, CDefinitionManager::GetDef<CThingObjectDef>(long, CDefPointer<const
 //          T>*) const @ 0x0042B040, CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const T>*) const @
 //          0x0057FF92, the defs' virtual slot 1 (destroy on the last release).
 // Shape: a pointer walk over AppearanceModifiers[type] (end re-read each pass); per entry two CDefPointer locals (the thing
@@ -65,7 +65,7 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long ind
     return true;
 }
 #pragma auto_inline(on)
-class CDefinitionHolder : public CDefinitionManager { };
+class CGameDefinitionManager : public CDefinitionManager { };
 
 template <class T> struct CRetailVector {           // STLport vector (12 bytes)
     T* _M_start;
@@ -79,13 +79,19 @@ struct CModifierEntry {                             // CTCHeroAttachableAppearan
 };
 
 class CThing;
-class CTCHeroAttachableAppearanceModifiers {
+class CTCBase
+{
 public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCHeroAttachableAppearanceModifiers : public CTCBase {
+public:
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[0x30 - 0x08];
     CRetailVector< CRetailVector<CModifierEntry> > AppearanceModifiers;   // +0x30
-    const CDefinitionHolder* GetDefinitions() const;   // 0x006869D0 (CTCBase)
     bool IsWearingAppearanceModifierCoveringBodyArea(long bodyAreaFlags, long type) const;
 };
 
@@ -95,7 +101,7 @@ bool CTCHeroAttachableAppearanceModifiers::IsWearingAppearanceModifierCoveringBo
     for (const CModifierEntry* it = entries._M_start; it != entries._M_finish; ++it) {
         CDefPointer<const CThingObjectDef> thingDef;
         CDefPointer<const CAppearanceModifierDef> appearanceDef;
-        if (GetDefinitions()->GetDef(it->DefIndex, &thingDef) && thingDef->GetSubDef(&appearanceDef) && (appearanceDef->CoversBodyAreaFlags & bodyAreaFlags))
+        if (GetDefinitionManager().GetDef(it->DefIndex, &thingDef) && thingDef->GetSubDef(&appearanceDef) && (appearanceDef->CoversBodyAreaFlags & bodyAreaFlags))
             return true;
     }
     return false;

@@ -51,8 +51,10 @@ class CMemoryDataInputStream : public CDataInputStream { public:
 class CChunkedFileChunk;
 class CChunkedFileSuperChunk { public:
     unsigned long CountSubChunksOfType(const char* type) const;                                  // 0x00AA7EA0
-    CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char* type) const;         // 0x00AA7F40
-    CCountedPointer<CChunkedFileChunk> FindNextSubChunkOfType(const CCountedPointer<const CChunkedFileChunk>& current) const;   // 0x00AA7FF0
+public:
+    CCountedPointer<CChunkedFileChunk> const FindNextSubChunkOfType(CCountedPointer<CChunkedFileChunk const> const&) const;   // 0x00AA7FF0
+public:
+    CCountedPointer<CChunkedFileChunk> const FindFirstSubChunkOfType(const char*) const;   // 0x00AA7F40
 };
 class C3DAnimFileObjectChunk : public CChunkedFileSuperChunk { public:};
 class C3DAnimFileXSequenceChunk { public:

@@ -18,14 +18,23 @@ class CCharString { public:
     CCharString();                                  // 0x0099E4B0
     CCharString& operator=(const char* text);       // 0x0099EFE0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CBaseIntelligentPointer();                      // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing() { }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CModeBase {
     virtual void v00();
@@ -72,7 +81,7 @@ struct CModeHoverBase : CModeBase {                 // vtable 0x01287D14
     void*                    PCurrentState;         // +0x2c
     long                     CurrentMovementType;   // +0x30
     CHoverAnimList           AnimQueue;             // +0x34
-    CIntelligentPointerThing PParticleEffect;       // +0x38
+    CIntelligentPointer<CThing> PParticleEffect;       // +0x38
     virtual void v00();
     CModeHoverBase(CThing* thing);
 };

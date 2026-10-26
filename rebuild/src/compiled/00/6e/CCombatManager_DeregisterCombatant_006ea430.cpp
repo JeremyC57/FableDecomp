@@ -2,7 +2,8 @@
 class CThingCreatureBase
 { public:
     // 0x662410 : bool __fastcall (membership / in-combat predicate)
-    char IsCombatant();
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 
 class CCombatManager
@@ -14,6 +15,6 @@ class CCombatManager
 // self arrives in ecx; model this-in-ecx as the leading __fastcall pointer param.
 void __fastcall CCombatManager_DeregisterCombatant(CCombatManager* self, void* edx, CThingCreatureBase* creature)
 {
-    if (creature->IsCombatant())
+    if (creature->IsInMeleeAsAttacker())
         self->RemoveCombatant(creature);
 }

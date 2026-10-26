@@ -35,8 +35,13 @@ public:
     }
 };
 
-class CGameDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name) const;  // 0x009AD410
+class CDefinitionManager
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};
+
+class CGameDefinitionManager : public CDefinitionManager { public:
 };
 
 class CWorld { public:
@@ -86,7 +91,13 @@ class COpinionPersonalityDef { public:             // retail offsets (the def ro
 
 class CDefPointeeBase;
 
-class CTCCreatureOpinionOfHero { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCCreatureOpinionOfHero : public CTCBase { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08
@@ -109,14 +120,13 @@ class CTCCreatureOpinionOfHero { public:
     bool InFindAGuardAndYellForHelp;        // +0x343
     CBaseIntelligentPointer PUnknownThreatOpinionSource;   // +0x344
     long FrameLastUpdatedUnknownThreat;     // +0x34c
-    CWorld* GetWorld() const;               // 0x00686A70
     void SetOpinionReactionMask(long defIndex);             // 0x00681CD0
     void SetOpinionReactionMask(const CCharString& defName);
 };
 
 void CTCCreatureOpinionOfHero::SetOpinionReactionMask(const CCharString& defName)
 {
-    CGameDefinitionManager* definitions = GetWorld()->DefinitionManager;
+    CGameDefinitionManager* definitions = GetWorld().DefinitionManager;
     long defIndex = definitions->GetDefGlobalIndexFromName(defName);
     if (defIndex)
         SetOpinionReactionMask(defIndex);

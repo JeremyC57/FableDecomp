@@ -15,10 +15,17 @@
 //   header); the vector is STLport's three words.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteSLONG(long value);                             // 0x00993EB0
 };
 class CDefString {
 public:

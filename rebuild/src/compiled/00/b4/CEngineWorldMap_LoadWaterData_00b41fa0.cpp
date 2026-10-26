@@ -22,10 +22,11 @@ struct CByteBuffer {
     ~CByteBuffer() { if (First) free(First); }
     unsigned char* GetData() { return (Last - First) ? First : (unsigned char*)this; }
 };
-struct CBankEntryRecord {
+class CBankFileEntryUpdateData { public:
     unsigned long Offset;
     unsigned long Size;                            // +4
-    void CopyRange(unsigned long offset, void* destination, unsigned long size);   // 0x009CBE90
+public:
+    void ReadInfo(unsigned long, void*, unsigned long) const;   // 0x009CBE90
 };
 struct CDataBuffer {
     unsigned char* First; unsigned char* Last; unsigned char* End;
@@ -34,13 +35,15 @@ struct CDataBuffer {
     unsigned char* GetData() { return (Last - First) ? First : (unsigned char*)this; }
 };
 class CMemoryDataInputStream { public:                    // 0x1c bytes (CDataInputStream + memory source)
-    unsigned char _body[0x1c];
+    unsigned char _body[0x1c - 4];
     CMemoryDataInputStream(void* data, unsigned long size);   // 0x00994930
-    ~CMemoryDataInputStream();                     // 0x00993B10
+    virtual ~CMemoryDataInputStream();                     // 0x00993B10
 };
 struct SCountBlock { long m_references; void (__fastcall* m_pfnDestroy)(void*); void* m_pObject; };
 class CBankFile { public:
     unsigned long GetEntryDataSize(unsigned long index);   // 0x009CC240
+public:
+    unsigned long FindIndexBySymbol(const CCharString&) const;   // 0x009CCDC0
 };
 class CBankFileAsyncEntry { public:
     void*         _vptr;
@@ -65,8 +68,12 @@ struct CEntryPointer {
         Info = 0;
     }
 };
-class CStaticMapBankFile { public:
-    unsigned long FindEntry(const CCharString& name);   // 0x009CCDC0
+class CBankFileAsync : public CBankFile
+{
+public:
+};
+
+class CStaticMapBankFile : public CBankFileAsync { public:
     CEntryPointer CreateEntry(unsigned long index);     // 0x009D58D0
 };
 class CEngineWaterRenderer { public:
@@ -77,18 +84,18 @@ class CEngineWorldMap { public:
     unsigned char      _pad00[0x34];
     CStaticMapBankFile StaticMapFile;              // +0x34
     unsigned char      _pad35[0x60 - 0x35];
-    CBankEntryRecord** Entries;                    // +0x60
+    CBankFileEntryUpdateData** Entries;                    // +0x60
     void LoadWaterData();
 };
 void CEngineWorldMap::LoadWaterData()
 {
-    unsigned long index = StaticMapFile.FindEntry(g_GlobalMapEntrySymbol_01436ec8);
+    unsigned long index = StaticMapFile.FindIndexBySymbol(g_GlobalMapEntrySymbol_01436ec8);
     if (!index)
         return;
-    CBankEntryRecord* record = Entries[index];
+    CBankFileEntryUpdateData* record = Entries[index];
     unsigned long size = record->Size;
     CByteBuffer header(size);
-    record->CopyRange(0, header.GetData(), size);
+    record->ReadInfo(0, header.GetData(), size);
     CMemoryDataInputStream headerStream(header.GetData(), size);
     CEntryPointer entry = StaticMapFile.CreateEntry(index);
     unsigned long dataSize = entry.Object->GetDataSize();

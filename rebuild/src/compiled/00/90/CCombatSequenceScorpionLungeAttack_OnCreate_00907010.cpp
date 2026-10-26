@@ -12,8 +12,11 @@
 // Shape: owner/target reach the action constructor through inline accessors (GetCreature/GetTarget); reading the
 //   members directly rotates the owner/target/argument registers (eax/ecx/edx) in the VC7.1 allocator.
 // Leaf: OnCreate
-extern unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
-extern long __fastcall GFGetCurrentFrame();                     // 0x0049D870
+long __fastcall GFROR13(unsigned long);   // 0x00497890
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                     // 0x0049D870
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
@@ -103,7 +106,7 @@ void CCombatSequence_ScorpionLungeAttack::OnCreate()
     long framesPerSecond = g_logicFramesPerSecond;
     unsigned long* seed = g_pMainGameComponent->World->GetPRandomSeed();
     unsigned long offset = WorldRandomRange(*seed, framesPerSecond * 10);
-    m_frameOfNextUse = GFGetCurrentFrame() + offset;
+    m_frameOfNextUse = CWorld::GetFrame() + offset;
     CCountedPointer action;
     action = new CCombatAction_008ccc70(GetCreature(), GetTarget());
     AddAction(action);

@@ -25,7 +25,7 @@ struct CInterfaceMap {                             // CVectorMap<ETCInterfaceTyp
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
 
-struct CThing_Retail {
+class CThing_Retail { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];               // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;                   // +0x44
@@ -48,9 +48,21 @@ struct CThing_Retail {
         return false;
     }
 };
-struct CIntelligentPointer_Retail {                // CIntelligentPointer<CThing>
-    void* m_pItem;
-    CThing_Retail* GetPItem();                     // 0x00A01B50 CBaseIntelligentPointer::GetPItem
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 namespace NTCScriptedControl {
@@ -86,7 +98,7 @@ struct CScriptGameResourceObjectScriptedThing_Methods : CScriptGameResourceObjec
 void CScriptGameResourceObjectScriptedThing_Methods::PlayAnimation(const CCharString& animation, bool stayOnLastFrame, bool clearActions, bool addAsQueuedAction,
                                                                   bool waitForAnimationToFinish, bool usePhysics, bool animMayNeedCameraPositionUpdated, bool allowLooking)
 {
-    CIntelligentPointer_Retail* thing = (CIntelligentPointer_Retail*)PThing;
+    CIntelligentPointer<CThing_Retail>* thing = (CIntelligentPointer<CThing_Retail>*)PThing;
     if (thing->GetPItem()) {
         CThing_Retail* item = thing->GetPItem();
         if (!item->m_dead) {

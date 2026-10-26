@@ -5,7 +5,8 @@
 class CBankFileAsyncData { public:
     unsigned char _pad[0x10];
     long          m_byteCount;                     // +0x10
-    bool IsFinished();                             // 0x009D54E0
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
 struct CTexture_009fd830 {
     long GetLevelByteLength(long level);           // 0x009F9E80

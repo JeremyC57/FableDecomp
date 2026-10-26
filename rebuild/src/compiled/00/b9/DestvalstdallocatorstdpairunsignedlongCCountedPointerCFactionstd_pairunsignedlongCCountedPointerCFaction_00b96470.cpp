@@ -1,4 +1,3 @@
-extern "C" void __cdecl fable_op_delete(void* p);
 // Leaf: ??0?$pair@
 
 struct CtrlBlock {
@@ -21,7 +20,7 @@ void __fastcall Dest_val(Pair* self)
         cb = self->ctrl;
         if (cb->refcount == 0) {
             cb->dtor(cb->obj);
-            fable_op_delete(self->ctrl);
+            operator delete(self->ctrl);
         }
     }
     self->dummy = 0;

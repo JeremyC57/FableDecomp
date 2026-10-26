@@ -14,7 +14,10 @@ class CWideString { public:
     ~CWideString();                                         // 0x0099B510
 };
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);            // 0x0099BF30
-bool __fastcall PathExists(const CWideString& path);        // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};        // 0x00999230
 bool __fastcall IsRoomForFile(long size, const CWideString& path);   // 0x00999AB0
 namespace NResourceDirectoryNames {
 CWideString __fastcall GetSaveDir_0041a650();               // 0x0041A650
@@ -155,9 +158,9 @@ void CTCHeroMorph::InitialiseCustomTattoos()
         tattoo->CopyCustomTattooToUserDir();
     }
     CWideString destination = NResourceDirectoryNames::GetSaveDir_0041a650() + L"Custom Tattoo Tutorial.txt";
-    if (!PathExists(destination)) {
+    if (!CAFile::PathExists(destination)) {
         CWideString source = NResourceDirectoryNames::GetCustomTattooDir() + L"Custom Tattoo Tutorial.txt";
-        if (PathExists(source)) {
+        if (CAFile::PathExists(source)) {
             CDiskFileWin32 from(source, FILE_ACCESS_READ, 2);
             if (IsRoomForFile(from.Length, destination)) {
                 CDiskFileWin32 to(destination, FILE_ACCESS_WRITE, 2);

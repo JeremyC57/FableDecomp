@@ -34,10 +34,21 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 class CTCCreatureModeManager { public:             // interface type 0x31
     bool HasMode(unsigned long mode);       // 0x0073A8A0
@@ -49,7 +60,7 @@ class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
 };
 class CThingCreatureBase { public:
@@ -57,7 +68,7 @@ class CThingCreatureBase { public:
 };
 class CCombatActionBase : public CCreatureActionBase { public:          // retail sizeof 0x114
     unsigned char _combat[0x114 - 0xa8];    // +0xa8
-    ~CCombatActionBase();                   // 0x0062E900
+    virtual ~CCombatActionBase();                   // 0x0062E900
     virtual void FinishAction();            // 0x00859A20
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.GetPItem(); }
 };

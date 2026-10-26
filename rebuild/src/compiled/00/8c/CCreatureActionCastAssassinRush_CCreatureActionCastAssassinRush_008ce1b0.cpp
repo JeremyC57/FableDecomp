@@ -62,7 +62,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
-    void SetAnimationName(const CCharString& name);                                                             // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 #pragma pack(push, 1)
@@ -95,6 +96,6 @@ CCreatureAction_CastAssassinRush::CCreatureAction_CastAssassinRush(CThingCreatur
 {
     {
         CCharString name("ST_CAST_ASSASSIN_RUSH");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
 }

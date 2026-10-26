@@ -9,6 +9,7 @@
 //   script +0x14 (fire heart taken flag +0x50).
 // Shape: the pause/unpause pair goes through one named copy of Game (edi); the movie handle is a block local whose
 //   implicit destructor releases PImp out of line and then runs the inline base destructor (vptr store + root dtor).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -22,13 +23,13 @@ class CScriptThing { public:
     void* PImp_Data;
     void* PImp_Info;
 };
-struct CBaseObjectRoot {                                // the intelligent-pointer target root (8 bytes)
-    virtual void v00();
+class CBaseObject { public:                                // the intelligent-pointer target root (8 bytes)
     void* m_pReferences;                                // +0x04
-    CBaseObjectRoot();                                  // 0x0099A380
-    ~CBaseObjectRoot();                                 // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
-class CScriptGameResourceObjectBase : public CBaseObjectRoot { public:   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
 };
 struct CMovieImpPointer {                               // CCountedPointer<...> {Data, Info}
@@ -67,13 +68,18 @@ struct CQuestScript_Retail {
     bool          FireHeartTaken;                       // +0x50
 };
 
-class CFireHeartHolder {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CFireHeartHolder : public CEntityScriptBase {
 public:
     void*                   __vftable;                  // +0x00
     CGameScriptInterface*   Game;                       // +0x04
     CScriptThing            Me;                         // +0x08
     CQuestScript_Retail*    Quest;                      // +0x14
-    bool IsDone();                                      // 0x00F35B30
     void Main();
 };
 
@@ -81,7 +87,7 @@ void CFireHeartHolder::Main()
 {
     while (!Quest->FireHeartTaken) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         bool used;
         {
@@ -89,7 +95,7 @@ void CFireHeartHolder::Main()
             used = Me.MsgIsUsedBy(hero);
         }
         if (used) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             CScriptGameResourceObjectMovieBase movie;
             {
@@ -107,6 +113,6 @@ void CFireHeartHolder::Main()
             game->PauseAllNonScriptedEntities(false);
         }
     }
-    while (!IsDone())
+    while (!IsActiveThreadTerminating())
         Game->NewScriptFrame();
 }

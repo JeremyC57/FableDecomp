@@ -21,17 +21,17 @@ class CCharString { public:
 };
 
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CDefVirtual {
     virtual void v00();
-    virtual void Destroy();                          // slot 1
+    virtual void Destroy() const;                          // slot 1
 };
 struct CDefBase : CDefVirtual, CRefCounted {
-    void Release() { if (--m_count == 0) Destroy(); }
-    void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
+    void Release() const { if (--m_count == 0) Destroy(); }
+    void ReleaseTemporary() const { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 struct CDefPointerBase {                             // CDefPointer<CDefBase>: the manager's return type
     CDefBase* m_p;
@@ -129,9 +129,9 @@ __declspec(noinline) void CWideStringVector::_M_insert_overflow(CWideString* pos
 #pragma auto_inline(on)
 
 namespace NGameText {
-class CGroupEntry : public CDefVirtual, public CRefCounted { public:
+class CTextEntry : public CDefVirtual, public CRefCounted { public:
     CWideString GetText() const;                     // 0x009C7A40
-    void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
+    void ReleaseTemporary() const { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 }
 template <class T> class CIVCountedPointer { public:
@@ -142,7 +142,7 @@ template <class T> class CIVCountedPointer { public:
 namespace NGameText {
 class CDataBank {
 public:
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool load) const;   // 0x009C9070
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool load) const;   // 0x009C9070
 };
 }
 class CMainGameComponent { public:
@@ -176,8 +176,8 @@ void CTCHeroMorph::GetTattooNames(CWideStringVector& names) const
         CItemDefPointer item;
         Tattoos[i]->GetSubDef(item);
         CInventoryItemDef* itemDef = item.m_p;
-        CIVCountedPointer<NGameText::CGroupEntry> entry =
-            g_pMainGameComponent->PGameTextDataBank->GetPGroupEntry(itemDef->ItemDescription, true);
+        CIVCountedPointer<const NGameText::CTextEntry> entry =
+            g_pMainGameComponent->PGameTextDataBank->GetPTextEntry(itemDef->ItemDescription, true);
         if (entry.Data) {
             CWideString text = entry->GetText();
             names.push_back(text);

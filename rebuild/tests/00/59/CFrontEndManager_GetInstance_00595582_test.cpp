@@ -17,11 +17,11 @@ static int g_allocateCalls;
 static void* g_constructorStorage;
 static int g_constructorCalls;
 
-extern "C" void* __cdecl
-FableFrontEndManagerAllocate(unsigned long bytes)
+void* __cdecl operator new(unsigned int bytes)
 {
+    unsigned long bytes_c = (unsigned long)bytes; (void)bytes_c;
     ++g_allocateCalls;
-    g_allocatedBytes = bytes;
+    g_allocatedBytes = bytes_c;
     return g_allocationResult;
 }
 

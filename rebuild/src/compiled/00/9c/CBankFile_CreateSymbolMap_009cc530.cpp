@@ -12,7 +12,8 @@ class CCharString { public:
     CCharString(const char*, long); //0099EBF0
     CCharString(const CCharString&); //0099EC30
     ~CCharString(); //0099EAE0
-    long Find(char) const; //0099E5A0
+public:
+    long FindCharPos(char) const;   // 0x0099E5A0
 };
 class CSymbolMap { public:
     void Clear(); //009E5250
@@ -59,7 +60,7 @@ void CBankFile::CreateSymbolMap(CSymbolMap& map, bool append)
     for (unsigned long i=0;i<Size;++i) {
         if (IsValid(i)) {
             CCharString name=GetSymbol(i);
-            if (name.Find('[')==-1) {
+            if (name.FindCharPos('[')==-1) {
                 CCharString prefix=GetBankHandle(GetDataType(i));
                 map.AddSymbolDirty(prefix,name,i);
             }

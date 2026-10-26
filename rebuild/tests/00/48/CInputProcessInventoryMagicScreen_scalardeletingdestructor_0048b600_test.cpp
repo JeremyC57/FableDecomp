@@ -17,8 +17,7 @@ void CInputProcessInventoryMagicScreen::scalar_destructor()
     g_dtor_this = this;
 }
 
-extern void __cdecl fable_operator_delete(void*);
-void __cdecl fable_operator_delete(void* p)
+void __cdecl operator delete(void* p)
 {
     g_delete_called++;
     g_delete_this = p;

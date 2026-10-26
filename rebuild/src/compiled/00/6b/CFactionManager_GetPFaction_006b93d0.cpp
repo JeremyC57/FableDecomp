@@ -17,7 +17,10 @@ class CCharStringData { public:
 class CCharString { public:
     CCharStringData* PStringData;           // +0x00
 };
-unsigned long __fastcall CRCCalc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0
 
 class CFaction;
 template <class T> class CCountedPointer { public:
@@ -55,7 +58,7 @@ public:
 
 CFaction* CFactionManager::GetPFaction(const CCharString& name)
 {
-    return GetPFaction(CRCCalc(0, name.PStringData == 0 ? "" : name.PStringData->Text, name.PStringData == 0 ? 0 : name.PStringData->Length));
+    return GetPFaction(CCRC::Calc(0, name.PStringData == 0 ? "" : name.PStringData->Text, name.PStringData == 0 ? 0 : name.PStringData->Length));
 }
 
 CFactionMap::value_type* CFactionMap::LowerBound(const unsigned long& key)

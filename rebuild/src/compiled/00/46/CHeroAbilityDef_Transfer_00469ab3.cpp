@@ -11,11 +11,9 @@ struct NativeLongVector {int* Start;int* Finish;int* End;};
 class CPersistContext { public:
  void TransferAbility(int&); //00452e01
  void TransferStat(int&); //00469b8a
- void TransferLong(int&); //00431102
+ template <class T> void Transfer(T& value); //00431102
  void TransferVector2(C2DVector&); //004568bc
  void TransferLongVector(NativeLongVector&); //00466a47
- void TransferFloat(float&); //00431061
- void TransferBool(bool&); //0043314a
  void TransferDefIndex(int&); //004522f4
 };
 class CHeroAbilityDef { public:
@@ -35,10 +33,10 @@ FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef,DummyObject)==0x98);
 #endif
 void CHeroAbilityDef::Transfer(CPersistContext& c){
  c.TransferAbility(Ability);c.TransferStat(Stat);
- c.TransferLong(IconGraphicIndex);c.TransferLong(IconEffectIndex);c.TransferLong(IconActiveEffectIndex);
- c.TransferVector2(IconEffectOffset);c.TransferLong(Name);c.TransferLong(Description);
- c.TransferLongVector(StaminaCost);c.TransferLong(StatExperienceGainedOnUse);
+ c.Transfer(*(long*)&(IconGraphicIndex));c.Transfer(*(long*)&(IconEffectIndex));c.Transfer(*(long*)&(IconActiveEffectIndex));
+ c.TransferVector2(IconEffectOffset);c.Transfer(*(long*)&(Name));c.Transfer(*(long*)&(Description));
+ c.TransferLongVector(StaminaCost);c.Transfer(*(long*)&(StatExperienceGainedOnUse));
  c.TransferLongVector(ExperienceCostsToUpgrade);c.TransferLongVector(LevDescription);
- c.TransferLong(ABXYPriority);c.TransferFloat(MoralityCostFactor);c.TransferBool(Aggressive);
- c.TransferLong(MaxedOutDescription);c.TransferDefIndex(DummyObject);
+ c.Transfer(*(long*)&(ABXYPriority));c.Transfer(MoralityCostFactor);c.Transfer(Aggressive);
+ c.Transfer(*(long*)&(MaxedOutDescription));c.TransferDefIndex(DummyObject);
 }

@@ -5,12 +5,12 @@ struct CActiveFile {
 };
 
 extern void __fastcall CActiveFile_Notify(CActiveFile* self);
-extern void __cdecl CActiveFile_Free(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     CActiveFile_Notify(self);
     void* p = self->buf;
     if (p)
-        CActiveFile_Free(p);
+        free(p);
 }

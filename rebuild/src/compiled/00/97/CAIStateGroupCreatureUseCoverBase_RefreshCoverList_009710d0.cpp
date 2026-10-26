@@ -4,10 +4,13 @@
 #include <stdlib.h>
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 inline void* operator new(size_t,void* p){return p;}
-struct CThingRetail;
-struct CIntelligentPointerBaseRetail {virtual ~CIntelligentPointerBaseRetail();void* Data; CIntelligentPointerBaseRetail(); CThingRetail* GetPItem()const;void SetPItem(CThingRetail*);}; //A01B10,A01B50,A01B90,A01C10
-struct CIntelligentPointerRetail:CIntelligentPointerBaseRetail {
- __forceinline CIntelligentPointerRetail(CThingRetail* p){SetPItem(p);}
+class CBaseObject;
+class CBaseIntelligentPointer { public:virtual ~CBaseIntelligentPointer();void* Data; CBaseIntelligentPointer(); public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
+    void SetPItem(CBaseObject*);   // 0x00A01B90
+}; //A01B10,A01B50,A01B90,A01C10
+struct CIntelligentPointerRetail:CBaseIntelligentPointer {
+ __forceinline CIntelligentPointerRetail(CBaseObject* p){SetPItem(p);}
  __forceinline CIntelligentPointerRetail(const CIntelligentPointerRetail& p){SetPItem(p.GetPItem());}
 };
 struct CAllocatorTag {CAllocatorTag(){}};
@@ -17,7 +20,7 @@ struct CHandleVector {CIntelligentPointerRetail* first;CIntelligentPointerRetail
  __forceinline void clear(){Erase(first,last);}
  __forceinline void push_back(const CIntelligentPointerRetail& p){if(last!=capacity){if(last)new(last)CIntelligentPointerRetail(p);++last;}else InsertOverflow(last,p,CAllocatorTag(),1,true);}
 };
-struct CThingVector {CThingRetail** first;CThingRetail** last;CThingRetail** capacity;
+struct CThingVector {CBaseObject** first;CBaseObject** last;CBaseObject** capacity;
  CThingVector():first(0),last(0),capacity(0){}
  ~CThingVector(){if(first)free(first);}
  bool empty()const{return first==last;}
@@ -33,6 +36,6 @@ void UseCoverMethods::RefreshCoverList(){
  ((CCoverDispatch*)this)->GetCoverThingList(things);
  if(!things.empty()){
   ((CCoverDispatch*)this)->FilterCoverList(things);
-  for(CThingRetail** it=things.first;it!=things.last;++it)Covers().push_back(CIntelligentPointerRetail(*it));
+  for(CBaseObject** it=things.first;it!=things.last;++it)Covers().push_back(CIntelligentPointerRetail(*it));
  }
 }

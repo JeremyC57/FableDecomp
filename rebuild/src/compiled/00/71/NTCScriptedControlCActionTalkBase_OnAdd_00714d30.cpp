@@ -18,9 +18,10 @@
 class CTCBase;
 class CBaseObject {
 public:
-    CBaseObject();                                 // 0x0099A380
-    virtual ~CBaseObject();
     void* Info;                                    // +0x04
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };

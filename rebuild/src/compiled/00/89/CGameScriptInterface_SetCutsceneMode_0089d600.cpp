@@ -60,12 +60,13 @@ class CScriptThing { public:
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
-struct CPlayer_Retail {
+class CPlayer { public:
     CThing_Retail* GetHeroCreature();              // 0x00487DC0
     CThing_Retail* GetControlledCreature();        // 0x00487DD0
 };
-struct CPlayerManager_Retail {
-    CPlayer_Retail* GetMainPlayer();               // 0x00449970
+class CPlayerManager { public:
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CCharString;
 struct CDefinitionManager_Retail {
@@ -105,19 +106,23 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
     CThing_Retail* t = thing.GetThing();
     return t && !t->m_dead;
 }
-struct CSubtitleRenderer_Retail { void SetAsInCutscene(bool in); };   // 0x0049319C
+class CSubtitleRenderer { public: public:
+    void SetAsInCutscene(bool);   // 0x0049319C
+};   // 0x0049319C
 struct CPlayerGuiCalls_Retail {
     unsigned char _pad[0x18];
-    CSubtitleRenderer_Retail m_subtitles;          // +0x18
+    CSubtitleRenderer m_subtitles;          // +0x18
     unsigned char _pad19[0xf8 - 0x19];
     bool m_inCutscene;                             // +0xf8
 };
 extern CPlayerGuiCalls_Retail* g_pPlayerGui;       // 0x013B8790
 struct CMainGameComponent_Retail {
     unsigned char _pad[0x1c];
-    CPlayerManager_Retail* PlayerManager;          // +0x1c
+    CPlayerManager* PlayerManager;          // +0x1c
 };
-struct CTCCutsceneState_Retail { void Reset(); };  // 0x007338A0
+class CTCCombat { public: public:
+    void UnsetBlocking();   // 0x007338A0
+};  // 0x007338A0
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -174,7 +179,7 @@ class CGameScriptInterface { public:
     CMainGameComponent*         Component;         // +0x08
     CDisplayEngine*             DisplayEngine;     // +0x0c
     CDefinitionManager_Retail*  DefinitionManager; // +0x10
-    CPlayerManager_Retail*      PlayerManager;     // +0x14
+    CPlayerManager*      PlayerManager;     // +0x14
     CThingSearchTools*          ThingSearchTools;  // +0x18
     virtual void SetCutsceneMode(bool inCutscene, bool flag) const;
 };
@@ -183,8 +188,8 @@ void CGameScriptInterface::SetCutsceneMode(bool inCutscene, bool flag) const
 {
     g_pPlayerGui->m_subtitles.SetAsInCutscene(inCutscene);
     g_pPlayerGui->m_inCutscene = flag;
-    CThing_Retail* hero = ((CMainGameComponent_Retail*)Component)->PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThing_Retail* hero = ((CMainGameComponent_Retail*)Component)->PlayerManager->GetMainPlayer().GetHeroCreature();
     if (hero && !hero->m_dead && hero->HasTC(0x30))
-        ((CTCCutsceneState_Retail*)GetTC(hero, 0x30))->Reset();
+        ((CTCCombat*)GetTC(hero, 0x30))->UnsetBlocking();
     SetEnvironmentalEffectsAlwaysUpdate(inCutscene);
 }

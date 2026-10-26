@@ -27,7 +27,8 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 struct CDefStringTable {
-    CCharString GetString(long id);                                  // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                             // 0x013CA828
 class CDefString { public:                                                  // a def name: its offset into the def string table
@@ -112,6 +113,9 @@ void* FindDef_CDefinitionManager_GetDef_0();                         // stand-in
 class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CCreatureGenerationFamilyDef>* out) const;   // 0x0074D220
 };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
@@ -125,17 +129,26 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CCr
 }
 #pragma auto_inline(on)
 
-class CTCCreatureGenerator {
+class CTCBase
+{
 public:
     virtual void v00();
+    virtual bool Validate(CCharString& error) const;
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCCreatureGenerator : public CTCBase {
+public:
+    virtual bool Validate(CCharString& error) const;
+
+public:
     void*                   ParentThing;                             // +0x04 (CTCBase)
     long                    m_tcBase08;                              // +0x08
     CVector<CDefIndex>      CreatureFamilies;                        // +0x0c
     unsigned char           _pad18[0x48];
     CVector<C3DVector>      OpenPositions;                           // +0x60
     CVector<C3DVector>      HiddenPositions;                         // +0x6c
-    CDefinitionManager* GetDefinitionManager() const;               // 0x006869D0 (CTCBase)
-    virtual bool Validate(CCharString& error) const;
 };
 
 bool CTCCreatureGenerator::Validate(CCharString& error) const
@@ -146,7 +159,7 @@ bool CTCCreatureGenerator::Validate(CCharString& error) const
     }
     for (const CDefIndex* it = CreatureFamilies.begin(); it != CreatureFamilies.end(); ++it) {
         CDefPointer<CCreatureGenerationFamilyDef> def;
-        GetDefinitionManager()->GetDef(*it, &def);
+        GetDefinitionManager().GetDef(*it, &def);
         {
             CCharString name = g_DefStringTable.GetString(def->GetDefName().m_index);
             error = "creature family " + name;

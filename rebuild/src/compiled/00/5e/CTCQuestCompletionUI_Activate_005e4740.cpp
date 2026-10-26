@@ -56,8 +56,9 @@ class CTCBoastUI { public:
 };
 class CTCQuestCard;
 class CQuestManager { public:
-    CThing* GetActiveQuestCardFromScriptName(const CCharString& name);   // 0x004B0C80
     void RemoveAcceptedBoastsForScript(CCharString name);               // 0x004AFFA0
+public:
+    CThing* GetActiveQuestCardFromScriptName(const CCharString&) const;   // 0x004B0C80
 };
 extern CQuestManager* g_pQuestManager;                  // 0x013B89FC
 enum CompletionType { COMPLETION_0, COMPLETION_1, COMPLETION_2, COMPLETION_3 };

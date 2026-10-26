@@ -17,15 +17,21 @@ class CThing { public:
     unsigned long m_uidLow;                     // +0x18 (low word of the thing's UID)
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
-    virtual void v00();
-    CBaseObject* m_pItem;                       // +4
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    void SetPItem(CBaseObject* item);           // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing const>, vtable 0x01237F1C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing const>, vtable 0x01237F1C
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { SetPItem(0); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 class CDefPointeeBase;
 class CTCBase { public:
@@ -42,7 +48,7 @@ template <class T> class CDefPointer { public:          // CDefPointer<T const>:
     CDefPointer() : Object(0) { }
 };
 class CTCPerceiveThing : public CTCBase { public:
-    CIntelligentPointer PerceivedThing;         // +0x0c
+    CIntelligentPointer<const CThing> PerceivedThing;         // +0x0c
     float     DistanceFromPerceivedThingSquared;// +0x14
     float     AwarenessTimer;                   // +0x18
     long      FramesSinceDirectlyPerceivedThing;// +0x1c

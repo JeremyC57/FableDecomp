@@ -54,12 +54,16 @@ class CParticleEmitter { public:
 };
 }
 class CThingRef;
-struct CBaseIntelligentPointer {
-    void* m_pItem;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();         // 0x00A01C10
-    NParticleEngine::CParticleEmitter* GetPItem() const;   // 0x00A01B50
-    void SetPItem(NParticleEngine::CParticleEmitter* item); // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
@@ -69,6 +73,11 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
         SetPItem(item);
         return *this;
     }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 struct CEnvironmentSpellEffects {
     void RemoveFilter_006b83f0(long mode, void* key);   // 0x006B83F0 (descriptive)
@@ -112,7 +121,7 @@ public:
 class CBaseClass {
 public:
     virtual void v000();
-    ~CBaseClass();                              // 0x0099A2E0
+    virtual ~CBaseClass();                              // 0x0099A2E0
 };
 class CEnginePrimitiveHandle : public CBaseClass {      // vtable 0x0122F598
 public:
@@ -152,7 +161,8 @@ class CTCBase { public:
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
-    CWorld* GetWorld();                         // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CTCBulletTime : public CTCBase { public:
     long BulletTimeRemainingTicks;              // +0x0c
@@ -184,13 +194,13 @@ class CTCBulletTime : public CTCBase { public:
 
 CTCBulletTime::~CTCBulletTime()
 {
-    GetWorld()->RemoveBulletTimeSlowdown((unsigned long)this);
+    GetWorld().RemoveBulletTimeSlowdown((unsigned long)this);
     StopSound(LoopSound);
     if (CutSceneCancel) {
-        CWorld* world = GetWorld();
+        CWorld* world = (&GetWorld());
         world->PEnvironment->SpellEffects->RemoveFilter_006b83f0(0, ScreenFilterKey);
     } else {
-        CWorld* world = GetWorld();
+        CWorld* world = (&GetWorld());
         world->PEnvironment->SpellEffects->RemoveFilter_006b83f0(PDef->FilterRemoveMode, ScreenFilterKey);
         CCharString sound = g_DefStringTable.GetString(PDef->EndSoundStringID);
         PlaySoundW(sound, 1);

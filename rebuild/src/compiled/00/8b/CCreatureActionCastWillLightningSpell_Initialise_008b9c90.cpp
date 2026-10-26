@@ -19,16 +19,23 @@ class CTCParamsBase;
 class CTCWillLightning;
 struct CBaseObjectPointer { CThing* Object; unsigned long refs; };
 
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer();               // deleting-dtor slot at 0x00A01C50; ordinary dtor 0x00A01C10
-    CBaseObjectPointer* PData;                        // +0x04, CBaseObjectPointer (Object + refs)
-    CBaseIntelligentPointer();                         // 0x00A01B10
-    CThing* GetPItem() const;                          // 0x00A01B50
-    void SetPItem(CThing*);                            // 0x00A01B90
+class CBaseObject;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
-    CIntelligentPointer_CThing() : CBaseIntelligentPointer() { }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CThing : public CClass { public:
@@ -45,7 +52,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, LifeFlags) == 0x91);
 class CTCWillLightning { public:
     unsigned char _nativeBase[0x10];
     bool LeftHandAnim;
-    CIntelligentPointer_CThing PItemRemoved; // native +0x11
+    CIntelligentPointer<CThing> PItemRemoved; // native +0x11
     void SetAICast(long); // 0x0079F960 sets timer flag then jumps to SetLevel 0x0079F810
     void SetTimeToCastLightning(float); // 0x0079F5F0
     void SetTargetOverride(CThing*); // 0x0079F910 copies pointer to native +0x88
@@ -56,11 +63,11 @@ FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, PItemRemoved)==0x11);
 class CCombatActionBase { public:
     void* __vftable;
     unsigned char _pad04[0x04];
-    CIntelligentPointer_CThing PCreature;              // +0x08
+    CIntelligentPointer<CThing> PCreature;              // +0x08
     unsigned char _pad10[0x1c];
-    CIntelligentPointer_CThing PItemRemoved;           // +0x2c
+    CIntelligentPointer<CThing> PItemRemoved;           // +0x2c
     unsigned char _pad34[0x74];
-    CIntelligentPointer_CThing POptionalItem;           // +0xa8
+    CIntelligentPointer<CThing> POptionalItem;           // +0xa8
     unsigned char _padB0[0x64];
     void Initialise();                                 // 0x00857520
 };
@@ -90,10 +97,10 @@ void CCreatureAction_CastWillLightningSpell::Initialise()
             force->SetTargetOverride(POptionalItem.GetPItem());
     }
 
-    CIntelligentPointer_CThing source;
+    CIntelligentPointer<CThing> source;
     source.SetPItem(PItemRemoved.GetPItem());
     if (source.GetPItem() && !(source.GetPItem()->LifeFlags & 1)) {
-        CIntelligentPointer_CThing target;
+        CIntelligentPointer<CThing> target;
         target.SetPItem(source.GetPItem());
         force->PItemRemoved.SetPItem(target.GetPItem());
     }

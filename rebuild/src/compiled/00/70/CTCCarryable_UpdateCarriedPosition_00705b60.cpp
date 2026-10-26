@@ -35,10 +35,16 @@ class CThing { public:
 class CWorldMap { public:
     bool IsPosInMap(const C3DVector& position) const;   // 0x004FC600
 };
-class CTCCarryable { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20
+};
+
+class CTCCarryable : public CTCBase { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    const CWorldMap& PeekWorldMap() const;              // 0x00686D20 (CTCBase)
     bool GetCarriedPositionInfo(C3DVector* position, CRightHandedSet* orientation, bool forceUpdate, float time);   // 0x007055D0
     void UpdateCarriedPosition(bool forceUpdate);
 };

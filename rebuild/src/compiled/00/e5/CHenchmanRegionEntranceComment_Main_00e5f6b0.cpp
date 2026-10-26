@@ -11,8 +11,9 @@
 // Layout: Ego_r.pdb CHenchmanRegionEntranceComment (44 bytes): entity-script base {vptr, Game +4, CScriptThing Me +8},
 //   ParentClass (CV_BodyGuardScript*) +0x14, PMasterData +0x18, HenchmanVector (STLport vector<CScriptThing>) +0x1C;
 //   CScriptThing = engine/CScriptThing.h {vptr, PImp {Data, Info}} over CBaseClass, modelled locally for its virtuals.
-// Shape: `size() == 0` exits through a duplicated `if (IsDone()) return;` tail; the walk is `for (unsigned i ...)` with
+// Shape: `size() == 0` exits through a duplicated `if (IsActiveThreadTerminating()) return;` tail; the walk is `for (unsigned i ...)` with
 //   the element offset strength-reduced into a frame word; the comment result survives the temporaries in bl.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -30,7 +31,7 @@ class CScriptThing : public CBaseClass { public:                 // vtable 0x012
     CScriptThing*   PImp_Data;                     // +0x04
     CCPPointerInfo* PImp_Info;                     // +0x08
     CScriptThing() : PImp_Data(0), PImp_Info(0) { }
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 namespace std {
 template<class T> class allocator { };
@@ -64,7 +65,13 @@ struct CV_BodyGuardScript {
 };
 struct CQ_SunnyvaleMasterData;
 
-class CHenchmanRegionEntranceComment {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CHenchmanRegionEntranceComment : public CEntityScriptBase {
 public:
     void*                      __vftable;          // +0x00
     CGameScriptInterface*      Game;               // +0x04
@@ -72,20 +79,19 @@ public:
     CV_BodyGuardScript*        ParentClass;        // +0x14
     CQ_SunnyvaleMasterData*    PMasterData;        // +0x18
     std::vector<CScriptThing>  HenchmanVector;     // +0x1C
-    bool IsDone();                                 // 0x00F35B30
     __forceinline void WalkHenchmen()
     {
         for (unsigned int i = 0; i < HenchmanVector.size(); ++i) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             if (IsDistanceBetweenThingsUnder(Me, HenchmanVector[i], 10.0f)) {
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                     return;
                 if (ParentClass->MakeHenchmanComment(Me.GetDataString(), 2, HENCHMAN_COMMENT_REGION_ENTRANCE))
                     break;
             }
         }
-        IsDone();
+        IsActiveThreadTerminating();
     }
     void Main();
 };
@@ -94,7 +100,7 @@ void CHenchmanRegionEntranceComment::Main()
 {
     Game->GetAllThingsWithScriptName("BodyGuard", HenchmanVector);
     if (HenchmanVector.size() == 0) {
-        IsDone();
+        IsActiveThreadTerminating();
         return;
     }
     WalkHenchmen();

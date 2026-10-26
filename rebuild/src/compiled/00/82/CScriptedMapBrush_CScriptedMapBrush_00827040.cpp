@@ -13,9 +13,10 @@
 // BrushName +0x48, CreationTimeSeconds +0x4c, CreationPattern +0x50; sizeof 0x54). Modelled locally with
 // the header's member names.
 class CBaseObject { public:
-    virtual void v00();
     void* IntelligentPointer;                         // +0x04
-    CBaseObject(const CBaseObject& other);            // 0x0099A390
+protected:
+    CBaseObject(const CBaseObject& other);               // 0x0099A390
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 
 class CCharString { public:

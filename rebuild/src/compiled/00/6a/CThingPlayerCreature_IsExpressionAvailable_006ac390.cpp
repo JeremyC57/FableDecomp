@@ -2,7 +2,7 @@
 // Grade: RELOCATION_MATCH -- same-TU noinline body of the by-reference LowerBound 0x004365B0, the map Find as ONE ternary pick, and the count call made through a free __forceinline wrapper CountOfType(inventory, defIndex) fed by that pick: the component lands in ecx before the def argument is loaded (the 0072af30 lever)
 // Leaf: IsExpressionAvailable
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AC390, length 160 bytes (`ret 4`).
-// Callees: CThing::GetDefinitionManager @ 0x004C7990 (`[0x013B8A1C]+0x20`, `this` passed through), CDefinitionManager::
+// Callees: CThing::PeekDefinitionManager @ 0x004C7990 (`[0x013B8A1C]+0x20`, `this` passed through), CDefinitionManager::
 // GetDef<CExpressionDef>(const CCharString&, CDefPointer<const CExpressionDef>*) @ 0x00593666 (manifest label
 // GetDef<CHeroPostcardGeneratorDef> is a byte-twin propagation), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // @ 0x004365B0, CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long) @ 0x005BDF08.
@@ -39,7 +39,10 @@ template <class T> struct CDefHolder {              // owns the def taken from t
 };
 
 class CDefinitionManager { public:
-    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out);   // 0x00593666
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;   // 0x00593666
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 
 class CTCBase;
@@ -82,9 +85,10 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                       // +0x44
-    CDefinitionManager* GetDefinitionManager() const; // 0x004C7990
     __forceinline unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     __forceinline CTCBase* GetInterface(long type) { return m_interfaces.Find(type); }
+public:
+    const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x004C7990
 };
 
 class CThingPlayerCreature : public CThing { public:
@@ -97,7 +101,7 @@ bool CThingPlayerCreature::IsExpressionAvailable(const CCharString& expressionNa
 {
     CDefPointer<const CExpressionDef> out;
     out.Object = 0;
-    bool found = GetDefinitionManager()->GetDef(expressionName, &out);
+    bool found = PeekDefinitionManager().GetDef(expressionName, &out);
     CDefHolder<const CExpressionDef> def(out.Object);
     if (found && HasInterface(0x11))
     {

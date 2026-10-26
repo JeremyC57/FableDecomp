@@ -42,7 +42,8 @@ public:
             it = map->last;
         return it->component;
     }
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 class CTCPhysicalShieldSpell { public:
     bool IsShieldActive() const;                // 0x0079DCB0

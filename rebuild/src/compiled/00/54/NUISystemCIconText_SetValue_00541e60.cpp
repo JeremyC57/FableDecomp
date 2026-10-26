@@ -22,7 +22,10 @@ public:
  bool operator!=(const CWideString&) const;          // 0x0099B0F0
  CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
-struct CDataBank { CWideString GetTextBySymbol(const CCharString& symbol) const; };   // 0x009C95E0
+namespace NGameText {
+class CDataBank { public: const CWideString GetTextBySymbol(const CCharString& symbol) const; };
+}
+using NGameText::CDataBank;   // 0x009C95E0
 struct Game { unsigned char Pad[0x14]; CDataBank* TextBank; CDataBank* GetTextDataBank() const { return TextBank; } };
 struct System { unsigned char Pad[0x60]; CDataBank* TextBank; CDataBank* GetTextDataBank() const { return TextBank; } };
 extern Game* Game_013b86a0;                          // 0x013B86A0

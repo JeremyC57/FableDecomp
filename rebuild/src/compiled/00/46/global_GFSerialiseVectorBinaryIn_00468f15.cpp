@@ -16,7 +16,19 @@
 //   D3DCOLOR record (B, G, R, A) with an empty default constructor; the vector is STLport's three words.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define CMemoryDataInputStream CMemoryDataInputStreamLayout
 #include "engine/CMemoryDataInputStream.h"
+#undef CMemoryDataInputStream
+class CRGBColour;
+
+class CDataInputStream
+{
+public:
+    CRGBColour ReadColour();   // 0x009945E0
+};
+class CMemoryDataInputStream : public CDataInputStream, public CMemoryDataInputStreamLayout
+{
+};
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
@@ -27,7 +39,6 @@ class CRGBColour { public:
 
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-    CRGBColour ReadColour();                                           // 0x009945E0
     static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

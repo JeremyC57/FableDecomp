@@ -10,6 +10,7 @@
 // Shape: ~CScriptThing and operator= are plain inline bodies (they expand in the loop re-raise; operator= reads the source Info and
 //   Data into locals first); the filter holds an out-of-line-copied thing; inline_depth(0) on the two
 //   "off" assignments leaves those and every exit out of line.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -109,8 +110,14 @@ class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:  
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CIsThingAlive {                                  // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04 (copied and destroyed out of line)
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();
@@ -194,8 +201,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CHSB_MagicBarrier : CEntityScriptBase {
     void* ParentClass;                                  // +0x14 CQ_HeroSoulsBriarScript*
@@ -207,7 +215,7 @@ void CHSB_MagicBarrier::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

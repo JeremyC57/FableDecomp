@@ -173,7 +173,7 @@ class CMenuEntry { public:
 
 }
 
-double GetTimeNow();                             // 0x009E1BC0
+double __fastcall GFGetTime();                             // 0x009E1BC0
 extern double g_MenuTimer;                       // 0x013B8AA0
 
 namespace NUISystem {
@@ -207,7 +207,7 @@ void CMenuEntry::GoForward()
     LastInputTime = InputTime;
     CComponent* menu = Parent && Parent->GetType() == 8 ? Parent : 0;
     if (menu == 0 || menu->GetDef()->KeepTimer)
-        g_MenuTimer = GetTimeNow();
+        g_MenuTimer = GFGetTime();
 }
 
 }

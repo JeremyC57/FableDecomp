@@ -83,7 +83,7 @@ class CThingCreatureBase : public CThing { public:
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                            // 0x00693EF0
+    virtual ~CCreatureActionBase();                            // 0x00693EF0
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
@@ -91,10 +91,21 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                          // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 
 class CAIBrain { public:
@@ -116,7 +127,7 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_GoToBed : CAIStateGroupBase {
-    CBaseIntelligentPointer PBed;                      // +0x14
+    CIntelligentPointer<CThing> PBed;                      // +0x14
     bool IsBedSleepPointMarker;                        // +0x1c
     long SleepStartTimeVariation;                      // +0x20
     long SleepEndTimeVariation;                        // +0x24

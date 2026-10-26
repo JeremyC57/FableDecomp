@@ -15,6 +15,7 @@
 //        function scope after the first terminating test (own frame words); the chased man is a by-value local whose
 //        destructor joins the handle's on the late exits; the name string is an implicit conversion temporary.
 // Leaf: Main
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -26,15 +27,16 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
 class CBaseObject { public:                                   // CBaseIntelligentPointer root
-    virtual void v00();
     void* m_pIntelligentPointer;                       // +0x04
-    CBaseObject();                                     // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CCountedPointerWords {
     void* Data;
@@ -44,7 +46,7 @@ struct CCountedPointerWords {
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void FollowThing(const CScriptThing& thing, float distance, bool run);   // slot 7 (+0x1c)
     bool IsScripting();                                // 0x00CD23B9
@@ -119,8 +121,14 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;   // slot 451 (+0x70c)
 };
 
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -130,8 +138,9 @@ class CEntityScriptBase { public:                             // retail 0x14 byt
     virtual void v00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 
 struct CChasingScreamer : CEntityScriptBase {

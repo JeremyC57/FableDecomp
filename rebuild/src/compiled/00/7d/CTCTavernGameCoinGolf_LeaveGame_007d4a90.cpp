@@ -27,9 +27,18 @@ class CWorld { public:
     CCameraManagerSource* GetCameraSource() { return m_pCameraSource; }
 };
 
-struct CTCTavernGameCoinBase {
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCTavernGame : public CTCBase
+{
+public:
+};
+
+struct CTCTavernGameCoinBase : public CTCTavernGame {
     unsigned char _pad[0x108];
-    CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
     void LeaveGame();                               // 0x008EF110
 };
 
@@ -43,7 +52,7 @@ void CTCTavernGameCoinGolf::vfunc_30()
     CTCTavernGameCoinBase::LeaveGame();
     FadeOutTableOccupants(true);
     CGameCameraManager* camera = 0;
-    if (GetWorld()->GetCameraSource()->GetCameraManager(&camera)) {
+    if (GetWorld().GetCameraSource()->GetCameraManager(&camera)) {
         camera->SetAutomaticCameraControl();
         camera->ResetCamera();
     }

@@ -43,10 +43,21 @@ class CTCCreatureGenerator : public CTCCreatureGeneratorDonor {
  public:                   // interface 0x3d
 };
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCBase {
 public:
@@ -60,7 +71,7 @@ class CTCCreatureGeneratorCreator : public CTCBase {
 public:
     long FrameToRegenerate;                     // +0x0c
     bool Generated;                             // +0x10
-    CBaseIntelligentPointer PGenerator;         // +0x11 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PGenerator;         // +0x11 CIntelligentPointer<CThing>
     unsigned char _pad19[0x20 - 0x19];
     unsigned long long GeneratorUID;            // +0x20
     bool IsGeneratorAlive();

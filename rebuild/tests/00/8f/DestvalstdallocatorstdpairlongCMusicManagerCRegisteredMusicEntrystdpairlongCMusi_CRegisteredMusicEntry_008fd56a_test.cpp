@@ -7,8 +7,13 @@ static int   g_order = 0;
 static int   g_helper_order = 0;
 static int   g_tail_order = 0;
 
-extern "C" void __fastcall helper_a01c10(void* self)
+class __declspec(novtable) CBaseIntelligentPointer {
+public:
+    virtual ~CBaseIntelligentPointer();
+};
+CBaseIntelligentPointer::~CBaseIntelligentPointer()
 {
+    void* self = (void*)this; (void)self;
     g_helper_arg = self;
     g_helper_order = ++g_order;
 }

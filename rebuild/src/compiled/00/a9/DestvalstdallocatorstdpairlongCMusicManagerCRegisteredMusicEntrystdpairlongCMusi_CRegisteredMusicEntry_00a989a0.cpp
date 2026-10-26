@@ -10,8 +10,7 @@
 #include "engine/CChunkedFileSuperChunk.h"
 #undef CChunkedFileSuperChunk
 class CChunkedFileSuperChunk { public:             // vtable 0x0129E4F0 (.?AVCChunkedFileSuperChunk@@)
-    void* _vptr;
-    ~CChunkedFileSuperChunk();              // 0x00AA8490
+    virtual ~CChunkedFileSuperChunk();              // 0x00AA8490
 };
 class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;

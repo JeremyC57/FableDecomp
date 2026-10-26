@@ -28,7 +28,7 @@ struct CPlayerGuiCalls {
 };
 extern CPlayerGuiCalls* g_pPlayerGui;                       // 0x013B8790
 
-struct CTCBoastUI_Retail {
+class CTCBoastUI { public:
     void*         __vftable;                                // +0x00
     unsigned char _pad04[0x18 - 0x04];                      // CTCBase, BoastGroups (12-byte map)
     bool          Active;                                   // +0x18 (PDB +0x1c)
@@ -37,16 +37,17 @@ struct CTCBoastUI_Retail {
     bool          AllowedToOpen;                            // +0x29 (PDB +0x31)
     bool          ActivationRequested;                      // +0x2a (PDB +0x32)
     bool          ActivateLater;                            // +0x2b (PDB +0x33)
-    void Deactivate();                                      // 0x0056A880
     void RequestActivate()                                  // 0x0056A860 (inlined here)
     {
         if (!ActivationRequested && !Active && !Quitting)
             ActivationRequested = true;
     }
     void AllowUIToOpen(bool allow);
+public:
+    void Deactivate();   // 0x0056A880
 };
 
-void CTCBoastUI_Retail::AllowUIToOpen(bool allow)
+void CTCBoastUI::AllowUIToOpen(bool allow)
 {
     AllowedToOpen = allow;
     if (!allow) {

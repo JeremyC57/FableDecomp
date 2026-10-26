@@ -28,7 +28,13 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 class CThingManager { public:
     CThing* GetThingByUID(unsigned __int64 uid);   // 0x0051ED80
 };
-class CTCActionUseScriptedHook { public:
+class CTCBase
+{
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
+};
+
+class CTCActionUseScriptedHook : public CTCBase { public:
     void*   __vftable;                          // +0x00 (CTCBase)
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
@@ -41,13 +47,12 @@ class CTCActionUseScriptedHook { public:
     bool    TeleportToRegionEntrance;           // +0x10
     unsigned __int64 EntranceConnectedToUID;    // +0x18
     CIntelligentPointer<CThing> PEntranceConnectedTo;   // +0x20
-    CThingManager* GetThingManager();           // 0x00686AE0 (CTCBase)
     void ResolveEntranceConnectedTo();
 };
 
 void CTCActionUseScriptedHook::ResolveEntranceConnectedTo()
 {
-    PEntranceConnectedTo = CIntelligentPointer<CThing>(GetThingManager()->GetThingByUID(EntranceConnectedToUID));
+    PEntranceConnectedTo = CIntelligentPointer<CThing>(GetThingManager().GetThingByUID(EntranceConnectedToUID));
     if (PEntranceConnectedTo.GetPItem())
         PEntranceConnectedTo.GetPItem();
 }

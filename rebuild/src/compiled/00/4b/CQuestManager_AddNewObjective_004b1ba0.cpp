@@ -33,19 +33,19 @@ public:
     CWideString ToWideString() const;                   // 0x0099E480
 };
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CRefVirtual {
     virtual void v00();
-    virtual void Destroy();                             // slot 1
+    virtual void Destroy() const;                             // slot 1
 };
 namespace NGameText {
 class CDataBankTextEntry;
-class CGroupEntry : public CRefVirtual, public CRefCounted { public:
+class CTextEntry : public CRefVirtual, public CRefCounted { public:
     CWideString GetText() const;                        // 0x009C7A40
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -61,9 +61,10 @@ template <class T> class CIVCountedPointer { public:
 namespace NGameText {
 class CDataBank {
 public:
-    unsigned long GetTagFromCRC(unsigned long crc) const;                             // 0x009CC410
-    CDataBankTextEntry* GetTextInfo(unsigned long tag) const;                         // 0x009C7D00
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool b) const;   // 0x009C9070
+    const CDataBankTextEntry* GetTextInfo(unsigned long tag) const;                   // 0x009C7D00
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool b) const;   // 0x009C9070
+public:
+    unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
 class CEngine { public:
@@ -114,12 +115,12 @@ class CQuestManager { public:
 void CQuestManager::AddNewObjective(const CCharString& textTag, unsigned long id)
 {
     CWideString text = textTag.ToWideString();
-    unsigned long tag = GetGameTextBank()->GetTagFromCRC(textTag.GetCRC());
+    unsigned long tag = GetGameTextBank()->LookupValue(textTag.GetCRC());
     if (tag) {
         NGameText::CDataBank* bank = GetGameTextBank();
-        bool hasText = bank->GetTextInfo(tag) && bank->GetPGroupEntry(tag, true).Data != 0;
+        bool hasText = bank->GetTextInfo(tag) && bank->GetPTextEntry(tag, true).Data != 0;
         if (hasText)
-            text = bank->GetPGroupEntry(tag, true)->GetText();
+            text = bank->GetPTextEntry(tag, true)->GetText();
     }
     CObjective objective(text, id);
     Objectives.push_back(objective);

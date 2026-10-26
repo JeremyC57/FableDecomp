@@ -26,7 +26,10 @@ class CUserProfileManager { public:
     CWideString GetAutoSaveRegionLeavingPathName() const;   // 0x004080B0 ("AutoSave" + ".rl" path)
     CWideString GetAutoSaveRegionLeavingFileName() const;   // 0x00406730 ("AutoSave" + ".rl")
 };
-bool __fastcall PathExists(const CWideString& path);         // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};         // 0x00999230
 
 class CWorld { public:
     void CopyFileInternal(const CWideString& source, const CWideString& destination) const;   // 0x0049DD50
@@ -37,7 +40,7 @@ class CWorld { public:
 bool CWorld::AutoSaveRegionLeaving()
 {
     CWideString questStart = CUserProfileManager::Get().GetAutoSaveQuestStartPathName();
-    if (PathExists(questStart))
+    if (CAFile::PathExists(questStart))
     {
         {
             CWideString regionLeaving = CUserProfileManager::Get().GetAutoSaveRegionLeavingPathName();

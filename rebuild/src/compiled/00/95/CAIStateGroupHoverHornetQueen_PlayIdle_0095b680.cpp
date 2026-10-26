@@ -27,7 +27,7 @@ class CCreatureActionBase { public:
 
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];                    // +0xa8..+0x113
-    ~CCombatActionBase();                           // 0x0062E900
+    virtual ~CCombatActionBase();                           // 0x0062E900
 };
 
 class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:

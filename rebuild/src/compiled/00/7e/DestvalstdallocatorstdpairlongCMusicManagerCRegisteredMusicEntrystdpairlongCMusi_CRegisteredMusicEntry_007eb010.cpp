@@ -1,10 +1,23 @@
 // forward-declared external targets (relocation-masked)
 // Leaf: CRegisteredMusicEntry>_>
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+class CCreatureActionBase {
+public:
+    virtual ~CCreatureActionBase();   // 0x00693EF0
+};
 struct Sub { char pad[4]; };
 struct Base { char pad[4]; };
 
-extern "C" void __fastcall Sub_dtor(Sub* s);   // 0xa01c10
-extern "C" void __fastcall Base_dtor_00693ef0(Base* b); // 0x693ef0
 
 struct Obj {
     char pad_a8[0xa8];
@@ -13,6 +26,6 @@ struct Obj {
 
 void __fastcall DestVal_Music_E(Obj* self, void* /*edx*/)
 {
-    Sub_dtor(&self->sub);
-    Base_dtor_00693ef0((Base*)self);
+    ((CBaseIntelligentPointer*)(&self->sub))->CBaseIntelligentPointer::~CBaseIntelligentPointer();
+    ((CCreatureActionBase*)((Base*)self))->CCreatureActionBase::~CCreatureActionBase();
 }

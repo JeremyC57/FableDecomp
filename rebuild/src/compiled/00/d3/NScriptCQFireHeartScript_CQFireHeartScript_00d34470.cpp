@@ -50,7 +50,9 @@ class CCharString { public:
 class CBaseObject { public:                                 // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
     virtual void b00();
     void* m_pIntelligentPointer;                     // +0x04
-    CBaseObject();                                   // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CCountedPointerWords {
     void* Data;

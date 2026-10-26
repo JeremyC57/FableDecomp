@@ -63,7 +63,13 @@ public:
     CDefClassBase* PBaseDef;                        // +0x70 CDefPointer<const CThingBaseDef>::Object
 };
 
-class CTCHero {                                     // the vptr as a plain word (an __int64 member pads a real one to 8)
+class CTCBase
+{
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
+};
+
+class CTCHero : public CTCBase {                                     // the vptr as a plain word (an __int64 member pads a real one to 8)
 public:
     void* __vfptr;                                  // +0x00
     CThing* ParentThing;                            // +0x04 (CTCBase)
@@ -79,7 +85,6 @@ public:
     CIntelligentPointer<CThing> LastWeaponEquipped; // +0x1D
     unsigned char _pad25[3];
     __int64 LastWeaponEquippedID;                   // +0x28
-    CThingManager* GetThingManager();               // 0x00686AE0 (CTCBase)
     void SetTitle(long titleObjectDef);             // 0x006CA400
     void OnInitialActivate();
 };
@@ -87,7 +92,7 @@ public:
 void CTCHero::OnInitialActivate()
 {
     if (LastWeaponEquippedID != 0)
-        LastWeaponEquipped = CIntelligentPointer<CThing>(GetThingManager()->GetThingWithUID(LastWeaponEquippedID));
+        LastWeaponEquipped = CIntelligentPointer<CThing>(GetThingManager().GetThingWithUID(LastWeaponEquippedID));
     if (HeroTitleObjectDef) {
         SetTitle(HeroTitleObjectDef);
         return;

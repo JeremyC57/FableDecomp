@@ -29,7 +29,6 @@ class CThing { public:
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     STCEntry*     m_tcFirst;                    // +0x44
     STCEntry*     m_tcLast;                     // +0x48
-    CTCBase* AddTC(const CCharString& name, bool a2, CTCParamsBase* params);   // 0x004C9D60
     __forceinline unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
@@ -53,18 +52,31 @@ class CThing { public:
         }
         return first;
     }
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
-    virtual void v00();
-    CThing* PItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:
     virtual void v00();
     long _pad04;
-    CBaseIntelligentPointer Owner;              // +0x08 (the owning creature)
+    CIntelligentPointer<CThing> Owner;              // +0x08 (the owning creature)
     unsigned char _pad10[0x114 - 0x10];
     virtual void Initialise();                  // 0x00857520
 };

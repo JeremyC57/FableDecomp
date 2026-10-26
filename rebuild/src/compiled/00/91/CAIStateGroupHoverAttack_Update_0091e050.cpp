@@ -22,7 +22,8 @@ class CThing { public:
 };
 class CThingCreatureBase : public CThing { public:
     CCombatManager* GetCombatManager();         // 0x00661ED0
-    bool IsRegisteredCombatant();               // 0x00662410
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 bool __fastcall IsToAttackTarget(CThingCreatureBase* creature, CThing* target);   // 0x00864D00
 
@@ -36,12 +37,23 @@ class CWorld { public:
     unsigned char _pad0[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IsAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() != 0 && !(p.GetPItem()->m_flags91 & 1); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IsAlive(const CIntelligentPointer<CThing>& p) { return p.GetPItem() != 0 && !(p.GetPItem()->m_flags91 & 1); }
 
 class CAIBrain { public:
     virtual void v00();
@@ -70,7 +82,7 @@ class CAIStateGroupBase { public:
     void Terminate();                           // 0x008FCF40
 };
 struct CAIStateGroup_HoverMovementBase : CAIStateGroupBase {
-    CBaseIntelligentPointer PTarget;            // +0x14
+    CIntelligentPointer<CThing> PTarget;            // +0x14
 };
 struct CAIStateGroup_HoverAttack : CAIStateGroup_HoverMovementBase {
     virtual void Update();
@@ -79,7 +91,7 @@ struct CAIStateGroup_HoverAttack : CAIStateGroup_HoverMovementBase {
 void CAIStateGroup_HoverAttack::Update()
 {
     CCombatManager* combat = GetCreature()->GetCombatManager();
-    if (GetCreature()->IsRegisteredCombatant())
+    if (GetCreature()->IsInMeleeAsAttacker())
     {
         CThingCreatureBase* creature = GetCreature();
         CWorld* world = GetPWorld();
@@ -88,7 +100,7 @@ void CAIStateGroup_HoverAttack::Update()
     while (IsAlive(PTarget) && IsToAttackTarget(GetCreature(), PTarget.GetPItem()) && IsRunnableLeaf()) {
         bool inRange = false;
         for (;;) {
-            if (!IsAlive(PTarget) || !GetCreature()->IsRegisteredCombatant()
+            if (!IsAlive(PTarget) || !GetCreature()->IsInMeleeAsAttacker()
                 || !IsToAttackTarget(GetCreature(), PTarget.GetPItem())) {
                 Terminate();
                 return;
@@ -113,7 +125,7 @@ void CAIStateGroup_HoverAttack::Update()
             Terminate();
             return;
         }
-        if (!IsAlive(PTarget) || !GetCreature()->IsRegisteredCombatant()) {
+        if (!IsAlive(PTarget) || !GetCreature()->IsInMeleeAsAttacker()) {
             Terminate();
             return;
         }

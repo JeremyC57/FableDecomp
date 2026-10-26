@@ -1,12 +1,13 @@
 // CAT_BanditContactEnd::Main() -- script action: hands the quest's contact thing to the game interface, then pumps the interface until the action's wait condition reports done
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F05780, length 53 bytes.
 // Callees: game-interface virtual slot 482 (`call [eax+0x788]`, two arguments) and slot 7
-// (`call [eax+0x1c]`) through the interface pointer at +4; CAT_BanditContactEnd::IsFinished
+// (`call [eax+0x1c]`) through the interface pointer at +4; CEntityScriptBase::IsActiveThreadTerminating
 // @ 0x00F35B30 (__fastcall, byte result; the manifest label is propagated).
 // Layout: +4 the script interface, +8 the action's CScriptThing (passed by reference), +0x14 the
 // owning quest whose +0x88 is the contact thing. The second argument is evaluated first (pushed
-// first), then the member address; the loop is `do { } while (!IsFinished())` (a rotated loop with
+// first), then the member address; the loop is `do { } while (!IsActiveThreadTerminating())` (a rotated loop with
 // the 7-byte alignment nop before its head).
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:
     void* __vftable;
     void* PImp_Data;
@@ -504,12 +505,18 @@ struct CQuestBanditContact {
     void*         m_pContact;                           // +0x88
 };
 
-struct CAT_BanditContactEnd {
+class CEntityScriptBase
+{
+public:
     virtual void v00();
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CAT_BanditContactEnd : public CEntityScriptBase {
     CGameScriptInterface* m_pInterface;                 // +0x04
     CScriptThing          m_thing;                      // +0x08
     CQuestBanditContact*  m_pQuest;                     // +0x14
-    unsigned char IsFinished();                         // 0x00F35B30
     void Main();
 };
 
@@ -518,5 +525,5 @@ void CAT_BanditContactEnd::Main()
     m_pInterface->EndContact(m_thing, m_pQuest->m_pContact);
     do {
         m_pInterface->Pump();
-    } while (!IsFinished());
+    } while (!IsActiveThreadTerminating());
 }

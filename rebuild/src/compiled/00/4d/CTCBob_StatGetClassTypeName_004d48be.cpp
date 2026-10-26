@@ -1,18 +1,26 @@
-#include "rebuild_abi.h"
-
-// CTCBob::StatGetClassTypeName @ 0x004d48be
-// One switch-case body of the retail action-name factory. Each case constructs
-// the hidden CCharString result from a relocated string constant with the
-// length sentinel -1, then returns the result pointer (this) in esi/eax.
-// Shape: push esi; push -1; push STR; mov esi,ecx; call ctor; mov eax,esi; ret.
-struct FableCharStringResult_004d48be
+// CTCBob::StatGetClassTypeName() -- static: the class-type name "CTCBob" as a CCharString
+// Leaf: ?StatGetClassTypeName@CTCBob@@SI?AVCCharString@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004D48BE: push esi; push -1; push "CTCBob"; mov esi, ecx; call
+//   CCharString::CCharString(const char*, long) 0x0099EBF0; mov eax, esi; pop esi; ret -- a static __fastcall
+//   returning CCharString by value (hidden result in ecx).
+// Identity (namepass 2026-10-26): literal 0x123c108 = "CTCBob" = the class name; PDB name set ?StatGetClassTypeName@CTCBob@@SI?AVCCharString@@XZ.
+// Callee: CCharString(const char*, long) 0x0099EBF0 = PDB ??0CCharString@@QAE@PBDJ@Z (was the invented
+//   FableCharStringResult_004d48be::build).
+class CCharString
 {
-    void* build(const char* text, int length);
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();                                         // 0x0099EAE0
 };
 
-extern "C" FableCharStringResult_004d48be* FABLE_FASTCALL
-FableStatGetClassTypeName_004d48be(FableCharStringResult_004d48be* result, void*)
+class CTCBob
 {
-    result->build((const char*)19120392, -1);
-    return result;
+public:
+    static CCharString __fastcall StatGetClassTypeName();
+};
+
+CCharString __fastcall CTCBob::StatGetClassTypeName()
+{
+    return CCharString((const char*)0x0123C108, -1);   // "CTCBob"
 }

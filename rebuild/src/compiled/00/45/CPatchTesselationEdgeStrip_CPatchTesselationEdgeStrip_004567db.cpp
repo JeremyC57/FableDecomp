@@ -1,5 +1,9 @@
 #pragma optimize("s",on)
 // Leaf: ??1CPatchTesselationEdgeStrip@
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 class CPatchTesselationEdgeStrip { public:
     char pad0[0x3c];
@@ -8,7 +12,6 @@ class CPatchTesselationEdgeStrip { public:
     void* p48;
 };
 
-extern "C" void __fastcall BaseDtor(CPatchTesselationEdgeStrip* self);
 
 void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self)
 {
@@ -16,5 +19,5 @@ void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self
         free(self->p48);
     if (self->p3c)
         free(self->p3c);
-    BaseDtor(self);
+    ((CParentDefClassBase*)(self))->CParentDefClassBase::~CParentDefClassBase();
 }

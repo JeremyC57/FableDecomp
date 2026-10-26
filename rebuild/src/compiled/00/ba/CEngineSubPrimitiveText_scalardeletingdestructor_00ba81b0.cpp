@@ -1,13 +1,18 @@
 #pragma optimize("t", on)
 // Leaf: `scalar_deleting_destructor'
-extern void __fastcall AutoTinyMemberDestructor_0099a2e0(void* member);
-extern void __fastcall AutoTinyCompositeDestructor_00bebc50(void* self);
-extern void __cdecl AutoTinyCompositeDelete(void* object);
+class CBaseClass {
+public:
+    virtual ~CBaseClass();   // 0x0099A2E0
+};
+class CEngineInternalPrimitiveMeshBase {
+public:
+    virtual ~CEngineInternalPrimitiveMeshBase();   // 0x00BEBC50
+};
 void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
-    AutoTinyMemberDestructor_0099a2e0(static_cast<unsigned char*>(self) + 212);
-    AutoTinyCompositeDestructor_00bebc50(self);
+    ((CBaseClass*)(static_cast<unsigned char*>(self) + 212))->CBaseClass::~CBaseClass();
+    ((CEngineInternalPrimitiveMeshBase*)(self))->CEngineInternalPrimitiveMeshBase::~CEngineInternalPrimitiveMeshBase();
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
+        operator delete(self);
     return self;
 }

@@ -11,23 +11,31 @@
 // Layout: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14, PMasterData +0x18.
 // Shape: the functor is a scoped frame object (its own {} block); the handle is a function-scope local default-constructed
 //   inline (CBaseObject ctor, own vtable, PImp {0,0} as an embedded member object so the zero stores follow the vtable store);
-//   the `while (!Start(...)) { NewScriptFrame(); if (IsDone()) return; } IsDone();` loop is rotated with &Me in edi.
+//   the `while (!Start(...)) { NewScriptFrame(); if (IsActiveThreadTerminating()) return; } IsActiveThreadTerminating();` loop is rotated with &Me in edi.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                                  // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
 };
 
-struct CScriptThingFunctor_00ef7ab0 {                  // vtable 0x012C2FE8
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CScriptThingFunctor_00ef7ab0 : public NScript::CPredicateBase {                  // vtable 0x012C2FE8
     CScriptThing m_thing;                              // +0x04
     CScriptThingFunctor_00ef7ab0(const CScriptThing& thing) : m_thing(thing) { }
     ~CScriptThingFunctor_00ef7ab0();                   // 0x00EF7AB0
 };
 
 class CBaseObject { public:
-    virtual void v00();
     void* IntelligentPointer;                          // +0x04
-    CBaseObject();                                     // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 
 struct CCountedPointer_ScriptedThing {                 // PImp {Data, Info}
@@ -39,7 +47,7 @@ struct CCountedPointer_ScriptedThing {                 // PImp {Data, Info}
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer_ScriptedThing PImp;                // +0x08
     CScriptGameResourceObjectScriptedThingBase() { }
-    ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
     bool IsScripting();                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
@@ -97,30 +105,35 @@ class CGameScriptInterface { public:
     virtual void SetThingHasInformation(const CScriptThing& thing, bool a, bool b, bool c) const;   // slot 360 (+0x5a0)
 };
 
-struct CEndGameScarletRobe {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CEndGameScarletRobe : public CEntityScriptBase {
     void*                 __vftable;                   // +0x00
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
     void*                 ParentClass;                 // +0x14
     void*                 PMasterData;                 // +0x18
-    void RegisterFunctor(const CScriptThingFunctor_00ef7ab0& functor);   // 0x00F35B10
-    bool IsDone();                                     // 0x00F35B30
     void Main();
 };
 
 void CEndGameScarletRobe::Main()
 {
-    RegisterFunctor(CScriptThingFunctor_00ef7ab0(Me));
+    SetPredicate(CScriptThingFunctor_00ef7ab0(Me));
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
     if (handle.IsScripting())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_LOW)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    IsDone();
+    IsActiveThreadTerminating();
 }

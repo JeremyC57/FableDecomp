@@ -51,13 +51,19 @@ class CPlayerManager { public:
     CPlayer* GetPlayer(long number);                        // 0x004498C0
 };
 
-class CTCCoopSpirit { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCCoopSpirit : public CTCBase { public:
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[4];
     long          NoMovementTimer;                          // +0x0c
     long          Score;                                    // +0x10
-    CPlayerManager* GetPlayerManager();                     // 0x00686D40 (CTCBase)
     void SwapToHero();                                      // 0x0066FF20
     void UpdateScore();
 };
@@ -68,9 +74,9 @@ void CTCCoopSpirit::UpdateScore()
     {
         for (long player = 0; player < 4; ++player)
         {
-            if (player != GetPlayerManager()->GetMainPlayerNumber())
+            if (player != GetPlayerManager().GetMainPlayerNumber())
             {
-                CThing* hero = GetPlayerManager()->GetPlayer(player)->GetHeroThing();
+                CThing* hero = GetPlayerManager().GetPlayer(player)->GetHeroThing();
                 CTCCoopScore* score;
                 if (hero && hero->GetInterface(&score, 0xc7))
                     score->m_counter = 0;

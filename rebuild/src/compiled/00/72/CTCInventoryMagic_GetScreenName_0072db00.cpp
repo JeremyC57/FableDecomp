@@ -17,18 +17,18 @@ public:
 };
 
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CRefVirtual {
     virtual void v00();
-    virtual void Destroy();                     // slot 1
+    virtual void Destroy() const;                     // slot 1
 };
 namespace NGameText {
-class CGroupEntry : public CRefVirtual, public CRefCounted { public:
+class CTextEntry : public CRefVirtual, public CRefCounted { public:
     CWideString GetText() const;                // 0x009C7A40
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -44,7 +44,7 @@ template <class T> class CIVCountedPointer { public:
 namespace NGameText {
 class CDataBank {
 public:
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool b) const;   // 0x009C9070
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool b) const;   // 0x009C9070
 };
 }
 class CEngine { public:
@@ -55,7 +55,7 @@ extern CEngine* g_pEngine;                      // 0x013B86A0
 
 class CDefPointeeBase { public:
     virtual void v00();
-    virtual void Destroy();                     // slot 1
+    virtual void Destroy() const;                     // slot 1
     long m_refCount;                            // +0x04
 };
 class CInventoryDef : public CDefPointeeBase { public:
@@ -91,5 +91,5 @@ CWideString CTCInventoryMagic::GetScreenName() const
 {
     CDefPointer<CInventoryDef> def = PDef;
     NGameText::CDataBank* textBank = g_pEngine->PGameTextDataBank;
-    return textBank->GetPGroupEntry(def->MagicScreenNameTag, true)->GetText();
+    return textBank->GetPTextEntry(def->MagicScreenNameTag, true)->GetText();
 }

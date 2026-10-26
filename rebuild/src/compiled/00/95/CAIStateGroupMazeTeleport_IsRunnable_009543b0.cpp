@@ -56,7 +56,8 @@ class CAIStateGroupBase { public:
 };
 
 class CTCBoss { public:                                // interface type 0xAD component
-    unsigned char IsReadyForPhaseChange();      // 0x007AEE90
+public:
+    bool IsReadyForPhaseChange() const;   // 0x007AEE90
 };
 
 struct CAIStateGroup_MazeTeleport : CAIStateGroupBase {

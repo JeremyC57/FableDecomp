@@ -1,14 +1,16 @@
 #pragma optimize("t", on)
+class CScriptThing {
+public:
+    virtual ~CScriptThing();   // 0x004AA840
+};
 extern void __fastcall DestructFirstMember_0066a1c0(void* member);
-extern void __fastcall DestructSecondMember_004aa840(void* member);
 extern void __fastcall CActionFireProjectileWeapon_Destruct(void* action);
-extern void __cdecl OperatorDelete(void* object);
 void* __fastcall CActionFireProjectileWeapon_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
 {
     DestructFirstMember_0066a1c0(static_cast<unsigned char*>(action) + 24);
-    DestructSecondMember_004aa840(static_cast<unsigned char*>(action) + 12);
+    ((CScriptThing*)(static_cast<unsigned char*>(action) + 12))->CScriptThing::~CScriptThing();
     CActionFireProjectileWeapon_Destruct(action);
     if (flags & 1)
-        OperatorDelete(action);
+        operator delete(action);
     return action;
 }

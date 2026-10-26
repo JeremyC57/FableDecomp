@@ -45,8 +45,10 @@ struct CGenericVarVector {                         // STLport vector<CGenericVar
     const CGenericVar& operator[](unsigned int n) const { return *(_M_start + n); }
 };
 
-struct CPlayerManager_Calls {
-    CPlayer& GetMainPlayer();                      // 0x00449970
+class CPlayer;
+class CPlayerManager { public:
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 
 struct CWorld_Methods : CWorld {
@@ -55,6 +57,6 @@ struct CWorld_Methods : CWorld {
 
 void __fastcall CWorld_Methods::ConsoleSetFreeCameraPos(CWorld& world, const CGenericVarVector& args)
 {
-    CPlayer& player = reinterpret_cast<CPlayerManager_Calls*>(world.PlayerManager)->GetMainPlayer();
+    CPlayer& player = reinterpret_cast<CPlayerManager*>(world.PlayerManager)->GetMainPlayer();
     reinterpret_cast<CCamera&>(player.CurrentFreeCamera).MoveTo(C3DVector(args[0].ValFloat, args[1].ValFloat, args[2].ValFloat));
 }

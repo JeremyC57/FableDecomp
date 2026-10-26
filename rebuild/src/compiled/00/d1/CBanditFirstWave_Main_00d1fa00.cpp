@@ -13,6 +13,7 @@
 //   retail = PDB - 0x14: BanditLeaderFree +0x4c), PMasterData +0x18.
 // Shape: the tail of the sibling CBanditAttacker::Main (0x00D1F610); the filter member is a plain CScriptThing (out-of-line
 //   copy ctor 0x004ABE90 / dtor 0x004AA840); the by-value argument copy is the inline tagged constructor.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -68,7 +69,9 @@ enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 class CBaseObject { public:
     virtual void b00();
     void* m_pIntelligentPointer;                       // +0x04
-    CBaseObject();                                     // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CCountedPointerWords {
     void* Data;
@@ -78,7 +81,7 @@ struct CCountedPointerWords {
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                         // +0x08
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
     virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004();
     virtual void MoveToThing(const CScriptThing& thing, float distance, EScriptEntityMoveType moveType, bool a, bool b, bool c, bool d);   // slot 5 (+0x14)
     virtual void s006(); virtual void s007(); virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013();
@@ -198,8 +201,14 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void v814(); virtual void v815(); virtual void v816();
     virtual void SetCombatNearbyBreakOffRange(CScriptThing thing, float range);   // slot 817 (+0xcc4)
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void f00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing    m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -208,8 +217,9 @@ class CEntityScriptBase { public:                             // retail 0x14 byt
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE3EA
 class CScriptDef { public:

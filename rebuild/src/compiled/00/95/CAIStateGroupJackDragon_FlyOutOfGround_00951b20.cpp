@@ -44,12 +44,23 @@ class CThing { public:
     void Kill(bool b);                          // 0x004C9B80
 };
 class CThingCreatureBase : public CThing { public: };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -57,7 +68,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
+long __fastcall GFROR13(unsigned long);      // 0x00497890
 class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
@@ -100,9 +111,9 @@ class CAIStateGroupBase { public:
 };
 #pragma pack(push, 1)
 struct CAIStateGroup_JackDragon : CAIStateGroupBase {
-    CBaseIntelligentPointer PEnemy;             // +0x14
+    CIntelligentPointer<CThing> PEnemy;             // +0x14
     unsigned char _pad1c[0x44 - 0x1c];
-    CBaseIntelligentPointer PInvisibleBodgeCreature;   // +0x44
+    CIntelligentPointer<CThing> PInvisibleBodgeCreature;   // +0x44
     unsigned char _pad4c[0x5c - 0x4c];
     long CurrentState;                          // +0x5c
     long GoLeft;                                // +0x60

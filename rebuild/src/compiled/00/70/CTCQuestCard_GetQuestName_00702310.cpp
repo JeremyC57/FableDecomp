@@ -24,12 +24,12 @@ class CCharString { public:
     CWideString ToWideString() const;                   // 0x0099E480
 };
 class CIVCountedPointeeBase { public:
-    virtual void Destroy(int flags);                    // slot 0
-    virtual void Delete();                              // slot 1
-    unsigned long IVRefCount;                           // +0x04
-    void DecRef() { --IVRefCount; }
+    virtual void Destroy(int flags) const;                    // slot 0
+    virtual void Delete() const;                              // slot 1
+    mutable unsigned long IVRefCount;                           // +0x04
+    void DecRef() const { --IVRefCount; }
     unsigned long GetRefCount() const { return IVRefCount; }
-    void Release()
+    void Release() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -44,13 +44,19 @@ template <class T> class CIVCountedPointer { public:           // 4 bytes
             Object->Release();
     }
 };
-struct CGroupEntry : CIVCountedPointeeBase {            // NGameText::CGroupEntry
+namespace NGameText {
+class CTextEntry : public CIVCountedPointeeBase { public:            // NGameText::CGroupEntry
     CWideString GetText() const;                        // 0x009C7A40
 };
-struct CDataBank {                                      // NGameText::CDataBank
-    CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
+}
+using NGameText::CTextEntry;
+namespace NGameText {
+class CDataBank { public:                                      // NGameText::CDataBank
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
@@ -98,7 +104,7 @@ CWideString CTCQuestCard::GetQuestName() const
         return QuestName.ToWideString();
     }
     if (PDef->QuestName > 0) {
-        CIVCountedPointer<CGroupEntry> entry = g_pMainGameComponent->TextBank->GetPGroupEntry(PDef->QuestName, true);
+        CIVCountedPointer<const CTextEntry> entry = g_pMainGameComponent->TextBank->GetPTextEntry(PDef->QuestName, true);
         if (entry.Object)
             return entry.Object->GetText();
     }

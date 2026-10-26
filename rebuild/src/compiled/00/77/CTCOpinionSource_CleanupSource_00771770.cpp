@@ -66,19 +66,25 @@ class CWorld { public:
     COpinionManager* GetOpinionManager() const { return POpinionManager; }
 };
 class COpinionSet;
-class CTCOpinionSource { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCOpinionSource : public CTCBase { public:
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[0x78 - 0x08];
     CCountedPointer<COpinionSet> POpinionProduced;  // +0x78
-    CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
     void CleanupSource();
 };
 
 void CTCOpinionSource::CleanupSource()
 {
     POpinionProduced.Release();
-    CSourceList& sources = GetWorld()->GetOpinionManager()->OpinionSources;
+    CSourceList& sources = GetWorld().GetOpinionManager()->OpinionSources;
     SSourceNode* node = sources.Node->Next;
     SSourceNode* it = node;
     while (node != sources.Node) {

@@ -40,11 +40,21 @@ template <class T> class CCountedPointer { public:
     ~CCountedPointer();
 };
 
-class CStaticMapBankFile { public:
+class CBankFile
+{
+public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual bool Open(const CWideString& name, unsigned long flags);   // slot 3
+public:
+    unsigned long FindIndexBySymbol(const CCharString&) const;   // 0x009CCDC0
+};
+class CBankFileAsync : public CBankFile
+{
+public:
+};
+
+class CStaticMapBankFile : public CBankFileAsync { public:
     void SetMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool);   // 0x00B3E820
-    long FindEntry(const CCharString& name);            // 0x009CCDC0
 };
 
 struct CEngineGlobal_01436e98 {
@@ -82,9 +92,10 @@ class CEngineWorldMap { public:
     CStaticMapBankFile    StaticMapFile;            // +0x034
     unsigned char         _pad038[0x1a8 - 0x38];
     CEngineMap::STATIC_MAP_OPEN_STATE StaticMapOpenState;   // +0x1a8
-    void AutoBuildWorldMapGrid();                   // 0x00B40070
     void OpenMapFile(long entry);                   // 0x00B420F0
     void OpenStaticMaps(CEngineMap::STATIC_MAP_OPEN_STATE state);
+private:
+    void AutoBuildWorldMapGrid();   // 0x00B40070
 };
 
 void CEngineWorldMap::OpenStaticMaps(CEngineMap::STATIC_MAP_OPEN_STATE state)
@@ -106,7 +117,7 @@ void CEngineWorldMap::OpenStaticMaps(CEngineMap::STATIC_MAP_OPEN_STATE state)
         if (!opened)
             return;
         g_pEngineWaterRenderer->OpenStaticMapForUse(&StaticMapFile, g_WaterBankSymbol);
-        long entry = StaticMapFile.FindEntry(g_GlobalMapEntrySymbol);
+        long entry = StaticMapFile.FindIndexBySymbol(g_GlobalMapEntrySymbol);
         if (entry > 0)
             OpenMapFile(entry);
         else {

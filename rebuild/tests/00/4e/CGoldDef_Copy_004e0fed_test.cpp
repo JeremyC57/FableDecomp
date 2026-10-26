@@ -1,9 +1,16 @@
 #include "engine/CGoldDef.h"
 #include <cstdio>
-class CDefClassBase { public: char pad[0x2c]; };
+class CDefClassBase { public: char pad[0x2c]; 
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);
+};
 struct CGoldDef_Methods : CGoldDef { void BaseClone(const CDefClassBase* other); };
 static int g_baseCalled;
-void CGoldDef_Methods::BaseClone(const CDefClassBase*) { g_baseCalled = 1; }
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+{
+     g_baseCalled = 1;
+    return *this;
+}
 void __fastcall Copy(CGoldDef* self, int, const CDefClassBase* other);
 int main()
 {

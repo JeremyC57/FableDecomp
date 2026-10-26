@@ -18,8 +18,8 @@ struct CScratchRenderMethods:CRenderManagerCore {
 };
 // System/display headers unavailable; PDB System.PDisplayManager96, Display.PRenderManager8.
 struct CScratchDisplay {void* VTable;void* SystemManager;CScratchRenderMethods* PRenderManager;};
-struct CScratchSystem {unsigned char Prefix[0x60];CScratchDisplay* PDisplayManager;};
-extern CScratchSystem* __fastcall GetScratchSystem(); //009a4ec0
+class CSystemManager { public:unsigned char Prefix[0x60];CScratchDisplay* PDisplayManager;};
+CSystemManager* __fastcall GFGetSystemManager(); //009a4ec0
 struct CScratchResource {
  int ResourceType;CScratchTexture* Texture;CScratchSurface* Surface;int PageIndex;
  int Width,Height,NoLevels;CPixelFormat PixelFormat;int MultiSampleType;unsigned UsageFlags;int MemoryPool;
@@ -33,12 +33,13 @@ struct CScratchPage {int ScratchPool;CScratchArray<int> ResourceList;unsigned ch
 class CGPUScratchBufferTextureManager { public:
  void* VTable;CScratchArray<CScratchResource> Resources;CScratchArray<CScratchPage> MemoryPages;
  CScratchArray<int> ScratchPools,FreeTexturePageSlots,FreeTextureSlots;bool ShutdownFlag;
- void FreeMemoryPage(int); //00f37030
  bool BeginShutdown();
+public:
+    void FreeMemoryPage(long);   // 0x00F37030
 };
 bool CGPUScratchBufferTextureManager::BeginShutdown(){
  if(!ShutdownFlag){
- CScratchRenderMethods* renderer=GetScratchSystem()->PDisplayManager->PRenderManager;
+ CScratchRenderMethods* renderer=GFGetSystemManager()->PDisplayManager->PRenderManager;
  renderer->PrepareShutdown();
  for(int i=0;i<4;++i)renderer->AttachTextureToStage(i,0);
  for(unsigned i=0;i<Resources.Size();++i){

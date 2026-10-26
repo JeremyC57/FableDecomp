@@ -23,14 +23,22 @@ class CThingTrackNode;
 class CThingObject;
 class CThingMarker;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item);               // out of line: 0x0050F380 / 0x0050F3F0 / 0x0065E15D / 0x004A96F0 / 0x0065E133 / 0x0065E21E
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 template<class T> struct CRetailList {          // retail std::list: one sentinel pointer
     void* m_head;

@@ -21,8 +21,17 @@ class CEngineTextureMorph { public:
     long m_toTexture;                              // +0x04
 };
 
-class CGraphicDataBank { public:
-    unsigned long FindIndex(const CCharString& name);   // 0x009CCDC0
+class CBankFile
+{
+public:
+    unsigned long FindIndexBySymbol(const CCharString&) const;   // 0x009CCDC0
+};
+class CBankFileAsync : public CBankFile
+{
+public:
+};
+
+class CGraphicDataBank : public CBankFileAsync { public:
 };
 
 class CEngineSurfaceCompositionManager { public:
@@ -36,5 +45,5 @@ unsigned long CEngineSurfaceCompositionManager::FindIndexInCompletedBank(const C
     long from = morph->m_fromTexture;
     long to = morph->m_toTexture;
     CCharString name = GFIntToCharString(from) + "-" + GFIntToCharString(to);
-    return m_completedBank.FindIndex(name);
+    return m_completedBank.FindIndexBySymbol(name);
 }

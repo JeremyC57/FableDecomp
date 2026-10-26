@@ -89,10 +89,11 @@ template <int SIZE> struct CList {                      // STLport list (_List_b
 class CTCBase { public:
     CTCBase(CThing* thing);                             // 0x00686800
     virtual ~CTCBase();
-    void RegisterComponent();                           // 0x00686ED0 (descriptive)
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
+public:
+    void AddToGlobalTCs();   // 0x00686ED0
 };
 
 namespace LHNetworkLib { class LHHttp2; }
@@ -136,6 +137,6 @@ CTCHeroOnlineScoreboard::CTCHeroOnlineScoreboard(CThing* thing)
     g_ScoreboardPage = "/index.php";
     if (!g_bScoreboardInitialised)
         g_bScoreboardInitialised = true;
-    RegisterComponent();
+    AddToGlobalTCs();
     InitialiseActivityInfo();
 }

@@ -22,19 +22,27 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
 };
 CAnimationEntry* __fastcall GetTableAnimation(CThingCreatureBase* owner, long kind);   // 0x006924B0
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CBaseIntelligentPointer();              // 0x00A01B10
-    void SetPItem(CThing* item);            // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCreatureAction_PickUpThingAtTable : public CCreatureActionBase { public:   // vtable 0x012753E4
-    CIntelligentPointer PThing;             // +0xa8 the thing picked up
+    CIntelligentPointer<CThing> PThing;             // +0xa8 the thing picked up
     long m_tablePoint;                      // +0xb0 (descriptive: the fourth argument)
     virtual void v00();
     CCreatureAction_PickUpThingAtTable(CThingCreatureBase* owner, CThing* thing, long kind, long tablePoint);

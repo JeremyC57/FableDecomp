@@ -74,11 +74,11 @@ struct CGameScriptInterface_Calls {      // retail vtable @ 0x01260F0C
     virtual void SetTeleportingAsActive(bool active);                  // slot 565 (+0x8d4) @ 0x0088F410
 };
 
-struct CQ_WizardBattleMasterData {
+class CScriptDef { public:
     unsigned char _pad_0x000[0xfa4];
     long          m_experienceReward;           // +0xfa4
 };
-extern CQ_WizardBattleMasterData* g_pMasterData_0143e90c;   // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;   // 0x0143E90C
 
 namespace NScript {
 class CQ_WizardBattleScript {
@@ -100,6 +100,6 @@ void NScript::CQ_WizardBattleScript::EndMission()
     Game->SetTeleportingAsActive(true);
     Game->DisplayQuestInfo(false);
     FinishMazeStage();
-    Game->GiveHeroExperience(g_pMasterData_0143e90c->m_experienceReward);
+    Game->GiveHeroExperience(pGlobalScriptDef->m_experienceReward);
     MissionSucceeded = true;
 }

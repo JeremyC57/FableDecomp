@@ -22,8 +22,17 @@ class CCharString { public:
     CCharString& operator=(const char* text);                     // 0x0099EFE0
 };
 
-class CGraphicDataBank { public:
-    long FindEntry(const CCharString& name);                      // 0x009CCDC0
+class CBankFile
+{
+public:
+    unsigned long FindIndexBySymbol(const CCharString&) const;   // 0x009CCDC0
+};
+class CBankFileAsync : public CBankFile
+{
+public:
+};
+
+class CGraphicDataBank : public CBankFileAsync { public:
 };
 
 template<class T> class CCountedPointer { public:
@@ -212,6 +221,6 @@ NUISystem::CComponent* CTCInventoryExperience::GetExperienceStatPic(EHeroTrainab
     NUISystem::CFrontEndManager* manager = NUISystem::CFrontEndManager::GetInstance();
     NUISystem::CComponent* pic = manager->CreateComponent("UI_RING_PIC", false);
     CCountedPointer<CGraphicDataBank> bank(manager->GraphicsBank);
-    pic->SetGraphic(bank->FindEntry(picName));
+    pic->SetGraphic(bank->FindIndexBySymbol(picName));
     return pic;
 }

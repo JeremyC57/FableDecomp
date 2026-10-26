@@ -4,7 +4,7 @@
 // Retail 0x00793EC0, 545 bytes, plain `ret`. Catalog label CTCDivineWrath::UnsheatheWeapon is propagated: the callers are CTCUnholyPower::FrameUpdate (vtable 0x0126BFDC slot 9, 0x00795300); a byte-identical copy is CTCDivineWrath::UnsheatheWeapon at 0x0078E9C0.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined lookups: 0x46
 // CTCCarrying, 0x48 weapon, 0x1a, 0x13 CTCInventoryWeapons, 0x30 CTCCombat, 0x31 CTCCreatureModeManager),
-// CTCCarrying::HasPendingActions @ 0x006A1270 / GetThingInPrimarySlot @ 0x006A1440 / RemoveThing @ 0x006A19B0 /
+// CTCCarrying::IsPrimarySlotFree @ 0x006A1270 / GetThingInPrimarySlot @ 0x006A1440 / RemoveThing @ 0x006A19B0 /
 // IsCarryingThing @ 0x006A1060 / RemoveThingFromPrimarySlot @ 0x006A1E00 / PutThingInCarrySlot @ 0x006A1F80,
 // DropWeapon @ 0x00845CE0 (__fastcall), the 0x1a component's reaction @ 0x005D8E50, CDefClassBase::GetSubDef<CCarryableDef>
 // @ 0x005CC10E, CTCInventoryWeapons::RefreshSheathedWeapons @ 0x005C9962, CTCCombat::SetMeleeFlourishValid @ 0x00733E10,
@@ -58,7 +58,6 @@ class CThing { public:
     CDefClassBase* m_pDef;                                   // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                                // +0x91 bit 0: dead
-    CPlayer* GetPlayer_004c7a30();                                    // 0x004C7A30
     template <class T> __forceinline T* GetTC(long interfaceType)
     {
         long type = interfaceType;
@@ -83,19 +82,33 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
+public:
+    CPlayer& GetPlayer();   // 0x004C7A30
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                         // +0x04
-    CThing* GetPItem() const;                                // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCCarrying { public:
-    bool HasPendingActions();                                // 0x006A1270
-    CThing* GetThingInPrimarySlot();                         // 0x006A1440
     void RemoveThing(CThing* thing);                         // 0x006A19B0
     bool IsCarryingThing(CThing* thing);                     // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool drop);           // 0x006A1E00
     void PutThingInCarrySlot(CThing* thing, long slot, bool flag);   // 0x006A1F80
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
+    bool IsPrimarySlotFree() const;   // 0x006A1270
 };
 void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);   // 0x00845CE0
 struct CTC1A {
@@ -116,7 +129,7 @@ class CTCUnholyPower { public:
     bool    ToBeRemoved;                                     // +0x08
     bool    IsInGlobalUpdateTCs;                             // +0x09
     void*   PDef;                                            // +0x0c CDefPointer<CSpecialAbilitiesUnholyPowerDef const>
-    CBaseIntelligentPointer PItemRemoved;                    // +0x10
+    CIntelligentPointer<CThing> PItemRemoved;                    // +0x10
     CThing* GetItemRemoved() const { return PItemRemoved.GetPItem(); }
     void UnsheatheWeapon();
 };
@@ -129,7 +142,7 @@ void CTCUnholyPower::UnsheatheWeapon()
     CTCCarrying* carrying;
     if (parent->HasTC(0x46))
         carrying = parent->GetTC<CTCCarrying>(0x46);
-    if (!carrying->HasPendingActions()) {
+    if (!carrying->IsPrimarySlotFree()) {
         CThing* held = carrying->GetThingInPrimarySlot();
         if (held->HasTC(0x48))
             DropWeapon(held, carrying, parent);
@@ -140,7 +153,7 @@ void CTCUnholyPower::UnsheatheWeapon()
             if (!carrying->IsCarryingThing(held))
                 tc->OnNotCarried();
         }
-        if (!carrying->HasPendingActions())
+        if (!carrying->IsPrimarySlotFree())
             carrying->RemoveThingFromPrimarySlot(false);
     }
     if (carrying->IsCarryingThing(PItemRemoved.GetPItem()))
@@ -158,5 +171,5 @@ void CTCUnholyPower::UnsheatheWeapon()
     if (parent->HasTC(0x31))
         modeManager = parent->GetTC<CTCCreatureModeManager>(0x31);
     modeManager->RestartCurrentMode();
-    parent->GetPlayer_004c7a30()->SetAggressiveMode(true);
+    parent->GetPlayer().SetAggressiveMode(true);
 }

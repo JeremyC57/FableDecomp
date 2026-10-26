@@ -1,5 +1,5 @@
 // CScriptGameResourceObjectScriptedThing::FollowThing(const CScriptThing& target, float distance, bool run) -- queue a follow-creature action on a live target for the live scripted thing
-// Leaf: FollowThing
+// Leaf: ?FollowThing@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptThing@@M_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00904030, length 190 bytes (`ret 0Ch`), vtable 0x0128D86C slot 7.
 // PDB: ?FollowThing@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptThing@@M_N@Z.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PThing at +0x14), CScriptThing::IsAlive (slot 75)
@@ -10,9 +10,10 @@
 // Shape: the family guard, then the unchecked GetInterface BEFORE the target thing is fetched (the
 // control lands in ebx, the miss arm reads the dead `target` slot); the target thing is a named local
 // read after the lookup and before operator new.
-// `this` uses engine/CScriptGameResourceObjectScriptedThing.h (PThing reached through a local view).
+// Layout: engine/CScriptGameResourceObjectScriptedThing.h models the vptr as a data word, so it cannot declare this
+// virtual member; the class is modelled locally with the header's offsets (ScriptInterface +0x10, PThing +0x14
+// CIntelligentPointer<CThing>, ScriptID +0x1c, NullResource +0x20, ActionPriority +0x24; 0x28 bytes).
 #include <stddef.h>
-#include "engine/CScriptGameResourceObjectScriptedThing.h"
 
 void* __cdecl operator new(size_t size);           // 0x00BFEA1A
 
@@ -25,7 +26,7 @@ struct CInterfaceMap {                             // CVectorMap<ETCInterfaceTyp
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
 
-struct CThing_Retail {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];               // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;                   // +0x44
@@ -48,10 +49,20 @@ struct CThing_Retail {
         return false;
     }
 };
-struct CIntelligentPointer_Retail {                // CIntelligentPointer<CThing>
-    virtual void v00();
-    void* m_pItem;
-    CThing_Retail* GetPItem();                     // 0x00A01B50 CBaseIntelligentPointer::GetPItem
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
 class CScriptThing {                               // vtable 0x01238C8C
@@ -59,7 +70,7 @@ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
-    virtual CThing_Retail* GetPThing() const;      // slot 11 (+0x2c) 0x004AAA60
+    virtual CThing* GetPThing() const;      // slot 11 (+0x2c) 0x004AAA60
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16();
     virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21();
     virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26();
@@ -89,24 +100,32 @@ class CTCScriptedControl { public:                        // interface 0x1f comp
 namespace NTCScriptedControl {
 struct CActionFollowCreature : CActionBase {                   // vtable 0x0128D838, 0x28 bytes
     unsigned char _body[0x24];
-    CActionFollowCreature(CThing_Retail* creature, float distance, bool run);   // 0x00905180
+    CActionFollowCreature(CThing& creature, float distance, bool run);   // 0x00905180 (Ego_r ??0CActionFollowCreature@NTCScriptedControl@@QAE@AAVCThing@@M_N@Z)
 };
 }
 
-struct CScriptGameResourceObjectScriptedThing_Methods : CScriptGameResourceObjectScriptedThing {
-    void FollowThing(const CScriptThing& target, float distance, bool run);
+class CGameScriptInterface;
+class CScriptGameResourceObjectScriptedThing {     // vtable 0x0128D86C, 0x28 bytes
+public:
+    virtual ~CScriptGameResourceObjectScriptedThing();
+    unsigned char               _pad_0x04[0xc];    // +0x04 CBaseObject / CScriptGameResourceObjectBase members
+    CGameScriptInterface*       ScriptInterface;   // +0x10
+    CIntelligentPointer<CThing> PThing;            // +0x14
+    long                        ScriptID;          // +0x1c
+    bool                        NullResource;      // +0x20
+    long                        ActionPriority;    // +0x24
+    virtual void FollowThing(const CScriptThing& target, float distance, bool run);   // slot 7
 };
 
-void CScriptGameResourceObjectScriptedThing_Methods::FollowThing(const CScriptThing& target, float distance, bool run)
+void CScriptGameResourceObjectScriptedThing::FollowThing(const CScriptThing& target, float distance, bool run)
 {
-    CIntelligentPointer_Retail* thing = (CIntelligentPointer_Retail*)PThing;
-    if (thing->GetPItem()) {
-        if (!thing->GetPItem()->m_dead) {
+    if (PThing.GetPItem()) {
+        if (!PThing.GetPItem()->m_dead) {
             if (target.IsAlive()) {
                 CTCScriptedControl* control;
-                thing->GetPItem()->GetInterface(&control, 0x1f);
-                CThing_Retail* targetThing = target.GetPThing();
-                control->AddAction(new NTCScriptedControl::CActionFollowCreature(targetThing, distance, run));
+                PThing.GetPItem()->GetInterface(&control, 0x1f);
+                CThing* targetThing = target.GetPThing();
+                control->AddAction(new NTCScriptedControl::CActionFollowCreature(*targetThing, distance, run));
             }
         }
     }

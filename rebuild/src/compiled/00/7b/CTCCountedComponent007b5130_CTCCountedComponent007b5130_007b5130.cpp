@@ -27,7 +27,7 @@ struct CBuffer_007b4d60 {                       // the +0x14 member: destroyed o
 class CTCBase { public:
     virtual void v00();
     unsigned char _pad[8];                      // +4..+0xb
-    ~CTCBase();                                 // 0x00686830
+    virtual ~CTCBase();                                 // 0x00686830
 };
 
 struct __declspec(novtable) CTCCountedComponent_007b5130 : CTCBase {

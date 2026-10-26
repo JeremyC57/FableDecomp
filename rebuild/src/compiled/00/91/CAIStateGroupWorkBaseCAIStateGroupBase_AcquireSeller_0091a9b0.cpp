@@ -19,7 +19,7 @@
 //   Speed-optimised (default) TU.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
-unsigned long __fastcall GFROR13(unsigned long value); // 0x00497890
+long __fastcall GFROR13(unsigned long); // 0x00497890
 
 class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
 class C2DBoxI { public:

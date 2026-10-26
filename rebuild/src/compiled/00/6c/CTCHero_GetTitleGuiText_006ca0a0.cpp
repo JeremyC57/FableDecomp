@@ -17,18 +17,18 @@ public:
 extern const CWideString g_emptyWideString_013bca24;    // 0x013BCA24
 
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CRefVirtual {
     virtual void v00();
-    virtual void Destroy();                     // slot 1
+    virtual void Destroy() const;                     // slot 1
 };
 namespace NGameText {
-class CGroupEntry : public CRefVirtual, public CRefCounted { public:
+class CTextEntry : public CRefVirtual, public CRefCounted { public:
     CWideString GetText() const;                // 0x009C7A40
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -44,7 +44,7 @@ template <class T> class CIVCountedPointer { public:
 namespace NGameText {
 class CDataBank {
 public:
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool b) const;   // 0x009C9070
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool b) const;   // 0x009C9070
 };
 }
 class CEngine { public:
@@ -75,8 +75,8 @@ public:
 CWideString CTCHero::GetTitleGuiText() const
 {
     if (PHeroTitleSubDef.Object && PHeroTitleSubDef->HeroTitleGuiTag > 0) {
-        CIVCountedPointer<NGameText::CGroupEntry> entry =
-            g_pEngine->PGameTextDataBank->GetPGroupEntry(PHeroTitleSubDef->HeroTitleGuiTag, true);
+        CIVCountedPointer<const NGameText::CTextEntry> entry =
+            g_pEngine->PGameTextDataBank->GetPTextEntry(PHeroTitleSubDef->HeroTitleGuiTag, true);
         if (entry.Data)
             return entry->GetText();
     }

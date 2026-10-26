@@ -1,20 +1,22 @@
 #pragma optimize("s",on)
 #include "rebuild_abi.h"
 
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CLandscapeBackgroundPatch;
 
 // scalar destructor (this-only member), relocation-masked call target
-extern void __fastcall CQuickAccessItemButtonGuiDef_dtor(CLandscapeBackgroundPatch* thisptr);
 // operator delete (cdecl), relocation-masked call target
-extern void __cdecl fable_operator_delete(void* p);
 
 // `vector_deleting_destructor' @ 0x0046ef6b
 // __fastcall void* dtor(unsigned int flags) modeled as __fastcall(this, edx, flags)
 void* __fastcall CQuickAccessItemButtonGuiDef_scalar_deleting_destructor(
     CLandscapeBackgroundPatch* thisptr, int /*edx*/, unsigned int flags)
 {
-    CQuickAccessItemButtonGuiDef_dtor(thisptr);
+    ((CParentDefClassBase*)(thisptr))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        fable_operator_delete(thisptr);
+        operator delete(thisptr);
     return thisptr;
 }

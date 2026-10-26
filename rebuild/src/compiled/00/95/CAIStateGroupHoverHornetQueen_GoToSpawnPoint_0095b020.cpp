@@ -33,7 +33,7 @@ struct CRectI {
     long Left, Top, Right, Bottom;
     CRectI() { }
 };
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
+long __fastcall GFROR13(unsigned long);  // 0x00497890
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -61,10 +61,21 @@ class CWorld { public:
 class CThingSearchTools { public:
     CThing* GetPFirstThingInRoughArea(const CRectI& area, const CThingFilter_HasDefGlobalIndex& filter, CThing** found);   // 0x007FD110
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -88,7 +99,7 @@ struct CAIStateGroup_HoverMovementBase : CAIStateGroupBase {
         const C3DVector& facePos, bool& arrived, long movementType);   // 0x0091D510
 };
 struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_HoverMovementBase {
-    CBaseIntelligentPointer PTarget;            // +0x14
+    CIntelligentPointer<CThing> PTarget;            // +0x14
     C3DVector StartPos;                         // +0x1c
     C3DVector ArenaCentrePos;                   // +0x28
     bool FirstSpawn;                            // +0x34

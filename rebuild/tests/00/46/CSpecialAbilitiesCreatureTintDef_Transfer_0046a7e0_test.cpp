@@ -2,9 +2,10 @@
 
 class CPersistContext { public:
     int calls;
-    void PersistA(int& r);
+    template <class T> void Transfer(T& value);
     void PersistB_00466a47(int& r);
 };
+template <> void CPersistContext::Transfer<float>(float& value);
 
 class CVillagerInteractionsDef { public:
     char pad[0x3c];
@@ -16,13 +17,15 @@ class CVillagerInteractionsDef { public:
 static int g_seq[4];
 static int g_n;
 
-void CPersistContext::PersistA(int& r) { calls++; g_seq[g_n++] = 1; }
+template <> void CPersistContext::Transfer<float>(float& value_)
+{
+    int& r = *(int*)&value_; (void)&r; calls++; g_seq[g_n++] = 1; }
 void CPersistContext::PersistB_00466a47(int& r) { calls++; g_seq[g_n++] = 2; }
 
 void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->PersistA(def->fieldA);
-    ctx->PersistA(def->fieldB);
+    ctx->Transfer(*(float*)&(def->fieldA));
+    ctx->Transfer(*(float*)&(def->fieldB));
     ctx->PersistB_00466a47(def->fieldC);
 }
 

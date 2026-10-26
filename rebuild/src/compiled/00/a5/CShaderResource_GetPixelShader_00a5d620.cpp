@@ -62,9 +62,14 @@ struct CPixelShaderData {                            // the bank's per-shader da
     CArray<unsigned long>     Code;                  // +0x08
     CArray<CCharString>       Constants;             // +0x14
 };
-class CShaderDataBank { public:
+class CBankFile
+{
+public:
+    CCharString GetEntrySymbol(unsigned long) const;   // 0x009CC1D0
+};
+
+class CShaderDataBank : public CBankFile { public:
     CPixelShaderData* GetShaderData(unsigned long index);   // 0x00A61FB0
-    CCharString GetEntrySymbol(unsigned long index);         // 0x009CC1D0 (CBankFile)
 };
 class CShaderRenderManager { public:
     CPixelShader CreatePixelShader(const CArray<unsigned long>& code, const CArray<CCharString>& constants,

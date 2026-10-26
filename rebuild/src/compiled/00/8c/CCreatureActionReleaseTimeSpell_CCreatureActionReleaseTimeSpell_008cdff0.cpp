@@ -1,6 +1,6 @@
 // CCreatureAction_ReleaseTimeSpell::CCreatureAction_ReleaseTimeSpell(long, CThingCreatureBase*, const CCharString&) -- the level at +0x114, base CCombatActionBase(owner, 145, zeroed CSoundPair), own vtable (0x012840F4), then the animation name is set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CDFF0, length 80 bytes.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCombatActionBase::SetAnimationName @ 0x008574D0.
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCombatActionBase::SetCombatAnimation @ 0x008574D0.
 // Shape: `ret 0Ch`; the first argument is the level (stored after the vtable), the owner is the second, the name the third.
 class CThingCreatureBase; class CThing; class CCharString;
 class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
@@ -14,7 +14,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     CCombatActionBase(long actionCode);                                                                         // 0x00857E40
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_ReleaseTimeSpell : public CCombatActionBase { public:   // vtable 0x012840F4
@@ -27,5 +28,5 @@ CCreatureAction_ReleaseTimeSpell::CCreatureAction_ReleaseTimeSpell(long level, C
     : CCombatActionBase(owner, 145, CSoundPair())
     , m_level(level)
 {
-    SetAnimationName(name);
+    SetCombatAnimation(name);
 }

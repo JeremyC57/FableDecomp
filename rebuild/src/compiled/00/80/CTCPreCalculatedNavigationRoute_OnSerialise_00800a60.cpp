@@ -11,13 +11,23 @@
 //   (CIntelligentPointer<const CThing>) +0x0C, ThingToCalculateRouteToUID +0x18, Route +0x20.
 // Shape: the CTCVillageMember::OnSerialise UID block (0x007EE3D0) behind a version Transfer; the zero register (ebp) is the
 //   long default, the null UID, the 64-bit default and the `false` push; the version local is passed on to LoadRoute.
+#define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
+#undef CTCBase
+class CThingManager;
+
+class CTCBase : public CTCBaseLayout
+{
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
+};
 class CThing { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UID;                       // +0x18
     unsigned char _pad20[0x8e - 0x20];
     short m_level;                              // +0x8e
-    bool IsLevelLess();                         // 0x004C7930
+public:
+    bool IsLevelLess() const;   // 0x004C7930
 };
 class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
@@ -29,18 +39,28 @@ class CPersistContext { public:
     void Transfer(const char* name, long& value, const long& defaultValue);                         // 0x00410BE0
     void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue); // 0x0044BB00
 };
-struct CBaseIntelligentPointer {
-    void* m_pNode;
-    void* m_pNext;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCPreCalculatedNavigationRoute : public CTCBase {
 public:
-    CBaseIntelligentPointer PThingToCalculateRouteTo;   // +0x0c
+    CIntelligentPointer<CThing> PThingToCalculateRouteTo;   // +0x0c
     unsigned char           _pad14[0x4];
     unsigned __int64        ThingToCalculateRouteToUID; // +0x18
     unsigned char           Route[0xc];                 // +0x20 vector<pair<C2DVector, unsigned char> >
-    CThingManager* GetThingManager();           // 0x00686AE0 (CTCBase)
     void SaveRoute(CPersistContext& context);   // 0x008006D0
     void LoadRoute(CPersistContext& context, long version);   // 0x008008B0
     void OnSerialise(CPersistContext& context, bool);
@@ -56,14 +76,14 @@ void CTCPreCalculatedNavigationRoute::OnSerialise(CPersistContext& context, bool
         } else {
             CThing* item = PThingToCalculateRouteTo.GetPItem();
             ThingToCalculateRouteToUID = item->UID;
-            ThingToCalculateRouteToUID = GetThingManager()->RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, ThingToCalculateRouteToUID);
+            ThingToCalculateRouteToUID = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, ThingToCalculateRouteToUID);
         }
         context.Transfer("ThingToCalculateRouteToUID", ThingToCalculateRouteToUID, 0);
         SaveRoute(context);
     } else {
         context.Transfer("ThingToCalculateRouteToUID", ThingToCalculateRouteToUID, 0);
         if (ThingToCalculateRouteToUID != 0)
-            ThingToCalculateRouteToUID = GetThingManager()->RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, ThingToCalculateRouteToUID);
+            ThingToCalculateRouteToUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, ThingToCalculateRouteToUID);
         LoadRoute(context, version);
     }
 }

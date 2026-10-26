@@ -16,8 +16,7 @@ template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_s
 
 class CPersistContext {
 public:
-    void Transfer(bool& value);                 // 0x0043314A
-    void Transfer(long& value);                 // 0x00431102
+    template <class T> void Transfer(T& value);                 // 0x0043314A
     void Transfer(CStlVector<long>& value);     // 0x00466A47
 };
 

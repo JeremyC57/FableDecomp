@@ -59,12 +59,13 @@ class CScriptThing { public:
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
-struct CPlayer_Retail {
+class CPlayer { public:
     CThing_Retail* GetHeroCreature();              // 0x00487DC0
     CThing_Retail* GetControlledCreature();        // 0x00487DD0
 };
-struct CPlayerManager_Retail {
-    CPlayer_Retail* GetMainPlayer();               // 0x00449970
+class CPlayerManager { public:
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CCharString;
 struct CDefinitionManager_Retail {
@@ -104,21 +105,23 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
     CThing_Retail* t = thing.GetThing();
     return t && !t->m_dead;
 }
-struct CTCLight_Retail { void SetActive(bool on); };   // 0x006412B0
+class CTCLight { public: public:
+    void SetActive(bool);   // 0x006412B0
+};   // 0x006412B0
 class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
     CMainGameComponent*         Component;         // +0x08
     CDisplayEngine*             DisplayEngine;     // +0x0c
     CDefinitionManager_Retail*  DefinitionManager; // +0x10
-    CPlayerManager_Retail*      PlayerManager;     // +0x14
+    CPlayerManager*      PlayerManager;     // +0x14
     CThingSearchTools*          ThingSearchTools;  // +0x18
     virtual void SetHeroHandLampAsLit(bool lit) const;
 };
 
 void CGameScriptInterface::SetHeroHandLampAsLit(bool lit) const
 {
-    CThing_Retail* hero = PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetHeroCreature();
     if (hero && !hero->m_dead)
-        ((CTCLight_Retail*)GetTCIfPresent(hero, 0x27))->SetActive(lit);
+        ((CTCLight*)GetTCIfPresent(hero, 0x27))->SetActive(lit);
 }

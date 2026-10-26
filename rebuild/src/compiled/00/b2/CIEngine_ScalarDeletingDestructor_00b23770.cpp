@@ -9,12 +9,12 @@
 // manifest label is kept only when unique) and frees the object when bit 0 of the flag is set
 // (operator delete @ 0x00BFE9BC, landed-trusted). Re-emitted per translation unit; this file is the
 // copy at this address. One of 9 bodies of this shape.
-struct CBase_0099a410 {
+class CInitBaseClass { public:
     virtual void v00();
-    ~CBase_0099a410();                          // 0x0099A410
+    virtual ~CInitBaseClass();                          // 0x0099A410
 };
 
-class CIEngine : public CBase_0099a410 { public:
+class CIEngine : public CInitBaseClass { public:
     virtual ~CIEngine() { }
 };
 

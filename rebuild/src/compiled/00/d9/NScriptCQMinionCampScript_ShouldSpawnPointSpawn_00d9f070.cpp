@@ -102,12 +102,15 @@ public:
 };
 
 namespace NScript {
+}   // namespace NScript (CScriptBase is global in retail)
 class CScriptBase {                                     // retail 0x40 bytes
 public:
     virtual ~CScriptBase();
     unsigned char _body[0x3c];
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
+public:
+    bool IsActiveThreadTerminating();   // 0x00CB7940
 };
+namespace NScript {
 class CQ_MinionCampScript : public CScriptBase {
 public:
     void*         Game;                                 // +0x40

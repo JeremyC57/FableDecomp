@@ -1109,13 +1109,18 @@ struct CQ_WizardBattleScript {
  unsigned char _pad50[4];
  long NumberOfScreamersAlive;                       // +0x54 (PDB +0x68)
 };
-struct CInitialScreamerPoint {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CInitialScreamerPoint : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CQ_WizardBattleScript* ParentClass;                // +0x14
  void* PMasterData;                                 // +0x18
  long CurrentAlpha;                                 // +0x1c
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CInitialScreamerPoint::Main()

@@ -3,6 +3,10 @@
 // Byte-exact reconstruction of CTCInventoryItem::OnDie @ 0x004e0deb
 // thiscall(void) modeled as __fastcall(self) so this arrives in ecx.
 
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 typedef unsigned long DWORD;
 
 class CTCInventoryItem { public:
@@ -12,17 +16,16 @@ class CTCInventoryItem { public:
 };
 
 // cdecl callee at 0xbfea14 (single-arg free/delete-like), stack cleaned by caller (pop ecx)
-extern "C" void __cdecl free_helper(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 // base destructor / OnDie at 0x9fc550, thiscall -> model as __fastcall(self)
-extern void __fastcall base_OnDie(CTCInventoryItem* self);
 
 void __fastcall OnDie(CTCInventoryItem* self)
 {
     void* p = self->p28;
     if (p) {
-        free_helper(p);
+        free(p);
     }
     self->vtable = (DWORD*)0x1230ba0;
-    base_OnDie(self);
+    ((CResource*)(self))->CResource::~CResource();
 }

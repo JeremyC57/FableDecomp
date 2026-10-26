@@ -135,14 +135,15 @@ class CWorld { public:
     CPlayer* GetCurrentPlayer();                // 0x0049D9D0
 };
 
-struct CTCBaseModel {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CWorld* GetWorld();                         // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
-class CTCWallMount : public CTCBaseModel { public:
+class CTCWallMount : public CTCBase { public:
     long                        BoughtForAmount;   // +0x0c
     CIntelligentPointer<CThing> Trophy;            // +0x10
     unsigned __int64            TrophyID;          // +0x18
@@ -161,7 +162,7 @@ CThing* CTCWallMount::UnattachObject(long* boughtForAmount)
         CTCTargeted* targeted;
         if (Trophy.GetPItem()->GetInterface(&targeted, 9))
             targeted->Targetable = true;
-        CThing* hero = GetWorld()->GetCurrentPlayer()->GetPlayerCharacter();
+        CThing* hero = GetWorld().GetCurrentPlayer()->GetPlayerCharacter();
         if (IS_THING_ALIVE(hero) && hero->HasTC(4))
             --((CTCHeroTrophies*)hero->GetTC(4))->MountedTrophies;
     }

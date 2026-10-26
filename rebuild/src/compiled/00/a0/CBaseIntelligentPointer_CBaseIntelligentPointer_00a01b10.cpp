@@ -1,19 +1,23 @@
-// CBaseIntelligentPointer::CBaseIntelligentPointer() -- sets the vtable (0x0129C95C) and nulls the member at +4
+// CBaseIntelligentPointer::CBaseIntelligentPointer() -- sets the vtable (0x0129C95C) and nulls the record pointer at +4
+// Leaf: ??0CBaseIntelligentPointer@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A01B10, oracle length 16 bytes.
-// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); the batch README records the lane verdict.
-//
-// Retail bytes:  mov eax, ecx ; mov dword ptr [eax], 0x129c95c ; mov dword ptr [eax + 4], 0 ; ret 
-// Tiny-body shape `CtorVtableNull`: a polymorphic class with one pointer member, default-constructed
-// to null (the vtable address is a relocation). The class comes from the manifest label when it is
-// a plain class name; member names are descriptive.
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                         // +4
-    CBaseIntelligentPointer();
+// Identity: Ego_r.pdb + FableWin.pdb ??0CBaseIntelligentPointer@@QAE@XZ; the vtable stored is 0x0129C95C
+//   (RTTI .?AVCBaseIntelligentPointer@@). Ego_r layout: vptr + CBaseObjectPointer* PData (+0x04).
+class CBaseObject;
+class CBaseObjectPointer {                             // Ego_r.pdb, 8 bytes
+public:
+    CBaseObject*  object;                              // +0x00 the observed object, 0 once it died
+    unsigned long refcount;                            // +0x04 intelligent pointers sharing this record
+};
+class CBaseIntelligentPointer {                        // vtable 0x0129C95C
+public:
+    CBaseIntelligentPointer();                         // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                // 0x00A01C10
+private:
+    mutable CBaseObjectPointer* PData;                 // +0x04
 };
 
 CBaseIntelligentPointer::CBaseIntelligentPointer()
-    : m_pItem(0)
+    : PData(0)
 {
 }

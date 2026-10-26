@@ -48,8 +48,9 @@ __declspec(noinline) bool CObjectDef::GetSubDef(CDefPointer<CAppearanceModifierD
 }
 #pragma auto_inline(on)
 class CDefinitionManager { public:
-    CDefString GetDefClassTypeNameFromGlobalIndex(long globalIndex);     // 0x009ACCE0
     bool GetDef(long globalIndex, CDefPointer<CObjectDef>& out);          // 0x0042B040
+public:
+    CDefString GetDefClassTypeNameFromGlobalIndex(long) const;   // 0x009ACCE0
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def

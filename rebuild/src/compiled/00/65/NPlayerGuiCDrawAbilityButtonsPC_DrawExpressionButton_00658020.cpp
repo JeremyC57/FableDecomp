@@ -71,7 +71,10 @@ class CPlayerGuiDef { public:
     ButtonVector  AbilityButtons;               // +0x7fc
     ButtonVector  ExpressionButtons;            // +0x808
 };
-extern CPlayerGuiDef* __fastcall PeekGuiDef();  // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};  // 0x00438570
 class CEnginePrimitivePrepareInfo;
 enum EEngine2DLayer { LAYER_44 = 0x44, LAYER_45 = 0x45 };
 
@@ -107,7 +110,7 @@ void CDrawAbilityButtonsPC::DrawExpressionButton(CEnginePrimitivePrepareInfo* in
             if (index >= 0) {
                 long count = expressions->size();
                 if (index < (count + 2) / Columns * Columns && (unsigned int)index < expressions->size()) {
-                    CPlayerGuiDef* def = PeekGuiDef();
+                    const CPlayerGuiDef* def = (&CPlayerGui::PeekGuiDef());
                     long button = def->AbilityButtons.size() + index + 7;
                     C2DVector pos;
                     GFAPositionToScreen(&pos, &def->ExpressionOrigin);

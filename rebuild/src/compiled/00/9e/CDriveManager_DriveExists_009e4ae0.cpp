@@ -19,7 +19,10 @@ class CWideString { public:
     operator const wchar16*();               // 0x0099AF00
     ~CWideString();                          // 0x0099B510
 };
-CWideString __fastcall GetCurrentWorkingDirectory();   // 0x00997F80
+class CAFile {
+public:
+    static CWideString __fastcall GetCurrentPath();   // 0x00997F80
+};   // 0x00997F80
 
 class CSystemManager;
 
@@ -31,7 +34,7 @@ class CDriveManager { public:
 
 long CDriveManager::DriveExists(wchar16 driveLetter)
 {
-    CWideString workingDirectory = GetCurrentWorkingDirectory();
+    CWideString workingDirectory = CAFile::GetCurrentPath();
     wchar16 root[4];
     root[0] = driveLetter;
     root[1] = 0x3a;                          // ':'

@@ -3,8 +3,8 @@
 // Leaf: ?Transfer@CAppearanceDef@@UAEXAAVCPersistContext@@@Z
 // Callees (CPersistContext typed transfers; their manifest labels are propagated): CEngineGraphic
 // 0x00451E11, CAnimationSet 0x0047367A, unsigned char 0x00473593, bool 0x0043314A, ELightingChannel
-// 0x004735D6, float 0x00431061; then CAnimationSet::EnsureSorted 0x005DEDC0 (sorts the entry vector map
-// when its dirty byte +0x0D is set, then finishes the set).
+// 0x004735D6, float 0x00431061 (CPersistContext::Transfer<T>); then CVectorMap<unsigned long, CAnimationEntry,
+// CKeyPairCompareLess>::SortAndTrim 0x005DEDC0 on Animation.Anims (sorts the entry map when its dirty byte +0x0D is set).
 // Layout: Ego_r.pdb CAppearanceDef with the retail 0x20-byte CAnimationSet (the PDB's is 0x24): the
 // 14-byte CEngineGraphic Graphic at the unaligned +0x25 (#pragma pack(1)), Animation +0x34,
 // OutlineEffectAlphaRef / Bias +0x54 / +0x55, OverrideLightingChannel +0x56, LightingChannel +0x58,
@@ -20,29 +20,30 @@ class CEngineGraphic { public:                    // 14 bytes
 };
 #pragma pack(pop)
 
+class CAnimationEntry;
+template <class K, class V> class CKeyPairCompareLess { };
+template <class K, class V, class C> class CVectorMap { public:   // 0x10 bytes
+    void* Data[3];                         // +0x00 CArray< SPair<K, V> >
+    C Compare;                             // +0x0C
+    bool Dirty;                            // +0x0D
+    void SortAndTrim();                    // 0x005DEDC0
+};
+
 class CAnimationSet { public:                     // retail 0x20 bytes
-    void* m_pFirst;                        // +0x00 Anims (CVectorMap)
-    void* m_pLast;                         // +0x04
-    void* m_pEnd;                          // +0x08
-    unsigned char m_compare;               // +0x0C
-    bool m_dirty;                          // +0x0D
+    CVectorMap<unsigned long, CAnimationEntry, CKeyPairCompareLess<unsigned long, CAnimationEntry> > Anims;   // +0x00
     long DefaultFlags;                     // +0x10
     long DefaultTransitionTime;            // +0x14
     long DefaultDelay;                     // +0x18
     long DefaultGroup;                     // +0x1C CDefString
-    void EnsureSorted();                   // 0x005DEDC0
 };
 
 enum ELightingChannel { LIGHTING_CHANNEL_DEFAULT = 0 };
 
 class CPersistContext {
 public:
-    void Transfer(CEngineGraphic* value);  // 0x00451E11
-    void Transfer(CAnimationSet* value);   // 0x0047367A
-    void Transfer(unsigned char* value);   // 0x00473593
-    void Transfer(bool* value);            // 0x0043314A
-    void Transfer(ELightingChannel* value);   // 0x004735D6
-    void Transfer(float* value);           // 0x00431061
+    template <class T> void Transfer(T& value);   // one-argument helpers (namepass TR2/DEF1): CEngineGraphic 0x00451E11,
+                                                  // CAnimationSet 0x0047367A, unsigned char 0x00473593, bool 0x0043314A,
+                                                  // ELightingChannel 0x004735D6, float 0x00431061
 };
 
 #pragma pack(push, 1)
@@ -69,16 +70,16 @@ public:
 
 void CAppearanceDef::Transfer(CPersistContext& context)
 {
-    context.Transfer(&Graphic);
-    context.Transfer(&Animation);
-    context.Transfer(&OutlineEffectAlphaRef);
-    context.Transfer(&OutlineEffectAlphaBias);
-    context.Transfer(&OverrideLightingChannel);
-    context.Transfer(&LightingChannel);
-    context.Transfer(&FadeOutWhenCloseGraphic);
-    context.Transfer(&HasFadeOutWhenCloseGraphic);
-    context.Transfer(&FadeOutGraphicRenderFadeDistance);
-    context.Transfer(&FadeOutGraphicNearRenderFadeDistance);
-    context.Transfer(&FadeOutGraphicNearRenderClipDistance);
-    Animation.EnsureSorted();
+    context.Transfer(Graphic);
+    context.Transfer(Animation);
+    context.Transfer(OutlineEffectAlphaRef);
+    context.Transfer(OutlineEffectAlphaBias);
+    context.Transfer(OverrideLightingChannel);
+    context.Transfer(LightingChannel);
+    context.Transfer(FadeOutWhenCloseGraphic);
+    context.Transfer(HasFadeOutWhenCloseGraphic);
+    context.Transfer(FadeOutGraphicRenderFadeDistance);
+    context.Transfer(FadeOutGraphicNearRenderFadeDistance);
+    context.Transfer(FadeOutGraphicNearRenderClipDistance);
+    Animation.Anims.SortAndTrim();
 }

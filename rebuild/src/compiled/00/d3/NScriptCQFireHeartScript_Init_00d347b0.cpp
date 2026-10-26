@@ -31,9 +31,9 @@ namespace N_006e7b40 { struct CScriptThing {                                   /
     ~CScriptThing();                                    // 0x004AA840
 }; } using N_006e7b40::CScriptThing;
 class CScriptGameResourceObjectScriptedThingBase { public:    // 0x10 bytes, vtable 0x0127094C
-    unsigned char _body[0x10];
+    unsigned char _body[0x10 - 4];
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0
-    ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
 };
 class CFireHeartPatternDef;
 struct CFireHeartPatternVector {                        // vector<CFireHeartPatternDef> (retail 12 bytes)
@@ -168,10 +168,12 @@ class CScriptDef { public:
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
+namespace NScript {
 enum EMissionHistory { MISSION_HISTORY_NONE };
 class CQ_FireHeartScript : public CScriptBase {
 public:

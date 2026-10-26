@@ -65,7 +65,8 @@ class CPlayer { public:
     CThing* GetHeroThing() const;                        // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                            // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
@@ -86,7 +87,7 @@ struct CQuestInfoElementMiniGameBar {
 bool CQuestInfoElementMiniGameBar::Update()
 {
     if (Updatable) {
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroThing();
+        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetHeroThing();
         CTCInventory* inventory;
         if (IS_THING_ALIVE<CThingPlayerCreature*>((CThingPlayerCreature*)hero) && hero->GetInterface(&inventory, 0x11)) {
             switch (Type) {

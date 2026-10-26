@@ -77,20 +77,23 @@ inline bool IS_THING_ALIVE(const CThing* thing)
 }
 
 class CTCCarrying { public:                                 // interface type 0x46
-    CThing* GetThingInPrimarySlot();                 // 0x006A1440
     CThing* RemoveThingInCarrySlot(long slot, bool drop);   // 0x006A16A0
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 class CTCWeapon { public:                                   // interface type 0x48
     long GetAmmoCarrySlot();                         // 0x005DA920 (catalog "CCategory::GetCategoryIdentifier")
-    bool IsProjectileWeapon();                       // 0x005DAA40
     bool IsAnalogueLoading();                        // 0x005DA950
     void SetProjectileWeaponLoaded(bool loaded, CThing* ammo);   // 0x005DAC50
+public:
+    bool IsProjectileWeapon() const;   // 0x005DAA40
 };
 class CTCAnimatingObject { public:                          // interface type 0x83
     void PlayDefaultAnimation();                     // 0x007F8F30
 };
 class CTCSoundPlayer { public:                              // interface type 0x10
-    void StopSample(unsigned long sampleID);         // 0x0066ADD0
+public:
+    void StopAttachedSound(unsigned long);   // 0x0066ADD0
 };
 
 class CDefPointeeBase { public:
@@ -169,7 +172,7 @@ void CTCHeroRangedAttacks::CancelAimingWeapon()
     CTCSoundPlayer* sound;
     if (ParentThing->GetInterface(&sound, 0x10)) {
         if (BowDrawbackSoundID)
-            sound->StopSample(BowDrawbackSoundID);
+            sound->StopAttachedSound(BowDrawbackSoundID);
     }
     BowDrawbackSoundID = 0;
 }

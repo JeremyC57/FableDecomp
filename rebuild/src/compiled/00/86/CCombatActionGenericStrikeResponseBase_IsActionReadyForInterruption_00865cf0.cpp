@@ -8,21 +8,32 @@
 // Shape: ONE `(A && B) || (C && D)` condition returning true (single `mov al,1` tail reached by `jne` from the
 // first clause); written as two separate ifs VC hoists `mov al,1` and compares the state against al.
 // No engine header exists for this class; CCombatActionBase retail sizeof is 0x114 (the PDB build's is 0x12c).
-struct CThingCreatureBase_Retail {              // engine/CThingCreatureBase.h exists but is not used: only the combat-state byte at +0x10 is read (retail offset)
+class CThingCreatureBase_Retail { public:              // engine/CThingCreatureBase.h exists but is not used: only the combat-state byte at +0x10 is read (retail offset)
     unsigned char _pad[0x10];
     unsigned char CombatState;                  // +0x10
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThingCreatureBase_Retail* GetPItem() const;       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
-    CBaseIntelligentPointer PCreature;          // +0x08
+    CIntelligentPointer<CThingCreatureBase_Retail> PCreature;          // +0x08
     long TotalTime;                             // +0x10
     long ActionTime;                            // +0x14
     long AnimDelayTime;                         // +0x18

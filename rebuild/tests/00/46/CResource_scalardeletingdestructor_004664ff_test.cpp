@@ -6,12 +6,17 @@ class CLandscapeBackgroundPatch { public: int dummy; };
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 
-extern "C" void __fastcall CResource_dtor(CLandscapeBackgroundPatch* thisptr)
+class CResource {
+public:
+    virtual ~CResource();
+};
+CResource::~CResource()
 {
+    CLandscapeBackgroundPatch* thisptr = (CLandscapeBackgroundPatch*)this; (void)thisptr;
     (void)thisptr;
     ++g_dtor_calls;
 }
-extern "C" void __cdecl fable_operator_delete(void* p)
+void __cdecl operator delete(void* p)
 {
     (void)p;
     ++g_delete_calls;

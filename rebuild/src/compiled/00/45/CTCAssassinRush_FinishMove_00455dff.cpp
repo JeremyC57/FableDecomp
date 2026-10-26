@@ -15,15 +15,15 @@ class CTCAssassinRush { public:
     SubA a84;        // 0x84
 };
 
-extern void __cdecl engine_free(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CTCAssassinRush_FinishMove(CTCAssassinRush* self)
 {
     self->a84.FinishA();
     if (self->p5c)
-        engine_free(self->p5c);
+        free(self->p5c);
     self->b50.FinishB();
     if (self->p3c)
-        engine_free(self->p3c);
+        free(self->p3c);
     ((CTCMoveBase*)self)->FinishMove();
 }

@@ -4,7 +4,8 @@
 // (on the data at +0x1c of the node; a bool in al). Shape: the set address is formed with `lea esi,[ecx+8]` and its first word re-read for the sentinel compare;
 // `xor al,al` for the miss.
 class CBankFileAsyncData { public:
-    bool IsFinished();                             // 0x009D54E0
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
 struct SBlockNode_00be0400 {                        // the set node: the async data at +0x1c, the high-priority flag at +0x18, the pending count at +0x14
     unsigned char       _pad[0x14];

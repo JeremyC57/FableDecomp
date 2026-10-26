@@ -24,15 +24,26 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     const SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    void* PointerInfo;
-    CThing* GetPItem() const;                               // 0x00A01B50
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CTCBuildingOccupant : CTCBase {                      // component 0x75 (descriptive)
     unsigned char           _pad08[4];
-    CBaseIntelligentPointer Building;                       // +0x0C
+    CIntelligentPointer<CThing> Building;                       // +0x0C
 };
 
 class CThing {

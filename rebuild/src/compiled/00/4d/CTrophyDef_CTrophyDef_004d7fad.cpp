@@ -15,12 +15,12 @@ class CCharString { public:
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CResource_Calls {                           // the root base
+class CResource { public:                           // the root base
     virtual void v00();
-    ~CResource_Calls();                            // 0x009FC550
+    virtual ~CResource();                            // 0x009FC550
 };
 
-class CDefPointeeBase : public CResource_Calls { public:         // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:         // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }
 };

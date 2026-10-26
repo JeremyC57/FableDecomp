@@ -16,8 +16,9 @@
 class CDataOutputStream { public:
     void WriteCBYTE(char value);                   // 0x00993E50
     void WriteUShort(unsigned short value);        // 0x00993E80
-    void WriteULong(unsigned long value);          // 0x00993EA0
-    void WriteLong(long value);                    // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 struct CSubDefInfo {                               // CDefClassBase::CSubDefInfo
@@ -25,8 +26,8 @@ struct CSubDefInfo {                               // CDefClassBase::CSubDefInfo
     long Count;
     void Save(CDataOutputStream& stream) const
     {
-        stream.WriteLong(DefIndex);
-        stream.WriteLong(Count);
+        stream.WriteSLONG(DefIndex);
+        stream.WriteSLONG(Count);
     }
 };
 
@@ -85,7 +86,7 @@ void CParentDefClassBase::InternalSaveBinary(CDataOutputStream& stream)
     unsigned long count = SubDefInfoMap.size();
     stream.WriteUShort((unsigned short)count);
     for (unsigned long i = 0; i < count; ++i) {
-        stream.WriteULong(SubDefInfoMap[i].first);
+        stream.WriteULONG(SubDefInfoMap[i].first);
         SubDefInfoMap[i].second.Save(stream);
     }
 }

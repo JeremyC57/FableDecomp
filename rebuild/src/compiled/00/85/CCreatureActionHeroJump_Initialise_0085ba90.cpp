@@ -1,7 +1,7 @@
 // CCreatureActionHeroJump::Initialise() -- set the "ST_JUMP" animation, touch the creature, then the base initialisation
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085BA90, length 59 bytes. Vtable slot 12 of CCreatureActionHeroJump (0x012766A4).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal "ST_JUMP" @ 0x0127654C, length -1),
-// CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0,
+// CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8; the result is unused -- a GetCreature() call whose
 // value the retail source dropped, kept because the accessor is out of line), CCombatActionBase::Initialise @ 0x00857520
 // (the base virtual, called non-virtually; slot 12 as well).
@@ -15,10 +15,21 @@ class CCharString { public:                        // retail CCharString is one 
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThingCreatureBase* m_pItem;            // +0x04
-    CThingCreatureBase* GetPItem() const;   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:
@@ -26,8 +37,9 @@ class CCombatActionBase { public:
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12 (+0x30), 0x00857520
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    CIntelligentPointer<CThingCreatureBase> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureActionHeroJump : public CCombatActionBase { public:
@@ -38,7 +50,7 @@ void CCreatureActionHeroJump::Initialise()
 {
     {
         CCharString name("ST_JUMP");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     PCreature.GetPItem();
     CCombatActionBase::Initialise();

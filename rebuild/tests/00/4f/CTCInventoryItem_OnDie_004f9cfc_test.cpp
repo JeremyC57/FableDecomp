@@ -10,7 +10,14 @@ static void* g_freed_ptr = 0;
 static int g_base_called = 0;
 
 extern "C" void __cdecl free_bfea14(void* p) { g_freed++; g_freed_ptr = p; }
-void __fastcall base_430300(CTCInventoryItem* self) { g_base_called++; (void)self; }
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();
+};
+CParentDefClassBase::~CParentDefClassBase()
+{
+    CTCInventoryItem* self = (CTCInventoryItem*)this; (void)self; g_base_called++; (void)self;
+}
 
 void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* self);
 

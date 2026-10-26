@@ -49,8 +49,9 @@ class CThing { public:
 };
 
 class CQuestManager { public:
-    CThing* GetActiveQuestCardFromScriptName(const CCharString& scriptName);   // 0x004B0C80
     void SetQuestCardGoldReward(const CCharString& scriptName, long reward);
+public:
+    CThing* GetActiveQuestCardFromScriptName(const CCharString&) const;   // 0x004B0C80
 };
 
 void CQuestManager::SetQuestCardGoldReward(const CCharString& scriptName, long reward)

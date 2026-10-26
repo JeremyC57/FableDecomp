@@ -8,8 +8,9 @@
 // CScriptThing Me +8}, ParentClass +0x14, PMasterData +0x18, SpectatorNumber +0x1C. Model as the landed CKG_Sheriff::Init
 // 0x00D1DFF0. Strings: "Spectator1" 0x012E7450, "Spectator2" 0x012E7418.
 // Shape: each marker test is a named bool filled inside its own block (name + temporary destroyed before the test);
-// every arm is `if (IsDone()) return; SpectatorNumber = n;` -- VC hoists the second pair's shared IsDone call above
+// every arm is `if (IsActiveThreadTerminating()) return; SpectatorNumber = n;` -- VC hoists the second pair's shared IsDone call above
 // the branch on the second result.
+namespace NScript { class CPredicateBase; }
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 class CCharString { public:
     void* m_pData;
@@ -63,14 +64,19 @@ extern const char g_spectator1[];                  // 0x012E7450 "Spectator1"
 extern const char g_spectator2[];                  // 0x012E7418 "Spectator2"
 struct CV_ChickenKickingScript;
 struct CQ_SunnyvaleMasterData;
-struct CSpectator {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CSpectator : public CEntityScriptBase {
     void*                    __vftable;            // +0x00
     CGameScriptInterface*    Game;                 // +0x04
     CScriptThing             Me;                   // +0x08
     CV_ChickenKickingScript* ParentClass;          // +0x14
     CQ_SunnyvaleMasterData*  PMasterData;          // +0x18
     long                     SpectatorNumber;      // +0x1c
-    bool IsDone();                                 // 0x00F35B30
     void Init();
 };
 
@@ -82,7 +88,7 @@ void CSpectator::Init()
         nearFirst = IsDistanceBetweenThingsUnder(Me, Game->GetThingWithScriptName(name), 1.0f);
     }
     if (nearFirst) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         SpectatorNumber = 1;
         return;
@@ -93,12 +99,12 @@ void CSpectator::Init()
         nearSecond = IsDistanceBetweenThingsUnder(Me, Game->GetThingWithScriptName(name), 1.0f);
     }
     if (nearSecond) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         SpectatorNumber = 2;
         return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     SpectatorNumber = 3;
 }

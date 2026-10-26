@@ -9,13 +9,12 @@ class CInputProcessClickPastText
 };
 
 // operator delete used by the class (0xbfe9bc)
-void ClassOperatorDelete(void* p);
 
 void* __fastcall CInputProcessClickPastText_scalar_deleting_destructor(
     CInputProcessClickPastText* process, int /*edx*/, unsigned int flags)
 {
     process->Destroy();
     if (flags & 1)
-        ClassOperatorDelete(process);
+        operator delete(process);
     return process;
 }

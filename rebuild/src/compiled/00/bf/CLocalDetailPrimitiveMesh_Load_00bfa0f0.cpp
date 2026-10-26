@@ -15,7 +15,6 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
     __forceinline void Read(void* dst, long size) {
         __int64 np = (__int64)(StreamPos + size);
@@ -25,6 +24,8 @@ class CDataInputStream { public:
         } else ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
     template <class T> __forceinline void Read(T& value) { Read(&value, sizeof(T)); }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 class C3DVector { public: float X, Y, Z; };
 class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };             // 0x18

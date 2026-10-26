@@ -5,7 +5,18 @@
 // stage + 1 of the TextureStagesInUse grow). Then the same tail as the landed four-argument overload.
 // Callees: CRenderStateManager::RealiseRenderState @ 0x00A058C0; IDirect3DDevice9::SetTexture (slot 65, +0x104);
 // IDirect3DDevice9::DrawIndexedPrimitiveUP (slot 84, +0x150), D3DPT_TRIANGLELIST, D3DFMT_INDEX16 (0x65).
+#define CRenderManagerCore CRenderManagerCoreLayout
 #include "engine/CRenderManagerCore.h"
+#undef CRenderManagerCore
+
+class CRenderStateManager
+{
+public:
+    void RealiseRenderState();   // 0x00A058C0
+};
+class CRenderManagerCore : public CRenderStateManager, public CRenderManagerCoreLayout
+{
+};
 
 // d3d9.h is not on the verifier include path, so the IDirect3DDevice9 vtable is declared locally
 // (COM methods are __stdcall with `this` pushed; unnamed slots are placeholders).
@@ -53,7 +64,6 @@ class CTexture { public:
 };
 
 struct CRenderManagerCore_Methods : CRenderManagerCore {
-    void RealiseRenderState();      // 0x00A058C0 (CRenderStateManager, the primary base at +0)
 
     // CRenderManagerCore::AttachTextureToStage (out-of-line copy landed at 0x009A0CF0), inlined into the
     // texture-array overloads: rebind only a changed stage, then grow TextureStagesInUse to cover it.

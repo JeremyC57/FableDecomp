@@ -22,7 +22,8 @@ class CTCBase { public:
     bool          ToBeRemoved;                      // +0x08
     bool          IsInGlobalUpdateTCs;              // +0x09
     CTCBase(CThing* parent);                        // 0x00686800
-    void AddToGlobalUpdateTCs();                    // 0x00686ED0
+public:
+    void AddToGlobalTCs();   // 0x00686ED0
 };
 
 struct CBoast { unsigned char _body[0x20]; };       // CQuestManager::CBoast
@@ -82,5 +83,5 @@ CTCBoastUI::CTCBoastUI(CThing* parent)
     , ActivationRequested(false)
     , ActivateLater(false)
 {
-    AddToGlobalUpdateTCs();
+    AddToGlobalTCs();
 }

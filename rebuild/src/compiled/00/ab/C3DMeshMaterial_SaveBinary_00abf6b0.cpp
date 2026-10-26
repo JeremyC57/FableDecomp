@@ -7,12 +7,19 @@
 // and self-illumination; its propagated label says WriteCBYTE) -- the landed lane names; 0x00993E30 writes a normalized
 // boolean byte, 0x00995AE0 writes characters plus NUL.
 class CCharString { public: void* m_pStringData; };
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteSLONG(long);   // 0x00993EB0
+    void WriteULONG(unsigned long);   // 0x00993EA0
+    void WriteNullTerminatedString(const CCharString&);   // 0x00995AE0
+};
 struct CDataOutputStreamMethods : CDataOutputStream {
-    void WriteLong(long value); // 0x00993EB0
-    void WriteULong(unsigned long value); // 0x00993EA0
-    void WriteEBOOL(bool value); // 0x00993E30
-    void WriteNullTerminatedString(const CCharString& value); // 0x00995AE0
 };
 struct CMaterialFilenames {
     void* __vftable; // +0: counted-object vptr, established by 00ABEF60
@@ -43,15 +50,15 @@ class C3DMeshMaterial : public CBaseClass { public:
 void C3DMeshMaterial::SaveBinary(CDataOutputStream& destination)
 {
     CDataOutputStreamMethods& stream=(CDataOutputStreamMethods&)destination;
-    stream.WriteLong(MaterialIndex);
+    stream.WriteSLONG(MaterialIndex);
     stream.WriteNullTerminatedString(Name);
-    stream.WriteLong(DecalID);
-    stream.WriteULong(DiffuseMapBankIndex);
-    stream.WriteULong(BumpMapBankIndex);
-    stream.WriteULong(ReflectionMapBankIndex);
-    stream.WriteULong(IlluminationMapBankIndex);
-    stream.WriteULong(MapFlags);
-    stream.WriteULong(SelfIllumination);
+    stream.WriteSLONG(DecalID);
+    stream.WriteULONG(DiffuseMapBankIndex);
+    stream.WriteULONG(BumpMapBankIndex);
+    stream.WriteULONG(ReflectionMapBankIndex);
+    stream.WriteULONG(IlluminationMapBankIndex);
+    stream.WriteULONG(MapFlags);
+    stream.WriteULONG(SelfIllumination);
     stream.WriteEBOOL(TwoSided);
     stream.WriteEBOOL(Transparent);
     stream.WriteEBOOL(BooleanAlpha);

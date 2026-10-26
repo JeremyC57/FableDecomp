@@ -5,6 +5,7 @@
 // ParentClass +0x14 (CQ_SecretPassageScript*), PMasterData +0x18; the quest pointer at +4 and the door CScriptThing at +8 are the base's.
 // Shape: the while loop is top-tested with the test duplicated at the bottom (`je` back to the body); ParentClass and its flag byte at
 // +0x4b are re-read every iteration (the virtual tick could change them), the abort test returns straight out of the loop.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:
     long m_thingId;
 };
@@ -27,13 +28,18 @@ struct CQ_SecretPassageScript {
 
 struct CQuestCalls;
 
-struct CDoorToMothersTortureChamber {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CDoorToMothersTortureChamber : public CEntityScriptBase {
     void*                    __vftable;            // +0x00
     CQuestCalls*             PQuest;               // +0x04
     CScriptThing             Door;                 // +0x08
     unsigned char            _pad0c[8];            // +0x0c
     CQ_SecretPassageScript*  ParentClass;          // +0x14
-    bool IsAborted();                              // 0x00F35B30
     void Main();
 };
 
@@ -109,10 +115,10 @@ void CDoorToMothersTortureChamber::Main()
 {
     while (!ParentClass->m_doorReleased) {
         PQuest->Tick();
-        if (IsAborted())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsAborted())
+    if (IsActiveThreadTerminating())
         return;
     PQuest->OpenDoor(&Door, true);
 }

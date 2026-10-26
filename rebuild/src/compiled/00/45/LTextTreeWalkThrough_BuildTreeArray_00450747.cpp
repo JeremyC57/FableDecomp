@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 class TreeNode { public: char pad0[8]; TreeNode* next; TreeNode* child; };
-extern "C" void FreeNode(TreeNode* n); // reloc-masked free callee
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CLTextTreeWalkThrough {
     void BuildTreeArray(TreeNode* node);
@@ -12,7 +12,7 @@ void CLTextTreeWalkThrough::BuildTreeArray(TreeNode* node)
         do {
             this->BuildTreeArray(node->child);
             TreeNode* nxt = node->next;
-            FreeNode(node);
+            free(node);
             node = nxt;
         } while (node);
     }

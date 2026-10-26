@@ -31,10 +31,9 @@ CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);
 CWideString __fastcall GetLevelsDirectory();                                     // 0x0041A060
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CDiskFileWin32 { public:                                // 0x1c bytes
-    void* _vtbl;
     unsigned char _body[0x18];
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
-    ~CDiskFileWin32();                                 // 0x00401630 (out-of-line copy)
+    virtual ~CDiskFileWin32();                                 // 0x00401630 (out-of-line copy)
 };
 void __fastcall CopyFileW(CDiskFileWin32& from, CDiskFileWin32& to);   // 0x00998E70
 namespace NProgressDisplay {
@@ -84,7 +83,9 @@ public:
     unsigned char                  _pad02c[0x161d0 - 0x2c];
     CMainGameComponentInit         InitStructure;      // +0x161d0
     void Register(CRegistration* registration);        // 0x004BBC00
-    void PostInit();
+
+protected:
+    virtual void PostInit();
 };
 
 void CMainGameComponent::PostInit()

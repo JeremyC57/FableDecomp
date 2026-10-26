@@ -46,11 +46,11 @@ class CGameScriptInterface { public:                       // CGameScriptInterfa
     virtual void UpdateQuestInfoCounter(long id, long count, long target) const;   // slot 335 (+0x53c) CGameScriptInterface::UpdateQuestInfoCounter @ 0x00891BD0
 };
 
-struct CMasterData {
+class CScriptDef { public:
     unsigned char _pad000[0x354];
     const float*  m_pArcheryDistanceBands;                  // +0x354: three ascending distances
 };
-extern CMasterData* g_pMasterData;                          // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                          // 0x0143E90C
 
 class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     unsigned char _body[0x40];
@@ -75,7 +75,7 @@ using NScript::CV_ArcheryCompetitionScript;
 
 void NScript::CV_ArcheryCompetitionScript::CalculateScoreForHit(long points, float distance)
 {
-    const float* bands = g_pMasterData->m_pArcheryDistanceBands;
+    const float* bands = pGlobalScriptDef->m_pArcheryDistanceBands;
     if (distance < bands[0]) {
         if (IsActiveThreadTerminating())
             return;

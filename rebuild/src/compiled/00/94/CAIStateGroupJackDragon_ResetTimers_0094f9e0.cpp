@@ -2,7 +2,10 @@
 // Faithful VC7.1 reconstruction.
 
 #include "engine/CAIStateGroup_JackDragon.h"  // retyped onto the PDB layout; byte parity re-verified
-int  GetCurrentTimeValue(void);        // 0x0049d870 : returns int in eax
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};        // 0x0049d870 : returns int in eax
 void ResetHelper(void);                // 0x008fcfc0 : return discarded
 
 struct CAIStateGroup_JackDragon_Methods : CAIStateGroup_JackDragon {
@@ -15,7 +18,7 @@ void CAIStateGroup_JackDragon_Methods::ResetTimers()
 {
     this->FramesInSnapRange = 0;
     ResetHelper();
-    int t = GetCurrentTimeValue();
+    int t = CWorld::GetFrame();
     this->FrameOfLastSlam = t;
     this->FrameWhenLastInRange = t;
 }

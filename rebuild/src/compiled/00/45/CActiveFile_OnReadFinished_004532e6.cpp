@@ -2,7 +2,7 @@
 // Leaf: OnReadFinished
 struct CInner;
 extern void __fastcall Inner_Process(CInner* self, int edxparam, char* p);
-void __cdecl free(void*);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CActiveFile {
     CInner* p;   /* +0x0 */

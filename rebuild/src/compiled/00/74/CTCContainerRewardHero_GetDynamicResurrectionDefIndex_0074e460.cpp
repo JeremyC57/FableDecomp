@@ -70,16 +70,26 @@ class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                               // 0x00449960
 };
 
-class CTCContainerRewardHero { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
+class CTCContainer : public CTCBase
+{
+public:
+};
+
+class CTCContainerRewardHero : public CTCContainer { public:
     CThing* ParentThing;                                    // +0x04 (CTCBase)
-    CPlayerManager* GetPlayerManager();                     // 0x00686D50 (CTCBase)
     long GetDynamicResurrectionDefIndex();
 };
 
 long CTCContainerRewardHero::GetDynamicResurrectionDefIndex()
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetControlledCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetControlledCreature();
     if (IsThingAlive(hero) && hero->HasInterface(0x11))
     {
         CTCInventoryBase* inventory = (CTCInventoryBase*)hero->GetInterface(0x11);

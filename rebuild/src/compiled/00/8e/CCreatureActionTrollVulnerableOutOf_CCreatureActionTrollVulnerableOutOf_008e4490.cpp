@@ -1,7 +1,7 @@
 // CCreatureAction_TrollVulnerableOutOf::CCreatureAction_TrollVulnerableOutOf(CThingCreatureBase*) -- base CCombatActionBase(owner, 50, zeroed CSoundPair), own vtable (0x01285F44, rtti-vtables.tsv), then the animation name "VULNERABLE_OUTOF"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E4490, length 87 bytes.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
-// CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal "VULNERABLE_OUTOF"), CCombatActionBase::SetAnimationName
+// CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal "VULNERABLE_OUTOF"), CCombatActionBase::SetCombatAnimation
 // @ 0x008574D0 (manifest label "CTCInGameMenu::SetPDef" is propagated; the landed combat-action shells name it so),
 // CCharString::~CCharString @ 0x0099EAE0
 // Shape: the sound pair is built zeroed on the stack by its inline constructor (register-zeroed stores before the
@@ -26,7 +26,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114 (the P
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);                                           // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_TrollVulnerableOutOf : public CCombatActionBase { public:             // vtable 0x01285F44; adds no data
@@ -39,6 +40,6 @@ CCreatureAction_TrollVulnerableOutOf::CCreatureAction_TrollVulnerableOutOf(CThin
 {
     {
         CCharString name("VULNERABLE_OUTOF");         // conversion-constructor length default (-1), re-addressed with lea
-        SetAnimationName(name);            // 0x008574D0
+        SetCombatAnimation(name);            // 0x008574D0
     }
 }

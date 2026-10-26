@@ -1,6 +1,6 @@
 // NParticleEngine::CPSCOrbit::WriteBinary(CDataOutputStream*) -- writes the centre-position parameter id, then the three orbit settings records as one raw 0x90-byte block
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B163E0, length 40 bytes.
-// Callees: CDataOutputStream::WriteULong @ 0x00993EA0, CDataOutputStream virtual slot 4 (+0x10) WriteData(const void*, unsigned long).
+// Callees: CDataOutputStream::WriteULONG @ 0x00993EA0, CDataOutputStream virtual slot 4 (+0x10) WriteData(const void*, unsigned long).
 // Identity: slot 16 of NParticleEngine::CPSCOrbit's vtable 0x012A0374 (rtti-vtables.tsv).
 // Layout (Ego_r.pdb, CPSCOrbit 0x174): CentreParam +0xc, COrbitSettings Orbits[3] +0x10 (48 bytes each:
 // Type, Enabled, Radius, Expand, CycleFlag, CycleTime, the squeeze and rotate floats), OrbitStates +0xa0.
@@ -13,7 +13,8 @@ struct CBase {
 class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteULong(unsigned long value);                           // 0x00993EA0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 namespace NParticleEngine {
@@ -48,7 +49,7 @@ class CPSCOrbit : public CPSCBase { public:               // vtable 0x012A0374
 
 void CPSCOrbit::WriteBinary(CDataOutputStream* out)
 {
-    out->WriteULong(CentreParam);
+    out->WriteULONG(CentreParam);
     out->WriteData(Orbits, sizeof(Orbits));
 }
 }

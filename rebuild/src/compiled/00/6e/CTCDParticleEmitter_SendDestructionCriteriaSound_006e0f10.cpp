@@ -21,9 +21,10 @@ public:
 };
 CCharString __fastcall operator+(const char* text, const CCharString& tail);   // 0x0099F690
 
-class CTCSound {                                            // the thing's interface-16 sound component
+class CTCSoundPlayer {                                            // the thing's interface-16 sound component
 public:
-    unsigned long PlaySound(const CCharString& name, bool positional, long a, long b, long c);   // 0x0066BD00
+public:
+    unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };
 
 struct CInterfaceMap {
@@ -70,9 +71,9 @@ private:
 void __fastcall CTCDParticleEmitter::SendDestructionCriteriaSound(CThing& thing)
 {
     CTCDParticleEmitter* emitter = thing.PTCDriver;
-    CTCSound* sound;
+    CTCSoundPlayer* sound;
     if (thing.GetInterface(&sound, 16)) {
         CCharString name = "DESTROY_PARTICLE_" + emitter->EmitterName.ToUpper();
-        sound->PlaySound(name, true, 0, 0, -1);
+        sound->PlayAttachedCriteria(name, true, 0, 0, -1);
     }
 }

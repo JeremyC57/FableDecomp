@@ -19,7 +19,10 @@ class CThing { public:
 
 typedef long ETargetNextThingMethod;
 
-extern long GFGetCurrentFrame();             // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};             // 0x0049D870
 
 class CTCTargetingPlayer { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -41,7 +44,7 @@ class CTCTargetingPlayer { public:
     {
         TargetNextThing = true;
         TargetNextThingMethod = method;
-        FrameSetAsTargetNextThing = GFGetCurrentFrame();
+        FrameSetAsTargetNextThing = CWorld::GetFrame();
     }
     void SetAsTargetNextThing();
 };

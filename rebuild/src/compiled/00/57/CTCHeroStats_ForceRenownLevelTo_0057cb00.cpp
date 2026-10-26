@@ -19,13 +19,14 @@
 // Lane feedback: byte-exact as an inlined `Clamp(long&, lo, hi)` helper under #pragma optimize("s",on)
 // (`and dword ptr [..],0` zero stores, shared tail); the lander sweep applies the pragma. RELOCATION_MATCH["s"].
 // Retail CTCHeroStats view (PDB offsets +8; see the batch README container-size rule).
-struct CTCHeroStats_Retail {
+class CTCHeroStats { public:
     unsigned char _pad_0x00[0x70];
     long          RenownLevel;            // +0x70 (PDB +0x78)
     long          RenownMaxLevel;         // +0x74 (PDB +0x7C)
     long          RenownPointsInLevel;    // +0x78 (PDB +0x80)
-    void CheckForNewExpressions();        // 0x0057BE71
     void ForceRenownLevelTo(long level);
+public:
+    void CheckForNewExpressions();   // 0x0057BE71
 };
 
 // Shared inline clamp (reference parameter: the compiler re-reads the member after the store,
@@ -38,7 +39,7 @@ static inline void Clamp(long& value, long minimum, long maximum)
         value = maximum;
 }
 
-void CTCHeroStats_Retail::ForceRenownLevelTo(long level)
+void CTCHeroStats::ForceRenownLevelTo(long level)
 {
     // Force the level, keep it inside [0, RenownMaxLevel], restart the points earned in the
     // level and re-check which expressions the new renown unlocks.

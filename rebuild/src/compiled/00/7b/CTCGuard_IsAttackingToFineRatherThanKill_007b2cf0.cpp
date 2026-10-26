@@ -8,14 +8,15 @@
 // slot `mov eax,[esp+4]`). `result = false` lives in bl (`xor bl,bl`), `mov al,1 ; jg` + `mov al,bl` is `result = true` under
 // `village && fine > 0`.
 // Local model: no engine header exists for CTCGuard or CThing; the interface-map members are descriptive.
-// CTCVillage_Calls: engine/CTCVillage.h holds the PDB data layout of CTCVillage; only its member call(s) are needed here, so the
+// CTCVillage: engine/CTCVillage.h holds the PDB data layout of CTCVillage; only its member call(s) are needed here, so the
 // callee is declared on a separate call-only struct.
 class CTCBase;
-struct CTCVillage_Calls {
+class CTCVillage { public:
     long GetFineAmountForCurrentCrimes();                   // 0x0065A41C
 };
 class CTCVillageMember { public:
-    CTCVillage_Calls* GetPVillage() const;                        // 0x007EE540
+public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540
 };
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -55,7 +56,7 @@ bool CTCGuard::IsAttackingToFineRatherThanKill() const
     bool result = false;
     CTCVillageMember* member;
     ParentThing->GetInterface(&member, 0x23);               // TC_VILLAGE_MEMBER
-    CTCVillage_Calls* village = member->GetPVillage();
+    CTCVillage* village = member->GetPVillage();
     if (village != 0 && village->GetFineAmountForCurrentCrimes() > 0)
         result = true;
     return result;

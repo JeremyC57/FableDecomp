@@ -3,18 +3,20 @@
 //   push esi; mov esi,ecx; call <dtor>; test [esp+8],1; je L;
 //   push esi; call <operator delete>; add esp,4; L: mov eax,esi; pop esi; ret 4
 
+class CAInputProcess {
+public:
+    virtual ~CAInputProcess();   // 0x00A0D3D0
+};
 class CInputProcessBButtonExitMode;
 
 // base/scalar destructor (this in ecx) -> retail 0xa0d3d0
-void __fastcall CInputProcessBButtonExitMode_dtor(CInputProcessBButtonExitMode* process);
 // operator delete -> retail 0xbfe9bc
-void operator_delete_stub(void* p);
 
 void* __fastcall CInputProcessBButtonExitMode_scalar_deleting_destructor(
         CInputProcessBButtonExitMode* process, int /*edx*/, unsigned int flags)
 {
-    CInputProcessBButtonExitMode_dtor(process);
+    ((CAInputProcess*)(process))->CAInputProcess::~CAInputProcess();
     if (flags & 1)
-        operator_delete_stub(process);
+        operator delete(process);
     return process;
 }

@@ -24,7 +24,13 @@ struct CIdleStateMap {                               // std::map<EIdleStateGroup
     CAIStateGroupBase*& operator[](const long& group);   // 0x00802110
 };
 
-class CTCIdleScheduler { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCIdleScheduler : public CTCBase { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
     bool          ToBeRemoved;                       // +0x08
@@ -35,7 +41,6 @@ class CTCIdleScheduler { public:
     long          Preferred;                         // +0x24 EIdleStateGroup
     long          FrameLastChecked;                  // +0x28
 
-    CWorld* GetWorld() const;                        // 0x00686A70 (CTCBase)
     void ChooseNewIdle();                            // 0x00801A50
     bool IsPreferred(CAIStateGroupBase* idle) { return Preferred != 0 && IdleStates[Preferred] == idle; }
     bool IsPreferredIdle(CAIStateGroupBase* idle);
@@ -45,7 +50,7 @@ bool CTCIdleScheduler::IsPreferredIdle(CAIStateGroupBase* idle)
 {
     if (Preferred == 1)
         return true;
-    if (FrameLastChecked != GetWorld()->GetWorldFrame()) {
+    if (FrameLastChecked != GetWorld().GetWorldFrame()) {
         if (Preferred == 0 || IdleStates[Preferred] == idle) {
             Preferred = 0;
             ChooseNewIdle();

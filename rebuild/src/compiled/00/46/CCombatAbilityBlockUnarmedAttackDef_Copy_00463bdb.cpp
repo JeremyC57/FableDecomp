@@ -1,5 +1,5 @@
-struct CBaseDef {
-    void Copy(const CBaseDef* other);
+class CDefClassBase { public:
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
 struct CMemberDef {
@@ -17,6 +17,6 @@ class CCombatAbilityFlourishCounterAttackDef { public:
 void CCombatAbilityFlourishCounterAttackDef::Copy(
         const CCombatAbilityFlourishCounterAttackDef* other)
 {
-    ((CBaseDef*)this)->Copy((const CBaseDef*)other);
+    ((CDefClassBase*)this)->operator=(*(const CDefClassBase*)other);
     m_member.Copy_00461bb7(&other->m_member);
 }

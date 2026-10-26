@@ -6,13 +6,12 @@ class CAppearanceModifierDef { public:
     void CAppearanceModifierDef_dtor();
     void* CAppearanceModifierDef_scalar_deleting_destructor(unsigned int flags);
 };
-extern void __cdecl eng_operator_delete(void* p);
 
 void* CAppearanceModifierDef::CAppearanceModifierDef_scalar_deleting_destructor(unsigned int flags)
 {
     this->CAppearanceModifierDef_dtor();
     if (flags & 1) {
-        eng_operator_delete(this);
+        operator delete(this);
     }
     return this;
 }

@@ -1,12 +1,14 @@
 #pragma optimize("t", on)
+class CChunkedFileChunk {
+public:
+    virtual ~CChunkedFileChunk();   // 0x00AA75C0
+};
 extern void __fastcall DestructMember_00a94c70(void* member);
-extern void __fastcall C3DMeshFilePartitionChunk_Destruct(void* chunk);
-extern void __cdecl OperatorDelete(void* object);
 void* __fastcall C3DMeshFilePartitionChunk_CompositeScalarDeletingDestructor(void* chunk, int, unsigned int flags)
 {
     DestructMember_00a94c70(static_cast<unsigned char*>(chunk) + 16);
-    C3DMeshFilePartitionChunk_Destruct(chunk);
+    ((CChunkedFileChunk*)(chunk))->CChunkedFileChunk::~CChunkedFileChunk();
     if (flags & 1)
-        OperatorDelete(chunk);
+        operator delete(chunk);
     return chunk;
 }

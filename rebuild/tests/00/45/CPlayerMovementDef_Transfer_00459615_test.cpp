@@ -8,9 +8,10 @@
 // Layout: PDB (Ego_r) names and types; the TLC def base is 0x3c bytes (PDB 0x40), so retail offset = PDB offset - 4.
 //   Local model: no engine/ header exists for CPlayerMovementDef or CPersistContext.
 class CPersistContext { public:
-    void Transfer(float&);                              // 0x00431061
-    void Transfer(long&);                               // 0x00431102
+    template <class T> void Transfer(T& value);                              // 0x00431061
 };
+template <> void CPersistContext::Transfer<float>(float& value);
+template <> void CPersistContext::Transfer<long>(long& value);
 class CPlayerMovementDef { public:
     unsigned char _base[0x3c];                          // CDefClassBase/CParentDefClassBase
     float JoystickMovementStationaryBand;               // +0x3c
@@ -54,8 +55,8 @@ void CPlayerMovementDef::Transfer(CPersistContext& ctx) {
 #include <stdio.h>
 #include <string.h>
 static int g_n; static int g_off[32]; static char g_kind[32]; static unsigned char* g_base;
-void CPersistContext::Transfer(float& f) { g_off[g_n] = (int)((unsigned char*)&f - g_base); g_kind[g_n++] = 'f'; f = 1.5f; }
-void CPersistContext::Transfer(long& l) { g_off[g_n] = (int)((unsigned char*)&l - g_base); g_kind[g_n++] = 'l'; l = 7; }
+template <> void CPersistContext::Transfer<float>(float& f) { g_off[g_n] = (int)((unsigned char*)&f - g_base); g_kind[g_n++] = 'f'; f = 1.5f; }
+template <> void CPersistContext::Transfer<long>(long& l) { g_off[g_n] = (int)((unsigned char*)&l - g_base); g_kind[g_n++] = 'l'; l = 7; }
 int main() {
     CPlayerMovementDef d; memset(&d, 0, sizeof d); CPersistContext c; g_base = (unsigned char*)&d;
     d.Transfer(c);

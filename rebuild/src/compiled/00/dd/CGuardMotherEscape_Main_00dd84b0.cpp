@@ -40,7 +40,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  struct InlineCopy { };                                 // tag: the inline copy retail expands at by-value call sites
  CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
  CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
- ~CScriptThing();                                       // 0x004AA840
+ virtual ~CScriptThing();                                       // 0x004AA840
  CScriptThing& operator=(const CScriptThing& other);    // 0x008AB980
 };
 #include "engine/CGameScriptInterface.h"
@@ -950,8 +950,9 @@ class CCharString { public:
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 class CBaseObject { public:
  void* m_pIntelligentPointer;
- CBaseObject();                                     // 0x0099A380
- virtual ~CBaseObject();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
  CCountedPointerWords PImp;
@@ -976,12 +977,17 @@ class CScriptDef { public:
 };
 extern CScriptDef* pGlobalScriptDef;                     // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 extern "C" int rand();                               // 0x00BFEB16
-struct CGuardMotherEscape {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CGuardMotherEscape : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  void* ParentClass;                                  // +0x14
  void* PMasterData;                                  // +0x18
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CGuardMotherEscape::Main()

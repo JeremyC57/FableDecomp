@@ -38,7 +38,10 @@ class CThing { public:
     }
 };
 
-CThing* __fastcall CreateThing(long defIndex, const C3DVector& position);   // 0x0080C460
+class CTCDExplosion {
+public:
+    static CThing* __fastcall Create(long, const C3DVector&);   // 0x0080C460
+};   // 0x0080C460
 
 class CExplodingObjectDef { public:
     unsigned char _pad[0x2c];
@@ -59,7 +62,7 @@ class CTCExplodingObject : public CTCBase { public:
 void CTCExplodingObject::Explode()
 {
     CExplodingObjectDef* def = PDef;
-    CThing* explosion = CreateThing(def->ExplosionType, ParentThing->GetPosition());
+    CThing* explosion = CTCDExplosion::Create(def->ExplosionType, ParentThing->GetPosition());
     CExplosionDriver* driver;
     explosion->GetTCDriver(&driver);
     driver->m_innerRadius = Radius;

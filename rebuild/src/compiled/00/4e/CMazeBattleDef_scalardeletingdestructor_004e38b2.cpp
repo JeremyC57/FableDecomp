@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CMazeBattleDef_Destruct(void* def);
-extern void __cdecl OperatorDelete(void* object);
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 void* __fastcall CMazeBattleDef_ScalarDeletingDestructor(void* def, int, unsigned int flags)
 {
-    CMazeBattleDef_Destruct(def);
+    ((CParentDefClassBase*)(def))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        OperatorDelete(def);
+        operator delete(def);
     return def;
 }

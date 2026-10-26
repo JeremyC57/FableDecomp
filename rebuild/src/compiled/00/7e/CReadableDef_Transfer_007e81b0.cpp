@@ -1,7 +1,7 @@
 // CReadableDef::Transfer(CPersistContext& context) -- persist the UseInfoDisplay flag: CRC check with the empty key, then read it in load mode (2) or write it in save mode (3)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E81B0, length 69 bytes (virtual, `ret 4`).
 // Callees: CPersistContext::CheckCRC @ 0x00404500 (the empty key "" @ 0x0122D70E), CPersistTraits<bool>::TransferBinaryIn
-// @ 0x00403EB0 (on a traits temporary, the load stream +0x24 and &value), CDataOutputStream::WriteBool @ 0x00993E30 (on
+// @ 0x00403EB0 (on a traits temporary, the load stream +0x24 and &value), CDataOutputStream::WriteEBOOL @ 0x00993E30 (on
 // the save stream +0x28).
 // Layout: engine/CReadableDef.h (PDB): UseInfoDisplay +0x25 behind the 0x21-byte flattened def base.
 // Shape: the inline CPersistContext::Transfer<bool> template -- `&value` is taken before the CRC call (kept in edi),
@@ -13,7 +13,8 @@
 #include "engine/CReadableDef.h"
 
 class CDataOutputStream { public:
-    void WriteBool(bool value);                         // 0x00993E30
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
 };
 class CMemoryDataInputStream;
 
@@ -21,7 +22,7 @@ template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<bool> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value);   // 0x00403EB0
-    static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteBool(value); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteEBOOL(value); }
 };
 
 class CPersistContext { public:

@@ -69,8 +69,9 @@ class CThingCreatureDef : public CDefPointeeBase { public:
 };
 
 class CDefinitionManager { public:
-    CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
     void GetDef(long index, CDefPointer<const CCombatTypeDef>* out);   // 0x00669640
+public:
+    CDefString GetDefNameFromGlobalIndex(long) const;   // 0x009ACCC0
 };
 
 class CTCCombat { public:

@@ -9,11 +9,12 @@
 //   AddPersonToConversation, 366 AddLineToConversation, 451 GiveThingBestEnemyTarget.
 // Layout: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8} (landed CHTE_Prisoner::Main 0x00D69F50).
 // Shape: the filter (vtable kept in ebx for its inline dtor) and the line's string are scoped frame objects sharing one
-//   slot; the conversation id stays in ebx; the wait is `while (!test) { NewScriptFrame(); if (IsDone()) return; }`.
+//   slot; the conversation id stays in ebx; the wait is `while (!test) { NewScriptFrame(); if (IsActiveThreadTerminating()) return; }`.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    ~CScriptThing();                          // 0x004AA840
+    virtual ~CScriptThing();                          // 0x004AA840
 };
 class CCharString { public:
     void* PStringData;
@@ -88,20 +89,31 @@ class CGameScriptInterface { public:                 // vtable slots per ghidra_
 
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-struct CIsThingAlive {                         // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                         // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                     // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
 
-class CTE_BanditLeader {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CTE_BanditLeader : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     CGameScriptInterface* Game;               // +0x04
     CScriptThing          Me;                 // +0x08
-    void RegisterFilter(CIsThingAlive& filter);   // 0x00F35B10
-    bool IsDone();                            // 0x00F35B30
     void Main();
 };
 
@@ -109,17 +121,17 @@ void CTE_BanditLeader::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), 15.0f)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     long conversation = Game->AddNewConversation(Me, false, false);
     Game->AddPersonToConversation(conversation, Game->GetHero());
@@ -130,5 +142,5 @@ void CTE_BanditLeader::Main()
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     do {
         Game->NewScriptFrame();
-    } while (!IsDone());
+    } while (!IsActiveThreadTerminating());
 }

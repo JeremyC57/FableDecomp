@@ -24,9 +24,10 @@ class CTCBase;
 class CTCSoundPlayer {                                 // the thing's interface-16 component
 public:
     void StopAttachedSound(unsigned long sound);                                         // 0x0066ADD0
-    unsigned long PlaySound(const CCharString& name, bool positional, long a, long b, long c);   // 0x0066BD00
     void SetSpecificSamplePitch(unsigned long sound, float pitch);                       // 0x0066AFA0
     void SetSpecificSampleVolume(unsigned long sound, float volume);                     // 0x0066AFF0
+public:
+    unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -105,7 +106,7 @@ void Coin::UpdateSound(bool muted)
     }
     if (Sound == g_InvalidSoundHandle) {
         CCharString name("TAVERN_GAME_COIN_SLIDE");
-        Sound = player->PlaySound(name, false, 0, 0, -1);
+        Sound = player->PlayAttachedCriteria(name, false, 0, 0, -1);
     }
     player->SetSpecificSamplePitch(Sound, 1.0f);
     player->SetSpecificSampleVolume(Sound, muted ? 0.0f : 1.0f);

@@ -15,13 +15,13 @@
 // Leaf: ?ParserReadPastDriveLabel@CAFile
 #include <string.h>
 
-struct CBasicStringChar {                               // CBasicString<char> (packed 13 bytes in retail)
+template <class T> class CBasicString { public:                               // CBasicString<char> (packed 13 bytes in retail)
     char*         PData;                                // +0x00
     unsigned long StringLength;                         // +0x04
     bool operator==(const char* text) const;            // 0x004115A0
 };
 class CCharStringData { public:
-    CBasicStringChar Data;                              // +0x00
+    CBasicString<char> Data;                              // +0x00
 };
 
 class CCharString

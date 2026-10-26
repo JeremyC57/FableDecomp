@@ -10,7 +10,19 @@
 // Shape: the frames-per-second value is a long local (homed for `fild`) read before the frame call, the def pointer a
 // local taken before the call too (kept in edi across it), the elapsed frames another long local; `elapsed > fps * secs` compares with `fcompp ; test ah,5 ; jp`, the bool result materialised with full-register
 // `mov eax,1` / `xor eax,eax` tails.
+#define CTCWife CTCWifeLayout
 #include "engine/CTCWife.h"
+#undef CTCWife
+class CWorld;
+
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCWife : public CTCBase, public CTCWifeLayout
+{
+};
 #include "engine/CHeroMarriageDef.h"
 
 extern long g_FramesPerSecond;                              // 0x01375550
@@ -21,14 +33,13 @@ class CWorld { public:
 };
 
 struct CTCWife_Sex : CTCWife {
-    const CWorld* GetWorld() const;                         // 0x00686A70 (CTCBase)
     const CHeroMarriageDef* GetDef() const { return (const CHeroMarriageDef*)PHeroMarriageDef_Object; }
     bool IsOfferingSex() const;
 };
 
 bool CTCWife_Sex::IsOfferingSex() const
 {
-    long framesPerSecond = GetWorld()->GetFramesPerSecond();
+    long framesPerSecond = GetWorld().GetFramesPerSecond();
     const CHeroMarriageDef* def = GetDef();
     long framesInLove = CWorld::GetWorldFrame() - FrameEnteredLoveWithHusbandPresentAtHome;
     return framesInLove > framesPerSecond * def->SecsInLoveAndHusbandPresentBeforeSexOffered;

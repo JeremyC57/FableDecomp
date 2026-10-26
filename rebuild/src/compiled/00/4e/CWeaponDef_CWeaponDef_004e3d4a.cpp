@@ -18,11 +18,11 @@ class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
-struct CBase_009fc550 {
+class CResource { public:
     virtual void v00();
-    ~CBase_009fc550();                             // 0x009FC550
+    virtual ~CResource();                             // 0x009FC550
 };
-class CDefPointeeBase : public CBase_009fc550 { public:          // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:          // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }
 };

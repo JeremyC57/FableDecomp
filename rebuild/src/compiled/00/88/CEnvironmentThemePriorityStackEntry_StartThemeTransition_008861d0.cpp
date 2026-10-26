@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008861D0, length 46 bytes.
 // Callees: GFGetTime @ 0x009E1BC0 (a double in st0, stored straight into +0x20), GetThemeWeight @ 0x00886160 (on `this`, the theme; a float in st0 stored into +0x18).
 // Shape: the theme stays in edi for the weight call, the argument `a` is stored between the push and the call; `ret 8`.
-double __cdecl GFGetTime();                        // 0x009E1BC0
+double __fastcall GFGetTime();                        // 0x009E1BC0
 
 struct CEnvironmentThemePriorityStackEntry {
     unsigned char _pad[0x14];

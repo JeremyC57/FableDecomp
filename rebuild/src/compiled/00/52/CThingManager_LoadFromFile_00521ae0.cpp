@@ -80,7 +80,7 @@ __declspec(noinline) void CCharStringSet::_M_erase(SSetNode* node)
 struct CThingVector { CThing** _M_start; CThing** _M_finish; CThing** _M_end_of_storage; };
 class CBaseClass { public:
     virtual void v00();
-    ~CBaseClass();                                         // 0x0099A2E0
+    virtual ~CBaseClass();                                         // 0x0099A2E0
 };
 struct CStringParserCommentList {
     void* m_pHead;

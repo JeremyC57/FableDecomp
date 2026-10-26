@@ -49,10 +49,21 @@ struct CTCInterface9 {                          // the owner's interface-type-9 
     bool Enabled;                               // +0x10
 };
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCBase {
 public:
@@ -64,7 +75,7 @@ public:
 };
 class CTCBoastingPosition : public CTCBase {
 public:
-    CBaseIntelligentPointer PBoastingPodium;    // +0x0c CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PBoastingPodium;    // +0x0c CIntelligentPointer<CThing>
     float OrbPosition[3];                       // +0x14 C3DVector
     bool PositionActivated;                     // +0x20
     unsigned char _pad21[3];
@@ -72,7 +83,7 @@ public:
     long Cost;                                  // +0x28
     bool BoastOn;                               // +0x2c
     bool HeroInsideRadius;                      // +0x2d
-    CBaseIntelligentPointer PParticleEffect;    // +0x2e CIntelligentPointer<CThing> (unaligned)
+    CIntelligentPointer<CThing> PParticleEffect;    // +0x2e CIntelligentPointer<CThing> (unaligned)
     void KillParticleEffect()
     {
         if (PParticleEffect.GetPItem() && !PParticleEffect.GetPItem()->IsDead())

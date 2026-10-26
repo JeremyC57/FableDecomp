@@ -59,16 +59,17 @@ class CThingManager { public:
     CThing* GetThingWithUID(__int64 uid);       // 0x0051ED80
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                       // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for T = CThing
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for T = CThing
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
@@ -76,8 +77,13 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
         SetPItem(item);
         return *this;
     }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -94,14 +100,15 @@ class CTCTargeted { public:
     bool          Targetable;                   // +0x10
 };
 
-struct CTCBaseModel {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CThingManager* GetThingManager();           // 0x00686AE0
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
 };
-class CTCWallMount : public CTCBaseModel { public:
+class CTCWallMount : public CTCBase { public:
     long                        BoughtForAmount;   // +0x0c
     CIntelligentPointer<CThing> Trophy;            // +0x10
     unsigned __int64            TrophyID;          // +0x18
@@ -112,7 +119,7 @@ void CTCWallMount::OnInitialActivate()
 {
     if (TrophyID == 0)
         return;
-    Trophy = CIntelligentPointer<CThing>(GetThingManager()->GetThingWithUID(TrophyID));
+    Trophy = CIntelligentPointer<CThing>(GetThingManager().GetThingWithUID(TrophyID));
     if (IS_THING_ALIVE(Trophy)) {
         if (Trophy.GetPItem()->GetPhysicsTC())
             Trophy.GetPItem()->GetPhysicsTC()->SetPhysicsActive(false);

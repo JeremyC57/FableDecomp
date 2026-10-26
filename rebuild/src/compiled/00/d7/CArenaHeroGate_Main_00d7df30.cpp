@@ -11,6 +11,7 @@
 // Shape: each wait is a top-tested `while` (the flag test duplicated at the bottom, aligned loop head)
 // whose body ticks and returns on abort; after each loop the abort test runs once more before the
 // next gate call. The gate address is kept in edi; the parent/master pointers are re-read each pass.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:
     long m_thingId;
 };
@@ -86,14 +87,19 @@ struct CQ_SunnyvaleMasterData {
     bool m_gateMayClose;                                   // +0x64
 };
 
-struct CArenaHeroGate {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CArenaHeroGate : public CEntityScriptBase {
     void*                    __vftable;                    // +0x00
     CQuestCalls*             PQuest;                       // +0x04
     CScriptThing             Gate;                         // +0x08
     unsigned char            _pad0c[8];                    // +0x0C
     CQ_HeroSoulsArenaScript* ParentClass;                  // +0x14
     CQ_SunnyvaleMasterData*  PMasterData;                  // +0x18
-    bool IsAborted();                                      // 0x00F35B30
     void Main();
 };
 
@@ -102,18 +108,18 @@ void CArenaHeroGate::Main()
     PQuest->CloseGate(&Gate);
     while (!ParentClass->m_gateMayOpen) {
         PQuest->Tick();
-        if (IsAborted())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsAborted())
+    if (IsActiveThreadTerminating())
         return;
     PQuest->OpenGate(&Gate);
     while (!PMasterData->m_gateMayClose) {
         PQuest->Tick();
-        if (IsAborted())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsAborted())
+    if (IsActiveThreadTerminating())
         return;
     PQuest->CloseGate(&Gate);
 }

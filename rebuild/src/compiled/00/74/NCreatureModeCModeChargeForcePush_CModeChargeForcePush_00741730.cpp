@@ -27,7 +27,10 @@ class CCharString { public:
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }   // "" = the shared empty literal 0x0129AAF4
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 class CAnimFilterOfGroup { public:
     virtual void v00();
@@ -37,7 +40,7 @@ class CAnimFilterOfGroup { public:
         : m_string()
     {
         m_string = name;
-        m_hash = Calc_004014a0(0, name.GetPString(), name.GetLength());
+        m_hash = CCRC::Calc(0, name.GetPString(), name.GetLength());
     }
 };
 

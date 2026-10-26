@@ -5,7 +5,7 @@
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0 (x3: 0x46 CTCCarrying, 0x48 CTCWeapon, 0x81
 //   CTCHeroRangedAttacks), CTCCarrying::GetThingInPrimarySlot 0x006A1440, CTCWeapon::IsProjectileWeapon 0x005DAA40 /
 //   IsAnalogueLoading 0x005DA950 / IsProjectileWeaponLoaded 0x005DA980, CMainGameComponent::GetGamePlayerInterface 0x00416359
-//   (on g_pMainGameComponent 0x013B86A0), CThing::GetPlayer const 0x004C7A10 (twice), CPlayer::GetPlayerNumber 0x00487510,
+//   (on g_pMainGameComponent 0x013B86A0), CThing::GetPlayer const 0x004C7A10 (twice), CPlayer::GetJoystickDeviceNumber 0x00487510,
 //   CGamePlayerInterface::IsGameActionEventInQueue 0x00446B10, CThingCreatureBase::IsPerformingAnyAction 0x006622A0.
 // Layout: retail CThing interface bits +0x20 (0x46 = word +0x28 bit 6, 0x48 = word +0x28 bit 8, 0x81 = word +0x30 bit 1), map
 //   +0x44, dead bit +0x91; CPlayer InRangedWeaponMode +0x218 (descriptive, as the landed 0x0068F9D0); CTCHeroRangedAttacks
@@ -14,7 +14,7 @@
 //   the weapon pointer is pre-nulled (`xor ebp,ebp`) and filled by the out-parameter form inside the && chain; the ranged-attacks
 //   lookup is the pointer-returning form (`xor eax,eax` default, dereferenced unconditionally). The three bools are set-if
 //   locals (`= false; if (x) = true;`), homed in bytes 1..3 of the 4-byte frame word; the game-player interface is a local taken
-//   before the GetPlayer()->GetPlayerNumber() argument chain. A same-TU noinline LowerBound body keeps the lookup keys uncaptured
+//   before the GetPlayer()->GetJoystickDeviceNumber() argument chain. A same-TU noinline LowerBound body keeps the lookup keys uncaptured
 //   so they share the second frame word with the carrying pointer.
 class CTCBase;
 struct CInterfaceMap {
@@ -44,7 +44,8 @@ class CPlayer {
 public:
     unsigned char _pad000[0x218];
     bool          InRangedWeaponMode;               // +0x218
-    long GetPlayerNumber();                         // 0x00487510
+public:
+    long GetJoystickDeviceNumber() const;   // 0x00487510
 };
 class CGamePlayerInterface {
 public:
@@ -102,13 +103,15 @@ class CThingPlayerCreature : public CThingCreatureBase { };
 
 class CTCCarrying {
 public:
-    CThing* GetThingInPrimarySlot();                // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 class CTCWeapon {
 public:
-    bool IsProjectileWeapon();                      // 0x005DAA40
     bool IsAnalogueLoading();                       // 0x005DA950
     bool IsProjectileWeaponLoaded();                // 0x005DA980
+public:
+    bool IsProjectileWeapon() const;   // 0x005DAA40
 };
 class CTCHeroRangedAttacks {
 public:
@@ -138,7 +141,7 @@ bool __fastcall IsThingToKeepStrafing(const CThingPlayerCreature& creature)
     if (ranged->Loading)
         loading = true;
     CGamePlayerInterface* gamePlayerInterface = GetMainGameComponent()->GetGamePlayerInterface();
-    bool actionQueued = gamePlayerInterface->IsGameActionEventInQueue(0xa, 2, creature.GetPlayer()->GetPlayerNumber());
+    bool actionQueued = gamePlayerInterface->IsGameActionEventInQueue(0xa, 2, creature.GetPlayer()->GetJoystickDeviceNumber());
     CPlayer* player = creature.GetPlayer();
     if (holdingProjectileWeapon && !player->InRangedWeaponMode) {
         if (actionQueued || fireCycle || loading || creature.IsPerformingAnyAction())

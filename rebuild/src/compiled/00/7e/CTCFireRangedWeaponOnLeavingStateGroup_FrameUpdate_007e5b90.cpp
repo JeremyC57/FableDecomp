@@ -95,7 +95,8 @@ public:
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CWorld* GetWorld();                         // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 
 class CTCFireRangedWeaponOnLeavingStateGroup : public CTCBase {
@@ -124,12 +125,12 @@ void CTCFireRangedWeaponOnLeavingStateGroup::FrameUpdate()
     if (!QuitOut) {
         CThingCreatureBase* creature = (CThingCreatureBase*)ParentThing;
         if (creature->IsRegisteredCombatant()) {
-            CCombatActionBase* action = GetWorld()->GetPCombatManager()->GetNextActionForCreature(creature);
+            CCombatActionBase* action = GetWorld().GetPCombatManager()->GetNextActionForCreature(creature);
             if (creature->IsRegisteredCombatant()) {
                 bool performed = false;
                 if (action && !creature->IsPerformingAnyAction() && creature->SetCurrentAction(action))
                     performed = true;
-                CWorld* world = GetWorld();
+                CWorld* world = (&GetWorld());
                 world->PCombatManager->SetCreatureAsAttemptedToPerformedAction(creature, performed);
             }
         }

@@ -19,7 +19,6 @@ class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];            // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;                // +0x44
-    long GetJoystickDeviceNumber();             // 0x004C7CA0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -33,6 +32,8 @@ class CThing { public:
         }
         return false;
     }
+public:
+    long GetJoystickDeviceNumber() const;   // 0x004C7CA0
 };
 class CTCBerserk { public:                             // interface type 0x84
     void GetSuperRumble(float& a, float& b, float& c, float& d);   // 0x0078BE70
@@ -65,16 +66,27 @@ class CSystemManager { public:
     CInputManager* InputManager;                // +0x58
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +4
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void FrameUpdate();                 // 0x00859D80
     unsigned char _pad04[4];                    // +0x04
-    CBaseIntelligentPointer PCreature;          // +0x08
+    CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char _pad10[0x114 - 0x10];         // +0x10
 };
 class CCreatureAction_ReleaseStrengthBerserk : public CCombatActionBase { public:

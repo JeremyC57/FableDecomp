@@ -9,6 +9,7 @@
 // ParentClass +0x14 (CV_StatueMasterScript*), PMasterData +0x18.
 // Shape: both arms run the abort test (the statue-at-3 arm only tests it, so it becomes the sibling-call `jmp`);
 // `this` is moved into ecx before the branch for both calls.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                             // 8 bytes at +8 of the script object
     unsigned char _body[8];
 };
@@ -81,24 +82,29 @@ struct CV_StatueMasterScript {
     long GetStatuePointingPosition();              // 0x00ED4420
 };
 struct CQ_SunnyvaleMasterData;
-struct CStatueMasterChest {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CStatueMasterChest : public CEntityScriptBase {
     void*                   __vftable;             // +0x00
     CGameScriptInterface*   PQuest;                // +0x04
     CScriptThing            Thing;                 // +0x08
     unsigned char           _pad10[4];             // +0x10
     CV_StatueMasterScript*  ParentClass;           // +0x14
     CQ_SunnyvaleMasterData* PMasterData;           // +0x18
-    bool IsAborted();                              // 0x00F35B30
     void Main();
 };
 
 void CStatueMasterChest::Main()
 {
     if (ParentClass->GetStatuePointingPosition() == 3) {
-        if (IsAborted())
+        if (IsActiveThreadTerminating())
             return;
     } else {
-        if (IsAborted())
+        if (IsActiveThreadTerminating())
             return;
         PQuest->RemoveThing(Thing, false, true);
     }

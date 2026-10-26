@@ -4,7 +4,8 @@
 // every call (the call may change it), the index runs in eax with `lea esi,[eax+1]` for the argument and a signed `jl` test; esi is saved only around the loop;
 // the final zero store is a direct `mov dword ptr [edi+0A0h],0`. The count sits at +0xa0 in the TLC object (the Ego PDB has it at +0xa4), so it is modelled by address.
 class CShaderRenderManager { public:
-    void ResetLight(long index);                   // 0x00988640
+public:
+    void ResetLight(unsigned long);   // 0x00988640
 };
 extern CShaderRenderManager* g_pShaderRenderManager_01436e14;   // 0x01436E14
 

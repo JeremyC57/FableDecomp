@@ -10,14 +10,23 @@
 // Shape: init list in declaration order; each pointer member's address is formed in edi (`lea edi,[esi+0Dh]`) for the base ctor and the
 // derived vtable store.
 class CThing;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing() { }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTargetingDef;
 template<class T> class CDefPointer { public:
@@ -34,10 +43,10 @@ class CTCBase { public:
 #pragma pack(push, 1)
 class CTCTargetingBase : public CTCBase { public:             // vtable 0x01271E74
     bool ScriptOverrideIgnoreEverything;                    // +0x0c
-    CIntelligentPointerThing PNearestInterestingThing;      // +0x0d
-    CIntelligentPointerThing PScriptOverrideInterestingThing;   // +0x15
-    CIntelligentPointerThing PScriptOverrideRangedTarget;   // +0x1d
-    CIntelligentPointerThing PTargetedThing;                // +0x25
+    CIntelligentPointer<CThing> PNearestInterestingThing;      // +0x0d
+    CIntelligentPointer<CThing> PScriptOverrideInterestingThing;   // +0x15
+    CIntelligentPointer<CThing> PScriptOverrideRangedTarget;   // +0x1d
+    CIntelligentPointer<CThing> PTargetedThing;                // +0x25
     unsigned char _pad2d[3];
     CDefPointer<const CTargetingDef> PTargetingDef;         // +0x30
     bool LookAtCamera;                                      // +0x34

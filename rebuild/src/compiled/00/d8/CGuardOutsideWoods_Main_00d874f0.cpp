@@ -10,6 +10,7 @@
 // Layout: Ego_r.pdb CGuardOutsideWoods (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14
 //   (CQ_HeroSoulsGuildmasterScript, retail = PDB - 0x14: OutsideWoodGuardsAttack +0x4b, GiveWarningCutscene +0x4c),
 //   PMasterData +0x18, NumberOfWarnings +0x1c. Models from the landed CMuteGuardOutsideWoods::Main 0x00D86150.
+namespace NScript { class CPredicateBase; }
 enum EHeroAbility { HERO_ABILITY_NONE };
 class CCharString { public:
     void* PStringData;
@@ -62,12 +63,13 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
     ~CScriptThing();                                    // 0x004AA840
 };
-namespace N_0099a380 { struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-}; } using N_0099a380::CBaseIntelligentPointer;
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
+};
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -79,8 +81,14 @@ struct CScriptThingCopy : CBase {                       // CScriptThing as the f
     CScriptThingCopy(const CScriptThing& other);        // 0x004ABE90
     ~CScriptThingCopy();                                // 0x004AA840
 };
-struct CIsThingAlive {                                  // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
     CScriptThingCopy m_thing;                           // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -91,7 +99,8 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     bool IsScripting();                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void PlayAnimation(const CCharString& anim, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // 0x007E73D0
+public:
+    virtual void PlayAnimation(const CCharString&, bool, bool, bool, bool, bool, bool, bool);   // 0x007E73D0
 };
 class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
@@ -174,8 +183,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CGuardOutsideWoods : CEntityScriptBase {
     CQ_HeroSoulsGuildmasterScript* ParentClass;         // +0x14
@@ -188,7 +198,7 @@ void CGuardOutsideWoods::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

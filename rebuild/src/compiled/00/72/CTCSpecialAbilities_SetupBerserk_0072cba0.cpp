@@ -49,7 +49,8 @@ template <class T> class CIntelligentPointer { public:
     CIntelligentPointer(T* item);                   // 0x004A96F0 (const CThing instantiation)
 };
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();                // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 #pragma pack(push, 1)
 struct CTCHeldItem {                                // interface 0x13 (descriptive)

@@ -7,7 +7,7 @@
 //          horns), CCharString::CCharString(const char*, long) @ 0x0099EBF0, CTCBase::GetDefinitionManager() @ 0x006869D0,
 //          CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410, ~CCharString @ 0x0099EAE0,
 //          UpdateHiddenModifiers @ 0x00706040, UpdateHiddenMaterials @ 0x00706510, UpdateGraphics @ 0x007070D0,
-//          NGraphicAppearance::CTCGraphicAppearance::SetAsChanged(ulong) @ 0x004BF9E0, CTCBase::GetWorld() const
+//          NGraphicAppearance::CTCGraphicAppearance::SetAsChanged(ulong) @ 0x004BF9E0, CTCBase::PeekWorld() const
 //          @ 0x00686A80, CWorld::GetWorldFrame() @ 0x0049D870 (static).
 // Shape: the sub-def comes through a plain out slot (zeroed, filled by GetSubDef) copied once into a holder whose
 // destructor releases it (the def stays in edi for the loop and the null-tested release); the loop re-reads the
@@ -72,7 +72,10 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* ou
 #pragma auto_inline(on)
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 
 namespace NGraphicAppearance {
@@ -97,8 +100,9 @@ class CTCBase { public:
     CThing* ParentThing;                             // +0x04
     bool    ToBeRemoved;                             // +0x08
     bool    IsInGlobalUpdateTCs;                     // +0x09
-    CWorld* GetWorld() const;                        // 0x00686A80
-    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 
 class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
@@ -140,9 +144,9 @@ void CTCHeroAttachableAppearanceModifiers::OnCreate()
     }
     {
         CCharString horns("OBJECT_HERO_HORNS", -1);
-        AddAppearanceModifier(GetDefinitionManager()->GetDefGlobalIndexFromName(horns));
+        AddAppearanceModifier(GetDefinitionManager().GetDefGlobalIndexFromName(horns));
     }
     Changed = true;
     UploadChangesToGraphics();
-    FrameLastChanged = GetWorld()->GetWorldFrame();
+    FrameLastChanged = PeekWorld().GetWorldFrame();
 }

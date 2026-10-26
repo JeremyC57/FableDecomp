@@ -10,17 +10,24 @@
 // CCombatActionBase is 0x12c bytes; retail 0x114), so `this` is modelled locally at +0x114 / +0x118 / +0x120.
 class CBaseObject;
 
-struct CBaseIntelligentPointer {            // 8 bytes: vptr + the pointed-to item
-    virtual void v00();
-    CBaseObject* m_pItem;                   // +4
-    CBaseIntelligentPointer();              // 0x00A01B10
-    CBaseObject* GetPItem() const;          // 0x00A01B50
-    void SetPItem(CBaseObject* item);       // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
@@ -31,8 +38,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
 
 class CCreatureAction_BanditKingStuck : public CCombatActionBase { public:   // vtable 0x01281C54
     long                TimesToLoop;        // +0x114 (PDB +0x12c)
-    CIntelligentPointer PStuckEffect;       // +0x118 (PDB +0x130)
-    CIntelligentPointer PObstruction;       // +0x120 (PDB +0x138)
+    CIntelligentPointer<CThing> PStuckEffect;       // +0x118 (PDB +0x130)
+    CIntelligentPointer<CThing> PObstruction;       // +0x120 (PDB +0x138)
     virtual void v00();
     CCreatureAction_BanditKingStuck(const CCreatureAction_BanditKingStuck& other);
 };

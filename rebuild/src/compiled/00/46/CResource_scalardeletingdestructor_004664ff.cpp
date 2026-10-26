@@ -6,20 +6,22 @@
 //   this in ecx, flags on stack (bit0 => operator delete(this)).
 // Modeled as a free __fastcall(this) function (byte-identical to __fastcall).
 
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 class CLandscapeBackgroundPatch;
 
 // scalar/base destructor (this-only) at 0x596051
-extern "C" void __fastcall CResource_dtor(CLandscapeBackgroundPatch* thisptr);
 // operator delete at 0x7984bd
-extern "C" void __cdecl fable_operator_delete(void* p);
 
 extern "C" void* __fastcall CResource_vector_deleting_dtor(
     CLandscapeBackgroundPatch* thisptr, int /*edx*/, unsigned int flags)
 {
-    CResource_dtor(thisptr);
+    ((CResource*)(thisptr))->CResource::~CResource();
     if (flags & 1)
     {
-        fable_operator_delete(thisptr);
+        operator delete(thisptr);
     }
     return thisptr;
 }

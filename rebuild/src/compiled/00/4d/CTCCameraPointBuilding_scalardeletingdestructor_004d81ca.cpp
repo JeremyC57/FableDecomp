@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCCameraPointBuilding_Destruct(void* building);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCCameraPointBuilding_ScalarDeletingDestructor(void* building, int, unsigned int flags)
 {
-    CTCCameraPointBuilding_Destruct(building);
+    ((CTCBase*)(building))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(building);
+        operator delete(building);
     return building;
 }

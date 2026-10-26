@@ -7,25 +7,36 @@
 // (CAIStateGroup_BalverineCornered ctor) is propagated garbage. Each pointer member's address
 // is kept in edi across its base constructor call.
 class CBaseObject { public:                        // 8 bytes: vptr + the reference count zeroed by the ctor
-    virtual void v00();
     long m_refCount;                        // +4
-    CBaseObject();                          // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 
-struct CBaseIntelligentPointer {         // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    void* m_pItem;                          // +4
-    CBaseIntelligentPointer();              // 0x00A01B10
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {     // vtable 0x01238C6C
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {     // vtable 0x01238C6C
+public:
     CIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CMessageEvent : public CBaseObject { public:        // vtable 0x0125BE8C
     unsigned char _pad[0x40];               // +0x08..+0x47 (message payload)
-    CIntelligentPointer m_pSender;          // +0x48
-    CIntelligentPointer m_pTarget;          // +0x50
+    CIntelligentPointer<CThing> m_pSender;          // +0x48
+    CIntelligentPointer<CThing> m_pTarget;          // +0x50
     CMessageEvent();
 };
 

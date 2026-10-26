@@ -65,7 +65,7 @@ class CCreatureActionBase
 class CCombatActionBase : public CCreatureActionBase
 { public:
     unsigned char _combat[0x6c];                    // +0xa8..+0x113
-    ~CCombatActionBase();                           // 0x0062E900
+    virtual ~CCombatActionBase();                           // 0x0062E900
 };
 
 class CCreatureAction_BanditKingAttack : public CCombatActionBase
@@ -80,9 +80,16 @@ class CAIBrain
     CThing* Creature;                               // +0x18
 };
 
-struct CAIStateGroup_BanditKingCharge
+class CAIStateGroupBase
 {
+public:
     virtual void v00();
+public:
+    void Terminate();   // 0x008FCF40
+};
+
+struct CAIStateGroup_BanditKingCharge
+: public CAIStateGroupBase {
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
     CBaseIntelligentPointer PTargetThing;           // +0x14
@@ -90,7 +97,6 @@ struct CAIStateGroup_BanditKingCharge
                                        const CMoveOptions& options, long anim, bool a, bool b, bool c, bool d,
                                        bool e);     // 0x0097E380
     long AIAction_CombatPerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DA40
-    void Terminate();                               // 0x008FCF40
     void Update();
 };
 

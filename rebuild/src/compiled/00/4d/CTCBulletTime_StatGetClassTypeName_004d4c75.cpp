@@ -1,18 +1,30 @@
-#include "rebuild_abi.h"
+// CTCBulletTime::StatGetClassTypeName() -- static: the class-type name "CTCBulletTime" as a CCharString
+// Leaf: ?StatGetClassTypeName@CTCBulletTime@@SI?AVCCharString@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004D4C75: push esi; push -1; push "CTCBulletTime"; mov esi, ecx; call
+//   CCharString::CCharString(const char*, long) 0x0099EBF0; mov eax, esi; pop esi; ret -- a static __fastcall
+//   returning CCharString by value (hidden result in ecx).
+// Identity (namepass 2026-10-26): literal 0x123c408 = "CTCBulletTime" = the class name; PDB name set ?StatGetClassTypeName@CTCBulletTime@@SI?AVCCharString@@XZ.
+// Callee: CCharString(const char*, long) 0x0099EBF0 = PDB ??0CCharString@@QAE@PBDJ@Z (was the invented
+//   FableCharStringResult_004d4c75::build).
+#define CTCBulletTime CTCBulletTimeLayout
+#include "engine/CTCBulletTime.h"
+#undef CTCBulletTime
 
-// CTCBulletTime::StatGetClassTypeName @ 0x004d4c75
-// One switch-case body of the retail action-name factory. Each case constructs
-// the hidden CCharString result from a relocated string constant with the
-// length sentinel -1, then returns the result pointer (this) in esi/eax.
-// Shape: push esi; push -1; push STR; mov esi,ecx; call ctor; mov eax,esi; ret.
-struct FableCharStringResult_004d4c75
+class CCharString
 {
-    void* build(const char* text, int length);
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();                                         // 0x0099EAE0
 };
 
-extern "C" FableCharStringResult_004d4c75* FABLE_FASTCALL
-FableStatGetClassTypeName_004d4c75(FableCharStringResult_004d4c75* result, void*)
+class CTCBulletTime : public CTCBulletTimeLayout
 {
-    result->build((const char*)19121160, -1);
-    return result;
+public:
+    static CCharString __fastcall StatGetClassTypeName();
+};
+
+CCharString __fastcall CTCBulletTime::StatGetClassTypeName()
+{
+    return CCharString((const char*)0x0123C408, -1);   // "CTCBulletTime"
 }

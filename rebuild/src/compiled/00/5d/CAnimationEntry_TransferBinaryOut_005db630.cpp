@@ -1,6 +1,6 @@
 // CAnimationEntry::TransferBinaryOut(CDataOutputStream& stream) const -- binary save of an animation entry: bank index, the two def-string table positions, the component count, then each component's type id followed by the component's own binary save
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005DB630, 127 bytes (+1 int3), __fastcall, ret 4.
-// Callees: CDataOutputStream::WriteLong 0x00993EB0, CDataOutputStream::WriteULong 0x00993EA0, and the
+// Callees: CDataOutputStream::WriteSLONG 0x00993EB0, CDataOutputStream::WriteULONG 0x00993EA0, and the
 // component's virtual TransferBinaryOut (slot 7, `call [edx+1Ch]`; slot 6 is TransferBinaryIn, cf.
 // CAnimComponentStrikeSpeedMultiplier's vtable 0x01255800).
 // Layout: PDB CAnimationEntry (0x10, as the landed operator= 0x00471A09): BankIndex, CDefString AnimName,
@@ -13,8 +13,10 @@
 // (ebx) taken from the element ahead of the type-id write.
 class CDataOutputStream {
 public:
-    void WriteLong(long value);                  // 0x00993EB0
-    void WriteULong(unsigned long value);        // 0x00993EA0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 class CAnimComponentBase {
@@ -63,15 +65,15 @@ class CAnimationEntry { public:
 
 void CAnimationEntry::TransferBinaryOut(CDataOutputStream& stream) const
 {
-    stream.WriteLong(BankIndex);
-    stream.WriteLong(AnimName.TablePos);
-    stream.WriteLong(GroupName.TablePos);
+    stream.WriteSLONG(BankIndex);
+    stream.WriteSLONG(AnimName.TablePos);
+    stream.WriteSLONG(GroupName.TablePos);
     unsigned long count = Components.m_pObject ? Components->Size() : 0;
-    stream.WriteULong(count);
+    stream.WriteULONG(count);
     if (count) {
         for (CAnimComponentEntry* it = Components->m_pFirst; it != Components->m_pLast; ++it) {
             CAnimComponentBase* component = it->second.m_pObject;
-            stream.WriteLong(it->first);
+            stream.WriteSLONG(it->first);
             component->TransferBinaryOut(stream);
         }
     }

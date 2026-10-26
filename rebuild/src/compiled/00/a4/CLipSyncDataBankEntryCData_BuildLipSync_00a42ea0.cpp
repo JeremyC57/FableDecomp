@@ -36,10 +36,11 @@ class CBankFileAsyncData { public:
     unsigned char _pad00[0x10];
     long m_size;                                           // +0x10
     long GetSize() const { return m_size; }
-    bool IsFinished();                                     // 0x009D54E0
     bool WaitUntilFinished();                              // 0x009D5B60
     void* GetData();                                       // 0x009D5530
     unsigned long Sizeof() const;                          // 0x009D5620
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
 struct SCountBlock {
     long references;

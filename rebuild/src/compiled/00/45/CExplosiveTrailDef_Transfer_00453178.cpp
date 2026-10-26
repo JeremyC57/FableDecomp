@@ -15,8 +15,7 @@
 #include "engine/CExplosiveTrailDef.h"
 
 class CPersistContext { public:
-    void TransferLong(long* value);              // 0x00431102
-    void TransferFloat(float* value);            // 0x00431061
+    template <class T> void Transfer(T& value);              // 0x00431102
 };
 
 struct CExplosiveTrailDefPersist : CExplosiveTrailDef {
@@ -25,15 +24,15 @@ struct CExplosiveTrailDefPersist : CExplosiveTrailDef {
 
 void CExplosiveTrailDefPersist::Transfer(CPersistContext& context)
 {
-    context.TransferLong(&TrapDefIndex);
-    context.TransferFloat(&SecondsBetweenTraps);
-    context.TransferFloat(&DistanceBetweenTraps);
-    context.TransferFloat(&SecondsForTrapPersistance);
-    context.TransferFloat(&SecondsTrailLifetime);
-    context.TransferFloat(&DistanceForLateralDeviation);
-    context.TransferFloat(&DegreesMaxTurnTowardsTargetPerTrap);
-    context.TransferFloat(&FractionOfLifetimeToTurnTowardsTarget);
-    context.TransferFloat(&SecondsIcicleAttackTargetPositionPredictionTime);
+    context.Transfer(*(long*)(&TrapDefIndex));
+    context.Transfer(*(float*)(&SecondsBetweenTraps));
+    context.Transfer(*(float*)(&DistanceBetweenTraps));
+    context.Transfer(*(float*)(&SecondsForTrapPersistance));
+    context.Transfer(*(float*)(&SecondsTrailLifetime));
+    context.Transfer(*(float*)(&DistanceForLateralDeviation));
+    context.Transfer(*(float*)(&DegreesMaxTurnTowardsTargetPerTrap));
+    context.Transfer(*(float*)(&FractionOfLifetimeToTurnTowardsTarget));
+    context.Transfer(*(float*)(&SecondsIcicleAttackTargetPositionPredictionTime));
     if (FractionOfLifetimeToTurnTowardsTarget < 0.0f)
         FractionOfLifetimeToTurnTowardsTarget = 0.0f;
     else if (FractionOfLifetimeToTurnTowardsTarget > 1.0f)

@@ -17,7 +17,10 @@
 class CThing;
 
 extern long g_FramesPerSecond;                              // 0x01375550 (.data), 15
-long GetWorldFrame();                                       // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                                       // 0x0049D870
 
 template<class T>
 class CDefPointer { public:
@@ -46,5 +49,5 @@ bool CTCAISummon::IsTimeToSummon()
     if (PSummonDef->TimeBetweenSummons == 0.0f)
         return true;
     long framesPerSecond = g_FramesPerSecond;
-    return GetWorldFrame() - LastSummonTick > (long)(framesPerSecond * PSummonDef->TimeBetweenSummons) ? true : false;
+    return CWorld::GetFrame() - LastSummonTick > (long)(framesPerSecond * PSummonDef->TimeBetweenSummons) ? true : false;
 }

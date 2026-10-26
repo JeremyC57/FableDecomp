@@ -1,6 +1,6 @@
 // CReactionMatch_AsymmetricPyramid::TransferBinaryOut(CDataOutputStream& stream) const -- write the reaction type, both opinion axes and the six pyramid floats
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006FEC30, length 112 bytes (vtable 0x0125B718 slot 4).
-// Callees: CDataOutputStream::WriteLong @ 0x00993EB0 (catalog "WriteCBYTE"; it writes a long) x3,
+// Callees: CDataOutputStream::WriteSLONG @ 0x00993EB0 (catalog "WriteCBYTE"; it writes a long) x3,
 // CDataOutputStream::WriteFloat @ 0x00993EE0 x6.
 // Layout (Ego_r.pdb, engine/CReactionMatch_AsymmetricPyramid.h): CReactionMatch base {vptr, ReactionType +4},
 // XAxisOpinionType +8, YAxisOpinionType +0xc (EOpinion), XCentre +0x10, NegInvXRadius +0x14, PosInvXRadius +0x18,
@@ -12,8 +12,9 @@
 #include "engine/CReactionMatch_AsymmetricPyramid.h"
 
 class CDataOutputStream { public:
-    void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 struct CReactionMatch_AsymmetricPyramidRetail {
@@ -33,9 +34,9 @@ FABLE_STATIC_ASSERT(sizeof(CReactionMatch_AsymmetricPyramidRetail) == sizeof(CRe
 
 void CReactionMatch_AsymmetricPyramidRetail::TransferBinaryOut(CDataOutputStream& stream) const
 {
-    stream.WriteLong(ReactionType);
-    stream.WriteLong(XAxisOpinionType);
-    stream.WriteLong(YAxisOpinionType);
+    stream.WriteSLONG(ReactionType);
+    stream.WriteSLONG(XAxisOpinionType);
+    stream.WriteSLONG(YAxisOpinionType);
     stream.WriteFloat(XCentre);
     stream.WriteFloat(NegInvXRadius);
     stream.WriteFloat(PosInvXRadius);

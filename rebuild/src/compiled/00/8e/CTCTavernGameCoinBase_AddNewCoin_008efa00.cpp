@@ -33,11 +33,21 @@ class C3DVector { public:
 class CRightHandedSet { public: float m[6]; };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    void* _vfptr;                               // +0x00
-    void* m_pItem;                              // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class Coin { public:                                   // 0x3c bytes
     long      _pad_0x00;
@@ -47,7 +57,7 @@ class Coin { public:                                   // 0x3c bytes
     float     Angle;                            // +0x18
     unsigned char _pad_0x1c[0x8];
     bool      Owned;                            // +0x24
-    CBaseIntelligentPointer Thing;              // +0x25
+    CIntelligentPointer<CThing> Thing;              // +0x25
     unsigned char _pad_0x2d[0x3];
     float     Radius;                           // +0x30
     int       Owner;                            // +0x34
@@ -135,7 +145,8 @@ class CTCTavernGame { public:
 
     virtual void v00();
     CThingDefOwner* ParentThing;                // +0x04
-    CThing* CreateGamePiece(long model);        // 0x005EA9B0 (CThingObject*)
+public:
+    CThingObject* CreateGamePiece(long);   // 0x005EA9B0
 };
 
 struct CTCTavernGameCoinBase : CTCTavernGame {
@@ -154,6 +165,6 @@ void CTCTavernGameCoinBase::AddNewCoin(const C2DVector& position)
     Coins.push_back(Coin(def->CoinRadius, def->CoinIDensity, CreateGamePiece(def->CoinDefIndex), true));
     Held = Coins._M_finish - 1;
     Held->Pos = position;
-    CBaseIntelligentPointer& thing = Held->Thing;
+    CIntelligentPointer<CThing>& thing = Held->Thing;
     CTCTavernGame::PositionMesh((CThingObject*)thing.GetPItem(), BoardPos, BoardRHSet, C3DVector(Held->Pos.X, Held->Pos.Y, 0.0f), 0.0f, 0.0f);
 }

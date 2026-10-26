@@ -14,6 +14,7 @@
 // Shape: the CEndScythe (0x00D79D50) handle model; __forceinline CTimer ctor/dtor/accessors keep the timer index in ebp (home
 //   slot) across the loop, inline_depth(0) in the hit block keeps the movie and CTimer destructors out of line there as retail does,
 //   and the main loop is `for (;;) { if (IsActiveThreadTerminating()) return; ... }` so the loop exit keeps its own ~CTimer copy.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -39,20 +40,27 @@ class CScriptThing : public CBase { public:
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     ~CScriptThing();                                    // 0x004AA840
 };
-struct CIsThingAlive {                                  // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                   // 0x00E241B0
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -70,9 +78,10 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
     bool IsScripting();                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    CScriptThing GetScriptThing() const;                // 0x007E7490
     void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
-    bool IsPerformingScriptTask() const;                // 0x007E7450
+public:
+    virtual CScriptThing GetScriptThing() const;   // 0x007E7490
+    virtual bool IsPerformingScriptTask() const;   // 0x007E7450
 };
 class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
     CResourcePImp PImp;                                 // +0x08
@@ -187,8 +196,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CScytheNearOracle : CEntityScriptBase {
     CQS_ScytheInfoScript* ParentClass;                  // +0x14
@@ -200,7 +210,7 @@ void CScytheNearOracle::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

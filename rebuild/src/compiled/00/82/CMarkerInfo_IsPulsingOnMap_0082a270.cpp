@@ -20,12 +20,15 @@ struct CMiniMapMarkerGraphics {
     long          PulsingGraphic3;      // +0x34
 };
 
-struct CGuiDefCalls {
+class CPlayerGuiDef { public:
     unsigned char           _pad_0x000[0x958];
     CMiniMapMarkerGraphics* MarkerGraphics;    // +0x958
 };
 
-extern CGuiDefCalls* __fastcall PeekGuiDef();   // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};   // 0x00438570
 
 struct CMarkerInfo_Methods : CMarkerInfo {
     bool IsPulsingOnMap();
@@ -33,7 +36,7 @@ struct CMarkerInfo_Methods : CMarkerInfo {
 
 bool CMarkerInfo_Methods::IsPulsingOnMap()
 {
-    CMiniMapMarkerGraphics* graphics = PeekGuiDef()->MarkerGraphics;
+    CMiniMapMarkerGraphics* graphics = CPlayerGui::PeekGuiDef().MarkerGraphics;
     long graphic = this->GraphicIndex;
     if (graphic == graphics->PulsingGraphic0 || graphic == graphics->PulsingGraphic1 ||
         graphic == graphics->PulsingGraphic2 || graphic == graphics->PulsingGraphic3)

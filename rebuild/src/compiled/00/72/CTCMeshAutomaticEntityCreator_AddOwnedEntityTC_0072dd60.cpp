@@ -26,7 +26,8 @@ public:
 
 class CThing {
 public:
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 
 class CTCMeshAutomaticEntityCreator {

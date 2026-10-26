@@ -96,7 +96,7 @@ class CCreatureActionBase { public:
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 struct CCreatureAction_SummonerChargeInto : CCombatActionBase {   // vtable 0x012971EC
     virtual void v00();

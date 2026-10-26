@@ -9,6 +9,7 @@
 //   inlines the destructor of the GetThingWithScriptName temporary in the bool initialiser and calls the out-of-line copy
 //   for the discarded CreateCreature result; the "TollBandit" implicit conversion is built before the def-string
 //   conversion (right-to-left argument order, implicit temporaries first).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
@@ -82,18 +83,23 @@ class CGameScriptInterface { public:
     virtual void v089(); virtual void v090();
     virtual CScriptThing CreateCreature(const CCharString& creature, const C3DVector& pos, const CCharString& scriptName, bool b) const;   // slot 91 (+0x16c)
 };
-class CM_TollBandit {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CM_TollBandit : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     CGameScriptInterface* Game;               // +0x04
     CScriptThing          Me;                 // +0x08
-    bool IsDone();                            // 0x00F35B30
     void Main();
 };
 
 void CM_TollBandit::Main()
 {
     bool dead = Game->GetThingWithScriptName("TollBandit").IsDead();
-    if (dead && !IsDone())
+    if (dead && !IsActiveThreadTerminating())
         Game->CreateCreature(pGlobalScriptDef->TollBanditCreature, Me.GetPos(), "TollBandit", false);
 }

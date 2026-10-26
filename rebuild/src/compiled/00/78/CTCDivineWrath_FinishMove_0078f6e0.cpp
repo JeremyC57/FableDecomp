@@ -85,8 +85,15 @@ class CSpecialAbilitiesDivineWrathDef { public:
     unsigned char _pad00[0xc4];
     float* FadeOutTimes;                        // +0xc4 vector<float> first pointer (per spell level)
 };
-class CTCDivineWrath { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCDivineWrath : public CTCBase { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
     const CSpecialAbilitiesDivineWrathDef* PDef;    // +0x0c CDefPointer
@@ -105,7 +112,6 @@ class CTCDivineWrath { public:
     CBaseIntelligentPointer HandEffect1;        // +0xac
     CBaseIntelligentPointer HandEffect2;        // +0xb4
     unsigned long LoopingSound;                 // +0xbc
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
     void FinishMove();
 };
 
@@ -114,7 +120,7 @@ void CTCDivineWrath::FinishMove()
     Finished = true;
     NumFramesToWaitForFadeOut = (long)(g_framesPerSecond * PDef->FadeOutTimes[SpellLevel]);
     const float* times = PDef->FadeOutTimes;
-    CWorld* world = GetWorld();
+    CWorld* world = (&GetWorld());
     world->PEnvironment->TransitionToDefaultThemeAllChannels(2, times[SpellLevel]);
     if (ParentThing->HasTC(0xa7)) {
         CTCInterfaceA7* tc = ParentThing->GetTC<CTCInterfaceA7>(0xa7);

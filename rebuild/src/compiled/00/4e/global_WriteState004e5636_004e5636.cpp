@@ -28,16 +28,17 @@ struct SHead {
 };
 
 class CDataOutputStream { public:
-    void Write(long value);                // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 SNode* __cdecl TreeNext_004292c0(SNode* node);   // 0x004292C0
 
 void __fastcall WriteState_004e5636(CDataOutputStream* out, STree* tree)
 {
-    out->Write(tree->m_count);
+    out->WriteSLONG(tree->m_count);
     for (SNode* node = ((SHead*)tree->m_head)->m_leftmost; node != (SNode*)tree->m_head; node = TreeNext_004292c0(node)) {
-        out->Write(node->m_10);
-        out->Write(node->m_14);
+        out->WriteSLONG(node->m_10);
+        out->WriteSLONG(node->m_14);
     }
 }

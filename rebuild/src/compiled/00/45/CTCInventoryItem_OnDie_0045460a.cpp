@@ -1,5 +1,9 @@
 #pragma optimize("s",on)
 // Leaf: OnDie
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 class CTCInventoryItem { public:
     unsigned char _pad_0x0[0x10];
     void* PInventory;
@@ -8,13 +12,12 @@ class CTCInventoryItem { public:
     unsigned char _pad_0x21[0xf];
     void* ptr30;
 };
-extern void __cdecl engine_free(void*);
-extern void __fastcall CTCInventoryItem_Base_OnDie_009fc550(CTCInventoryItem* self);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 extern const void* const CTCInventoryItem_vftable;
 void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* self)
 {
     if (self->ptr30)
-        engine_free(self->ptr30);
+        free(self->ptr30);
     *(const void**)self = &CTCInventoryItem_vftable;
-    CTCInventoryItem_Base_OnDie_009fc550(self);
+    ((CResource*)(self))->CResource::~CResource();
 }

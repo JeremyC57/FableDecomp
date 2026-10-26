@@ -39,13 +39,13 @@ class CFontBank { public:
  virtual void Slot0();
  virtual C2DVector GetTextExtent(const unsigned short* text, long flags);   // slot 1 (+4)
 };
-struct CFontBankSource {
+class CFontManager { public:
  CCountedPointer<CFontBank> GetFont(const CCharString& name);   // 0x009E2C80
 };
 class CSystemManager { public:
  unsigned char _pad00[0x84];
- CFontBankSource* FontBank;                          // +0x84
- CFontBankSource* GetFontBank() const { return FontBank; }
+ CFontManager* FontBank;                          // +0x84
+ CFontManager* GetFontBank() const { return FontBank; }
 };
 CSystemManager* __fastcall GFGetSystemManager();     // 0x009A4EC0
 class CRGBColour { public:

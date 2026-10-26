@@ -1,12 +1,13 @@
 #include "engine/CCreatureAction_TrollAngryGroundPound.h"
 
-struct CTrollGroundPoundState {
+class CBaseObject { public:
     unsigned char padding[0x1c8];
     unsigned char flags;
 };
 
-struct CTrollGroundPoundActionState {
-    CTrollGroundPoundState* GetState();
+class CBaseIntelligentPointer { public:
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
 };
 
 struct CCreatureAction_TrollAngryGroundPound_Methods : CCreatureAction_TrollAngryGroundPound {
@@ -17,7 +18,7 @@ struct CCreatureAction_TrollAngryGroundPound_Methods : CCreatureAction_TrollAngr
 void CCreatureAction_TrollAngryGroundPound_Methods::PerformAction()
 {
     this->DoBase();
-    CTrollGroundPoundActionState* actionState = (CTrollGroundPoundActionState*)&this->sub;
-    CTrollGroundPoundState* state = actionState->GetState();
+    CBaseIntelligentPointer* actionState = (CBaseIntelligentPointer*)&this->sub;
+    CBaseObject* state = actionState->GetPItem();
     state->flags |= 0x40;
 }

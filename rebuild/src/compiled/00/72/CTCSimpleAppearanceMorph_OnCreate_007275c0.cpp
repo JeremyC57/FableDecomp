@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007275C0, 240 bytes (plain `ret`); CTCSimpleAppearanceMorph vtable 0x012664A4 slot 4.
 // Callees: operator new @ 0x00BFEA1A (the 0x18-byte morph set), CCountedPointer<CMeshMorphSet>::Reset(CMeshMorphSet*) @ 0x007222F0
 // (manifest label: a propagated Reset instantiation), CDefClassBase::GetSubDef_007086f0(CDefPointer&) @ 0x007086F0 (the
-// 'CTextureReplacementDef' instantiation), CTextureMorphs::AddBlend(unsigned long, const CCompositeBlendDesc&) @ 0x006CA950;
+// 'CTextureReplacementDef' instantiation), CEngineTextureMorphSet::AddBlend(unsigned long, const CCompositeBlendDesc&) @ 0x006CA950;
 // the defs' virtual slot 1.
 // Layout: CTCSimpleAppearanceMorph PMeshMorphSet (CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet>) +0x0c; retail
 // CMeshMorphSet (0x18): MeshParts (12-byte CArray) +0x00, OriginalMeshTextureMorphs (vector<CEngineTextureMorph>) +0x0c;
@@ -27,12 +27,13 @@ class CCompositeBlendDesc { public:
         : TextureIndex(texture), BlendType(type), DiffuseColour(r, g, b, a), SpecularColour(0, 0, 0, 0) {}
 };
 class CEngineTextureMorph;
-class CTextureMorphs { public:                                 // vector<CEngineTextureMorph>
+class CEngineTextureMorphSet { public:                                 // vector<CEngineTextureMorph>
     CEngineTextureMorph* m_first;
     CEngineTextureMorph* m_last;
     CEngineTextureMorph* m_end;
-    CTextureMorphs() : m_first(0), m_last(0), m_end(0) { }
-    void AddBlend(unsigned long textureIndex, const CCompositeBlendDesc& blend);   // 0x006CA950
+    CEngineTextureMorphSet() : m_first(0), m_last(0), m_end(0) { }
+public:
+    void AddTextureMorph(long, const CCompositeBlendDesc&);   // 0x006CA950
 };
 struct CMeshMorphSetParts;
 struct CMeshMorphSet {                                  // CTCAppearanceMorphBase::CMeshMorphSet
@@ -40,7 +41,7 @@ struct CMeshMorphSet {                                  // CTCAppearanceMorphBas
         CMeshMorphSetParts* m_first; CMeshMorphSetParts* m_last; CMeshMorphSetParts* m_end;
         CPartArray() : m_first(0), m_last(0), m_end(0) { }
     } MeshParts;                                        // +0x00
-    CTextureMorphs OriginalMeshTextureMorphs;           // +0x0c
+    CEngineTextureMorphSet OriginalMeshTextureMorphs;           // +0x0c
 };
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public:
@@ -119,7 +120,7 @@ void CTCSimpleAppearanceMorph::OnCreate()
     thingDef->GetSubDef_007086f0(replacements);
     for (long i = 0; i < replacements->Entries.size(); ++i) {
         const CTextureReplacementDef::CEntry& entry = replacements->Entries[i];
-        PMeshMorphSet->OriginalMeshTextureMorphs.AddBlend(entry.OriginalTexture,
+        PMeshMorphSet->OriginalMeshTextureMorphs.AddTextureMorph(entry.OriginalTexture,
             CCompositeBlendDesc(entry.ReplacementTexture, 3, 0, 0, 0, 255));
     }
 }

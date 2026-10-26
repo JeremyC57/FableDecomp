@@ -45,7 +45,8 @@ class CPlayer { public:
     CThing* GetHeroCreature();                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char   _pad[0x1c];
@@ -70,7 +71,7 @@ public:
 
 void CInputProcessBetting::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetHeroCreature();
     if (hero->HasTC(0x102)) {
         static_cast<CTCBetting*>(hero->GetTC(0x102))->ProcessInputIfEnabled(event, processed, this);
     }

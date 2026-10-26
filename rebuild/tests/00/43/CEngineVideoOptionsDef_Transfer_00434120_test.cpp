@@ -17,10 +17,11 @@
 // Honest retail view uses the donor names; no native virtual calls occur here.
 #include <stddef.h>
 class CPersistContext { public:
- void TransferInt(int&); // 00431102
- void TransferFloat(float&); // 00431061
- void TransferBool(bool&); // 0043314a
+ template <class T> void Transfer(T& value); // 00431102
 };
+template <> void CPersistContext::Transfer<long>(long& value);
+template <> void CPersistContext::Transfer<float>(float& value);
+template <> void CPersistContext::Transfer<bool>(bool& value);
 class CEngineVideoOptionsDef { public:
  unsigned char DefinitionBase[0x3c];
  int HiresTextureMemory;
@@ -37,27 +38,27 @@ class CEngineVideoOptionsDef { public:
 typedef char NativeVideoSize[(sizeof(CEngineVideoOptionsDef)==0x78)?1:-1];
 typedef char NativeVideoOffset[(offsetof(CEngineVideoOptionsDef,HiresTextureMemory)==0x3c)?1:-1];
 void CEngineVideoOptionsDef::Transfer(CPersistContext& c) {
- c.TransferInt(HiresTextureMemory);
- c.TransferFloat(LODErrorTolerance);
- c.TransferFloat(CharacterLODErrorTolerance);
- c.TransferFloat(DrawDistanceMultiplier);
- c.TransferFloat(DrawDistanceMinimum);
- c.TransferFloat(DrawDistanceMaximum);
- c.TransferFloat(RepeatedMeshDrawDistanceFactor);
- c.TransferFloat(MinimumZSpriteAsMeshDistance);
- c.TransferFloat(MaximumZSpriteAsMeshDistance);
- c.TransferFloat(ZSpriteDrawDistanceMultiplier);
- c.TransferInt(ShadowBufferSize);
- c.TransferFloat(ShadowDistanceScale);
- c.TransferBool(Enable2DDisplacement);
- c.TransferBool(Enable3DDisplacement);
- c.TransferBool(EnableGlow);
- c.TransferBool(EnableRadialBlur);
- c.TransferBool(EnableWaterReflection);
- c.TransferBool(EnableWeatherEffects);
- c.TransferBool(EnableColourFilter);
- c.TransferFloat(WeatherDensity);
- c.TransferBool(EnableRepeatedMeshes);
+ c.Transfer(*(long*)&(HiresTextureMemory));
+ c.Transfer(LODErrorTolerance);
+ c.Transfer(CharacterLODErrorTolerance);
+ c.Transfer(DrawDistanceMultiplier);
+ c.Transfer(DrawDistanceMinimum);
+ c.Transfer(DrawDistanceMaximum);
+ c.Transfer(RepeatedMeshDrawDistanceFactor);
+ c.Transfer(MinimumZSpriteAsMeshDistance);
+ c.Transfer(MaximumZSpriteAsMeshDistance);
+ c.Transfer(ZSpriteDrawDistanceMultiplier);
+ c.Transfer(*(long*)&(ShadowBufferSize));
+ c.Transfer(ShadowDistanceScale);
+ c.Transfer(Enable2DDisplacement);
+ c.Transfer(Enable3DDisplacement);
+ c.Transfer(EnableGlow);
+ c.Transfer(EnableRadialBlur);
+ c.Transfer(EnableWaterReflection);
+ c.Transfer(EnableWeatherEffects);
+ c.Transfer(EnableColourFilter);
+ c.Transfer(WeatherDensity);
+ c.Transfer(EnableRepeatedMeshes);
 }
 
 
@@ -65,9 +66,15 @@ void CEngineVideoOptionsDef::Transfer(CPersistContext& c) {
 #include <stdio.h>
 static void* expected[21]; static int types[21], n, bad, writing;
 static void Check(void* p,int type) { if(n>=21 || expected[n]!=p || types[n]!=type) bad=1; ++n; }
-void CPersistContext::TransferInt(int& v) {Check(&v,1); if(writing) v=100+n; else if(v!=100+n)bad=1;}
-void CPersistContext::TransferFloat(float& v) {Check(&v,2);if(writing) v=0.25f+n;else if(v!=0.25f+n)bad=1;}
-void CPersistContext::TransferBool(bool& v) {Check(&v,3);if(writing) v=(n%2)!=0;else if(v!=((n%2)!=0))bad=1;}
+template <> void CPersistContext::Transfer<long>(long& value_)
+{
+    int& v = *(int*)&value_; (void)&v;Check(&v,1); if(writing) v=100+n; else if(v!=100+n)bad=1;}
+template <> void CPersistContext::Transfer<float>(float& value_)
+{
+    float& v = *(float*)&value_; (void)&v;Check(&v,2);if(writing) v=0.25f+n;else if(v!=0.25f+n)bad=1;}
+template <> void CPersistContext::Transfer<bool>(bool& value_)
+{
+    bool& v = *(bool*)&value_; (void)&v;Check(&v,3);if(writing) v=(n%2)!=0;else if(v!=((n%2)!=0))bad=1;}
 int main(){ CEngineVideoOptionsDef x; CPersistContext c;
  expected[0]=&x.HiresTextureMemory; types[0]=1;
  expected[1]=&x.LODErrorTolerance; types[1]=2;

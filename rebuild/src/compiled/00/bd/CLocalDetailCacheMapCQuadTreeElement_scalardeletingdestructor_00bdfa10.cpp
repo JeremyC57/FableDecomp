@@ -2,14 +2,22 @@
 // Leaf: ScalarDeletingDestructor
 // Native0x00bdfa10 corrected length38; rtti VT012a7df0 slot0, actual destructor00bddfb0; not landscape patch.
 // Manager Deallocate00bd9b90 and engine global01436ea8 manager+6b0 independently audited.
+#define CEngineLandscapeMemoryManager CEngineLandscapeMemoryManagerLayout
 #include "engine/CEngineLandscapeMemoryManager.h"
+#undef CEngineLandscapeMemoryManager
+
+class CEngineLandscapeMemoryManager : public CEngineLandscapeMemoryManagerLayout
+{
+public:
+    void FreeVirtual(void*);   // 0x00BD9B90
+};
 #include "engine/CEngineLandscapeRenderer.h"
 #include "engine/CMovableResource.h"
 #define CLocalDetailCacheMap CLocalDetailCacheMapDonor
 #include "engine/CLocalDetailCacheMap.h"
 #undef CLocalDetailCacheMap
 // EngineGlobal is a native renderer view; donor MemoryManager+0xf58 differs from retail+0x6b0.
-struct LandscapeMemory : CEngineLandscapeMemoryManager { void Deallocate(void*); }; //0x00bd9b90
+struct LandscapeMemory : CEngineLandscapeMemoryManager { }; //0x00bd9b90
 struct EngineGlobal { unsigned char EngineState[0x6b0]; LandscapeMemory* LandscapeMemoryManager; };
 extern EngineGlobal* gEngine; //0x01436ea8
 class CLocalDetailCacheMap;
@@ -25,6 +33,6 @@ struct QuadTreeElement:MovableNative {
 };
 void* QuadTreeElement::ScalarDeletingDestructor(unsigned flags) {
  this->QuadTreeElement::~QuadTreeElement();
- if(flags&1) gEngine->LandscapeMemoryManager->Deallocate(this);
+ if(flags&1) gEngine->LandscapeMemoryManager->FreeVirtual(this);
  return this;
 }

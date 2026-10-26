@@ -84,10 +84,21 @@ class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;                 // +0x70
 };
-struct CIntelligentPointer {                         // CIntelligentPointer<CThing> (8 bytes)
-    void*   __vftable;
-    CThing* PItem;
-    CThing* GetPItem() const;                        // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x004CC340 for CIntelligentPointer
 
@@ -95,7 +106,7 @@ namespace NInventory {
 #pragma pack(push, 1)
 struct CTCInventoryWeapons {
     unsigned char       _pad000[0x141];
-    CIntelligentPointer PActiveRangedWeapon;         // +0x141
+    CIntelligentPointer<CThing> PActiveRangedWeapon;         // +0x141
     CDefinitionManager* GetDefinitions();            // 0x006869D0 (CTCBase)
     float GetActiveProjectileWeaponDamage();
 };

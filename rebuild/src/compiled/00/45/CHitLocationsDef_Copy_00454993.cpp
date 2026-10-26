@@ -1,6 +1,9 @@
+class CDefClassBase {
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
+};
 class CHitLocationsDef { public:
     unsigned char _tail[0x34];
-    void BaseCopy(const CHitLocationsDef* src);
 };
 struct CSub {
     void SubCopy(const CSub* src);
@@ -8,6 +11,6 @@ struct CSub {
 
 void __fastcall CHitLocationsDef_Copy(CHitLocationsDef* self, int /*edx*/, const CHitLocationsDef* src)
 {
-    self->BaseCopy(src);
+    ((CDefClassBase*)(self))->operator=(*(const CDefClassBase*)(src));
     ((CSub*)((unsigned char*)self + 0x28))->SubCopy((const CSub*)((const unsigned char*)src + 0x28));
 }

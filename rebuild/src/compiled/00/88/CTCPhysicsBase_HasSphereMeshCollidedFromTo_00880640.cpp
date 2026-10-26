@@ -25,12 +25,11 @@ class CMeshIntersectionData { public:
     float     DistanceSquared;                          // +0x18
 };
 class CPhysicsMeshObject { public:                             // 0x40 bytes
-    void*         __vftable;                            // +0x00
     void*         Mesh[1];                              // +0x04 CIVCountedPointer<const CPhysicsMesh>
     unsigned char PositionMatrix[0x30];                 // +0x08 CMatrix3x4
     float         Scale;                                // +0x38
     float         OO_Scale;                             // +0x3c
-    ~CPhysicsMeshObject();                              // 0x00A127D0
+    virtual ~CPhysicsMeshObject();                              // 0x00A127D0
     bool GetSphereIntersectionFromTo(float radius, const C3DVector& from, const C3DVector& to,
                                      CMeshIntersectionData& data) const;   // 0x00A120D0
 };

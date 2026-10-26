@@ -19,7 +19,8 @@ class CCombatSequenceBase { public:
     virtual bool IsMeleeSequence();             // slot 7 (+0x1c): 0x006F0700
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual bool IsValid();                     // slot 12 (+0x30): 0x008B32B0
-    bool IsZoneValid();                         // 0x008B0610
+public:
+    bool IsZoneValid() const;   // 0x008B0610
 };
 
 struct CSequencePointer {                       // CCountedPointer<CCombatSequenceBase>

@@ -5,7 +5,7 @@
 // Callees: CCharString(const char*, long) 0x0099EBF0 ("FORCE_PUSH" 0x01268358, "WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1..4"
 //   0x0127B850 / 0x0127B828 / 0x0127B800 / 0x0127B7D8), the creature's virtual slot 89 (+0x164: the combat sound pair for a
 //   name, CSoundPair by value through the hidden pointer), CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&)
-//   0x00858030, ~CCharString 0x0099EAE0, CCombatActionBase::SetAnimationName 0x008574D0.
+//   0x00858030, ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation 0x008574D0.
 // Shape: the sound pair is a by-value temporary in the base initializer (its name string an implicit conversion built
 //   before the argument pushes); the vtable store is scheduled into the switch range test; a dense four-case switch
 //   (jump table, `ja` to the shared epilogue) whose arms are implicit-conversion SetAnimationName calls -- each arm's
@@ -35,7 +35,8 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     virtual void v00();
     unsigned char _pad04[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 class CCreatureAction_FinishWillForceSpell : public CCombatActionBase { public:   // vtable 0x0127B87C
     virtual void v00();
@@ -47,16 +48,16 @@ CCreatureAction_FinishWillForceSpell::CCreatureAction_FinishWillForceSpell(CThin
 {
     switch (level) {
     case 0:
-        SetAnimationName("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1");
+        SetCombatAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1");
         break;
     case 1:
-        SetAnimationName("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_2");
+        SetCombatAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_2");
         break;
     case 2:
-        SetAnimationName("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_3");
+        SetCombatAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_3");
         break;
     case 3:
-        SetAnimationName("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_4");
+        SetCombatAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_4");
         break;
     }
 }

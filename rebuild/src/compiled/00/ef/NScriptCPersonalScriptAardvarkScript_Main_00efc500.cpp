@@ -91,14 +91,15 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual void s001();
     void Release();                                    // 0x00CD2770
     void Speak(const CScriptThing& listener, const char* text, bool a, bool b, bool c, bool d);   // 0x007E7390
-    bool IsPerformingScriptTask() const;               // 0x007E7450
-    CScriptThing GetScriptThing() const;               // 0x007E7490
     void Destroy();                                    // ~CScriptGameResourceObjectScriptedThingBase, out of line 0x007E74D0
     __forceinline void DestroyInline()
     {
         PImp.Release(); PImp.Data = 0; PImp.Info = 0;
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();
     }
+public:
+    virtual CScriptThing GetScriptThing() const;   // 0x007E7490
+    virtual bool IsPerformingScriptTask() const;   // 0x007E7450
 };
 struct CMovieImpPointer {
     void* Data;

@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCAmbientBird_Destruct(void* bird);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCAmbientBird_ScalarDeletingDestructor(void* bird, int, unsigned int flags)
 {
-    CTCAmbientBird_Destruct(bird);
+    ((CTCBase*)(bird))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(bird);
+        operator delete(bird);
     return bird;
 }

@@ -8,7 +8,15 @@
 // +0x208). Two `if (Local)` tests: the second re-reads the byte after the virtual call (a nested
 // `if (IsMainPlayer())` inside the first, the AddMode guarded again exactly like the landed
 // CPlayer::ResetModes 0x00634870).
+#define CPlayer CPlayerLayout
 #include "engine/CPlayer.h"
+#undef CPlayer
+
+class CPlayer : public CPlayerLayout
+{
+public:
+    bool IsMainPlayer() const;   // 0x00487520
+};
 
 typedef long EPlayerMode;
 
@@ -18,7 +26,6 @@ struct CInputProcessVirtuals {
 };
 
 struct CPlayer_Methods : CPlayer {
-    bool IsMainPlayer() const;                        // 0x00487520
     void AddMode(EPlayerMode mode, bool exclusive);   // 0x006345C0
     void InitModes();
 };

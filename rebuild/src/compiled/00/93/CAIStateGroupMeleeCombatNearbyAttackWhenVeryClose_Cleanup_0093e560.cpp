@@ -1,7 +1,7 @@
 // CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Cleanup() -- deregister the creature from its combat manager if it is a registered combatant, then drop creature mode 0x19
 // Leaf: ?Cleanup@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E560, length 121 bytes (+ int3 padding).
-// Callees: CThingCreatureBase::IsRegisteredCombatant @ 0x00662410 (landed name),
+// Callees: CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410 (landed name),
 // CThingCreatureBase::GetCombatManager @ 0x00661ED0, CCombatManager::DeregisterCombatant(CThingCreatureBase*)
 // @ 0x006ED9C0, CVectorMap::LowerBound @ 0x0040F020 (inlined interface lookup, type 0x31 =
 // CTCCreatureModeManager), CTCCreatureModeManager::RemoveMode(unsigned long) @ 0x0073ABA0.
@@ -26,7 +26,6 @@ class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    bool IsRegisteredCombatant();               // 0x00662410
     CCombatManager* GetCombatManager();         // 0x00661ED0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -41,6 +40,8 @@ class CThingCreatureBase { public:
         }
         return false;
     }
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 
 class CTCCreatureModeManager { public:                 // interface type 0x31
@@ -71,7 +72,7 @@ struct CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose : CAIStateGroupBase {
 
 void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Cleanup()
 {
-    if (PBrain->PCreature->IsRegisteredCombatant())
+    if (PBrain->PCreature->IsInMeleeAsAttacker())
         PBrain->PCreature->GetCombatManager()->DeregisterCombatant(PBrain->PCreature);
     CTCCreatureModeManager* modes;
     PBrain->PCreature->GetInterface(&modes, 0x31);

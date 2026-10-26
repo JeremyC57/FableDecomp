@@ -84,19 +84,28 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
 };
 
-struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointerCtor();              // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-    ~CBaseIntelligentPointerCtor();             // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 // `PThing = thing` is the converting-temporary + inline `SetPItem(other.GetPItem())` assignment.
-struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointerCtor() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 
 struct CCountBlock {                            // CCountedPointer's shared block
@@ -127,7 +136,7 @@ class CBrainOutput { public:                           // 0x48 bytes
     unsigned char _pad04[0x20 - 0x04];
     CCountedPointer PAction;                    // +0x20
     unsigned char _pad28[0x40 - 0x28];
-    CBaseIntelligentPointerCtor PTarget;        // +0x40
+    CBaseIntelligentPointer PTarget;        // +0x40
     CBrainOutput();                             // 0x00835620
 };
 
@@ -138,7 +147,7 @@ class CTCNymph { public:
     void StopFlyingAround(long mode);           // 0x0080F870
 };
 
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointerCtor& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -149,7 +158,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointerCtor& p)
 
 struct CAIStateGroup_NymphFloatAround : CAIStateGroupBase {
     unsigned char _pad_0x14[0x8];               // +0x14
-    CIntelligentPointerThing PFloatTarget;      // +0x1c
+    CIntelligentPointer<CThing> PFloatTarget;      // +0x1c
     virtual void OnReplace();
 };
 

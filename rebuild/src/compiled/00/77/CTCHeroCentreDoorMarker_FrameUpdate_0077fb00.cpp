@@ -21,18 +21,22 @@ public:
     unsigned char Dead : 1;                             // +0x91 bit 0
     const C3DVector& GetPosition() const;               // 0x004C73D0
 };
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
-    virtual void v00();
-    void* PData;
-    CThing* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CThing* item);                        // 0x00A01B90
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
-    virtual void v00();
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 template <class P> inline bool IS_THING_ALIVE(const P& p) { return p.GetPItem() && !p.GetPItem()->Dead; }
 
@@ -67,7 +71,8 @@ public:
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    CPlayerManager* GetPlayerManager();                 // 0x00686D40
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
 };
 #pragma pack(push, 1)
 class CTCHeroCentreDoorMarker : public CTCBase {        // vtable 0x0126B044
@@ -85,7 +90,7 @@ public:
 void CTCHeroCentreDoorMarker::FrameUpdate()
 {
     if (IS_THING_ALIVE(PHeroCentre)) {
-        CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+        CThing* hero = GetPlayerManager().GetMainPlayer()->GetHeroThing();
         if (hero && !hero->Dead) {
             const C3DVector& pos = ParentThing->GetPosition();
             const C3DVector& heroPos = hero->GetPosition();

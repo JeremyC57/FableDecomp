@@ -16,7 +16,6 @@ class CLandscapeBackgroundPatch;
 extern void __fastcall sub_dtor_451ac6(void* subobj);
 
 // operator delete (__cdecl), void(void*)
-extern void __cdecl fable_operator_delete(void* p);
 
 // Real convention is __fastcall(this in ecx, flags on stack). The harness rewrites
 // __fastcall->__fastcall, so to keep `flags` on the STACK (not edx) we add an unused
@@ -28,6 +27,6 @@ void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(
     // ecx = self + 4  -> subobject destructor
     sub_dtor_451ac6((char*)self + 4);
     if (flags & 1)
-        fable_operator_delete(self);
+        operator delete(self);
     return self;
 }

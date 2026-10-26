@@ -11,14 +11,23 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CBaseIntelligentPointer {        // 8 bytes: vtable + item pointer
-    virtual void v00();
-    void* m_pItem;                          // +4
-    CBaseIntelligentPointer();              // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C; 8 bytes
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C; 8 bytes
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
@@ -27,7 +36,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
 };
 
 class CCreatureAction_SummonerFlameSlice : public CCombatActionBase { public:   // vtable 0x01264214
-    CIntelligentPointer PSummonedThing;     // +0x114 (the pointer FinishAction @ 0x008CAD10 kills)
+    CIntelligentPointer<CThing> PSummonedThing;     // +0x114 (the pointer FinishAction @ 0x008CAD10 kills)
     virtual void v00();
     CCreatureAction_SummonerFlameSlice(CThingCreatureBase* owner, CThing* target);
 };

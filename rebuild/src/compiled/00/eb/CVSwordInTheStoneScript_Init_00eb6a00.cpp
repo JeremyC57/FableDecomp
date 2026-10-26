@@ -14,9 +14,9 @@ namespace N_006e7b40 { struct CScriptThing {                              // 12 
 }; } using N_006e7b40::CScriptThing;
 
 class CScriptGameResourceObjectScriptedThingBase { public:   // 16 bytes
-    unsigned char _body[0x10];
+    unsigned char _body[0x10 - 4];
     CScriptGameResourceObjectScriptedThingBase();     // 0x007E72A0
-    ~CScriptGameResourceObjectScriptedThingBase();    // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();    // 0x007E74D0
 };
 
 struct CScriptThingVector {                        // 12-byte retail vector

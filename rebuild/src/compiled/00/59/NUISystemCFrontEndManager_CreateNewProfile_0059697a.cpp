@@ -57,9 +57,10 @@ public:
 namespace NUISystem {
 class CFrontEndManager {
 public:
-    void SetMainMenuDefName(const CCharString& name);    // 0x00595A06
-    void AddProfileNameToScreens(const CWideString& name);   // 0x00595B24
     bool CreateNewProfile(CWideString& name);
+protected:
+    void AddProfileNameToScreens(const CWideString&);   // 0x00595B24
+    void SetMainMenuDefName(const CCharString&);   // 0x00595A06
 };
 bool CFrontEndManager::CreateNewProfile(CWideString& name)
 {

@@ -1,6 +1,6 @@
 // CCreatureAction_DuckAndCover::Initialise() -- names the "DIVE_FOR_COVER" animation, runs the base Initialise, normalises the dive direction and turns the creature's physics to face it (atan2 as a 0..1 turn fraction, wrapped with fmod)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B6EE0, length 348 bytes (+ int3 padding).
-// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName @ 0x008574D0, ~CCharString
+// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0, ~CCharString
 // @ 0x0099EAE0, CCombatActionBase::Initialise @ 0x00857520, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, _CIfmod @ 0x00BFEB28
 // (the fmod intrinsic), the physics component's virtual slot 66 (+0x108, one float: the facing fraction).
 // Globals: the 128-entry reciprocal-square-root mantissa table 0x013CE558, 3.0f 0x0122DED4, 0.5f 0x0122F59C, 1/(2pi) 0x01237F08,
@@ -49,18 +49,30 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08
+    CIntelligentPointer<CThing> PCreature;      // +0x08
     unsigned char _pad10[0x114 - 0x10];     // +0x10
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 class CCreatureAction_DuckAndCover : public CCombatActionBase { public:
     C3DVector Direction;                    // +0x114 the dive direction
@@ -69,7 +81,7 @@ class CCreatureAction_DuckAndCover : public CCombatActionBase { public:
 
 void CCreatureAction_DuckAndCover::Initialise()
 {
-    SetAnimationName("DIVE_FOR_COVER");
+    SetCombatAnimation("DIVE_FOR_COVER");
     CCombatActionBase::Initialise();
     Direction.Normalise();
     CTCPhysicsBase* physics = PCreature.GetPItem()->m_pPhysics;

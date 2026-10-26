@@ -65,7 +65,7 @@ class CThingSearchTools;
 class CTCShapeManager;
 void __fastcall GetValidPositions(CPositionVector& positions, const CWorldMap& map, const CThingSearchTools& search,
                                   const C3DVector& pos, float radius, bool flag, const CTCShapeManager* shapes);   // 0x0074A5D0
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
+long __fastcall GFROR13(unsigned long);  // 0x00497890
 inline unsigned long GFRandom(unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
@@ -167,10 +167,21 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;                                    // +0x04
-    CThing* GetPItem() const;                           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CDistancePredicate {                             // remove_if predicate 0x008AC060 (16 bytes by value)
@@ -190,7 +201,7 @@ class CCombatActionBase {
 public:
     virtual void Initialise();
     unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;                  // +0x08
+    CIntelligentPointer<CThing> PCreature;                  // +0x08
     unsigned char           _pad10[0x114 - 0x10];
     CWorld* GetPWorld() const;                          // 0x00692940
 };

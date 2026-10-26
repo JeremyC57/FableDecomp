@@ -4,7 +4,7 @@ struct CSubB { char b[4]; };
 
 class CPersistContext { public:
     // this=ecx=ctx, member pointer pushed on stack -> __fastcall push;call
-    void TransferA(CSubA* m);   // callee at 0x431102
+    template <class T> void Transfer(T& value);   // callee at 0x431102
 };
 
 class CPlayerDef { public:
@@ -17,7 +17,7 @@ class CPlayerDef { public:
 
 void CPlayerDef::Transfer(CPersistContext& ctx)
 {
-    ctx.TransferA(&this->m3c);
+    ctx.Transfer(*(long*)(&this->m3c));
     // second call: this=ecx=ctx, pushes &self->m40, target 0x4595a3
-    reinterpret_cast<CPersistContext*>(&ctx)->TransferA(reinterpret_cast<CSubA*>(&this->m40));
+    reinterpret_cast<CPersistContext*>(&ctx)->Transfer(*(long*)(reinterpret_cast<CSubA*>(&this->m40)));
 }

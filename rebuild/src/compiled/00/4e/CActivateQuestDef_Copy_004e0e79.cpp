@@ -2,7 +2,7 @@
 
 class CDefClassBase { public:
     char pad[0x28];
-    void Copy(CDefClassBase const* src);  // thiscall: ecx=this, stack=src
+    CDefClassBase& operator=(const CDefClassBase& other);  // thiscall: ecx=this, stack=src
 };
 
 class CActivateQuestDef : public CDefClassBase { public:
@@ -12,7 +12,7 @@ class CActivateQuestDef : public CDefClassBase { public:
 
 void __fastcall Copy(CActivateQuestDef* self, void* edx, CDefClassBase const* src)
 {
-    self->CDefClassBase::Copy(src);
+    self->CDefClassBase::operator=(*(const CDefClassBase*)(src));
     CActivateQuestDef const* s = (CActivateQuestDef const*)src;
     self->field28 = s->field28;
     self->LoadResources = s->LoadResources;

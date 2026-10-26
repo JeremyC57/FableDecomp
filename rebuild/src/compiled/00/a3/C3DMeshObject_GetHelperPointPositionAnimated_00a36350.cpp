@@ -23,7 +23,10 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 class C3DVector { public:
     float X, Y, Z;
@@ -70,7 +73,7 @@ C3DVector C3DMeshObject::GetHelperPointPositionAnimated(const CCharString& name,
                                                         const C3DAnimationBlendState& other, float blend,
                                                         C3DAnimationManager& manager) const
 {
-    const C3DHelperPoint& helper = *Mesh->GetHelperPoint(Calc_004014a0(0, name.GetChars(), name.GetLength()), index);
+    const C3DHelperPoint& helper = *Mesh->GetHelperPoint(CCRC::Calc(0, name.GetChars(), name.GetLength()), index);
     C3DVector point = Mesh->GetHelperPointPositionAnimated(helper, state, other, blend, manager);
     const float x = point.X;
     const float y = point.Y;

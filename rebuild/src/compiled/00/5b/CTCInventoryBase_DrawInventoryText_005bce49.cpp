@@ -21,7 +21,8 @@ class CWideString;
 class CRGBColour;
 
 class CFontBank { public:
-    float GetVStringWidth(const CWideString& text);   // 0x0043E4D0
+public:
+    float GetVStringWidth(const CWideString&) const;   // 0x0043E4D0
 };
 
 void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);   // 0x009E21D0

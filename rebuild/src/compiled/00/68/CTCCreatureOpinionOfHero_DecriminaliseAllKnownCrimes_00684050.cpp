@@ -1,7 +1,7 @@
 // CTCCreatureOpinionOfHero::DecriminaliseAllKnownCrimes() -- for a villager with a village, clear every crime deed this creature knows about (crime deed types 1..9 and the pending list) from the hero's opinion deed log
 // Retail 0x00684050, 448 bytes (plain `ret`). Callees: CVectorMap LowerBound @ 0x0040F020 (inlined GetInterface: CTCVillager 0x23
 // on the parent, the hero's CTCHeroOpinionDeedLog 0x51), GFGetPVillageInterface(CTCVillager*) @ 0x007EE540 (__fastcall),
-// CTCBase::GetPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960, CPlayer::GetHeroCreature
+// CTCBase::PeekPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960, CPlayer::GetHeroCreature
 // @ 0x00487DC0, CTCHeroOpinionDeedLog::GetDeedFromHandle(long) @ 0x006C58F0, the log's per-handle decriminalise @ 0x006C59A0
 // (manifest "CScreenEffectPriorityStack::SetAreaTrackPos" is propagated).
 // Layout: Ego_r.pdb CTCCreatureOpinionOfHero has PendingDeeds +0x70, LastFrameAppliedDeedEffect long[92] +0x7c, KnownDeeds
@@ -96,14 +96,19 @@ __forceinline void DecriminaliseList(CTCHeroOpinionDeedLog* log, CLongList& deed
     }
 }
 
-class CTCCreatureOpinionOfHero { public:
+class CTCBase
+{
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
+
+class CTCCreatureOpinionOfHero : public CTCBase { public:
     void*         __vftable;                        // +0x00
     CThing*       Thing;                            // +0x04 CTCBase parent thing
     unsigned char _pad08[0x54 - 0x08];
     CLongList     PendingDeeds;                     // +0x54
     long          LastFrameAppliedDeedEffect[92];   // +0x58
     CLongList     KnownDeeds[92];                   // +0x1c8
-    const CPlayerManager* GetPlayerManager() const; // 0x00686D50
     void DecriminaliseAllKnownCrimes();
 };
 
@@ -115,7 +120,7 @@ void CTCCreatureOpinionOfHero::DecriminaliseAllKnownCrimes()
     if (!GFGetPVillageInterface(villager))
         return;
     CTCVillage* village = GFGetPVillageInterface(villager);
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetHeroCreature();
     if (!hero)
         return;
     CTCHeroOpinionDeedLog* log;

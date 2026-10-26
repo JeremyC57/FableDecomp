@@ -2,7 +2,7 @@
 // Retail: Fable.exe @ 0x00722590, 432 bytes (plain `ret`).
 // Callees: LowerBound 0x004365B0 (const overload), CTCGraphicAppearance::IsResourcesLoaded 0x004BE3E0 / GetHelperPoint 0x004C0560,
 //   CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / ~ 0x0099EAE0, operator+ 0x0099F570 (__fastcall),
-//   CCharString::Format 0x0099F1F0 (__cdecl varargs), CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 /
+//   CCharString::Sprintf 0x0099F1F0 (__cdecl varargs), CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 /
 //   dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C), vector<CGenerationPos>::push_back 0x00723270,
 //   CDefClassBase::GetSubDef<CSmokeGeneratorDef> 0x00722D30; def release slot 1.
 // Layout: Ego_r.pdb CTCSmokeGenerator with the retail 12-byte vector: GenerationDistance +0x0c, GenerationPositions +0x10,
@@ -18,24 +18,33 @@ class CCharString { public:
     CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    void Format(const char* format, ...);               // 0x0099F1F0
+public:
+    void __cdecl Sprintf(const char*, ...);   // 0x0099F1F0
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 extern CCharString g_CCharString_013bacc0;              // 0x013BACC0 "focus_chimney_"
 class CThing;
-struct CBaseIntelligentPointer {                        // Ego_r.pdb: 8 bytes (vtable, PData)
-    virtual void v00();
-    CThing* m_pItem;
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
-    void SetPItem(CThing* item);                        // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) { SetPItem(item); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CGenerationPos {
     C3DVector               Position;
-    CIntelligentPointerThing Thing;
+    CIntelligentPointer<CThing> Thing;
     CGenerationPos(const C3DVector& position, CThing* thing) : Position(position), Thing(thing) {}
 };
 struct CGenerationPosVector {
@@ -116,9 +125,9 @@ void CTCSmokeGenerator::CreatePositions()
         CCharString prefix = CCharString("") + g_CCharString_013bacc0;
         CCharString number;
         if (i < 10)
-            number.Format("0%d", i);
+            number.Sprintf("0%d", i);
         else
-            number.Format("%d", i);
+            number.Sprintf("%d", i);
         CCharString helperName = prefix + number;
         C3DVector position;
         if (!appearance->GetHelperPoint(helperName, 0, 0, &position, 1.0f))

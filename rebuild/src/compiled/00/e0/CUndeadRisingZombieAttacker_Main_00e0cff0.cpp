@@ -11,13 +11,20 @@
 // Shape: the scoped filter object (both vtable stores through ebx), then the handle as a local destroyed out of line on
 // every exit after it; `while (!StartScriptingEntity(...)) { frame; if (done) return; }`; the target call reads the
 // interface's vtable before GetHero(); the state wait compares against 2 held in ebx.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                                    // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    ~CScriptThing();                                     // 0x004AA840
+    virtual ~CScriptThing();                                     // 0x004AA840
 };
-struct CIsThingConscious {                               // vtable 0x012C2FE8: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingConscious : public NScript::CPredicateBase {                               // vtable 0x012C2FE8: a filter holding a script thing
     CScriptThing m_thing;                                // +0x04
     CIsThingConscious(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingConscious() { }
@@ -29,8 +36,9 @@ struct CCountedPointerWords {                            // {Data, Info}
 };
 class CBaseObject { public:                                     // CBaseIntelligentPointer root (polymorphic: vptr +0)
     void* m_pIntelligentPointer;                         // +0x04
+protected:
     CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                           // +0x08 Data, +0x0c Info
@@ -129,14 +137,19 @@ public:
     unsigned char _pad00[0x5c];
     long          State;                                 // +0x5c
 };
-class CUndeadRisingZombieAttacker {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CUndeadRisingZombieAttacker : public CEntityScriptBase {
 public:
     void*                  __vftable;                    // +0x00
     CGameScriptInterface*  Game;                         // +0x04
     CScriptThing           Me;                           // +0x08
     CQ_UndeadRisingScript* ParentClass;                  // +0x14
-    void RegisterFilter(CIsThingConscious& filter);      // 0x00F35B10
-    bool IsActiveThreadTerminating();                    // 0x00F35B30
     void Main();
 };
 
@@ -144,7 +157,7 @@ void CUndeadRisingZombieAttacker::Main()
 {
     {
         CIsThingConscious filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

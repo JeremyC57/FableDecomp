@@ -9,12 +9,11 @@ class CInputProcessInventoryMapScreen
 };
 
 // operator delete @ 0xbfe9bc
-void operator_delete_impl(void* p);
 
 void* CInputProcessInventoryMapScreen::ScalarDeletingDestructor(unsigned int flags)
 {
     this->Destroy();
     if (flags & 1)
-        operator_delete_impl(this);
+        operator delete(this);
     return this;
 }

@@ -11,13 +11,12 @@
 class CSubtitleRenderer;
 
 extern "C" void __fastcall LBP_dtor(CSubtitleRenderer* renderer);   // inner (non-deleting) dtor
-extern "C" void __cdecl LBP_op_delete(void* p);                          // operator delete
 
 extern "C" void* __fastcall CSubtitleRenderer_scalar_deleting_destructor(
     CSubtitleRenderer* renderer, int /*edx*/, unsigned int flags)
 {
     LBP_dtor(renderer);
     if (flags & 1)
-        LBP_op_delete(renderer);
+        operator delete(renderer);
     return renderer;
 }

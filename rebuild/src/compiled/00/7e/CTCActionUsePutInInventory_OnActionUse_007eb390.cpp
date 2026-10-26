@@ -22,25 +22,34 @@ class CThing { public:
 
 class CThingObject : public CThing { public: };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                      // +0x04
-    CBaseIntelligentPointer();                 // 0x00A01B10
-    ~CBaseIntelligentPointer();                // 0x00A01C10
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                    // 0x00693EF0
+    virtual ~CCreatureActionBase();                    // 0x00693EF0
 };
 
 class CCreatureAction_AddRealObjectToInventory : public CCreatureActionBase { public:
-    CIntelligentPointer PObject;               // +0xa8
+    CIntelligentPointer<CThing> PObject;               // +0xa8
     CCreatureAction_AddRealObjectToInventory(class CThingCreatureBase* creature, CThingObject* object);   // 0x007EB2D0
 };
 

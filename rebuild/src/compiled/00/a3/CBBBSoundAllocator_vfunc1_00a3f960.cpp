@@ -7,7 +7,7 @@
 // Tiny-body shape `ForwardArgResult` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-void* __cdecl Call_00bfea0e(void* argument);   // 0x00BFEA0E
+extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (MSVCR71)
 
 struct CBBBSoundAllocator {
     void* vfunc_1(void* argument);            // the result is returned: that is what makes VC clean the slot with `add esp, 4` rather than `pop ecx`
@@ -15,5 +15,5 @@ struct CBBBSoundAllocator {
 
 void* CBBBSoundAllocator::vfunc_1(void* argument)
 {
-    return Call_00bfea0e(argument);
+    return malloc((unsigned int)argument);
 }

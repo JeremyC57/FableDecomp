@@ -1,6 +1,9 @@
+class CDynamicObjectHeapBase {
+public:
+    virtual ~CDynamicObjectHeapBase();   // 0x00F36C90
+};
 extern "C" void __fastcall MemberDtor_686df0_00b48d40(void* self);
 // Leaf: ??1CInputProcessManager@
-extern "C" void __fastcall BaseDtor_686830(void* self);
 
 class CInputProcessManager { public:
     void** vtbl;
@@ -12,5 +15,5 @@ extern "C" void __fastcall DtorInputProcessManager(CInputProcessManager* self, i
 {
     self->vtbl = (void**)&g_vtbl_CInputProcessManager_012a20f0;
     MemberDtor_686df0_00b48d40(self);
-    BaseDtor_686830(self);
+    ((CDynamicObjectHeapBase*)(self))->CDynamicObjectHeapBase::~CDynamicObjectHeapBase();
 }

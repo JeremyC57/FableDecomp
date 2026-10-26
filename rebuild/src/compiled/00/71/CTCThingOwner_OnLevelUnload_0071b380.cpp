@@ -30,7 +30,6 @@ public:
     unsigned char    _pad4c[0x91 - 0x4c];
     unsigned char    m_flags91;                 // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    bool IsLevelPersistent();                   // 0x004C82A0
     template<class T> __forceinline void GetInterface(T** ppOut, long type)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
@@ -48,17 +47,29 @@ public:
             *ppOut = (T*)((first == last || type < first->type) ? last : first)->component;
         }
     }
+public:
+    bool IsLevelPersistent() const;   // 0x004C82A0
 };
 
-struct CBaseIntelligentPointer {
-    void* _vfptr;
-    CBaseObject* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct SOwnedListNode {                         // CTCThingOwner::ObjectList node
     SOwnedListNode*         next;               // +0x00
     SOwnedListNode*         prev;               // +0x04
-    CBaseIntelligentPointer value;              // +0x08
+    CIntelligentPointer<CThing> value;              // +0x08
 };
 
 struct SThingListNode {                         // local list<CThing*> node
@@ -125,7 +136,7 @@ void CTCThingOwner::OnLevelUnload()
 {
     CThingPtrList things;
     for (SOwnedListNode* node = ObjectList->next; node != ObjectList; node = node->next) {
-        CBaseIntelligentPointer& item = node->value;
+        CIntelligentPointer<CThing>& item = node->value;
         if (item.GetPItem() && !item.GetPItem()->IsDead() && item.GetPItem()->IsLevelPersistent())
             things.push_back(item.GetPItem());
     }

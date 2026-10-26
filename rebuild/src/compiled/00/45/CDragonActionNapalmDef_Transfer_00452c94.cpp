@@ -2,7 +2,7 @@
 struct Field { unsigned char b[4]; };
 
 class CPersistContext { public:
-    void Xfer(Field* p);
+    template <class T> void Transfer(T& value);
 };
 
 class CDragonActionNapalmDef { public:
@@ -15,8 +15,8 @@ class CDragonActionNapalmDef { public:
 
 void __fastcall CDragonActionNapalmDef_Transfer(CDragonActionNapalmDef* def, int edx, CPersistContext* ctx)
 {
-    ctx->Xfer(&def->f0);
-    ctx->Xfer(&def->f1);
-    ctx->Xfer(&def->f2);
-    ctx->Xfer(&def->f3);
+    ctx->Transfer(*(float*)(&def->f0));
+    ctx->Transfer(*(float*)(&def->f1));
+    ctx->Transfer(*(float*)(&def->f2));
+    ctx->Transfer(*(float*)(&def->f3));
 }

@@ -2,7 +2,7 @@
 // Leaf: LoadAnimFileCompressed
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A99510, 250 bytes (`ret 10h`: hidden result + 3 args).
 // Ego_r.pdb: ?LoadAnimFileCompressed@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VC3DAnimFile@@@@PBXKAAVCHandleBasedMemoryPool@@@Z.
-// Callees: CMemoryDataInputStream(void*, long) 0x00994930 / ~CMemoryDataInputStream 0x00993B10,
+// Callees: CMemoryDataInputStream(void*, long) 0x00994930 / ~CDataStream 0x00993B10 (reached through the implicit CMemoryDataInputStream/CDataInputStream destructors),
 // C3DAnimFileLoader::LoadAnimFile(CDataInputStream&) 0x00A99420, CTemporaryBuffer(size, pool, scratch) 0x00A98860 /
 // ~CTemporaryBuffer 0x00A98910, lzo1x_decompress_safe 0x00C069D0 (cdecl), operator delete 0x00BFE9BC;
 // the shared scratch buffer global 0x013CB498, the 4-byte ">>>>" tag 0x0129E454.
@@ -42,12 +42,13 @@ template<class T> class CCountedPointer { public:
     T& operator*() const { return *Object; }
 };
 
-class CDataInputStream { public:
-    virtual ~CDataInputStream();
+class CDataStream { public:
+    virtual ~CDataStream();                          // 0x00993B10 (CDataInputStream / CMemoryDataInputStream: implicit)
+};
+class CDataInputStream : public CDataStream { public:
 };
 class CMemoryDataInputStream : public CDataInputStream { public:
     CMemoryDataInputStream(const void* data, long size);   // 0x00994930
-    ~CMemoryDataInputStream();                       // 0x00993B10
     long  position;                                  // +0x04
     long  sourceLength;                              // +0x08
     long  chunkBase;                                 // +0x0c

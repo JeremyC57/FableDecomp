@@ -4,7 +4,7 @@
 // GFLimit(T&, const T&, const T&) template (bounds by reference): retail's stamina-in-eax / MaxStamina-in-ecx colouring.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057B1DB, 148 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`).
-// Callees: CTCBase::GetDefinitions() @ 0x006869D0 (+0xDC the CHeroStatsDef pointer; def +0x40 the stamina refill
+// Callees: CTCBase::GetDefinitionManager() @ 0x006869D0 (+0xDC the CHeroStatsDef pointer; def +0x40 the stamina refill
 //          delay in seconds), __ftol2 @ 0x00BFEA70, std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound
 //          @ 0x0040F020, and the interface-0x93 component's routine @ 0x0079E300 (manifest
 //          "CTCPhysicalShieldSpell::CancelMove", propagated; called without a null test).
@@ -54,8 +54,9 @@ class CThing { public:
     }
 };
 
-struct CTCStaminaListener {                          // interface type 0x93
-    void OnStaminaExhausted();                       // 0x0079E300
+class CTCPhysicalShieldSpell { public:                          // interface type 0x93
+public:
+    void CancelMove();   // 0x0079E300
 };
 
 class CHeroStatsDef { public:
@@ -63,12 +64,18 @@ class CHeroStatsDef { public:
     float         StaminaRefillDelaySeconds;         // +0x40
 };
 
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
 
-class CTCHeroStats { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCHeroStats : public CTCBase { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x50];
@@ -78,8 +85,7 @@ class CTCHeroStats { public:
     unsigned char _pad_0x64[0x108];
     bool          InfiniteStamina;                   // +0x16C (PDB +0x184)
 
-    CDefinitionHolder* GetDefinitions() const;       // 0x006869D0
-    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitions()->PHeroStatsDef; }
+    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
     void ModifyStaminaBy(long delta);
 };
 
@@ -98,8 +104,8 @@ void CTCHeroStats::ModifyStaminaBy(long delta)
     GFLimit(Stamina, 0L, MaxStamina);
     FramesUntilStaminaRefills = (long)(GetHeroStatsDef()->StaminaRefillDelaySeconds * g_GameFramesPerSecond);
     if (Stamina == 0) {
-        CTCStaminaListener* listener;
+        CTCPhysicalShieldSpell* listener;
         if (ParentThing->GetInterface(&listener, 0x93))
-            listener->OnStaminaExhausted();
+            listener->CancelMove();
     }
 }

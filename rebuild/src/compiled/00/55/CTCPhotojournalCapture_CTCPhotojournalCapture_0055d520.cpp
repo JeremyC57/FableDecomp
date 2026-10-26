@@ -2,7 +2,7 @@
 // Leaf: ??0CTCPhotojournalCapture
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055D520, 97 bytes. Vtable 0x0124C4B4 (CTCPhotojournalCapture; RTTI slots 4/11/26).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CWideString::CWideString() @ 0x0099AED0 (twice; catalog label "CCharString"
-//   is a byte twin), CTCBase::AddToGlobalUpdateTCs() @ 0x00686ED0 (catalog "std::list::push_back").
+//   is a byte twin), CTCBase::AddToGlobalTCs() @ 0x00686ED0 (catalog "std::list::push_back").
 // Layout: PDB CTCPhotojournalCapture (0x48) with a 12-byte retail STLport vector (retail 0x44): Description +0x0c,
 //   DiscardScreenShot +0x10 (not initialised here), FrameCounter +0x14, FirstRenderFrame +0x18, ScreenOpen +0x19,
 //   LastRenderTime +0x20 (double; the CTCBase base carries the vptr so the double does not pad it), FileName +0x28,
@@ -27,7 +27,8 @@ class CTCBase { public:
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
     CTCBase(CThing* parent);                    // 0x00686800
-    void AddToGlobalUpdateTCs();                // 0x00686ED0
+public:
+    void AddToGlobalTCs();   // 0x00686ED0
 };
 class CTCPhotojournalCapture : public CTCBase { public:
     CWideString Description;                    // +0x0c
@@ -55,5 +56,5 @@ CTCPhotojournalCapture::CTCPhotojournalCapture(CThing* parent)
     , WasPlayerGuiOpen(false)
     , TakeScreenshotAfterFrames(-1)
 {
-    AddToGlobalUpdateTCs();
+    AddToGlobalTCs();
 }

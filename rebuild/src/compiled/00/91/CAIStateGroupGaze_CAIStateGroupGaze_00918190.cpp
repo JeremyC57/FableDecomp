@@ -23,7 +23,8 @@ class CCharString { public:
 };
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
@@ -34,15 +35,25 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                                // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                          // +0x04
-    CBaseIntelligentPointer();                              // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointerGameObject : CBaseIntelligentPointer {    // CIntelligentPointer<CThingGameObject>, vtable 0x0127B4D8
-    virtual void v00();
-    CIntelligentPointerGameObject() { }
+class CThingGameObject;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {    // CIntelligentPointer<CThingGameObject>, vtable 0x0127B4D8
+public:
+    CIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CAIStateGroupBase : public CBase { public:                          // vtable 0x01288C60
@@ -57,7 +68,7 @@ class CAIStateGroupBase : public CBase { public:                          // vta
 };
 
 struct CAIStateGroup_Gaze : CAIStateGroupBase {             // vtable 0x0128FDEC
-    CIntelligentPointerGameObject GazeMarker;               // +0x14
+    CIntelligentPointer<CThingGameObject> GazeMarker;               // +0x14
     float ChanceOfRunning;                                  // +0x1c
     float MinJourneyForRunning;                             // +0x20
     float MaxDistanceForCreaturesToLookAt;                  // +0x24

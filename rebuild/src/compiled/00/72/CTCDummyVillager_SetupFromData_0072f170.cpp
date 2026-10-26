@@ -67,6 +67,9 @@ class CDefinitionManager {
 public:
     template<class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042AF3C
 };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};
 void* FindDef_0072f170(long index);
 void* FindSubDef_0072f170(const void* def);
 #pragma auto_inline(off)
@@ -83,7 +86,7 @@ template<class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer
     return out->Object != 0;
 }
 #pragma auto_inline(on)
-unsigned long __fastcall GFROR13(unsigned long value);     // 0x00497890
+long __fastcall GFROR13(unsigned long);     // 0x00497890
 __forceinline unsigned long GFRandomBelow(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
@@ -99,8 +102,17 @@ class CWorld { public:
     CGameClock* Clock;                                      // +0x1c
 };
 
-class CTCDummyVillager { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    unsigned long* GetPWorldSeed() const;   // 0x00686DA0
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCDummyVillager : public CTCBase { public:
     void*                                 ParentThing;      // +0x04 (CTCBase)
     unsigned char                         _pad08[0x4];
     unsigned long                         DefType;          // +0x0c
@@ -111,9 +123,6 @@ class CTCDummyVillager { public:
     unsigned char                         Creature[8];      // +0x30
     unsigned long                         CreatureUID[2];    // +0x38
     long                                  DayToBeRecreated; // +0x40
-    CWorld* GetWorld();                                     // 0x00686A70 (CTCBase)
-    const CDefinitionManager* GetDefinitions();             // 0x006869D0 (CTCBase)
-    unsigned long* GetPRandomSeed();                        // 0x00686DA0 (CTCBase)
     void SetupFromData(unsigned long defType, CThingBuilding* home, CThingBuilding* work, bool respawnable);
 };
 
@@ -123,14 +132,14 @@ void CTCDummyVillager::SetupFromData(unsigned long defType, CThingBuilding* home
     HomeBuilding = CIntelligentPointer<CThingBuilding>(home);
     WorkBuilding = CIntelligentPointer<CThingBuilding>(work);
     if (respawnable) {
-        DayToBeRecreated = GetWorld()->Clock->Day + 1;
+        DayToBeRecreated = GetWorld().Clock->Day + 1;
         CDefPointer<const CDefClassBase> def;
-        GetDefinitions()->GetDef(DefType, &def);
+        GetDefinitionManager().GetDef(DefType, &def);
         CDefPointer<const CCreatureDef> creatureDef;
         if (def->GetSubDef(&creatureDef)) {
-            long today = GetWorld()->Clock->Day;
+            long today = GetWorld().Clock->Day;
             DayToBeRecreated = creatureDef->RespawnWaitInDaysMin
-                + GFRandomBelow(creatureDef->RespawnWaitInDaysMax - creatureDef->RespawnWaitInDaysMin, GetPRandomSeed()) + today;
+                + GFRandomBelow(creatureDef->RespawnWaitInDaysMax - creatureDef->RespawnWaitInDaysMin, GetPWorldSeed()) + today;
         }
     } else
         DayToBeRecreated = 0x7fffffff;

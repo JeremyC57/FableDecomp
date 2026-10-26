@@ -1,7 +1,7 @@
 // CCreatureAction_BuildHealLifeSpell::CCreatureAction_BuildHealLifeSpell(CThingCreatureBase*, bool) -- base CCombatActionBase(owner, 140, zeroed CSoundPair), own vtable (0x0127CBC4), then SetAnimationName("ST_BUILD_UP_HEAL_SELF" when healing self, else "ST_BUILD_UP_HEAL")
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BBE40, length 110 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
-// CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0,
+// CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0,
 // CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the sound pair is zeroed with immediates in the frame and passed by reference (arguments right to left: the pair,
 // 0x8c, the owner); the flag byte is tested before the vtable store, the two literal addresses are selected into eax
@@ -25,7 +25,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_BuildHealLifeSpell : public CCombatActionBase { public:   // vtable 0x0127CBC4; sizeof 0x114 (no members of its own)
@@ -36,5 +37,5 @@ class CCreatureAction_BuildHealLifeSpell : public CCombatActionBase { public:   
 CCreatureAction_BuildHealLifeSpell::CCreatureAction_BuildHealLifeSpell(CThingCreatureBase* owner, bool healSelf)
     : CCombatActionBase(owner, 140, CSoundPair())
 {
-    SetAnimationName(healSelf ? "ST_BUILD_UP_HEAL_SELF" : "ST_BUILD_UP_HEAL");
+    SetCombatAnimation(healSelf ? "ST_BUILD_UP_HEAL_SELF" : "ST_BUILD_UP_HEAL");
 }

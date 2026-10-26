@@ -7,13 +7,21 @@
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 #include "fable_string.h"
+namespace NScript { class CPredicateBase; }
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
 namespace NScript {
 struct ScriptThing : ::CScriptThing {
     bool MsgIsHitBy(const CCharString&) const;
     ScriptThing(const ScriptThing&); //004ABE90
     ~ScriptThing(); //004AA840
 };
-struct __declspec(novtable) CPredicateBase {
+class __declspec(novtable) CPredicateBase { public:
     virtual bool operator()() const=0;
     virtual CPredicateBase* Clone() const=0;
     virtual ~CPredicateBase() {}
@@ -42,14 +50,12 @@ class CQ_HobbeToothContestScript { public:
     unsigned char BaseAndQuestFields[0x5a];
     bool DrinkingHobbesNotHit;
 };
-struct CHobbeBarrel {
+struct CHobbeBarrel : public CEntityScriptBase {
     void* VTable;
     ScriptGame* Game;
     ScriptThing Me;
     CQ_HobbeToothContestScript* ParentClass;
     void* PMasterData;
-    void SetPredicate(const CPredicateBase&); //00F35B10
-    bool IsActiveThreadTerminating() const; //00F35B30
     void Main();
 };
 void CHobbeBarrel::Main() {

@@ -51,7 +51,8 @@ template<class T> class CCountedPointer { public:
 
 class C3DMeshStats;
 class C3DMeshInfo { public:
-    CCountedPointer<const C3DMeshStats> GetMeshStats();  // 0x00A25530
+public:
+    CCountedPointer<C3DMeshStats const> GetMeshStats() const;   // 0x00A25530
 };
 
 class C3DMeshObject { public:

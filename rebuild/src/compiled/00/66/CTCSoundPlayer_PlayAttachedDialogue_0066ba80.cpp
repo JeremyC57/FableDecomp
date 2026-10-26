@@ -81,17 +81,17 @@ public:
 class CIVCountedPointeeVirtual {
 public:
     virtual void Destroy(int flags);                   // slot 0
-    virtual void Delete();                             // slot 1
+    virtual void Delete() const;                       // slot 1
 };
 class CIVRefCounted {
 public:
-    unsigned long IVRefCount;                          // +0x04
-    void DecRef() { --IVRefCount; }
+    mutable unsigned long IVRefCount;                  // +0x04
+    void DecRef() const { --IVRefCount; }
     unsigned long GetRefCount() const { return IVRefCount; }
 };
 class CIVCountedPointeeBase : public CIVCountedPointeeVirtual, public CIVRefCounted {
 public:
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -115,11 +115,15 @@ public:
     unsigned char _pad20[0x24 - 0x20];
     CCharString SoundName;                             // +0x24
 };
-class CGroupEntry : public CTextEntry { };
-class CDataBank {
+}
+class CBankFile {
 public:
-    unsigned long GetEntryDataType(unsigned long id) const;   // 0x009CC210 (CBankFile)
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long id, bool load) const;   // 0x009C9070
+    unsigned long GetEntryDataType(unsigned long id) const;   // 0x009CC210
+};
+namespace NGameText {
+class CDataBank : public CBankFile {
+public:
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long id, bool load) const;   // 0x009C9070
     const CTextEntry* GetTextEntryFromGroup(unsigned long id, const CCharString& group, bool& found, long* index, bool load) const;   // 0x009C9280
     const CTextEntry* GetTextEntryFromGroup(unsigned long id, const CCharString& group) const
     {
@@ -170,7 +174,7 @@ unsigned long CTCSoundPlayer::PlayAttachedDialogue(unsigned long textID, bool fl
         NGameText::CDataBank* bank = g_pMainGameComponent->PTextBank;
         const NGameText::CTextEntry* entry;
         if (bank->GetEntryDataType(textID) == 0) {
-            CIVCountedPointer<NGameText::CGroupEntry> group = bank->GetPGroupEntry(textID, true);
+            CIVCountedPointer<const NGameText::CTextEntry> group = bank->GetPTextEntry(textID, true);
             entry = group.Object;
         } else {
             CTCTalk* talk;

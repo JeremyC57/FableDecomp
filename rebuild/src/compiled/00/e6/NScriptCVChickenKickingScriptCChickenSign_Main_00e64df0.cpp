@@ -12,6 +12,7 @@
 //   whose result is unused.
 // Layout: local model -- Ego_r.pdb CChickenSign (44 bytes): Game +4, Me +8, ParentClass +0x14, PMasterData +0x18,
 //   TextKeys vector<CWideString> +0x1c; CV_ChickenKickingScript FinalSector retail +0x5c (PDB +0x60, compared with 7).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -770,19 +771,26 @@ class CGameScriptInterface { public:                           // retail vtable 
     virtual void v712();
     virtual void SetReadableObjectText(const CScriptThing& thing, const CWideString& text) const;   // slot 713 (+0xb24)
 };
+class CEntityScriptBase
+{
+public:
+        virtual void Main();
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CV_ChickenKickingScript { public:
     unsigned char _pad00[0x5c];
     long FinalSector;                                   // +0x5c (Ego_r.pdb +0x60)
-    class CChickenSign {
+    class CChickenSign : public CEntityScriptBase {
     public:
         CGameScriptInterface*    Game;                  // +0x04
         CScriptThing             Me;                    // +0x08
         CV_ChickenKickingScript* ParentClass;           // +0x14
         CQ_SunnyvaleMasterData*  PMasterData;           // +0x18
         CVector<CWideString>     TextKeys;              // +0x1c
-        bool IsActiveThreadTerminating();               // 0x00F35B30
     private:
         virtual void Main();
     };

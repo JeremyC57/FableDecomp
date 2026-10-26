@@ -22,7 +22,8 @@ class CSoundPair { public:
 class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_BuildUpTimeSpell : public CCombatActionBase { public:
@@ -35,6 +36,6 @@ CCreatureAction_BuildUpTimeSpell::CCreatureAction_BuildUpTimeSpell(CThingCreatur
 {
     {
         CCharString name("ST_BUILD_UP_SLOW_TIME", -1);       // scoped named local (a bare temporary would reuse eax, GOTCHAS)
-        SetAnimationName(name);            // 0x008574D0
+        SetCombatAnimation(name);            // 0x008574D0
     }
 }

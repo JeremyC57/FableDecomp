@@ -11,7 +11,7 @@ class CGraphicDataBank { public:
     void Reload(long flags);                       // 0x009FD100
 };
 
-double __cdecl GFGetTime();                        // 0x009E1BC0
+double __fastcall GFGetTime();                        // 0x009E1BC0
 
 class CEngineResourceManager { public:
     unsigned char           _pad0[0x10];

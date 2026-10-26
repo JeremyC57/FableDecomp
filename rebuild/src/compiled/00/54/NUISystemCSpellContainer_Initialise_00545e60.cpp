@@ -1,7 +1,7 @@
 // NUISystem::CSpellContainer::Initialise() -- the state-component initialisation, then copy every child into the base-spell list and clear the pending spell
 // Leaf: Initialise
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00545E60, 147 bytes (plain `ret`).
-// Callees: NUISystem::CChangingStateComponent::Initialise @ 0x0052C730 (landed), vector<CCountedPointer<CComponent>>::
+// Callees: NUISystem::NUISystem::CChangingStateComponent::Initialise @ 0x0052C730 (landed), vector<CCountedPointer<CComponent>>::
 // _M_insert_overflow(pointer, const T&, const __false_type&, size_type, bool) @ 0x005359D0 (manifest "std::vector::_Reallocate").
 // Label: CSpellContainer vtable 0x0124786C slot 43 (rtti-vtables.tsv; slot 43 is Initialise, as the landed CViewport::Initialise
 // 0x0054E640); Ego_r.pdb names ?Initialise@CSpellContainer@NUISystem@@UAEXXZ.
@@ -59,7 +59,8 @@ public:
     unsigned char _pad04[0xb0 - 4];
     CCountedVector<CChangingStateComponent> Children;   // +0xb0
     unsigned char _padbc[0x15c - 0xbc];
-    void Initialise();                             // 0x0052C730
+public:
+    virtual void Initialise();   // 0x0052C730
 };
 class CSpellContainer : public CChangingStateComponent {
 public:

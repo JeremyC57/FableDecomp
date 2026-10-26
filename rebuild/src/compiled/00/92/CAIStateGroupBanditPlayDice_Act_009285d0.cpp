@@ -24,29 +24,37 @@ class CSoundPair { public:
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                                  // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 class CTCDiceGame { public:
     unsigned char _pad00[0xc];
     long NumberOfPlayers;                       // +0x0c
-    CIntelligentPointerThing CurrentPlayer;     // +0x10
+    CIntelligentPointer<CThing> CurrentPlayer;     // +0x10
 };
 class CThingCreatureBase : public CThing { public: };
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa8 - 4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _members[0xb4 - 0xa8];
@@ -98,7 +106,7 @@ EAIActionReturn CAIStateGroup_BanditPlayDice::Act()
             && GFFloatRandom(1.0f, GetPWorldSeed()) < 0.2f) {
             CThing* player = GetCreature();
             CTCDiceGame* game = DiceGame;
-            game->CurrentPlayer = CIntelligentPointerThing(player);
+            game->CurrentPlayer = CIntelligentPointer<CThing>(player);
             AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_DICEGAME_PICKING_DICE",
                 CSoundPair(), false, true, false, 0, 0), false);
             result = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(),
@@ -114,7 +122,7 @@ EAIActionReturn CAIStateGroup_BanditPlayDice::Act()
                 break;
             }
             CTCDiceGame* table = DiceGame;
-            table->CurrentPlayer = CIntelligentPointerThing(0);
+            table->CurrentPlayer = CIntelligentPointer<CThing>(0);
         } else
             result = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_DICEGAME_PLAYING",
                 CSoundPair(), false, true, false, 0, 0), false);

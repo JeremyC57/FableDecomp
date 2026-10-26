@@ -32,11 +32,14 @@ class CWideString { public:
     CCharString ConvertToCharString() const;         // 0x0099B2C0
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0
 
 inline unsigned long GetNameCRC(const CCharString& name)
 {
-    return Calc_004014a0(0, name.GetData(), name.GetLength());
+    return CCRC::Calc(0, name.GetData(), name.GetLength());
 }
 
 class CBankFileAsync { public:

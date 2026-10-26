@@ -1,3 +1,14 @@
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
 struct CScriptThingEntity;
 struct MapTreeNode;
 
@@ -5,16 +16,15 @@ struct DoorMap {
     MapTreeNode* LowerBound(int* keyPtr);  // thiscall: ecx=this, stack arg
 };
 
-extern CScriptThingEntity* __fastcall GetEnt(void* subobj);
 
 bool __fastcall IsOpenDoor(void* thisptr)
 {
     char* subobj = (char*)thisptr + 0xc;
     char* ent;
 
-    if (GetEnt(subobj)
-        && !(*(unsigned char*)((char*)GetEnt(subobj) + 0x91) & 0x1)
-        && (ent = (char*)GetEnt(subobj), (*(unsigned char*)(ent + 0x24) & 0x40)))
+    if (((CScriptThingEntity*)(((CBaseIntelligentPointer*)(subobj))->GetPItem()))
+        && !(*(unsigned char*)((char*)((CScriptThingEntity*)(((CBaseIntelligentPointer*)(subobj))->GetPItem())) + 0x91) & 0x1)
+        && (ent = (char*)((CScriptThingEntity*)(((CBaseIntelligentPointer*)(subobj))->GetPItem())), (*(unsigned char*)(ent + 0x24) & 0x40)))
     {
         DoorMap* mapObj = (DoorMap*)(ent + 0x44);
 

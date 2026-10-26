@@ -65,7 +65,8 @@ class CThing : public CBaseObject { public:
 bool __fastcall IS_THING_ALIVE(CBaseObject* const& thing);   // 0x0040DCE0
 
 class CTCCarrying { public:                                 // interface type 0x46
-    CThing* GetThingInPrimarySlot();                 // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 
 struct CLongVector {                                 // std::vector<long> {first, last, end}

@@ -1,6 +1,6 @@
 // CSkeletalMorphDef::Copy 0x004e28b6
-struct Base {
-    void Copy(const void* src);   // 0x431f10, __fastcall(this, src)
+class CDefClassBase { public:
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x431f10, __fastcall(this, src)
 };
 struct Sub {
     void Copy(const void* src);   // 0x46078c, __fastcall(this, src)
@@ -13,6 +13,6 @@ class CSkeletalMorphDef { public:
 
 void __fastcall CSkeletalMorphDef_Copy(CSkeletalMorphDef* self, void* edx, const char* src)
 {
-    ((Base*)self)->Copy(src);
+    ((CDefClassBase*)self)->operator=(*(const CDefClassBase*)(src));
     self->sub.Copy(src + 0x28);
 }

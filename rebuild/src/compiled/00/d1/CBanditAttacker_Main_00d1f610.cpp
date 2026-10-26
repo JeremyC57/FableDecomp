@@ -15,6 +15,7 @@
 // Shape: CScriptThing has an INLINE destructor (VC7.1 expands it at the first return only, as in the landed
 //   CTrophiesBriarTrophy); the filter member is a plain CScriptThing, and `#pragma inline_depth(0)` around the filter
 //   class keeps its member destruction an out-of-line call to ~CScriptThing (retail calls 0x004AA840 there).
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -81,7 +82,7 @@ struct CCountedPointerWords {
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                         // +0x08
     CScriptGameResourceObjectScriptedThingBase();      // 0x007E72A0 (out of line in this module)
-    ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
     virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004();
     virtual void MoveToThing(const CScriptThing& thing, float distance, EScriptEntityMoveType moveType, bool a, bool b, bool c, bool d);   // slot 5 (+0x14)
     virtual void s006(); virtual void s007(); virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013();
@@ -201,9 +202,15 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void v814(); virtual void v815(); virtual void v816();
     virtual void SetCombatNearbyBreakOffRange(CScriptThing thing, float range);   // slot 817 (+0xcc4)
 };
-#pragma inline_depth(0)
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class __declspec(novtable) CPredicateBase
+{
+public:
     virtual void f00();
+};
+}
+#pragma inline_depth(0)
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing    m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -213,8 +220,9 @@ class CEntityScriptBase { public:                             // retail 0x14 byt
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE3EA
 class CScriptDef { public:

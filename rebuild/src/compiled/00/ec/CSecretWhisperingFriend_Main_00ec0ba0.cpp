@@ -8,6 +8,7 @@
 //   dtor 0x007E74D0, IsDistanceFromThingToPositionOver 0x00CBE45C (__fastcall); GameCalls slots 7, 8, 70, 72, 108, 284, 451, 475;
 //   CScriptThing slots 6 GetPos, 7 GetHomePos (results unused).
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (quest stage +0x48), home position C3DVector +0x1c.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -68,29 +69,38 @@ class CScriptThing : public CBase { public:
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     ~CScriptThing() { }                                 // out-of-line copy 0x004AA840
 };
-struct CIsThingAlive {                                  // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                   // 0x00E241B0
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum EScriptEntityMoveType { SCRIPT_MOVE_DEFAULT };
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     virtual void b000();
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
-class CScriptGameResourceObjectScriptedThingBase : public CBaseIntelligentPointer { public:   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     void* PImpData;                                     // +0x08
     void* PImpInfo;                                     // +0x0c
     CScriptGameResourceObjectScriptedThingBase() { PImpData = 0; PImpInfo = 0; }
-    ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     bool IsScripting();                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType type, bool a, bool b);   // 0x007E72F0
     void ClearCommands();                               // 0x007E7360
-    bool IsPerformingScriptTask() const;                // 0x007E7450
+public:
+    virtual bool IsPerformingScriptTask() const;   // 0x007E7450
+    virtual void MoveToPosition(const C3DVector&, float, EScriptEntityMoveType, bool, bool);   // 0x007E72F0
 };
 class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
@@ -162,8 +172,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CSecretWhisperingFriend : CEntityScriptBase {
     CQuestParent* ParentClass;                          // +0x14
@@ -177,7 +188,7 @@ void CSecretWhisperingFriend::Main()
     CScriptThing man = Game->GetThingWithScriptName("SecretWhisperingMan");
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

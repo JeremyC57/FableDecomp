@@ -76,10 +76,21 @@ template <class T> class CDefPointer { public:
 class CThingBuilding : public CThing { public:
     CDefPointer<CBuildingSimDefinition> PeekPSimDefinition() const;   // 0x0082D2D0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                    // +4
-    CThing* GetPItem() const;                           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 __forceinline bool IsAlive(const CThing* thing)
 {
@@ -89,7 +100,7 @@ __forceinline bool IsAlive(const CThing* thing)
 }
 struct CTCPlayerBuilding {                              // interface 0x75 on the player (descriptive)
     unsigned char _pad[0x0c];
-    CBaseIntelligentPointer PBuilding;                  // +0x0c
+    CIntelligentPointer<CThing> PBuilding;                  // +0x0c
 };
 struct CTCShopSign {                                    // interface 0xbd
     unsigned char _pad[0x0c];

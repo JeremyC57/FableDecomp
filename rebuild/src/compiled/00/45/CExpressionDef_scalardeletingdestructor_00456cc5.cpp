@@ -1,12 +1,14 @@
 #pragma optimize("s",on)
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CExpressionDef { public: int vt; };
-extern void __fastcall CExpressionDef_dtor(CExpressionDef* def);
-extern void __cdecl fable_operator_delete(void* p);
 
 void* __fastcall CExpressionDef_scalar_deleting_destructor(CExpressionDef* def, int edx_unused, unsigned int flags) {
-    CExpressionDef_dtor(def);
+    ((CParentDefClassBase*)(def))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1) {
-        fable_operator_delete(def);
+        operator delete(def);
     }
     return def;
 }

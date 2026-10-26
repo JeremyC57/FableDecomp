@@ -1,5 +1,6 @@
 // CWaspAttacker::Main() -- entity script: register an "is alive" predicate on Me, yield, make Me attack the WaspVictim until the victim dies, then make Me attack the hero
 // Leaf: Main
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -84,16 +85,23 @@ class CGameScriptInterface { public:                   // retail vtable 0x01260F
     virtual void v443(); virtual void v444(); virtual void v445(); virtual void v446(); virtual void v447(); virtual void v448(); virtual void v449(); virtual void v450();
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;   // slot 451 (+0x70c) CGameScriptInterface::GiveThingBestEnemyTarget @ 0x008A0260
 };
-struct CIsThingAlive {                                  // vtable 0x012C32F0: a predicate holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0: a predicate holding a script thing
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
 class CBaseObject { public:                                    // CBaseIntelligentPointer root
-    virtual void v00();
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseObject();                                      // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CCountedPointerWords {
     void* Data;
@@ -104,20 +112,25 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                          // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual void v00();
-    ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
 };
 struct CScriptThingView {
     void* vptr; void* Data; void* Info;
     const CScriptThing& Thing() const { return *reinterpret_cast<const CScriptThing*>(this); }
 };
 inline bool IsAlive(const CScriptThing& thing) { return thing.IsAlive(); }
-class CWaspAttacker {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CWaspAttacker : public CEntityScriptBase {
 public:
     void*                 __vftable;                    // +0x00
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void SetPredicate(CIsThingAlive& predicate);        // 0x00F35B10
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
     void Main();
 };
 void CWaspAttacker::Main()

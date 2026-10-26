@@ -11,7 +11,7 @@
 // Model: local (engine/CAIStateGroup_Gaze.h flattens the base).
 class CThingGameObject;
 
-unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
+long __fastcall GFROR13(unsigned long);      // 0x00497890
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
@@ -28,8 +28,13 @@ class CThing { public:
     const C3DVector* GetPosition() const;                   // 0x004C73D0
 };
 
-class CThingAICreature { public:
-    bool AutoPlaceNear(const C3DVector& position, float radius);    // 0x00665DF0 (CThingCreatureBase)
+class CThingCreatureBase
+{
+public:
+    bool AutoPlaceNear(const C3DVector&, float);   // 0x00665DF0
+};
+
+class CThingAICreature : public CThingCreatureBase { public:
 };
 
 class CAIBrain { public:

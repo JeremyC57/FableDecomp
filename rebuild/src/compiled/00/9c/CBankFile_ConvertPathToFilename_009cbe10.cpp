@@ -28,7 +28,10 @@ public:
     CWideString ToWideString() const;                       // 0x0099E480
 };
 
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name, CWideString* extension);   // 0x00997620
+class CAFile {
+public:
+    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+};   // 0x00997620
 
 class CBankFile_Retail {             // CBankFile (named as the landed retail-layout rows; nothing of the layout is used)
 public:
@@ -39,7 +42,7 @@ CCharString CBankFile_Retail::ConvertPathToFilename(const CCharString& path) con
 {
     CWideString name;
     CWideString extension;
-    SplitPath(path.ToWideString(), 0, 0, &name, &extension);
+    CAFile::SplitPath(path.ToWideString(), 0, 0, &name, &extension);
     name += extension;
     return name.ConvertToCharString();
 }

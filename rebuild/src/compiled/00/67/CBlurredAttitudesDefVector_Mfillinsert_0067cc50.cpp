@@ -21,13 +21,13 @@ template <class T> struct CRetailVector {              // STLport vector storage
     T* m_first; T* m_last; T* m_end;
     ~CRetailVector() { if (m_first) free(m_first); }
 };
-struct CBase_009fc550 {                                // polymorphic root (its dtor stores vtables 0x012354A4/0x012354D0)
+class CResource { public:                                // polymorphic root (its dtor stores vtables 0x012354A4/0x012354D0)
     virtual void b00();
     unsigned long m_words[6];                          // +0x04..+0x18
-    ~CBase_009fc550();                                 // 0x009FC550 (labelled "~CMemoryBlock")
+    virtual ~CResource();                                 // 0x009FC550 (labelled "~CMemoryBlock")
 };
 #pragma pack(push, 1)
-class CDefPointeeBase : public CBase_009fc550 { public:              // vtable 0x01230BA0, 28 bytes
+class CDefPointeeBase : public CResource { public:              // vtable 0x01230BA0, 28 bytes
     ~CDefPointeeBase() { }
 };
 class CDefinitionManager;

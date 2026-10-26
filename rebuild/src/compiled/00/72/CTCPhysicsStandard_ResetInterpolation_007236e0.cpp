@@ -8,13 +8,16 @@ struct CTCPhysicsStandard {
 };
 
 extern void __fastcall CTCPhysicsStandard_helper(CTCPhysicsStandard* standard);
-extern unsigned int __cdecl CTCPhysicsStandard_getFlag(void);
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};   // 0x0049D870
 extern void __fastcall CTCPhysicsStandard_tail(CTCPhysicsStandard* standard);
 
 void __fastcall CTCPhysicsStandard_ResetInterpolation(CTCPhysicsStandard* standard)
 {
     standard->interp = standard->cur;
     CTCPhysicsStandard_helper(standard);
-    standard->flag = CTCPhysicsStandard_getFlag();
+    standard->flag = CWorld::GetFrame();
     CTCPhysicsStandard_tail(standard);
 }

@@ -24,14 +24,24 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
-    virtual void v00();
-    void* PData;                                            // +0x04
-    CBaseIntelligentPointer();                              // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x0126552C
-    virtual void v00();
+class CScriptGameResourceObjectScriptedThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {      // vtable 0x0126552C
+public:
     CIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(pop)
 
@@ -52,7 +62,7 @@ struct SCountedActionPointer { void* m_pObject; void* m_pBlock; };   // CCounted
 struct SAttitudeTag { long m_tag; long m_attitude; };              // pair<long, EConversationAttitude>
 
 class CTCScriptedControl : public CTCBase_Calls { public:                 // vtable 0x012658E4
-    CIntelligentPointer                PScriptHandleImp;    // +0x0c
+    CIntelligentPointer<CScriptGameResourceObjectScriptedThing>                PScriptHandleImp;    // +0x0c
     CRetailList<SCountedActionPointer> PActionList;         // +0x14
     bool                               Locked;              // +0x18
     long                               ScriptAIPriority;    // +0x1c EScriptAIPriority

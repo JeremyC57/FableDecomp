@@ -13,7 +13,10 @@
 // Leaf: LogReaction
 #include "engine/CReactionFrequencyTraits_ControlledCount.h"
 
-long __fastcall GFGetCurrentFrame();                    // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                    // 0x0049D870
 
 struct CReactionFrequencyTraits_ControlledCount_LogReaction : CReactionFrequencyTraits_ControlledCount {
     void LogReaction(CThingAICreature* creature, bool started);
@@ -22,7 +25,7 @@ struct CReactionFrequencyTraits_ControlledCount_LogReaction : CReactionFrequency
 void CReactionFrequencyTraits_ControlledCount_LogReaction::LogReaction(CThingAICreature* creature, bool started)
 {
     if (started) {
-        unsigned long frame = GFGetCurrentFrame();
+        unsigned long frame = CWorld::GetFrame();
         PLastReactionCreature = creature;
         FrameLastStarted = frame;
         CurrentAvailableCount -= 1.0f;

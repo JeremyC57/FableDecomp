@@ -4,7 +4,7 @@
 // Callees: CPersistContext::CheckCRC @ 0x00404500 (x4, the empty key "" @ 0x0122D70E), the vector<long> writer @ 0x00466A75 and
 // reader @ 0x00466AA7 (`__fastcall` (stream, vector*); manifest labels "GFSerialiseVectorBinaryOut<float>" /
 // "GFSerialiseVectorBinaryIn<CRGBColour>" are propagated), CDefString::TransferBinaryIn(CMemoryDataInputStream*) @ 0x0044FC00,
-// CDataOutputStream::WriteLong @ 0x00993EB0 (manifest "WriteCBYTE"), CPersistTraits<long>::TransferBinaryIn @ 0x0040FE60
+// CDataOutputStream::WriteSLONG @ 0x00993EB0 (manifest "WriteCBYTE"), CPersistTraits<long>::TransferBinaryIn @ 0x0040FE60
 // (manifest "<float>" is propagated).
 // Shape: four inline CPersistContext transfers (the landed CActivateQuestDef::Transfer 0x007B5740 template): each member
 // address is formed before its CRC call; the vector transfer is the two-way form (mode 2 loads, anything else saves, the
@@ -15,7 +15,8 @@
 class CMemoryDataInputStream;
 
 class CDataOutputStream { public:
-    void WriteLong(long value);                         // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 class CDefString { public:                                     // a name stored as its def-string table position
@@ -35,12 +36,12 @@ template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<long> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream* stream, long* value);   // 0x0040FE60
-    static void TransferBinaryOut(CDataOutputStream* stream, const long& value) { stream->WriteLong(value); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const long& value) { stream->WriteSLONG(value); }
 };
 template<> struct CPersistTraits<CDefString> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream* stream, CDefString* value) { value->TransferBinaryIn(stream); }
-    static void TransferBinaryOut(CDataOutputStream* stream, const CDefString& value) { stream->WriteLong(value.TablePos); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const CDefString& value) { stream->WriteSLONG(value.TablePos); }
 };
 
 class CPersistContext { public:

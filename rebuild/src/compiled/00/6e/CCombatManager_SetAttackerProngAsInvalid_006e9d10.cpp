@@ -16,7 +16,8 @@ public:
     unsigned char    _pad[0x18];
     unsigned __int64 UniqueID;                              // +0x18
     unsigned __int64 GetUID() const { return UniqueID; }
-    bool IsCombatEligible() const;                          // 0x00662410
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 
 template <class T> struct CRetailVector {                   // retail std::vector: {first, last, end_of_storage}
@@ -90,7 +91,7 @@ public:
 
 void CCombatManager::SetAttackerProngAsInvalid(CThingCreatureBase& attacker)
 {
-    if (attacker.IsCombatEligible()) {
+    if (attacker.IsInMeleeAsAttacker()) {
         CCombatantInfo& info = GetCombatantInfo(attacker);
         unsigned __int64 attackedUID = info.AttackerInfo.Attacked->GetUID();
         if (info.AttackerInfo.CombatWheelRingIndex >= 0)

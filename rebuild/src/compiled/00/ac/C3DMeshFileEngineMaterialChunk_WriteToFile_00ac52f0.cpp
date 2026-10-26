@@ -1,11 +1,18 @@
 // C3DMeshFileEngineMaterialChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) -- retail @ 0x00AC52F0, 256 bytes; stream type, material values and optional map filenames, then inherit the subchunk writer. Retained CChunkedFileChunk -> CChunkedFileSuperChunk -> C3DMeshFileChunk hierarchy; its retail base is 0x2c bytes though the donor's 0x10-byte counted-vector layout grows it to 0x34. Calls stream writes at 0x00993EA0/0x00993EB0/0x00993E30/0x00995AE0 and SuperChunk::WriteToFile 0x00AA78C0.
 class CCharString { public: void* m_pStringData; };
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteSLONG(long);   // 0x00993EB0
+    void WriteNullTerminatedString(const CCharString&);   // 0x00995AE0
+    void WriteULONG(unsigned long);   // 0x00993EA0
+};
 struct CDataOutputStreamMethods : CDataOutputStream {
-    void WriteULong(unsigned long value); // 0x00993EA0
-    void WriteLong(long value);           // 0x00993EB0
-    void WriteNullTerminatedString(const CCharString& value); // 0x00995AE0
-    void WriteEBOOL(bool value); // 0x00993E30
 };
 class CChunkedFileSaver { public:};
 class CChunkedFileLoader { public:};
@@ -52,14 +59,14 @@ class C3DMeshFileEngineMaterialChunk : public C3DMeshFileChunk { public:
 void C3DMeshFileEngineMaterialChunk::WriteToFile(CDataOutputStream& destination, CChunkedFileSaver& saver) const
 {
     CDataOutputStreamMethods& stream=(CDataOutputStreamMethods&)destination;
-    stream.WriteULong(4);
-    stream.WriteLong(MaterialIndex);
+    stream.WriteULONG(4);
+    stream.WriteSLONG(MaterialIndex);
     stream.WriteNullTerminatedString(Name);
-    stream.WriteULong(MapFlags);
-    stream.WriteULong(DiffuseMapBankIndex);
-    stream.WriteULong(BumpMapBankIndex);
-    stream.WriteULong(ReflectionMapBankIndex);
-    stream.WriteULong(IlluminationMapBankIndex);
+    stream.WriteULONG(MapFlags);
+    stream.WriteULONG(DiffuseMapBankIndex);
+    stream.WriteULONG(BumpMapBankIndex);
+    stream.WriteULONG(ReflectionMapBankIndex);
+    stream.WriteULONG(IlluminationMapBankIndex);
     if (MapFilenames) {
         stream.WriteEBOOL(true);
         stream.WriteNullTerminatedString(MapFilenames->Diffuse);
@@ -69,7 +76,7 @@ void C3DMeshFileEngineMaterialChunk::WriteToFile(CDataOutputStream& destination,
     } else {
         stream.WriteEBOOL(false);
     }
-    stream.WriteULong(SelfIllumination);
+    stream.WriteULONG(SelfIllumination);
     stream.WriteEBOOL(TwoSided);
     stream.WriteEBOOL(Transparent);
     stream.WriteEBOOL(BooleanAlpha);

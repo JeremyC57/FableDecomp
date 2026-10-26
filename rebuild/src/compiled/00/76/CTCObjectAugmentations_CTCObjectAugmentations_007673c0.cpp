@@ -90,17 +90,24 @@ struct CSoundSetMap : CSoundSetTreeBase {               // map<EObjectAugmentati
     }
 };
 #pragma pack(push, 1)                                   // the PDB puts ProjectileTrailEffect at the odd offset +0x65
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();
-    void SetPItem(CThing* item);                        // 0x00A01B90
-    void* PData;
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
 public:
     CIntelligentPointer(T* item) { SetPItem(item); }
     virtual ~CIntelligentPointer();
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(pop)
 struct ParticleAndEndPoints;

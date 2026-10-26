@@ -1,7 +1,7 @@
 #pragma optimize("s", on)
 // NPlayerGui::CDrawTargetInfo::OnEventAttack() -- on an attack event restart both the attack and the block alpha fades: fade in over the GUI def's ABXY button fade duration, no fade-out time, towards opaque black
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00644526, length 97 bytes.
-// Callees: PeekGuiDef @ 0x00438570 (`__fastcall`, no arguments, CPlayerGuiDef*), CFadeInFadeOutBase::Start(float fadeInTime, float fadeOutTime,
+// Callees: PeekGuiDef @ 0x00438570 (`__fastcall`, no arguments, CPlayerGuiDef*), CFadeInFadeOutBase::Open(float fadeInTime, float fadeOutTime,
 // CRGBColour toColour) @ 0x00434840 (thiscall on each fade; it sets Active/Opening, clears Closing and stores the times and the colour; the
 // manifest label "CEngine::StartNewScene" is propagated, the method name is descriptive). Float pool: none (`fldz` = 0.0f).
 // Layout: CDrawTargetInfo AttackAlphaFade +0x28, BlockAlphaFade +0x44 (landed constructor 0x0064DAB4); the def's float at retail +0x7cc is
@@ -26,7 +26,10 @@ class CPlayerGuiDef { public:
     unsigned char _pad[0x7cc];
     float         ABXYButtonFadeDurationSeconds;   // +0x7cc (retail)
 };
-extern CPlayerGuiDef* __fastcall PeekGuiDef();     // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};     // 0x00438570
 
 class CFadeInFadeOutBase { public:
     bool       Active;                       // +0x00
@@ -37,7 +40,8 @@ class CFadeInFadeOutBase { public:
     float      OpenTimer;                    // +0x10
     float      CloseTimer;                   // +0x14
     CRGBColour ToColour;                     // +0x18
-    void Start(float fadeInTime, float fadeOutTime, CRGBColour toColour);   // 0x00434840
+public:
+    void Open(float, float, CRGBColour);   // 0x00434840
 };
 
 namespace NPlayerGui {
@@ -52,8 +56,8 @@ class CDrawTargetInfo { public:
 
 void CDrawTargetInfo::OnEventAttack()
 {
-    AttackAlphaFade.Start(PeekGuiDef()->ABXYButtonFadeDurationSeconds, 0.0f, CRGBColour(0, 0, 0, 255));
-    BlockAlphaFade.Start(PeekGuiDef()->ABXYButtonFadeDurationSeconds, 0.0f, CRGBColour(0, 0, 0, 255));
+    AttackAlphaFade.Open(CPlayerGui::PeekGuiDef().ABXYButtonFadeDurationSeconds, 0.0f, CRGBColour(0, 0, 0, 255));
+    BlockAlphaFade.Open(CPlayerGui::PeekGuiDef().ABXYButtonFadeDurationSeconds, 0.0f, CRGBColour(0, 0, 0, 255));
 }
 
 }

@@ -18,8 +18,9 @@ class CDataOutputStream { public:
     virtual void Close()=0;
     virtual void Write(const void* data,long count)=0;
     CCharString NewLine;
-    void WriteULong(unsigned long value); // 0x00993EA0
     void WriteNullTerminatedString(const CCharString& value); // 0x00995AE0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 class CChunkedFileChunk { public:
     virtual ~CChunkedFileChunk();
@@ -55,14 +56,14 @@ class CChunkedFileSaver { public:
 };
 unsigned long CChunkedFileSaver::SaveChunkedFile(CChunkedFile& file,CDataOutputStream& out) {
     unsigned long start=out.GetPosition();
-    out.Write(">>>>",4); out.Write(SupportedFileType,4); out.WriteULong(file.Version);
+    out.Write(">>>>",4); out.Write(SupportedFileType,4); out.WriteULONG(file.Version);
     { CRetailString comment(file.FileComment); out.WriteNullTerminatedString(comment); }
     out.Write(file.GetRootChunk()->ChunkType,4);
-    unsigned long lengthPosition=out.GetPosition(); out.WriteULong(0);
+    unsigned long lengthPosition=out.GetPosition(); out.WriteULONG(0);
     unsigned long contentPosition=out.GetPosition();
     file.GetRootChunk()->WriteToFile(out,*this);
     unsigned long end=out.GetPosition();
-    out.SetPosition(lengthPosition); out.WriteULong(end-contentPosition); out.SetPosition(end);
+    out.SetPosition(lengthPosition); out.WriteULONG(end-contentPosition); out.SetPosition(end);
     unsigned long zero=0; out.Write(&zero,4);
     return out.GetPosition()-start;
 }

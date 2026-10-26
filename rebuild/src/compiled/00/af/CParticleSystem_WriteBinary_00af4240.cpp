@@ -20,11 +20,12 @@ public:
 
 class CDataOutputStream {
 public:
-    void WriteBool(bool value);                    // 0x00993E30
     void WriteCBYTE(char value);                   // 0x00993E50
-    void WriteULong(unsigned long value);          // 0x00993EA0
     void Write3DVector(const C3DVector& value);    // 0x00993FD0
     void WriteNullTerminatedString(const CCharString& s);   // 0x00995AE0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 struct CParticleUpdateParameters { unsigned char m_data[0x24]; };   // retail 0x24 bytes (PDB 0x2c)
@@ -93,16 +94,16 @@ struct CParticleSystem {
 void CParticleSystem::WriteBinary(CDataOutputStream& stream)
 {
     stream.WriteNullTerminatedString(Name);
-    stream.WriteBool(Enabled);
-    stream.WriteBool(ScaleParticles);
+    stream.WriteEBOOL(Enabled);
+    stream.WriteEBOOL(ScaleParticles);
     stream.Write3DVector(Scale);
-    stream.WriteULong(m_componentsLast - m_componentsFirst);
+    stream.WriteULONG(m_componentsLast - m_componentsFirst);
     for (SComponentEntry* it = m_componentsFirst; it != m_componentsLast; ++it) {
         CComponentInstance& instance = it->second;
         NParticleEngine::CPSCBase* component = instance.Component.Object;
         stream.WriteNullTerminatedString(component->GetName());
-        stream.WriteULong(instance.InstanceName);
-        stream.WriteBool(instance.Enabled);
+        stream.WriteULONG(instance.InstanceName);
+        stream.WriteEBOOL(instance.Enabled);
         component->WriteBinary(stream);
         stream.WriteCBYTE('{');
     }

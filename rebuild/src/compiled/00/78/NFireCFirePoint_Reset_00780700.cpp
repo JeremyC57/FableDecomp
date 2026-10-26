@@ -51,10 +51,21 @@ CThing* __fastcall Create(const CCharString& defName, const C3DVector& position,
 class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float delay);   // 0x006E0BE0
 };
-struct CBaseIntelligentPointer {
-    void*   _vptr;
-    CThing* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 namespace NFire {
@@ -66,8 +77,8 @@ class CFirePoint { public:
     bool                    Burning;                    // +0x10
     long                    FireDamageAfterFrame;       // +0x14
     CThing*                 PParentThing;               // +0x18
-    CBaseIntelligentPointer PEffect;                    // +0x1c
-    CBaseIntelligentPointer PSingeEffect;               // +0x24
+    CIntelligentPointer<CThing> PEffect;                    // +0x1c
+    CIntelligentPointer<CThing> PSingeEffect;               // +0x24
     void Reset();
 };
 

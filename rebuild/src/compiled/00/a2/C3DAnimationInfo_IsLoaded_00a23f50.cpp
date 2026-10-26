@@ -12,8 +12,9 @@
 // differ. RELOCATION_MATCH.
 #include "engine/C3DAnimationInfo.h"
 
-struct CAsyncLoadTaskCalls {
-    bool IsFinished();                      // 0x009D54E0
+class CBankFileAsyncData { public:
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
 
 // Call-surface view of C3DAnimationInfo::CAnimationData (counted pointee at this->Data_Object).
@@ -21,7 +22,7 @@ struct CAnimationDataCalls {
     unsigned char        _pad_0x00[0x28];
     void*                Animation;         // +0x28 decoded animation (name inferred)
     unsigned char        _pad_0x2C[4];
-    CAsyncLoadTaskCalls* LoadTask;          // +0x30 pending load (name inferred)
+    CBankFileAsyncData* LoadTask;          // +0x30 pending load (name inferred)
 };
 
 struct C3DAnimationInfo_Methods : C3DAnimationInfo {

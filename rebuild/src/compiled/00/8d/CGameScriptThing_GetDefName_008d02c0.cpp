@@ -21,21 +21,32 @@ struct CDefStringTable {
     CCharString GetString(CDefString name);        // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;           // 0x013CA828
-struct CThing_Retail {
+class CThing_Retail { public:
     unsigned char  _pad00[0x91];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
     CDefString GetDefName() const;                 // 0x004C7CC0
 };
-struct CBaseIntelligentPointer {                   // CIntelligentPointer<CThing>: vptr + item (8 bytes)
-    void*          m_pVtbl;
-    void*          m_pItem;
-    CThing_Retail* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CGameScriptThing { public:
     virtual void v00();
     unsigned char           _pad04[8];
-    CBaseIntelligentPointer PThing;                // +0x0c CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing_Retail> PThing;                // +0x0c CIntelligentPointer<CThing>
     virtual CCharString GetDefName() const;
 };
 

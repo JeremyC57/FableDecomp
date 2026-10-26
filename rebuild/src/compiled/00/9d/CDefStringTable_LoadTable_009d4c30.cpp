@@ -21,7 +21,10 @@ class CWideString { public:
     CWideString();                                 // 0x0099AED0
     ~CWideString();                                // 0x0099B510
 };
-bool __fastcall PathExists(const CWideString& path);   // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};   // 0x00999230
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CDiskFileWin32 : public CBaseClassNonCopyable { public:                    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
@@ -54,7 +57,7 @@ public:
 
 void CDefStringTable::LoadTable(bool readOnly)
 {
-    if (PathExists(TableFilename)) {
+    if (CAFile::PathExists(TableFilename)) {
         CDiskFileWin32 file;
         file.Open(TableFilename, FILE_ACCESS_READ, 4);
         CFileDataInputStream stream(&file, 0x4000);

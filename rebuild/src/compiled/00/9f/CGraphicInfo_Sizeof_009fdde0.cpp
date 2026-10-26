@@ -15,16 +15,17 @@ class CGraphicFrame { public:                             // engine/CGraphicFram
     CGraphicFrameData* FrameData;
     unsigned long Sizeof() const { return FrameData ? FrameData->Sizeof() + sizeof(CGraphicFrame) : sizeof(CGraphicFrame); }
 };
-struct CManagedTexturePointer {                    // the frame data's counted texture pointer (+0x28)
+class CManagedTexture { public:                    // the frame data's counted texture pointer (+0x28)
     void* Data;
     void* Info;                                    // +0x04
-    unsigned long Sizeof() const;                  // 0x00A69E60
+public:
+    unsigned long Sizeof() const;   // 0x00A69E60
 };
 struct CFrameData {                                // CGraphicInfoFrame::CFrameData, 0x44 bytes in the size sum
     unsigned char          _pad00[0x1c];
     CGraphicFrame          Frame;                  // +0x1c
     unsigned char          _pad20[8];
-    CManagedTexturePointer Texture;                // +0x28
+    CManagedTexture Texture;                // +0x28
     unsigned char          _pad30[0x14];
     unsigned long Sizeof() const
     {

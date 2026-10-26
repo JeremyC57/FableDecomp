@@ -11,6 +11,7 @@
 // SetupPuzzleBlocks 0x00D36140): CutsceneFlags +0x4c, ProphetsKilled +0xc8, ProphetsReleased +0xd4 (byte vectors).
 // Shape: the CMagicBarrierGraveyard::Main 0x00CE0600 model (__forceinline ~CScriptThing, inline_depth(0) around the
 // filter); the discarded CreateEffect result is destroyed inline.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
@@ -66,9 +67,15 @@ class CGameScriptInterface { public:                      // retail vtable 0x012
     virtual CScriptThing CreateEffect(const CCharString& effect, const C3DVector& position, const CCharString& bone, float angle, bool b, bool c) const;   // slot 100 (+0x190) 0x0089F9E0 public: virtual class CScriptThing __fastcall CGameScriptInterface::CreateEffect(class CCharString const &, class C3DVector const &, class CCharString const &, float, bool, bool) const
 };
 
-#pragma inline_depth(0)
-struct CIsThingAlive {                                   // vtable 0x012C32F0
+namespace NScript {
+class __declspec(novtable) CPredicateBase
+{
+public:
     virtual void f00();
+};
+}
+#pragma inline_depth(0)
+struct CIsThingAlive : public NScript::CPredicateBase {                                   // vtable 0x012C32F0
     CScriptThing m_thing;                                // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -92,8 +99,9 @@ class CEntityScriptBase { public:                               // retail 0x14 b
     virtual void e00();
     CGameScriptInterface* Game;                          // +0x04
     CScriptThing          Me;                            // +0x08
-    void SetPredicate(const CIsThingAlive& predicate);   // 0x00F35B10
     bool IsActiveThreadTerminating() const;              // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CProphetCage : CEntityScriptBase {
     NScript::CQ_FireHeartScript* ParentClass;            // +0x14

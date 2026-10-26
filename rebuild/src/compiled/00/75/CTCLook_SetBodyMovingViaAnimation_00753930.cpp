@@ -30,7 +30,8 @@ class C3DAnimationInfo { public:
     bool IsLoaded() const;                             // 0x00A23F50
 };
 class CMeshDataBank { public:
-    C3DAnimationInfo* PeekAnimation(long index);       // 0x00A242C0
+public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
 struct CShortVector {                                  // STLport vector<short>
     short* _M_start;

@@ -20,7 +20,10 @@
 
 // --- Engine callees (relocation-masked; need not resolve for parity) ---
 extern int __cdecl CTCVillage_GetIsHeroEnemyOfGuards_Prep(void); // call A (discarded)
-extern int __cdecl CTCVillage_GetIsHeroEnemyOfGuards_Query(void); // call B (compared)
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+}; // call B (compared)
 
 // --- Inlined object layout with the load-bearing field at +0xd4 ---
 class CTCVillage
@@ -33,6 +36,6 @@ class CTCVillage
 bool __fastcall CTCVillage_GetIsHeroEnemyOfGuards(CTCVillage* village)
 {
     CTCVillage_GetIsHeroEnemyOfGuards_Prep();          // call A, result discarded
-    return CTCVillage_GetIsHeroEnemyOfGuards_Query()   // call B, eax
+    return CWorld::GetFrame()   // call B, eax
            < village->m_guardEnemyThreshold;           // cmp eax,[esi+0xd4] ; setl
 }

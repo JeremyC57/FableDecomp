@@ -34,13 +34,14 @@ struct CCountedPointerRetail {                 // {object, count block}
     CCountedPointerRetail() : m_pObject(0), m_pCount(0) {}
 };
 
-namespace N_0099a380 { struct CBaseIntelligentPointer {               // the intelligent-pointer target root (8 bytes)
-    virtual void v00();
+class CBaseObject { public:               // the intelligent-pointer target root (8 bytes)
     void* m_pReferences;                       // +0x04
-    CBaseIntelligentPointer();                 // 0x0099A380
-}; } using N_0099a380::CBaseIntelligentPointer;
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
+};
 
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     virtual void v00();
 };
 

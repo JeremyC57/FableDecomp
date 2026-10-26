@@ -16,7 +16,6 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
     __forceinline void Read(void* dst, long size) {
         __int64 np = (__int64)(StreamPos + size);
@@ -25,6 +24,8 @@ class CDataInputStream { public:
             memcpy(dst, CurrentSourcePtr, size); CurrentSourcePtr += size; SourceChunkBytesRemaining -= size; StreamPos += size;
         } else ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 
 class CGlyph { public:

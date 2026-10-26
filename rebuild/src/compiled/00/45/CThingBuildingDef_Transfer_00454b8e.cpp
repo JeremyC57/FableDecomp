@@ -21,10 +21,7 @@ class CEngineGraphic { public:
 };
 
 class CPersistContext { public:
-    void Transfer(long& value);                                              // 0x00431102
-    void Transfer(unsigned long& value);                                     // 0x00431020
-    void Transfer(float& value);                                             // 0x00431061
-    void Transfer(CEngineGraphic& value);                                    // 0x00451E11
+    template <class T> void Transfer(T& value);                                              // 0x00431102
     void Transfer(EReverbEnvironmentType& value);                            // 0x00454CFA
     void Transfer(const char* name, bool& value, const bool& defaultValue);  // 0x004045C0
 };

@@ -1,6 +1,6 @@
 // CTCOpinionSource::PushNewSourceDef(const CCharString&) -- looks the def up by name and pushes its index; 1 when pushed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771620, length 54 bytes.
-// Callees: CTCBase::GetWorld() const @ 0x00686A80 (label "CViewBase::GetDisplayEngine" is propagated),
+// Callees: CTCBase::PeekWorld() const @ 0x00686A80 (label "CViewBase::GetDisplayEngine" is propagated),
 // CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410 on the world's DefinitionManager (+0x10),
 // CTCOpinionSource::PushSourceDefIndex(long) @ 0x007714B0 (bool; label "CTCCreatureGroupTag::DeactivateMember" is propagated).
 // Shape: the DefinitionManager pointer is a named local (`mov eax,[eax+10h] ; mov ecx,eax`; reached inline as the
@@ -9,7 +9,8 @@
 class CCharString;
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 
 class CWorld { public:
@@ -17,20 +18,21 @@ class CWorld { public:
     CDefinitionManager* DefinitionManager;          // +0x10
 };
 
-struct CTCBase_00771620 {
+class CTCBase { public:
     virtual void v00();
     unsigned char _pad04[8];
-    const CWorld* GetWorld() const;                 // 0x00686A80
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 
-class CTCOpinionSource : public CTCBase_00771620 { public:
+class CTCOpinionSource : public CTCBase { public:
     bool PushSourceDefIndex(long index);            // 0x007714B0
     long PushNewSourceDef(const CCharString& name);
 };
 
 long CTCOpinionSource::PushNewSourceDef(const CCharString& name)
 {
-    CDefinitionManager* defs = GetWorld()->DefinitionManager;
+    CDefinitionManager* defs = PeekWorld().DefinitionManager;
     long index = defs->GetDefGlobalIndexFromName(name);
     if (index > 0 && PushSourceDefIndex(index))
         return 1;

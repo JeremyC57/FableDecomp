@@ -11,6 +11,7 @@
 //   0x012E3720.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8} + ParentClass +0x14, PMasterData +0x18, a "jumped" flag +0x1c; the
 //   scripted-thing handle is the landed CAttackingAssassin::Main 0x00E383A0 model.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -54,9 +55,10 @@ class CScriptThing : public CBase { public:                           // vtable 
     __forceinline ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
 };
 class CBaseObject { public:                                    // CBaseIntelligentPointer root
-    virtual void v00();
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseObject();                                      // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CCountedPointerWords {
     void* Data;
@@ -66,12 +68,13 @@ struct CCountedPointerWords {
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                          // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    void PlayCombatAnimation(const CCharString& name, bool a, bool b, bool c, bool d, bool e, bool f);   // 0x007E73E0
-    bool IsPerformingScriptTask() const;                // 0x007E7450
-    void FollowThing(const CScriptThing& thing, float distance, bool run);   // 0x007E7320
+    virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     bool IsScripting();                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
+public:
+    virtual void FollowThing(const CScriptThing&, float, bool);   // 0x007E7320
+    virtual bool IsPerformingScriptTask() const;   // 0x007E7450
+    virtual void PlayCombatAnimation(const CCharString&, bool, bool, bool, bool, bool, bool);   // 0x007E73E0
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 class CGameScriptInterface { public:                           // vtable 0x01260F0C
@@ -181,9 +184,15 @@ class CGameScriptInterface { public:                           // vtable 0x01260
     virtual void v593(); virtual void v594(); virtual void v595(); virtual void v596();
     virtual void EntitySetThingAsEnemyOfThing(const CScriptThing& a, const CScriptThing& b) const;   // slot 597 (+0x954)
 };
-#pragma inline_depth(0)
-struct CIsThingConscious {                              // vtable 0x012C2FE8: a filter holding a script thing
+namespace NScript {
+class __declspec(novtable) CPredicateBase
+{
+public:
     virtual void f00();
+};
+}
+#pragma inline_depth(0)
+struct CIsThingConscious : public NScript::CPredicateBase {                              // vtable 0x012C2FE8: a filter holding a script thing
     CScriptThing m_thing;                               // +0x04
     CIsThingConscious(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingConscious() { }
@@ -193,8 +202,9 @@ class CEntityScriptBase { public:                              // retail 0x14 by
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void SetPredicate(const CIsThingConscious& predicate);   // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CMeleeThunder : CEntityScriptBase {
     void* ParentClass;                                  // +0x14

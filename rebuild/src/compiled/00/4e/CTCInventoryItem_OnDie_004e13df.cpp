@@ -2,13 +2,16 @@
 // Leaf: OnDie
 #pragma optimize("s",on)
 
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 class CTCInventoryItem;
 
 // cdecl free callee at 0xbfea14 (push eax; call; pop ecx cleanup)
-extern "C" void __cdecl Freer(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 // base class OnDie (this-call member) at 0x9fc550
-void __fastcall BaseOnDie(CTCInventoryItem* self);
 
 class CTCInventoryItem { public:
     void* vtbl;      // +0x00
@@ -19,8 +22,8 @@ class CTCInventoryItem { public:
 void __fastcall OnDie(CTCInventoryItem* self)
 {
     if (self->field6c) {
-        Freer(self->field6c);
+        free(self->field6c);
     }
     self->vtbl = (void*)0x1230ba0;
-    BaseOnDie(self);
+    ((CResource*)(self))->CResource::~CResource();
 }

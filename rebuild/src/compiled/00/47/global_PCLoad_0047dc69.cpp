@@ -84,7 +84,8 @@ class CPlayer { public:
     CThing* GetCharacterThing();                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                        // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
@@ -118,7 +119,7 @@ void PCLoad()
     if (noButton)
         NUISystem::CManager::GetInstance()->ReleaseObserver_0055ca00(noButton);
     CTCInGameMenu* menu = 0;
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetCharacterThing();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetCharacterThing();
     if (hero->HasInterface(TC_IN_GAME_MENU))
         menu = hero->GetInterfaceUnchecked<CTCInGameMenu>(TC_IN_GAME_MENU);
     menu->LoadGameIndex = menu->SaveGameToLoad;

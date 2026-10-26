@@ -6,8 +6,17 @@
 // donor20 bytes each become retail16 bytes (12-byte vector plus comparator/dirty flags).
 // Stream writes993EA0 ULONG/993EB0 SLONG, both4 bytes through virtual Write slot4.
 #pragma optimize("s",on)
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
-struct CDataOutputStreamMethods : CDataOutputStream { void WriteULONG(unsigned long); void WriteSLONG(long); };
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+    void WriteULONG(unsigned long);   // 0x00993EA0
+};
+struct CDataOutputStreamMethods : CDataOutputStream { };
 class CSoundPair { public:long FirstSound,LastSound;};
 class CDefString { public:long TablePos;};
 template<class Value> struct CMapEntry {unsigned long Key;Value Data;};

@@ -29,8 +29,14 @@ class CCharString { public:
 };
 CWideString __fastcall GetBonesDirectory();        // 0x0041A290 (L"Data\\Bones\\")
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
-CWideString __fastcall ConvertPathToFullPath(const CWideString& path);         // 0x00999110
-bool __fastcall PathExists(const CWideString& path);                           // 0x00999230
+class CAFile {
+public:
+    static CWideString __fastcall ConvertPathToFullPath(const CWideString&);   // 0x00999110
+
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};         // 0x00999110
+                           // 0x00999230
 namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A300
@@ -107,7 +113,7 @@ class CSkeletalMorphResourceManager { public:
 
 CMorphTargetPointer& CSkeletalMorphResourceManager::GetMorphTarget(const CCharString& name)
 {
-    CCharString path = ConvertPathToFullPath(GetBonesDirectory() + name.ToWideString()).ConvertToCharString();
+    CCharString path = CAFile::ConvertPathToFullPath(GetBonesDirectory() + name.ToWideString()).ConvertToCharString();
     CMorphNode* node = Morphs.find(path);
     if (node == Morphs.end()) {
         Morphs.insert(CMorphPair(path));
@@ -116,7 +122,7 @@ CMorphTargetPointer& CSkeletalMorphResourceManager::GetMorphTarget(const CCharSt
     CMorphTargetPointer& target = node->Value;
     if (target.Data == 0) {
         target.Reset(new C3DSkeletalMorphTarget);
-        if (PathExists(path.ToWideString())) {
+        if (CAFile::PathExists(path.ToWideString())) {
             CDiskFileWin32 file(path.ToWideString(), FILE_ACCESS_READ, 2);
             GFLoadSkeletalMorphTargetFromFile(&file, target.Data);
         }

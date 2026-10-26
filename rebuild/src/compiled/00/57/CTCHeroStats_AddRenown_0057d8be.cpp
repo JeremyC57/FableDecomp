@@ -69,7 +69,7 @@ class CHeroStatsDef { public:
     CLongVector   RenownLevelCosts;                  // +0xAC (PDB +0xB4)
 };
 
-class CDefinitionManager { public:
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC
 };
@@ -83,7 +83,13 @@ class CPlayerGui { public:
 };
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
-class CTCHeroStats { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCHeroStats : public CTCBase { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x68];
@@ -92,7 +98,6 @@ class CTCHeroStats { public:
     long          RenownPointsInLevel;               // +0x78 (PDB +0x80)
     long          RenownTotal;                       // +0x7C (PDB +0x84)
 
-    CDefinitionManager* GetDefinitionManager() const;  // 0x006869D0 (CTCBase)
     float GetPercentageThroughRenownLevel() const;   // 0x0057AAD9
     void UpgradeRenownLevel();                       // 0x0057CAE9
     void AddRenown(long renown);
@@ -105,7 +110,7 @@ void CTCHeroStats::AddRenown(long renown)
     RenownTotal += renown;
     ClampMin(RenownTotal, 0);
     while (GetPercentageThroughRenownLevel() >= 1.0f) {
-        const CHeroStatsDef* def = GetDefinitionManager()->PHeroStatsDef;
+        const CHeroStatsDef* def = GetDefinitionManager().PHeroStatsDef;
         long carried = RenownPointsInLevel - def->RenownLevelCosts.m_pFirst[RenownLevel];
         UpgradeRenownLevel();
         RenownPointsInLevel = carried;

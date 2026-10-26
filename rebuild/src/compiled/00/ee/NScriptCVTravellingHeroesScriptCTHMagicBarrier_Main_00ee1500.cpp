@@ -15,6 +15,7 @@
 //   value locals (the barrier marker, the snow troll) VC7.1 devirtualises and inlines them; the two forcefields are
 //   references bound to the CreateEffect results (the VC non-const reference extension), so their IsAlive stays virtual
 //   and the recreated pair is assigned through the inline counted-pointer operator=.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -105,8 +106,14 @@ class CScriptThing : public CBaseClass { public:                     // 12 bytes
     ~CScriptThing() { }                                // out-of-line copy 0x004AA840
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0
+namespace NScript {
+class __declspec(novtable) CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                  // 0x00E241B0
@@ -179,14 +186,15 @@ struct GameCalls {                                     // CGameScriptInterface v
     virtual void EntitySetFacingAngle(const CScriptThing& thing, float angle, bool a) const;   // slot 474 (+0x768)
 };
 
-namespace NScript {
 struct CEntityScriptBase {                             // retail 0x14 bytes
     virtual void e00();
     GameCalls*   Game;                                 // +0x04
     CScriptThing Me;                                   // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
-    bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
+namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CV_TravellingHeroesScript { public:
     class CTH_MagicBarrier;

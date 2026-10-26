@@ -1,13 +1,16 @@
+class CCombatActionBase {
+public:
+    virtual ~CCombatActionBase();   // 0x0062E900
+};
 class CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend { public:
     void* vftable;
 };
 
-void __fastcall CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend_dtor(CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend* action);
 void operator delete(void*);
 
 void* __fastcall CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend_scalar_deleting_destructor(CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend* action, int edx_unused, unsigned int flags)
 {
-    CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend_dtor(action);
+    ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
     if (flags & 1)
         operator delete(action);
     return action;

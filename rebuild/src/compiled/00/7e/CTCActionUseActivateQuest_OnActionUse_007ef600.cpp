@@ -65,15 +65,22 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CActivateQuestDef
 }
 #pragma auto_inline(on)
 struct CDefStringTable {
-    CCharString GetString(long index);              // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;            // 0x013CA828
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {                    // unaligned inside the action (+0xad)
-    void* __vftable;
-    void* m_pItem;
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 #pragma pack(pop)
 class CCreatureActionBase {                         // retail 0xA8 bytes

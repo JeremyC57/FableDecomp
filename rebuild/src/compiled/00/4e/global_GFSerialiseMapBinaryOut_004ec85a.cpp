@@ -18,10 +18,17 @@
 //   retail 12-byte STLport CArray (local model as in 0x004EC9B5); STLport map/tree iterator as in 0x00469309.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteSLONG(long value);                             // 0x00993EB0
 };
 enum EObjectAugmentationType { OBJECT_AUGMENTATION_NONE = 0, OBJECT_AUGMENTATION_FORCE_DWORD = 0x7fffffff };
 class CDefString;

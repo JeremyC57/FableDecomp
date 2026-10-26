@@ -1,15 +1,17 @@
 #pragma optimize("t", on)
 // Leaf: `vector_deleting_destructor'
-extern void __fastcall AutoTinyFirstMemberDestructor(void* member);
+class CScriptThing {
+public:
+    virtual ~CScriptThing();   // 0x004AA840
+};
 extern void __fastcall AutoTinySecondMemberDestructor(void* member);
 extern void __fastcall AutoTinyCompositeDestructor(void* self);
-extern void __cdecl AutoTinyCompositeDelete(void* object);
 void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
-    AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(self) + 72);
+    ((CScriptThing*)(static_cast<unsigned char*>(self) + 72))->CScriptThing::~CScriptThing();
     AutoTinySecondMemberDestructor(static_cast<unsigned char*>(self) + 52);
     AutoTinyCompositeDestructor(self);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
+        operator delete(self);
     return self;
 }

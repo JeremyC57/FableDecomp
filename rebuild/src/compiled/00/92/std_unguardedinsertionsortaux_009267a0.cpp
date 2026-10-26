@@ -14,16 +14,22 @@
 // Shape: the by-value CIntelligentPointer is copy-constructed in the argument slot: base constructor, own vtable store,
 // then `SetPItem(other.GetPItem())`.
 class CThing;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                          // +0x04
-    CBaseIntelligentPointer();              // 0x00A01B10
-    CThing* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CThing* item);            // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01237F1C
-    virtual void v00();
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 typedef CIntelligentPointer<const CThing> PConstThing;
 typedef bool (__fastcall* PConstThingCompare)(PConstThing, PConstThing);

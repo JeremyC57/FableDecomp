@@ -6,8 +6,9 @@
 //          virtual slot 70 (+0x118, the hero's CScriptThing) and slot 7 (+0x1C, Tick).
 // Layout: Ego_r.pdb CM_HeroDownstairs (28 bytes): ParentClass +0x14 (CV_BordelloScript*), PMasterData +0x18; the
 // quest pointer +4 and the CScriptThing +8 are the script base's (as in the landed CArenaHeroGate 0x00D7DF30).
-// Shape: a top-tested `while (!IsDone())` rotated with the test at the bottom; the 3.0f pushes before the
+// Shape: a top-tested `while (!IsActiveThreadTerminating())` rotated with the test at the bottom; the 3.0f pushes before the
 // virtual GetHero call (fastcall arguments right to left); `false` lives in bl for both compares and stores.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:
     long m_thingId;
 };
@@ -32,34 +33,39 @@ struct CV_BordelloScript {
     bool          m_flag4a;                        // +0x4a
 };
 struct CQ_SunnyvaleMasterData;
-struct CM_HeroDownstairs {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CM_HeroDownstairs : public CEntityScriptBase {
     void*                   __vftable;             // +0x00
     CQuestCalls*            PQuest;                // +0x04
     CScriptThing            Thing;                 // +0x08
     unsigned char           _pad0c[8];             // +0x0C
     CV_BordelloScript*      ParentClass;           // +0x14
     CQ_SunnyvaleMasterData* PMasterData;           // +0x18
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
 void CM_HeroDownstairs::Main()
 {
-    while (!IsDone())
+    while (!IsActiveThreadTerminating())
     {
         if (IsDistanceBetweenThingsUnder(&Thing, PQuest->GetHero(), 3.0f))
         {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             if (ParentClass->m_flag48 != false)
             {
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                     return;
                 ParentClass->m_flag48 = false;
             }
             if (ParentClass->m_flag4a != false)
             {
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                     return;
                 ParentClass->m_flag4a = false;
             }

@@ -20,15 +20,21 @@ class CCharString { public:
 };
 CCharString __fastcall GetAnimationToUse(CThingCreatureBase* owner, CThing* item);   // 0x0069F980
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                   // +4
-    CBaseIntelligentPointer();                         // 0x00A01B10
-    void SetPItem(CBaseObject* item);                  // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer { // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
 class CSoundPair { public:
@@ -100,7 +106,7 @@ template <class T> class CCountedPointer { public:
 };
 
 class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:   // vtable 0x0125CCBC
-    CIntelligentPointer PItem;                                                  // +0xa8
+    CIntelligentPointer<CThing> PItem;                                                  // +0xa8
     CCountedPointer<CCreatureActionBase> PFollowUpAction;                       // +0xb0
     virtual void v00();
     CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase* owner, CThing* item, CCreatureActionBase* followUp, long c);

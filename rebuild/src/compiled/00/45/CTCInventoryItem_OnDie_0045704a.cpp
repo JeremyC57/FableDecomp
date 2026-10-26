@@ -1,5 +1,9 @@
 #pragma optimize("s",on)
 // Leaf: OnDie
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 struct SubA { char x; };
 struct SubB { char x; };
 #pragma pack(1)
@@ -12,16 +16,15 @@ class CTCInventoryItem { public:
     void* ptr6c;            // +0x6c
 };
 #pragma pack()
-extern "C" void __cdecl engine_free(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 extern void __fastcall SubA_dtor(SubA* self);
 extern void __fastcall SubB_dtor(SubB* self);
-extern void __fastcall CTCInventoryItem_base(CTCInventoryItem* self);
 
 void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* self)
 {
     if (self->ptr6c)
-        engine_free(self->ptr6c);
+        free(self->ptr6c);
     SubA_dtor(&self->sub50);
     SubB_dtor(&self->sub3c);
-    CTCInventoryItem_base(self);
+    ((CParentDefClassBase*)(self))->CParentDefClassBase::~CParentDefClassBase();
 }

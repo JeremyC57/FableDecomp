@@ -67,8 +67,9 @@ struct CPlayerManager_Retail {
     CPlayer_Retail* GetMainPlayer();               // 0x00449970
 };
 class CCharString;
-struct CDefinitionManager_Retail {
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+class CDefinitionManager { public:
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CWorld; class CMainGameComponent; class CDisplayEngine; class CThingSearchTools;
 __forceinline CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
@@ -114,7 +115,7 @@ class CGameScriptInterface { public:
     CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
     CMainGameComponent*         Component;         // +0x08
     CDisplayEngine*             DisplayEngine;     // +0x0c
-    CDefinitionManager_Retail*  DefinitionManager; // +0x10
+    CDefinitionManager*  DefinitionManager; // +0x10
     CPlayerManager_Retail*      PlayerManager;     // +0x14
     CThingSearchTools*          ThingSearchTools;  // +0x18
     virtual void GiveThingHeroRewardItem(const CScriptThing& thing, const CCharString& defName, const CCharString& extra) const;

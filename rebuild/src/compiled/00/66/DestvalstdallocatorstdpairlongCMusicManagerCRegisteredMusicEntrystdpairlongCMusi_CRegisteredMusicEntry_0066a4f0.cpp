@@ -1,8 +1,21 @@
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+class CCombatActionBase {
+public:
+    virtual ~CCombatActionBase();   // 0x0062E900
+};
 struct Sub;
 // Leaf: CRegisteredMusicEntry>_>
 struct Obj;
-extern "C" void __fastcall Sub_Method(Sub* self);
-extern "C" void __fastcall Obj_Other(Obj* self);
 
 struct Sub { int x; };
 struct Obj {
@@ -12,6 +25,6 @@ struct Obj {
 
 void __fastcall DestVal_Music_B(Obj* self, void* /*edx*/)
 {
-    Sub_Method(&self->sub);
-    Obj_Other(self);
+    ((CBaseIntelligentPointer*)(&self->sub))->CBaseIntelligentPointer::~CBaseIntelligentPointer();
+    ((CCombatActionBase*)(self))->CCombatActionBase::~CCombatActionBase();
 }

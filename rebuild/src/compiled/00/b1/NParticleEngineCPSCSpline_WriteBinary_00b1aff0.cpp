@@ -1,6 +1,6 @@
 // NParticleEngine::CPSCSpline::WriteBinary(CDataOutputStream*) -- writes the bounce and speed-scaling flags and the animation speed, then the CPSCSplineBase data
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1AFF0, length 58 bytes.
-// Callees: CDataOutputStream::WriteBool @ 0x00993E30 (x2), CDataOutputStream::WriteFloat @ 0x00993EE0,
+// Callees: CDataOutputStream::WriteEBOOL @ 0x00993E30 (x2), CDataOutputStream::WriteFloat @ 0x00993EE0,
 // NParticleEngine::CPSCSplineBase::WriteBinary @ 0x00B21630.
 // Identity: slot 16 of NParticleEngine::CPSCSpline's vtable 0x012A0934 (rtti-vtables.tsv).
 // Layout: Ego_r.pdb CPSCSpline (SplineCurrentPosition, ReverseSpline, SplineBounce, ScaleSplineSpeed,
@@ -13,8 +13,9 @@ struct CBase {
 };
 
 class CDataOutputStream { public:
-    void WriteBool(bool value);             // 0x00993E30
     void WriteFloat(float value);           // 0x00993EE0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
 };
 
 namespace NParticleEngine {
@@ -34,8 +35,8 @@ class CPSCSpline : public CPSCSplineBase { public:        // vtable 0x012A0934
 
 void CPSCSpline::WriteBinary(CDataOutputStream* out)
 {
-    out->WriteBool(SplineBounce);
-    out->WriteBool(ScaleSplineSpeed);
+    out->WriteEBOOL(SplineBounce);
+    out->WriteEBOOL(ScaleSplineSpeed);
     out->WriteFloat(SplineAnimSpeed);
     CPSCSplineBase::WriteBinary(out);
 }

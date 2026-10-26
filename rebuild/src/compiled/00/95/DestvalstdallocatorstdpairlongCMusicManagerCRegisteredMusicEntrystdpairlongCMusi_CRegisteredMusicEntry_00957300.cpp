@@ -8,8 +8,8 @@
 #include "engine/_quarantine/CCombatActionBase.h"
 #undef CCombatActionBase
 class CCombatActionBase { public:                  // retail 0x114 bytes (PDB 0x12c, GOTCHAS wave 25); derives from CCreatureActionBase
-    unsigned char _base[0x114];
-    ~CCombatActionBase();                   // 0x0062E900 (tail-jumps ~CCreatureActionBase 0x00693EF0)
+    unsigned char _base[0x114 - 4];
+    virtual ~CCombatActionBase();                   // 0x0062E900 (tail-jumps ~CCreatureActionBase 0x00693EF0)
 };
 struct CBaseIntelligentPointer {            // vptr + data (8 bytes); vtable 0x0129C95C
     void* _vptr;

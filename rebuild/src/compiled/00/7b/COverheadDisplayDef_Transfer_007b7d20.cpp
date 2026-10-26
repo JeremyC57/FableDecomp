@@ -2,7 +2,7 @@
 // Leaf: Transfer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B7D20, 184 bytes (+ int3 padding; virtual, `ret 4`).
 // Callees: CPersistContext::CheckCRC 0x00404500 (x3, the empty key "" 0x0122D70E), CPersistTraits<bool>::TransferBinaryIn
-//   0x00403EB0, CDataOutputStream::WriteBool 0x00993E30.
+//   0x00403EB0, CDataOutputStream::WriteEBOOL 0x00993E30.
 // Shape: three inline CPersistContext::Transfer<bool> calls of the landed CActivateQuestDef::Transfer 0x007B5740 template
 //   (member address formed before its CRC call, the `sub eax,2 ; je ; dec eax ; jne` mode switch, the empty traits temporary
 //   in the dead argument slot); the last member reuses `this` (`add edi,27h`) and gets its own epilogue per arm. `this` is the
@@ -11,13 +11,14 @@
 
 class CMemoryDataInputStream;
 class CDataOutputStream { public:
-    void WriteBool(bool value);                         // 0x00993E30
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
 };
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<bool> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value);   // 0x00403EB0
-    static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteBool(value); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteEBOOL(value); }
 };
 class CPersistContext { public:
     unsigned char           _pad00[0x18];

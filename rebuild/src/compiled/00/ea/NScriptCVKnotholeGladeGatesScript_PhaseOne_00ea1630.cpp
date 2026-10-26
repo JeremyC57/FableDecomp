@@ -40,11 +40,14 @@ class CGameScriptInterface { public:
     virtual void NewScriptFrame();   // slot 7 (+0x1c)
 };
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
+public:
+    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
+    bool IsActiveThreadTerminating();   // 0x00CB7940
 };
+namespace NScript {
 class CV_KnotholeGladeGatesScript : public CScriptBase { public:
     CGameScriptInterface* Game;                         // +0x40
     void* Data;                                         // +0x44

@@ -1,8 +1,7 @@
 #pragma optimize("s",on)
 #include "engine/CCombatAbilityAttackBase.h"  // retyped onto the PDB layout; byte parity re-verified
 class CPersistContext { public:
-    void TByte(unsigned char* p);
-    void TWord(unsigned short* p);
+    template <class T> void Transfer(T& value);
     void TSub(void* p);
 };
 
@@ -14,8 +13,8 @@ struct CCombatAbilityAttackBase_Methods : CCombatAbilityAttackBase {
 
 void CCombatAbilityAttackBase_Methods::Transfer(CPersistContext& ctx)
 {
-    ctx.TByte(&this->CombatAbility[0x18]);                     // +0x40
-    ctx.TByte(&this->CombatAbility[0x19]);                     // +0x41
-    ctx.TWord((unsigned short*)&this->CombatAbility[0x1c]);    // +0x44
+    ctx.Transfer(*(bool*)(&this->CombatAbility[0x18]));                     // +0x40
+    ctx.Transfer(*(bool*)(&this->CombatAbility[0x19]));                     // +0x41
+    ctx.Transfer(*(float*)((unsigned short*)&this->CombatAbility[0x1c]));    // +0x44
     ctx.TSub(&this->CombatAbility[0x00]);                      // +0x28
 }

@@ -59,7 +59,6 @@ public:
     unsigned char            _pad1e1c[0x1e44 - 0x1e1c];
     long                     CursorHighlight;            // +0x1e44
     CWideString CreateNewProfile();                      // 0x004945B0
-    void GetWorldNames();                                // 0x00495890
     void ClearString() { memset(String, 0, sizeof(String)); StringPos = 0; }
     __forceinline void SetMode(EGameMode mode)
     {
@@ -74,6 +73,8 @@ public:
         CTBaseSingleton<CUserProfileManager>::Get().SetProfileName(name, load);
     }
     void ChooseProfileNumber(long number);
+private:
+    void GetWorldNames();   // 0x00495890
 };
 void CFrontendGameComponent::ChooseProfileNumber(long number)
 {

@@ -8,12 +8,12 @@
 //   RegisteredConsoleInputs, inline CCharString::operator==(const char*) (null-block arm `strcmp(text, "") == 0`),
 //   the type temporary destroyed before the branch, the input's Name (+4) sent to the user.
 // Layout: retail CConsole RegisteredConsoleInputs header +0x40 (as the landed 0x009EB590 / 0x009EB430).
-// Leaf: ?ConsoleVariableList@CConsole_Retail@@SIXAAU1@ABU?$vector@VCGenericVar@@@std@@@Z
+// Leaf: ?ConsoleVariableList@CConsole@@SIXAAU1@ABU?$vector@VCGenericVar@@@std@@@Z
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 
 #pragma pack(push, 1)
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     char*         PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
@@ -21,7 +21,7 @@ struct CBasicStringChar {
     bool operator==(const char* text) const;        // 0x004115A0
 };
 class CCharStringData { public:
-    CBasicStringChar Data;
+    CBasicString<char> Data;
     long             NoRefs;
 };
 #pragma pack(pop)
@@ -89,14 +89,15 @@ struct CInputIterator {
         return *this;
     }
 };
-struct CConsole_Retail {
+class CConsole { public:
     unsigned char  _pad00[0x40];                    // vptr, maps, command lines, HelpBarString
     SInputNode*    RegisteredConsoleInputsHeader;   // +0x40 map<CCharString, CCountedPointer<CConsoleInputBase>> header
-    void SendMessageToUser(const CCharString& message);     // 0x009EB260
-    static void __fastcall ConsoleVariableList(CConsole_Retail& console, const std::vector<CGenericVar>& params);
+    static void __fastcall ConsoleVariableList(CConsole& console, const std::vector<CGenericVar>& params);
+public:
+    void SendMessageToUser(const CCharString&);   // 0x009EB260
 };
 
-void __fastcall CConsole_Retail::ConsoleVariableList(CConsole_Retail& console, const std::vector<CGenericVar>& params)
+void __fastcall CConsole::ConsoleVariableList(CConsole& console, const std::vector<CGenericVar>& params)
 {
     CInputIterator it;
     it._M_node = console.RegisteredConsoleInputsHeader->_M_left;

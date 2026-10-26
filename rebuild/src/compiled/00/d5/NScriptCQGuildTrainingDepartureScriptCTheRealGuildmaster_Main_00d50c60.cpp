@@ -18,6 +18,7 @@
 // Shape: the CPreMeleeMaze row 0x00D43DB0 model (counted CScriptThing with inline destructor, local handle with the
 //   implicit inline destructor) plus the CTH_ThunderBoy InlineCopy argument, the landed cutscene cast-map calls
 //   (CScytheNearOracle 0x00E2A320) and a CRGBColour built in its argument slot.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -116,12 +117,13 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0
 typedef long EScriptAIPriority;
 typedef long EScriptEntityMoveType;
 typedef long ETextGroupSelectionMethod;
-struct CBaseIntelligentPointer {                       // vtable 0x0129A7D8
+class CBaseObject { public:                       // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                       // +0x04
-    CBaseIntelligentPointer();                         // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -298,13 +300,14 @@ struct GameCalls {                                     // CGameScriptInterface v
     virtual void SetIsPushableByHero(CScriptThing thing, bool pushable);   // slot 844 (+0xd30)
 };
 
-namespace NScript {
 struct CEntityScriptBase {                             // retail 0x14 bytes
     virtual void e00();
     GameCalls*   Game;                                 // +0x04
     CScriptThing Me;                                   // +0x08
-    bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
 };
+namespace NScript {
 class CQ_SunnyvaleMasterData { public:
     unsigned char _pad[0xc6];
     bool HeroTakingGuildTest;                          // +0xc6

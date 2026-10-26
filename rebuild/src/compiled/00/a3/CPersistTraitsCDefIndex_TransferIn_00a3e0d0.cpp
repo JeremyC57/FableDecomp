@@ -30,8 +30,9 @@ class CDefIndex { public:
     long Val;                                           // +0x00 (PDB)
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
     CDefString GetDefNameFromGlobalIndex(long index);           // 0x009ACCC0
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CPersistContext { public:
     CDefinitionManager* PDefinitionManager;             // +0x00

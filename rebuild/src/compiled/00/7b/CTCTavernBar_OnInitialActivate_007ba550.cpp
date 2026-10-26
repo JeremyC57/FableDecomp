@@ -128,7 +128,7 @@ class CThingObject : public CThing { public:
 
 struct CTCOwnedEntityA {                                // interface 0x32
     unsigned char _pad00[0x0c];
-    CIntelligentPointer<CThing> POwner;                 // +0x0c
+    CIntelligentPointer<const CThing> POwner;                 // +0x0c
 };
 class CTCOwnedEntity { public:                                 // interface 0x33
     void SetPOwner(CThing* owner);                      // 0x007E8590
@@ -219,7 +219,7 @@ void CTCTavernBar::OnInitialActivate()
         jug->AddTC("CTCCreatedEntity", false, 0);
         CTCOwnedEntityA* created;
         jug->GetInterfaceFast(0x32, &created);
-        created->POwner = CIntelligentPointer<CThing>(ParentThing);
+        created->POwner = CIntelligentPointer<const CThing>(ParentThing);
         jug->AddTC("CTCOwnedEntity", false, 0);
         CTCOwnedEntity* owned;
         jug->GetInterfaceFast(0x33, &owned);

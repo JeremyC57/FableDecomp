@@ -11,14 +11,21 @@
 // operator delete @ 0x00BFE9BC. The manifest label (`vector deleting destructor` of
 // CLandscapeBackgroundPatch) is propagated across the family; the owner is named descriptively.
 // One of 10 bodies of this shape.
-struct CMember_00a01c10 {
-    void* m_data;
-    ~CMember_00a01c10();                             // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 struct COwner_006c4a00 {
     unsigned char _pad[0x8];
-    CMember_00a01c10 m_08;            // +0x8
+    CBaseIntelligentPointer m_08;            // +0x8
 };
 
 // The delete-expression that makes the compiler emit COwner_006c4a00::`scalar deleting destructor'.

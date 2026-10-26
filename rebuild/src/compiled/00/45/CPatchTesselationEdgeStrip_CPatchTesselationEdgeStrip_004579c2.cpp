@@ -1,8 +1,11 @@
 #pragma optimize("s",on)
 // Leaf: ??1CPatchTesselationEdgeStrip@
-extern "C" void engine_free(void*);
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 struct CBase { };
-extern void __fastcall CBase_dtor(CBase*);
 class CPatchTesselationEdgeStrip { public:
     unsigned char _pad0[0x3c];
     void* p3c;   // +0x3c
@@ -13,8 +16,8 @@ class CPatchTesselationEdgeStrip { public:
 };
 void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self)
 {
-    if (self->p54) engine_free(self->p54);
-    if (self->p48) engine_free(self->p48);
-    if (self->p3c) engine_free(self->p3c);
-    CBase_dtor((CBase*)self);
+    if (self->p54) free(self->p54);
+    if (self->p48) free(self->p48);
+    if (self->p3c) free(self->p3c);
+    ((CParentDefClassBase*)((CBase*)self))->CParentDefClassBase::~CParentDefClassBase();
 }

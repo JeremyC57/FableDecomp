@@ -29,7 +29,8 @@ class CSurface { public:
     void*         PD3DSurface;
     unsigned long AllocationSource;
     void*         PAllocatedMemory;
-    CPixelFormat GetPixelFormat();                     // 0x009F2F60
+public:
+    CPixelFormat GetPixelFormat() const;   // 0x009F2F60
 };
 
 class CDisplayManager { public:

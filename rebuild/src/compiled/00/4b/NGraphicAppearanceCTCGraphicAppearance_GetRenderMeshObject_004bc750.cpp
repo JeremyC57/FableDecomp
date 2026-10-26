@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BC750, length 173 bytes (+ int3 padding). __fastcall, `ret 0Ch`.
 //         Ego_r.pdb: `?GetRenderMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DMeshObject@@ABVC3DVector@@AB
 //         VCRightHandedSet@@@Z`.
-// Callees: CTCBase::GetWorld() const @ 0x00686A80, the main mesh bank's GetMeshInfo(long) @ 0x00A24270,
+// Callees: CTCBase::PeekWorld() const @ 0x00686A80, the main mesh bank's GetMeshInfo(long) @ 0x00A24270,
 //          C3DMeshObject::C3DMeshObject(const C3DMeshInfo*, const C3DVector&, const CRightHandedSet&, float) @ 0x00A36E70,
 //          C3DMeshObject::operator= @ 0x004C3380, operator delete @ 0x00BFE9BC, CBaseClass::~CBaseClass @ 0x0099A2E0.
 //          Float pool 0x01230A5C = 0.01f.
@@ -77,14 +77,19 @@ class CEngineGraphic { public:                                     // 14 bytes
 };
 #pragma pack(pop)
 
+class CTCBase
+{
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
 namespace NGraphicAppearance {
 
-class CTCGraphicAppearance { public:
+class CTCGraphicAppearance : public CTCBase { public:
     unsigned char  _pad00[0x34];
     float          Scale;                                   // +0x34
     unsigned char  _pad38[0x44 - 0x38];
     CEngineGraphic MainGraphic;                             // +0x44
-    CWorld* GetWorld() const;                               // 0x00686A80 (CTCBase)
     bool GetRenderMeshObject(C3DMeshObject& out, const C3DVector& position, const CRightHandedSet& orientation) const;
 };
 
@@ -92,7 +97,7 @@ bool CTCGraphicAppearance::GetRenderMeshObject(C3DMeshObject& out, const C3DVect
 {
     if (MainGraphic.Type != 5 && MainGraphic.Type != 4)
         return false;
-    CMeshDataBank* bank = GetWorld()->PMainMeshBank;
+    CMeshDataBank* bank = PeekWorld().PMainMeshBank;
     const C3DMeshInfo* meshInfo = bank->GetMeshInfo(MainGraphic.BankIndex);
     out = C3DMeshObject(meshInfo, position, orientation, MainGraphic.RenderSizeX * Scale * 0.01f);
     return true;

@@ -2,7 +2,7 @@
 // Leaf: GetFreeSaleItemPlaces
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00774B40, 274 bytes, `ret 8` (hidden result pointer + the bool).
 // Callees: vector<GoodsPlace>::erase(first, last) @ 0x00777A90 (manifest "Vector_Erase_CKeyCamera"), CTCShop::InitGoodsPlaces(
-//   CThing*) @ 0x007748E0 (manifest "CTCGraphicAppearance_InitGoodsPlaces"), CTCBase::GetWorld() const @ 0x00686A80,
+//   CThing*) @ 0x007748E0 (manifest "CTCGraphicAppearance_InitGoodsPlaces"), CTCBase::PeekWorld() const @ 0x00686A80,
 //   CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In2DRange>, CThing> @ 0x00777000 (landed
 //   with the HasTC/InMap label), vector<GoodsPlace>::push_back @ 0x00778210, vector<GoodsPlace> copy ctor @ 0x00777430
 //   (manifest "Vector_Construct_CKeyCamera"), free @ 0x00BFEA14. 0.2f inline (0x3E4CCCCD).
@@ -88,12 +88,18 @@ class CWorld { public:
     CThingSearchTools* PThingSearchTools;           // +0x20
     CThingSearchTools* GetThingSearchTools() const { return PThingSearchTools; }
 };
-class CTCShop { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCShop : public CTCBase { public:
     CThing*           ParentThing;                  // +0x04 (CTCBase)
     unsigned char     _pad08[0x28 - 0x08];
     CGoodsPlaceVector GoodsPlaces;                  // +0x28
-    CWorld* GetWorld() const;                       // 0x00686A80 (CTCBase)
     void InitGoodsPlaces(CThing* thing);            // 0x007748E0
     CGoodsPlaceVector GetFreeSaleItemPlaces(bool includeOccupied);
 };
@@ -106,7 +112,7 @@ CGoodsPlaceVector CTCShop::GetFreeSaleItemPlaces(bool includeOccupied)
     for (unsigned int i = 0; i < GoodsPlaces.size(); ++i) {
         if (!includeOccupied) {
             CThing* found;
-            if (GetWorld()->GetThingSearchTools()->GetPFirstThing(CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In2DRange>(
+            if (PeekWorld().GetThingSearchTools()->GetPFirstThing(CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In2DRange>(
                     CThingFilter_IsNot(ParentThing), CThingFilter_In2DRange(GoodsPlaces[i].Position, 0.2f)), &found))
                 continue;
         }

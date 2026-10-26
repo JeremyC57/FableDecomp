@@ -6,6 +6,11 @@
 // component's pointer member at +4).
 // Shape: `GetInterface(...) && IS_THING_ALIVE(pSchool)` -- the `&&` of two bools returns through
 // a full register (`mov eax,1` / `xor eax,eax`) with both misses sharing the false tail. Frame: one `push ecx`.
+class CTCVillage;
+class CTCVillageMember {
+public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540
+};
 class CTCBase;
 class CThing;
 
@@ -103,7 +108,6 @@ struct CTCSchool;                               // interface type 0x23 component
 
 // Out-of-line IS_THING_ALIVE<...> @ 0x007EE540: __fastcall, the component pointer itself in ecx (retail loads the
 // map entry's component straight into ecx), a full-register result (`test eax,eax`).
-extern long __fastcall IS_THING_ALIVE_component(const CTCSchool* p);   // 0x007EE540
 
 struct CAIStateGroup_MinionSitAtSchool : CAIStateGroupBase {
     virtual bool IsStateGroupStillValid();
@@ -112,5 +116,5 @@ struct CAIStateGroup_MinionSitAtSchool : CAIStateGroupBase {
 bool CAIStateGroup_MinionSitAtSchool::IsStateGroupStillValid()
 {
     CTCSchool* pSchool;
-    return PBrain->PCreature->GetInterface(&pSchool, 0x23) && IS_THING_ALIVE_component(pSchool);
+    return PBrain->PCreature->GetInterface(&pSchool, 0x23) && ((long)(((CTCVillageMember*)(pSchool))->GetPVillage()));
 }

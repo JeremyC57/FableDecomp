@@ -11,7 +11,10 @@
 #pragma intrinsic(fabs)
 
 extern long g_framesPerSecond;                  // 0x01375550
-long GetWorldFrame();                           // 0x0049D870 (returns the global @ 0x013B89BC; label "GFGetPreMainMemoryUsed" propagated)
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                           // 0x0049D870 (returns the global @ 0x013B89BC; label "GFGetPreMainMemoryUsed" propagated)
 
 template<class T> struct CRetailVector {        // retail std::vector: {first, last, end_of_storage}, 12 bytes
     T* first;
@@ -68,7 +71,7 @@ class CCombatManager { public:
 void CCombatManager::UpdateDefenderAttackInstruction(CCombatantInfo& info)
 {
     CRetailVector<long>& pattern = info.PAttackPattern->AttackPattern;
-    long now = GetWorldFrame();
+    long now = CWorld::GetFrame();
     if (pattern[info.AttackPatternIndex] != 0) {
         CCombatRing* ring = info.CombatWheel.GetRing(0);
         if (ring && fabs(ring->DeltaRotation) > 0.0001f)

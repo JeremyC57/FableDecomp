@@ -12,7 +12,7 @@ struct SubContainer {
 class CDefClassBase { public:
     char pad[0x28];
     SubContainer sub;   // +0x28
-    void Copy(const CDefClassBase* other);  // __fastcall base copy
+    CDefClassBase& operator=(const CDefClassBase& other);  // __fastcall base copy
 };
 
 class CMultiStaticMeshDef { public:
@@ -22,6 +22,6 @@ class CMultiStaticMeshDef { public:
 
 void __fastcall Copy(CMultiStaticMeshDef* self, void* /*edx*/, const CDefClassBase* other)
 {
-    ((CDefClassBase*)self)->Copy(other);
+    ((CDefClassBase*)self)->operator=(*(const CDefClassBase*)(other));
     self->sub.Copy((const SubContainer*)((const char*)other + 0x28));
 }

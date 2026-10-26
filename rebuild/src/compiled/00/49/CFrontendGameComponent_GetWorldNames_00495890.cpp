@@ -28,7 +28,10 @@ class CWideString { public:
     CWideString& operator=(const wchar_t* text);   // 0x0099B800
 };
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);       // 0x0099BF30
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name, CWideString* extension);   // 0x00997620
+class CAFile {
+public:
+    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+};   // 0x00997620
 struct CFindFileData {
     wchar_t       FileName[260];
     unsigned long Attributes;
@@ -72,6 +75,8 @@ public:
     std::vector<CWideString>  WorldNames;               // +0x1e30
     long                      WorldNamesOffset;         // +0x1e3c
     CWideString               WorldToLoad;              // +0x1e40
+
+private:
     void GetWorldNames();
 };
 
@@ -86,7 +91,7 @@ void CFrontendGameComponent::GetWorldNames()
         do {
             CWideString fileName(data.FileName);
             CWideString name;
-            SplitPath(fileName, 0, 0, &name, 0);
+            CAFile::SplitPath(fileName, 0, 0, &name, 0);
             WorldNames.push_back(name);
         } while (FindNextFile(pattern, handle, data));
     }

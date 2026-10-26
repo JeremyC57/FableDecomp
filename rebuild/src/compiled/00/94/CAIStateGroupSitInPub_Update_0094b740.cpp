@@ -193,6 +193,8 @@ class CAIStateGroupBase { public:
         *seed = rotated;
         return rotated % range;
     }
+public:
+    void Terminate();   // 0x008FCF40
 };
 
 // vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
@@ -209,7 +211,6 @@ struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
     unsigned char _pad1c[0x34 - 0x1c];
     bool MoveToSeatAndSitDown(long movement);   // 0x009387C0
     long AIAction_DoNothing();                  // 0x0097E200
-    void Terminate();                           // 0x008FCF40
 };
 struct CAIStateGroup_SitInPub : CAIStateGroup_UsesSeat {
     CBaseIntelligentPointer PBuilding;          // +0x34 CIntelligentPointer<CThing>

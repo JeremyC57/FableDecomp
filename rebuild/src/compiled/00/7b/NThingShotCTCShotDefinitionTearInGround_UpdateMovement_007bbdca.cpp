@@ -37,15 +37,27 @@ class CThing { public:
 };
 
 class CWorldMap { public:
-    float GetGroundSizeZAt(const C3DVector& position);     // 0x0063A300
+public:
+    float GetGroundSizeZAt(const C3DVector&) const;   // 0x0063A300
 };
+
+class CTCBase
+{
+protected:
+    CWorldMap& GetWorldMap();   // 0x00686D30
+};
+namespace NThingShot {
+class CTCShotDefinitionBase : public CTCBase
+{
+public:
+};
+}
 
 namespace NThingShot {
 
-struct CTCShotDefinitionTearInGround {
+struct CTCShotDefinitionTearInGround : public NThingShot::CTCShotDefinitionBase {
     void*   m_vtable;                        // +0x00
     CThing* ParentThing;                     // +0x04 (CTCBase)
-    CWorldMap* GetWorldMap();                // 0x00686D30 (CTCBase)
     void UpdateMovement();
 };
 
@@ -53,7 +65,7 @@ void CTCShotDefinitionTearInGround::UpdateMovement()
 {
     ParentThing->m_pPlacement->Update(0);
     C3DVector position = ParentThing->m_pPlacement->m_position;
-    position.Z = GetWorldMap()->GetGroundSizeZAt(position);
+    position.Z = GetWorldMap().GetGroundSizeZAt(position);
     ParentThing->m_pPlacement->SetPosition(position);
 }
 

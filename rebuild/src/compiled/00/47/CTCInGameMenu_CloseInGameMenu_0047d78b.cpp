@@ -170,7 +170,14 @@ struct CComponentVector {                            // retail 12-byte STLport v
 };
 struct CYesNo;
 enum { GAME_EVENT_OPEN_INVENTORY = 0x1A };
-class CTCInGameMenu { public:
+class CTCBase
+{
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCInGameMenu : public CTCBase { public:
     void*            __vftable;                      // +0x00
     void*            ParentThing;                    // +0x04 CTCBase
     unsigned char    _pad_0x08[0x04];
@@ -185,8 +192,6 @@ class CTCInGameMenu { public:
     unsigned char    _pad_0xa9[0x07];
     CYesNo*          PVideoOptionsNotAcceptedDialog; // +0xB0
     CYesNo*          PVideoOptionsChangedDialog;     // +0xB4
-    CWorld* GetWorld();                              // 0x00686A70 (CTCBase)
-    CPlayerManager* GetPlayerManager();              // 0x00686D40 (CTCBase)
     void CloseInGameMenu();
 };
 
@@ -198,7 +203,7 @@ void CTCInGameMenu::CloseInGameMenu()
         g_pGameState->SetCategoryVolume(0x80, CUserProfileManager::Get()->GetSoundVolume(), 0.0f);
     }
     g_pMainGameComponent->PDisplayEngine->Engine3D->SetEngineFlag76(true);
-    CWorld* world = GetWorld();
+    CWorld* world = (&GetWorld());
     world->FrameStarted3DRendering = GFGetCurrentFrame();
     AccumulativePausedTime += GFGetTime() - CurStartPauseTime;
     for (unsigned long i = 0; i < Components.size(); ++i)
@@ -216,7 +221,7 @@ void CTCInGameMenu::CloseInGameMenu()
     NUISystem::CManager::GetInstance()->PlayUISound_0041d0a8(owner->GetIconsDef()->CloseMenuSound_1a8, true);
     g_pMainGameComponent->PDisplayEngine->Engine3D->SetCameraMoved(false, false);
     if (OpenInventory) {
-        CThingCreatureBase* const& hero = GetPlayerManager()->GetMainPlayer()->GetCharacterThing();
+        CThingCreatureBase* const& hero = GetPlayerManager().GetMainPlayer()->GetCharacterThing();
         if (IS_THING_ALIVE_0043dbd0<CThing*>(hero)) {
             CGameEvent event(GAME_EVENT_OPEN_INVENTORY);
             event.Player = hero->PlayerNumber;

@@ -4,9 +4,10 @@
 // Callees: CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, IsDone 0x00F35B30 (on `this`, propagated label), Me's
 //   CScriptThing slot 20 MsgIsUsedBy (+0x50, 0x004AAB10), CGameScriptInterface slots 7 NewScriptFrame, 50 MsgOnHeroSlept
 //   (+0xc8), 121 GiveHeroObject (+0x1e4).
-// Shape: two rotated `while (!X) { NewScriptFrame(); if (IsDone()) return; }` waits; the string temporary in the first loop
+// Shape: two rotated `while (!X) { NewScriptFrame(); if (IsActiveThreadTerminating()) return; }` waits; the string temporary in the first loop
 //   condition dies before the branch, so the negated result is materialised (`neg ; sbb ; inc` into bl); the out bool of
 //   MsgOnHeroSlept is a byte in the frame's padding; the call on the Me member dispatches through its vtable.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -40,12 +41,17 @@ class CGameScriptInterface { public:
     virtual void v115(); virtual void v116(); virtual void v117(); virtual void v118(); virtual void v119(); virtual void v120();
     virtual void GiveHeroObject(const CCharString& object, long number, bool b) const;   // slot 121 (+0x1e4)
 };
-class CLadyGreysBed {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CLadyGreysBed : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     CGameScriptInterface* Game;               // +0x04
     CScriptThing          Me;                 // +0x08
-    bool IsDone();                            // 0x00F35B30
     void Main();
 };
 
@@ -53,17 +59,17 @@ void CLadyGreysBed::Main()
 {
     while (!Me.MsgIsUsedBy("SCRIPT_NAME_HERO")) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     bool slept;
     while (!Game->MsgOnHeroSlept(slept)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (!IsDone())
+    if (!IsActiveThreadTerminating())
         Game->GiveHeroObject("OBJECT_SILVER_KEY", -1, false);
 }

@@ -1,6 +1,17 @@
 // CQuestManager::GetActiveExclusiveQuestName  @0x004b0540
 // module: CQuestManager  __fastcall  returns CCharString*
 
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
 class CCharString;
 
 struct SubNode {
@@ -35,7 +46,6 @@ struct QManager {
     TNode*           treehdr; // +0x5c
 };
 
-extern QData* __fastcall QLookup(TNode* keynode);   // 0x551610
 extern bool __fastcall SubCheck(SubNode* self);      // 0x251d60
 extern CCharString g_defaultQuestName;               // object @ 0x13bd804
 
@@ -46,7 +56,7 @@ CCharString* __fastcall CQuestManager_GetActiveExclusiveQuestName(QManager* self
     if (node != self->treehdr) {
         SubNode* found = u.found; // preheader read (once); loop preserves esi
         do {
-            QData* q = QLookup((TNode*)((char*)node + 8));
+            QData* q = ((QData*)(((CBaseIntelligentPointer*)((TNode*)((char*)node + 8)))->GetPItem()));
             if (q) {
                 if (q->flags & 0x1000) {
                     Sub* sub = &q->sub;

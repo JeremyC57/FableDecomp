@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F6BF0, length 179 bytes, `ret 4`, float in st0. Byte-identical to
 //   the sibling instantiation at 0x007F6CB0.
 // Callees: CThing::GetPosition @ 0x004C73D0, CThingCreatureBase::IsPlayer (vtable slot 77, +0x134),
-//   CThingCreatureBase::IsCombatant @ 0x00662430 (asks the world's combat manager; manifest label
+//   CThingCreatureBase::IsInMeleeAsAttacked @ 0x00662430 (asks the world's combat manager; manifest label
 //   "C3DAnimationBlendState::AddCombinationBlend" is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50.
 // Float pool: 0x0122DED8 = 1.0f (both the `fadd` and the `fdivr`).
 // Layout: CThingCompare_BestCreatureToAttack (Ego_r.pdb, 24 bytes): Targeter +0x00, PCurrentBestTargetForAttack
@@ -65,8 +65,9 @@ class CThingCreatureBase : public CThing { public:
     virtual bool IsPlayer() const;                              // slot 77 (+0x134)
     unsigned char _pad70[0xf4 - 0x70];
     CIntelligentPointer<CThingCreatureBase> PLastAttackedByCreature;   // +0xf4
-    bool IsCombatant();                                         // 0x00662430
     CThingCreatureBase* GetLastAttackedByCreature() const { return PLastAttackedByCreature.GetTypedItem(); }
+public:
+    bool IsInMeleeAsAttacked() const;   // 0x00662430
 };
 
 class CThingAICreature : public CThingCreatureBase { public:
@@ -96,7 +97,7 @@ template<class T> float CThingCompare_BestCreatureToAttack::GetCompareValueForTh
     if (thing->IsPlayer())
         value *= PreferPlayerWeight;
     if (creature) {
-        if (!creature->IsCombatant())
+        if (!creature->IsInMeleeAsAttacked())
             value *= PreferNonCombatantsWeight;
         if (Targeter->GetLastAttackedByCreature() == creature)
             value *= PreferLastAttackerWeight;

@@ -35,7 +35,8 @@ class CWorld { public:
 class CThing { public:
     unsigned char _pad[0x10];
     unsigned char m_thingType;                              // +0x10 (2 = creature)
-    CPlayer* GetPlayer() const;                             // 0x004C7A30
+public:
+    CPlayer& GetPlayer();   // 0x004C7A30
 };
 
 struct CDangerThing {                                       // pair<CIntelligentPointer<CThing const>, NStealth::CDangerStatus>, 16 bytes
@@ -53,7 +54,13 @@ class CStealthDef { public:
     float         RunningAwayFromCombatHangtimeSeconds;     // +0x44
 };
 
-class CTCStealth { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCStealth : public CTCBase { public:
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04
     bool          ToBeRemoved;                              // +0x08
@@ -78,17 +85,16 @@ class CTCStealth { public:
     CDangerThing* m_pDangerEnd;                             // +0x40
     long          MaxNumberOfDangerThings;                  // +0x44
     long          RegionBasedMaxNumberOfDangerThings;       // +0x48
-    CWorld* GetWorld();                                     // 0x00686A70 (CTCBase)
     void ClearDangerStatus();
 };
 
 void CTCStealth::ClearDangerStatus()
 {
     InDangerCoolOffTimer = -1;
-    if (ParentThing->GetPlayer()->IsMainPlayer() && ParentThing->m_thingType == 2) {
-        CWorld* world = GetWorld();
+    if (ParentThing->GetPlayer().IsMainPlayer() && ParentThing->m_thingType == 2) {
+        CWorld* world = (&GetWorld());
         world->PMusicManager->EnableDangerMusic(false);
-        CWorld* world2 = GetWorld();
+        CWorld* world2 = (&GetWorld());
         world2->PEnvironment->SetRainEnabled(true);
     }
 }

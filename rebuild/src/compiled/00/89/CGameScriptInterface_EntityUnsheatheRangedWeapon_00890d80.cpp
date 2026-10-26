@@ -6,8 +6,16 @@
 class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;const ComponentEntry* LowerBound(const long&)const;}; //004365B0 (const lower_bound specialization)
 struct ScriptMethods;
+#define CThingCreatureBase CThingCreatureBaseLayout
 #include "engine/CThingCreatureBase.h"
-struct CThingNative:CThingCreatureBase{typedef bool(CThingNative::*PlayerMethod)()const;bool IsPlayer()const{return(this->*static_cast<PlayerMethod*>(__vftable)[77])();}void FinishCurrentAction();void UnsheatheRangedWeapon();}; //00662650,00664A10
+#undef CThingCreatureBase
+
+class CThingCreatureBase : public CThingCreatureBaseLayout
+{
+public:
+    void FinishCurrentAction();   // 0x00662650
+};
+struct CThingNative:CThingCreatureBase{typedef bool(CThingNative::*PlayerMethod)()const;bool IsPlayer()const{return(this->*static_cast<PlayerMethod*>(__vftable)[77])();}void UnsheatheRangedWeapon();}; //00662650,00664A10
 FABLE_STATIC_ASSERT(sizeof(CThingNative::PlayerMethod)==4);
 
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
@@ -109,10 +117,18 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 
 
 #include "engine/CWorld.h"
+#define CGameEvent CGameEventLayout
 #include "engine/CGameEvent.h"
+#undef CGameEvent
+
+class CGameEvent : public CGameEventLayout
+{
+public:
+    void AddData(long, const void*);   // 0x009F1760
+};
 bool __fastcall IsThingCarryingRangedWeapon(CThingNative*); //006A1620
 class CCombatManager{ public:void CreatureUnsheathWeapon(CThingNative*,long);}; //006EBDD0
-struct GameEventMethods:CGameEvent{void AddData(long,const void*);}; //009F1760 appends to Data at current EndPos
+struct GameEventMethods:CGameEvent{}; //009F1760 appends to Data at current EndPos
 class CMainGameComponent{ public:void AddGameEvent(const CGameEvent&);};extern CMainGameComponent* g_MainGameComponent; //0041649C,013B86A0
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void EntityUnsheatheRangedWeapon(const ScriptMethods&,bool)const;};
 void CGameScriptInterfaceMethods::EntityUnsheatheRangedWeapon(const ScriptMethods& script,bool instant)const{

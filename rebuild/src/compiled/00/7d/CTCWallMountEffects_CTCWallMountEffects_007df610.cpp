@@ -21,15 +21,25 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     CTCBase_Calls(CThing* thing);                           // 0x00686800
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                          // +0x04
-    CBaseIntelligentPointer();                              // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer_CThingCreatureBase : CBaseIntelligentPointer {   // vtable 0x0123E7D8
-    virtual void v00();
-    CIntelligentPointer_CThingCreatureBase() : CBaseIntelligentPointer() { }
+class CThingCreatureBase;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x0123E7D8
+public:
+    CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CDefPointer_CWallMountEffectsDef {
@@ -56,7 +66,7 @@ enum EWallMountEffectsConfirmationType { WALL_MOUNT_CONFIRMATION_NONE = 0 };
 class CTCWallMountEffects : public CTCBase_Calls { public:                // vtable 0x0126FC84
     CDefPointer_CWallMountEffectsDef        PDef;                       // +0x0c
     EWallMountEffectsConfirmationType       WaitingForConfirmation;     // +0x10
-    CIntelligentPointer_CThingCreatureBase  CreaturePerformingAction;   // +0x14
+    CIntelligentPointer<CThingCreatureBase>  CreaturePerformingAction;   // +0x14
     long                                    FrameEffectLastUsed;        // +0x1c
     bool                                    ObjectWasGamePersistant;    // +0x20
     virtual void v00();

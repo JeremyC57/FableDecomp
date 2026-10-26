@@ -1,5 +1,8 @@
+class CPlayerGui {
+public:
+    void Open();   // 0x004374B0
+};
 struct CSingletonTarget;
-extern "C" void __fastcall Singleton_Method_4374b0(CSingletonTarget* self);
 extern CSingletonTarget* g_singleton_13b8790;
 
 class CTCHeroCentre { public:
@@ -12,7 +15,7 @@ void __fastcall CTCHeroCentre__OnHeroCloseDoor(CTCHeroCentre* self)
     switch (self->CurrentGUIMode) {
     case 1:
         self->CurrentGUIMode = 0;
-        Singleton_Method_4374b0(g_singleton_13b8790);
+        ((CPlayerGui*)(g_singleton_13b8790))->Open();
         break;
     }
 }

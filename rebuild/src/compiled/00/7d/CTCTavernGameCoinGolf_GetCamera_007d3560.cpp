@@ -15,8 +15,9 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     void operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; }
-    void RotateAboutZ(float angle);                 // 0x00A14040
     void Rotate(float zAngle, float xAngle);        // 0x00A14260
+public:
+    void RotateXY(float);   // 0x00A14040
 };
 class CThing {
 public:
@@ -24,12 +25,23 @@ public:
     unsigned char m_flags91;                        // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                // +4
-    CThing* GetPItem() const;                       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -40,7 +52,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 #pragma pack(push, 1)
 struct CCoinGolfCoin {                              // descriptive: the coin record, its thing pointer at the odd offset +0x25
     unsigned char _pad00[0x25];
-    CBaseIntelligentPointer Thing;                  // +0x25
+    CIntelligentPointer<CThing> Thing;                  // +0x25
 };
 #pragma pack(pop)
 class CTCTavernGameCoinGolf { public:
@@ -58,7 +70,7 @@ void CTCTavernGameCoinGolf::GetCamera(C3DVector& camPos, C3DVector& lookAt)
 {
     C3DVector centre(TableCentre);
     C3DVector offset(0.0f, 0.05f, 1.75f);
-    offset.RotateAboutZ(ZAngle);
+    offset.RotateXY(ZAngle);
     offset += TableCentre;
     camPos = offset;
     lookAt = centre;

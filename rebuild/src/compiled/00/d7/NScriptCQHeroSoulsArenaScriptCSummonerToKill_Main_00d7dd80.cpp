@@ -15,9 +15,9 @@
 //   block-local in the `if` (it shares the filter's frame words) and its out-of-line destructor runs on the normal path
 //   and on the merged early returns of the wait loop.
 class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CScriptGameResourceObjectScriptedThingBase;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -47,7 +47,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual void v00();
-    ~CScriptGameResourceObjectScriptedThingBase(); // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase(); // 0x007E74D0
 };
 namespace NScript {
 class CQ_HeroSoulsArenaScript { public:

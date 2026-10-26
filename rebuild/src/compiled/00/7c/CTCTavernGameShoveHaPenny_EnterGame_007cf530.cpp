@@ -15,7 +15,8 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 struct CDefStringTable {
-    CCharString GetString(long id);             // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
 

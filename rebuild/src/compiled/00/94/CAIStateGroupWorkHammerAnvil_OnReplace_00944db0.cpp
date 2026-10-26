@@ -41,13 +41,21 @@ class CThing { public:
     }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 
@@ -67,7 +75,7 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
 };
 
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -98,7 +106,7 @@ struct CAIStateGroupBaseI : CAIStateGroupBase {
 #pragma pack(push, 1)
 struct CAIStateGroup_WorkHammerAnvil : CAIStateGroupBaseI {
     bool TookActionPoint;                       // +0x14
-    CBaseIntelligentPointer PAnvil;             // +0x15 CIntelligentPointer<CThingObject>
+    CIntelligentPointer<CThing> PAnvil;             // +0x15 CIntelligentPointer<CThingObject>
     float ActionPointPos_X;                     // +0x1d
     float ActionPointPos_Y;                     // +0x21
     float ActionPointPos_Z;                     // +0x25

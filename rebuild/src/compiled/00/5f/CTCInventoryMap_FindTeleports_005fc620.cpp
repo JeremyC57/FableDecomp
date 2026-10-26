@@ -136,7 +136,8 @@ class CRegion { public:
     unsigned long size() const { return LinkedMapsFinish - LinkedMapsStart; }
 };
 class CWorldMap { public:
-    const CRegion& GetRegion(long index);             // 0x004FC180
+public:
+    const CRegion& GetRegion(long) const;   // 0x004FC180
 };
 class CThingFilter_HasTC { public:
     long m_type;

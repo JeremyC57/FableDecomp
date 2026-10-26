@@ -4,8 +4,8 @@
 // No vtable store (not polymorphic): the owner pointer is the first member. The block holders'
 // inline destructors run last to first. The manifest label (`FinishWithDynamicTextures`) is
 // propagated; the class is named by address.
-void __cdecl Release_00bfeb1c(void* block);   // 0x00BFEB1C
 
+void __cdecl operator delete[](void* p);   // 0x00BFEB1C (MSVCR71)
 struct CEngineScreenEffectOutlineGlow_00c1e850;
 struct CRegistry_00c1e850 {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -20,7 +20,7 @@ struct COwner_00c1e850 {
 
 struct CBlockHolder_00c1e850 {
     void* m_pBlock;
-    ~CBlockHolder_00c1e850() { if (m_pBlock) { Release_00bfeb1c(m_pBlock); m_pBlock = 0; } }
+    ~CBlockHolder_00c1e850() { if (m_pBlock) { operator delete[](m_pBlock); m_pBlock = 0; } }
 };
 
 struct CEngineScreenEffectOutlineGlow_00c1e850 {

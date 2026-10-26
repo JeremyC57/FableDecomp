@@ -32,7 +32,9 @@ class CWorld { public:
     CCameraManagerSource* m_pCameraSource;          // +0x34
 };
 
-struct CTCCameraPointShapeActivationBase {
+class CTCBase
+{
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual void vfunc_9();                                                         // slot 9
@@ -43,19 +45,29 @@ struct CTCCameraPointShapeActivationBase {
     virtual bool IsSubjectInside();                                                 // slot 29 (+0x74)
     virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33();
     virtual void OnSubjectInside();                                                 // slot 34 (+0x88)
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCCameraPointDefinitionBase : public CTCBase
+{
+public:
+};
+
+struct CTCCameraPointShapeActivationBase : public CTCCameraPointDefinitionBase {
+    virtual void vfunc_9();
+
 
     CThing*       ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad08[0x3c - 0x08];
     bool          Activated;                        // +0x3c
 
-    CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
     bool IsAngleValid();                            // 0x0075C530 (CTCCameraPointDefinitionBase)
 };
 
 void CTCCameraPointShapeActivationBase::vfunc_9()
 {
     CCameraPointManager* manager;
-    CWorld* world = GetWorld();
+    CWorld* world = (&GetWorld());
     if (!world->m_pCameraSource->GetCameraManager(&manager))
         return;
     bool inside = IsSubjectInside();

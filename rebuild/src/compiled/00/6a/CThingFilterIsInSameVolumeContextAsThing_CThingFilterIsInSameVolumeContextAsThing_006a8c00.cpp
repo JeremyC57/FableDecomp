@@ -35,15 +35,26 @@ class CThing { public:
     }
 };
 
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* PItem;
-    CThing* GetPItem() const;                       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CTCInterface75 {                             // interface 0x75 component (class not established)
     unsigned char _pad[0x0c];
-    CBaseIntelligentPointer m_inside;               // +0x0c
+    CIntelligentPointer<CThing> m_inside;               // +0x0c
 };
 
 class CThingFilter_IsInSameVolumeContextAsThing { public:

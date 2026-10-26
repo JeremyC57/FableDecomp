@@ -8,10 +8,13 @@
 // Shape: as 0x006D03E0 -- `wedding frame <= now`, the three pushes, the flag store last.
 #include "engine/CTCWife.h"
 
-long GetWorldFrame();                                       // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                                       // 0x0049D870
 
 struct CTCWife_State : CTCWife {
-    bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= GetWorldFrame(); }
+    bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= CWorld::GetFrame(); }
     void SetAttractionIcon(bool show, float scale, unsigned char alpha);   // 0x006CFC90
     void InitWifeNonpersistentState()
     {

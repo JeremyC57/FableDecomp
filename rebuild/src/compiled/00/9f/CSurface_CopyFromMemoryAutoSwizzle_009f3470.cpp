@@ -10,7 +10,15 @@
 //   rides in eax), and both cursors step by their own pitch.
 // Model: engine/CSurface.h (+4 PD3DSurface) and engine/CPixelFormat.h with methods structs; PDB CSurfaceLockedRect.
 #include "engine/CSurface.h"
+#define CPixelFormat CPixelFormatLayout
 #include "engine/CPixelFormat.h"
+#undef CPixelFormat
+
+class CPixelFormat : public CPixelFormatLayout
+{
+public:
+    unsigned long GetByteColourDepth() const;   // 0x009E3800
+};
 #include <string.h>
 
 struct D3DSURFACE_DESC_Local {                     // D3DSURFACE_DESC, 0x20 bytes
@@ -56,7 +64,6 @@ class CSurfaceLockedRect { public:                        // PDB CSurfaceLockedR
 
 struct CPixelFormat_Methods : CPixelFormat {
     void Initialise(unsigned long d3dFormat);      // 0x009E3830 (D3DFORMAT)
-    unsigned long GetByteColourDepth() const;      // 0x009E3800
 };
 
 struct CSurface_Methods : CSurface {

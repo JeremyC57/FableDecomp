@@ -30,12 +30,18 @@ class CCharString { public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CTextEntry {
+namespace NGameText {
+class CTextEntry { public:
     CWideString GetText() const;                        // 0x009C7A40
 };
-struct CDataBank {
-    CTextEntry* GetTextEntryFromGroup(unsigned long entryID, const CCharString& group, bool* found, long* index, bool flag);   // 0x009C9280
+}
+using NGameText::CTextEntry;
+namespace NGameText {
+class CDataBank { public:
+    const CTextEntry* GetTextEntryFromGroup(unsigned long entryID, const CCharString& group, bool& found, long* index, bool flag) const;   // 0x009C9280
 };
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    PDataBank;                            // +0x14
@@ -85,7 +91,7 @@ CWideString CTCOracleMinigame::GetTextWithNarrator(unsigned long textId)
     CDataBank* bank = g_pMainGameComponent->PDataBank;
     {
         bool found;
-        CTextEntry* entry = bank->GetTextEntryFromGroup(textId, talk->GetDialogueVoice(), &found, 0, true);
+        const CTextEntry* entry = bank->GetTextEntryFromGroup(textId, talk->GetDialogueVoice(), found, 0, true);
         return entry ? entry->GetText() : no_text_entry;
     }
 }

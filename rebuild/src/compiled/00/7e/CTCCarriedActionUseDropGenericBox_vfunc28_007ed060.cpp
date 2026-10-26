@@ -9,8 +9,8 @@
 class CThingAICreature;
 
 class CCreatureActionBase { public:
-    unsigned char _body[0xa8];
-    ~CCreatureActionBase();                                     // 0x00693EF0
+    unsigned char _body[0xa8 - 4];
+    virtual ~CCreatureActionBase();                                     // 0x00693EF0
 };
 
 namespace N_00842150 { struct CCreatureAction_AlertToPlayer : CCreatureActionBase {

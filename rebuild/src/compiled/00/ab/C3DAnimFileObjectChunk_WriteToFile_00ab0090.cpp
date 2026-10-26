@@ -1,6 +1,6 @@
 // C3DAnimFileObjectChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- name, sub-mesh index, then the sub-chunks
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB0090, length 48 bytes.
-// Callees: CDataOutputStream::WriteNullTerminatedString @ 0x00995AE0, CDataOutputStream::WriteLONG @ 0x00993EB0, CChunkedFileSuperChunk::WriteToFile @ 0x00AA78C0.
+// Callees: CDataOutputStream::WriteNullTerminatedString @ 0x00995AE0, CDataOutputStream::WriteSLONG @ 0x00993EB0, CChunkedFileSuperChunk::WriteToFile @ 0x00AA78C0.
 // Only Name (+0x2c, by reference: `lea eax,[esi+2Ch]`) and SubMeshIndex (+0x30) are written; the tree indices are
 // rebuilt on load.
 // Layout: the PDB (Ego_r) CChunkedFileSuperChunk is 0x34 bytes with 16-byte CArrays; retail's is 0x2c with 12-byte
@@ -19,11 +19,12 @@ class CDataOutputStream { public:
     virtual void v02();
     virtual void v03();
     virtual void WriteBytes(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteLONG(long value);                                    // 0x00993EB0
     void WriteULONG(unsigned long value);                          // 0x00993EA0
     void WriteFLOAT(float value);                                  // 0x00993EE0
     void WriteBOOL(bool value);                                    // 0x00993E30
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 template <class T>
@@ -103,6 +104,6 @@ class C3DAnimFileObjectChunk : public CChunkedFileSuperChunk { public:   // reta
 void C3DAnimFileObjectChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
     out.WriteNullTerminatedString(Name);
-    out.WriteLONG(SubMeshIndex);
+    out.WriteSLONG(SubMeshIndex);
     CChunkedFileSuperChunk::WriteToFile(out, saver);
 }

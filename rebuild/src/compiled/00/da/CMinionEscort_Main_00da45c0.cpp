@@ -12,16 +12,17 @@
 // Layout (PDB CMinionEscort 0x20): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18, SpecialMinion +0x1c.
 // Shape: as the landed CHTE_Prisoner::Main 0x00D69F50: the filter is a scoped 0x10-byte frame object, the address of Me stays in
 // edi; each outer interface call fetches its vtable before the inner GetHero / GetActiveQuestName call (VC evaluates the
-// callee first); the frame loop is `do { } while (!IsDone());`.
+// callee first); the frame loop is `do { } while (!IsActiveThreadTerminating());`.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     ~CCharString();                           // 0x0099EAE0
 };
 
 class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    ~CScriptThing();                          // 0x004AA840
+    virtual ~CScriptThing();                          // 0x004AA840
 };
 
 class CGameScriptInterface { public:                  // vtable 0x01260F0C (slots from rtti-vtables.tsv)
@@ -100,8 +101,14 @@ class CGameScriptInterface { public:                  // vtable 0x01260F0C (slot
     virtual CCharString GetActiveQuestName();   // slot 655 (+0xa3c) 0x00891880
 };
 
-struct CIsThingAlive {                         // vtable 0x012C32F0: a filter holding a script thing (as landed 0x00D69F50)
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                         // vtable 0x012C32F0: a filter holding a script thing (as landed 0x00D69F50)
     CScriptThing m_thing;                     // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -110,16 +117,22 @@ struct CIsThingAlive {                         // vtable 0x012C32F0: a filter ho
 struct CQ_MinionClifftopChaseScript;
 struct CQ_SunnyvaleMasterData;
 
-class CMinionEscort {
+class CEntityScriptBase
+{
 public:
     virtual void v00();
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CMinionEscort : public CEntityScriptBase {
+public:
     CGameScriptInterface*          Game;          // +0x04
     CScriptThing                   Me;            // +0x08
     CQ_MinionClifftopChaseScript*  ParentClass;   // +0x14
     CQ_SunnyvaleMasterData*        PMasterData;   // +0x18
     bool                           SpecialMinion; // +0x1c
-    void RegisterFilter(CIsThingAlive& filter);   // 0x00F35B10
-    bool IsDone();                            // 0x00F35B30
     void Main();
 };
 
@@ -127,15 +140,15 @@ void CMinionEscort::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (!IsDone()) {
+    if (!IsActiveThreadTerminating()) {
         Game->EntityAttachToScript(Me, Game->GetActiveQuestName());
         Game->EntitySetFacingAngleTowardsThing(Me, Game->GetHero(), false);
         Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
         do {
             Game->NewScriptFrame();
-        } while (!IsDone());
+        } while (!IsActiveThreadTerminating());
     }
 }

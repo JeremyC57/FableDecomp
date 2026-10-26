@@ -18,7 +18,7 @@ class CCharString { public:
 };
 class CBaseClass { public:                                // the CStringParser root (polymorphic)
     virtual void v00();
-    ~CBaseClass();                                 // 0x0099A2E0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
 };
 struct CStringParserCommentList {                  // retail std::list<CStringParserCommentBoundaries>: sentinel only
     void* m_pHead;
@@ -55,8 +55,9 @@ extern const char g_semicolon[];                  // 0x0123542C ";"
 class CTCBase;
 class CTCParamsBase;
 class CThing { public:
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     void CreateTCsFromString(const CCharString& text);
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 
 void CThing::CreateTCsFromString(const CCharString& text)

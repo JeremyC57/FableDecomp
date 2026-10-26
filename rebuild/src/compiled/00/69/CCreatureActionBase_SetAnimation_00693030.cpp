@@ -24,10 +24,21 @@ class CThingCreatureBase { public:
     float GetAnimDuration(long); //0x006627F0
     CWorld* GetWorld(); //0x004C7AB0
 };
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer();
-    void* PData;
-    CThingCreatureBase* GetPItem() const; //0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CAnimComponentMap:public CIVCountedPointeeBase { public:};
 struct CAnimComponentPointer {CAnimComponentMap* Object;CAnimComponentPointer():Object(0){}CAnimComponentPointer(const CAnimComponentPointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}};
@@ -38,7 +49,8 @@ class CAnimationEntry { public:
     CAnimComponentPointer Components;
     CAnimationEntry(long,long,long,long); //005DED00 genuine external ctor
     CAnimationEntry(const CAnimationEntry& p):BankIndex(p.BankIndex),AnimName(p.AnimName),GroupName(p.GroupName),Components(p.Components) {}
-    long GetAnimationTransitionInTime() const; //0x005DC1F0
+public:
+    long GetDelayTime() const;   // 0x005DC1F0
 };
 struct CAnimationEntryPointer {
     CAnimationEntry* Data;
@@ -57,9 +69,9 @@ class CCreatureActionBase { public:
     virtual bool IsPlayingAnimation() const; //0x00692850
     virtual long GetAnimDelayTime() const; //0x00692460
     void* IntelligentPointer;
-    CBaseIntelligentPointer PCreature;
+    CIntelligentPointer<CThingCreatureBase> PCreature;
     long TotalTime, ActionTime, AnimDelayTime, FramesRunning, InterruptionGroupID, InterruptionPriority, ActionID;
-    CBaseIntelligentPointer PItemRemoved;
+    CIntelligentPointer<CThingCreatureBase> PItemRemoved;
     long Sounds_FirstSound, Sounds_LastSound;
     unsigned long PlayingSoundID;
     float RunningTimeSeconds,LastRunningTimeSeconds;
@@ -76,7 +88,7 @@ void CCreatureActionBase::SetAnimation(const CAnimationEntry& entry,float durati
 {
     long fps=g_GameFramesPerSecond;
     PAnimEntry=new CAnimationEntry(entry);
-    AnimDelayTime=PAnimEntry->GetAnimationTransitionInTime();
+    AnimDelayTime=PAnimEntry->GetDelayTime();
     if(duration < 0.0f) {
         CThingCreatureBase* owner=PCreature.GetPItem();
         TotalTime=(long)(owner->GetAnimDuration(entry.BankIndex)*fps);

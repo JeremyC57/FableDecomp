@@ -2,7 +2,7 @@
 // Leaf: OnReadFinished
 struct CActiveFile;
 
-extern "C" void __cdecl fable_free(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 void __fastcall CActiveFileBase_OnReadFinished(CActiveFile* self);
 
 struct CActiveFile {
@@ -14,5 +14,5 @@ void __fastcall OnReadFinished(CActiveFile* self)
     CActiveFileBase_OnReadFinished(self);
     void* p = self->field0;
     if (p != 0)
-        fable_free(p);
+        free(p);
 }

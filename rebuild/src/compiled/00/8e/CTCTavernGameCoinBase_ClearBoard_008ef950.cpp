@@ -23,13 +23,21 @@ class CThing { public:
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
-    virtual void v00();
-    CBaseObject* m_pItem;                       // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
+public:
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(pop)
 
@@ -37,7 +45,7 @@ class Coin { public:                                   // 0x3c bytes
     virtual ~Coin();
     unsigned char _pad_0x04[0x20];
     bool          Owned;                        // +0x24
-    CIntelligentPointerThing Thing;             // +0x25
+    CIntelligentPointer<CThing> Thing;             // +0x25
     float         Radius;                       // +0x30
     long          Owner;                        // +0x34
     unsigned long Sound;                        // +0x38

@@ -21,7 +21,10 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 class CMatrix3x4 { public: float E[12]; };
 class C3DDummyObject { public:                            // 0x34 bytes
@@ -55,7 +58,7 @@ class C3DMeshObject { public:
 
 long C3DMeshObject::GetNoDummyObjects(const CCharString& name) const
 {
-    unsigned long nameHash = Calc_004014a0(0, name.GetChars(), name.GetLength());
+    unsigned long nameHash = CCRC::Calc(0, name.GetChars(), name.GetLength());
     const TDummyObjectEntry* last = Mesh->FindDummyObjectsEnd(nameHash);
     return last - Mesh->FindDummyObjectsBegin(nameHash);
 }

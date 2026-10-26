@@ -31,7 +31,7 @@ struct CInterfaceMap {
     SEntry* first;
     SEntry* last;
 };
-unsigned long __fastcall GFROR13(unsigned long value);    // 0x00497890
+long __fastcall GFROR13(unsigned long);    // 0x00497890
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -96,7 +96,7 @@ class CThingCreatureBase : public CThing { public:
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa8 - 4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _members[0xb4 - 0xa8];

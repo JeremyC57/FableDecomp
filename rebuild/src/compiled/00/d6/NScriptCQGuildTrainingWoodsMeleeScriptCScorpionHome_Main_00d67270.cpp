@@ -1,7 +1,7 @@
 // CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::Main() -- show the beetle counter and start a 5-second nag timer; while the parent's scorpions are alive: if the hero is not carrying the training stick when the timer runs out, have him say the stick reminder and re-arm the timer for 8 seconds; count the live guild scorpions, update the counter, and whenever fewer than three are about either finish (none alive and none left to spawn: scorpions gone, master data flag set) or spawn another stag beetle at the spawn point furthest from the hero; finally remove the counter
 // Leaf: ?Main@CScorpionHome@CQ_GuildTrainingWoodsMeleeScript@NScript@@EAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D67270, 1224 bytes (int3 padded to 1232).
-// Callees: CEntityScriptBase::IsDone 0x00F35B30 (manifest "CCreatureAction_TrollWhackGroundBase::Initialise" is
+// Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30 (manifest "CCreatureAction_TrollWhackGroundBase::Initialise" is
 //   propagated), CCharString 0x0099EBF0 / ~ 0x0099EAE0, __ftol2 0x00BFEA70, CCountedPointer<CScriptThingImpl>::operator=
 //   0x00704580, ~vector<CScriptThing> 0x008AC970 (IsDone exit; inline copy with free 0x00BFEA14 at the loop end);
 //   CScriptThing::GetPos / SetToKillOnLevelUnload inlined (imp slots 6, 70); pGlobalScriptDef 0x0143E90C
@@ -14,6 +14,7 @@
 //   class-keyed); this row's class is now declared there, and CScorpionHome is nested in it as Ego_r.pdb spells it
 //   (?Main@CScorpionHome@CQ_GuildTrainingWoodsMeleeScript@NScript@@EAEXXZ, a private virtual; FableWin ?OnPredicateFail@/?GetParentScript@ the same) (wrapped, struct->class). Same bytes.
 #define VEC_DTOR
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -224,7 +225,8 @@ class CEntityScriptBase { public:
     virtual void Main() = 0;
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    bool IsDone();                                      // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
 };
 class NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome : public CEntityScriptBase {
 public:
@@ -243,10 +245,10 @@ void NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::Main()
     CTimer nagTimer(5);
     while (ParentClass->ScorpionsAlive) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         if (!Game->IsPlayerCarryingItemOfType("OBJECT_HERO_STICK") && nagTimer.Get() <= 0) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             long conversation = Game->AddNewConversation(Game->GetHero(), false, false);
             Game->AddLineToConversation(conversation, "TEXT_QST_028_GUILDMASTER_PREMELEE_STICK_REPEAT", false, Game->GetHero(), Game->GetHero());
@@ -256,15 +258,15 @@ void NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::Main()
         Game->GetAllThingsWithScriptName("GuildScorpions", scorpions);
         Game->UpdateQuestInfoCounter(counter, (long)(pGlobalScriptDef->GUI_MeleeBeetles - ScorpionsLeft - scorpions.size()), -1);
         if (scorpions.size() < 3) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             if (scorpions.size() == 0 && ScorpionsLeft == 0) {
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                     return;
                 ParentClass->ScorpionsAlive = false;
                 PMasterData->ScorpionsDestroyed = true;
             } else if (ScorpionsLeft > 0) {
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                     return;
                 CScriptThing spawn = Game->GetFurthestWithScriptName(Game->GetHero(), "ScorpionSpawn");
                 spawn = Game->CreateCreature("CREATURE_GUILD_STAG_BEETLE", spawn.GetPos(), "GuildScorpions", false);
@@ -274,7 +276,7 @@ void NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::Main()
             }
         }
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->RemoveQuestInfoElement(counter);
     Game->DisplayQuestInfo(false);

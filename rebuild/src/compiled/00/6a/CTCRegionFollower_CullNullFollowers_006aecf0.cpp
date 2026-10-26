@@ -10,23 +10,31 @@
 // Shape: a copy of each element (inline copy ctor: base ctor, vtable store, SetPItem(other.GetPItem())) is tested;
 // STLport's inline erase unlinks the node, destroys the value through the vtable and frees the node.
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer();             // slot 0; out of line 0x00A01C10
-    CBaseObject* m_pItem;                           // +4
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    CBaseObject* GetPItem() const;                  // 0x00A01B50
-    void SetPItem(CBaseObject* item);               // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {    // CIntelligentPointer<CThing>, vtable 0x01238C6C
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {    // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
 struct CFollowerNode {
     CFollowerNode*      _M_next;                    // +0
     CFollowerNode*      _M_prev;                    // +4
-    CIntelligentPointer _M_data;                    // +8
+    CIntelligentPointer<CThing> _M_data;                    // +8
 };
 struct CFollowerList {                              // STLport list<CIntelligentPointer<CThing>>
     CFollowerNode* _M_node;                         // sentinel
@@ -56,7 +64,7 @@ void CTCRegionFollower::CullNullFollowers()
 {
     CFollowerNode* it = Followers.begin();
     while (it != Followers.end()) {
-        CIntelligentPointer follower(it->_M_data);
+        CIntelligentPointer<CThing> follower(it->_M_data);
         if (follower.GetPItem() == 0)
             it = Followers.erase(it);
         else

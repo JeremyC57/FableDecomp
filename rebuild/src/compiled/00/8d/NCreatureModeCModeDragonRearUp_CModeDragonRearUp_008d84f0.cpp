@@ -25,7 +25,10 @@ class CCharString { public:
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
@@ -35,7 +38,7 @@ class CAnimFilterOfGroup { public:                // vtable 0x01267568
         : Group()
     {
         Group = group;
-        GroupCRC = Calc_004014a0(0, group.m_pData == 0 ? "" : group.m_pData->m_pData, group.m_pData == 0 ? 0 : group.m_pData->m_length);   // one shared null test (CSE of the two guards)
+        GroupCRC = CCRC::Calc(0, group.m_pData == 0 ? "" : group.m_pData->m_pData, group.m_pData == 0 ? 0 : group.m_pData->m_length);   // one shared null test (CSE of the two guards)
     }
 };
 

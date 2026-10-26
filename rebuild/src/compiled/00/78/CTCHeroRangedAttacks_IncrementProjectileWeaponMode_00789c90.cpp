@@ -11,7 +11,15 @@
 //
 // Lane feedback: retail forms the vector pointer (`add eax,128h`) and takes `size()` with a memory-operand
 // subtract: the retail-vector object with an inlined size() reproduces it. RELOCATION_MATCH.
+#define CTCHeroRangedAttacks CTCHeroRangedAttacksLayout
 #include "engine/CTCHeroRangedAttacks.h"
+#undef CTCHeroRangedAttacks
+
+class CTCHeroRangedAttacks : public CTCHeroRangedAttacksLayout
+{
+public:
+    void ResetProjectileWeaponMode();   // 0x00789B30
+};
 
 template<class T> struct CRetailVector {
     T* first; T* last; T* end_of_storage;
@@ -28,7 +36,6 @@ struct CHeroCombatDefCalls {
 };
 
 struct CTCHeroRangedAttacks_Methods : CTCHeroRangedAttacks {
-    void ResetProjectileWeaponMode();   // 0x00789B30 (tail call)
     void IncrementProjectileWeaponMode();
 };
 

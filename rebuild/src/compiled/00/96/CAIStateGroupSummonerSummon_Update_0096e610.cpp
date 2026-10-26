@@ -10,7 +10,18 @@
 // the 0x114-byte action built as a temporary inside the call from the creature and the target's third
 // GetPItem, its base destructor after the call. Terminate runs on both paths. `this` is the PDB header
 // layout; PBrain lives in the flattened base bytes at +0x04.
+#define CAIStateGroup_SummonerSummon CAIStateGroup_SummonerSummonLayout
 #include "engine/CAIStateGroup_SummonerSummon.h"
+#undef CAIStateGroup_SummonerSummon
+
+class CAIStateGroupBase
+{
+public:
+    void Terminate();   // 0x008FCF40
+};
+class CAIStateGroup_SummonerSummon : public CAIStateGroupBase, public CAIStateGroup_SummonerSummonLayout
+{
+};
 
 class CTCBase;
 
@@ -50,14 +61,25 @@ class CThing { public:
     }
 };
 
-struct CBaseIntelligentPointer {                // CIntelligentPointer<T>: vptr + item
-    void*   __vftable;                          // +0x00
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -80,7 +102,7 @@ class CCreatureActionBase { public:
 
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];                // +0xa8..+0x113
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 
 class CCreatureAction_SummonerSummonInto : public CCombatActionBase { public:
@@ -89,9 +111,8 @@ class CCreatureAction_SummonerSummonInto : public CCombatActionBase { public:
 
 struct CAIStateGroup_SummonerSummon_Methods : CAIStateGroup_SummonerSummon {
     CAIBrain* GetPBrain() const { return *(CAIBrain* const*)_pad_0x04; }   // CAIStateGroupBase::PBrain (+0x04)
-    const CBaseIntelligentPointer& Target() const { return *(const CBaseIntelligentPointer*)PTarget; }
+    const CIntelligentPointer<CThing>& Target() const { return *(const CIntelligentPointer<CThing>*)PTarget; }
     long AIAction_CombatPerformActionAndWait(CCombatActionBase* action, bool wait);   // 0x0097DA40
-    void Terminate();                           // 0x008FCF40
     void Update();
 };
 

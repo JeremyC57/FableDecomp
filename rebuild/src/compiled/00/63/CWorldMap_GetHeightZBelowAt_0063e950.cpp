@@ -27,10 +27,9 @@ class CMeshIntersectionData { public:
     float     DistanceSquared;                  // +0x18
 };
 class CPhysicsMeshObject { public:
-    void*         __vftable;
     void*         m_pMesh;                      // +0x04 counted mesh
     unsigned char _pad08[0x38];
-    ~CPhysicsMeshObject();                      // 0x00A127D0
+    virtual ~CPhysicsMeshObject();                      // 0x00A127D0
     bool GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData* out);   // 0x00A12450
 };
 class CTCPhysicsBase { public:
@@ -45,7 +44,8 @@ class CTCPhysicsBase { public:
     virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083(); virtual void v084(); virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088(); virtual void v089();
     virtual void v090(); virtual void v091(); virtual void v092();
     virtual void* GetPhysicsMeshParameters();   // slot 93 (+0x174)
-    CPhysicsMeshObject GetPhysicsMeshObject();  // 0x006B0850
+public:
+    CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
 class CThing { public:
     unsigned char   _pad00[0x60];

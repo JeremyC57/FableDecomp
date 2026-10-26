@@ -6,12 +6,13 @@
 class CDefClassBase { public:
     char pad[0x28];
     unsigned long field28;
+
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
 // Base class with a plain (implicit __fastcall under /Gd) member:
 // this -> ecx, src -> pushed. Leaf name avoids "Copy".
 struct BaseDef {
-    void Clone(CDefClassBase const* src);
 };
 
 class CInterestingToVillagersDef : public BaseDef { public:
@@ -21,6 +22,6 @@ class CInterestingToVillagersDef : public BaseDef { public:
 
 void __fastcall CInterestingToVillagersDef__Copy(CInterestingToVillagersDef* self, void* /*edx*/, CDefClassBase const* src)
 {
-    self->Clone(src);
+    ((CDefClassBase*)(self))->operator=(*(const CDefClassBase*)(src));
     self->field28 = src->field28;
 }

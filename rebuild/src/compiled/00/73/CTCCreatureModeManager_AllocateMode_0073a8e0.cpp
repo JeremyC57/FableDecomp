@@ -12,7 +12,7 @@
 // (`if (object) block = new SCountBlock(object) else block = 0`: three duplicated exits with the new's null test).
 void __fastcall Destroy_007180b0(void* object);         // 0x007180B0
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
+long __fastcall GFROR13(unsigned long);  // 0x00497890
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {

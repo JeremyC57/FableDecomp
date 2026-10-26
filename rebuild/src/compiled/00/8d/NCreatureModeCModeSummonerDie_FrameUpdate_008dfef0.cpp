@@ -27,7 +27,7 @@ class CCreatureActionBase { public:
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _body[0x110];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    ~CCombatActionBase();                  // 0x0062E900
+    virtual ~CCombatActionBase();                  // 0x0062E900
 };
 
 class CThingCreatureBase { public:

@@ -20,7 +20,6 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     __forceinline void Read(void* destination, long bytes)
     {
         __int64 next = (unsigned long)(StreamPos + bytes);
@@ -40,6 +39,8 @@ class CDataInputStream { public:
         Read(&value, 4);
         return value;
     }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 class CMemoryDataInputStream : public CDataInputStream { public:
     unsigned char* StreamSource;                        // +0x18
@@ -48,13 +49,15 @@ class CMemoryDataInputStream : public CDataInputStream { public:
 };
 class CEngineStaticMapFileBlockManager { public:
     void RequestFileBlock(long pos, long size, long priority);   // 0x00BE06B0
-    bool IsFileBlockLoaded(long pos);                   // 0x00BE0480
-    unsigned char* GetFileBlockData(long pos);          // 0x00BE04C0
     void ReleaseRequest(long pos);                      // 0x00BE0400
+public:
+    const unsigned char* GetBlockData(long) const;   // 0x00BE04C0
+    bool IsBlockLoaded(long) const;   // 0x00BE0480
 };
 class CMovableResource { public: virtual ~CMovableResource() {} };
 class CEngineLandscapeMemoryManager { public:
-    void* Allocate(unsigned long size, CMovableResource* owner);   // 0x00BD9AF0
+public:
+    void* AllocVirtual(long, CMovableResource*);   // 0x00BD9AF0
 };
 class CEngineLandscapeRenderer { public:
     unsigned char _pad[0x6b0];
@@ -83,7 +86,7 @@ struct CObjectCacheGroupCollection : CMovableResource {     // retail 0x38 bytes
     bool Loading : 1;                                   // +0x36 bit 1
     static void* operator new(unsigned int size, CMovableResource* owner)
     {
-        return g_pLandscapeRenderer->MemoryManager->Allocate(size, owner);
+        return g_pLandscapeRenderer->MemoryManager->AllocVirtual(size, owner);
     }
     static void operator delete(void*, CMovableResource*) {}
     CObjectCacheGroupCollection(CLocalDetailCacheMap* map)
@@ -111,7 +114,7 @@ struct CQuadTreeElement : CMovableResource {            // CLocalDetailCacheMap:
     bool               Loading : 1;                     // +0x48 bit 3
     static void* operator new(unsigned int size, CMovableResource* owner)
     {
-        return g_pLandscapeRenderer->MemoryManager->Allocate(size, owner);
+        return g_pLandscapeRenderer->MemoryManager->AllocVirtual(size, owner);
     }
     static void operator delete(void*, CMovableResource*) {}
     CQuadTreeElement(CLocalDetailCacheMap* map, long x, long y, long width, long height);   // 0x00BDDF30
@@ -130,8 +133,8 @@ bool CQuadTreeElement::LoadStaticContents(CEngineStaticMapFileBlockManager* mana
         manager->RequestFileBlock(FileBlockPos, FileBlockSize, 0);
         Loading = true;
     }
-    if (manager->IsFileBlockLoaded(FileBlockPos)) {
-        CMemoryDataInputStream stream(manager->GetFileBlockData(FileBlockPos) + OffsetIntoFileBlock,
+    if (manager->IsBlockLoaded(FileBlockPos)) {
+        CMemoryDataInputStream stream(manager->GetBlockData(FileBlockPos) + OffsetIntoFileBlock,
                                       FileBlockSize - OffsetIntoFileBlock);
         long count = stream.ReadLong();
         for (long i = 0; i < count; ++i) {

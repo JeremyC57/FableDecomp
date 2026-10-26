@@ -8,7 +8,10 @@
 // the PDB prototype says bool, but a bool would be `mov al,1`; an int-typed `&&` expression
 // returned through a bool conversion reproduces it.
 struct CBuilding;
-long __fastcall GFGetFrameCount();          // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};          // 0x0049D870
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -29,5 +32,5 @@ struct CAIStateGroup_CleanWork : CAIStateGroupBase {
 
 bool CAIStateGroup_CleanWork::IsRunnable()
 {
-    return GetBuilding() != 0 && GFGetFrameCount() > m_frameToStart;
+    return GetBuilding() != 0 && CWorld::GetFrame() > m_frameToStart;
 }

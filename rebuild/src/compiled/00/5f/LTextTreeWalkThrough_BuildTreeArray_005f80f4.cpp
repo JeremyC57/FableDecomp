@@ -7,7 +7,7 @@ struct AutoTinyTreeNode
 };
 struct AutoTinyTreeWalker { char unused; };
 struct AutoTinyTreeNodeArgument { AutoTinyTreeNode* node; };
-extern "C" void __cdecl AutoTinyFreeTreeNode(AutoTinyTreeNode* node);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 void __fastcall BuildTreeArray(AutoTinyTreeWalker* self, AutoTinyTreeNodeArgument argument)
 {
     AutoTinyTreeNode* node = argument.node;
@@ -16,7 +16,7 @@ void __fastcall BuildTreeArray(AutoTinyTreeWalker* self, AutoTinyTreeNodeArgumen
         AutoTinyTreeNodeArgument child = {node->child};
         BuildTreeArray(self, child);
         AutoTinyTreeNode* next = node->next;
-        AutoTinyFreeTreeNode(node);
+        free(node);
         node = next;
     }
 }

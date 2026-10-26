@@ -100,6 +100,8 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
+    void Terminate();   // 0x008FCF40
 };
 
 
@@ -174,7 +176,6 @@ struct CAIStateGroup_MeleeCombatNearby : CAIStateGroupBase {
     CBaseIntelligentPointer PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
     bool Archer;                                // +0x1c (engine header)
     bool IsStopping();                          // 0x008FD010
-    void Terminate();                           // 0x008FCF40
     EAIActionReturn AIAction_PumpCombatActions();   // 0x0097D980
     bool IsEnemyCreatureNearCombatPosition();   // 0x0096E830
     void AttackEnemy();

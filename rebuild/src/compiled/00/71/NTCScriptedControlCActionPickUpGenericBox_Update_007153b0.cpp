@@ -176,8 +176,9 @@ class CThingCreatureBase : public CThing {
 public:
     unsigned char        _pad74[0x100 - 0x74];
     CCreatureActionBase* PCurrentAction;                // +0x100 (retail)
-    bool IsPerformingAnyAction();                       // 0x006622A0
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
+public:
+    bool IsPerformingAnyAction() const;   // 0x006622A0
 };
 
 class CScriptThing {

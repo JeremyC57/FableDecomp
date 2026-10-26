@@ -27,7 +27,7 @@ struct CBaseClassNonCopyable {                      // the action root
 class CBaseClass { public:                                 // CScriptThing's root
     virtual void v00();
     CBaseClass();                                   // 0x0099A2D0
-    ~CBaseClass();                                  // 0x0099A2E0
+    virtual ~CBaseClass();                                  // 0x0099A2E0
 };
 
 struct SCountBlock {

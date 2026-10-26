@@ -21,7 +21,10 @@ class C3DVector { public:
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
 class CBaseClass { public:                                     // vtable 0x01231710
     virtual void v00();
@@ -86,12 +89,23 @@ public:
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
 };
-struct CBaseIntelligentPointer {
-    void*   __vftable;                                  // +0x00
-    CThing* m_pItem;                                    // +0x04
-    CThing* GetPItem() const;                           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -103,7 +117,7 @@ struct CTCShotDefinitionBase {
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x4];
-    CBaseIntelligentPointer PEffect;                    // +0x0c
+    CIntelligentPointer<CThing> PEffect;                    // +0x0c
     void UpdateEffects();
 };
 
@@ -122,7 +136,7 @@ void CTCShotDefinitionBase::UpdateEffects()
     lengthSquared += movement.Y * movement.Y;
     lengthSquared += movement.X * movement.X;
     if (!(lengthSquared > g_epsilon_0129ba3c * g_epsilon_0129ba3c)) {
-        unsigned long key = Calc_004014a0(0, "MOVE_DIRECTION", 14);
+        unsigned long key = CCRC::Calc(0, "MOVE_DIRECTION", 14);
         NParticleEngine::SVectorParam moveDirection(key, movement);
         NParticleEngine::CParticleUpdateParameters parameters;
         parameters.VectorParams.Vector.push_back(moveDirection);

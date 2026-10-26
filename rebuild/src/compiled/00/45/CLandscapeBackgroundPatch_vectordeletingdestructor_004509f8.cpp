@@ -11,14 +11,13 @@ class CLandscapeBackgroundPatch { public:
 };
 
 extern void __fastcall CLandscapeBackgroundPatch_dtor_0099eae0(CLandscapeBackgroundPatch* self);
-extern void __cdecl operator_delete(void* p);
 
 void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx, unsigned int flags)
 {
     (void)edx;
     CLandscapeBackgroundPatch_dtor_0099eae0(self);
     if (flags & 1) {
-        operator_delete(self);
+        operator delete(self);
     }
     return self;
 }

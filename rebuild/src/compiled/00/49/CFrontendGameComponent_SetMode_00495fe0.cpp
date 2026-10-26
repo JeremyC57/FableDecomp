@@ -25,7 +25,7 @@ public:
 
 extern CFrontendModePointer_00495fe0 g_EmptyFrontendModePointer_00495fe0;
 
-class CFrontendGameComponent_00495fe0
+class CFrontendGameComponent
 {
     unsigned char m_Pad0000[0x1c];
     long m_Mode;
@@ -43,13 +43,14 @@ class CFrontendGameComponent_00495fe0
     CFrontendModePointer_00495fe0 m_ModePointer;
     long m_ModePointerEnabled;
 
-    void PrepareModeTen();
 
 public:
     void SetMode(long);
+private:
+    void GetWorldNames();   // 0x00495890
 };
 
-void CFrontendGameComponent_00495fe0::SetMode(long mode)
+void CFrontendGameComponent::SetMode(long mode)
 {
     m_Mode = mode;
     m_ModePointerEnabled = 1;
@@ -58,7 +59,7 @@ void CFrontendGameComponent_00495fe0::SetMode(long mode)
 
     if (m_Mode == 10)
     {
-        PrepareModeTen();
+        GetWorldNames();
         return;
     }
 

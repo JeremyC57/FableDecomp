@@ -58,8 +58,9 @@ public:
 };
 class CEnvironment {
 public:
-    void SetStatic(bool on);                            // 0x006B32B0 (bool argument; name unconfirmed)
-    void TransitionToDefaultTheme(long channel, float time);   // 0x006B3950
+public:
+    void SetRainEnabled(bool);   // 0x006B32B0
+    void TransitionToDefaultThemeAllChannels(long, float);   // 0x006B3950
 };
 class CAtmosProcess;
 template <class T> class CCountedPointer { public:
@@ -169,11 +170,11 @@ void CWorld::PrepareForLoad()
     PMusicManager->ClearOverridingMusicSet();
     PMusicManager->EnableDangerMusic(false);
     PMusicManager->ResetMusicEntriesOffsets();
-    PEnvironment->SetStatic(true);
+    PEnvironment->SetRainEnabled(true);
     PAtmosProcessor.Clear();
-    PEnvironment->TransitionToDefaultTheme(1, 0.0f);
-    PEnvironment->TransitionToDefaultTheme(2, 0.0f);
-    PEnvironment->TransitionToDefaultTheme(3, 0.0f);
+    PEnvironment->TransitionToDefaultThemeAllChannels(1, 0.0f);
+    PEnvironment->TransitionToDefaultThemeAllChannels(2, 0.0f);
+    PEnvironment->TransitionToDefaultThemeAllChannels(3, 0.0f);
     GetWorldMap()->PrepareForLoad();
     PBulletTimeManager->PrepareForLoad();
     Component->PDisplayEngine->PrepareForLoad();

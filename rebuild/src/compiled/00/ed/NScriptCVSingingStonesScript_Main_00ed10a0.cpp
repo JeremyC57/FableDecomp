@@ -39,7 +39,7 @@ class CEntityScriptBase;
 class CActiveEntityScriptBase;
 template <class T> class CCountedPointer { public: T* Data; void* Info; };
 
-struct __declspec(novtable) CEntityScriptBindingBase {
+class __declspec(novtable) CEntityScriptBindingBase { public:
     virtual const CCharString& GetEntityScriptName() const = 0;
 };
 template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {

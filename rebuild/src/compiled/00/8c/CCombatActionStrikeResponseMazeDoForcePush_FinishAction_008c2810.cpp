@@ -137,7 +137,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char _pad04[4];
     CCreaturePointer PCreature;                 // +0x08
     unsigned char _pad10[0x114 - 0x10];
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCombatAction_WillForcePushInto : public CCombatActionBase { public:   // vtable 0x012804FC
     CCombatAction_WillForcePushInto(CThingCreatureBase* owner);   // 0x008C38B0
@@ -147,7 +147,9 @@ class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { publi
 };
 class CCombatAction_StrikeResponseMazeDoForcePush : public CCombatAction_GenericStrikeResponseBase { public:
     CBaseIntelligentPointer PAttacker;          // +0x114
-    void FinishAction();
+
+public:
+    virtual void FinishAction();
 };
 
 void CCombatAction_StrikeResponseMazeDoForcePush::FinishAction()

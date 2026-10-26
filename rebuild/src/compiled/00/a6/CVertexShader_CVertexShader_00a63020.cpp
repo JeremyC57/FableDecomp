@@ -16,8 +16,8 @@ struct D3DShaderDeviceMethods {
 };
 struct D3DShaderDevice { D3DShaderDeviceMethods* Methods; };
 struct CShaderDisplayView { unsigned char BeforeDevice[0x58]; D3DShaderDevice* D3DDevice; };
-struct CShaderSystemView { unsigned char BeforeDisplay[0x60]; CShaderDisplayView* PDisplayManager; };
-CShaderSystemView* __fastcall GetShaderSystemManager(); // 0x009A4EC0
+class CSystemManager { public: unsigned char BeforeDisplay[0x60]; CShaderDisplayView* PDisplayManager; };
+CSystemManager* __fastcall GFGetSystemManager(); // 0x009A4EC0
 struct CShaderBytecodeArray {
     unsigned long* Start; unsigned long* Finish; unsigned long* End;
     const unsigned long* DataOrSelf() const {
@@ -48,7 +48,7 @@ struct CVertexShaderConstructorView : CShaderBase {
 CVertexShaderConstructorView::CVertexShaderConstructorView(const CShaderBytecodeArray* bytecode,
     const D3DVertexElement* format, const void*, const void*)
 {
-    D3DShaderDevice* device = GetShaderSystemManager()->PDisplayManager->D3DDevice;
+    D3DShaderDevice* device = GFGetSystemManager()->PDisplayManager->D3DDevice;
     D3DVertexShader* shader;
     device->Methods->CreateVertexShader(device, bytecode->DataOrSelf(), &shader);
     D3DVertexDeclaration* declaration;

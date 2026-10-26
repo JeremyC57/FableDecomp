@@ -10,10 +10,11 @@
 // first_time_talked_to +0x1C, given_gold +0x1D, lastRandomSpeech1..3 +0x20/+0x24/+0x28; CV_TalentlessBardScript::SongItems
 // retail +0x68 (PDB 0x7C - 0x14, 12-byte vectors).
 // Shape: an empty string local and a copy of it (the "no speech" result) precede the pick; the song count is the signed
-// vector size; the retry is `while (!IsDone()) { pick; if (new) { found = true; break; } NewScriptFrame(); }` and the
+// vector size; the retry is `while (!IsActiveThreadTerminating()) { pick; if (new) { found = true; break; } NewScriptFrame(); }` and the
 // found handling sits after the loop behind `if (!found) return noSpeech;` (VC7.1 threads the flag away and lays the
 // found block out before the shared copy-construct tail; handling it inside the loop moves it past the epilogue), with
 // IsDone checks before and after the history rotation.
+namespace NScript { class CPredicateBase; }
 extern "C" int __cdecl rand();                             // 0x00BFEB16
 class CCharString { public:
     void* PStringData;
@@ -49,7 +50,13 @@ class CGameScriptInterface { public:
 class CScriptThing { public: unsigned char _body[12]; };
 struct CQ_SunnyvaleMasterData;
 
-class CTB_Bard {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CTB_Bard : public CEntityScriptBase {
 public:
     void*                    __vftable;                    // +0x00
     CGameScriptInterface*    Game;                         // +0x04
@@ -61,7 +68,6 @@ public:
     CCharString              lastRandomSpeech1;            // +0x20
     CCharString              lastRandomSpeech2;            // +0x24
     CCharString              lastRandomSpeech3;            // +0x28
-    bool IsDone();                                         // 0x00F35B30
     CCharString GetRandomSpeech();
 };
 
@@ -79,7 +85,7 @@ CCharString CTB_Bard::GetRandomSpeech()
     ParentClass->ProcessSongsQuestComplete();
     long count = ParentClass->SongItems.size();
     bool found = false;
-    while (!IsDone()) {
+    while (!IsActiveThreadTerminating()) {
         speech = ParentClass->SongItems[rand() % count];
         if (speech != lastRandomSpeech1 && speech != lastRandomSpeech2 && speech != lastRandomSpeech3) {
             found = true;
@@ -89,12 +95,12 @@ CCharString CTB_Bard::GetRandomSpeech()
     }
     if (!found)
         return noSpeech;
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return noSpeech;
     lastRandomSpeech3 = lastRandomSpeech2;
     lastRandomSpeech2 = lastRandomSpeech1;
     lastRandomSpeech1 = speech;
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return noSpeech;
     return speech;
 }

@@ -7,7 +7,19 @@
 // Shape: the inline visibility multiplier (landed standalone at 0x00744580) times the radius, multiplier loaded first; each
 //   arm returns on its own (`fmul [esi+0x44] ; pop esi ; ret` three times).
 // Leaf: GetExtendedSightRadius
+#define CTCPerceiveThing CTCPerceiveThingLayout
 #include "engine/CTCPerceiveThing.h"
+#undef CTCPerceiveThing
+class CWorld;
+
+class CTCBase
+{
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+class CTCPerceiveThing : public CTCBase, public CTCPerceiveThingLayout
+{
+};
 #include "engine/CPerceivedThingDef.h"
 
 class CGameTimeManager { public:
@@ -21,13 +33,12 @@ class CWorld { public:
 };
 
 struct CTCPerceiveThing_Methods : CTCPerceiveThing {
-    CWorld* GetWorld() const;               // 0x00686A80
     const CPerceivedThingDef* GetDef() const { return reinterpret_cast<const CPerceivedThingDef*>(PDef_Object); }
     float GetVisibilityMultiplier() const
     {
-        if (GetWorld()->GameTimeManager->IsDay())
+        if (PeekWorld().GameTimeManager->IsDay())
             return GetDef()->DayTimeVisibilityMultiplier;
-        if (GetWorld()->GameTimeManager->IsNightTime())
+        if (PeekWorld().GameTimeManager->IsNightTime())
             return GetDef()->NightTimeVisibilityMultiplier;
         return (GetDef()->NightTimeVisibilityMultiplier + GetDef()->DayTimeVisibilityMultiplier) * 0.5f;
     }

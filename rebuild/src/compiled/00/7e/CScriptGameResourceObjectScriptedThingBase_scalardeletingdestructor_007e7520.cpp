@@ -43,13 +43,13 @@ template<class T> class CCountedPointer { public:     // {object, count block}
     }
 };
 
-namespace N_0099a430 { struct CBaseIntelligentPointer {               // the intelligent-pointer target root (8 bytes)
-    virtual void v00();
+class CBaseObject { public:               // the intelligent-pointer target root (8 bytes)
     void* m_pReferences;                       // +0x04
-    ~CBaseIntelligentPointer();                // 0x0099A430
-}; } using N_0099a430::CBaseIntelligentPointer;
+protected:
+    virtual ~CBaseObject();                              // 0x0099A430
+};
 
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     __forceinline virtual ~CScriptGameResourceObjectBase() {}
 };
 

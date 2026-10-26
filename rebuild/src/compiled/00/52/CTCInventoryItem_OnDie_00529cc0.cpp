@@ -2,7 +2,7 @@
 // push esi; esi=this; eax=[this+0x10]; if(eax){ free_helper(eax); } Base::OnDie(this) tail-jmp
 
 // cdecl free-style helper at 0x00bfea14
-extern "C" void __cdecl FreeHelper(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CInventoryItemBase
 {
@@ -20,6 +20,6 @@ void CTCInventoryItem::OnDie()
 {
     void* p = this->m_ptr;
     if (p != 0)
-        FreeHelper(p);
+        free(p);
     CInventoryItemBase::OnDie();
 }

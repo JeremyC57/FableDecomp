@@ -12,13 +12,14 @@
 // Terminated +0x09, landed 0x00711FA0 names) sit in its flattened pads.
 #include "engine/CActionDoCreatureAction.h"
 
-struct CCreatureActionQueue {
-    long GetCurrentActionID();                  // 0x00692620
+class CCreatureActionBase { public:
+public:
+    long GetActionID() const;   // 0x00692620
 };
 
 class CThingCreatureBase { public:
     unsigned char _pad[0x100];
-    CCreatureActionQueue* PActionQueue;         // +0x100
+    CCreatureActionBase* PActionQueue;         // +0x100
     bool IsPerformingAnyAction();               // 0x006622A0
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
@@ -39,15 +40,15 @@ void CActionDoCreatureAction_Methods::Update()
     CThingCreatureBase* creature = PTCScript()->PThing;
     if (!ActionSet) {
         if (creature->IsPerformingAnyAction()) {
-            if (creature->PActionQueue->GetCurrentActionID() == ActionID)
+            if (creature->PActionQueue->GetActionID() == ActionID)
                 return;
             Terminated() = true;
         }
         creature->SetCurrentAction(Action_Data);
-        ActionID = creature->PActionQueue->GetCurrentActionID();
+        ActionID = creature->PActionQueue->GetActionID();
         ActionSet = true;
     } else {
-        if (!creature->IsPerformingAnyAction() || creature->PActionQueue->GetCurrentActionID() != ActionID)
+        if (!creature->IsPerformingAnyAction() || creature->PActionQueue->GetActionID() != ActionID)
             Terminated() = true;
     }
 }

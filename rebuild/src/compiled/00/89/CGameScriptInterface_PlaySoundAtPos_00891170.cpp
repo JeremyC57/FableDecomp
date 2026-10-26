@@ -19,7 +19,8 @@ class C3DVector { public: float X, Y, Z; };
 class CThing;
 
 class CASoundBank { public:
-    long GetSoundIndexFromSymbol(const CCharString& symbol);     // 0x00A01920
+public:
+    long GetSoundIndexFromSymbol(const CCharString&) const;   // 0x00A01920
 };
 
 class CSoundInit { public:

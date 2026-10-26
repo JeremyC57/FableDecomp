@@ -61,7 +61,7 @@ class CMemoryDataInputStream { public:
 };
 class CBaseClass { public:
     virtual void v00();
-    ~CBaseClass();                                 // 0x0099A2E0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
 };
 struct CStringParserCommentList {
     void* m_pHead;

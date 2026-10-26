@@ -57,7 +57,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char _pad04[4];                    // +0x04
     CCreaturePointer PCreature;                 // +0x08
     unsigned char _pad10[0x114 - 0x10];         // +0x10
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 
 class CCreatureAction_BanditKingAttack : public CCombatActionBase { public:   // retail sizeof 0x118
@@ -66,7 +66,8 @@ class CCreatureAction_BanditKingAttack : public CCombatActionBase { public:   //
 };
 
 class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:
-    void FinishAction();                        // 0x008663D0
+public:
+    virtual void FinishAction();   // 0x008663D0
 };
 
 class CCreatureAction_BanditKingGetHit : public CCombatAction_GenericStrikeResponseBase { public:

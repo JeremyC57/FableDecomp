@@ -1,6 +1,6 @@
 // C3DMeshFileUniqueVerticesChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const -- the unique-vertex count then every index; no base call
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABC040, length 64 bytes.
-// Callees: 0x00993EA0 CDataOutputStream::WriteULong
+// Callees: 0x00993EA0 CDataOutputStream::WriteULONG
 //
 // ---- shared retail model for the C3DMeshFile*Chunk family (TLC Fable.exe) -----------------------
 // The PDB header rebuild/include/engine/<Class>.h comes from Ego_r.pdb, a later build in which the
@@ -34,12 +34,13 @@ class CChunkedFileLoader;
 class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteULong(unsigned long value);               // 0x00993EA0
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
     void WriteBool(bool value);                         // 0x00993E30
     void WriteMatrix3x4(const CMatrix3x4& m);           // 0x00994070
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 class CDataInputStream { public:
     virtual void v0(); virtual void v1();
@@ -88,7 +89,7 @@ class C3DMeshFileUniqueVerticesChunk : public CChunkedFileChunk { public:
 void C3DMeshFileUniqueVerticesChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
     unsigned long count = UniqueVerticesList.Size();
-    out.WriteULong(count);
+    out.WriteULONG(count);
     for (unsigned long i = 0; i < count; ++i)
-        out.WriteULong(UniqueVerticesList[i]);
+        out.WriteULONG(UniqueVerticesList[i]);
 }

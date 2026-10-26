@@ -1,6 +1,7 @@
 // Levers: inline CScriptThing model (CBaseClass + CCountedPointer, __forceinline dtor); the CAnd filter comes from an inline by-value `And(a, b)` factory (the argument address is re-taken, `lea eax,[esp+48h]`); in-body `#pragma inline_depth(0)` from after the scripted-object declaration to the end keeps every later ~CScriptThing out of line (merged with the scripted-object dtor tail), leaving the single inline expansion at the early terminate return.
 // CCham::Main() -- Cham's second entity script: filter on Me and the "Leader" marker, take Me under scripted control (priority 4), then run the scripted movement towards the leader until it finishes
 // Leaf: Main
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -41,9 +42,10 @@ class CScriptThing : public CBaseClass { public:                     // 12 bytes
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 
 class CBaseObject { public:                                   // CBaseIntelligentPointer root
-    virtual void v00();
     void* m_pIntelligentPointer;                       // +0x04
-    CBaseObject();                                     // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CCountedPointerWords {
     void* Data;
@@ -53,14 +55,15 @@ struct CCountedPointerWords {
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
-    void MoveAlong(const CScriptThing& thing, float distance, bool flag);   // 0x007E7320
-    bool IsMoving();                                   // 0x007E7450
     virtual void MoveToThing(const CScriptThing& thing, float distance, EScriptEntityMoveType moveType, bool a, bool b, bool c, bool d);   // slot 5 (+0x14)
     virtual void FollowPreCalculatedRoute(const CScriptThing& thing, EScriptEntityMoveType moveType, bool a, bool b);   // slot 6 (+0x18)
     bool IsScripting();                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
+public:
+    virtual bool IsPerformingScriptTask() const;   // 0x007E7450
+    virtual void FollowThing(const CScriptThing&, float, bool);   // 0x007E7320
 };
 
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -134,8 +137,14 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void EntitySetAsScared(const CScriptThing& thing, bool scared) const;   // slot 496 (+0x7c0)
 };
 
-struct CFilterBase {                                   // vtable 0x012C2FF4
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CFilterBase : public NScript::CPredicateBase {                                   // vtable 0x012C2FF4
     ~CFilterBase() { }
 };
 struct CIsThing {                                      // vtable 0x012C2FE8
@@ -156,8 +165,9 @@ class CEntityScriptBase { public:
     virtual void v00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void SetPredicate(CFilterBase& predicate);         // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 
 struct CCham : CEntityScriptBase {
@@ -184,8 +194,8 @@ void CCham::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    scripted.MoveAlong(leader, 1.0f, true);
-    while (scripted.IsMoving()) {
+    scripted.FollowThing(leader, 1.0f, true);
+    while (scripted.IsPerformingScriptTask()) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;

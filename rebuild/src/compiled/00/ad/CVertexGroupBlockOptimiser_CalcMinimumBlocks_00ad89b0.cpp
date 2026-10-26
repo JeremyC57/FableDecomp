@@ -16,8 +16,8 @@ template <class T> inline const T& min_of(const T& a, const T& b) { return b < a
 struct CVertexGroupBlockOptimiser {                // retail layout (see the landed InsertBlock 0x00AD92E0)
     unsigned char _pad00[0x44];
     unsigned long MaxN;                            // +0x44
-    unsigned long CalcMinimumBlocks(const CArray<unsigned long>& sizes, unsigned long& current, CArray<bool>& available,
-                                    unsigned long remaining, unsigned long start);
+private:
+    unsigned long CalcMinimumBlocks(CArray<unsigned long> const&, unsigned long&, CArray<bool>&, unsigned long, unsigned long);   // 0x00AD89B0
 };
 unsigned long CVertexGroupBlockOptimiser::CalcMinimumBlocks(const CArray<unsigned long>& sizes, unsigned long& current,
                                                             CArray<bool>& available, unsigned long remaining, unsigned long start)

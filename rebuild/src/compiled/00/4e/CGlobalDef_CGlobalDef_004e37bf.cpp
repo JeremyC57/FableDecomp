@@ -4,10 +4,16 @@
 // Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10 five times, the member destructor @ 0x004E1AAF twice (labelled "CActiveFile::OnReadFinished",
 // propagated), the base destructor @ 0x004DA8B7 (labelled "~CTCTargetingBase", propagated). Shape: members in reverse declaration order, the size-optimised module.
 #pragma optimize("s", on)
-struct CBaseIntelligentPointer {                   // 8 bytes
-    virtual void v00();
-    void* m_pItem;
-    ~CBaseIntelligentPointer();                    // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 struct CDefMember_004e1aaf {                       // 12 bytes
     unsigned char _body[12];

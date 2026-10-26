@@ -2,7 +2,7 @@
 // Retail 00887a30, 203 bytes. GFGetTime 009e1bc0, SetOnlyTheme 00887330,
 // RestoreDefaultTheme 00887380, SetThemeWeight 00886d70, RebalanceWeights 00886200.
 // PDB names retained; no generated class header. Native CArray is 12 bytes rather than donor16.
-double __cdecl GFGetTime();
+double __fastcall GFGetTime();   // 0x009E1BC0
 namespace NEnvironmentInternal {
 class CEnvironmentThemePriorityStackEntry { public:
  float BaseWeight; bool BaseWeightLocked;

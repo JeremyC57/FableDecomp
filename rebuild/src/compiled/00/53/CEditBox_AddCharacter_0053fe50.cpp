@@ -16,10 +16,11 @@ class CWideString { public:
     ~CWideString();                                         // 0x0099B510
     CWideString& operator+=(unsigned short c);              // 0x0099B9A0
     bool Contains(const CWideString& text) const;           // 0x0099AF20
-    unsigned long GetLength() const;                        // 0x0099B220
     CWideString& operator=(const unsigned short* text);            // 0x0099B800
     CWideString& operator=(const CWideString& other);       // 0x0099B7D0
     CWideString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099BDB0
+public:
+    long GetLength() const;   // 0x0099B220
 };
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& left, unsigned short c);           // 0x0099C120

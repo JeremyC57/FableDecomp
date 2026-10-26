@@ -1,7 +1,7 @@
 // CTCPhysicsBase::GetPositionInterpolator(C3DPositionInterpolator& out) const -- the position interpolator from the last frame's position to the current one; under bullet time for a thing it affects, the pair is instead two positions interpolated between them at the current and next sub-step of the bullet-time cycle
 // Leaf: ?GetPositionInterpolator@CTCPhysicsBase@@QBEXAAVC3DPositionInterpolator@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B0250, 524 bytes, `ret 4`.
-// Callees: CTCBase::GetWorld() const 0x00686A80 (twice), CThing::IsAffectedByBulletTime 0x004C9920, CBulletTime::GetTimeScale
+// Callees: CTCBase::PeekWorld() const 0x00686A80 (twice), CThing::IsAffectedByBulletTime 0x004C9920, CBulletTime::GetTimeScale
 //   0x004C5FA0, CWorld::GetWorldFrame 0x0049D870 (static), _ftol 0x00BFEA70, CBase::CBase 0x0099A2D0, ~CBase 0x0099A2E0.
 //   Global 1.0f 0x0122DED8. Vtable 0x0123981C = C3DPositionInterpolator.
 // Layout: as the landed sibling CTCPhysicsBase::GetOrientationInterpolator 0x006B0460 (local model: the generated
@@ -57,21 +57,27 @@ public:
     bool IsAffectedByBulletTime() const;            // 0x004C9920
 };
 
-class CTCPhysicsBase {
+class CTCBase
+{
 public:
     virtual void v000();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCPhysicsBase : public CTCBase {
+public:
     CThing*       ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad08[4];
     C3DVector     Position;                         // +0x0c
     C3DVector     OldPosition;                      // +0x18
-    const CWorld* GetWorld() const;                 // 0x00686A80 (CTCBase)
     void GetPositionInterpolator(C3DPositionInterpolator& out) const;
 };
 
 void CTCPhysicsBase::GetPositionInterpolator(C3DPositionInterpolator& out) const
 {
-    if (GetWorld()->m_pBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime()) {
-        float timeScale = GetWorld()->m_pBulletTime->GetTimeScale();
+    if (PeekWorld().m_pBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime()) {
+        float timeScale = PeekWorld().m_pBulletTime->GetTimeScale();
         long step = (CWorld::GetWorldFrame() - 1) % (long)timeScale;
         float stepSize = 1.0f / timeScale;
         C3DVector start = OldPosition.Interpolate(Position, step * stepSize);

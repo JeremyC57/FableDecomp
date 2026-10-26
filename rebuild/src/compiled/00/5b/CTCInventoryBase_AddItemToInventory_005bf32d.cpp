@@ -39,8 +39,9 @@ class CThing { public:
         return false;
     }
 };
-struct CTCAugmentations {                            // interface type 0x29
-    void AddAugmentation(long itemType);             // 0x006CA400
+class CTCHero { public:                            // interface type 0x29
+public:
+    void SetTitle(long);   // 0x006CA400
 };
 namespace NInventory {
 class CCategory { public:
@@ -149,9 +150,9 @@ struct CTCInventoryBase_Retail {
 bool CTCInventoryBase_Retail::AddItemToInventory(long itemType, long count, bool silent, bool notify, long price, bool flag)
 {
     if (IsAugmentation_005d98f0(itemType)) {
-        CTCAugmentations* augmentations;
+        CTCHero* augmentations;
         if (ParentThing->GetInterface(&augmentations, 0x29))
-            augmentations->AddAugmentation(itemType);
+            augmentations->SetTitle(itemType);
     } else {
         NInventory::CCategory* category = FindCategory(CategoriesFirst, CategoriesLast, GetInventoryCategory(itemType));
         if (category->AddItem(itemType, silent, price, count)) {

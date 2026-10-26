@@ -120,12 +120,13 @@ struct CPointerListNode {
     CPointerListNode* _M_prev;
     CBaseIntelligentPointer _M_data;
 };
-struct CRegionThing {
+class CTCVillage { public:
     unsigned char _pad00[0x70];
     CPointerListNode* _M_node;                  // +0x70 STLport list of sleep points
 };
-struct CTCRegionLink {                          // interface 0x23
-    CRegionThing* GetPRegion();                 // 0x007EE540
+class CTCVillageMember { public:                          // interface 0x23
+public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540
 };
 class CThingFilter_IsMySleepPoint { public:
     CThing* Creature;
@@ -161,10 +162,10 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
 {
     const CThing* creature = GetCreature();
     if (creature->HasTC(0x4a)) {
-        CTCRegionLink* link;
+        CTCVillageMember* link;
         if (creature->HasTC(0x23))
-            link = (CTCRegionLink*)creature->GetTC(0x23);
-        CRegionThing* region = link->GetPRegion();
+            link = (CTCVillageMember*)creature->GetTC(0x23);
+        CTCVillage* region = link->GetPVillage();
         if (region && region->_M_node->_M_next != region->_M_node) {
             CThingFilter_IsMySleepPoint isMine(GetCreature());
             CThingFilter_IsBlocked isBlocked;

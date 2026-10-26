@@ -6,11 +6,12 @@ struct CLongVector {                             // std::vector<long> (retail 12
     long* _M_end_of_storage;
 };
 class CPersistContext { public:
-    void Transfer(long& value);                  // 0x00431102
-    void Transfer(float& value);                 // 0x00431061
+    template <class T> void Transfer(T& value);                  // 0x00431102
     void Transfer(CLongVector& value);           // 0x00466A47
-    void Transfer(CRGBColour& value);            // 0x004595A3
 };
+template <> void CPersistContext::Transfer<long>(long& value);
+template <> void CPersistContext::Transfer<float>(float& value);
+template <> void CPersistContext::Transfer<CRGBColour>(CRGBColour& value);
 class CTavernGameSpotTheAdditionDef { public:
     unsigned char _head[0x24];                   // CDefClassBase body after the vptr (links, index, flag bits)
     long        Pointer;                         // +0x28
@@ -64,10 +65,10 @@ void CTavernGameSpotTheAdditionDef::Transfer(CPersistContext& context)
     context.Transfer(HighlightColourError);
 }
 static const void* g_addr[32]; static char g_kind[32]; static int g_n = 0;
-void CPersistContext::Transfer(long& v)        { g_addr[g_n] = &v; g_kind[g_n++] = 'l'; v += 1; }
-void CPersistContext::Transfer(float& v)       { g_addr[g_n] = &v; g_kind[g_n++] = 'f'; v *= 2.0f; }
+template <> void CPersistContext::Transfer<long>(long& v)        { g_addr[g_n] = &v; g_kind[g_n++] = 'l'; v += 1; }
+template <> void CPersistContext::Transfer<float>(float& v)       { g_addr[g_n] = &v; g_kind[g_n++] = 'f'; v *= 2.0f; }
 void CPersistContext::Transfer(CLongVector& v) { g_addr[g_n] = &v; g_kind[g_n++] = 'v'; }
-void CPersistContext::Transfer(CRGBColour& v)  { g_addr[g_n] = &v; g_kind[g_n++] = 'c'; v.m_argb = 0xff00ff00u; }
+template <> void CPersistContext::Transfer<CRGBColour>(CRGBColour& v)  { g_addr[g_n] = &v; g_kind[g_n++] = 'c'; v.m_argb = 0xff00ff00u; }
 int main()
 {
     CTavernGameSpotTheAdditionDef d;

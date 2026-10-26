@@ -15,10 +15,11 @@ class CDataOutputStream { public:
     virtual unsigned long GetPosition();                       // slot 2 (+0x08)
     virtual void v3();
     virtual void WriteData(const void* data, unsigned long size); // slot 4 (+0x10)
-    void WriteBool(bool value);                                // 0x00993E30
     void WriteUShort(unsigned short value);                    // 0x00993E80
-    void WriteULong(unsigned long value);                      // 0x00993EA0
     void WriteBuffer(const void* data, long size);             // 0x00996610 (compressed block)
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 class CMatrix3x4 { public: float m_row[3][4]; };
@@ -70,11 +71,11 @@ unsigned long C3DMesh2::SaveBinary(CDataOutputStream& out) const
 {
     unsigned long start = out.GetPosition();
     C3DMeshStats::SaveBinary(out);
-    out.WriteULong(MaterialCount);
-    out.WriteULong(PrimitiveCount);
-    out.WriteULong(BoneCount);
-    out.WriteULong(BoneNameDataSize);
-    out.WriteBool(ClothFlag);
+    out.WriteULONG(MaterialCount);
+    out.WriteULONG(PrimitiveCount);
+    out.WriteULONG(BoneCount);
+    out.WriteULONG(BoneNameDataSize);
+    out.WriteEBOOL(ClothFlag);
     unsigned long staticBlocks = 0;
     unsigned long animatedBlocks = 0;
     for (unsigned long p = 0; p < PrimitiveCount; ++p) {

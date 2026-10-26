@@ -5,14 +5,14 @@
 #include "engine/CStringParser.h"
 #undef CStringParser
 #pragma pack(push, 1)
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     char* PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
     bool UseFastExtend : 1;
     bool operator==(const char*) const;
 };
-class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicString<char> Data; long NoRefs; };
 #pragma pack(pop)
 class CCharString {
 public:

@@ -12,6 +12,7 @@
 // Shape: the quest name is the nested call's temporary (the interface vtable cached in ebp across both calls); the
 // icon is a named local in its OWN block (at function scope VC packs it into the quest-name temporary's slot); the
 // green CRGBColour's ctor assigns R, G, B, A (stores grouped by value in that order).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);    // 0x0099EBF0
@@ -22,9 +23,9 @@ class CRGBColour { public:
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 class CGameScriptInterface { public:                     // vtable 0x01260F0C
@@ -119,8 +120,14 @@ class CGameScriptInterface { public:                     // vtable 0x01260F0C
     virtual void v650(); virtual void v651(); virtual void v652(); virtual void v653(); virtual void v654();
     virtual CCharString GetActiveQuestName() const;                            // slot 655 (+0xa3c)
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -128,7 +135,9 @@ struct CIsThingAlive {                             // vtable 0x012C32F0: a filte
 class CBaseObject { public:                               // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
     virtual void b00();
     void* m_pIntelligentPointer;                   // +0x04
-    CBaseObject();                                 // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CCountedPointerWords {
     void* Data;
@@ -138,10 +147,17 @@ struct CCountedPointerWords {
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                     // +0x08
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    ~CScriptGameResourceObjectScriptedThingBase(); // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase(); // 0x007E74D0
 };
 extern const char g_rockTrollIcon[];               // 0x012D75D4 "HUD_QUEST_ICON_ROCK_TROLL"
-class CRockTroll {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CRockTroll : public CEntityScriptBase {
 public:
     void*                 __vftable;               // +0x00
     CGameScriptInterface* Game;                    // +0x04
@@ -149,8 +165,6 @@ public:
     void*                 ParentClass;             // +0x14
     void*                 PMasterData;             // +0x18
     long                  HealthBarID;             // +0x1c
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -158,19 +172,19 @@ void CRockTroll::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase scripted;
     Game->EntityAttachToScript(Me, Game->GetActiveQuestName());
     while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), 20.0f)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->DisplayQuestInfo(true);
     {

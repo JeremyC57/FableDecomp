@@ -21,7 +21,14 @@
 // set is 0xC (PDB 0x10) and the two lists after it are 4 bytes each, so everything from
 // Initialised (PDB +0x104) on is 0x8C bytes earlier than engine/CTCVillage.h says.
 struct CVillageTaskListNode;
-struct CTCVillage_Retail {
+class CWorld;
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+struct CTCVillage_Retail : public CTCBase {
     unsigned char          _pad_0x00[0x60];
     CVillageTaskListNode*  CrateTasks_Head;              // +0x60 list<CCountedPointer<CVillageTaskCarryCrate>> (PDB +0xD0)
     unsigned char          _pad_0x64[0x3C];
@@ -30,11 +37,10 @@ struct CTCVillage_Retail {
     long                   HeroEnemyOfGuardsUntil;       // +0xD4 (PDB +0x160)
     unsigned char          _pad_0xD8[0x0C];
     bool                   CurrentIsHeroCriminal;        // +0xE4 (PDB +0x170)
-    struct CWorldCalls* GetWorld();           // 0x00686A70
     void IncreaseHeroEnemyOfGuardsUntil(long frames);
 };
 
-struct CWorldCalls {
+class CWorld { public:
     static long GetCurrentFrame();            // 0x0049D870
 };
 
@@ -42,6 +48,6 @@ template<class T> inline const T& MaxOf(const T& a, const T& b) { return (a < b)
 
 void CTCVillage_Retail::IncreaseHeroEnemyOfGuardsUntil(long frames)
 {
-    long now = GetWorld()->GetCurrentFrame();
+    long now = GetWorld().GetCurrentFrame();
     this->HeroEnemyOfGuardsUntil = MaxOf(now, this->HeroEnemyOfGuardsUntil) + frames;
 }

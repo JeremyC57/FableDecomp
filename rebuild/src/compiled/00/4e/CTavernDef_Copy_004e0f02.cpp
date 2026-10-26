@@ -1,10 +1,9 @@
 #include "engine/CTavernDef.h"
 
-class CDefClassBase;
-struct CTavernDef_Methods : CTavernDef { void base_clone(const CDefClassBase* src); };
+class CDefClassBase : CTavernDef { public: CDefClassBase& operator=(const CDefClassBase& other); };
 
 void __fastcall CTavernDef_Copy(CTavernDef* self, int /*edx*/, const CDefClassBase* src)
 {
-    ((CTavernDef_Methods*)self)->base_clone(src);
+    ((CDefClassBase*)self)->operator=(*(const CDefClassBase*)(src));
     self->BedCost = ((const CTavernDef*)src)->BedCost;
 }

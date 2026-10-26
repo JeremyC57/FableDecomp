@@ -136,13 +136,14 @@ struct NativeLongVector {int* Start;int* Finish;int* End;};
 class CPersistContext { public:
  void TransferAbility(int&); //00452e01
  void TransferStat(int&); //00469b8a
- void TransferLong(int&); //00431102
+ template <class T> void Transfer(T& value); //00431102
  void TransferVector2(C2DVector&); //004568bc
  void TransferLongVector(NativeLongVector&); //00466a47
- void TransferFloat(float&); //00431061
- void TransferBool(bool&); //0043314a
  void TransferDefIndex(int&); //004522f4
 };
+template <> void CPersistContext::Transfer<long>(long& value);
+template <> void CPersistContext::Transfer<float>(float& value);
+template <> void CPersistContext::Transfer<bool>(bool& value);
 class CHeroAbilityDef { public:
  unsigned char DefinitionBase[0x3c];
  int Ability,Stat,IconGraphicIndex,IconEffectIndex,IconActiveEffectIndex;
@@ -160,12 +161,12 @@ FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef,DummyObject)==0x98);
 #endif
 void CHeroAbilityDef::Transfer(CPersistContext& c){
  c.TransferAbility(Ability);c.TransferStat(Stat);
- c.TransferLong(IconGraphicIndex);c.TransferLong(IconEffectIndex);c.TransferLong(IconActiveEffectIndex);
- c.TransferVector2(IconEffectOffset);c.TransferLong(Name);c.TransferLong(Description);
- c.TransferLongVector(StaminaCost);c.TransferLong(StatExperienceGainedOnUse);
+ c.Transfer(*(long*)&(IconGraphicIndex));c.Transfer(*(long*)&(IconEffectIndex));c.Transfer(*(long*)&(IconActiveEffectIndex));
+ c.TransferVector2(IconEffectOffset);c.Transfer(*(long*)&(Name));c.Transfer(*(long*)&(Description));
+ c.TransferLongVector(StaminaCost);c.Transfer(*(long*)&(StatExperienceGainedOnUse));
  c.TransferLongVector(ExperienceCostsToUpgrade);c.TransferLongVector(LevDescription);
- c.TransferLong(ABXYPriority);c.TransferFloat(MoralityCostFactor);c.TransferBool(Aggressive);
- c.TransferLong(MaxedOutDescription);c.TransferDefIndex(DummyObject);
+ c.Transfer(*(long*)&(ABXYPriority));c.Transfer(MoralityCostFactor);c.Transfer(Aggressive);
+ c.Transfer(*(long*)&(MaxedOutDescription));c.TransferDefIndex(DummyObject);
 }
 
 
@@ -175,11 +176,17 @@ static void* seen[17];static int kinds[17],calls;
 static void record(void* p,int k){if(calls<17){seen[calls]=p;kinds[calls]=k;}++calls;}
 void CPersistContext::TransferAbility(int&v){record(&v,1);v=101;}
 void CPersistContext::TransferStat(int&v){record(&v,2);v=102;}
-void CPersistContext::TransferLong(int&v){record(&v,3);v=100+calls;}
+template <> void CPersistContext::Transfer<long>(long& value_)
+{
+    int& v = *(int*)&value_; (void)&v;record(&v,3);v=100+calls;}
 void CPersistContext::TransferVector2(C2DVector&v){record(&v,4);v.X=3;v.Y=4;}
 void CPersistContext::TransferLongVector(NativeLongVector&v){record(&v,5);}
-void CPersistContext::TransferFloat(float&v){record(&v,6);v=0.75f;}
-void CPersistContext::TransferBool(bool&v){record(&v,7);v=true;}
+template <> void CPersistContext::Transfer<float>(float& value_)
+{
+    float& v = *(float*)&value_; (void)&v;record(&v,6);v=0.75f;}
+template <> void CPersistContext::Transfer<bool>(bool& value_)
+{
+    bool& v = *(bool*)&value_; (void)&v;record(&v,7);v=true;}
 void CPersistContext::TransferDefIndex(int&v){record(&v,8);v=999;}
 #define CHECK(x) do{if(!(x)){printf("00469ab3_TEST FAIL %d\n",__LINE__);return 1;}}while(0)
 int main(){

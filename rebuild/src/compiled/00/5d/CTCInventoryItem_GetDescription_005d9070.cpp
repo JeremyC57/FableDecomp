@@ -32,12 +32,12 @@ class CInventoryItemDef : public CDefPointeeBase { public:
     unsigned long ItemDescription;                 // +0x34
 };
 class CIVCountedPointeeBase { public:
-    virtual void Destroy(int flags);               // slot 0
-    virtual void Delete();                         // slot 1
-    unsigned long IVRefCount;                      // +4
-    void DecRef() { --IVRefCount; }
+    virtual void Destroy(int flags) const;               // slot 0
+    virtual void Delete() const;                         // slot 1
+    mutable unsigned long IVRefCount;                      // +4
+    void DecRef() const { --IVRefCount; }
     unsigned long GetRefCount() const { return IVRefCount; }
-    void Release()
+    void Release() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -54,12 +54,18 @@ template <class T> class CIVCountedPointer { public:      // 4 bytes
         }
     }
 };
-struct CGroupEntry : CIVCountedPointeeBase {       // NGameText::CGroupEntry
+namespace NGameText {
+class CTextEntry : public CIVCountedPointeeBase { public:       // NGameText::CGroupEntry
     CWideString GetText() const;                   // 0x009C7A40
 };
-struct CDataBank {                                 // NGameText::CDataBank
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
+}
+using NGameText::CTextEntry;
+namespace NGameText {
+class CDataBank { public:                                 // NGameText::CDataBank
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                        // +0x14
@@ -80,7 +86,7 @@ CWideString CTCInventoryItem::GetDescription()
         CDefPointer<CInventoryItemDef> def(PDef);
         CDataBank* bank = g_pMainGameComponent->TextBank;
         const unsigned long& textIndex = def->ItemDescription;
-        return bank->GetPGroupEntry(textIndex, true).Object->GetText();
+        return bank->GetPTextEntry(textIndex, true).Object->GetText();
     }
     return g_emptyWideString;
 }

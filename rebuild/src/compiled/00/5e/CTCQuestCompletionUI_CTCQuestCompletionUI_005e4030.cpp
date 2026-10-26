@@ -4,7 +4,7 @@
 // Label correction: the catalog row says CEngineSubPrimitive2DClockSprite::CEngineSubPrimitive2DClockSprite (propagated); the vtable
 //   stored, 0x0125589C, is CTCQuestCompletionUI (rtti-vtables.tsv), the only caller is 0x004D6302 and the members match the PDB class.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, malloc @ 0x00BFEA0E (STLport node allocator), CWideString::CWideString()
-//   @ 0x0099AED0, CCharString::CCharString() @ 0x0099E4B0, CTCBase::AddToGlobalUpdateTCs @ 0x00686ED0.
+//   @ 0x0099AED0, CCharString::CCharString() @ 0x0099E4B0, CTCBase::AddToGlobalTCs @ 0x00686ED0.
 // Layout: Ego_r.pdb CTCQuestCompletionUI; retail STLport containers are 12 bytes (PDB 16), so past Components (+0x10) every member
 //   sits 4 (then 8, 12, 16, 20) bytes lower: Quitting +0x1c, Frame +0x24, Boasts +0x30, LastRenderTime +0x48, ScriptName +0x50,
 //   GoldReward +0x58, the maps +0x84/+0x90/+0x9c, PRenownText +0xa8, QuittingFadeOut +0xc0, CanTeleportToGuildMember +0xd4.
@@ -23,7 +23,8 @@ class CTCBase { public:
     bool          ToBeRemoved;                      // +0x08
     bool          IsInGlobalUpdateTCs;              // +0x09
     CTCBase(CThing* parent);                        // 0x00686800
-    void AddToGlobalUpdateTCs();                    // 0x00686ED0
+public:
+    void AddToGlobalTCs();   // 0x00686ED0
 };
 
 class CWideString { public: void* PStringData; CWideString(); };   // 0x0099AED0
@@ -166,5 +167,5 @@ CTCQuestCompletionUI::CTCQuestCompletionUI(CThing* parent)
     , RenownCountingSound(0)
     , CanTeleportToGuildMember(true)
 {
-    AddToGlobalUpdateTCs();
+    AddToGlobalTCs();
 }

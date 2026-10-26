@@ -20,10 +20,21 @@ public:
     bool IsDead() const { return (Flags91 & 1) != 0; }
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCBase {
 public:
@@ -34,8 +45,8 @@ public:
 };
 class CTCAvoidRegionExit : public CTCBase {
 public:
-    CBaseIntelligentPointer EntranceMarker;     // +0x0c CIntelligentPointer<CThing>
-    CBaseIntelligentPointer ExitMarker;         // +0x14
+    CIntelligentPointer<CThing> EntranceMarker;     // +0x0c CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> ExitMarker;         // +0x14
     unsigned long NextFrameCheck;               // +0x1c
     bool HasPosition() { return EntranceMarker.GetPItem() && !EntranceMarker.GetPItem()->IsDead(); }
     C3DVector GetPosition();

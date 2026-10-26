@@ -47,10 +47,21 @@ class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
     const CRightHandedSet& GetRHSet() const { return PhysicsTC->GetRHSet(); }
 };
-struct CBaseIntelligentPointer {
-    void* _vfptr;
-    void* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
@@ -134,9 +145,9 @@ struct CLightningBeam;
 typedef CRetailList<CCountedPointer<CLightningBeam> > CBeamList;
 struct CLightningBeam {
     long State;                                 // +0x00
-    CBaseIntelligentPointer ParticleHandle;     // +0x04
-    CBaseIntelligentPointer Home;               // +0x0c
-    CBaseIntelligentPointer Target;             // +0x14
+    CIntelligentPointer<CThing> ParticleHandle;     // +0x04
+    CIntelligentPointer<CThing> Home;               // +0x0c
+    CIntelligentPointer<CThing> Target;             // +0x14
     C3DVector Start, End, Destination;          // +0x1c
     float DamagePerHit, Time, TimeBase;         // +0x40
     CBeamList Children;                         // +0x4c
@@ -157,8 +168,15 @@ struct CLightningBeam {
     void Activate();                            // 0x007A1380
 };
 
-class CTCWillLightning { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCWillLightning : public CTCBase { public:
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x0c - 0x08];
     long  WeaponState;                          // +0x0c
@@ -168,7 +186,7 @@ class CTCWillLightning { public:
     unsigned char _pad2c[0x68 - 0x2c];
     CBeamList m_lbBeams;                        // +0x68
     long  m_lsState;                            // +0x6c
-    CBaseIntelligentPointer m_cbpPlayer;        // +0x70
+    CIntelligentPointer<CThing> m_cbpPlayer;        // +0x70
     unsigned char _pad78[0x95 - 0x78];
     bool  BeamsInitialised;                     // +0x95
     unsigned char _pad96[0x9c - 0x96];
@@ -182,8 +200,7 @@ class CTCWillLightning { public:
     long  m_nMinSubBeams;                       // +0xb8
     long  m_nMaxSubBeams;                       // +0xbc
     float m_fTemporaryBeamLife;                 // +0xc0
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
-    float GetRandomInRange(CFloatRange range) { return GFFloatRandom(range.Max - range.Min, GetWorld()->GetPRandomSeed()) + range.Min; }
+    float GetRandomInRange(CFloatRange range) { return GFFloatRandom(range.Max - range.Min, GetWorld().GetPRandomSeed()) + range.Min; }
     bool IsRightHanded() const
     {
         switch (WeaponState) {

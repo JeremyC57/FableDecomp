@@ -1,18 +1,26 @@
-#include "rebuild_abi.h"
-
-// CTCVolumeContainmentTracker::StatGetClassTypeName @ 0x004d47e9
-// One switch-case body of the retail action-name factory. Each case constructs
-// the hidden CCharString result from a relocated string constant with the
-// length sentinel -1, then returns the result pointer (this) in esi/eax.
-// Shape: push esi; push -1; push STR; mov esi,ecx; call ctor; mov eax,esi; ret.
-struct FableCharStringResult_004d47e9
+// CTCVolumeContainmentTracker::StatGetClassTypeName() -- static: the class-type name "CTCVolumeContainmentTracker" as a CCharString
+// Leaf: ?StatGetClassTypeName@CTCVolumeContainmentTracker@@SI?AVCCharString@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004D47E9: push esi; push -1; push "CTCVolumeContainmentTracker"; mov esi, ecx; call
+//   CCharString::CCharString(const char*, long) 0x0099EBF0; mov eax, esi; pop esi; ret -- a static __fastcall
+//   returning CCharString by value (hidden result in ecx).
+// Identity (namepass 2026-10-26): literal 0x123bfe0 = "CTCVolumeContainmentTracker" = the class name; PDB name set ?StatGetClassTypeName@CTCVolumeContainmentTracker@@SI?AVCCharString@@XZ.
+// Callee: CCharString(const char*, long) 0x0099EBF0 = PDB ??0CCharString@@QAE@PBDJ@Z (was the invented
+//   FableCharStringResult_004d47e9::build).
+class CCharString
 {
-    void* build(const char* text, int length);
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();                                         // 0x0099EAE0
 };
 
-extern "C" FableCharStringResult_004d47e9* FABLE_FASTCALL
-FableStatGetClassTypeName_004d47e9(FableCharStringResult_004d47e9* result, void*)
+class CTCVolumeContainmentTracker
 {
-    result->build((const char*)19120096, -1);
-    return result;
+public:
+    static CCharString __fastcall StatGetClassTypeName();
+};
+
+CCharString __fastcall CTCVolumeContainmentTracker::StatGetClassTypeName()
+{
+    return CCharString((const char*)0x0123BFE0, -1);   // "CTCVolumeContainmentTracker"
 }

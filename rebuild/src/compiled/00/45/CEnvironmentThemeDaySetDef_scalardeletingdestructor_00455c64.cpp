@@ -7,13 +7,12 @@ class CEnvironmentThemeDaySetDef { public:
   void realdtor();
   void* scalar_deleting_destructor(unsigned int flags);
 };
-extern "C" void operator_delete(void* p);
 
 void* CEnvironmentThemeDaySetDef::scalar_deleting_destructor(unsigned int flags) {
   SubObj_dtor((SubObj*)((char*)this + 0x3c));
   this->realdtor();
   if (flags & 1) {
-    operator_delete((void*)this);
+    operator delete((void*)this);
   }
   return this;
 }

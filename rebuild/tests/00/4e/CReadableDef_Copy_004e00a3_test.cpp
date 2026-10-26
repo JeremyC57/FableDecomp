@@ -1,6 +1,9 @@
 #include <stdio.h>
 
-class CDefClassBase { public: char pad[0x40]; };
+class CDefClassBase { public: char pad[0x40]; 
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);
+};
 
 struct CReadableBase {
     void Copy(CDefClassBase const* src);
@@ -13,9 +16,12 @@ class CReadableDef : public CReadableBase { public:
 };
 
 static int g_basecalled = 0;
-void CReadableBase::Copy(CDefClassBase const* src) {
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+{
+    CDefClassBase const* src = (CDefClassBase const*)&other_; (void)src;
     g_basecalled = 1;
     (void)src;
+    return *this;
 }
 
 void __fastcall CReadableDef_Copy(CReadableDef* self, int, CDefClassBase const* src);

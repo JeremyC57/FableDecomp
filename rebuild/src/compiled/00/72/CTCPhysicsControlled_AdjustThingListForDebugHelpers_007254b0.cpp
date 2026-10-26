@@ -12,7 +12,23 @@
 //   __forceinline: a plain inline erase is called out of line and the lane then folds the self-compare away.
 // Leaf: AdjustThingListForDebugHelpers
 #include <string.h>
+#define CTCPhysicsStandard CTCPhysicsStandardLayout
 #include "engine/CTCPhysicsStandard.h"
+#undef CTCPhysicsStandard
+class CPlayerManager;
+
+class CTCBase
+{
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+class CTCPhysicsBase : public CTCBase
+{
+public:
+};
+class CTCPhysicsStandard : public CTCPhysicsBase, public CTCPhysicsStandardLayout
+{
+};
 
 class CThing;
 
@@ -45,13 +61,12 @@ struct CThingVector {                       // STLport vector<CThing*>
 };
 
 struct CTCPhysicsControlled : CTCPhysicsStandard {
-    CPlayerManager* GetPlayerManager();     // 0x00686D40
     CThing* GetThing() { return reinterpret_cast<CThing*>(owner); }
     void AdjustThingListForDebugHelpers(CThingVector& things);
 };
 
 void CTCPhysicsControlled::AdjustThingListForDebugHelpers(CThingVector& things)
 {
-    if (GetPlayerManager()->IsThingMainPlayer(GetThing()) && !g_bDebugHelpers)
+    if (GetPlayerManager().IsThingMainPlayer(GetThing()) && !g_bDebugHelpers)
         things.erase(things.begin(), things.end());
 }

@@ -56,9 +56,10 @@ class CParticleEmitter { public:
     bool IsDead() const { return Dead; }
     bool IsInitialised() const { return Initialised; }
     bool Initialise(CIEngine* engine);                                          // 0x00AEE240
-    bool IsVisible() const;                                                     // 0x00AED010 (labelled "CTCPhysicsStandard::CanCollideWithLandscape")
     void Update();                                                              // 0x00AEE9F0
     void StartFrame(float interpolate, CEnginePrimitivePrepareInfo* info);     // 0x00AEEBA0
+public:
+    bool IsVisible();   // 0x00AED010
 };
 
 struct CCountedItem { };

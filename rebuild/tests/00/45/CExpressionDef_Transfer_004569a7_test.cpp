@@ -16,17 +16,20 @@
 // native+0x3c, all subsequent members -4. Native layout below uses donor names.
 #pragma optimize("s",on)
 #include <stddef.h>
+class CDefString;
+enum EOpinionDeedType { };
 class CPersistContext { public:
- void TransferDefString(int&); //0045228f
- void TransferFloat(float&); //00431061
- void TransferInt(int&); //00431102
+ template <class T> void Transfer(T& value); //0045228f
  void TransferDefIndex(int&); //004522f4
  void TransferGameEvent(int&); //00456ad9
- void TransferBool(bool&); //0043314a
- void TransferOpinionDeed(int&); //00456b7d
- void TransferUnsigned(unsigned int&); //00431020
  void TransferExpressionType(int&); //00456c21
 };
+template <> void CPersistContext::Transfer<CDefString>(CDefString& value);
+template <> void CPersistContext::Transfer<float>(float& value);
+template <> void CPersistContext::Transfer<long>(long& value);
+template <> void CPersistContext::Transfer<bool>(bool& value);
+template <> void CPersistContext::Transfer<EOpinionDeedType>(EOpinionDeedType& value);
+template <> void CPersistContext::Transfer<unsigned long>(unsigned long& value);
 class CExpressionDef { public:
  unsigned char DefinitionBase[0x3c];
  int Animation_TablePos, AnimationInto_TablePos, AnimationLoop_TablePos, AnimationOutOf_TablePos;
@@ -43,30 +46,30 @@ class CExpressionDef { public:
 typedef char NativeExpressionSize[(sizeof(CExpressionDef)==0x90)?1:-1];
 typedef char NativeExpressionOffset[(offsetof(CExpressionDef,ExpressionType)==0x8c)?1:-1];
 void CExpressionDef::Transfer(CPersistContext& c) {
- c.TransferDefString(Animation_TablePos);
- c.TransferDefString(AnimationInto_TablePos);
- c.TransferDefString(AnimationLoop_TablePos);
- c.TransferDefString(AnimationOutOf_TablePos);
- c.TransferDefString(AnimationToOther_TablePos);
- c.TransferDefString(AnimationToOtherInto_TablePos);
- c.TransferDefString(AnimationToOtherLoop_TablePos);
- c.TransferDefString(AnimationToOtherOutOf_TablePos);
- c.TransferFloat(SpriteDuration);
- c.TransferInt(SpriteGraphic);
- c.TransferDefString(SpriteOverrideText_TablePos);
- c.TransferDefString(SoundCriteria_TablePos);
- c.TransferDefString(LoopSoundCriteria_TablePos);
+ c.Transfer(*(CDefString*)&(Animation_TablePos));
+ c.Transfer(*(CDefString*)&(AnimationInto_TablePos));
+ c.Transfer(*(CDefString*)&(AnimationLoop_TablePos));
+ c.Transfer(*(CDefString*)&(AnimationOutOf_TablePos));
+ c.Transfer(*(CDefString*)&(AnimationToOther_TablePos));
+ c.Transfer(*(CDefString*)&(AnimationToOtherInto_TablePos));
+ c.Transfer(*(CDefString*)&(AnimationToOtherLoop_TablePos));
+ c.Transfer(*(CDefString*)&(AnimationToOtherOutOf_TablePos));
+ c.Transfer(SpriteDuration);
+ c.Transfer(*(long*)&(SpriteGraphic));
+ c.Transfer(*(CDefString*)&(SpriteOverrideText_TablePos));
+ c.Transfer(*(CDefString*)&(SoundCriteria_TablePos));
+ c.Transfer(*(CDefString*)&(LoopSoundCriteria_TablePos));
  c.TransferDefIndex(DummyObject_Val);
  c.TransferGameEvent(GameEventType);
- c.TransferDefString(ScriptName_TablePos);
- c.TransferBool(ScriptLoadResources);
- c.TransferBool(DeactivateScriptAtEnd);
- c.TransferBool(PerformAfterScript);
- c.TransferOpinionDeed(OpinionDeedType);
- c.TransferBool(Extendable);
- c.TransferBool(SheatheWeapons);
- c.TransferBool(ReplaceHeldItemWhenDone);
- c.TransferUnsigned(TextTag);
+ c.Transfer(*(CDefString*)&(ScriptName_TablePos));
+ c.Transfer(ScriptLoadResources);
+ c.Transfer(DeactivateScriptAtEnd);
+ c.Transfer(PerformAfterScript);
+ c.Transfer(*(EOpinionDeedType*)&(OpinionDeedType));
+ c.Transfer(Extendable);
+ c.Transfer(SheatheWeapons);
+ c.Transfer(ReplaceHeldItemWhenDone);
+ c.Transfer(*(unsigned long*)&(TextTag));
  c.TransferExpressionType(ExpressionType);
 }
 
@@ -75,14 +78,26 @@ void CExpressionDef::Transfer(CPersistContext& c) {
 #include <stdio.h>
 static void* expected[25];static int types[25],n,bad,writing;
 static void Check(void*p,int type){if(n>=25||expected[n]!=p||types[n]!=type)bad=1;++n;}
-void CPersistContext::TransferDefString(int&v){Check(&v,0);if(writing)v=100+n;else if(v!=(100+n))bad=1;}
-void CPersistContext::TransferFloat(float&v){Check(&v,1);if(writing)v=0.25f+n;else if(v!=(0.25f+n))bad=1;}
-void CPersistContext::TransferInt(int&v){Check(&v,2);if(writing)v=100+n;else if(v!=(100+n))bad=1;}
+template <> void CPersistContext::Transfer<CDefString>(CDefString& value_)
+{
+    int& v = *(int*)&value_; (void)&v;Check(&v,0);if(writing)v=100+n;else if(v!=(100+n))bad=1;}
+template <> void CPersistContext::Transfer<float>(float& value_)
+{
+    float& v = *(float*)&value_; (void)&v;Check(&v,1);if(writing)v=0.25f+n;else if(v!=(0.25f+n))bad=1;}
+template <> void CPersistContext::Transfer<long>(long& value_)
+{
+    int& v = *(int*)&value_; (void)&v;Check(&v,2);if(writing)v=100+n;else if(v!=(100+n))bad=1;}
 void CPersistContext::TransferDefIndex(int&v){Check(&v,3);if(writing)v=100+n;else if(v!=(100+n))bad=1;}
 void CPersistContext::TransferGameEvent(int&v){Check(&v,4);if(writing)v=100+n;else if(v!=(100+n))bad=1;}
-void CPersistContext::TransferBool(bool&v){Check(&v,5);if(writing)v=((n%2)!=0);else if(v!=(((n%2)!=0)))bad=1;}
-void CPersistContext::TransferOpinionDeed(int&v){Check(&v,6);if(writing)v=100+n;else if(v!=(100+n))bad=1;}
-void CPersistContext::TransferUnsigned(unsigned int&v){Check(&v,7);if(writing)v=100+n;else if(v!=(100+n))bad=1;}
+template <> void CPersistContext::Transfer<bool>(bool& value_)
+{
+    bool& v = *(bool*)&value_; (void)&v;Check(&v,5);if(writing)v=((n%2)!=0);else if(v!=(((n%2)!=0)))bad=1;}
+template <> void CPersistContext::Transfer<EOpinionDeedType>(EOpinionDeedType& value_)
+{
+    int& v = *(int*)&value_; (void)&v;Check(&v,6);if(writing)v=100+n;else if(v!=(100+n))bad=1;}
+template <> void CPersistContext::Transfer<unsigned long>(unsigned long& value_)
+{
+    unsigned int& v = *(unsigned int*)&value_; (void)&v;Check(&v,7);if(writing)v=100+n;else if(v!=(100+n))bad=1;}
 void CPersistContext::TransferExpressionType(int&v){Check(&v,8);if(writing)v=100+n;else if(v!=(100+n))bad=1;}
 int main(){CExpressionDef x;CPersistContext c;
 expected[0]=&x.Animation_TablePos;types[0]=0;

@@ -48,7 +48,7 @@ public:
 
 class CPersistContext {
 public:
-    void Transfer(bool& value);                    // 0x0043314A
+    template <class T> void Transfer(T& value);                    // 0x0043314A
     void Transfer(CReactionEnabledMap& value);     // 0x0045DEE9
 };
 

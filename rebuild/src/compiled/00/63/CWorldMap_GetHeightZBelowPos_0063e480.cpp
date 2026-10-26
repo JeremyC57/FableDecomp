@@ -30,7 +30,7 @@ class CPhysicsMeshObject { public:
     float         PositionMatrix[12];
     float         Scale;
     float         OO_Scale;
-    ~CPhysicsMeshObject();                         // 0x00A127D0
+    virtual ~CPhysicsMeshObject();                         // 0x00A127D0
     bool GetPointIntersectionFromTo(const C3DVector* from, const C3DVector* to, CMeshIntersectionData* out) const;   // 0x00A12450
 };
 class CTCPhysicsBase { public:

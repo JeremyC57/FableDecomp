@@ -59,17 +59,28 @@ class CTCBase { public:
     bool IsShapeKnown_00761b50(NShape::CTrack** shapeSlot);   // 0x00761B50 (manifest "Map_FindByKey", descriptive)
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 namespace NCameraModes {
 struct CTrack {
     virtual void v00();
     unsigned char           _pad04[0xa0];
-    CBaseIntelligentPointer m_target;       // +0xa4
+    CIntelligentPointer<CThing> m_target;       // +0xa4
     unsigned char           _padac[0x14];
     NShape::CTrack*         PTrack;                     // +0xc0
     float                   CurrentFractionAlongTrack;  // +0xc4

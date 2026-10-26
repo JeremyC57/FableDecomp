@@ -18,7 +18,8 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                               // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 
 CPlayerManager* GetPlayerManager();                         // 0x00686D40
@@ -39,7 +40,7 @@ struct CTCBoastingArea {
 void CTCBoastingArea::OnKill()
 {
     if (HeroWithinRadiusState != HERO_OUTSIDE) {
-        CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+        CThing* hero = GetPlayerManager()->GetMainPlayer().GetHeroCreature();
         if (hero && !hero->m_dead && HeroWithinRadiusState == HERO_WITHIN_RADIUS)
             OnHeroLeavingArea(hero);
     }

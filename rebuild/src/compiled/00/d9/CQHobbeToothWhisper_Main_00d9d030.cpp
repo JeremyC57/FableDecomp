@@ -33,7 +33,7 @@ struct CScriptThingVT {
 class CScriptThing : public CScriptThingVT { public:                  // 12 bytes, vtable 0x01238C8C {vptr, PImp.Data, PImp.Info}
     void* PImpData;
     void* PImpInfo;
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
 };
 struct CScriptThingImp {

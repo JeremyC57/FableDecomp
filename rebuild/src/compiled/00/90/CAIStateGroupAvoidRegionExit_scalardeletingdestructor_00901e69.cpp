@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CAIStateGroup_AvoidRegionExit_Destruct(void* stateGroup);
-extern void __cdecl OperatorDelete(void* object);
+class CAIStateGroupBase {
+public:
+    virtual ~CAIStateGroupBase();   // 0x008FD288
+};
 void* __fastcall CAIStateGroup_AvoidRegionExit_ScalarDeletingDestructor(void* stateGroup, int, unsigned int flags)
 {
-    CAIStateGroup_AvoidRegionExit_Destruct(stateGroup);
+    ((CAIStateGroupBase*)(stateGroup))->CAIStateGroupBase::~CAIStateGroupBase();
     if (flags & 1)
-        OperatorDelete(stateGroup);
+        operator delete(stateGroup);
     return stateGroup;
 }

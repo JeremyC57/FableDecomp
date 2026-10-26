@@ -30,9 +30,10 @@ struct CCountedPointer_ScriptedThingBase {            // CCountedPointer<CScript
 };
 
 class CBaseObject { public:
-    virtual void v00();
     void* IntelligentPointer;                         // +0x04
-    CBaseObject(const CBaseObject& other);            // 0x0099A390
+protected:
+    CBaseObject(const CBaseObject& other);               // 0x0099A390
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:

@@ -76,22 +76,30 @@ public:
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {                        // 8 bytes: vptr + item
-    virtual void v00();
-    CThing* PData;
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CThing* item);                        // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item = 0) { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item = 0) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 #pragma pack(pop)
 
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!p.GetPItem()->IsDead())
@@ -100,7 +108,13 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-class CTCTrespasser { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCTrespasser : public CTCBase { public:
     void*         __vftable;                            // +0x00
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08
@@ -113,8 +127,7 @@ class CTCTrespasser { public:
     unsigned long FrameSomeoneWasInformedOfLastDeed;    // +0x24
     unsigned long FramePlayerLeft;                      // +0x28
     bool          AttachedOpinionSource;                // +0x2c
-    CIntelligentPointer TrespassingThing;               // +0x2d
-    CWorld& GetWorld() const;                           // 0x00686A70 (CTCBase)
+    CIntelligentPointer<CThing> TrespassingThing;               // +0x2d
     void ClearOpinionSource(CThing* thing) { GetWorld().GetOpinionReactionManager()->ClearOpinionSource(*thing, true); }
     void LeavingRegion();
 };
@@ -146,7 +159,7 @@ void CTCTrespasser::LeavingRegion()
             FramePlayerLeft = CWorld::GetWorldFrame();
         }
     }
-    TrespassingThing = CIntelligentPointer(0);
+    TrespassingThing = CIntelligentPointer<CThing>(0);
     if (AttachedOpinionSource) {
         ClearOpinionSource(ParentThing);
         AttachedOpinionSource = false;

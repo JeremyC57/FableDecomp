@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCCreatureHive_Destruct(void* hive);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCCreatureHive_ScalarDeletingDestructor(void* hive, int, unsigned int flags)
 {
-    CTCCreatureHive_Destruct(hive);
+    ((CTCBase*)(hive))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(hive);
+        operator delete(hive);
     return hive;
 }

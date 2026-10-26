@@ -19,6 +19,7 @@
 // Shape: the landed entity-script filter idiom; the spawned functor (0x48 bytes) takes Me by value: the argument copy
 //   is the inline CScriptThing copy, the member copy inside the inlined functor ctor is the out-of-line 0x004ABE90 (inline
 //   depth 1 around the statement); the new-expression's name temporaries are conditional (flags 7).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -118,14 +119,27 @@ struct CQ_MinionClifftopChaseScript : CScriptBase {
     bool QuestStartScreened;                           // +0x4b
     void GuardChatter(CScriptThing guard);             // 0x00DA71E0
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
 struct CQ_SunnyvaleMasterData;
-class CBalverineFightingGuard {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CBalverineFightingGuard : public CEntityScriptBase {
 public:
     void*                         __vftable;           // +0x00
     CGameScriptInterface*         Game;                // +0x04
@@ -134,8 +148,6 @@ public:
     CQ_SunnyvaleMasterData*       PMasterData;         // +0x18
     bool                          ExplainedAboutSummoning;   // +0x1c
     long                          HealthBarID;         // +0x20
-    void RegisterFilter(CIsThingAlive& filter);        // 0x00F35B10
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 
@@ -143,7 +155,7 @@ void CBalverineFightingGuard::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

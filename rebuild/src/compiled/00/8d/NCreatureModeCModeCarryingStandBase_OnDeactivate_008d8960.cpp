@@ -51,7 +51,8 @@ struct CModeBase {                         // CTCCreatureModeManager::CModeBase,
 };
 struct CModeStandBase : CModeBase {        // retail 0x68
     unsigned char _stand[0x4c];
-    void OnDeactivate();                   // 0x00861D00
+public:
+    virtual void OnDeactivate();   // 0x00861D00
 };
 
 namespace NCreatureMode {

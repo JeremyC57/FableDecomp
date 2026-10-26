@@ -24,8 +24,9 @@ class CResource { public:
 };
 
 class CBankFileAsyncData { public:
-    bool IsFinished();                             // 0x009D54E0
     bool WaitUntilFinished();                      // 0x009D5B60
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
 
 class CCPPointerInfo;

@@ -24,18 +24,23 @@ class CTCBase;
 class CBaseObject;
 
 class CThing;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                                      // +0x04
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CThing* item);                        // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CTCPhysicsBase { public:
@@ -107,12 +112,12 @@ class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { 
 
 class CThingCreatureBase : public CThingGameObject { public:
     unsigned char _pad94[0xf4 - 0x94];
-    CIntelligentPointerThing PLastAttackedByCreature;   // +0xf4
+    CIntelligentPointer<CThing> PLastAttackedByCreature;   // +0xf4
     unsigned long WFLastAttackedByCreature;             // +0xfc
     unsigned char _pad100[0x128 - 0x100];
     float         TurnSpeed;                            // +0x128
     unsigned char _pad12c[0x150 - 0x12c];
-    CIntelligentPointerThing PItemToUnsheatheAfterCutscene;   // +0x150
+    CIntelligentPointer<CThing> PItemToUnsheatheAfterCutscene;   // +0x150
     void UpdateBodyReorientation();                     // 0x006622D0
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
     void ClearLastAttackedByCreature();                 // 0x006691C0
@@ -138,7 +143,7 @@ bool CThingCreatureBase::WorldUpdate()
     if (PItemToUnsheatheAfterCutscene.GetPItem() && !PItemToUnsheatheAfterCutscene.GetPItem()->Dead
         && !g_pThingManager->NonScriptedEntitesPauseMode && !g_pThingManager->AllEntitesPauseMode) {
         SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(this, PItemToUnsheatheAfterCutscene.GetPItem(), 0, 150));
-        PItemToUnsheatheAfterCutscene = CIntelligentPointerThing(0);
+        PItemToUnsheatheAfterCutscene = CIntelligentPointer<CThing>(0);
     }
     return false;
 }

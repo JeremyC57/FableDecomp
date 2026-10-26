@@ -27,7 +27,10 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 class CAnimFilterBase { public:                                // vtable 0x0122FFCC
     virtual ~CAnimFilterBase() {}
 };
@@ -38,7 +41,7 @@ class CAnimFilterOfGroup : public CAnimFilterBase { public:           // vtable 
         : Group()
     {
         Group = group;
-        GroupCRC = Calc_004014a0(0, group.GetPString(), group.GetLength());
+        GroupCRC = CCRC::Calc(0, group.GetPString(), group.GetLength());
     }
 };
 class CAnimationEntry { public:
@@ -52,8 +55,9 @@ public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64
     CAnimationEntry* GetAnimFromName(const CCharString& name, const CAnimFilterBase* filter, long flags);   // 0x00662B10
-    float GetAnimMovementLength(long anim);             // 0x006627A0
     float GetAnimDuration(long anim);                   // 0x006627F0
+public:
+    float GetAnimMovementDistance(long) const;   // 0x006627A0
 };
 extern long g_framesPerSecond;                          // 0x01375550
 class CTCStealth { public:
@@ -75,7 +79,7 @@ void CTCStealth::InitialiseSneakSpeed()
         anim = creature->GetAnimFromName(name, &filter, 0)->AnimID;
     }
     CTCGraphicAppearance* appearance = creature->PTCGraphicAppearance;
-    float length = creature->GetAnimMovementLength(anim) * appearance->GetScale();
+    float length = creature->GetAnimMovementDistance(anim) * appearance->GetScale();
     float duration = creature->GetAnimDuration(anim);
     if (length > 0.0f && duration > 0.0f)
         MaxSneakingSpeed = length / (duration * g_framesPerSecond);

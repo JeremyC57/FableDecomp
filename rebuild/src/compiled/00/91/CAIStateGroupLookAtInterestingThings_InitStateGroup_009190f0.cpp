@@ -138,14 +138,17 @@ class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
+
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
     CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
-unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
-long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
+long __fastcall GFROR13(unsigned long);      // 0x00497890
+            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 extern long g_FramesPerSecond;                  // 0x01375550
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
@@ -175,7 +178,7 @@ void CAIStateGroup_LookAtInterestingThings::InitStateGroup(const CWorld& world, 
     unsigned long a = WorldRandomRange(*GetPWorldSeed(), 240);
     unsigned long b = WorldRandomRange(*GetPWorldSeed(), 120);
     long framesPerSecond = g_FramesPerSecond;
-    FrameToLook = GFGetCurrentFrame() + (a + b) * framesPerSecond;
+    FrameToLook = CWorld::GetFrame() + (a + b) * framesPerSecond;
     CTCIdleScheduler* scheduler;
     if (((CThing&)creature).GetInterface(&scheduler, 0xd3))
         scheduler->RegisterIdleStateGroup(this, 9);

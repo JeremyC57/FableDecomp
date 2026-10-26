@@ -89,7 +89,8 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     CScriptThing() {}
     __forceinline ~CScriptThing() {}                    // out-of-line copy 0x004AA840
     CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
-    CCharString GetDataString() const;                  // virtual, called directly here: 0x004AA900
+public:
+    virtual CCharString GetDataString() const;   // 0x004AA900
 };
 template <class T> struct vector {                      // STLport vector (retail 12 bytes)
     T* _M_start;
@@ -211,12 +212,14 @@ class CGameScriptInterface { public:                       // the quest's game s
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c) GetActiveQuestName
 };
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                                                 // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
     __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
+namespace NScript {
 class CQ_AmbushTradersScript : public CScriptBase {
 public:
     CGameScriptInterface* Game;                         // +0x40

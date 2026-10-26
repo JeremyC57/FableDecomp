@@ -58,6 +58,9 @@ template <class T> struct CDefHolder {                  // the def taken out of 
 class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out) const;   // 0x0042AF3C
 };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
@@ -75,16 +78,22 @@ class CThing { public:
     bool IsGameStatePersisted() const;                  // 0x004C8280
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
 };
-class CTCContainer { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCContainer : public CTCBase { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
     CContainerItemVector ContainerItems;                // +0x0c
-    const CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
     __forceinline CThingDef* GetItemDef(long defIndex) const
     {
         CDefPointer<CThingDef> out;
-        GetDefinitionManager()->GetDef(defIndex, &out);
+        GetDefinitionManager().GetDef(defIndex, &out);
         return out.Object;
     }
     void InsertItem(long defIndex, const CCharString& name);

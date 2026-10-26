@@ -11,7 +11,7 @@ class CPatchTesselationEdgeStrip { public:
 class CEngineInternalPrimitiveMeshBase { public:                                  // polymorphic base of 0xac bytes
     virtual void v00();
     unsigned char _pad[0xa8];
-    ~CEngineInternalPrimitiveMeshBase();                                   // 0x00BEBC50
+    virtual ~CEngineInternalPrimitiveMeshBase();                                   // 0x00BEBC50
 };
 
 struct CMeshBaseWithStrip_00baa380 {                                   // non-polymorphic: the polymorphic CEngineInternalPrimitiveMeshBase is its FIRST MEMBER, not a base (no vtable store, members destroyed in reverse order)

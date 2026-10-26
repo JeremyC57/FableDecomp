@@ -128,14 +128,19 @@ struct CGuildBarrierScript {
     unsigned char _pad[0x4c];
     bool          BarrierUnlocked;                     // +0x4c (descriptive)
 };
-struct CMagicBarrier {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CMagicBarrier : public CEntityScriptBase {
     void*                 __vftable;                   // +0x00
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
     CGuildBarrierScript*  ParentClass;                 // +0x14
     void*                 PMasterData;                 // +0x18
-    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 

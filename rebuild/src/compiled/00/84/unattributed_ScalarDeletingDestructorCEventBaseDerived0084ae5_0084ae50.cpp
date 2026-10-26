@@ -9,9 +9,16 @@
 // (0x0124F2C4, rtti-vtables.tsv), and bit 0 of the flag argument selects the flag-tested operator
 // delete @ 0x00BFE9BC. The manifest label is propagated across the family; the derived class
 // is named by its base. One of 14 bodies of this shape.
-struct CListMember_00a01c10 {
-    void* m_head;
-    ~CListMember_00a01c10();            // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 struct CEventBase {
@@ -20,7 +27,7 @@ struct CEventBase {
 };
 
 struct CEventBase_Derived_0084ae50 : CEventBase {
-    CListMember_00a01c10 m_08;        // +0x8
+    CBaseIntelligentPointer m_08;        // +0x8
 };
 
 // Constructing the class emits its vtable (and with it the scalar deleting destructor); the

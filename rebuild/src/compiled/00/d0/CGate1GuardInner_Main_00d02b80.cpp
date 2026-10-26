@@ -9,6 +9,7 @@
 // Layout: Ego_r.pdb CGate1GuardInner (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14
 //   (CQ_BanditCampScript: AttackedOuterGateGuards PDB +0x5c = retail +0x48, Gate1Open PDB +0x5d = retail +0x49, the usual
 //   0x14 quest-script shift), PMasterData +0x18. Movie model as CGraveyardDemon::Main 0x00DC3FC0 (destroyed inline everywhere).
+namespace NScript { class CPredicateBase; }
 enum EHeroAbility { HERO_ABILITY_NONE };
 class CCharString { public:
     void* PStringData;
@@ -62,19 +63,26 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
     ~CScriptThing();                                    // 0x004AA840
 };
-namespace N_0099a430 { struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-}; } using N_0099a430::CBaseIntelligentPointer;
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
+};
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CIsThingAlive {                                  // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04 (copied and destroyed out of line)
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -85,9 +93,10 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     bool IsScripting();                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    CScriptThing GetScriptThing() const;                // 0x007E7490
     void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
-    bool IsPerformingScriptTask() const;                // 0x007E7450
+public:
+    virtual CScriptThing GetScriptThing() const;   // 0x007E7490
+    virtual bool IsPerformingScriptTask() const;   // 0x007E7450
 };
 struct CMovieImpPointer {
     void* Data;
@@ -101,7 +110,7 @@ struct CScriptGameResourceObjectMovieFull : CScriptGameResourceObjectBase {
 };
 struct CMovieStorage { void* Words[4]; };              // raw frame storage of one movie handle (0x10 bytes)
 inline void* operator new(unsigned int, void* where) { return where; }   // placement form: the handle is destroyed by hand
-class CScriptGameResourceObjectMovieBase : public CBaseIntelligentPointer { public:   // vtable 0x01260EF4; built in place in CMovieStorage, destroyed by hand
+class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; built in place in CMovieStorage, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
     __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     __forceinline void DestroyInline()
@@ -192,8 +201,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CGate1GuardInner : CEntityScriptBase {
     CQ_BanditCampScript* ParentClass;                   // +0x14
@@ -205,7 +215,7 @@ void CGate1GuardInner::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

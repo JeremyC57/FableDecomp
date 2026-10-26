@@ -15,10 +15,8 @@ class C3DVector { public: float X, Y, Z; };
 
 class CPersistContext {
 public:
-    void Transfer(long& value);                 // 0x00431102
-    void Transfer(bool& value);                 // 0x0043314A
+    template <class T> void Transfer(T& value);                 // 0x00431102
     void Transfer(C3DVector& value);            // 0x00456903
-    void Transfer(float& value);                // 0x00431061
 };
 
 class CCarryableDef {

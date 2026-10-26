@@ -4,7 +4,7 @@
 // slot 28 (the catalog's "vfunc_28"; with four arguments it is not CTCBase::OnActionUse -- named descriptively here).
 // Callees: CTCGraphicAppearance::GetDummyObject(const CCharString&, long, unsigned long, C3DVector*, CRightHandedSet*, float)
 // @ 0x004C08C0 on the owner's appearance (+0x64) with the dummy-name string global @ 0x013BAC9C, __ftol2 @ 0x00BFEA70,
-// CTCBase::GetWorld const @ 0x00686A80, CThingSearchTools::GetPFirstThingInRoughArea<CFilter_Bind3<CThingFilter_IsNot,
+// CTCBase::PeekWorld const @ 0x00686A80, CThingSearchTools::GetPFirstThingInRoughArea<CFilter_Bind3<CThingFilter_IsNot,
 // CThingFilter_IsNot, CThingFilter_In2DRange>, CThingCreatureBase>(const C2DBoxI&, const filter&, CThingCreatureBase**)
 // @ 0x007FE730 on the world's search tools (+0x20).
 // Layout: Ego_r.pdb CThingFilter_IsNot {Thing}, CThingFilter_In2DRange {C3DVector Pos, float Range}, CFilter_Bind3 {F1, F2, F3}
@@ -70,12 +70,13 @@ class CTCBase { public:
     bool ToBeRemoved;                                   // +0x08
     bool IsInGlobalUpdateTCs;                           // +0x09
     unsigned char _pad0a[2];
-    const CWorld* GetWorld() const;                     // 0x00686A80
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 class CTCSingleUserActionPoints : public CTCBase { public:
     __forceinline bool FindFirstCreature(const C2DBoxI& area, const CActionPointFilter& filter, CThingCreatureBase** found) const
     {
-        CThingSearchTools* searchTools = GetWorld()->ThingSearchTools;
+        CThingSearchTools* searchTools = PeekWorld().ThingSearchTools;
         return searchTools->GetPFirstThingInRoughArea(area, filter, found);
     }
     bool IsActionPointOccupied(CThing* user, C3DVector* position, CRightHandedSet* orientation, long index);

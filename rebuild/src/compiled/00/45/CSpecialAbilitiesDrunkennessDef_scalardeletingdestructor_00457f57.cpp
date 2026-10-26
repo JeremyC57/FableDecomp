@@ -1,16 +1,18 @@
 #pragma optimize("s",on)
 // MSVC vector deleting destructor for CSpecialAbilitiesDrunkennessDef
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CSpecialAbilitiesDrunkennessDef { public:
     void* vftable;
 };
 
-extern "C" void __fastcall CSpecialAbilitiesDrunkennessDef_dtor(CSpecialAbilitiesDrunkennessDef* def);
-extern "C" void __cdecl operator_delete_stub(void* p);
 
 void* __fastcall CSpecialAbilitiesDrunkennessDef_scalar_deleting_destructor(CSpecialAbilitiesDrunkennessDef* def, int /*edx*/, unsigned int flags)
 {
-    CSpecialAbilitiesDrunkennessDef_dtor(def);
+    ((CParentDefClassBase*)(def))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        operator_delete_stub(def);
+        operator delete(def);
     return def;
 }

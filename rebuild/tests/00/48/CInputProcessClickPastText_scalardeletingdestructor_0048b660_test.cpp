@@ -10,7 +10,8 @@ static int g_destroyed = 0;
 static int g_deleted = 0;
 
 void CInputProcessClickPastText::Destroy() { g_destroyed++; }
-void ClassOperatorDelete(void* p) { g_deleted++; (void)p; }
+void __cdecl operator delete(void* p)
+{ g_deleted++; (void)p; }
 
 void* __fastcall CInputProcessClickPastText_scalar_deleting_destructor(
     CInputProcessClickPastText* process, int edx, unsigned int flags);

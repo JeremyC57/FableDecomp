@@ -100,6 +100,8 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
+    void Terminate();   // 0x008FCF40
 };
 
 
@@ -178,7 +180,6 @@ struct CAIStateGroup_MazeTutorialBattleRespondToLightning : CAIStateGroupBase {
     unsigned char _pad1c[4];
     long FrameOfLastHit;                        // +0x20 (engine header)
     bool IsStopping();                          // 0x008FD010
-    void Terminate();                           // 0x008FCF40
     EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointerConstThing target, long frames, float speed);   // 0x0097D6F0
     EAIActionReturn AIAction_PerformActionAndWait(CCreatureActionBase& action, bool interruptible);   // 0x0097DB70
     virtual void Update();

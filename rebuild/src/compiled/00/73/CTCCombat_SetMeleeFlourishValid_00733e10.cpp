@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00733E10, 208 bytes (`ret 4`).
 // Callees: CThing::GetHeroCombatDef() const @ 0x00663340 (CDefPointer by hidden pointer into the `push ecx` word; manifest
 // "CEventKilledCreature" is propagated), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, CCharString(const char*,
-// long) @ 0x0099EBF0, CTCSound::PlaySound(const CCharString&, bool, long, long, long) @ 0x0066BD00 (catalog "CSoundInfo::
+// long) @ 0x0099EBF0, CTCSoundPlayer::PlaySound(const CCharString&, bool, long, long, long) @ 0x0066BD00 (catalog "CSoundInfo::
 // PlaySound"), ~CCharString @ 0x0099EAE0, the def's virtual slot 1 on the last release. Literal "FLOURISH_AVAILABLE" @ 0x012670E8.
 // Layout: local model -- engine/CTCCombat.h has PDB offsets; retail (three 12-byte vectors): ParentCreature +0x24, CurrentAbility
 // Index +0x44 (PDB +0x4c, as the landed GetPMeleeFlourishAbility 0x00733480), BlockCounterTimer +0x50 (PDB +0x58); CHeroCombatDef
@@ -52,8 +52,9 @@ template <class T> class CDefPointer { public:
     }
     T* operator->() const { return Object; }
 };
-struct CTCSound {
-    unsigned long PlaySound(const CCharString& name, bool positional, long a, long b, long c);   // 0x0066BD00
+class CTCSoundPlayer { public:
+public:
+    unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };
 class CThing { public:
     unsigned char _pad00[0x20];
@@ -91,10 +92,10 @@ void CTCCombat::SetMeleeFlourishValid(bool valid)
         usable = true;
     if (valid && usable) {
         if (++CurrentAbilityIndex == 0 && ParentThing->HasTC(0x10)) {
-            CTCSound* sound = (CTCSound*)ParentThing->GetTC(0x10);
+            CTCSoundPlayer* sound = (CTCSoundPlayer*)ParentThing->GetTC(0x10);
             {
                 CCharString name("FLOURISH_AVAILABLE", -1);
-                sound->PlaySound(name, true, 1, 0, -1);
+                sound->PlayAttachedCriteria(name, true, 1, 0, -1);
             }
         }
     } else {

@@ -79,7 +79,13 @@ class CWorld { public:
     CBulletTimeManager* PBulletTimeManager;             // +0x68
     void RemoveBulletTimeSlowdown(unsigned long key) { PBulletTimeManager->RemoveBulletTimeSlowdown(key); }
 };
-class CTCAssassinRush { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCAssassinRush : public CTCBase { public:
     void*                   __vftable;                  // +0x00
     CThing*                 ParentThing;                // +0x04
     unsigned char           _pad08[0x18 - 0x08];
@@ -87,7 +93,6 @@ class CTCAssassinRush { public:
     CBaseIntelligentPointer AssassinDisplacementTrail;  // +0x20
     unsigned char           _pad28[0xa4 - 0x28];
     bool                    CompletedExitModes;         // +0xa4
-    CWorld* GetWorld();                                 // 0x00686A70
     void FinalCleanup();
 };
 
@@ -105,7 +110,7 @@ void CTCAssassinRush::FinalCleanup()
             if (ParentThing->State == 1)
                 ParentThing->SetSuspendAnimation(false, 0);
             else
-                GetWorld()->RemoveBulletTimeSlowdown((unsigned long)this);
+                GetWorld().RemoveBulletTimeSlowdown((unsigned long)this);
         }
     }
     if (IS_THING_ALIVE(AssassinTrail))

@@ -68,10 +68,21 @@ struct CParticleEmitterManager {
     NParticleEngine::CParticleEmitter* CreateInterpolatedEmitter(long fromHandle, long toHandle, float interpolate,
                                                 const C3DVector& position, const CRightHandedSet& orientation, bool flag);   // 0x00AEB8C0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* PData;                                // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct SCountBlock {
     long  m_references;                         // +0
@@ -100,8 +111,8 @@ class CTCDParticleEmitter { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x10 - 0x08];          // CTCBase tail, EmitterName
     long ParticleTypeID;                        // +0x10
-    CBaseIntelligentPointer PEmitter;           // +0x14
-    CBaseIntelligentPointer PAttachedToThing;   // +0x1c
+    CIntelligentPointer<CThing> PEmitter;           // +0x14
+    CIntelligentPointer<CThing> PAttachedToThing;   // +0x1c
     unsigned char _pad24[0x3c - 0x24];          // AttachmentFlags .. FramesLeftToWaitForParticleToCreate
     CCreationParametersPointer PCreationParameters;   // +0x3c
     bool WaitingForParticleToLoad : 1;          // +0x44 bit 0

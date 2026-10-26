@@ -20,7 +20,7 @@ public:
 class CPersistContext {
 public:
     template <class T> void TransferVectorBinary(std::vector<T>& v);   // 0x0043318D for CActionInputControl
-    void TransferBool(bool& value);                      // 0x0043314A
+    template <class T> void Transfer(T& value);                      // 0x0043314A
 };
 class CControlsDef {
 public:
@@ -37,10 +37,10 @@ public:
 void CControlsDef::Transfer(CPersistContext& context)
 {
     context.TransferVectorBinary(Controls);
-    context.TransferBool(ToggleZTarget);
-    context.TransferBool(ToggleSpells);
-    context.TransferBool(ToggleSneak);
-    context.TransferBool(ToggleExpressionMenu);
-    context.TransferBool(ToggleExpressionShift);
-    context.TransferBool(FlourishNeedsAttackButtonHeld);
+    context.Transfer(ToggleZTarget);
+    context.Transfer(ToggleSpells);
+    context.Transfer(ToggleSneak);
+    context.Transfer(ToggleExpressionMenu);
+    context.Transfer(ToggleExpressionShift);
+    context.Transfer(FlourishNeedsAttackButtonHeld);
 }

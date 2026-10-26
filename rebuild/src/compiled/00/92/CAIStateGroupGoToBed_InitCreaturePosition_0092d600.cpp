@@ -165,6 +165,9 @@ class CWorld { public:
     unsigned char _pad[0x40];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
+
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
@@ -192,9 +195,9 @@ struct CTCSleeper {                             // interface 0xd4
     C3DVector m_wakePos;                        // +0x14
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
+            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 struct CThingWorld {
-    static long GetCurrentFrame() { return GFGetCurrentFrame(); }
+    static long GetCurrentFrame() { return CWorld::GetFrame(); }
 };
 
 struct CAIStateGroup_GoToBed : CAIStateGroupBaseW {

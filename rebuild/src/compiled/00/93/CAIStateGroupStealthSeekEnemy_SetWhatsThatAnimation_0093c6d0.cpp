@@ -83,6 +83,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+public:
+    void Terminate();   // 0x008FCF40
 };
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
@@ -125,7 +127,7 @@ struct CThingCreatureAnim {
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];                  // +0x04..+0xa7
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];                  // +0xa8..+0xb3
@@ -146,7 +148,6 @@ struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
     CThing* GetCreature() const { return PBrain->PCreature; }
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
     bool IsStillRunnable(CTCPerceiveThing* perceive);   // 0x0093C4E0
-    void FinishUpdate();                        // 0x008FCF40
     void SetWhatsThatAnimation(CTCPerceiveThing* perceive);
 };
 
@@ -161,5 +162,5 @@ void CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation(CTCPerceiveThing* per
         if (!(diff.GetMagnitudeSquared() > g_Epsilon * g_Epsilon))
             return;
     }
-    FinishUpdate();
+    Terminate();
 }

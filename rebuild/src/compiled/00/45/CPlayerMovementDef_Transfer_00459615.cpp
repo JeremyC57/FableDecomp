@@ -6,8 +6,7 @@
 // Layout: PDB (Ego_r) names and types; the TLC def base is 0x3c bytes (PDB 0x40), so retail offset = PDB offset - 4.
 //   Local model: no engine/ header exists for CPlayerMovementDef or CPersistContext.
 class CPersistContext { public:
-    void Transfer(float&);                              // 0x00431061
-    void Transfer(long&);                               // 0x00431102
+    template <class T> void Transfer(T& value);                              // 0x00431061
 };
 class CPlayerMovementDef { public:
     unsigned char _base[0x3c];                          // CDefClassBase/CParentDefClassBase

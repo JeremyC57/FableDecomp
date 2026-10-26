@@ -25,7 +25,8 @@ class CDefString { public:
 
 class CDefinitionManager {
 public:
-    CDefString GetDefNameFromGlobalIndex(long index);           // 0x009ACCC0
+public:
+    CDefString GetDefNameFromGlobalIndex(long) const;   // 0x009ACCC0
 };
 
 class CGameDefinitionManager : public CDefinitionManager {
@@ -35,7 +36,8 @@ public:
 
 class CDefStringTable {
 public:
-    CCharString GetString(long index);                          // 0x009D49B0 (the CDefString's index)
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                        // 0x013CA828
 

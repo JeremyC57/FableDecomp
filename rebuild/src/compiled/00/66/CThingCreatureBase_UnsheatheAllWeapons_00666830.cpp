@@ -32,12 +32,13 @@ struct CThingCreatureBaseVirtuals {
     virtual bool AreWeaponsUnsheathed();   // slot 77 (+0x134)
 };
 
-struct CThingCreatureBase_Methods {
-    void UnsheatheMeleeWeapon();       // 0x006649C0
+class CThingCreatureBase { public:
     void UnsheatheAllWeapons();
+public:
+    void UnsheatheMeleeWeapon();   // 0x006649C0
 };
 
-void CThingCreatureBase_Methods::UnsheatheAllWeapons()
+void CThingCreatureBase::UnsheatheAllWeapons()
 {
     if (!reinterpret_cast<CThingCreatureBaseVirtuals*>(this)->AreWeaponsUnsheathed())
         UnsheatheMeleeWeapon();

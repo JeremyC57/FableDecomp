@@ -10,7 +10,10 @@
 // * duration);` -- the named fps local is what reads the global before the call and parks it in the `push ecx`
 // frame slot (a bare global read is sunk below the call); the x87 order `fild frame ; fild fps ; fmul duration
 // ; faddp` is the left-to-right sum with the call result parked in the first argument slot. Member names descriptive.
-long __fastcall GFGetCurrentFrame();        // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};        // 0x0049D870
 extern long g_framesPerSecond;              // 0x01375550
 
 struct CTCOpinionSource_007712f0 {
@@ -26,5 +29,5 @@ void CTCOpinionSource_007712f0::OnActivate(long sourceId, float duration)
     ++m_activations;
     m_sourceId = sourceId;
     long framesPerSecond = g_framesPerSecond;
-    m_expiryFrame = (long)((float)GFGetCurrentFrame() + (float)framesPerSecond * duration);
+    m_expiryFrame = (long)((float)CWorld::GetFrame() + (float)framesPerSecond * duration);
 }

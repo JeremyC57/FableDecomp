@@ -5,7 +5,7 @@
 // Callees: CTCBase::GetWorld() 0x00686A70; the world's +0x38 object slot 395 (+0x62C); the world's slot 8 (+0x20, by-value
 //   C3DVector reference point); CThing::GetPosition 0x004C73D0; CTCGraphicAppearance::WasRenderedLastFrame 0x004BD200;
 //   the parent's slot 39 (+0x9C); CVectorMap LowerBound 0x004365B0 (const); the 0x31 component's getter 0x0073A6E0 and its
-//   result's slot 1; CTCBase::GetWorldMap() 0x00686D20; CWorldMap::GetWaterSizeZAt 0x0063A420, GetGroundSizeZAt 0x0063A300.
+//   result's slot 1; CTCBase::PeekWorldMap() 0x00686D20; CWorldMap::GetWaterSizeZAt 0x0063A420, GetGroundSizeZAt 0x0063A300.
 // Data: float pool 400.0f 0x0125D824, 0.05f 0x0125A15C, 0.1f 0x0126D948, 0.7f 0x0126D94C.
 // Layout (retail, local models): CTCBase ParentThing +0x04; CThing component bitset +0x20, component map +0x44, graphic
 //   appearance +0x64 (landed CCreatureAction_SnapDragon model).
@@ -88,14 +88,15 @@ class CWorldMap { public:
 class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
-    CWorld* GetWorld_00686a70() const;                               // 0x00686A70
-    CWorldMap* GetWorldMap() const;                         // 0x00686D20
+protected:
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 struct CTCWaterWader : CTCBase {
     void IsInWater(bool& inWater, bool& deep, float& waterHeight) const;
     __forceinline float GetDistanceSquaredFromReferencePoint() const
     {
-        CWorld* world = GetWorld_00686a70();
+        CWorld* world = (&GetWorld());
         const CThing* parent = ParentThing;
         return (parent->GetPosition() - world->GetReferencePoint()).GetLengthSquared();
     }
@@ -106,7 +107,7 @@ void CTCWaterWader::IsInWater(bool& inWater, bool& deep, float& waterHeight) con
     inWater = false;
     deep = false;
     waterHeight = 0.0f;
-    if (!GetWorld_00686a70()->GetModeObject()->IsAlwaysChecking())
+    if (!GetWorld().GetModeObject()->IsAlwaysChecking())
     {
         if (GetDistanceSquaredFromReferencePoint() > 400.0f)
             return;
@@ -119,10 +120,10 @@ void CTCWaterWader::IsInWater(bool& inWater, bool& deep, float& waterHeight) con
         return;
     if (((CTC31*)ParentThing->GetTC(0x31))->GetKindObject()->GetKind() == 0x1a)
         return;
-    waterHeight = GetWorldMap()->GetWaterSizeZAt(ParentThing->GetPosition());
+    waterHeight = PeekWorldMap().GetWaterSizeZAt(ParentThing->GetPosition());
     if (waterHeight > 0.05f)
     {
-        float groundHeight = GetWorldMap()->GetGroundSizeZAt(ParentThing->GetPosition());
+        float groundHeight = PeekWorldMap().GetGroundSizeZAt(ParentThing->GetPosition());
         inWater = waterHeight - groundHeight > 0.1f;
         deep = waterHeight - ParentThing->GetPosition().Z > 0.7f;
     }

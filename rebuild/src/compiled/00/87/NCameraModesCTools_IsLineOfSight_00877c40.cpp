@@ -24,10 +24,21 @@ public:
     unsigned char _pad00[0x91];
     unsigned char Dead : 1;                                 // +0x91 bit 0
 };
-struct CBaseIntelligentPointer {
-    void*  m_vtable;
-    void*  m_pItem;
-    const CThing* GetPItem() const;                         // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct __true_type { __true_type() {} };
 
@@ -57,9 +68,9 @@ struct CThingConstVector : _Vector_base<const CThing*> {   // STLport vector<con
     }
 };
 struct CScanVector {                                        // STLport vector<CIntelligentPointer<CThing const> >
-    CBaseIntelligentPointer* _M_start;
-    CBaseIntelligentPointer* _M_finish;
-    CBaseIntelligentPointer* _M_end_of_storage;
+    CIntelligentPointer<CThing>* _M_start;
+    CIntelligentPointer<CThing>* _M_finish;
+    CIntelligentPointer<CThing>* _M_end_of_storage;
 };
 
 namespace NCameraModes {
@@ -102,7 +113,7 @@ bool CTools::IsLineOfSight(const C3DVector& from, const C3DVector& to, C3DVector
                            float& distance, const CThing** hitThing, ELOSTest test, bool flag) const
 {
     CThingConstVector things;
-    for (CBaseIntelligentPointer* it = ScanThings._M_start; it != ScanThings._M_finish; ++it) {
+    for (CIntelligentPointer<CThing>* it = ScanThings._M_start; it != ScanThings._M_finish; ++it) {
         if (it->GetPItem() && !it->GetPItem()->Dead)
             things.push_back(it->GetPItem());
     }

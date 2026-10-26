@@ -110,19 +110,25 @@ struct SNode {                                  // STLport _Rb_tree_node<long>
 };
 SNode* __cdecl Successor(SNode* node);          // 0x004292C0
 
-class CTCVillage { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCVillage : public CTCBase { public:
     unsigned char _pad_0x04[0x60];
     SNode*        PlayersCrimes;                // +0x64 set<long> header node
     unsigned char _pad_0x68[0x70];
     long          LastFrameApologised;          // +0xd8
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
     bool PlayerCanApologiseForCurrentCrimes(long seconds);
 };
 
 bool CTCVillage::PlayerCanApologiseForCurrentCrimes(long seconds)
 {
-    if (LastFrameApologised != 0 && GetWorld()->GetFrame() - LastFrameApologised < 450)
+    if (LastFrameApologised != 0 && GetWorld().GetFrame() - LastFrameApologised < 450)
         return false;
     CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetHeroThing();
     if (hero) {

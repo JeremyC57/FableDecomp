@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E30A0, length 206 bytes, `ret 4` (hidden result)
 // (?GetCameraPhysicsMeshObject@CTCCameraCollision@@QBE?AVCPhysicsMeshObject@@XZ).
 // Callees: the thing physics' GetPhysicsMeshInfo (virtual slot 93, +0x174) and orientation getter (slot 72, +0x120; name
-// descriptive), CTCBase::GetWorld() const @ 0x00686A80, the main mesh bank's (world +0x3C) GetPhysicsMeshInfo(long) @ 0x00A24250,
+// descriptive), CTCBase::PeekWorld() const @ 0x00686A80, the main mesh bank's (world +0x3C) GetPhysicsMeshInfo(long) @ 0x00A24250,
 // CPhysicsMeshInfo::GetMesh() const @ 0x00A262B0 (CIVCountedPointer by hidden pointer), CPhysicsMeshObject::CPhysicsMeshObject
 // (mesh, position, orientation, scale) @ 0x00A12CC0, the mesh's virtual DeleteThis (slot 1), ~CPhysicsMeshObject @ 0x00A127D0.
 // Globals: 0.01f 0x01230A5C. The result's vtable 0x0125D084 = CPhysicsMeshObject.
@@ -80,14 +80,20 @@ class CCameraCollisionDef { public:
     unsigned char _pad00[0x28];
     long PhysicsMesh;                              // +0x28
 };
-class CTCCameraCollision {
+class CTCBase
+{
 public:
     virtual void v00();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCCameraCollision : public CTCBase {
+public:
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
     bool    IsInGlobalUpdateTCs;                   // +0x09
     const CCameraCollisionDef* CameraCollisionDef; // +0x0c
-    CWorld* GetWorld() const;                      // 0x00686A80 (CTCBase)
     CPhysicsMeshObject GetCameraPhysicsMeshObject() const;
 };
 
@@ -96,7 +102,7 @@ CPhysicsMeshObject CTCCameraCollision::GetCameraPhysicsMeshObject() const
     CThingPhysics* physics = ParentThing->PPhysics;
     const CThingPhysicsMeshInfo* thingMesh = physics->GetPhysicsMeshInfo();
     const CCameraCollisionDef* def = CameraCollisionDef;
-    CMeshBank* bank = GetWorld()->PMainMeshBank;
+    CMeshBank* bank = PeekWorld().PMainMeshBank;
     CPhysicsMeshInfo* info = bank->GetPhysicsMeshInfo(def->PhysicsMesh);
     CPhysicsMeshObject object(info->GetMesh(), physics->Position, physics->GetOrientation(), thingMesh->Radius * 0.01f);
     return object;

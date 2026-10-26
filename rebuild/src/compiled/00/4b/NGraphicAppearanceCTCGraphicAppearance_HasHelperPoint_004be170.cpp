@@ -22,7 +22,10 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetPString() const { return m_pStringData == 0 ? "" : m_pStringData->m_pData; }
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 struct SCountBlock {
     long m_references;                                      // +0
@@ -127,7 +130,7 @@ bool CTCGraphicAppearance::HasHelperPoint(const CCharString& name) const
 {
     CMeshVector meshes;
     GetAllMeshes(meshes);
-    unsigned long key = Calc_004014a0(0, name.GetPString(), name.GetLength());
+    unsigned long key = CCRC::Calc(0, name.GetPString(), name.GetLength());
     for (CMeshInfo* mesh = meshes.begin(); mesh != meshes.end(); ++mesh) {
         const C3DMeshInfo* meshInfo = g_pMeshDataBank->GetMeshInfo(mesh->Index);
         if (meshInfo && meshInfo->GetMeshStats()->HasHelperPoint(key))

@@ -14,7 +14,7 @@
 //   (called twice: read, then the inline seed step `*s = *s * 0x24A1 + 0x24DF ; *s = GFROR13(*s)`).
 class CThing;
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
+long __fastcall GFROR13(unsigned long);  // 0x00497890
 template <class T> struct vector {                      // retail STLport vector, 12 bytes
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }

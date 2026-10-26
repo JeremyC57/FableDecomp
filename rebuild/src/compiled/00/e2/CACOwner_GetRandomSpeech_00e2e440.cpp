@@ -4,11 +4,12 @@
 // 0x00E2E440 / 0x00E362B0 / 0x00E53CB0 with different counts and table offsets -- the label is propagated there).
 // Callees: CCharString default ctor @ 0x0099E4B0, copy ctor @ 0x0099EC30, operator= @ 0x0099EFB0, dtor @ 0x0099EAE0,
 // rand @ 0x00BFEB16, the script's IsDone @ 0x00F35B30, the game script interface (+4) slot 7 (+0x1c).
-// Shape: `for (;;) { if (IsDone()) return none; pick; if (ok) break; yield; }` then IsDone re-checked around the
-// bookkeeping (a `while (!IsDone())` loop flips the branch layout); an empty string, a copy of it returned on every IsDone exit, and the chosen line copied out last (no NRVO:
+// Shape: `for (;;) { if (IsActiveThreadTerminating()) return none; pick; if (ok) break; yield; }` then IsDone re-checked around the
+// bookkeeping (a `while (!IsActiveThreadTerminating())` loop flips the branch layout); an empty string, a copy of it returned on every IsDone exit, and the chosen line copied out last (no NRVO:
 // each return copy-constructs the hidden result); the line table is a CCharString array at +0x80 of the record (+0x14).
 #define SPEECH_COUNT 5
 #define SPEECH_TABLE_OFFSET 0x80
+namespace NScript { class CPredicateBase; }
 class CCharString
 { public:
     void* PStringData;
@@ -33,16 +34,22 @@ struct CSpeechRecord                                // the owner's speech table
     CCharString Lines[SPEECH_COUNT];
 };
 
-struct CAC_Owner
+class CEntityScriptBase
 {
+public:
     virtual void v00();
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CAC_Owner
+: public CEntityScriptBase {
     CGameScriptInterface* GSI;                      // +0x04
     unsigned char _pad08[0x14 - 0x08];
     CSpeechRecord* Record;                          // +0x14
     unsigned char _pad18[0x1c - 0x18];
     long LastSpeech;                                // +0x1c
     long PreviousSpeech;                            // +0x20
-    bool IsDone();                                  // 0x00F35B30 (the entity script's IsDone; manifest label is propagated)
     CCharString GetRandomSpeech();
 };
 
@@ -54,18 +61,18 @@ CCharString CAC_Owner::GetRandomSpeech()
     long index;
     for (;;)
     {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return none;
         index = rand() % SPEECH_COUNT;
         if (index != LastSpeech && index != PreviousSpeech)
             break;
         GSI->NewScriptFrame();
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return none;
     PreviousSpeech = LastSpeech;
     LastSpeech = index;
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return none;
     speech = Record->Lines[index];
     return speech;

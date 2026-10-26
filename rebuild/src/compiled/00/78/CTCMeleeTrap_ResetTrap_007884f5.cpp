@@ -79,8 +79,9 @@ struct CTCMeleeTrap {
     CThing*       m_pThing;                        // +0x04 (CTCBase owner)
     unsigned char _pad_0x08[0x60 - 0x08];
     bool          PlayingContinuous;               // +0x60
-    void InitialiseAnimation(const CCharString& animationName, bool loop);   // 0x0078809B
     void ResetTrap();
+private:
+    void InitialiseAnimation(const CCharString&, bool);   // 0x0078809B
 };
 
 void CTCMeleeTrap::ResetTrap()

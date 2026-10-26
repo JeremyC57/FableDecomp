@@ -81,8 +81,9 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CTCAD {                                  // interface type 0xAD (descriptive: the dependent-things component)
-    void KillDependentThings();                 // 0x007AEF60
+class CTCBoss { public:                                  // interface type 0xAD (descriptive: the dependent-things component)
+public:
+    void ClearEffects();   // 0x007AEF60
 };
 class CThing { public:
     unsigned char  _pad0[0x20];
@@ -120,12 +121,23 @@ class CThingCreatureBase : public CThing { public:
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +4
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
+};
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -136,7 +148,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0x114 - 4];
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCreatureAction_ScorpionTailWithdraw : public CCombatActionBase { public:   // retail sizeof 0x120
     C3DVector TargetPos;                        // +0x114 (retail sizeof 0x120; Ego_r +0x12C of 0x138)
@@ -155,9 +167,9 @@ class CModeScorpionKingTailPlunge : public CModeBase { public:
     bool                bRecovering;            // +0x88
     C3DVector           TargetPos;              // +0x89
     C3DVector           TailPos;                // +0x95
-    CBaseIntelligentPointer PTarget;            // +0xa1
-    CBaseIntelligentPointer PTailEmitter;       // +0xa9
-    CBaseIntelligentPointer PDustTrailEmitter;  // +0xb1
+    CIntelligentPointer<CThing> PTarget;            // +0xa1
+    CIntelligentPointer<CThing> PTailEmitter;       // +0xa9
+    CIntelligentPointer<CThing> PDustTrailEmitter;  // +0xb1
     void Recover();
 };
 #pragma pack(pop)
@@ -173,7 +185,7 @@ void CModeScorpionKingTailPlunge::Recover()
         if (effects.m_p->GetEffectFromString("TAIL_DUST_EFFECT", effectType))
             CreateEffectThing(effectType, &TailPos, false);
     }
-    PCreature->GetTCIfPresent<CTCAD>(0xad)->KillDependentThings();
+    PCreature->GetTCIfPresent<CTCBoss>(0xad)->ClearEffects();
     PCreature->SetCurrentAction(CCreatureAction_ScorpionTailWithdraw(PCreature, PTarget.GetPItem()));
 }
 }

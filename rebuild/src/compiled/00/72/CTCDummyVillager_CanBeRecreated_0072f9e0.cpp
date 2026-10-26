@@ -65,8 +65,15 @@ class CWorld { public:
 };
 template<class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
 
-class CTCDummyVillager { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCDummyVillager : public CTCBase { public:
     CThing*                             ParentThing;        // +0x04 (CTCBase)
     unsigned char                       _pad08[0x8];
     CIntelligentPointer<CThingBuilding> HomeBuilding;       // +0x10
@@ -78,7 +85,6 @@ class CTCDummyVillager { public:
     long                                DayToBeRecreated;   // +0x40
     long                                FrameToBeRecreated; // +0x44
     bool                                Respawnable;        // +0x48
-    CWorld* GetWorld();                                     // 0x00686A70 (CTCBase)
     bool CanBeRecreated();
 };
 
@@ -98,7 +104,7 @@ bool CTCDummyVillager::CanBeRecreated()
             if (!HomeBuilding.GetPItem()->GetIsAvailableForResidency())
                 return false;
             if ((house->OwnedByPlayer || house->IsInitiallyEmpty()) && !house->Rented) {
-                long today = GetWorld()->Clock->Day;
+                long today = GetWorld().Clock->Day;
                 DayToBeRecreated = Max(DayToBeRecreated, today);
                 return false;
             }
@@ -109,7 +115,7 @@ bool CTCDummyVillager::CanBeRecreated()
         if (work->HasTC(0xd5)) {
             CTCBuyableHouse* house = work->GetTC<CTCBuyableHouse>(0xd5);
             if ((house->OwnedByPlayer || house->IsInitiallyEmpty()) && !house->Rented) {
-                long today = GetWorld()->Clock->Day;
+                long today = GetWorld().Clock->Day;
                 DayToBeRecreated = Max(DayToBeRecreated, today);
                 return false;
             }

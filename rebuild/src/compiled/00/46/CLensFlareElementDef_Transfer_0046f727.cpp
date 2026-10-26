@@ -14,9 +14,7 @@ class CRGBColour { public: unsigned char B, G, R, A; };
 
 class CPersistContext {
 public:
-    void Transfer(float& value);                // 0x00431061
-    void Transfer(long& value);                 // 0x00431102
-    void Transfer(CRGBColour& value);           // 0x004595A3
+    template <class T> void Transfer(T& value);                // 0x00431061
 };
 
 class CLensFlareElementDef {

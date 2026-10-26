@@ -14,9 +14,10 @@ class CUserProfileManager { public:
     unsigned long Resolution;           // +0x48
     unsigned char _pad4c[0x104 - 0x4c];
     unsigned long ResolutionNewProfile; // +0x104
-    void ApplyValues();                 // 0x00407370
     void Save();                        // 0x0040A740
     void SetResolution(unsigned long value, bool save);
+protected:
+    void ApplyValues();   // 0x00407370
 };
 
 void CUserProfileManager::SetResolution(unsigned long value, bool save)

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00729A90, length 142 bytes (+2 int3 padding). `ret 4`. Vtable 0x0126664C.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 and
 // CBaseIntelligentPointer::SetPItem @ 0x00A01B90 (x2: the inline CIntelligentPointer(T*) ctor with a null item, vtable
-// 0x01238C6C), CCharString::CCharString() @ 0x0099E4B0 (x2), CTCBase::AddToGlobalUpdateTCs @ 0x00686ED0 (body).
+// 0x01238C6C), CCharString::CCharString() @ 0x0099E4B0 (x2), CTCBase::AddToGlobalTCs @ 0x00686ED0 (body).
 // Shape: one shared zero register (ebx) for every false/zero initialiser; members in declaration order, each 64-bit UID as two
 // dword stores; the intelligent pointer's vtable store sits between its base ctor and SetPItem(0).
 // Layout: PDB CTCActionUseScriptedHook (0x50; derives from CTCBase directly, OnActionUse is non-virtual): Usable +0xC,
@@ -13,15 +13,21 @@
 class CThing;
 class CBaseObject;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                       // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    void SetPItem(CBaseObject* item);           // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {     // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {     // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 class CCharString { public:
     void* PString;
@@ -35,7 +41,8 @@ public:
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    void AddToGlobalUpdateTCs();                // 0x00686ED0
+public:
+    void AddToGlobalTCs();   // 0x00686ED0
 };
 
 class CTCActionUseScriptedHook : public CTCBase {  // vtable 0x0126664C
@@ -46,10 +53,10 @@ public:
     bool PerformAction;                         // +0x0f
     bool TeleportToRegionEntrance;              // +0x10
     unsigned __int64 EntranceConnectedToUID;    // +0x18
-    CIntelligentPointer PEntranceConnectedTo;   // +0x20
+    CIntelligentPointer<CThing> PEntranceConnectedTo;   // +0x20
     bool EntranceLocked;                        // +0x28
     unsigned __int64 CameraTrackUID;            // +0x30
-    CIntelligentPointer PCameraTrack;           // +0x38
+    CIntelligentPointer<CThing> PCameraTrack;           // +0x38
     CCharString SoundName;                      // +0x40
     CCharString AnimationName;                  // +0x44
     long ReplacementObject;                     // +0x48
@@ -75,5 +82,5 @@ CTCActionUseScriptedHook::CTCActionUseScriptedHook(CThing* owner)
     , ReversedOnMiniMap(false)
     , HiddenOnMiniMap(false)
 {
-    AddToGlobalUpdateTCs();
+    AddToGlobalTCs();
 }

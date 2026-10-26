@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCOnHeroPush_Destruct(void* push);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCOnHeroPush_ScalarDeletingDestructor(void* push, int, unsigned int flags)
 {
-    CTCOnHeroPush_Destruct(push);
+    ((CTCBase*)(push))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(push);
+        operator delete(push);
     return push;
 }

@@ -4,7 +4,7 @@
 //   scalar deleting destructor 0x0079F510. Label correction: the catalog row "CTCDParticleEmitter::Destructor" is
 //   propagated; the vtable stored first, 0x0126C53C, is CTCPhysicalShieldSpell (rtti-vtables.tsv).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @
-//   0x0040F020 (inlined lookup of CTCDParticleEmitter, interface 0x4b = word 2 bit 11), CTCDParticleEmitter::FadeOrKill
+//   0x0040F020 (inlined lookup of CTCDParticleEmitter, interface 0x4b = word 2 bit 11), CTCDParticleEmitter::EnterTimelineEnd
 //   @ 0x006E05F0 (manifest "EnterTimelineEnd" is propagated), the set's recursive erase @ 0x0079EEC0 (as the landed
 //   tree destructor 0x0079F2E0), free @ 0x00BFEA14, ~CBaseIntelligentPointer @ 0x00A01C10 (x2), the def's virtual slot 1,
 //   CTCBase::~CTCBase @ 0x00686830.
@@ -38,14 +38,25 @@ class CThing { public:
         return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
     }
 };
-struct CBaseIntelligentPointer {                // CIntelligentPointer<T>: vptr + item
-    void*   __vftable;                          // +0x00
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCDParticleEmitter { public:                    // interface type 0x4b component
-    void FadeOrKill();                          // 0x006E05F0
+public:
+    void EnterTimelineEnd();   // 0x006E05F0
 };
 struct CDefPointee {
     virtual void v000();
@@ -97,21 +108,21 @@ class CTCPhysicalShieldSpell : public CTCBase { public:       // vtable 0x0126C5
     float CurWobbleTimer;                       // +0x24
     float WobbleDelta;                          // +0x28
     unsigned long ShieldColor;                  // +0x2c CRGBColour
-    CBaseIntelligentPointer ShieldEffect;       // +0x30
-    CBaseIntelligentPointer SwirlyEffect;       // +0x38
+    CIntelligentPointer<CThing> ShieldEffect;       // +0x30
+    CIntelligentPointer<CThing> SwirlyEffect;       // +0x38
     unsigned long LoopingSound;                 // +0x40
     bool  Pausable;                             // +0x44
     bool  Paused;                               // +0x45
     bool  CutSceneCancelled;                    // +0x46
     CThingPointerSet AllowReactionAttackers;    // +0x48
-    static __forceinline void FadeOrKillEffect(CBaseIntelligentPointer& effect)   // CTCSpecialAbilities helper, inlined
+    static __forceinline void FadeOrKillEffect(CIntelligentPointer<CThing>& effect)   // CTCSpecialAbilities helper, inlined
     {
         CThing* thing = effect.GetPItem();
         if (thing && !thing->IsDead()) {
             CTCDParticleEmitter* emitter = 0;
             if (thing->HasTC(0x4b))
                 emitter = thing->GetTC<CTCDParticleEmitter>(0x4b);
-            emitter->FadeOrKill();
+            emitter->EnterTimelineEnd();
         }
     }
     virtual ~CTCPhysicalShieldSpell();

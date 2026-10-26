@@ -48,7 +48,7 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
 class CScriptDataBase;
 class CEntityScriptBase;
 template <class T> class CCountedPointer { public: T* Data; void* Info; };
-struct __declspec(novtable) CEntityScriptBindingBase {
+class __declspec(novtable) CEntityScriptBindingBase { public:
     virtual const CCharString& GetEntityScriptName() const = 0;
 };
 template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
@@ -164,14 +164,17 @@ class CGameScriptInterface { public:                       // the quest's game s
     virtual void AutoSaveCheckPoint() const;   // slot 703 (+0xafc) AutoSaveCheckPoint
 };
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                                                 // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
     void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
     void PostAddScriptedEntities();                                                   // 0x00CB8930
     void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
+public:
+    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
+    bool IsActiveThreadTerminating();   // 0x00CB7940
 };
+namespace NScript {
 class CQ_BanditCampScript : public CScriptBase {
 public:
     struct CGate1GuardOuter { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_BanditCampScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00D014C0

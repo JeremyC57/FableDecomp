@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FF0C0, 199 bytes (`ret 10h`; PDB ?IsActionPointIndexBlocked@CTCNamedUserActionPoints@@UBE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@J@Z; `thing` is unused).
 // Callees: CTCGraphicAppearance::GetDummyObject(const CCharString&, long, unsigned long, C3DVector*, CRightHandedSet*, float)
 //   @ 0x004C08C0 on ParentThing->PTCGraphicAppearance (+0x64), __ftol2 @ 0x00BFEA70 (x then y), GetPItem @ 0x00A01B50,
-//   CTCBase::GetWorld() const @ 0x00686A80 -> PThingSearchTools (+0x20), CThingSearchTools::GetPFirstThingInRoughArea<
+//   CTCBase::PeekWorld() const @ 0x00686A80 -> PThingSearchTools (+0x20), CThingSearchTools::GetPFirstThingInRoughArea<
 //   CFilter_Bind3<CThingFilter_IsNot, CThingFilter_IsNot, CThingFilter_In2DRange>, CThingCreatureBase> @ 0x007FE730 (the PDB
 //   instantiation name). 1.0f is an immediate push, 0.5f an immediate store.
 // Layout: Ego_r.pdb CTCUserActionPointBase with 12-byte retail vectors (FreeActionPointIndexes +0x0c, BlockedActionPointIndexes
@@ -54,18 +54,35 @@ public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64 (retail)
 };
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
-    void* PData;
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 template <class T> struct vector {                      // STLport vector, 12 bytes
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     T& operator[](unsigned long n) const { return *(_M_start + n); }
 };
-struct CTCUserActionPointBase {
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+struct CTCUserActionPointBase : public CTCBase {
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08
     bool          IsInGlobalUpdateTCs;                  // +0x09
@@ -74,8 +91,7 @@ struct CTCUserActionPointBase {
     vector<long>  BlockedActionPointIndexes;            // +0x18
     long          NumberOfActionPoints;                 // +0x24
     long          FrameOfNextCheck;                     // +0x28
-    CBaseIntelligentPointer PThing;                     // +0x2c CIntelligentPointer<CThing>
-    const CWorld* GetWorld() const;                     // 0x00686A80 (CTCBase)
+    CIntelligentPointer<CThing> PThing;                     // +0x2c CIntelligentPointer<CThing>
 };
 class CTCNamedUserActionPoints : public CTCUserActionPointBase { public:
     vector<CCharString> Names;                          // +0x34
@@ -92,7 +108,7 @@ bool CTCNamedUserActionPoints::IsActionPointIndexBlocked(CThing& thing, C3DVecto
     CThingFilter_IsNot notUser(PThing.GetPItem());
     CThingFilter_IsNot notSelf(ParentThing);
     CFilter_Bind3<CThingFilter_IsNot, CThingFilter_IsNot, CThingFilter_In2DRange> filter(notSelf, notUser, inRange);
-    const CThingSearchTools* tools = GetWorld()->PThingSearchTools;
+    const CThingSearchTools* tools = PeekWorld().PThingSearchTools;
     CThingCreatureBase* blocker;
     return tools->GetPFirstThingInRoughArea(box, filter, &blocker) ? true : false;
 }

@@ -7,11 +7,13 @@
 // is cleared right before the call and returned as `mov al,[esp+3]`. The bank is a named local taken first:
 // retail loads it into ecx before any push (`mov eax,ecx` parks `this`); the chained form loads it last.
 class CCharString { public: void* m_pData; };
-struct CTextEntry;
-
-struct CDataBank {
-    CTextEntry* GetTextEntryFromGroup(unsigned long entryID, const CCharString& group, bool* found, long* index, bool flag);   // 0x009C9280
+namespace NGameText {
+class CTextEntry;
+class CDataBank { public:
+    const CTextEntry* GetTextEntryFromGroup(unsigned long entryID, const CCharString& group, bool& found, long* index, bool flag) const;   // 0x009C9280 (FableWin)
 };
+}
+using NGameText::CDataBank;
 class CWorld { public:
     unsigned char _pad_0x00[0x14];
     CDataBank*    PDataBank;                 // +0x14
@@ -28,6 +30,6 @@ bool CTCTalk::DoesSpeechExist(unsigned long entryID)
 {
     CDataBank* bank = g_pWorld->PDataBank;
     bool found = false;
-    bank->GetTextEntryFromGroup(entryID, DialogueVoice, &found, 0, false);
+    bank->GetTextEntryFromGroup(entryID, DialogueVoice, found, 0, false);
     return found;
 }

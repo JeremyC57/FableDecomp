@@ -9,7 +9,10 @@
 // retail takes its address (0x0126D7CC) instead of an immediate.
 // Local model: no engine header exists for CTCGuard; only FrameLastReceivedApology (+0x4c) is read.
 class CThing;
-long __fastcall GetCurrentFrame();                         // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                         // 0x0049D870
 extern long g_FramesPerSecond;                             // 0x01375550
 const long MAX_APOLOGY_SECONDS = 10;                       // 0x0126D7CC (.rdata: bound to a const reference)
 
@@ -28,7 +31,7 @@ class CTCGuard { public:
 
 long CTCGuard::GetTimeAgoThatCrimesCanBeApologisedFor() const
 {
-    long frames = GetCurrentFrame() - FrameLastReceivedApology;
+    long frames = CWorld::GetFrame() - FrameLastReceivedApology;
     long seconds = (frames - g_FramesPerSecond * 15) / g_FramesPerSecond;
     return Clamp(seconds, 0L, MAX_APOLOGY_SECONDS);
 }

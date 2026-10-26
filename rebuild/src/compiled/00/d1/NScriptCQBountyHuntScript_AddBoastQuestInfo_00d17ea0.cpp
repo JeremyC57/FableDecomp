@@ -68,11 +68,11 @@ class CGameScriptInterface { public:
 };
 extern CGameScriptInterface* g_pGameScriptInterface;       // 0x0143E8F8
 
-struct CQuestGlobals {
+class CScriptDef { public:
     unsigned char _pad[0xb60];
     long          BountyHuntBoastTimeLimit;                 // +0xb60
 };
-extern CQuestGlobals* g_pQuestGlobals;                      // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                      // 0x0143E90C
 
 class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
@@ -98,7 +98,7 @@ using NScript::CQ_BountyHuntScript;
 
 void NScript::CQ_BountyHuntScript::AddBoastQuestInfo()
 {
-    g_pGameScriptInterface->SetTimer(BoastTime.Index, g_pQuestGlobals->BountyHuntBoastTimeLimit);
+    g_pGameScriptInterface->SetTimer(BoastTime.Index, pGlobalScriptDef->BountyHuntBoastTimeLimit);
     {
         CCharString text("HUD_CLOCK_ICON", -1);
         BoastTimerID = GSI->AddQuestInfoTimer(BoastTime, text, 1.0f);

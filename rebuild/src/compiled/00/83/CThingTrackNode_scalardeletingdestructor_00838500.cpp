@@ -21,7 +21,7 @@ class CThingGameObject { public:                          // the polymorphic thi
     virtual void v00();
     unsigned char _pad04[0xcc];                    // +0x04
     CThingGameObject();
-    ~CThingGameObject();                           // 0x00838A00
+    virtual ~CThingGameObject();                           // 0x00838A00
     static void __fastcall operator delete(void* p);   // 0x004C73B0
 };
 

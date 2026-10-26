@@ -10,8 +10,7 @@
 #include "engine/CChunkedFileChunk.h"
 #undef CChunkedFileChunk
 class CChunkedFileChunk { public:                  // vtable 0x0129E474 (.?AVCChunkedFileChunk@@)
-    void* _vptr;
-    ~CChunkedFileChunk();                   // 0x00AA75C0 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
+    virtual ~CChunkedFileChunk();                   // 0x00AA75C0 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
 };
 class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;

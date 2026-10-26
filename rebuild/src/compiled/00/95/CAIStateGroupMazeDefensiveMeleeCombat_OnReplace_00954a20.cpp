@@ -2,10 +2,10 @@
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the world in a named local and the combat manager chained from it (`world->m_pCombatManager->DeregisterCombatant(creature)`): the manager loads straight into ecx after the GetPWorld call, then the creature push
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00954A20, length 129 bytes (+ int3 padding); the first block is the
 // CAIStateGroup_JackOfBladesBase::Cleanup (0x00972110) one.
-// Callees: CThingCreatureBase::IsRegisteredCombatant @ 0x00662410 (landed name; manifest
+// Callees: CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410 (landed name; manifest
 // "C3DAnimationBlendState::AddCombinationBlend" is propagated), CAIStateGroupBase::GetPWorld @ 0x008FCFC0,
 // CCombatManager::DeregisterCombatant(CThingCreatureBase*) @ 0x006ED9C0 (world +0x4c), CVectorMap::LowerBound
-// @ 0x0040F020 (inlined interface lookup, type 0x31 = CTCCreatureModeManager), CTCCreatureModeManager::HasMode
+// @ 0x0040F020 (inlined interface lookup, type 0x31 = CTCCreatureModeManager), CTCCreatureModeManager::IsModeActive
 // @ 0x0073A8A0 (descriptive), CTCCreatureModeManager::RemoveMode(unsigned long) @ 0x0073ABA0.
 //
 // Shape: the creature is a named local read before the world call (edi) and the combat manager a named
@@ -29,7 +29,6 @@ class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    bool IsRegisteredCombatant();               // 0x00662410
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -43,11 +42,14 @@ class CThingCreatureBase { public:
         }
         return false;
     }
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 
 class CTCCreatureModeManager { public:                 // interface type 0x31
-    bool HasMode(unsigned long mode);           // 0x0073A8A0
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 
 class CCombatManager { public:
@@ -81,13 +83,13 @@ struct CAIStateGroup_MazeDefensiveMeleeCombat : CAIStateGroupBase {
 
 void CAIStateGroup_MazeDefensiveMeleeCombat::OnReplace()
 {
-    if (PBrain->PCreature->IsRegisteredCombatant()) {
+    if (PBrain->PCreature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->PCreature;
         CWorld* world = GetPWorld();
         world->m_pCombatManager->DeregisterCombatant(creature);
     }
     CTCCreatureModeManager* modes;
     PBrain->PCreature->GetInterface(&modes, 0x31);
-    if (modes->HasMode(0x19))
+    if (modes->IsModeActive(0x19))
         modes->RemoveMode(0x19);
 }

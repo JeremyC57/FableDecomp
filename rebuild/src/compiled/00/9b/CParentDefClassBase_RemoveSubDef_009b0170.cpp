@@ -16,7 +16,10 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }   // "" = the shared empty literal 0x0129AAF4
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC-32 kernel
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC-32 kernel
 
 struct CSubDefInfo {                        // CDefClassBase::CSubDefInfo (8 bytes)
     long DefIndex;                          // +0
@@ -101,6 +104,6 @@ class CParentDefClassBase { public:
 
 void CParentDefClassBase::RemoveSubDef(const CCharString& name)
 {
-    SubDefInfoMap.Remove(Calc_004014a0(0, name.GetPString(), name.GetLength()));
+    SubDefInfoMap.Remove(CCRC::Calc(0, name.GetPString(), name.GetLength()));
     SubDefInfoMap.Sort();
 }

@@ -54,9 +54,10 @@ public:
     ~CDiskFileWin32() { Close(); }
     void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099A6A0
     void Close();                                           // 0x0099A920
-    void SetPosition(long position);                        // 0x0099ABF0
     void Read(void* data, long size, CASuspendableProcess* process = 0);   // 0x0099A960
     long GetLength() const { return Length; }
+public:
+    virtual void SetPosition(long);   // 0x0099ABF0
 };
 
 class CTCPhotojournalCapture {

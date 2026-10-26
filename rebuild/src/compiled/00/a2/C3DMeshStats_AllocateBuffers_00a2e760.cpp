@@ -12,9 +12,14 @@
 // add commutes to `add eax,ebp`).
 // Leaf: AllocateBuffers@C3DMeshStats
 class CMovableResource { public: virtual void RelocateData(); };
-class CMovableResourceMemoryPool { public:
+class CHandleBasedMemoryPool
+{
+public:
+    void* GetPointerFromHandle(long);   // 0x00A026B0
+};
+
+class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:
     bool AllocateResource(long* handle, CMovableResource* owner, unsigned long size, unsigned long flags);   // 0x00A62E40
-    void* GetPointerFromHandle(long handle);        // 0x00A026B0 (CHandleBasedMemoryPool)
 };
 class C3DHelperPoint { public: unsigned char _body[0x14]; };
 class C3DDummyObject { public: unsigned char _body[0x38]; };

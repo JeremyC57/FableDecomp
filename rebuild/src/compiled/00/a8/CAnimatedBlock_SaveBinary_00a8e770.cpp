@@ -15,10 +15,11 @@ public:
     virtual void v02();
     virtual void v03();
     virtual void Write(const void* data, long size);   // slot 4
-    void WriteULong(unsigned long value);       // 0x00993EA0
-    void WriteBool(bool value);                 // 0x00993E30
     void WriteUChar(unsigned char value);       // 0x00993E50
     void WriteUShort(unsigned short value);     // 0x00993E80
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 struct CAnimatedBlock {
@@ -38,14 +39,14 @@ struct CAnimatedBlock {
 
 void CAnimatedBlock::SaveBinary(CDataOutputStream* stream) const
 {
-    stream->WriteULong(m_firstIndex);
-    stream->WriteULong(m_count);
-    stream->WriteBool(m_flagA);
+    stream->WriteULONG(m_firstIndex);
+    stream->WriteULONG(m_count);
+    stream->WriteEBOOL(m_flagA);
     stream->WriteUChar(m_type);
-    stream->WriteBool(m_flagB);
-    stream->WriteULong(VertexCount);
+    stream->WriteEBOOL(m_flagB);
+    stream->WriteULONG(VertexCount);
     stream->WriteUShort(BonesPerVertex);
-    stream->WriteBool(PalettedFlag);
+    stream->WriteEBOOL(PalettedFlag);
     stream->WriteUChar(GroupCount);
     stream->Write(Groups, GroupCount);
 }

@@ -9,7 +9,8 @@
 // GetPWorld and pushes it afterwards); the world itself is a named local too, which is what keeps the
 // creature push after the call instead of before it. Base layout modelled locally (PDB names).
 class CThingCreatureBase { public:
-    bool IsRegisteredCombatant();           // 0x00662410
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 
 class CCombatManager { public:
@@ -39,7 +40,7 @@ struct CAIStateGroup_MazeBase : CAIStateGroupBase {
 
 void CAIStateGroup_MazeBase::OnReplace()
 {
-    if (PBrain->Creature->IsRegisteredCombatant()) {
+    if (PBrain->Creature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->Creature;
         CWorld* world = GetPWorld();
         world->m_pCombatManager->DeregisterCombatant(creature);

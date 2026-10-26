@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BC5E0, length 123 bytes, `ret 8`. Vtable 0x0127D5BC.
 // Callees: CCombatActionBase::CCombatActionBase(owner, actionCode, const CSoundPair&) @ 0x00858030,
 //          CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, CBaseIntelligentPointer::SetPItem @ 0x00A01B90,
-//          CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName @ 0x008574D0
+//          CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0
 //          (manifest label "CTCInGameMenu::SetPDef" is propagated), CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the CSoundPair temporary zeroed from eax by its inline constructor; after the vtable store the
 //   PUndeadFollower member (addressed once in edi) runs the out-of-line base constructor, its own vtable store
@@ -42,7 +42,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);                                           // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_CastWillReclaimUndeadFollower : public CCombatActionBase { public:   // vtable 0x0127D5BC
@@ -57,6 +58,6 @@ CCreatureAction_CastWillReclaimUndeadFollower::CCreatureAction_CastWillReclaimUn
 {
     {
         CCharString name("WILL_CAST_FORCE_SPELL_DELIVER", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
 }

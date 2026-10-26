@@ -60,11 +60,12 @@ class CDisplayManager { public:
     unsigned char  _pad204[0x214 - 0x204];
     bool           Rendering;                               // +0x214
     void ToggleRendering();                                 // 0x009BEF20 (descriptive)
-    void Clear(const CRGBColour& colour, unsigned long flags);   // 0x009BE420
-    void BeginFrame();                                      // 0x009BF220 (descriptive)
-    void EndFrame();                                        // 0x009BEF50 (descriptive)
-    void Present();                                         // 0x009BEEB0 (descriptive)
-    void SetRenderTarget(const CRenderTarget& target);      // 0x009BF160
+public:
+    bool SetRenderTargetAsBackScreen();   // 0x009BF220
+    void EndRender();   // 0x009BEF50
+    bool SwapScreens();   // 0x009BEEB0
+    void ClearRenderTarget(const CRGBColour&, unsigned long);   // 0x009BE420
+    bool SetRenderTarget(CRenderTarget&);   // 0x009BF160
 };
 struct CTextSettings {
     unsigned char _pad00[0x38];
@@ -148,13 +149,13 @@ void CProgressDisplay::RenderProgress(const CCharString& textTag, float progress
     CRenderTarget oldTarget(display->RenderTargetSurface, display->RenderTargetDepthBuffer);
     renderer->SetViewport(C2DBoxF(0.0f, 0.0f, (float)g_ProgressScreenWidth, (float)g_ProgressScreenHeight));
     if (FullScreen)
-        display->Clear(CRGBColour(0, 0, 0, 0xff), 7);
-    display->BeginFrame();
+        display->ClearRenderTarget(CRGBColour(0, 0, 0, 0xff), 7);
+    display->SetRenderTargetAsBackScreen();
     if (!DebugDisplay)
         DrawProgress(textTag, progress, showText);
     renderer->Flush(true);
-    display->EndFrame();
-    display->Present();
+    display->EndRender();
+    display->SwapScreens();
     renderer->SetViewport(oldViewport);
     display->SetRenderTarget(oldTarget);
     if (wasRendering)

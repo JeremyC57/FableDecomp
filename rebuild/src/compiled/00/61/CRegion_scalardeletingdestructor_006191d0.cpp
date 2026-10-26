@@ -20,7 +20,6 @@ class CRegion { public:
 extern "C" void __fastcall InnerDtor_0051a110(void* subAtPlus4);
 
 // operator delete (cdecl)
-extern "C" void __cdecl EngineOperatorDelete(void* p);
 
 // __fastcall: this in ecx, flags on the stack. Model via __fastcall with an
 // unused edx dummy so the real `flags` param lands on the stack (=> ret 4).
@@ -30,6 +29,6 @@ extern "C" void* __fastcall VecDelDtor(CRegion* region, int edxDummy, unsigned i
     // scalar dtor on the subobject at self+4
     InnerDtor_0051a110((char*)region + 4);
     if (flags & 1)
-        EngineOperatorDelete(region);
+        operator delete(region);
     return region;
 }

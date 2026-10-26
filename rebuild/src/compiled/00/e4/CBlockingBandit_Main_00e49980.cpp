@@ -12,6 +12,7 @@
 //   +0x18. pGlobalScriptDef: the toll bandit's close-to-exit distance +0x43c and fade time +0x440 (PDB +0x470/+0x474
 //   TollBanditCloseToExit / TollBanditTimeToFade; the retail def is 0x34 smaller ahead of them, as in the landed
 //   CSafeTrader::Main 0x00E4A280).
+namespace NScript { class CPredicateBase; }
 class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
@@ -72,11 +73,17 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
     CCountedPointer PImp;                              // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                  // 0x00E241B0
@@ -86,8 +93,9 @@ void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float
 struct CCountedPointerWords { void* Data; void* Info; };
 class CBaseObject { public:                                   // {vptr, intelligent-pointer link}
     void* IntelligentPointer;                          // +0x04
-    CBaseObject();                                     // 0x0099A380
-    virtual ~CBaseObject();                            // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
     CCountedPointerWords PImp;                         // +0x08
@@ -129,15 +137,20 @@ class CScriptDef { public:
 };
 extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_SunnyvaleMasterData;
-class CBlockingBandit {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CBlockingBandit : public CEntityScriptBase {
 public:
     void*                   __vftable;                 // +0x00
     CGameScriptInterface*   Game;                      // +0x04
     CScriptThing            Me;                        // +0x08
     CV_BanditTollScript*    ParentClass;               // +0x14
     CQ_SunnyvaleMasterData* PMasterData;               // +0x18
-    void RegisterFilter(CIsThingAlive& filter);        // 0x00F35B10
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 
@@ -145,7 +158,7 @@ void CBlockingBandit::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

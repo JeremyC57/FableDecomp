@@ -10,7 +10,14 @@ extern "C" void __fastcall CGlobalDef_dtor_10c(void* p){ (void)p; g_calls++; }
 extern "C" void __fastcall CGlobalDef_dtor_100(void* p){ (void)p; g_calls++; }
 extern "C" void __fastcall CGlobalDef_dtor_0f4(void* p){ (void)p; g_calls++; }
 extern "C" void __fastcall CGlobalDef_dtor_shared(void* p){ g_calls++; g_last_shared = (unsigned long)p; }
-extern "C" void __fastcall CGlobalDef_base_dtor(void* p){ (void)p; g_calls++; }
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();
+};
+CParentDefClassBase::~CParentDefClassBase()
+{
+    void* p = (void*)this; (void)p; (void)p; g_calls++;
+}
 
 extern "C" void __fastcall CGlobalDef_dtor(CGlobalDef* thisptr);
 

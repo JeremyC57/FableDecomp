@@ -74,7 +74,7 @@ struct CThingManager_Retail {
     CThing_Retail* GetThingWithUID(__int64 uid);   // 0x0051ED80 (the label "CStopWatch::GetTicks" is propagated)
     void OnThingKill(CThing_Retail* thing);        // 0x00520C80
 };
-struct CWorldMap_Retail {
+class CWorldMap { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009();
     virtual bool IsMapLoaded(long map);            // slot 10 (+0x28)
@@ -83,8 +83,9 @@ struct CWorldMap_Retail {
     long GetCurrentRegionNumber();                 // 0x004FB150 (the label "CWorld::DrawGetEnvironment" is propagated)
     CRegion_Retail* GetRegion(long region);        // 0x004FC180
     void SetRegionsAsConnectedInGraph(long a, long b, long c);   // 0x004FC970
-    long GetRegionNumberFromName(const CCharString& name);      // 0x004FC210
     void ApplyScriptBrush(const CCharString& name, long flag);  // 0x004FE510 (the label "CDrawQuestInfo::OracleSymbolPushBack" is propagated)
+public:
+    long GetRegionNumberFromName(const CCharString&) const;   // 0x004FC210
 };
 struct CEnvironmentSpellEffectInterpolator_Retail;
 struct CEnvironment_Retail {
@@ -105,10 +106,10 @@ class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual CThingManager_Retail* GetThingManager();   // slot 3 (+0x0c)
         virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
-    virtual CWorldMap_Retail* GetWorldMapForEdit();  // slot 12 (+0x30)
-    virtual CWorldMap_Retail* GetWorldMap();         // slot 13 (+0x34)
+    virtual CWorldMap* GetWorldMapForEdit();  // slot 12 (+0x30)
+    virtual CWorldMap* GetWorldMap();         // slot 13 (+0x34)
     unsigned char                        _pad04[0x10];
-    CWorldMap_Retail*                    PWorldMap_ptr;          // +0x14 (engine/CWorld.h)
+    CWorldMap*                    PWorldMap_ptr;          // +0x14 (engine/CWorld.h)
     CEnvironment_Retail*                 PEnvironment_ptr;       // +0x18
     unsigned char                        _pad1c[0x58];
     COpinionReactionManager_Retail*      POpinionReactionManager_Data;   // +0x74

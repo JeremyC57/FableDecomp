@@ -2,7 +2,7 @@
 // Leaf: SetAttractionIcon
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CFC90, 261 bytes (`ret 0Ch`; Ego_r.pdb `?SetAttractionIcon@CTCWife@@AAEX_NME@Z`).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (interface 0x45, CTCEmoteIcon: bit 5 of the bitset
-//          word +0x28); GFGetCurrentFrame 0x0049D870 (`__fastcall`, no arguments); CTCBase::GetDefinitions() 0x006869D0
+//          word +0x28); GFGetCurrentFrame 0x0049D870 (`__fastcall`, no arguments); CTCBase::GetDefinitionManager() 0x006869D0
 //          (x3); CTCEmoteIcon::SetEmoteIcon(EEmotePriority, long, float, float, unsigned char) 0x0071AAB0;
 //          CPlayerGui::Refresh(long) 0x004378C0 on g_pPlayerGui 0x013B8790.
 // Layout: engine/CTCWife.h holds up to the GiftsReceived map, then retail sits 4 bytes below the PDB (as the landed
@@ -17,7 +17,10 @@
 //        expression folds to setg+3).
 class CThing;
 class CTCBase;
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};            // 0x0049D870
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -51,7 +54,7 @@ struct CWifeIconDefs {                          // the global definitions' +0xd0
     long          WifeAttractionIconWithRing;   // +0x120
     long          WifeAttractionIconMarried;    // +0x124
 };
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xd0];
     CWifeIconDefs* Defs;                        // +0xd0
 };
@@ -60,15 +63,21 @@ class CPlayerGui { public:
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
-class CTCWife { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCWife : public CTCBase { public:
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x18];
     long          FrameGotMarriedToThePlayer;   // +0x20
     unsigned char _pad_0x24[0x6d];
     bool          ReceivedWeddingRing;          // +0x91
-    CDefinitionHolder* GetDefinitions();        // 0x006869D0 (CTCBase)
-    bool IsMarriageFrameReached() const { return FrameGotMarriedToThePlayer <= GFGetCurrentFrame(); }   // inline helper (descriptive)
+    bool IsMarriageFrameReached() const { return FrameGotMarriedToThePlayer <= CWorld::GetFrame(); }   // inline helper (descriptive)
     void SetAttractionIcon(bool show, float scale, unsigned char alpha);
 };
 
@@ -81,11 +90,11 @@ void CTCWife::SetAttractionIcon(bool show, float scale, unsigned char alpha)
     bool wasShowing = icon->EmoteIcon != 0;
     if (show) {
         if (IsMarriageFrameReached()) {
-            CDefinitionHolder* definitions = GetDefinitions();
+            const CGameDefinitionManager* definitions = (&GetDefinitionManager());
             icon->SetEmoteIcon(3, definitions->Defs->WifeAttractionIconMarried, -1.0f, scale, alpha);
         } else
-            icon->SetEmoteIcon(4, ReceivedWeddingRing ? GetDefinitions()->Defs->WifeAttractionIconWithRing
-                                                      : GetDefinitions()->Defs->WifeAttractionIcon,
+            icon->SetEmoteIcon(4, ReceivedWeddingRing ? GetDefinitionManager().Defs->WifeAttractionIconWithRing
+                                                      : GetDefinitionManager().Defs->WifeAttractionIcon,
                                -1.0f, scale, alpha);
     } else {
         bool married = IsMarriageFrameReached();

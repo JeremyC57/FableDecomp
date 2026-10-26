@@ -39,9 +39,10 @@ class CTCInventoryWeapons : public CTCInventoryBase_Retail, public NHeroInformat
     unsigned char _pad_0x149[0x160 - 0x149];  // ActiveRangedWeaponDefIndex (unaligned) .. the primitive handles
     long ConfiscatedActiveMeleeWeaponDefIndex;    // +0x160
     long ConfiscatedActiveRangedWeaponDefIndex;   // +0x164
-    void RefreshActiveWeaponData();           // 0x005C30D3
     void RefreshSheathedWeapons();            // 0x005C9962
     void ConfiscateItems(const CItemVector& items);
+public:
+    void RefreshActiveWeaponData() const;   // 0x005C30D3
 };
 void CTCInventoryWeapons::ConfiscateItems(const CItemVector& items)
 {

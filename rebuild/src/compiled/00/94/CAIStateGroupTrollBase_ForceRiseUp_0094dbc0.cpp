@@ -1,7 +1,7 @@
 // CAIStateGroup_TrollBase::ForceRiseUp() -- a troll lying in mode 0x1E gets up (rise-up action, wait for it)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094DBC0, length 122 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface on the brain's creature, type 0x31 = bit 17
-// of the presence word at +0x24), CTCCreatureModeManager::HasMode(long) @ 0x0073A8A0,
+// of the presence word at +0x24), CTCCreatureModeManager::IsModeActive(long) @ 0x0073A8A0,
 // CCreatureAction_RiseUp::CCreatureAction_RiseUp(CThingCreatureBase*) @ 0x008BD880,
 // CAIStateGroupBase::AIAction_PerformActionAndWait(CCreatureActionBase*, bool) @ 0x0097DB70,
 // CCombatActionBase::~CCombatActionBase @ 0x0062E900 (the landed 0x00920960 / 0x0095B680 identification).
@@ -74,7 +74,8 @@ class CAIBrain { public:
 class CThingCreatureBase;
 
 class CTCCreatureModeManager { public:                 // interface type 0x31 component
-    bool HasMode(long mode);                    // 0x0073A8A0
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 
 class CCreatureActionBase { public:
@@ -84,7 +85,7 @@ class CCreatureActionBase { public:
 
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];                // +0xa8..+0x113
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 
 class CCreatureAction_RiseUp : public CCombatActionBase { public:
@@ -102,6 +103,6 @@ struct CAIStateGroup_TrollBase_Methods : CAIStateGroup_TrollBase {
 void CAIStateGroup_TrollBase_Methods::ForceRiseUp()
 {
     CTCCreatureModeManager* modes;
-    if (GetPBrain()->PCreature->GetInterface(&modes, 0x31) && modes->HasMode(0x1E))
+    if (GetPBrain()->PCreature->GetInterface(&modes, 0x31) && modes->IsModeActive(0x1E))
         AIAction_PerformActionAndWait(&CCreatureAction_RiseUp(GetCreature()), false);
 }

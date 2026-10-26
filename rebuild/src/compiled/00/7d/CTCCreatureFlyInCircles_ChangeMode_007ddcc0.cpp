@@ -28,7 +28,7 @@ class CCreatureActionBase { public:                            // retail sizeof 
 };
 class CCombatActionBase : public CCreatureActionBase { public:        // retail sizeof 0x114
     unsigned char _bodyA8[0x114 - 0xa8];
-    ~CCombatActionBase();                               // 0x0062E900
+    virtual ~CCombatActionBase();                               // 0x0062E900
 };
 struct __declspec(novtable) CCreatureAction_DragonFlight : CCombatActionBase {
     unsigned char FaceTarget;                           // +0x114

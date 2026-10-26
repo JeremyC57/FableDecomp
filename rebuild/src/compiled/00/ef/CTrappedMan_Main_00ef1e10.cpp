@@ -9,7 +9,8 @@
 //          PMasterData +0x18.
 // Shape: the landed CHHUndead::Main filter block; `WAIT_UNTIL(Me.MsgIsHitBy("SCRIPT_NAME_HERO"))` is a `while (!x)` whose
 //          neg/sbb/inc bool survives the string temporary's dtor (VC duplicates the test at the loop bottom); the outer
-//          loop is a rotated `while (!IsDone())`.
+//          loop is a rotated `while (!IsActiveThreadTerminating())`.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -62,8 +63,14 @@ class CGameScriptInterface { public:   // retail vtable 0x01260F0C (ghidra_out/c
     virtual void v257(); virtual void v258(); virtual void v259(); virtual void v260(); virtual void v261(); virtual void v262(); virtual void v263();
     virtual float GetHealth(const CScriptThing& thing) const;   // slot 264 (+0x420)
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
@@ -71,15 +78,20 @@ struct CIsThingAlive {                             // vtable 0x012C32F0: a filte
 struct CPersonalScript_EmptyScript;
 struct CEmptyData;
 
-class CTrappedMan {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CTrappedMan : public CEntityScriptBase {
 public:
     void*                        __vftable;        // +0x00
     CGameScriptInterface*        Game;             // +0x04
     CScriptThing                 Me;               // +0x08
     CPersonalScript_EmptyScript* ParentClass;      // +0x14
     CEmptyData*                  PMasterData;      // +0x18
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -87,22 +99,22 @@ void CTrappedMan::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
-    while (!IsDone()) {
+    while (!IsActiveThreadTerminating()) {
         while (!Me.MsgIsHitBy("SCRIPT_NAME_HERO")) {
             Game->NewScriptFrame();
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
         }
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         Game->AddScreenMessage("You hit the man on the hill!", 0);
         if (Game->GetHealth(Me) < 1e-4f) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             Game->AddScreenMessage("You hit him to the point of death!", 0);
         }

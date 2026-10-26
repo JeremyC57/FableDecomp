@@ -79,7 +79,7 @@ class CVertexShader : public CShaderBase { public:               // vtable 0x012
 
 class CBaseClass { public:
     virtual void v00();
-    ~CBaseClass();                                 // 0x0099A2E0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
 };
 struct IDirect3DSurface9;
 class CSurface { public:                                  // vtable 0x0122F84C, 0x10 bytes
@@ -98,7 +98,7 @@ class CRenderTarget : public CBaseClass { public:                // 0x24 bytes, 
 class CEngineComponent { public:
     virtual void v00();
     void** m_ppOwnerLink;                          // +0x04
-    ~CEngineComponent();                           // 0x00B59730
+    virtual ~CEngineComponent();                           // 0x00B59730
 };
 
 class CTexture;

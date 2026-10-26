@@ -18,7 +18,7 @@
 // Layout: CCombatManager / CCombatantInfo as the landed 0x006E9D90 and 0x006E97F0 (World +0x20, Combatants +0x10,
 // Attacked +4, CurrentSequence +0x24, CombatSequences +0x28); the ring-rotation sub-def's chance +0x2c and speed
 // +0x40 (descriptive names).
-extern unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 __forceinline unsigned long WorldRandom(unsigned long& seed)
 {

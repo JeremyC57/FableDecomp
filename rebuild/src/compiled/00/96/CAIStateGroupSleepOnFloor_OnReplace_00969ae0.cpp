@@ -43,18 +43,26 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
-    virtual void v00();
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
+public:
+    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { T* item = other.GetPItem(); SetPItem(item); return *this; }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 struct CTCOccupiable {                          // interface 0xac
     CThing* GetOccupant();                      // 0x0087C3E0
@@ -79,7 +87,7 @@ class CCreatureActionBase { public:
     virtual void v10();
     virtual void* Clone() const;                    // slot 11 (+0x2c)
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                         // 0x00693EF0
+    virtual ~CCreatureActionBase();                         // 0x00693EF0
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
@@ -131,7 +139,7 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
 };
 struct CAIStateGroup_SleepOnFloor : CAIStateGroupBase {
-    CIntelligentPointerThing PSleepPoint;       // +0x14
+    CIntelligentPointer<CThing> PSleepPoint;       // +0x14
     bool Asleep;                                // +0x1c
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
     CThingCreature* GetCreatureThing() const { return PBrain->PCreature; }
@@ -145,7 +153,7 @@ void CAIStateGroup_SleepOnFloor::OnReplace()
     CThing* creature = PBrain->PCreature;
     if (point->GetOccupant() == creature)
         point->SetOccupant(0);
-    PSleepPoint = CIntelligentPointerThing(0);
+    PSleepPoint = CIntelligentPointer<CThing>(0);
     if (Asleep) {
         CCreatureAction_PlayAnimation action(GetCreature(), "ST_SLEEP_ON_FLOOR_OUTOF", CSoundPair(), false, true, false, 0, 0);
         CCreatureActionBase* pAction = &action;

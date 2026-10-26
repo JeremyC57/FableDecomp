@@ -12,8 +12,8 @@ class CInputProcessControlCreatureActivateZTargetOnPress
 
 void CInputProcessControlCreatureActivateZTargetOnPress::dtor() { g_dtor_calls++; }
 
-extern void __cdecl fable_operator_delete(void* p);
-void __cdecl fable_operator_delete(void* p) { g_delete_calls++; g_last_deleted = p; }
+void __cdecl operator delete(void* p)
+{ g_delete_calls++; g_last_deleted = p; }
 
 void* __fastcall CInputProcessControlCreatureActivateZTargetOnPress_scalar_deleting_destructor(
     CInputProcessControlCreatureActivateZTargetOnPress* process, int, unsigned int flags);

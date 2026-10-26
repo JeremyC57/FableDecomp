@@ -13,7 +13,7 @@
 //         minus 0x10 from UsingComponents on): UniqueID +0x18, PBaseDef +0x70, DefGlobalIndex +0x8C, PlayerNumber +0x90,
 //         Dead +0x91 bit 0.
 #pragma pack(push, 1)
-struct CBasicStringChar {                             // CBasicString<char>, 13 bytes
+template <class T> class CBasicString { public:                             // CBasicString<char>, 13 bytes
     char*         PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
@@ -21,7 +21,7 @@ struct CBasicStringChar {                             // CBasicString<char>, 13 
     bool operator==(const char* text) const;          // 0x004115A0
 };
 class CCharStringData { public:                              // 17 bytes
-    CBasicStringChar Data;
+    CBasicString<char> Data;
     long             NoRefs;
 };
 #pragma pack(pop)
@@ -33,8 +33,9 @@ public:
 class CThingBaseDef;
 struct CDefPointer { const CThingBaseDef* Object; };  // CDefPointer<const CThingBaseDef>
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
     bool GetDef(long index, CDefPointer* out);        // 0x0042AF3C
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CThingManager { public:
     unsigned char _pad00[0x20];

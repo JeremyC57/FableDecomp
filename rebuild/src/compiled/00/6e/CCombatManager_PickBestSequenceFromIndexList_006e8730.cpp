@@ -6,7 +6,7 @@
 // Shape: the world is loaded first (`mov ecx,[ecx+20h]`), the count (`(last-first) >> 2`) is formed in esi and
 // scaled by 100 after the seed call; the range helper is `range ? seed % range : 0` (`xor edx,edx ; test ;
 // je ; div`), then the signed /100 (`imul 51EB851Fh ; sar 5 ; shr 1Fh ; add`) indexes the vector.
-extern unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {

@@ -55,8 +55,9 @@ class CScriptThing : public CBaseClass { public:                          // vta
 class CBaseObject { public:                                        // CBaseIntelligentPointer root (vtable 0x0129A7D8)
     virtual void b000();
     void* m_pIntelligentPointer;                            // +0x04
-    CBaseObject();                                          // 0x0099A380
-    ~CBaseObject();                                         // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectBase : public CBaseObject { public:        // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
@@ -146,10 +147,12 @@ class CGameScriptInterface { public:                       // the quest's game s
     virtual void PauseAllNonScriptedEntities(bool pause);   // slot 379 (+0x5ec) PauseAllNonScriptedEntities
 };
 namespace NScript {
-struct CScriptBase {                                        // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                        // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                       // 0x00CB7940
 };
+namespace NScript {
 class CQ_GuildTrainingScript : public CScriptBase {
 public:
     CGameScriptInterface* Game;                             // +0x40

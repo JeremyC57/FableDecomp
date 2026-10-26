@@ -2,7 +2,7 @@
 // Leaf: ReadTable
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D4AB0, length 368 bytes (+ int3 padding), `ret 4`.
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow(unsigned char*, long) @ 0x00993CA0 (landed) for the four inlined 4-byte reads,
-// CMemoryDataOutputStream::SetSize(long) @ 0x00996BC0 (a thunk onto the +8 buffer, label unverified), CMemoryDataOutputStream::
+// CMemoryDataOutputStream::ReserveSize(long) @ 0x00996BC0 (a thunk onto the +8 buffer, label unverified), CMemoryDataOutputStream::
 // ReadFromInputStream(CDataInputStream&, long) @ 0x00996970 (a thunk onto 0x009964E0, label unverified), CMemoryDataOutputStream::PeekData()
 // @ 0x00995E70. Global 0x013CA824: the string-table data pointer (blob + 4).
 // Layout: retail CDefStringTable as the landed WriteTable (0x009D4A50): StringStream +0x0c (24 bytes), StringCount +0x24, RandomID +0x2c.
@@ -42,9 +42,10 @@ struct CDataInputStreamReader : CDataInputStream {         // the engine layout 
 
 class CMemoryDataOutputStream { public:                           // 24 bytes
     unsigned char _body[0x18];
-    void SetSize(long size);                               // 0x00996BC0
     void ReadFromInputStream(CDataInputStreamReader& in, long size);   // 0x00996970
     void* PeekData();                                      // 0x00995E70
+public:
+    void ReserveSize(unsigned long);   // 0x00996BC0
 };
 extern void* g_pStringTableData;                           // 0x013CA824
 
@@ -64,7 +65,7 @@ void CDefStringTable::ReadTable(CDataInputStreamReader& in)
     StringCount = in.ReadLong();
     long size = in.ReadLong();
     CMemoryDataOutputStream* data = &StringStream;
-    data->SetSize(size);
+    data->ReserveSize(size);
     data->ReadFromInputStream(in, size);
     g_pStringTableData = (unsigned char*)data->PeekData() + 4;
 }

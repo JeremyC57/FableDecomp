@@ -10,19 +10,27 @@
 // Label correction: the catalog's `_Cons_val<allocator<pair<unsigned __int64 const,CGroupMemberData>>>` is propagated
 // (three arguments, plain `ret`, the result pointer returned).
 class CThing;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +0x04
-    CBaseIntelligentPointer();              // 0x00A01B10
-    CThing* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CThing* item);            // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {         // vtable 0x01264BAC
-    virtual void v00();
+class CThingAICreature;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {         // vtable 0x01264BAC
+public:
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CGroupMemberData { public:                   // 0x14 bytes
-    CIntelligentPointer m_member;           // +0x00
+    CIntelligentPointer<const CThingAICreature> m_member;           // +0x00
     bool m_isLeader;                        // +0x08
     long m_role;                            // +0x0c
     long m_joinTime;                        // +0x10

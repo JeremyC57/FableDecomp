@@ -20,7 +20,7 @@ class CScriptThing { public:                                   // vtable 0x01238
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18) 0x004AA980
     void* PImpData;
     void* PImpInfo;
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
 };
 class CBaseObject { public:                                    // vtable 0x0129A7D8
     CBaseObject();                                      // 0x0099A380
@@ -143,10 +143,12 @@ class CGameScriptInterface { public:                       // the quest's game s
     virtual void EntitySetInFaction(const CScriptThing& thing, const CCharString& faction) const;   // slot 601 (+0x964) EntitySetInFaction
 };
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
+namespace NScript {
 class CQ_GuildTrainingScript : public CScriptBase { public:
     CGameScriptInterface* Game;                         // +0x40
     void*                 Data;                         // +0x44

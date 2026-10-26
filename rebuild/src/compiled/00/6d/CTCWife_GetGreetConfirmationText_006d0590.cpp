@@ -20,9 +20,12 @@ class CWideString { public:
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     ~CWideString();                              // 0x0099B510
 };
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     unsigned char _pad_0x00[0x14];
     CDataBank* TextBank;                         // +0x14

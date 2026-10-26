@@ -16,26 +16,28 @@
 //        add-refs a non-null def inline (`inc [eax+4]`); the list and vector copies are out-of-line calls.
 // Leaf: ??0CCombatActionBase
 #include <new>
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    void* m_pItem;                              // +0x04
+    virtual CBaseObject v00();
+    CBaseObject* m_pItem;                              // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    void* GetPItem() const;                     // 0x00A01B50
-    void SetPItem(void* item);                  // 0x00A01B90
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
+    void SetPItem(CBaseObject*);   // 0x00A01B90
 };
 
 struct CThingPointer : CBaseIntelligentPointer {            // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
+    virtual CBaseObject v00();
     CThingPointer(const CThingPointer& other) { SetPItem(other.GetPItem()); }
 };
 
 struct CConstThingPointer : CBaseIntelligentPointer {       // CIntelligentPointer<const CThing>, vtable 0x01237F1C
-    virtual void v00();
+    virtual CBaseObject v00();
     CConstThingPointer(const CConstThingPointer& other) { SetPItem(other.GetPItem()); }
 };
 
 class CMeleeCombatAbilityDef { public:
-    void* m_pVtable;
+    CBaseObject* m_pVtable;
     long  m_refCount;                           // +0x04
 };
 
@@ -45,7 +47,7 @@ struct CMeleeAbilityDefPointer {                // CDefPointer<const CMeleeComba
 };
 
 struct CStrikeEventList {                       // list<CCountedPointer<CCombatActionBase::CStrikeEvent>> (retail 4 bytes)
-    void* _M_node;
+    CBaseObject* _M_node;
     CStrikeEventList(const CStrikeEventList& other);    // 0x0062F610
 };
 
@@ -63,7 +65,7 @@ class C3DVector { public:
 };
 
 class CCreatureActionBase { public:
-    virtual void v00();
+    virtual CBaseObject v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(const CCreatureActionBase& other);   // 0x0062EBC0
 };
@@ -96,12 +98,12 @@ class CCombatActionBase : public CCreatureActionBase { public:             // vt
     long  ActiveStrikeEventIndex;                            // +0xFC
     CThingPointer LastWeaponUsedInStrike;                    // +0x100
     C3DVector PreferredMovementVector;                       // +0x108
-    virtual void v00();
+    virtual CBaseObject v00();
 };
 
 // Emits the implicit copy constructor (the retail one is reached from every Clone()).
-CCombatActionBase* CopyCombatAction(void* where, const CCombatActionBase& other);
-CCombatActionBase* CopyCombatAction(void* where, const CCombatActionBase& other)
+CCombatActionBase* CopyCombatAction(CBaseObject* where, const CCombatActionBase& other);
+CCombatActionBase* CopyCombatAction(CBaseObject* where, const CCombatActionBase& other)
 {
     return new (where) CCombatActionBase(other);
 }

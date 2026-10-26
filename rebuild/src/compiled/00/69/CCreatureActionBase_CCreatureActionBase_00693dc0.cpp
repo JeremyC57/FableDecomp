@@ -15,10 +15,11 @@ class C3DVector { public:float X,Y,Z;};
 class CThing;
 class CThingCreatureBase;
 class CBaseObject { public:
- virtual ~CBaseObject(); // ordinary 0x0099A430, deleting0x0099A4D0
  virtual void Validate()const; //0x0099A400
  CBaseObjectPointer* IntelligentPointer;
- CBaseObject(); //0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer(); //0x00A01C10

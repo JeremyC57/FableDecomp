@@ -47,8 +47,9 @@ class CThing { public:
 class CAnimateThing { public:
     void RemoveCombinationAnimsOfType(long type);    // 0x0070D8C0
 };
-struct CTCAnimation {                                // interface type 0x5A
-    CAnimateThing& GetAnimation();                   // 0x0070B460
+class CTCAnimationComplex { public:                                // interface type 0x5A
+public:
+    CAnimateThing& GetAnimation();   // 0x0070B460
 };
 enum { HEAD_ANIM_HORIZONTAL = 11, HEAD_ANIM_VERTICAL = 12 };
 extern long g_lookHeadAnimHorizontal;                // 0x013BACE4
@@ -76,7 +77,7 @@ void CTCLook::ImplementHeadSettings()
     }
     if (!IsInsideAnimationRange())
         return;
-    CTCAnimation* component;
+    CTCAnimationComplex* component;
     ParentThing->GetInterface(&component, 0x5a);
     CAnimateThing& animation = component->GetAnimation();
     if (HeadAngleRelToBodyXY == g_zero && HeadAngleRelToBodyYZ == g_zero) {

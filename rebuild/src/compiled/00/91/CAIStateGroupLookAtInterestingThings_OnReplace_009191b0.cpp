@@ -15,8 +15,11 @@
 // Earlier forms: the single expression and value locals sink the div past the frame call.
 class CTCBase;
 
-long __fastcall GFGetCurrentFrame();                        // 0x0049D870
-unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                        // 0x0049D870
+long __fastcall GFROR13(unsigned long);      // 0x00497890
 extern long g_framesPerSecond;                              // 0x01375550
 
 struct CInterfaceMap {
@@ -82,7 +85,7 @@ void CAIStateGroup_LookAtInterestingThings::OnReplace()
 {
     const unsigned long& extraSeconds = Random(120);
     long framesPerSecond = g_framesPerSecond;
-    FrameToLook = GFGetCurrentFrame() + (extraSeconds + 240) * framesPerSecond;
+    FrameToLook = CWorld::GetFrame() + (extraSeconds + 240) * framesPerSecond;
     CTCIdleScheduler* scheduler;
     if (PBrain->PCreature->GetInterface(&scheduler, 0xd3))
         scheduler->ChooseNewIdle();

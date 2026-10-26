@@ -16,11 +16,12 @@ class CCharString { public:                        // retail CCharString is one 
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CDefinitionManager_Calls {         // engine/CDefinitionManager.h exists but is not used: only this call is modelled
-    long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
+class CDefinitionManager { public:         // engine/CDefinitionManager.h exists but is not used: only this call is modelled
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 
-class CGameDefinitionManager : public CDefinitionManager_Calls { public:
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 

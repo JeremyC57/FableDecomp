@@ -13,6 +13,7 @@
 //   510 EntitySetAlpha; CScriptThing slots 6 GetPos, 21 MsgIsHitBy, 41/42 special-ability hits, 75 IsAlive.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (summoner quest: WaveSummoner +0x4c, WaveActive
 //   +0x51), PMasterData +0x18, SummonerIndex +0x1c.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -88,18 +89,25 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
 };
 inline bool IsThingAlive(const CScriptThing& thing) { return thing.IsAlive(); }   // a virtual call (not devirtualised)
-struct CIsThingAlive {                                  // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
-class CScriptGameResourceObjectScriptedThingBase : public CBaseIntelligentPointer { public:   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     virtual void h001() const;
     virtual void SummonerLightningOrbAttackTarget(const CScriptThing& target);   // slot 2 (+0x8)
     virtual void h003() const; virtual void h004() const; virtual void h005() const; virtual void h006() const; virtual void h007() const; virtual void h008() const; virtual void h009() const; virtual void h010() const;
@@ -209,8 +217,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CSummonerAttacker : CEntityScriptBase {
     CQ_SummonerScript* ParentClass;                     // +0x14
@@ -223,7 +232,7 @@ void CSummonerAttacker::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

@@ -33,7 +33,8 @@ class CGameEvent { public:
 class CThingCreatureBase { public:
     unsigned char _pad[0x91];
     unsigned char Dead : 1;                        // +0x91 bit 0
-    bool IsPerformingAnyAction();                  // 0x006622A0
+public:
+    bool IsPerformingAnyAction() const;   // 0x006622A0
 };
 enum EPlayerMode { PLAYER_MODE_CHARGING_QUICK_ACCESS = 0x1c, PLAYER_MODE_0x2F = 0x2f };
 class CPlayer { public:

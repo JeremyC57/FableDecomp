@@ -11,7 +11,7 @@ class CWideString
     CWideStringData* data;
 };
 
-void __cdecl FreeStringBuffer(void* buffer);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 void __cdecl operator delete(void* block);   // MSVCR71 import thunk 0x00BFE9BC
 
 void __fastcall CWideString_UnassignString(CWideString* self)
@@ -26,7 +26,7 @@ void __fastcall CWideString_UnassignString(CWideString* self)
             {
                 void* buf = p->buffer;
                 if (buf)
-                    FreeStringBuffer(buf);
+                    free(buf);
                 operator delete(p);
             }
         }

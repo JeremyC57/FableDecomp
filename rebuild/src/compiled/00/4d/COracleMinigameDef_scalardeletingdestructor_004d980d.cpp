@@ -1,15 +1,18 @@
 #pragma optimize("s", on)
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 class COracleMinigameDef
 { public:
     void* vftable;
 };
 extern void* const g_COracleMinigameDef_vftable;
-extern void __fastcall COracleMinigameDef_Destruct(void* def);
 void operator delete(void*);
 void* __fastcall scalar_deleting_destructor(COracleMinigameDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_COracleMinigameDef_vftable;
-    COracleMinigameDef_Destruct(def);
+    ((CResource*)(def))->CResource::~CResource();
     if (flags & 1)
         operator delete(def);
     return def;

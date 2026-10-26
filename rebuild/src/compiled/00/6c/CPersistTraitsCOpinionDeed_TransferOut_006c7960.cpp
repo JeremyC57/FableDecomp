@@ -24,7 +24,10 @@ public:
     CCharString& operator+=(const char* text);         // 0x0099F100
 };
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
-long __fastcall GFGetCurrentFrame();                   // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                   // 0x0049D870
 
 class C3DVector {
 public:
@@ -103,7 +106,7 @@ void CPersistTraits<COpinionDeed*>::TransferOut(CPersistContext* context, CCharS
     *out += ",";
     vectorTraits.TransferOut(context, out, &(*value)->Position);
     *out += ",";
-    long frame = (*value)->IsStillHappening ? GFGetCurrentFrame() : (*value)->FrameHappened;
+    long frame = (*value)->IsStillHappening ? CWorld::GetFrame() : (*value)->FrameHappened;
     longTraits.TransferOut(context, out, &frame);
     *out += ",";
     bool searching = false;

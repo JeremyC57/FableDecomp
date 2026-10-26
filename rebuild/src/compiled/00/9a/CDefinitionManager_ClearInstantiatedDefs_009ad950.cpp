@@ -9,7 +9,7 @@ struct CDef { void* v[3]; CRef* ref; }; // ref at +0xc
 struct Vec { char* first; char* last; char* end; };  // first@+0xc, last@+0x10, end@+0x14
 struct Slot { char pad[0xc]; Vec v; };               // v@+0xc, Slot is 0x18
 
-extern "C" char* engine_copy(char* dst, char* src, unsigned count);
+extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6 (MSVCR71)
 
 // mimic inlined std::_Vector::erase(_First,_Last)->_Dest, returns new _Mylast
 static inline char* erase_range(char* _First, char* _Last, char* _Dest)
@@ -19,7 +19,7 @@ static inline char* erase_range(char* _First, char* _Last, char* _Dest)
         _Res = _Dest;
     else {
         unsigned count = (unsigned)(_Last - _First);
-        _Res = engine_copy(_Dest, _First, count) + count;
+        _Res = ((char*)(memmove(_Dest, _First, count))) + count;
     }
     return _Res;
 }

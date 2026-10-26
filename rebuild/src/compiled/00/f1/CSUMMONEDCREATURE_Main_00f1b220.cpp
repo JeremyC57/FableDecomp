@@ -19,6 +19,7 @@
 // NewCrowdBaseLevel +0xfc, GlobalCrowdTimer +0x100.
 // Shape: the sibling CRansomRevenge::Main 0x00DE3830 hit chain (conditional string temporaries with flag bits 1, 2, 4,
 // here spilled to the frame); the watch loop is a rotated `while (!IsActiveThreadTerminating())`.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -50,10 +51,16 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     virtual bool IsAlive() const;                      // slot 75 (+0x12c)
     void* PImp[2];
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
-struct CIsThingConscious {                             // vtable 0x012C2FE8: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingConscious : public NScript::CPredicateBase {                             // vtable 0x012C2FE8: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingConscious(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingConscious();                              // 0x00EF7AB0
@@ -104,8 +111,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void RegisterFilter(CIsThingConscious& filter);    // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CSUMMONED_CREATURE : CEntityScriptBase {
     CQ_ArenaScript* ParentClass;                       // +0x14
@@ -117,7 +125,7 @@ void CSUMMONED_CREATURE::Main()
 {
     {
         CIsThingConscious filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

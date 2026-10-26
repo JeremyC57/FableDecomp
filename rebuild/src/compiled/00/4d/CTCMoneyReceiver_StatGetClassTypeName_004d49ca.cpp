@@ -1,18 +1,26 @@
-#include "rebuild_abi.h"
-
-// CTCMoneyReceiver::StatGetClassTypeName @ 0x004d49ca
-// One switch-case body of the retail action-name factory. Each case constructs
-// the hidden CCharString result from a relocated string constant with the
-// length sentinel -1, then returns the result pointer (this) in esi/eax.
-// Shape: push esi; push -1; push STR; mov esi,ecx; call ctor; mov eax,esi; ret.
-struct FableCharStringResult_004d49ca
+// CTCMoneyReceiver::StatGetClassTypeName() -- static: the class-type name "CTCMoneyReceiver" as a CCharString
+// Leaf: ?StatGetClassTypeName@CTCMoneyReceiver@@SI?AVCCharString@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004D49CA: push esi; push -1; push "CTCMoneyReceiver"; mov esi, ecx; call
+//   CCharString::CCharString(const char*, long) 0x0099EBF0; mov eax, esi; pop esi; ret -- a static __fastcall
+//   returning CCharString by value (hidden result in ecx).
+// Identity (namepass 2026-10-26): literal 0x123c1a8 = "CTCMoneyReceiver" = the class name; PDB name set ?StatGetClassTypeName@CTCMoneyReceiver@@SI?AVCCharString@@XZ.
+// Callee: CCharString(const char*, long) 0x0099EBF0 = PDB ??0CCharString@@QAE@PBDJ@Z (was the invented
+//   FableCharStringResult_004d49ca::build).
+class CCharString
 {
-    void* build(const char* text, int length);
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();                                         // 0x0099EAE0
 };
 
-extern "C" FableCharStringResult_004d49ca* FABLE_FASTCALL
-FableStatGetClassTypeName_004d49ca(FableCharStringResult_004d49ca* result, void*)
+class CTCMoneyReceiver
 {
-    result->build((const char*)19120552, -1);
-    return result;
+public:
+    static CCharString __fastcall StatGetClassTypeName();
+};
+
+CCharString __fastcall CTCMoneyReceiver::StatGetClassTypeName()
+{
+    return CCharString((const char*)0x0123C1A8, -1);   // "CTCMoneyReceiver"
 }

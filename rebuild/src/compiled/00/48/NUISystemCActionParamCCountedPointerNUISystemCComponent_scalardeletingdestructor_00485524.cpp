@@ -36,7 +36,6 @@ struct SplitBranchBaseSubObject;
 extern "C" void FABLE_FASTCALL SplitBranch_BaseSubObject_dtor(
         SplitBranchBaseSubObject* thisptr);
 
-extern "C" void FABLE_CDECL fable_operator_delete(void* p);
 
 // Relocation-masked absolute vtable addresses stamped by the inlined destructor.
 static const fable_u32 kSplitBranchDerivedVtable = 0x01236794u;
@@ -59,7 +58,7 @@ extern "C" void* FABLE_FASTCALL CActionParamCCountedPointer_scalar_deleting_dtor
     *vfptr = kSplitBranchBaseVtable;
 
     if (flags & 1)
-        fable_operator_delete(thisptr);
+        operator delete(thisptr);
 
     return thisptr;
 }

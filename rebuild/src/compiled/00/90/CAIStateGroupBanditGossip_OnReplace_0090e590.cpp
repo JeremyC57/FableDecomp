@@ -16,8 +16,11 @@
 //   ret
 
 // external targets (become masked relocations in the .obj compare)
+class CThingCreatureBase {
+public:
+    void UnsheatheDefaultWeapon();   // 0x00664A50
+};
 extern "C" void __fastcall BaseGroupOnReplace(void* stateGroup);     // 0x90ca60
-extern "C" void __fastcall SubNotify(void* stateGroup);              // 0x664a50
 
 struct CAIStateGroup_BanditGossip {
     void*  vtbl;          // +0x00
@@ -33,6 +36,6 @@ void CAIStateGroup_BanditGossip::OnReplace()
     if (this->flag) {
         // owner+0x18 dereferenced -> ecx target for tail call
         void* target = this->owner[0x18 / sizeof(void*)];
-        SubNotify(target);
+        ((CThingCreatureBase*)(target))->UnsheatheDefaultWeapon();
     }
 }

@@ -73,7 +73,7 @@ class CHeroStatsDef { public:
     unsigned char      _pad6c[0xac - 0x6c];
     CRenownLevelVector RenownLevels;                 // +0xac
 };
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xdc];
     CHeroStatsDef* PHeroStatsDef;                    // +0xdc
 };
@@ -88,9 +88,10 @@ class CTCBase { public:
     CThing*       ParentThing;                       // +0x04
     unsigned char _pad08[4];
     CTCBase(CThing* owner);                          // 0x00686800
-    CWorld* GetWorld();                              // 0x00686A70
-    CWorldMap* GetWorldMap_00686d30();                        // 0x00686D30
-    CDefinitionHolder* GetDefinitions() const;       // 0x006869D0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    CWorld& GetWorld() const;   // 0x00686A70
+    CWorldMap& GetWorldMap();   // 0x00686D30
 };
 
 class CTCHeroStats : public CTCBase { public:
@@ -205,7 +206,7 @@ class CTCHeroStats : public CTCBase { public:
     CMarriageList            Marriages;                     // +0x1d8
     CTCHeroStats(CThing* owner);
     virtual void v00();
-    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitions()->PHeroStatsDef; }
+    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
     long GetFatnessReducingFrequencyInFrames() const;   // 0x0057A60A
 };
 
@@ -237,11 +238,11 @@ CTCHeroStats::CTCHeroStats(CThing* owner)
 {
     ExperienceSpentOn.resize(11, 0);
     NumberOfTimesUsedAbility.resize(20, 0);
-    RegionTime.resize(GetWorldMap_00686d30()->GetNoMaps(), 0);
+    RegionTime.resize(GetWorldMap().GetNoMaps(), 0);
     HeroStatsExperience.resize(4, 0);
-    UCounter = GFFloatRandom(1.0f, GetWorld()->GetRandomSeed());
-    VCounter = GFFloatRandom(1.0f, GetWorld()->GetRandomSeed());
-    RotCounter = GFFloatRandom(1.0f, GetWorld()->GetRandomSeed());
+    UCounter = GFFloatRandom(1.0f, GetWorld().GetRandomSeed());
+    VCounter = GFFloatRandom(1.0f, GetWorld().GetRandomSeed());
+    RotCounter = GFFloatRandom(1.0f, GetWorld().GetRandomSeed());
     FramesUntilFatnessReduces = GetFatnessReducingFrequencyInFrames();
     Age = GetHeroStatsDef()->StartAge;
     Stamina = MaxStamina = GetHeroStatsDef()->MaxStamina + ExtraMaxStamina;

@@ -46,7 +46,8 @@ public:
 bool __fastcall IS_THING_ALIVE(CThing* const& thing);      // 0x0040DCE0
 
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();                        // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 
 class CDefClassBase { public:
@@ -74,7 +75,10 @@ struct CThingDef : CDefClassBase {
     bool GetSubDef(CDefPointer<CContextSensitiveItemDef>* out);   // 0x005933C8
 };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingDef>* out);   // 0x0042AF3C
+    bool GetDef(long index, CDefPointer<CThingDef>* out) const;   // 0x0042AF3C
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 
 template <class T> struct CRetailVector {                   // STLport vector (12 bytes)
@@ -105,7 +109,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     }
     return lo;
 }
-bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out)
+bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out) const
 {
     CThingDef* def = (CThingDef*)LookUpDef(index);
     out->Object = def;
@@ -123,7 +127,9 @@ bool __fastcall IS_THING_ALIVE(CThing* const& thing)
 }
 #pragma auto_inline(on)
 
-class CTCInventory { public:
+class CTCBase
+{
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -133,6 +139,17 @@ class CTCInventory { public:
     virtual void v30(); virtual void v31(); virtual void v32();
     virtual void UseItemDef(long defIndex, bool& used);     // slot 33 (+0x84)
     virtual void UseItemThing(CThing* thing, bool& used);   // slot 34 (+0x88)
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventory : public NInventory::CTCInventoryBase { public:
 
     CThing*       ParentThing;                              // +0x04 CTCBase
     unsigned char _pad008[0x154 - 0x08];
@@ -141,7 +158,6 @@ class CTCInventory { public:
     CRetailVector<long> SlotItems;                          // +0x1E4
     CRetailVector<long> PreviousSlotItems;                  // +0x1F0
 
-    CDefinitionManager* GetDefinitions() const;             // 0x006869D0 (CTCBase)
     void UseContextSensitiveItem(long quickSlot);
 };
 
@@ -151,7 +167,7 @@ void CTCInventory::UseContextSensitiveItem(long quickSlot)
     ParentThing->GetInterface(&carrying, 0x46);
     if (ContextSensitiveItems[quickSlot] > 0) {
         CDefPointer<CThingDef> thingDef;
-        if (GetDefinitions()->GetDef(ContextSensitiveItems[quickSlot], &thingDef)) {
+        if (GetDefinitionManager().GetDef(ContextSensitiveItems[quickSlot], &thingDef)) {
             CDefPointer<CContextSensitiveItemDef> itemDef;
             if (thingDef->GetSubDef(&itemDef) && itemDef->ItemType == 6 && itemDef->Slot >= 0 && itemDef->Slot < 6) {
                 PreviousSlotItems[itemDef->Slot] = SlotItems[itemDef->Slot];

@@ -16,6 +16,7 @@
 //   is spilled (`fst`) into the dead string slot for the later store.
 #include <string.h>
 #pragma auto_inline(off)
+namespace NScript { class CPredicateBase; }
 long __fastcall Compare(const char* a, const char* b)       // 0x00411570 (the landed body, stand-in)
 {
     for (;;) {
@@ -81,13 +82,18 @@ struct CWaypointSpeedCheckData {                        // the script's shared d
     float         BestDistanceSquared;                  // +0x54
     long          BestWaypointNumber;                   // +0x58
 };
-class CWaypointSpeedCheck {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CWaypointSpeedCheck : public CEntityScriptBase {
 public:
     void*                    __vftable;                 // +0x00
     CGameScriptInterface*    Game;                      // +0x04
     CScriptThing             Me;                        // +0x08
     CWaypointSpeedCheckData* Data;                      // +0x14
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
     void Main();
 };
 void CWaypointSpeedCheck::Main()

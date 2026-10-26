@@ -11,7 +11,18 @@
 // Shape: the size is the landed C3DMeshLODInfo::Sizeof (0x00A42AF0) inlined: two `p ? p->Sizeof() + 8 : 8`
 // ternaries summed with sizeof(C3DMeshLODInfo) into one `lea eax,[eax+edi+34h]`; the list pointer is a named
 // local (kept in edi for both calls).
+#define C3DMeshLODInfo C3DMeshLODInfoLayout
 #include "engine/C3DMeshLODInfo.h"
+#undef C3DMeshLODInfo
+
+class CResource
+{
+public:
+    void SetResourceSize(unsigned long);   // 0x009FBF20
+};
+class C3DMeshLODInfo : public CResource, public C3DMeshLODInfoLayout
+{
+};
 
 class C3DMesh2 { public:
     void ConvertToMeshStats();                           // 0x00A8B3A0
@@ -35,7 +46,6 @@ class C3DMeshInfo { public:
 
 struct C3DMeshLODInfo_Methods : C3DMeshLODInfo {
     void RemoveFromList();                               // 0x009FC440 CResource
-    void SetResourceSize(unsigned long size);            // 0x009FBF20 CResource
     unsigned long Sizeof() const
     {
         unsigned long meshSize = Mesh_Data ? Mesh_Data->Sizeof() + 8 : 8;

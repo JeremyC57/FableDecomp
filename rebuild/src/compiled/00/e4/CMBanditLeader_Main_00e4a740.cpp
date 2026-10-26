@@ -11,6 +11,7 @@
 // Shape: the dead test is the `if` condition on the returned temporary (destroyed before the name string; VC7.1 inlines
 //   the destructor at this first site only, given an inline `virtual ~CScriptThing() { }`); the new leader is scoped
 //   inside the branch so it shares the frame words of the first temporary (function scope moves it, DIFFER 335v335).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -128,19 +129,24 @@ class CGameScriptInterface { public:
     virtual void EntityAttachToVillage(const CScriptThing& thing, const CScriptThing& village) const; // slot 492 (+0x7b0)
 };
 
-class CM_BanditLeader {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CM_BanditLeader : public CEntityScriptBase {
 public:
     void*                 __vftable;               // +0x00
     CGameScriptInterface* Game;                    // +0x04
     CScriptThing          Me;                      // +0x08
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
 void CM_BanditLeader::Main()
 {
     if (Game->GetThingWithScriptName("BanditLeader").IsDead()) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         CScriptThing leader = Game->CreateCreature(Me.GetDataString(), Me.GetPos(), "BanditLeader", false);
         Game->EntityAttachToVillage(leader, Game->GetThingWithScriptName("BanditTollVillage"));

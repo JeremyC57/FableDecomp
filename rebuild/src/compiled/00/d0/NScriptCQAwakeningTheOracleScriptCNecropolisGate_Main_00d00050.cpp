@@ -26,7 +26,7 @@ class CScriptThing { public:                                   // 12 bytes, vtab
  CScriptThingImpl* PImp_Data;
  void* PImp_Info;
  CScriptThing(const CScriptThing& other);   // 0x004ABE90
- ~CScriptThing();                           // 0x004AA840
+ virtual ~CScriptThing();                           // 0x004AA840
  bool IsAlive() const;                      // slot 75, inlined below
 };
 struct CScriptThingImpl {
@@ -1042,11 +1042,16 @@ struct CQ_AwakeningTheOracleScript {
  bool PlayedOpeningNecroCS;                         // +0x65 (PDB +0x79)
  void PlayCutscene(CCharString name, bool wait);    // 0x00CFF9A0
 };
-struct CNecropolisGate {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CNecropolisGate : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CQ_AwakeningTheOracleScript* ParentClass;          // +0x14
  void* PMasterData;                                 // +0x18
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CNecropolisGate::Main()

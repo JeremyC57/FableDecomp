@@ -11,21 +11,24 @@
 // propagated; the class is named descriptively. One of 14 bodies of this shape.
 struct CBaseObjectPointer;
 
-struct CIntelligentPointer {              // CBaseIntelligentPointer: 8 bytes (struct_layouts_egor.tsv)
-    void* m_pLink;                         // +0
-    CBaseObjectPointer* m_pData;           // +4
-    CBaseObjectPointer* GetPItem();        // 0x00A01B50
-    void SetPItem(CBaseObjectPointer* item);   // 0x00A01B90
-    ~CIntelligentPointer();                // 0x00A01C10
+class CBaseObject;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 struct CItemOwner_00798d50 {
     unsigned char _pad[0xc];
-    CIntelligentPointer m_item;            // +0xc
-    void SetItem_CItemOwner_00798d50(CIntelligentPointer item);
+    CBaseIntelligentPointer m_item;            // +0xc
+    void SetItem_CItemOwner_00798d50(CBaseIntelligentPointer item);
 };
 
-void CItemOwner_00798d50::SetItem_CItemOwner_00798d50(CIntelligentPointer item)
+void CItemOwner_00798d50::SetItem_CItemOwner_00798d50(CBaseIntelligentPointer item)
 {
     m_item.SetPItem(item.GetPItem());
 }

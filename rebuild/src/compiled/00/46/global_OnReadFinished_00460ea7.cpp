@@ -10,12 +10,12 @@ struct CActiveFile {
     void* m_ptr; // +0x00
 };
 
-extern "C" void __cdecl EngineFree_460ea7(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* thisptr)
 {
     void* p = thisptr->m_ptr;
     if (p != 0) {
-        EngineFree_460ea7(p);
+        free(p);
     }
 }

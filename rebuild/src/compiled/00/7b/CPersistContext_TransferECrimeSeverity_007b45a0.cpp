@@ -2,7 +2,7 @@
 // Grade: RELOCATION_MATCH 208/208 on the corrected span 0x007B45A0+208 (code + embedded jump table; bounds audit) -- catalog row 224 B also held the 3-byte `ret 4` stub at 0x007B4670
 // CPersistContext::Transfer<ECrimeSeverity>(const char* name, ECrimeSeverity& value, const ECrimeSeverity& defaultValue) -- persist one enum member ("LastCrimeSeenSeverity"): CRC-check the key, then by mode text load (seeding the default first when asked), text save, binary load, binary save as a long, or reset to the default
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B45A0, `ret 0Ch`. Called from Save_TransferCriminalRecord (0x007B3760) with the key "LastCrimeSeenSeverity".
-// Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteLong 0x00993EB0 (catalogued "WriteCBYTE"),
+// Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteSLONG 0x00993EB0 (catalogued "WriteCBYTE"),
 //   CPersistTraits<T>::TransferBinaryIn 0x0047926C, CPersistContext::TransferObjectSaveText 0x009BAD60 and TransferObjectLoadText
 //   0x009BBA40 (both take the CPersistContext_TransferableComponent<T> wrapper, vtable 0x0126D7EC).
 // Shape: the speed-optimised sibling of the landed size-TU CDefIndex instantiation 0x005CC1E8. The persist mode
@@ -11,7 +11,8 @@
 //   order and retail has them 4,3,2,1,0. the traits object of the binary-load arm is empty and lives in the dead value-argument slot (`lea ecx,[esp+20h]` once the value is in eax). The 8-byte frame is the {vtable, value*} wrapper of the text arms.
 //   The enum's name is descriptive (from the key); it is a 4-byte enum written with WriteLong.
 class CDataOutputStream { public:
-    void WriteLong(long value);                   // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 class CMemoryDataInputStream;
 enum ECrimeSeverity { ECrimeSeverity_Default };
@@ -53,7 +54,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
         value = defaultValue;
         break;
     case 3:
-        PSaveStream->WriteLong(value);
+        PSaveStream->WriteSLONG(value);
         break;
     case 2:
         CPersistTraits<T>().TransferBinaryIn(PLoadStream, &value);

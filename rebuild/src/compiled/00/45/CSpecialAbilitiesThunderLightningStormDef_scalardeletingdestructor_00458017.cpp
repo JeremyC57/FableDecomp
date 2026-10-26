@@ -1,5 +1,4 @@
 #pragma optimize("s",on)
-extern void __cdecl fable_operator_delete(void* p);
 
 class CSpecialAbilitiesThunderLightningStormDef { public:
     void* vftable;
@@ -11,7 +10,7 @@ void* CSpecialAbilitiesThunderLightningStormDef::scalar_deleting_destructor(unsi
 {
     this->real_dtor();
     if (flags & 1) {
-        fable_operator_delete(this);
+        operator delete(this);
     }
     return this;
 }

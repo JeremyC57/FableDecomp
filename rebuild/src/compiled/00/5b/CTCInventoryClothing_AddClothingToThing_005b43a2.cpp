@@ -69,6 +69,9 @@ struct CThingDef : CDefBase {
 class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<const CThingDef>* out) const;      // 0x0042AF3C
 };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};
 void* FindDef_43a2_0();
 void* FindDef_43a2_1();
 void* FindDef_43a2_2();
@@ -169,12 +172,23 @@ class CThing { public:
 };
 
 // Layout: retail CTCInventoryClothing (12-byte containers): ParentThing +0x04, the clothing menu entries vector +0x134.
-class CTCInventoryClothing { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryClothing : public NInventory::CTCInventoryBase { public:
     void*   __vftable;
     CThing* ParentThing;                                       // +0x04
     unsigned char _pad08[0x134 - 0x08];
     CClothingEntryVector ClothingEntries;                      // +0x134
-    const CDefinitionManager* GetDefinitions() const;          // 0x006869D0 (CTCBase)
     long GetNumberOfItemsOfTypeInInventory(long type);         // 0x005BDF08 (CTCInventoryBase)
     void AddClothingToThing(long item, CThing* thing);
 };
@@ -193,7 +207,7 @@ void CTCInventoryClothing::AddClothingToThing(long item, CThing* thing)
     CTCHeroAttachableAppearanceModifiers* modifiers;
     if (thing->GetInterface(&modifiers, 0x5e)) {
         CDefPointer<const CThingDef> itemDef;
-        GetDefinitions()->GetDef(item, &itemDef);
+        GetDefinitionManager().GetDef(item, &itemDef);
         CDefPointer<const CHeroSuitDef> suitDef;
         CLongList worn;
         modifiers->GetAppearanceModifierList(worn, 2);
@@ -203,7 +217,7 @@ void CTCInventoryClothing::AddClothingToThing(long item, CThing* thing)
             for (; node != worn._M_node; node = node->_M_next) {
                 CDefPointer<const CThingDef> wornDef;
                 CDefPointer<const CAppearanceModifierDef> wornModifier;
-                if (GetDefinitions()->GetDef(node->_M_data, &wornDef)) {
+                if (GetDefinitionManager().GetDef(node->_M_data, &wornDef)) {
                     if (wornDef->GetSubDef(&wornModifier)) {
                         if (wornModifier->IsRemoveable)
                             modifiers->RemoveAppearanceModifier(node->_M_data);
@@ -227,7 +241,7 @@ void CTCInventoryClothing::AddClothingToThing(long item, CThing* thing)
             while (it._M_node != worn._M_node) {
                 CDefPointer<const CThingDef> wornDef;
                 CDefPointer<const CAppearanceModifierDef> wornModifier;
-                if (GetDefinitions()->GetDef(it._M_node->_M_data, &wornDef)) {
+                if (GetDefinitionManager().GetDef(it._M_node->_M_data, &wornDef)) {
                     if (wornDef->GetSubDef(&wornModifier)) {
                         if (wornModifier->SuitPart == suitPart) {
                             if (!wornModifier->IsRemoveable)

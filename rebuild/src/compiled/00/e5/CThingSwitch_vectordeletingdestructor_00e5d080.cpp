@@ -3,13 +3,12 @@
 extern void __fastcall AutoTinyFirstMemberDestructor(void* member);
 extern void __fastcall AutoTinySecondMemberDestructor(void* member);
 extern void __fastcall AutoTinyCompositeDestructor(void* self);
-extern void __cdecl AutoTinyCompositeDelete(void* object);
 void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
     AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(self) + 72);
     AutoTinySecondMemberDestructor(static_cast<unsigned char*>(self) + 52);
     AutoTinyCompositeDestructor(self);
     if (flags & 1)
-        AutoTinyCompositeDelete(self);
+        operator delete(self);
     return self;
 }

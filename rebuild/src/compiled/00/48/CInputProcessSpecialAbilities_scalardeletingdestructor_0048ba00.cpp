@@ -1,13 +1,16 @@
+class CAInputProcess {
+public:
+    virtual ~CAInputProcess();   // 0x00A0D3D0
+};
 class CInputProcessSpecialAbilities { public:
     void* vftable;
 };
 
-void __fastcall CInputProcessSpecialAbilities_dtor(CInputProcessSpecialAbilities* process);
 void operator delete(void*);
 
 void* __fastcall CInputProcessSpecialAbilities_scalar_deleting_destructor(CInputProcessSpecialAbilities* process, int edx_unused, unsigned int flags)
 {
-    CInputProcessSpecialAbilities_dtor(process);
+    ((CAInputProcess*)(process))->CAInputProcess::~CAInputProcess();
     if (flags & 1)
         operator delete(process);
     return process;

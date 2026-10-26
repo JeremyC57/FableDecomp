@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 class CPersistContext { public:
-    void TransferA(void* p);
+    template <class T> void Transfer(T& value);
     void TransferB_00455712(void* p);
     void TransferC(void* p);
 };
@@ -14,9 +14,9 @@ class CMessageEventDef { public:
 };
 
 void __fastcall CMessageEventDef_Transfer(CMessageEventDef* message, void* edx, CPersistContext* ctx) {
-    ctx->TransferA(&message->f3c);
-    ctx->TransferA(&message->MaxSeenRadius);
-    ctx->TransferA(&message->MaxHeardRadius);
+    ctx->Transfer(*(long*)(&message->f3c));
+    ctx->Transfer(*(long*)(&message->MaxSeenRadius));
+    ctx->Transfer(*(long*)(&message->MaxHeardRadius));
     ctx->TransferB_00455712(&message->ReactionSpeechType);
     ctx->TransferC(&message->Lifespan);
 }

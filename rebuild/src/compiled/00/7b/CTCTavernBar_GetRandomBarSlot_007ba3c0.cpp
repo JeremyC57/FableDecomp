@@ -2,7 +2,7 @@
 // Leaf: GetRandomBarSlot
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BA3C0, 290 bytes, `ret 14h`. Ego_r.pdb
 //   `?GetRandomBarSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z`.
-// Callees: CVectorMap::LowerBound @ 0x0040F020 (interface 0x2E = CTCNamedUserActionPoints), CTCBase::GetPRandomSeed() const
+// Callees: CVectorMap::LowerBound @ 0x0040F020 (interface 0x2E = CTCNamedUserActionPoints), CTCBase::GetPWorldSeed() const
 //   @ 0x00686DA0, GFROR13 @ 0x00497890 (`__fastcall`), CCharString() @ 0x0099E4B0, CCharString(const char*, long) @ 0x0099EBF0
 //   ("ACTION_POINT_BARMAN" @ 0x0126DCD4), CCharString::operator+=(const char*) @ 0x0099F100 ("_0" @ 0x0126DCBC),
 //   GFIntToCharString(long) @ 0x0099F830 (`__fastcall`, hidden result in ecx), CCharString::operator+=(const CCharString&)
@@ -26,7 +26,7 @@ class CCharString { public:
     CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
 };
 CCharString __fastcall GFIntToCharString(long value);   // 0x0099F830
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
+long __fastcall GFROR13(unsigned long);  // 0x00497890
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
     seed = seed * 0x24A1 + 0x24DF;
@@ -65,14 +65,20 @@ class CTCNamedUserActionPoints { public:
                                  long flags, bool reserve);   // 0x007FF190
 };
 struct CJugPointer { void* m_vfptr; void* m_pItem; };    // CIntelligentPointer<CThingObject>
-class CTCTavernBar { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x00686DA0
+};
+
+class CTCTavernBar : public CTCBase { public:
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x4];
     CJugPointer*  Jugs_start;                           // +0x0c vector<CIntelligentPointer<CThingObject> >
     CJugPointer*  Jugs_finish;                          // +0x10
     CJugPointer*  Jugs_end_of_storage;                  // +0x14
-    unsigned long* GetPRandomSeed() const;              // 0x00686DA0 (CTCBase)
     bool GetRandomBarSlot(CThing& creature, C3DVector& position, CRightHandedSet& orientation, long& actionPoint, long& slot);
 };
 
@@ -81,7 +87,7 @@ bool CTCTavernBar::GetRandomBarSlot(CThing& creature, C3DVector& position, CRigh
     CTCNamedUserActionPoints* points;
     ParentThing->GetInterface(&points, 0x2e);
     unsigned long count = Jugs_finish - Jugs_start;
-    slot = WorldRandomRange(*GetPRandomSeed(), count);
+    slot = WorldRandomRange(*GetPWorldSeed(), count);
     CCharString unused;
     CCharString pointName("ACTION_POINT_BARMAN", -1);
     pointName += "_0";

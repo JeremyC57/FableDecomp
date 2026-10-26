@@ -113,7 +113,8 @@ public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     unsigned char _pad08[0x4];
-    CWorld* GetWorld();                             // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 
 class CTCExplodingObject : public CTCBase {         // vtable 0x01269674
@@ -141,7 +142,7 @@ CTCExplodingObject::CTCExplodingObject(CThing& parent)
     const CExplosionDef* explosionDef = 0;
     CDefPointer<const CExplosionDef> explosionOut;
     CDefPointer<const CThingBaseDef> thingOut;
-    CDefinitionManager* manager = GetWorld()->DefinitionManager;
+    CDefinitionManager* manager = GetWorld().DefinitionManager;
     bool found = manager->GetDef(def->ExplosionDef, &thingOut);
     const CThingBaseDef* thingDef = thingOut.Object;
     if (found) {

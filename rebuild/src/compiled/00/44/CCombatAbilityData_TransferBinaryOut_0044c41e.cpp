@@ -1,7 +1,8 @@
 #pragma optimize("s",on)
-struct CBinaryStream {
-    void PutInt(int v);
-    void PutFloat(float v);
+class CDataOutputStream { public:
+public:
+    void WriteFloat(float);   // 0x00993EE0
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 class CCombatAbilityData { public:
@@ -12,11 +13,11 @@ class CCombatAbilityData { public:
     int   int10;
 };
 
-void __fastcall CCombatAbilityData_TransferBinaryOut(CCombatAbilityData* ability, void* edx, CBinaryStream* stream, int extra)
+void __fastcall CCombatAbilityData_TransferBinaryOut(CCombatAbilityData* ability, void* edx, CDataOutputStream* stream, int extra)
 {
     (void)edx; (void)extra;
-    stream->PutInt(ability->PercentageChance);
-    stream->PutFloat(*(float*)&ability->SecondsDuration);
-    stream->PutFloat(*(float*)&ability->SecondsToWaitBeforeRepeat);
-    stream->PutInt(ability->int10);
+    stream->WriteSLONG(ability->PercentageChance);
+    stream->WriteFloat(*(float*)&ability->SecondsDuration);
+    stream->WriteFloat(*(float*)&ability->SecondsToWaitBeforeRepeat);
+    stream->WriteSLONG(ability->int10);
 }

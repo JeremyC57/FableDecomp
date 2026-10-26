@@ -13,7 +13,6 @@ class CLandscapeBackgroundPatch; // opaque
 extern "C" void __fastcall CCombatSequenceDef_dtor(CLandscapeBackgroundPatch* thisptr);
 
 // operator delete (single-arg form) — masked call target.
-extern "C" void __cdecl LBP_operator_delete(void* p);
 
 void* __fastcall CCombatSequenceDef_vector_deleting_dtor(
     CLandscapeBackgroundPatch* thisptr, int /*edx_unused*/, unsigned int flags)
@@ -21,7 +20,7 @@ void* __fastcall CCombatSequenceDef_vector_deleting_dtor(
     CCombatSequenceDef_dtor(thisptr);
     if (flags & 1)
     {
-        LBP_operator_delete(thisptr);
+        operator delete(thisptr);
     }
     return thisptr;
 }

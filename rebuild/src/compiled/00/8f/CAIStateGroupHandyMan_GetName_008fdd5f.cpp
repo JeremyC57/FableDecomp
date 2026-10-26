@@ -1,0 +1,30 @@
+// CAIStateGroup_HandyMan::GetName() -- static: the AI state group name "SG_HANDY_MAN" as a CCharString
+// Leaf: ?GetName@CAIStateGroup_HandyMan@@SI?AVCCharString@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008FDD5F: push esi; push -1; push "SG_HANDY_MAN"; mov esi, ecx; call
+//   CCharString::CCharString(const char*, long) 0x0099EBF0; mov eax, esi; pop esi; ret -- a static __fastcall
+//   returning CCharString by value (hidden result in ecx).
+// Identity (namepass 2026-10-26): static init call 0x1220754 registers this GetName with Alloc 0x9002ef (pushed before it); Alloc 0x9002ef stores the vtable of CAIStateGroup_HandyMan into the new object; literal "SG_HANDY_MAN"; PDB name set ?GetName@CAIStateGroup_HandyMan@@SI?AVCCharString@@XZ and ?Alloc@CAIStateGroup_HandyMan@@SIPAVCAIStateGroupBase@@XZ.
+// Callee: CCharString(const char*, long) 0x0099EBF0 = PDB ??0CCharString@@QAE@PBDJ@Z (was the invented
+//   FableCharStringResult_008fdd5f::build).
+#define CAIStateGroup_HandyMan CAIStateGroup_HandyManLayout
+#include "engine/CAIStateGroup_HandyMan.h"
+#undef CAIStateGroup_HandyMan
+
+class CCharString
+{
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();                                         // 0x0099EAE0
+};
+
+class CAIStateGroup_HandyMan : public CAIStateGroup_HandyManLayout
+{
+public:
+    static CCharString __fastcall GetName();
+};
+
+CCharString __fastcall CAIStateGroup_HandyMan::GetName()
+{
+    return CCharString((const char*)0x01289C8C, -1);   // "SG_HANDY_MAN"
+}

@@ -52,7 +52,7 @@ class CScriptThing : public CBaseClass { public:                     // vtable 0
     virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c), out of line 0x004AB130
     CCountedPointer PImp;                              // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
     float GetHeading() const { return !PImp.Data ? -1.0f : PImp.Data->GetHeading(); }
 };
@@ -138,14 +138,19 @@ struct CArenaBarrierScript {
     unsigned char _pad50[0x10];
     long Counter;                                      // +0x60
 };
-struct CATO_MagicBarrier {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CATO_MagicBarrier : public CEntityScriptBase {
     void* VTable;
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing Me;                                   // +0x08
     CArenaBarrierScript* ParentClass;                  // +0x14
     void* PMasterData;                                 // +0x18
-    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 void CATO_MagicBarrier::Main()

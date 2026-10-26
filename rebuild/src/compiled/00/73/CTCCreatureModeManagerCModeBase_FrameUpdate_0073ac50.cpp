@@ -34,7 +34,6 @@ class CThing { public:
 };
 
 class CTCCreatureModeManager { public:                 // interface type 0x31 component
-    void RemoveMode(long modeType);             // 0x0073ABA0
 
     class CModeBase { public:
         virtual void v00();
@@ -45,6 +44,8 @@ class CTCCreatureModeManager { public:                 // interface type 0x31 co
         bool Active;                            // +0x18
         void FrameUpdate();
     };
+public:
+    void RemoveMode(unsigned long);   // 0x0073ABA0
 };
 
 void CTCCreatureModeManager::CModeBase::FrameUpdate()

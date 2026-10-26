@@ -43,10 +43,21 @@ class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +4
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CReactionOwner {
@@ -59,7 +70,7 @@ struct COpinionReactionRecord {
     void* m_pVtable;                            // +0x00
     CReactionOwner* m_pOwner;                   // +0x04
     unsigned char _pad08[0x6b - 8];
-    CBaseIntelligentPointer m_target;           // +0x6b CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> m_target;           // +0x6b CIntelligentPointer<CThing>
     bool IsTargetValidAndDistant();
 };
 #pragma pack(pop)

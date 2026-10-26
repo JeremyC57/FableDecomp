@@ -11,7 +11,7 @@
 class CCharString { public: void* Data; };
 
 class CPersistContext { public:
-    void Transfer(CCharString& value);               // 0x00431143
+    template <class T> void Transfer(T& value);               // 0x00431143
     void TransferBinary(long* value);                // 0x00431102
     void TransferBinary(float* value);               // 0x00431061
 };

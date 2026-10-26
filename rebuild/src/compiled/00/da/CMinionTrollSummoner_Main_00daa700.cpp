@@ -89,12 +89,13 @@ class CIsThingAlive : public CPredicateBase { public:                // vtable 0
 inline CIsThingAlive::~CIsThingAlive() { }
 #pragma inline_depth()
 }
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -145,14 +146,19 @@ struct CMinionQuestScript {
     unsigned char _pad[0x54];
     bool          ShownTrollCutscene;                   // +0x54 (descriptive)
 };
-struct CMinionTrollSummoner {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CMinionTrollSummoner : public CEntityScriptBase {
     void*                 __vftable;                    // +0x00
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
     CMinionQuestScript*   ParentClass;                  // +0x14
     void*                 PMasterData;                  // +0x18
-    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
     void Main();
 };
 

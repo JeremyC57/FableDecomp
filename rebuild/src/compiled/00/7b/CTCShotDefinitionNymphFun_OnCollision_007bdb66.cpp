@@ -47,10 +47,21 @@ public:
     }
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DCE0 (CThing*)
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    void* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CWorldMap { public: float GetHeightZBelowPos(const C3DVector& pos); };   // 0x0063E480
 struct CTrapSpawnDef { unsigned char _pad[0x3c]; long TrapObjectType; };   // +0x3c
@@ -64,12 +75,18 @@ class CTCTrapBase { public:
     void ManualTrigger();                               // 0x00788388
 };
 void __fastcall MakeSummonedCreaturesImmuneToTrap(CTCTrapBase* trap);   // 0x0080F240
-struct CTCShotDefinitionBase {
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorldMap& GetWorldMap();   // 0x00686D30
+};
+
+struct CTCShotDefinitionBase : public CTCBase {
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[0x28 - 0x08];
-    CBaseIntelligentPointer PShooter;                   // +0x28
-    CWorldMap* GetWorldMap();                           // 0x00686D30
+    CIntelligentPointer<CThing> PShooter;                   // +0x28
     void OnCollision(long type, const C3DVector& pos, const C3DVector& normal, CThing* other);   // 0x007BF510
 };
 struct CTCShotDefinitionNymphFun : CTCShotDefinitionBase {
@@ -90,7 +107,7 @@ void CTCShotDefinitionNymphFun::OnCollision(long type, const C3DVector& pos, con
                     if (IS_THING_ALIVE(other) && (other->Flags6c & 8)) {
                         at = other->GetPosition();
                         at.Z += 1.0f;
-                        at.Z = GetWorldMap()->GetHeightZBelowPos(at);
+                        at.Z = GetWorldMap().GetHeightZBelowPos(at);
                     }
                     CThingObject* trapThing;
                     {

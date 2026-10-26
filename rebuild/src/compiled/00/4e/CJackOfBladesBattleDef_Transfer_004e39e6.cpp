@@ -13,8 +13,7 @@
 // Shape: each member goes by address in declaration order; the last member's address is formed in place
 //   (`add esi,7Ch ; push esi`), the natural `&RushAwayDistance` of the final call.
 class CPersistContext { public:
-    void TransferLong(long* value);              // 0x00431102
-    void TransferFloat(float* value);            // 0x00431061
+    template <class T> void Transfer(T& value);              // 0x00431102
 };
 
 class CJackOfBladesBattleDef { public:
@@ -42,21 +41,21 @@ class CJackOfBladesBattleDef { public:
 
 void CJackOfBladesBattleDef::Transfer(CPersistContext& context)
 {
-    context.TransferFloat(&IdealShootDistance);
-    context.TransferLong(&NumGetHitsBeforeRush);
-    context.TransferFloat(&TimeBetweenShots);
-    context.TransferFloat(&ScreamInAirTime);
-    context.TransferFloat(&TimeBetweenPillars);
-    context.TransferFloat(&BattleFloatHeight);
-    context.TransferFloat(&BattleScale);
-    context.TransferFloat(&ScaleUpTime);
-    context.TransferFloat(&ScaleDownTime);
-    context.TransferFloat(&DeathScreamTime);
-    context.TransferFloat(&DeathHeight);
-    context.TransferFloat(&BurnDamage);
-    context.TransferFloat(&FlashDuration);
-    context.TransferFloat(&FlashBuildUpTime);
-    context.TransferFloat(&RushTriggerDistance);
-    context.TransferFloat(&RushToDistance);
-    context.TransferFloat(&RushAwayDistance);
+    context.Transfer(*(float*)(&IdealShootDistance));
+    context.Transfer(*(long*)(&NumGetHitsBeforeRush));
+    context.Transfer(*(float*)(&TimeBetweenShots));
+    context.Transfer(*(float*)(&ScreamInAirTime));
+    context.Transfer(*(float*)(&TimeBetweenPillars));
+    context.Transfer(*(float*)(&BattleFloatHeight));
+    context.Transfer(*(float*)(&BattleScale));
+    context.Transfer(*(float*)(&ScaleUpTime));
+    context.Transfer(*(float*)(&ScaleDownTime));
+    context.Transfer(*(float*)(&DeathScreamTime));
+    context.Transfer(*(float*)(&DeathHeight));
+    context.Transfer(*(float*)(&BurnDamage));
+    context.Transfer(*(float*)(&FlashDuration));
+    context.Transfer(*(float*)(&FlashBuildUpTime));
+    context.Transfer(*(float*)(&RushTriggerDistance));
+    context.Transfer(*(float*)(&RushToDistance));
+    context.Transfer(*(float*)(&RushAwayDistance));
 }

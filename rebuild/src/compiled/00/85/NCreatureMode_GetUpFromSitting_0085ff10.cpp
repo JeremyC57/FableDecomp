@@ -59,8 +59,9 @@ public:
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing {
 public:
-    bool IsFreeToPerformAction(const CCreatureActionBase& action);   // 0x00662210
     bool SetCurrentAction(const CCreatureActionBase& action);        // 0x006644F0
+public:
+    bool IsFreeToPerformAction(const CCreatureActionBase&) const;   // 0x00662210
 };
 
 class CSoundPair {

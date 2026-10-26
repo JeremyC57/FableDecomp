@@ -5,9 +5,16 @@
 // Model: engine/CDataOutputStream.h + writer adapter.
 // Shape: the empty pair traits is declared at function scope; its inline TransferBinaryOut writes `first` then declares a NAMED
 //   `CPersistTraits<COpinionDeed*> secondTraits` for the pointer (an unnamed temporary gets its own frame slot).
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteLong(long value);                             // 0x00993EB0
 };
 class COpinionDeed;
 namespace std {
@@ -32,14 +39,14 @@ template <class T> struct CPersistTraits {
 #pragma auto_inline(off)
 template <> __declspec(noinline) void CPersistTraits<COpinionDeed*>::TransferBinaryOut(CDataOutputStreamWriter& stream, COpinionDeed* const* value) const
 {
-    stream.WriteLong((long)*value);
+    stream.WriteSLONG((long)*value);
 }
 #pragma auto_inline(on)
 template <> struct CPersistTraits<std::pair<long, COpinionDeed*> > {
     CPersistTraits() { }
     void TransferBinaryOut(CDataOutputStreamWriter& stream, const std::pair<long, COpinionDeed*>* value) const
     {
-        stream.WriteLong(value->first);
+        stream.WriteSLONG(value->first);
         CPersistTraits<COpinionDeed*> secondTraits;
         secondTraits.TransferBinaryOut(stream, &value->second);
     }
@@ -49,7 +56,7 @@ void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std:
 {
     CPersistTraits<T> traits;
     long count = value.size();
-    stream.WriteLong(count);
+    stream.WriteSLONG(count);
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, &value[i]);
 }

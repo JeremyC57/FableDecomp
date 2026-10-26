@@ -13,7 +13,7 @@ class CCharString { public:                                // 4 bytes
 class CTCBase { public:                                    // vtable 0x0125BE0C, 0xc bytes
     virtual void v00();
     unsigned char _pad04[0x08];                     // +0x04
-    ~CTCBase();                                     // 0x00686830
+    virtual ~CTCBase();                                     // 0x00686830
 };
 class CTCEffectOnDie : public CTCBase { public:                   // vtable 0x0126FEB4
     virtual void v00();

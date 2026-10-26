@@ -3,6 +3,10 @@
 // Byte-exact reconstruction of CTCInventoryItem::OnDie @ 0x004e3e89
 // this-call modeled as __fastcall free fn (this in ecx).
 
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 class CTCInventoryItem { public:
     void* vtbl;      // +0x00
     char  pad[0x24]; // +0x04 .. +0x27
@@ -10,10 +14,9 @@ class CTCInventoryItem { public:
 };
 
 // operator delete (cdecl) @ 0xbfea14
-void __cdecl free(void*);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 // base OnDie (this-call) @ 0x9fc550
-void __fastcall base_OnDie(CTCInventoryItem* self);
 
 extern const int g_CTCInventoryItem_vtbl;
 
@@ -22,5 +25,5 @@ void __fastcall OnDie(CTCInventoryItem* self)
     if (self->m28)
         free(self->m28);
     self->vtbl = (void*)0x1230ba0;
-    base_OnDie(self);
+    ((CResource*)(self))->CResource::~CResource();
 }

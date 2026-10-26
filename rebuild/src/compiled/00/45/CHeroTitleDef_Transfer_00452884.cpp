@@ -13,8 +13,7 @@ enum EHeroTitle { };                                        // enumerators not n
 class CPersistContext {
 public:
     void Transfer(EHeroTitle& value);                            // 0x0045290A
-    void Transfer(long& value);                                  // 0x00431102
-    void Transfer(bool& value);                                  // 0x0043314A
+    template <class T> void Transfer(T& value);                                  // 0x00431102
 };
 class CHeroTitleDef {
 public:

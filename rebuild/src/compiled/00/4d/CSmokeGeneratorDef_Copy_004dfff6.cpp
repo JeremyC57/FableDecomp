@@ -1,16 +1,18 @@
 #pragma optimize("s",on)
-class CDefClassBase;
+class CDefClassBase {
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
+};
 
 class CSmokeGeneratorDef { public:
     char pad[0x28];
     int m28;
     int ParticleEmitter;
-    void BaseCopy(const CDefClassBase* src);  // __fastcall: ecx=this, src on stack
 };
 
 void __fastcall CSmokeGeneratorDef_Copy(CSmokeGeneratorDef* self, void* /*edx*/, const CDefClassBase* src)
 {
-    self->BaseCopy(src);
+    ((CDefClassBase*)(self))->operator=(*(const CDefClassBase*)(src));
     const CSmokeGeneratorDef* s = (const CSmokeGeneratorDef*)src;
     self->m28 = s->m28;
     self->ParticleEmitter = s->ParticleEmitter;

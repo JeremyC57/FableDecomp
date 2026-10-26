@@ -9,7 +9,10 @@
 // Layout: PDB NCameraModes::CScriptModuleFullTransition (0x80 bytes): IncrementForLookAtPoints +0x4c,
 // Increment +0x58, LookAtPos +0x64, StartPos +0x70, EndFrame +0x7c, over the 0x4c-byte CScriptModuleBase
 // (POwner +0x38: the camera state with LookAt +0x10, Position +0x54).
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                 // 0x0049D870
 
 class C3DVector { public:
     float X, Y, Z;
@@ -42,7 +45,7 @@ struct CScriptModuleFullTransition {
 
 void CScriptModuleFullTransition::Update()
 {
-    if (GFGetCurrentFrame() < EndFrame) {
+    if (CWorld::GetFrame() < EndFrame) {
         POwner->Position = POwner->Position + Increment;
         POwner->LookAt = POwner->LookAt + IncrementForLookAtPoints;
     }

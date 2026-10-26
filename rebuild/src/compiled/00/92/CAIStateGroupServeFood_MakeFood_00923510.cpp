@@ -43,18 +43,24 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing> (vtable 0x01237F1C)
-    virtual void v00();
-    __forceinline CIntelligentPointerConstThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<const CThing> (vtable 0x01237F1C)
+public:
+    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { T* item = other.GetPItem(); SetPItem(item); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CCharString { public:
     void* m_pData;
@@ -81,7 +87,7 @@ CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, l
     unsigned long flags, const CCharString& scriptName);   // 0x00703210
 class CTCCreatedEntity { public:                       // interface 0x32
     unsigned char _pad[0x0c];
-    CIntelligentPointerConstThing PCreator;     // +0x0c
+    CIntelligentPointer<const CThing> PCreator;     // +0x0c
 };
 class CTCOwnedEntity { public:                         // interface 0x33
     void SetPOwner(CThing* owner);              // 0x007E8590
@@ -116,7 +122,7 @@ CThing* CAIStateGroup_ServeFood::MakeFood(const C3DVector* position, CThing* own
     food->AddTC("CTCCreatedEntity", false, 0);
     CTCCreatedEntity* created;
     food->GetInterface(&created, 0x32);
-    created->PCreator = CIntelligentPointerConstThing(owner);
+    created->PCreator = CIntelligentPointer<const CThing>(owner);
     food->AddTC("CTCOwnedEntity", false, 0);
     CTCOwnedEntity* owned;
     food->GetInterface(&owned, 0x33);

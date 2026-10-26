@@ -16,12 +16,14 @@ class C3DVector { public:
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
 
+class C2DVector;
 class C2DVector { public:
     float X;
     float Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) {}
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
-    C2DVector* Normalise();                        // 0x00A14540
+public:
+    C2DVector& Normalise();   // 0x00A14540
 };
 
 class CTCPhysicsBase {

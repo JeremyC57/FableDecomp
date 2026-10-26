@@ -15,7 +15,10 @@ struct MemberAt38 {
     void Clear();
 };
 
-extern int GetSomeCounter();
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};   // 0x0049D870
 
 struct CTCGraphicAppearance {
     char pad[0x38];
@@ -33,5 +36,5 @@ void __fastcall CTCGraphicAppearance_ClearAllPrimitives(CTCGraphicAppearance* ap
         node = node->next;
     }
     appearance->m38.Clear();
-    appearance->counter = GetSomeCounter() + 1;
+    appearance->counter = CWorld::GetFrame() + 1;
 }

@@ -14,10 +14,8 @@ struct NativeVector32 { unsigned int first, last, capacity; };
 struct NativeMap32 { unsigned int root, first, size; };
 class CPersistContext { public:
     void TransferLongVector(NativeVector32* value);   // 0x00466A47
-    void TransferLong(int* value);                   // 0x00431102
-    void TransferBool(bool* value);                  // 0x0043314A
+    template <class T> void Transfer(T& value);                   // 0x00431102
     void TransferStringVector(NativeVector32* value); // 0x004331F9
-    void TransferFloat(float* value);                // 0x00431061
     void TransferMap(NativeMap32* value);            // 0x0046FA22
     void TransferCombatType(int* value);             // 0x0046F8DA
     void TransferRecoil(int* value);                 // 0x0046F97E
@@ -55,24 +53,24 @@ typedef char NativeCombatTypeSize[(sizeof(CCombatTypeDef) == 0xac) ? 1 : -1];
 void CCombatTypeDef::Transfer(CPersistContext& context)
 {
     context.TransferLongVector(&DefenderCombatRingOccupationNumbers);
-    context.TransferLong(&DefenderWheelOuterRingStartIndex);
-    context.TransferBool(&DefenderWheelAllowAttackerStrafing);
+    context.Transfer(*(long*)(&DefenderWheelOuterRingStartIndex));
+    context.Transfer(*(bool*)(&DefenderWheelAllowAttackerStrafing));
     context.TransferStringVector(&CombatSequence);
     context.TransferLongVector(&CombatSequenceDef);
-    context.TransferBool(&PreferOuterRing);
-    context.TransferFloat(&FrontFarLimit);
-    context.TransferFloat(&FrontMiddleLimit);
-    context.TransferFloat(&FrontNearLimit);
-    context.TransferFloat(&SideLimit);
-    context.TransferFloat(&RearLimit);
-    context.TransferFloat(&PreferredCombatDistance);
+    context.Transfer(*(bool*)(&PreferOuterRing));
+    context.Transfer(*(float*)(&FrontFarLimit));
+    context.Transfer(*(float*)(&FrontMiddleLimit));
+    context.Transfer(*(float*)(&FrontNearLimit));
+    context.Transfer(*(float*)(&SideLimit));
+    context.Transfer(*(float*)(&RearLimit));
+    context.Transfer(*(float*)(&PreferredCombatDistance));
     context.TransferMap(&AttackPatterns);
     context.TransferCombatType(&CombatCreatureType);
-    context.TransferBool(&AlwaysAttackIfNearest);
-    context.TransferBool(&KnockdownCausesStun);
+    context.Transfer(*(bool*)(&AlwaysAttackIfNearest));
+    context.Transfer(*(bool*)(&KnockdownCausesStun));
     context.TransferRecoil(&RecoilStyle);
-    context.TransferBool(&CanBeKnockedDown);
-    context.TransferFloat(&ComboContinueSpeed);
-    context.TransferFloat(&CombatFOV);
-    context.TransferBool(&StartsAsReadyForMelee);
+    context.Transfer(*(bool*)(&CanBeKnockedDown));
+    context.Transfer(*(float*)(&ComboContinueSpeed));
+    context.Transfer(*(float*)(&CombatFOV));
+    context.Transfer(*(bool*)(&StartsAsReadyForMelee));
 }

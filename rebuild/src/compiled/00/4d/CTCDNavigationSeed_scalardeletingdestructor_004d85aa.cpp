@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCDNavigationSeed_Destruct(void* seed);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCDNavigationSeed_ScalarDeletingDestructor(void* seed, int, unsigned int flags)
 {
-    CTCDNavigationSeed_Destruct(seed);
+    ((CTCBase*)(seed))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(seed);
+        operator delete(seed);
     return seed;
 }

@@ -52,7 +52,8 @@ class CTCBase { public:                               // engine/CTCBase.h layout
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
     bool    IsInGlobalUpdateTCs;               // +0x09
-    const CWorldMap& PeekWorldMap() const;     // 0x00686D20
+protected:
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20
 };
 
 #pragma pack(push, 1)

@@ -8,7 +8,15 @@
 #include "engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h"
 #include "engine/CEngineInternalPrimitiveBase.h"
 #include "engine/CEngineInternalPrimitiveRepeatedStaticMesh.h"
+#define C3DMeshInfo C3DMeshInfoLayout
 #include "engine/C3DMeshInfo.h"
+#undef C3DMeshInfo
+
+class C3DMeshInfo : public C3DMeshInfoLayout
+{
+public:
+    void BeginLoading(unsigned long, bool, bool) const;   // 0x00A256F0
+};
 
 class C3DVector { public:
     float X;
@@ -77,7 +85,6 @@ class CEnginePrimitiveHandle { public:
 };
 
 struct C3DMeshInfoLoadingCallView : C3DMeshInfo {
-    void BeginLoading(unsigned long priority, bool wait, bool loadTextures) const; // 0x00A256F0
 };
 
 struct C3DMeshInfoRet4CallView {

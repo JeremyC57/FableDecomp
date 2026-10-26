@@ -99,10 +99,16 @@ class CTCHeroStats {
 public:
     void ApplyBonusItemEffects(const CBonusItemDef& def);   // 0x0057C4F1
 };
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    void* m_pItem;
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 class CCreatureActionBase {                     // retail 0xA8 bytes
 public:

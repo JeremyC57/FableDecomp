@@ -8,7 +8,6 @@ class CWideString { public:
     CWideString();                                          // 0x0099AED0
     CWideString(const CWideString& other);                  // 0x0099B720
     ~CWideString();                                         // 0x0099B510
-    unsigned long GetLength() const;                        // 0x0099B220
     CWideString& operator=(const unsigned short* text);     // 0x0099B800
     CWideString& operator=(const CWideString& other);       // 0x0099B7D0
     CWideString& operator+=(const unsigned short* text);    // 0x0099B940
@@ -16,6 +15,8 @@ class CWideString { public:
     operator const unsigned short*() const;                 // 0x0099AF10
     unsigned short operator[](long i) const { return ((const unsigned short*)*this)[i]; }
     CWideString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099BDB0
+public:
+    long GetLength() const;   // 0x0099B220
 };
 unsigned long __fastcall GetCharWidthW(unsigned short c);   // 0x0054F4B0
 struct CIME {

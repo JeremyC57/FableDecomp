@@ -12,6 +12,7 @@
 //   +0x18, AskedForHerosHelp +0x1c, HealthBarID +0x20; CQ_MinionClifftopChaseScript retail = PDB - 0x14.
 // Shape: the 0x00DA6D50 model (inline copy of a non-const thing for the by-value spawn argument, out-of-line const copy
 //   for the filter and the functor member; the last wait calls IsAlive through a reference so it stays virtual).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -126,14 +127,27 @@ struct CQ_MinionClifftopChaseScript : CScriptBase {
     bool QuestStartScreened;                           // +0x4b
     void GuardChatter(CScriptThing guard);             // 0x00DA71E0
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
 struct CQ_SunnyvaleMasterData;
-class CCorneredGuard {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CCorneredGuard : public CEntityScriptBase {
 public:
     void*                         __vftable;           // +0x00
     CGameScriptInterface*         Game;                // +0x04
@@ -142,8 +156,6 @@ public:
     CQ_SunnyvaleMasterData*       PMasterData;         // +0x18
     bool                          AskedForHerosHelp;   // +0x1c
     long                          HealthBarID;         // +0x20
-    void RegisterFilter(CIsThingAlive& filter);        // 0x00F35B10
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 
@@ -151,7 +163,7 @@ void CCorneredGuard::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

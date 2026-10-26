@@ -30,7 +30,10 @@ class CWideString { public:
     ~CWideString();                                // 0x0099B510
     CCharString ConvertToCharString();             // 0x0099B2C0
 };
-bool __fastcall PathExists(const CWideString& path);   // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};   // 0x00999230
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CDiskFileWin32 : public CBaseClassNonCopyable { public:    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
@@ -47,7 +50,15 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:    // vtable 0x012
 class CDateAndTime { public:
     unsigned char _body[0x1c];
 };
-struct CFileDataOutputStream {                     // 0xc bytes
+class CDataOutputStream
+{
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
+    void WriteSLONG(long);   // 0x00993EB0
+    void WriteNullTerminatedString(const CCharString&);   // 0x00995AE0
+};
+
+struct CFileDataOutputStream : public CDataOutputStream {                     // 0xc bytes
     void* __vftable;
     void* m_pFile;
     long m_position;
@@ -55,9 +66,6 @@ struct CFileDataOutputStream {                     // 0xc bytes
     ~CFileDataOutputStream();                      // 0x00994430
     unsigned long GetPosition() const;             // 0x00994460
     void SetPosition(unsigned long position);      // 0x00994450
-    void WriteULONG(unsigned long value);          // 0x00993EB0
-    void WriteSLONG(long value);                   // 0x00993EA0
-    void WriteNullTerminatedString(const CCharString& text);   // 0x00995AE0
     void WriteDateAndTime(const CDateAndTime& date);           // 0x00994180
 };
 struct CEntry {                                    // CChecksumCacheFile::CEntry
@@ -118,21 +126,21 @@ void CChecksumCacheFile::Save()
         file.Open(Filename, FILE_ACCESS_WRITE, 2);
         CFileDataOutputStream stream(&file);
         unsigned long start = stream.GetPosition();
-        stream.WriteULONG(0);
-        stream.WriteULONG(0);
+        stream.WriteSLONG(0);
+        stream.WriteSLONG(0);
         unsigned long count = 0;
         for (CEntryIterator it = Entries.begin(); it != Entries.end(); ++it) {
-            if (PathExists(it->first)) {
+            if (CAFile::PathExists(it->first)) {
                 CWideString name(it->first);
                 stream.WriteNullTerminatedString(name.ConvertToCharString());
                 stream.WriteDateAndTime(it->second.Date);
-                stream.WriteSLONG(it->second.Checksum);
+                stream.WriteULONG(it->second.Checksum);
                 ++count;
             }
         }
         stream.SetPosition(start);
-        stream.WriteULONG(4);
-        stream.WriteULONG(count);
+        stream.WriteSLONG(4);
+        stream.WriteSLONG(count);
         file.Close();
         NeedsSaving = false;
     }

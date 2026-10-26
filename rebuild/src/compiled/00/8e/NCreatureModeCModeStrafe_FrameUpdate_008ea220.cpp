@@ -28,7 +28,6 @@ class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];       // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;           // +0x44
-    long GetJoystickDeviceNumber();        // 0x004C7CA0
     template<class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -42,6 +41,8 @@ class CThing { public:
         }
         return false;
     }
+public:
+    long GetJoystickDeviceNumber() const;   // 0x004C7CA0
 };
 
 struct CTCProjectileCharge {               // interface type 0x81

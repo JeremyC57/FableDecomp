@@ -2,7 +2,7 @@
 
 class CDefClassBase { public:
     char pad[0x28];
-    void Copy(const CDefClassBase* src);  // __fastcall -> ecx=this, [esp]=src
+    CDefClassBase& operator=(const CDefClassBase& other);  // __fastcall -> ecx=this, [esp]=src
 };
 
 class CSummonableCreatureDef : public CDefClassBase { public:
@@ -12,7 +12,7 @@ class CSummonableCreatureDef : public CDefClassBase { public:
 
 void __fastcall CSummonableCreatureDef_Copy(CSummonableCreatureDef* self, void* /*edx*/, const CDefClassBase* src)
 {
-    self->CDefClassBase::Copy(src);
+    self->CDefClassBase::operator=(*(const CDefClassBase*)(src));
     const CSummonableCreatureDef* s = (const CSummonableCreatureDef*)src;
     self->f28 = s->f28;
     self->f2c = s->f2c;

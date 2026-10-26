@@ -33,9 +33,8 @@ public:
 class CPersistContext {
 public:
     void Transfer(std::vector<CDefString >& value);              // 0x004657F2
-    void Transfer(float& value);                                 // 0x00431061
+    template <class T> void Transfer(T& value);                                 // 0x00431061
     void Transfer(std::vector<float >& value);                   // 0x00464CBF
-    void Transfer(bool& value);                                  // 0x0043314A
 };
 class CSpecialAbilitiesDivineWrathDef {
 public:

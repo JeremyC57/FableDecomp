@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFF07, length 409 bytes, `ret 4`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CTCBase::CTCBase(CThing*) 0x00686800, CGraphicBankParams ctor 0x00415B80, CDisplayManager format pickers
 // 0x009BE830/870/8B0/6C0/610/590, GFGetSystemManager 0x009A4EC0, CGraphicBankManager::CreateAndInitialize 0x009F83D0,
-// ~CCountedPointer<CGraphicDataBank> 0x00419108, CTCBase::AddToGlobalUpdateTCs 0x00686ED0. Vtable 0x01253DBC.
+// ~CCountedPointer<CGraphicDataBank> 0x00419108, CTCBase::AddToGlobalTCs 0x00686ED0. Vtable 0x01253DBC.
 // Leaf: ??0CTCInventoryBase
 // Layout: local model -- retail CTCInventoryBase is the PDB layout minus 0x14 from the tail (no engine header;
 // offsets from this ctor's stores and from UpdateInventoryAnim 0x005BD699: angles +0xfc..+0x110, def index +0x128).
@@ -66,7 +66,8 @@ class CTCBase { public:
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    void AddToGlobalUpdateTCs();                // 0x00686ED0
+public:
+    void AddToGlobalTCs();   // 0x00686ED0
 };
 
 template <class T> struct CRetailVector {       // STLport vector (12 bytes)
@@ -182,7 +183,7 @@ CTCInventoryBase::CTCInventoryBase(CThing& thing)
     params.Flag28 = false;
     CGraphicBankManager* manager = GFGetSystemManager()->GraphicBankManager;
     GraphicManager = manager->CreateAndInitialize(g_CCharString_013b8ba4, &params, true, true).GetPItem();
-    AddToGlobalUpdateTCs();
+    AddToGlobalTCs();
 }
 
 }

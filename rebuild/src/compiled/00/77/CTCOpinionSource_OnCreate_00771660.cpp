@@ -4,11 +4,11 @@
 // Callees: operator new 0x00BFEA1A (the 12-byte COpinionSet), malloc 0x00BFEA0E (the five-float opinion buffer and the
 //   16-byte list node), CCountedPointer<COpinionSet>::Reset(T*) 0x00771B60 (landed), CThing::SetForceFrameUpdate
 //   0x004C7C60, CBaseIntelligentPointer() 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 /
-//   ~CBaseIntelligentPointer 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01237F1C), CTCBase::GetWorld 0x00686A70.
+//   ~CBaseIntelligentPointer 0x00A01C10 (CIntelligentPointer<const CThing> vtable 0x01237F1C), CTCBase::GetWorld 0x00686A70.
 // Layout: retail CTCOpinionSource (as the landed ctor 0x00771360): ParentThing +0x04, ReactionFlags[79] +0x25,
 //   POpinionProduced +0x78; COpinionSet = one 12-byte CArray<float>; CThing PBaseDef +0x70; CThingBaseDef
 //   AlwaysFrameUpdate +0x41 bit 1 (PDB +0x45); CWorld POpinionManager +0x74, its source list (STLport list of
-//   CIntelligentPointer<CThing>, sentinel pointer) +0x71c (as the landed CleanupSource 0x00771770).
+//   CIntelligentPointer<const CThing>, sentinel pointer) +0x71c (as the landed CleanupSource 0x00771770).
 // Shape: the opinion array is the STLport vector(n) shape: a _Vector_base with the end pointer in an alloc-proxy
 //   member (its init store lands after the malloc push), start/finish/end in STLport order, then the fill through a
 //   cursor copy; the reaction flags are `i >= 18` over an unsigned index; the source-list push_back is an inline insert
@@ -66,10 +66,10 @@ public:
     void* GetPItem() const;                         // 0x00A01B50
     void SetPItem(void* item);                      // 0x00A01B90
 };
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing> vtable 0x01237F1C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<const CThing> vtable 0x01237F1C
 public:
     virtual void v00();
-    CIntelligentPointer(T* item) { SetPItem(item); }
+    CIntelligentPointer(T* item) { SetPItem((void*)item); }
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 
@@ -95,7 +95,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 struct COpinionManager {
     unsigned char _pad00[0x71c];
-    CList<CIntelligentPointer<CThing> > OpinionSources;   // +0x71c
+    CList<CIntelligentPointer<const CThing> > OpinionSources;   // +0x71c
 };
 class CWorld {
 public:
@@ -114,9 +114,16 @@ public:
     void SetForceFrameUpdate(bool force);           // 0x004C7C60
 };
 
-class CTCOpinionSource {
+class CTCBase
+{
 public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCOpinionSource : public CTCBase {
+public:
     CThing*       ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad08[0x25 - 0x08];
     bool          ReactionFlags[79];                // +0x25
@@ -125,8 +132,9 @@ public:
     bool          UnknownThreatSource;              // +0x76
     bool          ReactNonstopFlag;                 // +0x77
     CCountedPointer<COpinionSet> POpinionProduced;  // +0x78
-    CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
-    void OnCreate();
+
+public:
+    virtual void OnCreate();
 };
 
 void CTCOpinionSource::OnCreate()
@@ -137,5 +145,5 @@ void CTCOpinionSource::OnCreate()
     CThingBaseDef* def = ParentThing->PBaseDef;
     if (def && !def->AlwaysFrameUpdate)
         ParentThing->SetForceFrameUpdate(true);
-    ListInsert(GetWorld()->POpinionManager->OpinionSources.Node, CIntelligentPointer<CThing>(ParentThing));
+    ListInsert(GetWorld().POpinionManager->OpinionSources.Node, CIntelligentPointer<const CThing>(ParentThing));
 }

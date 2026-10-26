@@ -6,9 +6,16 @@
 // 16-byte vector; engine/CPlayerManager.h carries the PDB offsets), modelled locally as at 0x0044A530. CPlayer from
 // engine/CPlayer.h (Number +0x28).
 // Shape: /O2 (16-aligned entry); size() read once into a local count, the player held in a local, `sar` from the signed pointer difference, `long` index.
+#define CPlayer CPlayerLayout
 #include "engine/CPlayer.h"
+#undef CPlayer
+
+class CPlayer : public CPlayerLayout
+{
+public:
+    long GetJoystickDeviceNumber() const;   // 0x00487510
+};
 struct CPlayer_Methods : CPlayer {
-    long GetJoystickDeviceNumber() const;                // 0x00487510
 };
 class CMainGameComponent;
 class CGameDefinitionManager;

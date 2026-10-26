@@ -5,9 +5,16 @@
 // Layout: retail CPlayerManager -- Players (12-byte STLport vector<CPlayer*>) +0x0c (Ego_r.pdb +0x0c, 16-byte vector shifts
 // the later members; engine/CPlayerManager.h carries the PDB offsets), modelled locally as at 0x00449990.
 // Shape: /O2 (16-aligned entry, `lea esp,[esp]` loop pad); size() read once into a local count, `long` index.
+#define CPlayer CPlayerLayout
 #include "engine/CPlayer.h"
+#undef CPlayer
+
+class CPlayer : public CPlayerLayout
+{
+public:
+    long GetJoystickDeviceNumber() const;   // 0x00487510
+};
 struct CPlayer_Methods : CPlayer {
-    long GetJoystickDeviceNumber() const;                // 0x00487510
 };
 class CMainGameComponent;
 class CGameDefinitionManager;

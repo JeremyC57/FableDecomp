@@ -1,12 +1,13 @@
 #pragma optimize("s", on)
 // CExplosionRing::TransferBinaryOut(CDataOutputStream* stream) -- write the ring's count byte (+4) then its three floats (+0, +8, +0xc) to the stream
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004EB1D9, length 61 bytes.
-// Callees: CDataOutputStream::WriteCBYTE @ 0x00993EB0 (the word pushed straight from memory), WriteFloat @ 0x00993EE0 three times (each float loaded through the x87
+// Callees: CDataOutputStream::WriteSLONG @ 0x00993EB0 (the word pushed straight from memory), WriteFloat @ 0x00993EE0 three times (each float loaded through the x87
 // and stored into the reserved slot: the values come from inline float getters). Shape: the size-optimised module (`push dword ptr [esi+4]`), the stream in edi,
 // `ret 4`.
 class CDataOutputStream { public:
-    void WriteCBYTE(long value);                   // 0x00993EB0
     void WriteFloat(float value);                  // 0x00993EE0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 class CExplosionRing { public:
@@ -22,7 +23,7 @@ class CExplosionRing { public:
 
 void CExplosionRing::TransferBinaryOut(CDataOutputStream* stream)
 {
-    stream->WriteCBYTE(m_count);
+    stream->WriteSLONG(m_count);
     stream->WriteFloat(GetRadius());
     stream->WriteFloat(GetHeight());
     stream->WriteFloat(GetSpeed());

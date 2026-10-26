@@ -17,23 +17,29 @@
 //   SortIfDirty (sort, Dirty = false).
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
 class CThing;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                    // +0x04
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CThing* item);                        // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { CThing* item = other.GetPItem(); SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { T* item = other.GetPItem(); SetPItem(item); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CCarrySlot {                                     // pair<long, CIntelligentPointer<CThing> > (12 bytes)
     long                first;
-    CIntelligentPointer second;
-    CCarrySlot(const long& slot, const CIntelligentPointer& thing) : first(slot), second(thing) { }
+    CIntelligentPointer<CThing> second;
+    CCarrySlot(const long& slot, const CIntelligentPointer<CThing>& thing) : first(slot), second(thing) { }
     CCarrySlot(const CCarrySlot& other) : first(other.first), second(other.second) { }
 };
 struct __false_type { __false_type() { } };
@@ -58,7 +64,7 @@ struct CCarrySlotMap {                                  // CVectorMap<long, CInt
     CCarrySlotVector    Vector;                         // +0x00
     CKeyPairCompareLess Compare;                        // +0x0c
     bool                Dirty;                          // +0x0d
-    void Add(const long& key, const CIntelligentPointer& value)
+    void Add(const long& key, const CIntelligentPointer<CThing>& value)
     {
         Vector.push_back(CCarrySlot(key, value));
         Dirty = true;
@@ -137,6 +143,6 @@ void CTCCarrying::OnCreate()
     ParentThing->PDef->GetSubDef(&out);
     CDefHolder<CCarryingDef> def(out.Object);
     for (unsigned long i = 0; i < def->AvailableCarrySlots.size(); ++i)
-        CarrySlots.Add(def->AvailableCarrySlots[i], CIntelligentPointer(0));
+        CarrySlots.Add(def->AvailableCarrySlots[i], CIntelligentPointer<CThing>(0));
     CarrySlots.SortIfDirty();
 }

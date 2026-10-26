@@ -6,7 +6,8 @@ class CGameEvent
     unsigned char endPos;
     unsigned char valid;
     unsigned char replacement;
-    void Append(long size, const void* source);
+public:
+    void AddData(long, const void*);   // 0x009F1760
 };
 class CGameEventPackage
 { public:
@@ -58,11 +59,11 @@ bool CNetworkClient::GetLocalGameEventPackageSet(CGameEventPackageSet* packageSe
         event.valid = updateReady;
         event.replacement = 0;
         event.player = 0xFF;
-        event.Append(4, &copySource);
+        event.AddData(4, &copySource);
         copySource = checksum2;
-        event.Append(4, &copySource);
+        event.AddData(4, &copySource);
         copySource = static_cast<unsigned long>(localFrame);
-        event.Append(4, &copySource);
+        event.AddData(4, &copySource);
         ++localFrame;
         localEventPackage.AddEvent(&event);
         localEventPackage.sequence = static_cast<unsigned long>(localFrame);

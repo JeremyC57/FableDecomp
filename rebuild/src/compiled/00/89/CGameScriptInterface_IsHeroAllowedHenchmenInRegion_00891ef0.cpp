@@ -36,8 +36,9 @@ public:
 };
 class CWorldMap {
 public:
-    CRegion& GetRegion(long index);                      // 0x004FC180
     long GetRegionNumberFromName(const CCharString& name) const;   // 0x004FC210
+public:
+    const CRegion& GetRegion(long) const;   // 0x004FC180
 };
 class CWorld {
 public:

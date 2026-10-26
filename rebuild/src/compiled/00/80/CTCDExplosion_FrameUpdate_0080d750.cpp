@@ -18,26 +18,32 @@ class C3DVector { public: float X, Y, Z; };
 class CThing { public:
     void Kill(bool immediately);                // 0x004C9B80
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct SEmitter {                               // pair<CIntelligentPointer<CThing>, long> (12 bytes)
-    CIntelligentPointer first;
+    CIntelligentPointer<CThing> first;
     long                second;
 };
 struct CEmitterThingIs {                        // remove_if predicate: the emitter's thing equals the held pointer
-    CIntelligentPointer Thing;
-    CEmitterThingIs(const CIntelligentPointer& thing) : Thing(thing) { }
+    CIntelligentPointer<CThing> Thing;
+    CEmitterThingIs(const CIntelligentPointer<CThing>& thing) : Thing(thing) { }
 };
 SEmitter* __fastcall remove_if(SEmitter* first, SEmitter* last, CEmitterThingIs pred);   // 0x0080E2F0
 struct CEmitterVector {                         // STLport vector (12 bytes)
@@ -93,7 +99,7 @@ void CTCDExplosion::FrameUpdate()
         NeedToTriggerExplosion = false;
     }
     UpdateExplosiveAdditionalImpulse();
-    Emitters.erase(remove_if(Emitters.begin(), Emitters.end(), CEmitterThingIs(CIntelligentPointer(0))), Emitters.end());
+    Emitters.erase(remove_if(Emitters.begin(), Emitters.end(), CEmitterThingIs(CIntelligentPointer<CThing>(0))), Emitters.end());
     if (!PExplosionDef->DynamicRings.empty()) {
         if (IsDynamicExplosionFinished())
             ParentThing->Kill(true);

@@ -16,7 +16,7 @@ inline bool IsAlive(const CBaseIntelligentPointer& p) {
 }
 class CCombatActionBase { public:
     virtual void v00(); unsigned char _body[0x110];
-    ~CCombatActionBase(); // 0062E900
+    virtual ~CCombatActionBase(); // 0062E900
 };
 class CCreatureAction_BalverineLungeAttack : public CCombatActionBase { public:
     CCreatureAction_BalverineLungeAttack(CThingCreatureBase*,CThing*); // 008CCC70

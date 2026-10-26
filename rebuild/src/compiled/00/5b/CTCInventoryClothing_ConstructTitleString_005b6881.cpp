@@ -24,9 +24,12 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
 };
 CWideString __fastcall IntToWideString(long value);               // 0x00405F00
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);       // 0x009C95E0
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;       // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 struct CEngineGlobals {
     unsigned char _pad[0x14];
     CDataBank*    m_pTextBank;                                    // +0x14

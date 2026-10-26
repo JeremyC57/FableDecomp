@@ -10,6 +10,7 @@
 //          sits at +0x60).
 // Shape: `rand() % 4 == 0` (signed remainder: `and 80000003h ; jns ; dec ; or -4 ; inc`) guards the timer lines,
 //          which repeat DoOnSpeakToSpeech's chain after one extra IsDone test; the default arm is the `else` (laid out last).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -44,14 +45,19 @@ struct CQ_MinionCampScript {
     CTimer        CampTimer;                  // +0x60
 };
 
-class CBriarRose {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CBriarRose : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     void*                 Game;               // +0x04
     unsigned char         Me[0x0c];           // +0x08
     CQ_MinionCampScript*  ParentClass;        // +0x14
     void*                 PMasterData;        // +0x18
-    bool IsDone();                            // 0x00F35B30
     void DoSpeech(const CCharString& line);   // 0x00DA2610
     void DoOnHitSpeech();
 };
@@ -62,23 +68,23 @@ void CBriarRose::DoOnHitSpeech()
 {
     CCharString line("TEXT_QST_B08_BRIAR_ONHIT");  // 0x012D711C
     if (rand() % 4 == 0) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         if (GetTime(ParentClass->CampTimer) > 48) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             line += "_START";                      // 0x012CD3B8
         } else if (GetTime(ParentClass->CampTimer) > 24) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             line += "_MIDDLE";                     // 0x012D7114
         } else {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             line += "_END";                        // 0x012D710C
         }
     } else {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         line = "TEXT_QST_B08_BRIAR_ONHIT_DEFAULT";   // 0x012D70E8
     }

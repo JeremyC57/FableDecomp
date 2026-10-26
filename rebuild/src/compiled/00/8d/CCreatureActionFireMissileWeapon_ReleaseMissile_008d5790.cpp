@@ -209,9 +209,10 @@ template<class T>struct DefPointer {
 
 class CMeleeCombatAbilityDef:public NativeCountedDef { public:}; // borrowed native lifetime view, no definition fields accessed
 class CTCCarrying { public:
- CThing* GetThingInPrimarySlot(); //006A1440
- CThing* GetThingInCarrySlot(long); //006A11F0 map of slot ID to intelligent pointer
  void RemoveThing(CThing*); //006A19B0
+public:
+    CThing* GetThingInCarrySlot(long) const;   // 0x006A11F0
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 class CTCWeapon:public CTCWeaponPdb { public:
  void SetProjectileWeaponLoaded(bool,CThing*); //005DAC50

@@ -1,6 +1,6 @@
 // CReactionMatch_SecondaryAxisMRShifted::TransferBinaryOut(CDataOutputStream& stream) const -- write the reaction type, the secondary axis and the six axis/shift floats
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006FEB50, length 101 bytes (virtual, slot 4).
-// Callees: CDataOutputStream::WriteLong @ 0x00993EB0 (catalog "WriteCBYTE"; it writes a long) x2,
+// Callees: CDataOutputStream::WriteSLONG @ 0x00993EB0 (catalog "WriteCBYTE"; it writes a long) x2,
 // CDataOutputStream::WriteFloat @ 0x00993EE0 x6.
 // Layout (Ego_r.pdb, engine/CReactionMatch_SecondaryAxisMRShifted.h): CReactionMatch base {vptr, ReactionType +4}, Axis +8 (EOpinion),
 // LowerBoundOnAxis +0xc, InvIntervalOnAxis +0x10, MShiftZero +0x14, MShiftWeight +0x18, RShiftZero +0x1c, RShiftWeight +0x20.
@@ -10,8 +10,9 @@
 #include "engine/CReactionMatch_SecondaryAxisMRShifted.h"
 
 class CDataOutputStream { public:
-    void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 struct CReactionMatch_SecondaryAxisMRShiftedRetail {
@@ -30,8 +31,8 @@ FABLE_STATIC_ASSERT(sizeof(CReactionMatch_SecondaryAxisMRShiftedRetail) == sizeo
 
 void CReactionMatch_SecondaryAxisMRShiftedRetail::TransferBinaryOut(CDataOutputStream& stream) const
 {
-    stream.WriteLong(ReactionType);
-    stream.WriteLong(Axis);
+    stream.WriteSLONG(ReactionType);
+    stream.WriteSLONG(Axis);
     stream.WriteFloat(LowerBoundOnAxis);
     stream.WriteFloat(InvIntervalOnAxis);
     stream.WriteFloat(MShiftZero);

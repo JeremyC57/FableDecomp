@@ -62,14 +62,20 @@ class CWorld { public:
     CGameTimeManager* TimeManager;              // +0x1c
 };
 
-class CTCVillage { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCVillage : public CTCBase { public:
     unsigned char _pad_0x04[0x8c];
     bool          TimeIsPaused;                 // +0x90
     unsigned char _pad_0x91[0xb];
     long          TimeStopIndex;                // +0x9c
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
-    CPlayerManager* GetPlayerManager();         // 0x00686D40 (CTCBase)
     void OnKill();
 };
 
@@ -78,10 +84,10 @@ void CTCVillage::OnKill()
     bool& paused = TimeIsPaused;
     if (paused) {
         paused = false;
-        CWorld* world = GetWorld();
+        CWorld* world = (&GetWorld());
         world->TimeManager->SetTimeAsStopped(false, &TimeStopIndex);
     }
-    CThingCreatureBase* hero = GetPlayerManager()->GetCurrentPlayer()->GetCharacterThing();
+    CThingCreatureBase* hero = GetPlayerManager().GetCurrentPlayer()->GetCharacterThing();
     if (IS_THING_ALIVE_0043dbd0(hero) && hero->HasTC(243))
         ((CTCInterface243*)hero->GetTC(243))->OnVillageKilled();
 }

@@ -5,7 +5,7 @@
 // Callees: CBankFileAsyncData::SetupBuffer(bool) @ 0x009D52D0, CBankFile::GetEntryDataOffset(unsigned long) @ 0x009CC270,
 // CBankFile::ReadData(unsigned long offset, void* buffer, unsigned long size) @ 0x009CBF60 (catalog
 // "CMapsAndRegionsDialog::OpenMapDialog", propagated), CBankFile::Align(unsigned long) @ 0x009CBB90,
-// CThreadedFile::QueueRead(const CThreadedFileObjectDesc&) @ 0x0098F350 (catalog "_Cons_val<...CAnimationEntry...>",
+// CThreadedFile::AddObject(const CThreadedFileObjectDesc&) @ 0x0098F350 (catalog "_Cons_val<...CAnimationEntry...>",
 // propagated; returns the read's UID).
 // Shape: the synchronous call pushes its size and buffer before evaluating the offset call (right to left); in the async
 // arm the NonCached test comes first and the shared PDst store and `GetEntryDataOffset(m_index)` argument set-up
@@ -26,7 +26,8 @@ class CThreadedFileObjectDesc { public:                   // 0x18 bytes
     EThreadedFilePriority Priority;                // +0x14
 };
 class CThreadedFile { public:
-    unsigned long QueueRead(const CThreadedFileObjectDesc& desc);   // 0x0098F350
+public:
+    unsigned long AddObject(const CThreadedFileObjectDesc&);   // 0x0098F350
 };
 template <class T> class CCountedPointer { public: T* Data; void* Info; };
 class CBankFileAsync {
@@ -93,5 +94,5 @@ void CBankFileAsyncEntry::SetupRead(unsigned long start, CBankFileAsyncData* dat
     desc.PCallback = data;
     desc.Priority = priority;
     desc.QueueWhenFinished = false;
-    data->ThreadedFileUID = data->BankFile->ThreadedFile.Data->QueueRead(desc);
+    data->ThreadedFileUID = data->BankFile->ThreadedFile.Data->AddObject(desc);
 }

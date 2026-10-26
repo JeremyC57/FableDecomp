@@ -7,7 +7,6 @@ class CTCAssassinRush { public:
 
 extern "C" void __fastcall AssassinRush_Sub0x68_Method(void* thisptr);
 extern "C" void __cdecl AssassinRush_Free(void* p);
-extern "C" void __fastcall AssassinRush_BaseFinishMove(void* thisptr);
 void __fastcall CTCAssassinRush_FinishMove(CTCAssassinRush* thisptr);
 
 static int g_sub = 0;
@@ -17,7 +16,14 @@ static void* g_freed = 0;
 
 extern "C" void __fastcall AssassinRush_Sub0x68_Method(void* thisptr) { g_sub++; }
 extern "C" void __cdecl AssassinRush_Free(void* p) { g_free++; g_freed = p; }
-extern "C" void __fastcall AssassinRush_BaseFinishMove(void* thisptr) { g_base++; }
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();
+};
+CParentDefClassBase::~CParentDefClassBase()
+{
+    void* thisptr = (void*)this; (void)thisptr; g_base++;
+}
 
 int main()
 {

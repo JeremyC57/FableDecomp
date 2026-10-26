@@ -1,13 +1,16 @@
+class CCombatActionBase {
+public:
+    virtual ~CCombatActionBase();   // 0x0062E900
+};
 class CCombatAction_WillForcePushInto { public:
     void* vftable;
 };
 
-void __fastcall CCombatAction_WillForcePushInto_dtor(CCombatAction_WillForcePushInto* action);
 void operator delete(void*);
 
 void* __fastcall CCombatAction_WillForcePushInto_scalar_deleting_destructor(CCombatAction_WillForcePushInto* action, int edx_unused, unsigned int flags)
 {
-    CCombatAction_WillForcePushInto_dtor(action);
+    ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
     if (flags & 1)
         operator delete(action);
     return action;

@@ -35,16 +35,26 @@ struct CThingDefs {
     CDefClassBase* m_pDefinition;                       // +0x70
 };
 
-struct CBaseIntelligentPointer {                        // 8 bytes: vptr + item
-    virtual void v00();
-    CThing* m_pItem;
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    void SetPItem(CThing* item);                        // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {  // vtable 0x01238C6C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {  // vtable 0x01238C6C
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() {}
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 
 template <class T> struct SRetailAllocProxy {
@@ -71,14 +81,14 @@ class CTCTurncoat : public CTCBase { public:
     long                WillTurncoatTimer;              // +0x0c
     float               CurrentTurncoatedness;          // +0x10
     CDefPointer         PDef;                           // +0x14
-    CIntelligentPointer TurncoatedEffect;               // +0x18
+    CIntelligentPointer<CThing> TurncoatedEffect;               // +0x18
     long                TurncoatTimeLast;               // +0x20
-    CIntelligentPointer TurncoatOriginator;             // +0x24
+    CIntelligentPointer<CThing> TurncoatOriginator;             // +0x24
     bool                TurncoatOverride;               // +0x2c
     long                TimeDelayBeforeResistanceRecoveryFrames;   // +0x30
     long                CurrentRecoveryTimer;           // +0x34
     float               ResistanceRecoveryPerFrame;     // +0x38
-    CRetailVector<CIntelligentPointer> TurncoatStageEffects;   // +0x3c
+    CRetailVector<CIntelligentPointer<CThing> > TurncoatStageEffects;   // +0x3c
     float               CreatureTurncoatResistance;     // +0x48
     CTCTurncoat(CThing* parent);
     virtual void v00();

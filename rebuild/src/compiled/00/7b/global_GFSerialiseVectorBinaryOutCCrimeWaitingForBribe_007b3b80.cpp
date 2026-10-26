@@ -9,10 +9,17 @@
 //   is `*(begin() + n)`, so the element address is re-formed from the start pointer (`mov eax,[ebx] ; lea ebx,
 //   [eax+edi*8]`) and the vector pointer is spilled to the `push ecx` word. The traits' DefaultVal is a POD with no
 //   constructor, so the traits object needs no frame.
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteLong(long value);                             // 0x00993EB0
 };
 
 class CCrimeWaitingForBribe {                               // 8 bytes
@@ -39,8 +46,8 @@ template <> struct CPersistTraits<CCrimeWaitingForBribe> {
     CCrimeWaitingForBribe DefaultVal;
     void TransferBinaryOut(CDataOutputStreamWriter& stream, const CCrimeWaitingForBribe* value) const
     {
-        stream.WriteLong(value->DeedHandle);
-        stream.WriteLong(value->Type);
+        stream.WriteSLONG(value->DeedHandle);
+        stream.WriteSLONG(value->Type);
     }
 };
 
@@ -49,7 +56,7 @@ void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std:
 {
     CPersistTraits<T> traits;
     long count = value.size();
-    stream.WriteLong(count);
+    stream.WriteSLONG(count);
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, &value[i]);
 }

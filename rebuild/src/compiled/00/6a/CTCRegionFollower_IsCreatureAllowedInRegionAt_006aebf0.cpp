@@ -108,11 +108,16 @@ public:
     CDefPointer<CDefClassBase> PDef;                    // +0x70
     CDefPointer<CDefClassBase> GetPDef() const { return PDef; }
 };
-class CTCRegionFollower { public:
+class CTCBase
+{
+protected:
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20
+};
+
+class CTCRegionFollower : public CTCBase { public:
     void*   __vftable;                                  // +0x00 (CTCBase)
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[0x4];
-    const CWorldMap& PeekWorldMap() const;              // 0x00686D20 (CTCBase)
     bool IsCreatureAllowedInRegionAt(const CThing* creature, const C3DVector& position) const;
 };
 

@@ -1,14 +1,16 @@
 #pragma optimize("t", on)
+class CBaseClass {
+public:
+    virtual ~CBaseClass();   // 0x0099A2E0
+};
 extern void __fastcall DestructFirstMember_0075f2b0(void* member);
-extern void __fastcall DestructSecondMember_0099a2e0(void* member);
 extern void __fastcall CPSCEmitterGeneric_Destruct(void* emitter);
-extern void __cdecl OperatorDelete(void* object);
 void* __fastcall CPSCEmitterGeneric_CompositeScalarDeletingDestructor(void* emitter, int, unsigned int flags)
 {
     DestructFirstMember_0075f2b0(static_cast<unsigned char*>(emitter) + 24);
-    DestructSecondMember_0099a2e0(static_cast<unsigned char*>(emitter) + 12);
+    ((CBaseClass*)(static_cast<unsigned char*>(emitter) + 12))->CBaseClass::~CBaseClass();
     CPSCEmitterGeneric_Destruct(emitter);
     if (flags & 1)
-        OperatorDelete(emitter);
+        operator delete(emitter);
     return emitter;
 }

@@ -8,10 +8,12 @@
 // reference local (`lea edi,[ebx+edx+4]`); VC keeps the down-counter in the dead stream-argument slot.
 // Leaf: TransferBinaryOut
 class CDataOutputStream { public:
-    void WriteULong(unsigned long value);           // 0x00993EA0
-    void WriteLong(long value);                     // 0x00993EB0
-    void WriteUShort_00993e90(unsigned short value);         // 0x00993E90
-    void WriteBool(bool value);                     // 0x00993E30
+public:
+    void WriteSWORD(short);   // 0x00993E90
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteSLONG(long);   // 0x00993EB0
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 namespace NSkeletalMorphs {
@@ -40,12 +42,12 @@ class CSkeletalMorphs { public:
 void CSkeletalMorphs::TransferBinaryOut(CDataOutputStream* stream) const
 {
     unsigned long count = Morphs.size();
-    stream->WriteULong(count);
+    stream->WriteULONG(count);
     for (unsigned long i = 0; i < count; ++i) {
-        stream->WriteULong(Morphs[i].first);
+        stream->WriteULONG(Morphs[i].first);
         const NSkeletalMorphs::CEntry& entry = Morphs[i].second;
-        stream->WriteLong(entry.Morph);
-        stream->WriteUShort_00993e90(entry.Index);
-        stream->WriteBool(entry.Enabled);
+        stream->WriteSLONG(entry.Morph);
+        stream->WriteSWORD(entry.Index);
+        stream->WriteEBOOL(entry.Enabled);
     }
 }

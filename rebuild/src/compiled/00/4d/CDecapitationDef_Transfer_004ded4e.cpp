@@ -2,10 +2,10 @@
 #include "engine/CDecapitationDef.h"
 
 struct CMember { int x; };
-class CPersistContext { public: void Persist_00431102(CMember* m); };
+class CPersistContext { public: template <class T> void Transfer(T& value); };
 
 void __fastcall CDecapitationDef_Transfer(CDecapitationDef* def, void* /*edx*/, CPersistContext* ctx)
 {
-    ctx->Persist_00431102((CMember*)&def->BodyParticleEffect);
-    ctx->Persist_00431102((CMember*)&def->Head);
+    ctx->Transfer(*(long*)((CMember*)&def->BodyParticleEffect));
+    ctx->Transfer(*(long*)((CMember*)&def->Head));
 }

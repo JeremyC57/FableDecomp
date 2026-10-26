@@ -21,7 +21,10 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 class C3DVector { public: float X, Y, Z; };
 class C3DHelperPoint { public:                            // 16 bytes
@@ -55,7 +58,7 @@ class C3DMeshObject { public:
 
 long C3DMeshObject::GetNoHelperPoints(const CCharString& name) const
 {
-    unsigned long nameHash = Calc_004014a0(0, name.GetChars(), name.GetLength());
+    unsigned long nameHash = CCRC::Calc(0, name.GetChars(), name.GetLength());
     const THelperPointEntry* last = Mesh->FindHelperPointsEnd(nameHash);
     return last - Mesh->FindHelperPointsBegin(nameHash);
 }

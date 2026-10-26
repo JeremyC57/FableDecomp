@@ -46,7 +46,7 @@ template<class K, class V> class CVectorMap { public:
     SEntry* end() const { return m_vector.m_last; }
     SEntry* UpperBound(const K& key) const;              // 0x0086A8D0 (K = unsigned long)
 };
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
+long __fastcall GFROR13(unsigned long);  // 0x00497890
 
 struct CMorphSet {
     struct CMorphSetTextureMorph {

@@ -21,7 +21,10 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetPString() const { return m_pStringData == 0 ? "" : m_pStringData->m_pData; }
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 class CCPPointerInfo { public:                                     // PDB: RefCount +0, DeleteFunc +4, Data +8
     long RefCount;
@@ -86,7 +89,7 @@ class CTCGraphicAppearance { public:
 
 const CPrimitive* CTCGraphicAppearance::GetFirstPrimitiveWithDummyObject(const CCharString& name) const
 {
-    unsigned long key = Calc_004014a0(0, name.GetPString(), name.GetLength());
+    unsigned long key = CCRC::Calc(0, name.GetPString(), name.GetLength());
     for (CPrimitiveListNode* node = Primitives->_M_next; node != Primitives; node = node->_M_next) {
         const CPrimitive& primitive = node->_M_data;
         if ((primitive.Type == PRIMITIVE_TYPE_MESH_1 || primitive.Type == PRIMITIVE_TYPE_MESH_2) && primitive.BankIndex != 0) {

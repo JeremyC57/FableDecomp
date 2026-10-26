@@ -67,12 +67,13 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
     ~CScriptThing() { }                                 // out-of-line copy 0x004AA840
 };
-namespace N_0099a430 { struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-}; } using N_0099a430::CBaseIntelligentPointer;
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
+};
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -100,7 +101,7 @@ struct CScriptGameResourceObjectMovieFull : CScriptGameResourceObjectBase {
 };
 struct CMovieStorage { void* Words[4]; };              // raw frame storage of one movie handle (0x10 bytes)
 inline void* operator new(unsigned int, void* where) { return where; }   // placement form: the handle is destroyed by hand
-class CScriptGameResourceObjectMovieBase : public CBaseIntelligentPointer { public:   // vtable 0x01260EF4; built in place in CMovieStorage, destroyed by hand
+class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; built in place in CMovieStorage, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
     __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     __forceinline void DestroyInline()

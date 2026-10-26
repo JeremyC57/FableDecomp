@@ -1,7 +1,6 @@
 #pragma optimize("s",on)
 // Leaf: `vector_deleting_destructor'
 extern "C" void __fastcall inner_dtor(void* p);
-extern void __cdecl op_delete(void* p);
 
 struct CInner { int a; };
 class CLandscapeBackgroundPatch { public:
@@ -13,7 +12,7 @@ void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscape
 {
     inner_dtor(&self->inner);
     if (flags & 1) {
-        op_delete(self);
+        operator delete(self);
     }
     return self;
 }

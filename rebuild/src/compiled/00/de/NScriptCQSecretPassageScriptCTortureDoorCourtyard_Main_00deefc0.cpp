@@ -7,6 +7,7 @@
 #ifndef _MSC_VER
 #define __forceinline inline __attribute__((always_inline))
 #endif
+namespace NScript { class CPredicateBase; }
 struct ScriptThingCalls;
 struct GameScriptCalls;
 #pragma pointers_to_members(full_generality,single_inheritance)
@@ -26,7 +27,8 @@ struct GameScriptCalls:CGameScriptInterface {
  __forceinline void NewScriptFrame()const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[7].NewScriptFrame)();}
 }; //nativeCGSI01260F0C:818=89DC10,1CC=8929D0,A0=894370,1C=6E7410 audited native/PDB signatures.
 class CEntityScriptBase { public:void* __vftable;GameScriptCalls* Game;ScriptThingCalls Me;
- bool IsActiveThreadTerminating(); //00F35B30: virtual GetParentScript slot3 then CScriptBase::IsActiveThreadTerminating00CB7940
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
 }; //actual PDB sizeof20 Game4 Me8; native unchanged
 namespace NScript {class CQ_SecretPassageScript { public:struct CTortureDoorCourtyard:CEntityScriptBase {CQ_SecretPassageScript* ParentClass;void* PMasterData;void Main();};};}
 void NScript::CQ_SecretPassageScript::CTortureDoorCourtyard::Main(){

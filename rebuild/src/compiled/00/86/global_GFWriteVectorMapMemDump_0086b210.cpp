@@ -5,13 +5,20 @@
 // Model: engine/CDataOutputStream.h + writer adapter; the virtual Write goes through a slot view of the vptr (the header flattens it).
 // Shape: CVectorMap = {vector<pair<K, V> > Entries; Compare; bool Dirty}; GetData() is `size() ? begin : this` (retail's `cmovz`-free
 //   branch on the size), and size() is recomputed for each use as in retail.
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+};
 struct CDataOutputStreamVirtuals {
     virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3();
     virtual void Write(const void* data, long size);
 };
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteBool(bool value);                             // 0x00993E30
     void WriteLong(long value);                             // 0x00993EB0
     void Write(const void* data, long size) { reinterpret_cast<CDataOutputStreamVirtuals*>(this)->Write(data, size); }
 };
@@ -44,7 +51,7 @@ void __fastcall GFWriteVectorMapMemDump(CDataOutputStreamWriter& stream, const C
     stream.WriteLong(map.size());
     stream.WriteLong(map.size() * sizeof(typename CVectorMap<V, K, C>::value_type));
     stream.Write(map.GetData(), map.size() * sizeof(typename CVectorMap<V, K, C>::value_type));
-    stream.WriteBool(map.Dirty);
+    stream.WriteEBOOL(map.Dirty);
 }
 template void __fastcall GFWriteVectorMapMemDump<CRandomAppearanceMorph::CTextureMorph, unsigned long, CKeyPairCompareLess<unsigned long, CRandomAppearanceMorph::CTextureMorph> >(
     CDataOutputStreamWriter& stream, const CVectorMap<CRandomAppearanceMorph::CTextureMorph, unsigned long, CKeyPairCompareLess<unsigned long, CRandomAppearanceMorph::CTextureMorph> >& map);

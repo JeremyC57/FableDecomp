@@ -35,19 +35,28 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
-    CIntelligentPointerThing(CThing* item);     // 0x004A96F0
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other);   // 0x004A9760
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
+public:
+    CIntelligentPointer(T* item);     // 0x004A96F0
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -60,7 +69,10 @@ class CTCShop { public:                                // interface 0x53
     void AddShopper(CThingCreatureBase* shopper);   // 0x00773DC0
 };
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};            // 0x0049D870
 extern long g_FramesPerSecond;                  // 0x01375550
 extern unsigned long g_ShopBrowseCount;         // 0x0138CE20
 extern float g_ShopBrowseRadius;                // 0x0138CE24
@@ -85,8 +97,8 @@ class CAIStateGroupBase { public:
     long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
 };
 struct CAIStateGroup_WanderAroundShops : CAIStateGroupBase {
-    CIntelligentPointerThing Shop;              // +0x14
-    CIntelligentPointerThing PrettyThing;       // +0x1c
+    CIntelligentPointer<CThing> Shop;              // +0x14
+    CIntelligentPointer<CThing> PrettyThing;       // +0x1c
     long NextFrameBuy;                          // +0x24
     CThing* SelectPrettyThing(CThing* shop);    // 0x00947110
     virtual void Update();
@@ -131,7 +143,7 @@ void CAIStateGroup_WanderAroundShops::Update()
             if (result != 2)
                 break;
             long fps = g_FramesPerSecond;
-            long endFrame = GFRandom((long)(fps * g_ShopBrowseSeconds), GetPWorldSeed()) + GFGetCurrentFrame();
+            long endFrame = GFRandom((long)(fps * g_ShopBrowseSeconds), GetPWorldSeed()) + CWorld::GetFrame();
             for (;;) {
                 if (!IS_THING_ALIVE(PrettyThing)) {
                     Terminate();
@@ -141,7 +153,7 @@ void CAIStateGroup_WanderAroundShops::Update()
                 result = AIAction_LookAtPos(2, pretty->GetPosition(), 0x11, 0.0027777f);
                 if (result != 4)
                     break;
-                if (GFGetCurrentFrame() >= endFrame) {
+                if (CWorld::GetFrame() >= endFrame) {
                     Terminate();
                     return;
                 }

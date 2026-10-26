@@ -12,16 +12,17 @@ class CCharString { public:
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
-struct CWorldMap_Retail {
+class CWorldMap { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual long GetMapNumberForRecord(const void* record);   // slot 16 (+0x40)
-    const CCharString& GetLevelScriptName(long map);   // 0x004FCFC0
+public:
+    const CCharString& GetLevelScriptName(long) const;   // 0x004FCFC0
 };
 class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012();
-    virtual CWorldMap_Retail* GetWorldMap();         // slot 13 (+0x34)
+    virtual CWorldMap* GetWorldMap();         // slot 13 (+0x34)
 };
 
 class CGameScriptThing { public:
@@ -35,7 +36,7 @@ class CGameScriptThing { public:
 
 CCharString CGameScriptThing::GetHomeMapName() const
 {
-    CWorldMap_Retail* worldMap = m_pWorld->GetWorldMap();
+    CWorldMap* worldMap = m_pWorld->GetWorldMap();
     long map = worldMap->GetMapNumberForRecord(m_record);
     if (map)
         return CCharString(worldMap->GetLevelScriptName(map));

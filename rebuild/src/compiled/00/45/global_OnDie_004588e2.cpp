@@ -2,6 +2,10 @@
 // Leaf: OnDie
 #include "rebuild_abi.h"
 
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CTCInventoryItem
 { public:
     char pad0[0x54];
@@ -12,7 +16,6 @@ class CTCInventoryItem
 extern "C" void __cdecl free_field_54(void* p);
 
 // base-class OnDie, tail-called with this in ecx (__fastcall modeled as __fastcall)
-extern void __fastcall base_OnDie_00430300(CTCInventoryItem* thisptr);
 
 // CTCInventoryItem::OnDie  (retail 0x004588e2)
 void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* thisptr)
@@ -22,5 +25,5 @@ void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* thisptr)
     {
         free_field_54(p);
     }
-    base_OnDie_00430300(thisptr);
+    ((CParentDefClassBase*)(thisptr))->CParentDefClassBase::~CParentDefClassBase();
 }

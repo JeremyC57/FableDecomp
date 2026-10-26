@@ -8,6 +8,7 @@
 // Shape: script WAIT loops; the orb position is `Me.GetPos() + C3DVector(1, 1, 0)` through an inline operator+: VC7.1
 //   folds the `Z + 0.0f` term to a plain x87 load of Z, and the three sums stay on the FPU stack (Z loaded first) until the
 //   temporary is stored after the argument pushes. The orb handle is a discarded by-value result.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
@@ -28,7 +29,7 @@ class CScriptThing { public:                                    // 12 bytes, vta
     void* PImp_Data;                                     // +0x04
     void* PImp_Info;                                     // +0x08
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    ~CScriptThing();                                     // 0x004AA840
+    virtual ~CScriptThing();                                     // 0x004AA840
 };
 struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
  virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -72,8 +73,14 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void v277(); virtual void v278(); virtual void v279();
  virtual void DeactivateQuest(CCharString const &, unsigned long) const; //slot280 0x00892f00
 };
-struct CIsThingAlive {                                   // vtable 0x012C32F0: a predicate holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                   // vtable 0x012C32F0: a predicate holding a script thing
     CScriptThing m_thing;                                // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                    // 0x00E241B0
@@ -82,8 +89,9 @@ class CEntityScriptBase { public:                               // retail 0x14 b
     virtual void v00();
     GameCalls*   Game;                                   // +0x04
     CScriptThing Me;                                     // +0x08
-    void SetPredicate(const CIsThingAlive& predicate);   // 0x00F35B10
-    bool IsActiveThreadTerminating();                    // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CTriggerCrate : CEntityScriptBase {
     void* ParentClass;                                   // +0x14

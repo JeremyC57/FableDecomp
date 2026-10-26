@@ -1,6 +1,6 @@
 // NUISystem::CSpellContainerList::Initialise() -- base Initialise, record the input time, reset the spell index, start with the middle spell container selected and step (virtual slot 151) until the selection is the last container
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00544290, length 120 bytes. Slot 43 of vtable 0x012475C4 (NUISystem::CSpellContainerList).
-// Callees: CChangingStateComponent::Initialise @ 0x0052C730 (qualified), the list's virtual slot 151 (+0x25c, the select-next step).
+// Callees: NUISystem::CChangingStateComponent::Initialise @ 0x0052C730 (qualified), the list's virtual slot 151 (+0x25c, the select-next step).
 // Layout: as 0x00544480 (Ego_r.pdb minus 0x30): LastInputTime +0x15c, SpellIndex +0x160, SelectedChild +0x164, SpellContainers +0x170;
 // the base's current-time float read from +0x30.
 // Shape: SelectedChild is zeroed before SpellIndex and then overwritten with size()/2 (retail keeps the dead store); size() is the
@@ -24,7 +24,8 @@ class CChangingStateComponent { public:                 // retail 0x15C bytes
     unsigned char _pad04[0x2c];
     float         m_currentTime;                 // +0x30
     unsigned char _pad34[0x128];
-    void Initialise();                           // 0x0052C730
+public:
+    virtual void Initialise();   // 0x0052C730
 };
 
 class CSpellContainerList : public CChangingStateComponent { public:

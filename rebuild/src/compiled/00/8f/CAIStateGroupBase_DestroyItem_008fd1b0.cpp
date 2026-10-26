@@ -43,7 +43,8 @@ struct CThingView {                             // CThingAICreature: component t
 };
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
@@ -54,8 +55,9 @@ class CThing { public:
 };
 
 class CTCCarrying { public:
-    CThing* GetThingInCarrySlot(long defIndex);                 // 0x006A11F0
     CThing* RemoveThingInCarrySlot(long defIndex, bool drop);   // 0x006A16A0
+public:
+    CThing* GetThingInCarrySlot(long) const;   // 0x006A11F0
 };
 
 struct CAIStateGroupBase_Methods : CAIStateGroupBase {

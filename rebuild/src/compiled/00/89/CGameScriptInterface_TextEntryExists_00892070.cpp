@@ -38,7 +38,10 @@ struct CEngineGlobals_Retail {
 };
 extern CEngineGlobals_Retail* g_pEngineGlobals_013b86a0;   // 0x013B86A0
 bool __fastcall ConstructString(CWideString* text, CWideStringVector_Retail* args);   // 0x009C7C20
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0 (CRC)
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0 (CRC)
 class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;              // +0x04 (engine/CGameScriptInterface.h)
@@ -55,5 +58,5 @@ class CGameScriptInterface { public:
 bool CGameScriptInterface::TextEntryExists(const CCharString& symbol) const
 {
     CDataBank_Retail* bank = g_pEngineGlobals_013b86a0->m_pTextBank;
-    return bank->LookupText(Calc_004014a0(0, symbol.GetString(), symbol.GetLength())) != 0;
+    return bank->LookupText(CCRC::Calc(0, symbol.GetString(), symbol.GetLength())) != 0;
 }

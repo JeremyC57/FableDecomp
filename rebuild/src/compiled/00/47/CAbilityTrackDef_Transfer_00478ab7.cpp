@@ -35,7 +35,7 @@ class CPersistContext {
 public:
     void Transfer(EHeroExperienceStatCategory& value);           // 0x00469B8A
     void Transfer(std::vector<CAbilityTrackLevelDef >& value);   // 0x00478AE5
-    void Transfer(long& value);                                  // 0x00431102
+    template <class T> void Transfer(T& value);                                  // 0x00431102
 };
 class CAbilityTrackDef {
 public:

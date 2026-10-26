@@ -3,7 +3,7 @@
 // Flags: /GS
 //
 // Retail 0x0077D4B0, 256 bytes incl. padding (plain `ret`, /GS cookie 0x0139C8A8). Ego_r.pdb `?OpenTrainingScreen@CTCHeroCentre@@...`.
-// Callees: CTCBase::GetPlayerManager const @ 0x00686D50 (twice), CPlayerManager::GetMainPlayer const @ 0x00449960,
+// Callees: CTCBase::PeekPlayerManager const @ 0x00686D50 (twice), CPlayerManager::GetMainPlayer const @ 0x00449960,
 // CPlayer::GetHeroThing @ 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for
 // CTCHero, type 0x29 = bit 9 of the bitset word +0x24, the component null-tested in ecx), CTCHero::GiveTutorialForCategory
 // (ETutorialCategory, bool) @ 0x006C9FA0 (category 0xf), CMemoryBuffer::Copy @ 0x009F1760, CPlayerManager::GetMainPlayerNumber
@@ -49,7 +49,7 @@ class CPlayer { public:
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
-    long GetMainPlayerNumber();                         // 0x00449700
+    long GetMainPlayerNumber() const;                         // 0x00449700
 };
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
@@ -74,7 +74,8 @@ class CTCBase { public:
     bool ToBeRemoved;                                   // +0x08
     bool IsInGlobalUpdateTCs;                           // +0x09
     unsigned char _pad0a[2];
-    CPlayerManager* GetPlayerManager() const;           // 0x00686D50
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
 };
 class CTCHeroCentre : public CTCBase { public:
     void*         PDef;                                 // +0x0c CDefPointer<CHeroCentreDef const>
@@ -88,7 +89,7 @@ class CTCHeroCentre : public CTCBase { public:
 
 void CTCHeroCentre::OpenTrainingScreen()
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetHeroThing();
     if (hero && !(hero->m_flags91 & 1)) {
         CTCHero* heroTC;
         if (hero->GetInterface(&heroTC, 0x29) && heroTC && heroTC->GiveTutorialForCategory(0xf, false)) {
@@ -98,7 +99,7 @@ void CTCHeroCentre::OpenTrainingScreen()
         if (hero->HasTC(0x16)) {
             CGameEvent event(0x1a);
             event.AddULONG(0xb);
-            event.Player = (signed char)GetPlayerManager()->GetMainPlayerNumber();
+            event.Player = (signed char)PeekPlayerManager().GetMainPlayerNumber();
             g_pMainGameComponent->AddGameEvent(event);
         }
     }

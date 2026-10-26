@@ -1,38 +1,39 @@
 #include <cstdio>
-
-static int g_base = 0;
-static const void* g_name = 0;
-static void* g_field = 0;
-static void* g_ar = 0;
-
-struct CArchive {
-    void Transfer(const void* name, void* field) { g_name = name; g_field = field; g_ar = this; }
+// Behaviour test for 0x00455F1A: the reconstructed body (pragmas stripped) driven through recording stubs;
+// checks the transfer order, the helper chosen per member (kind) and the member address.
+static const void* g_p[32]; static int g_k[32]; static int g_n = 0;
+static void Rec(int k, const void* p) { if (g_n < 32) { g_k[g_n] = k; g_p[g_n] = p; } ++g_n; }
+class CTCNoiseDef { public: unsigned char _body[0x34]; };
+class CPersistContext { public:
+    template <class T> void TransferSubComponent(const char* name, T& value);
 };
-struct CThingDef {
-    void Transfer(CArchive* ar) { g_base = 1; g_ar = ar; }
+class CThingBaseDef { public:
+    virtual void Transfer(CPersistContext& context);   // 0x00676BE0
+    unsigned char _body04[0x70 - 4];                   // retail def base (Ego_r.pdb CThingBaseDef 0x74 less 4)
 };
-class CThingNoiseDef : public CThingDef { public:
-    char extra[0x70];
-    int noise;
-    void Transfer(CArchive* ar);
+class CThingNoiseDef : public CThingBaseDef { public:
+    CTCNoiseDef Noise;                 // +0x70
+    virtual void Transfer(CPersistContext& context);
 };
+template <> void CPersistContext::TransferSubComponent<CTCNoiseDef>(const char* name, CTCNoiseDef& value);
 
-const char kName[] = "CThingNoiseDef";
-
-void CThingNoiseDef::Transfer(CArchive* ar)
+void CThingNoiseDef::Transfer(CPersistContext& context)
 {
-    CThingDef::Transfer(ar);
-    ar->Transfer(kName, &this->noise);
+    CThingBaseDef::Transfer(context);
+    context.TransferSubComponent("Noise", Noise);
 }
-
-int main() {
-    CThingNoiseDef obj;
-    CArchive arobj;
-    obj.Transfer(&arobj);
-    if (g_base == 1 && g_name == kName && g_field == &obj.noise && g_ar == &arobj) {
-        std::printf("CThingNoiseDef_00455f1a_TEST PASS\n");
-        return 0;
-    }
-    std::printf("FAIL\n");
+void CThingBaseDef::Transfer(CPersistContext& context) { Rec(1, this); }
+template <> void CPersistContext::TransferSubComponent<CTCNoiseDef>(const char* name, CTCNoiseDef& v)
+{ if (name[0] == 'N' && name[4] == 'e') Rec(15, &v); else Rec(99, &v); }
+static CThingNoiseDef d;
+int main()
+{
+    CPersistContext c;
+    d.Transfer(c);
+    bool ok = g_n == 2;
+    ok = ok && g_k[0] == 1 && g_p[0] == (const void*)&d;
+    ok = ok && g_k[1] == 15 && g_p[1] == (const void*)&d.Noise;
+    if (ok) { std::printf("CThingNoiseDef_00455f1a_TEST PASS\n"); return 0; }
+    std::printf("FAIL %d\n", g_n);
     return 1;
 }

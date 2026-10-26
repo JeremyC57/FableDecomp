@@ -17,12 +17,12 @@ struct CContainer_004dd2b1 {
     ~CContainer_004dd2b1();                     // 0x004DD2B1
 };
 
-struct CBase_009fc550 {
+class CResource { public:
     virtual void v00();
-    ~CBase_009fc550();                          // 0x009FC550
+    virtual ~CResource();                          // 0x009FC550
 };
 
-class CDefPointeeBase : public CBase_009fc550 { public:       // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:       // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }                      // inline: inlined into every derived destructor
 };

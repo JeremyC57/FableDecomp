@@ -14,23 +14,31 @@
 // (CCountedPointer) +8.
 // Shape: the filter is a scoped frame object (its out-of-line destructor); the handle is a function-scope local built
 // inline (base ctor call, vtable, PImp zeroed by its own inline ctor) and destroyed out of line on both exits; the start
-// loop is BriarRose's rotated `while (!Start...) { yield; if (IsDone()) return; }` followed by a plain IsDone() call.
+// loop is BriarRose's rotated `while (!Start...) { yield; if (IsActiveThreadTerminating()) return; }` followed by a plain IsActiveThreadTerminating() call.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840
 };
-struct CIsThingAliveEndGame {                      // vtable 0x012C2FE8: the end-game module's alive filter (its own vtable and
-                                                   // out-of-line dtor; the landed 0x00E95E80 binds ~CIsThingAlive to 0x00E241B0)
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAliveEndGame : public NScript::CPredicateBase {                      // vtable 0x012C2FE8: the end-game module's alive filter (its own vtable and
+                                                   // out-of-line dtor; the landed 0x00E95E80 binds ~CIsThingAlive to 0x00E241B0)
     CScriptThing m_thing;                          // +0x04
     CIsThingAliveEndGame(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAliveEndGame();                       // 0x00EF7AB0
 };
 class CBaseObject { public:
-    virtual void v00();
     long IntelligentPointer;                                     // +0x04
-    CBaseObject();                                 // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct SCountedImp {
     void* Data;
@@ -97,15 +105,20 @@ class CGameScriptInterface { public:
 };
 struct CQ_EndGameFocalSitesScript;
 struct CQ_SunnyvaleMasterData;
-class CEndGameScarletRobe {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CEndGameScarletRobe : public CEntityScriptBase {
 public:
     void*                       __vftable;         // +0x00
     CGameScriptInterface*       Game;              // +0x04
     CScriptThing                Me;                // +0x08
     CQ_EndGameFocalSitesScript* ParentClass;       // +0x14
     CQ_SunnyvaleMasterData*     PMasterData;       // +0x18
-    void RegisterFilter(CIsThingAliveEndGame& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -113,10 +126,10 @@ void CEndGameScarletRobe::Main()
 {
     {
         CIsThingAliveEndGame filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->SetThingHasInformation(Me, false, true, false);
     CScriptGameResourceObjectScriptedThingBase handle;
@@ -124,8 +137,8 @@ void CEndGameScarletRobe::Main()
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_HIGHEST)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    IsDone();
+    IsActiveThreadTerminating();
 }

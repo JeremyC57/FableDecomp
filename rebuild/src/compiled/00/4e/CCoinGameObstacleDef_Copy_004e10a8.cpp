@@ -1,7 +1,6 @@
-class CDefClassBase;
 
-struct CDefBase {
-    void Inherit(CDefClassBase const *src);   // __fastcall: this in ecx, src on stack
+class CDefClassBase { public:
+    CDefClassBase& operator=(const CDefClassBase& other);   // __fastcall: this in ecx, src on stack
 };
 
 class CCoinGameObstacleDef { public:
@@ -12,6 +11,6 @@ class CCoinGameObstacleDef { public:
 
 void __fastcall CCoinGameObstacleDef::Copy(int /*edx*/, CDefClassBase const *src)
 {
-    ((CDefBase *)this)->Inherit(src);
+    ((CDefClassBase *)this)->operator=(*(const CDefClassBase*)(src));
     this->f28 = ((CCoinGameObstacleDef const *)src)->f28;
 }

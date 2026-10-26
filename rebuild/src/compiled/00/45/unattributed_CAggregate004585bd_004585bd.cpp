@@ -9,9 +9,8 @@
 // destructor (@ 0x00430300) is reached by tail call. Member types are named from the destructor
 // labels when unique, else by the destructor address. The manifest label (`_Dest_val<...>` /
 // `~allocator<CMacro>,CMacro>`) is propagated. One of 13 bodies of this shape.
-struct CMember_00430300 {
-    unsigned char _body[0x4];
-    ~CMember_00430300();                            // 0x00430300
+class CParentDefClassBase { public:
+    virtual ~CParentDefClassBase();                            // 0x00430300
 };
 
 struct CMember_00451a85 {
@@ -25,7 +24,7 @@ struct CMember_00451ac6 {
 };
 
 struct CAggregate_004585bd {
-    CMember_00430300 m_first;            // +0 (its destructor is the tail call)
+    CParentDefClassBase m_first;            // +0 (its destructor is the tail call)
     unsigned char _gap0[0x38];
     CMember_00451a85 m_3c;            // +0x3c
     CMember_00451ac6 m_48;            // +0x48

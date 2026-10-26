@@ -85,16 +85,24 @@ class CThing { public:
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
+public:
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 class CCharString { public:
     void* m_pData;
@@ -114,7 +122,7 @@ class CCreatureActionBase { public:
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x114 - 0xa8];
     CCombatActionBase(CThingCreatureBase* creature, CThing* target, long action, const CSoundPair& sound);   // 0x00857F30
-    ~CCombatActionBase();                           // 0x0062E900
+    virtual ~CCombatActionBase();                           // 0x0062E900
     void SetPDef(const CCharString& name);          // 0x008574D0
 };
 class CCreatureAction_WhisperJumpIntoSky : public CCombatActionBase { public:   // vtable 0x012969E4
@@ -151,8 +159,8 @@ class CAIStateGroupBase { public:
 };
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 struct CAIStateGroup_WhisperPotionCombat : CAIStateGroupBase {
-    CIntelligentPointerThing PTarget;           // +0x14
-    vector<CIntelligentPointerThing> TrapThings;    // +0x1c
+    CIntelligentPointer<CThing> PTarget;           // +0x14
+    vector<CIntelligentPointer<CThing> > TrapThings;    // +0x1c
     long FrameLastRun;                          // +0x28
     C3DVector Jump_to_pos;                      // +0x2c
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }

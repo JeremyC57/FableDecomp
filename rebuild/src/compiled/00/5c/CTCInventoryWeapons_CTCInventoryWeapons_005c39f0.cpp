@@ -22,14 +22,24 @@
 class CThing;
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                 // +0x04
-    ~CBaseIntelligentPointer();                      // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
-    CIntelligentPointer_CThing(CThing* thing);       // 0x004A96F0
-    CIntelligentPointer_CThing& operator=(const CIntelligentPointer_CThing& other);   // 0x004A9760
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
+public:
+    CIntelligentPointer(T* thing);       // 0x004A96F0
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(pop)
 
@@ -63,10 +73,10 @@ class CBase { public:                                       // vtable 0x0123A3E0
 struct NUISystemComponent;
 class CTCInventoryWeapons : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
-    CIntelligentPointer_CThing PActiveMeleeWeapon;   // +0x134
+    CIntelligentPointer<CThing> PActiveMeleeWeapon;   // +0x134
     long                       ActiveMeleeWeaponDefIndex;   // +0x13C
     bool                       MeleeWeaponCarriedOnLoad;    // +0x140
-    CIntelligentPointer_CThing PActiveRangedWeapon;  // +0x141
+    CIntelligentPointer<CThing> PActiveRangedWeapon;  // +0x141
     long                       ActiveRangedWeaponDefIndex;  // +0x14C
     bool                       RangedWeaponCarriedOnLoad;   // +0x150
     CRetailHandleVector        ActiveWeaponPrimitiveHandles;   // +0x154

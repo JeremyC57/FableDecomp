@@ -22,13 +22,15 @@ class CEngineGraphic { public:
 };
 
 class CPersistContext { public:
-    void Transfer(long& value);                                              // 0x00431102
-    void Transfer(unsigned long& value);                                     // 0x00431020
-    void Transfer(float& value);                                             // 0x00431061
-    void Transfer(CEngineGraphic& value);                                    // 0x00451E11
+    template <class T> void Transfer(T& value);                                              // 0x00431102
     void Transfer(EReverbEnvironmentType& value);                            // 0x00454CFA
     void Transfer(const char* name, bool& value, const bool& defaultValue);  // 0x004045C0
 };
+template <> void CPersistContext::Transfer<long>(long& value);
+template <> void CPersistContext::Transfer<unsigned long>(unsigned long& value);
+template <> void CPersistContext::Transfer<float>(float& value);
+template <> void CPersistContext::Transfer<CEngineGraphic>(CEngineGraphic& value);
+
 
 class CThingBaseDef { public:
     virtual void Transfer(CPersistContext& context);                         // 0x00676BE0
@@ -82,10 +84,10 @@ void CThingBuildingDef::Transfer(CPersistContext& context)
 static int g_order[32]; static int g_n = 0;
 static void Log(int k) { if (g_n < 32) g_order[g_n++] = k; }
 void CThingBaseDef::Transfer(CPersistContext&) { Log(1); }
-void CPersistContext::Transfer(long& v) { Log(2); v += 1; }
-void CPersistContext::Transfer(unsigned long& v) { Log(3); v += 1; }
-void CPersistContext::Transfer(float& v) { Log(4); v += 1.0f; }
-void CPersistContext::Transfer(CEngineGraphic& v) { Log(5); v._body[0] = 0x5a; }
+template <> void CPersistContext::Transfer<long>(long& v) { Log(2); v += 1; }
+template <> void CPersistContext::Transfer<unsigned long>(unsigned long& v) { Log(3); v += 1; }
+template <> void CPersistContext::Transfer<float>(float& v) { Log(4); v += 1.0f; }
+template <> void CPersistContext::Transfer<CEngineGraphic>(CEngineGraphic& v) { Log(5); v._body[0] = 0x5a; }
 void CPersistContext::Transfer(EReverbEnvironmentType& v) { Log(6); v = (EReverbEnvironmentType)3; }
 static const char* g_names[4]; static bool g_defaults[4]; static int g_nb = 0;
 void CPersistContext::Transfer(const char* name, bool& value, const bool& defaultValue)

@@ -59,19 +59,25 @@ class CTCHeroOpinionDeedLog { public:
     long PostDeed(long deedType, const C3DVector* position, CThing* thing, CThing* creature, long postType,
                   bool b1, bool b2, CFaction* faction, bool b3, long value);   // 0x006C6990
 };
-class CTCWife { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCWife : public CTCBase { public:
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[0x20 - 0x08];
     long FrameGotMarriedToThePlayer;             // +0x20
-    CPlayerManager* GetPlayerManager();          // 0x00686D40
     void OnGreet();
 };
 void CTCWife::OnGreet()
 {
     if (FrameGotMarriedToThePlayer > CWorld::GetWorldFrame())
         return;
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer()->GetHeroThing();
     if (!hero || (hero->Flags91 & 1))
         return;
     CTCHeroOpinionDeedLog* deedLog;

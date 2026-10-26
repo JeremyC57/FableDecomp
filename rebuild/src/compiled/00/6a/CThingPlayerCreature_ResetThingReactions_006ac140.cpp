@@ -4,13 +4,14 @@
 // (`mov ecx,[0x013B8A1C] ; jmp 0x0051E490`; manifest label "_Cons_val<...>" is propagated),
 // CThingSearchTools::GetAllLeafThings<CThing, list<CThing*>, CThingFilter_None> @ 0x006AE830 (manifest: the vector
 // instantiation, but the body appends 12-byte list nodes), CBaseIntelligentPointer ctor @ 0x00A01B10, SetPItem
-// @ 0x00A01B90, GetPItem @ 0x00A01B50, dtor @ 0x00A01C10. CIntelligentPointer<CThing> vtable 0x0123E7D8.
-// Shape: the STLport list built in a local node then stored; `thing->m_reactionTarget = CIntelligentPointer<CThing>(0)`
+// @ 0x00A01B90, GetPItem @ 0x00A01B50, dtor @ 0x00A01C10. CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8.
+// Shape: the STLport list built in a local node then stored; `thing->m_reactionTarget = CIntelligentPointer<CThingCreatureBase>(0)`
 // per node (converting constructor = base ctor + vtable + SetPItem, then operator= = SetPItem(GetPItem())); the
 // inline STLport clear and node free at the end.
 // Shape: the CIntelligentPointer operator= names the GetPItem() CALL result (`item = other.GetPItem(); SetPItem(item);`), which
 //   keeps the member's address (this of SetPItem) after the source's GetPItem call and colours the registers as retail; the
 //   inline `SetPItem(other.GetPItem())` form evaluates the inlined member's `this` first.
+class CThingCreatureBase;
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -34,7 +35,7 @@ class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags;                                  // +0x91 (bit 2 active, 3 in world, 0 dead, 5 limbo)
     unsigned char _pad92[0xf4 - 0x92];
-    CIntelligentPointer<CThing> m_reactionTarget;          // +0xf4 (descriptive)
+    CIntelligentPointer<CThingCreatureBase> m_reactionTarget;          // +0xf4 (descriptive)
 };
 
 struct SThingNode {                                         // STLport list<CThing*> node, 12 bytes
@@ -107,6 +108,6 @@ void CThingPlayerCreature::ResetThingReactions()
     GetThingSearchTools()->GetAllLeafThings(CThingFilter_None(), things);
     for (SThingNode* node = things._M_node->_M_next; node != things._M_node; node = node->_M_next) {
         CThing* thing = node->_M_data;
-        thing->m_reactionTarget = CIntelligentPointer<CThing>(0);
+        thing->m_reactionTarget = CIntelligentPointer<CThingCreatureBase>(0);
     }
 }

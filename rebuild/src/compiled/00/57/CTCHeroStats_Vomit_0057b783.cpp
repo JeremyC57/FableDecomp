@@ -2,8 +2,8 @@
 // Leaf: Vomit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057B783, 596 bytes; size TU with the biased `lea ebp,[esp-78h]` frame:
 // `#pragma optimize("s", on)` alone (adding `optimize("y", off)` as the smaller CTCHeroStats rows gives `mov ebp,esp`).
-// Callees: CTCBase::GetPlayerManager() @ 0x00686D50, CPlayerManager::GetMainPlayer() @ 0x00449960,
-//          CPlayer::GetPPlayerCharacter() @ 0x00487DC0, CTCBase::GetDefinitions() @ 0x006869D0, CTCBase::GetPRandomSeed()
+// Callees: CTCBase::PeekPlayerManager() @ 0x00686D50, CPlayerManager::GetMainPlayer() @ 0x00449960,
+//          CPlayer::GetPPlayerCharacter() @ 0x00487DC0, CTCBase::GetDefinitionManager() @ 0x006869D0, CTCBase::GetPWorldSeed()
 //          @ 0x00686DA0, _ftol @ 0x00BFEA70, GFRandom(range, seed) @ 0x004CDAE0 (__fastcall), CCharString @ 0x0099EBF0 /
 //          ~CCharString @ 0x0099EAE0 ("ST_PUKE_INTO" 0x0124F37C, "ST_PUKE_LOOP" 0x0124F38C, "ST_PUKE_OUTOF" 0x0124F39C),
 //          CCreatureAction_PlayIntoLoopOutOfAnimation ctor @ 0x008427E0 and its implicit dtor @ 0x0057A545 (emitted in
@@ -118,7 +118,7 @@ class CHeroStatsDef { public:
     float         DrunkennessPerVomitSecond;         // +0x9C
 };
 
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
@@ -127,7 +127,15 @@ unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   /
 long __fastcall GFGetCurrentFrame();                 // 0x0049D870
 extern long g_framesPerSecond;                       // 0x01375550
 
-class CTCHeroStats { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    unsigned long* GetPWorldSeed() const;   // 0x00686DA0
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
+
+class CTCHeroStats : public CTCBase { public:
     void*         __vftable;                         // +0x000
     CThing*       ParentThing;                       // +0x004 CTCBase
     unsigned char _pad_0x008[0xE4];
@@ -141,21 +149,18 @@ class CTCHeroStats { public:
     long          DeedHandle;                        // +0x1B0 (PDB +0x1C8)
     long          FrameEndVomit;                     // +0x1B4 (PDB +0x1CC)
 
-    CDefinitionHolder* GetDefinitions() const;       // 0x006869D0
-    unsigned long* GetPRandomSeed();                 // 0x00686DA0
-    CPlayerManager* GetPlayerManager() const;        // 0x00686D50
-    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitions()->PHeroStatsDef; }
+    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
     void Vomit();
 };
 
 void CTCHeroStats::Vomit()
 {
-    CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer()->GetPPlayerCharacter();
+    CThingPlayerCreature* hero = PeekPlayerManager().GetMainPlayer()->GetPPlayerCharacter();
     float seconds = (Drunkenness - 3.0f) / GetHeroStatsDef()->DrunkennessPerVomitSecond;
     if (GetHeroStatsDef()->MaxVomitSeconds < seconds)
         seconds = (float)GetHeroStatsDef()->MaxVomitSeconds;
     float loopTime = (float)(GetHeroStatsDef()->MinVomitSeconds +
-                             GFRandom((long)(seconds + 1.0f - GetHeroStatsDef()->MinVomitSeconds), GetPRandomSeed()));
+                             GFRandom((long)(seconds + 1.0f - GetHeroStatsDef()->MinVomitSeconds), GetPWorldSeed()));
     CCreatureAction_PlayIntoLoopOutOfAnimation action(hero, "ST_PUKE_INTO", "ST_PUKE_LOOP", "ST_PUKE_OUTOF", loopTime,
                                                       false, 0, 1);
     ++NumberOfVomits;

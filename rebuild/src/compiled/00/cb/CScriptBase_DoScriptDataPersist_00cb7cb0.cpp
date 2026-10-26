@@ -17,7 +17,7 @@ class CCharString { public:
 };
 class CBaseClass { public:                                // the CStringParser root (polymorphic)
     virtual void v00();
-    ~CBaseClass();                                 // 0x0099A2E0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
 };
 struct CStringParserCommentList {                  // retail std::list<CStringParserCommentBoundaries>: sentinel only
     void* m_pHead;

@@ -6,12 +6,12 @@ struct CActiveFile {
 };
 
 extern void __fastcall Handler(void* a, void* b, char* c);
-extern void __cdecl FreeMem(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     char local;
     Handler(self->p0, self->p1, &local);
     if (self->p0)
-        FreeMem(self->p0);
+        free(self->p0);
 }

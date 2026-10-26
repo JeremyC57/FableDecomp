@@ -28,14 +28,24 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
 
 CAnimationEntry* __fastcall GetRandomLoadedAnimation(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseIntelligentPointer();              // 0x00A01B10
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingObject>, vtable 0x0125A858
-    virtual void v00();
+class CThingObject;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThingObject>, vtable 0x0125A858
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCreatureActionBase { public:                // retail sizeof 0xa8
@@ -45,7 +55,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
 };
 
 class CCreatureAction_AimMissileWeapon : public CCreatureActionBase { public:   // vtable 0x0126556C
-    CIntelligentPointer PAmmo;              // +0xa8 (PDB +0xb4)
+    CIntelligentPointer<CThingObject> PAmmo;              // +0xa8 (PDB +0xb4)
     virtual void v00();
     CCreatureAction_AimMissileWeapon(CThingCreatureBase* owner);
 };

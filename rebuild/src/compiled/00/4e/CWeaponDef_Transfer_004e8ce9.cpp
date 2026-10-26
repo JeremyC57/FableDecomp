@@ -36,17 +36,12 @@ class CFloatRange { public: float Min; float Max; };
 class CPersistContext { public:
     void Transfer(EWeaponType& value);                  // 0x004E8EE8
     void Transfer(EWeaponClass& value);                 // 0x004E8F8C
-    void Transfer(unsigned long& value);                // 0x00431020
-    void Transfer(CCharString& value);                  // 0x00431143
-    void Transfer(long& value);                         // 0x00431102
-    void Transfer(bool& value);                         // 0x0043314A
-    void Transfer(float& value);                        // 0x00431061
+    template <class T> void Transfer(T& value);                // 0x00431020
     void Transfer(EDamageAttribute& value);             // 0x00459042
     void Transfer(CObjectAugmentationParticleSet& value); // 0x004E9550
     void Transfer(CWeaponTrailGraphicSet& value);       // 0x004E8FCD
     void Transfer(CWeaponTrailMap& value);              // 0x004E90DA
     void Transfer(CArrowTrailMap& value);               // 0x004E9321
-    void Transfer(CFloatRange& value);                  // 0x00458F2B
     // the default value is only checked in debug builds
     void Transfer(CCharString& value, const CCharString& defaultValue) { Transfer(value); }
 };

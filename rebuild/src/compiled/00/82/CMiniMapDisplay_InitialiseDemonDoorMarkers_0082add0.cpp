@@ -34,7 +34,10 @@ class CPlayerGuiDef { public:
     unsigned char _pad00[0x958];
     vector<long>  MiniMapMarkerGraphics;        // +0x958
 };
-CPlayerGuiDef* __fastcall PeekGuiDef();         // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};         // 0x00438570
 struct CThingList {                             // retail one-pointer list of CThing*
     struct node { node* next; node* prev; CThing* value; };
     node* head;
@@ -80,6 +83,6 @@ void CMiniMapDisplay::InitialiseDemonDoorMarkers()
     for (CThingList::node* n = doors.head->next; n != doors.head; n = n->next) {
         CThing* door = n->value;
         if (map->GetLoadedRegion() == map->GetRegionNumberMapIsIn(door->GetCurrentMapNumber()) && (door->MinimapFlags & 8))
-            AddAutoMarker(door, PeekGuiDef()->MiniMapMarkerGraphics[10]);
+            AddAutoMarker(door, CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[10]);
     }
 }

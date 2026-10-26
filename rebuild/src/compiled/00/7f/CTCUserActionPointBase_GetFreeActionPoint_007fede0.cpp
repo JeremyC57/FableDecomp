@@ -24,7 +24,7 @@ class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 #include <stdlib.h>
 #include <string.h>
 
-unsigned long __fastcall GFROR13(unsigned long value);       // 0x00497890
+long __fastcall GFROR13(unsigned long);       // 0x00497890
 __forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
@@ -122,30 +122,37 @@ void CLongVector::_M_insert_overflow(long* position, const long& x, const __true
 }
 #pragma auto_inline(on)
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                                    // +0x04
-    CBaseIntelligentPointer();                               // 0x00A01B10
-    ~CBaseIntelligentPointer();                              // 0x00A01C10
-    CThing* GetPItem() const;                                // 0x00A01B50
-    void SetPItem(CThing* item);                             // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {       // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item = 0) { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {       // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item = 0) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        T* item = other.GetPItem();
         SetPItem(item);
         return *this;
     }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CWorld {
 public:
     unsigned long* GetRandomSeed() const;                    // 0x0049D810
 };
 
-struct CTCUserActionPointBase {
+class CTCBase
+{
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -153,14 +160,18 @@ struct CTCUserActionPointBase {
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
     virtual void v25(); virtual void v26(); virtual void v27();
     virtual bool IsActionPointIndexBlocked(CThing& thing, C3DVector& position, CRightHandedSet& rh, long index) const;   // slot 28 (+0x70)
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+struct CTCUserActionPointBase : public CTCBase {
     CThing*       ParentThing;                               // +0x04 (CTCBase)
     unsigned char _pad_0x08[4];
     CLongVector   FreeActionPointIndexes;                    // +0x0c
     CLongVector   BlockedActionPointIndexes;                 // +0x18
     long          NumberOfActionPoints;                      // +0x24
     long          FrameOfNextCheck;                          // +0x28
-    CIntelligentPointer PThing;                              // +0x2c
-    const CWorld& PeekWorld() const;                         // 0x00686A80 (CTCBase)
+    CIntelligentPointer<CThing> PThing;                              // +0x2c
     void UpdateBlockedActionPoints();                        // 0x007FECB0
     bool GetFreeActionPoint(CThing& thing, C3DVector& position, CRightHandedSet& rh, long& index);
 };
@@ -170,7 +181,7 @@ bool CTCUserActionPointBase::GetFreeActionPoint(CThing& thing, C3DVector& positi
     if (FreeActionPointIndexes.empty())
         return false;
     UpdateBlockedActionPoints();
-    PThing = CIntelligentPointer(&thing);
+    PThing = CIntelligentPointer<CThing>(&thing);
     do {
         unsigned long count = FreeActionPointIndexes.size();
         unsigned long pick = GFRandom(count, PeekWorld().GetRandomSeed());

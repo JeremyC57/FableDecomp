@@ -37,7 +37,7 @@ class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 class CWorldMap { public:
-    bool IsPosInMap(const C3DVector& pos);      // 0x004FC600
+    bool IsPosInMap(const C3DVector& pos) const;      // 0x004FC600
 };
 class CNavigatorBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -46,13 +46,19 @@ class CNavigatorBase { public:
     virtual void v08();
     virtual bool IsAbleToNavigate(const C3DVector& from, const C3DVector& to, float proximity, bool fromCurrentPos);   // slot 9 (+0x24)
 };
-class CTCCreatureNavigation { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20
+};
+
+class CTCCreatureNavigation : public CTCBase { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
     CNavigatorBase* PNavigator;                 // +0x0c
-    CWorldMap* GetWorldMap() const;             // 0x00686D20 (CTCBase; reads a global, the manifest's "GetDisplayEngine" is propagated)
     bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity);
     bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool flag);
     bool GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector* result);
@@ -61,5 +67,5 @@ class CTCCreatureNavigation { public:
 bool CTCCreatureNavigation::GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool flag)
 {
     *result = PNavigator->GetRandomPosition(centre, radius, flag);
-    return GetWorldMap()->IsPosInMap(*result) && XYDistanceSquared(*result, centre) > g_fTolerance * g_fTolerance;
+    return PeekWorldMap().IsPosInMap(*result) && XYDistanceSquared(*result, centre) > g_fTolerance * g_fTolerance;
 }

@@ -12,10 +12,20 @@
 // arguments; a __fastcall free function with the pointer in ecx produces the same call site.
 #include "engine/CAIStateGroup_ServeFoodAtTavern.h"
 
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
 class CThingBuilding;
 
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (ecx = the CIntelligentPointer object).
-CThingBuilding* __fastcall IntelligentPointer_GetPItem_00a01b50(void* intelligentPointer);
 
 struct CAIStateGroup_ServeFoodAtTavern_Methods : CAIStateGroup_ServeFoodAtTavern {
     CThingBuilding* GetBuilding();
@@ -25,5 +35,5 @@ CThingBuilding* CAIStateGroup_ServeFoodAtTavern_Methods::GetBuilding()
 {
     char* brain   = *(char**)&this->_base_0x04[0];   // CAIStateGroupBase::PBrain (+0x04)
     char* villager = *(char**)(brain + 0x18);          // brain -> villager/creature record
-    return IntelligentPointer_GetPItem_00a01b50(villager + 0x170);   // CIntelligentPointer<CThingBuilding>
+    return ((CThingBuilding*)(((CBaseIntelligentPointer*)(villager + 0x170))->GetPItem()));   // CIntelligentPointer<CThingBuilding>
 }

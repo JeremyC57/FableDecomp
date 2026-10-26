@@ -1,19 +1,27 @@
 // SIcicleRecord_00806ae0::SIcicleRecord_00806ae0(const SIcicleRecord_00806ae0& other) -- copy a 0x1c-byte record: the intelligent pointer at +0 (vtable 0x01238C6C) then five words
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00806AE0, length 71 bytes.
 // The chunk label "CIcicleData::CIcicleData" is propagated over several unrelated records; named by address. Shape: the intelligent-pointer copy = base constructor, vtable, `SetPItem(other.GetPItem())` (0x00A01B10 / 0x00A01B50 / 0x00A01B90); `this` in esi, `other` in edi, `mov eax,esi`, `ret 4`.
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    void* GetPItem() const;                     // 0x00A01B50
-    void SetPItem(void* item);                  // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerA_00806ae0 : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerA_00806ae0(const CIntelligentPointerA_00806ae0& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct SIcicleRecord_00806ae0 {
-    CIntelligentPointerA_00806ae0 m_pointer0;     // +0x00
+    CIntelligentPointer<CThing> m_pointer0;     // +0x00
     long m_8;                                      // +0x08
     long m_c;                                      // +0x0c
     long m_10;                                     // +0x10

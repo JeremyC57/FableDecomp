@@ -27,7 +27,13 @@ struct CCreatureSpeedSource {                        // descriptive: the +0xE0 p
     unsigned char _pad00[0xb0];
     float         SpeedVariation;                    // +0xb0
 };
-class CThingAICreature { public:
+class CThingCreatureBase
+{
+public:
+    bool HasAnim(const CCharString&, const CAnimFilterBase&) const;   // 0x00662C70
+};
+
+class CThingAICreature : public CThingCreatureBase { public:
     unsigned char _pad00[0xe0];
     CCreatureSpeedSource* m_pSpeedSource;            // +0xe0 (descriptive)
     unsigned char _pade4[0x1b8 - 0xe4];
@@ -35,7 +41,6 @@ class CThingAICreature { public:
     float         MaxJoggingSpeed;                   // +0x1bc
     float         MaxRunningSpeed;                   // +0x1c0
     float         MaxFlyingSpeed;                    // +0x1c4
-    bool HasAnim(const CCharString& name, const CAnimFilterBase& filter);   // 0x00662C70 (CThingCreatureBase)
     void InitialiseMovementSpeed(float* speed, const CCharString& name);   // 0x00663510 (CThingCreatureBase)
     void RandomiseMovementSpeed(float* speed);       // 0x00830260
     void InitialiseMovementSpeeds();

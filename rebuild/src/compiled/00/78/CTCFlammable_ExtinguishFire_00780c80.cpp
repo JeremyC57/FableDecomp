@@ -45,8 +45,9 @@ template <class T> struct CRetailVector {                   // STLport vector (1
     T* end() { return _M_finish; }
 };
 
-struct CTCSound {
-    void StopSound();                                       // 0x0066AEB0
+class CTCSoundPlayer { public:
+public:
+    void StopAllAttachedSounds();   // 0x0066AEB0
 };
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -86,8 +87,15 @@ class CFlammableDef { public:
     long FireResistance;                                    // +0x28
 };
 
-class CTCFlammable { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCFlammable : public CTCBase { public:
     CThing*        ParentThing;                             // +0x04 (CTCBase)
     bool           ToBeRemoved;                             // +0x08
     bool           IsInGlobalUpdateTCs;                     // +0x09
@@ -100,7 +108,6 @@ class CTCFlammable { public:
     float          DamageCaused;                            // +0x2c
     bool           DamagePerPoint;                          // +0x30
     bool           HasFirePoint;                            // +0x31
-    CWorld* GetWorld();                                     // 0x00686A70 (CTCBase)
     void InitialiseFirePoints();                            // 0x007808B0
     void ExtinguishFire();
 };
@@ -109,7 +116,7 @@ void CTCFlammable::ExtinguishFire()
 {
     for_each(FirePoints.begin(), FirePoints.end(), mem_fun_ref(&NFire::CFirePoint::Reset));
     if (ParentThing->HasInterface(16))
-        ((CTCSound*)ParentThing->GetInterface(16))->StopSound();
+        ((CTCSoundPlayer*)ParentThing->GetInterface(16))->StopAllAttachedSounds();
     Burning = false;
     FireDamageAfterFrame = 0;
     FireResistance = PDef->FireResistance;
@@ -118,6 +125,6 @@ void CTCFlammable::ExtinguishFire()
     DamagePerPoint = false;
     InitialiseFirePoints();
     CThing* thing = ParentThing;
-    CWorld* world = GetWorld();
+    CWorld* world = (&GetWorld());
     world->POpinionReactionManager->ClearOpinionSource(thing, true);
 }

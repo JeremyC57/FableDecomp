@@ -1,7 +1,7 @@
 // CTCPhysicsBase::ModifyResponseForNearVerticalSlopes(CPhysicsCollideResponse& response) const -- for class-2 things, flatten a collision normal that is steeper than the physics def's clamped maximum slope into a horizontal unit normal
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B0610, length 286 bytes (+ int3 padding), `ret 4`. FableWin.pdb:
 // ?ModifyResponseForNearVerticalSlopes@CTCPhysicsBase@@IBEXAAVCPhysicsCollideResponse@@@Z (protected, const).
-// Callees: CTCBase::GetDefinitions() const @ 0x006869D0 (the definition holder; its +0xD0 def pointer holds the slope
+// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0 (the definition holder; its +0xD0 def pointer holds the slope
 // angle in degrees at +0x134). Constants: 0.0f 0x0122DEDC, 45.0f 0x0125D2B8 / 89.0f 0x0125D2B4 (angle clamp), 1/360
 // 0x01238E00, the double 6.2831854820251465 0x0124F2B8 (2*pi as a float, widened), 3.0f 0x0122DED4, 0.5f 0x0122F59C,
 // the reciprocal-square-root mantissa table 0x013CE558.
@@ -52,7 +52,7 @@ struct CPhysicsGlobalDef {
     unsigned char _pad000[0x134];
     float         MaxSlopeAngle;                // +0x134 degrees
 };
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char      _pad00[0xd0];
     CPhysicsGlobalDef* PhysicsDef;              // +0xd0 CDefPointer object
 };
@@ -62,10 +62,15 @@ class CThing { public:
     unsigned char ThingClass;                   // +0x10
 };
 
-class CTCPhysicsBase { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCPhysicsBase : public CTCBase { public:
     void*     __vftable;                        // +0x00
     CThing*   ParentThing;                      // +0x04
-    CDefinitionHolder* GetDefinitions() const;  // 0x006869D0 (CTCBase)
     void ModifyResponseForNearVerticalSlopes(CPhysicsCollideResponse& response) const;
 };
 
@@ -73,7 +78,7 @@ void CTCPhysicsBase::ModifyResponseForNearVerticalSlopes(CPhysicsCollideResponse
 {
     if (ParentThing->ThingClass == 2) {
         float up = Dot(response.CollideNormal, C3DVector(0.0f, 0.0f, 1.0f));
-        float angle = GetDefinitions()->PhysicsDef->MaxSlopeAngle;
+        float angle = GetDefinitionManager().PhysicsDef->MaxSlopeAngle;
         if (angle < 45.0f)
             angle = 45.0f;
         else if (angle > 89.0f)

@@ -1,15 +1,18 @@
 #pragma optimize("s", on)
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 class CCameraCollisionDef
 { public:
     void* vftable;
 };
 extern void* const g_CCameraCollisionDef_vftable;
-extern void __fastcall CCameraCollisionDef_Destruct(void* def);
 void operator delete(void*);
 void* __fastcall scalar_deleting_destructor(CCameraCollisionDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CCameraCollisionDef_vftable;
-    CCameraCollisionDef_Destruct(def);
+    ((CResource*)(def))->CResource::~CResource();
     if (flags & 1)
         operator delete(def);
     return def;

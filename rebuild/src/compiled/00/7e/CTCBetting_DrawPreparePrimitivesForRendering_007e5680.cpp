@@ -51,7 +51,10 @@ class CPlayerGuiDef { public:
     unsigned char _pad00[0x2e8];
     long          StatBoxWidth;                 // +0x2e8
 };
-CPlayerGuiDef* __fastcall PeekGuiDef();         // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};         // 0x00438570
 
 class CBettingDef { public:
     virtual void v00();
@@ -121,11 +124,11 @@ void CTCBetting::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepare
             DrawStatBoxWithText(info, BetHandles,
                                 C2DVector(bettingDef->BetBoxX * g_pDisplayDevice->GetRenderTargetDimensions().X,
                                           bettingDef->BetBoxY * g_pDisplayDevice->GetRenderTargetDimensions().Y),
-                                PeekGuiDef()->StatBoxWidth, GetBetText(), 0, 0xff, false);
+                                CPlayerGui::PeekGuiDef().StatBoxWidth, GetBetText(), 0, 0xff, false);
             DrawStatBoxWithText(info, MoneyHandles,
                                 C2DVector(bettingDef->MoneyBoxX * g_pDisplayDevice->GetRenderTargetDimensions().X,
                                           bettingDef->MoneyBoxY * g_pDisplayDevice->GetRenderTargetDimensions().Y),
-                                PeekGuiDef()->StatBoxWidth, GetPlayersMoney(), 0, 0xff, true);
+                                CPlayerGui::PeekGuiDef().StatBoxWidth, GetPlayersMoney(), 0, 0xff, true);
         }
     }
 }

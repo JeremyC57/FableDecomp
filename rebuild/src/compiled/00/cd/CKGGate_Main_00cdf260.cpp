@@ -9,10 +9,11 @@
 // Shape: the `a || b` of two quest tests keeps both string temporaries to the end of the full expression (ebx construction
 //   flags 1/3, reverse-order destruction); the quest names are IMPLICIT CCharString conversions -- an explicit
 //   `CCharString("...")` argument pushes the ctor's eax and hoists the vtable load (GOTCHAS chunk 214).
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    ~CScriptThing();                          // 0x004AA840
+    virtual ~CScriptThing();                          // 0x004AA840
 };
 class CCharString { public:
     void* PStringData;
@@ -78,19 +79,30 @@ class CGameScriptInterface { public:
     virtual void v423(); virtual void v424();
     virtual void OpenDoor(const CScriptThing& door) const;   // slot 425 (+0x6a4)
 };
-struct CIsThingAlive {                         // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                         // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                     // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-class CKG_Gate {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CKG_Gate : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     CGameScriptInterface* Game;               // +0x04
     CScriptThing          Me;                 // +0x08
-    void RegisterFilter(CIsThingAlive& filter);   // 0x00F35B10
-    bool IsDone();                            // 0x00F35B30
     void Main();
 };
 
@@ -98,13 +110,13 @@ void CKG_Gate::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     bool open = Game->IsQuestCompleted("Q_HeroSoulsThunder")
              || Game->IsQuestCompleted("Q_HeroSoulsArena");
-    if (open && !IsDone())
+    if (open && !IsActiveThreadTerminating())
         Game->OpenDoor(Me);
 }

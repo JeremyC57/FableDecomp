@@ -46,8 +46,8 @@ struct CFileInfoPointer {                                   // CCountedPointer<c
     }
 };
 class CCompressorZlib { public:
-    unsigned char _body[0x58];
-    ~CCompressorZlib();                                     // 0x00A3ACC0
+    unsigned char _body[0x58 - 4];
+    virtual ~CCompressorZlib();                                     // 0x00A3ACC0
 };
 struct CSentinelNode { CSentinelNode* next; CSentinelNode* prev; };
 struct CSentinelList {

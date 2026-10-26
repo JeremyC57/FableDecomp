@@ -2,10 +2,21 @@
 // Grade: see STATUS.tsv
 class CTCBase;
 class CThing;
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -68,7 +79,7 @@ class CThing { public:
         return false;
     }
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -84,13 +95,13 @@ struct CTCOwned {                               // the interface-8 component
     virtual void v32();
     virtual CThing* GetOwner();                 // slot 33 (+0x84)
     unsigned char _pad04[0x40 - 0x04];
-    CBaseIntelligentPointer Owner;              // +0x40
+    CIntelligentPointer<CThing> Owner;              // +0x40
 };
 struct CLightningBeam {
     long                    m_lsState;          // +0x00 ELightningState
-    CBaseIntelligentPointer m_tpParticleHandle; // +0x04
-    CBaseIntelligentPointer m_tcpHome;          // +0x0c
-    CBaseIntelligentPointer m_tcpTarget;        // +0x14
+    CIntelligentPointer<CThing> m_tpParticleHandle; // +0x04
+    CIntelligentPointer<CThing> m_tcpHome;          // +0x0c
+    CIntelligentPointer<CThing> m_tcpTarget;        // +0x14
     bool IsTargetValid();
 };
 

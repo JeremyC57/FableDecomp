@@ -11,16 +11,23 @@ class CCharString { public:                        // one pointer; the copy cons
     void* m_pStringData;
     CCharString(const CCharString& other);   // 0x0099EC30
 };
-struct CBaseIntelligentPointer {            // 8 bytes: vtable + item pointer
-    virtual void v00();
-    CBaseObject* m_pItem;                   // +4
-    CBaseIntelligentPointer();              // 0x00A01B10
-    CBaseObject* GetPItem() const;          // 0x00A01B50
-    void SetPItem(CBaseObject* item);       // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCreatureAction_UnsheatheItemFromInventory { public:   // retail sizeof 0xb8
@@ -31,7 +38,7 @@ class CCreatureAction_UnsheatheItemFromInventory { public:   // retail sizeof 0x
 
 class CCreatureAction_UnsheatheToShowToSheatheTrophy : public CCreatureAction_UnsheatheItemFromInventory { public:   // vtable 0x0125F8D4
     CCharString m_animationName;            // +0xb8
-    CIntelligentPointer PTrophy;            // +0xbc
+    CIntelligentPointer<CThing> PTrophy;            // +0xbc
     virtual void v00();
     CCreatureAction_UnsheatheToShowToSheatheTrophy(const CCreatureAction_UnsheatheToShowToSheatheTrophy& other);
 };

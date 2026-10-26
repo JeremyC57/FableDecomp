@@ -16,6 +16,7 @@
 // - 0x14: CurrentPopulationScale[4] +0x48, CurrentPopulationRegion +0x5c.
 // Shape: the two village arms are identical apart from the literal and VC7.1 cross-jumps them; the landed
 // CHTG_FreedomFighter::Main 0x00D701C0 walk loop; the village ~CScriptThing exits sit under `#pragma inline_depth(0)`.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -62,8 +63,14 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     __forceinline ~CScriptThing() { }                   // out of line 0x004AA840
 };
-struct CIsThingAlive {                                  // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
     CScriptThing Thing;
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
     ~CIsThingAlive();                                   // 0x00E241B0
@@ -71,8 +78,9 @@ struct CIsThingAlive {                                  // vtable 0x012C32F0
 struct CCountedPointerWords { void* Data; void* Info; };
 class CBaseObject { public:
     void* m_pIntelligentPointer;
-    CBaseObject();                                      // 0x0099A380
-    virtual ~CBaseObject();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
@@ -105,7 +113,14 @@ struct CV_RandomPopulationSimScript {
     bool  HighDetailSimulationActive;                   // +0x58
     long  CurrentPopulationRegion;                      // +0x5c
 };
-struct CRandomPopulationCreature {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CRandomPopulationCreature : public CEntityScriptBase {
     void* VTable;
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing Me;                                    // +0x08
@@ -114,8 +129,6 @@ struct CRandomPopulationCreature {
     CScriptThing Exit;                                  // +0x1c
     long MyType;                                        // +0x28
     bool AttachedToVillage;                             // +0x2c
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
     void Main();
 };
 
@@ -123,7 +136,7 @@ void CRandomPopulationCreature::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

@@ -54,11 +54,15 @@ class CTCVillageMember { public:
     void SetPVillage(CTCVillage* village);      // 0x007EE270
 };
 
-struct CBaseIntelligentPointer {                // vptr + item (+ link words)
-    void* _vfptr;
-    CBaseObject* m_pItem;
-    CBaseObject* GetPItem() const;              // 0x00A01B50
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 struct SPersonNode {                            // STLport list node: next, prev, value

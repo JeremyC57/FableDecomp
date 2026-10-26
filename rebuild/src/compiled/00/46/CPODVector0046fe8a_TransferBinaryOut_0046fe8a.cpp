@@ -4,7 +4,7 @@
 // Label: the catalog name "CPersistTraits<NGraphicAppearance::CReplaceableMeshes>::TransferBinaryOut" is propagated:
 //   `this` is the vector, not a traits object (its only caller, the persist-context transfer helper 0x0046FE40 (CheckCRC, a 12-byte traits local, mode switch), calls it as `value->TransferBinaryOut(outputStream)` with the value in ecx; its read twin is 0x0046FEE9). The element type is
 //   unknown; it is modelled by size (0x18 bytes) and the class named by address.
-// Callees: CDataOutputStream::WriteULong @ 0x00993EA0 (the count), CDataOutputStream::Write(const void*, unsigned long) = virtual
+// Callees: CDataOutputStream::WriteULONG @ 0x00993EA0 (the count), CDataOutputStream::Write(const void*, unsigned long) = virtual
 //   slot 4 (+0x10).
 // Shape: the data/size idiom of the landed CSimVoice::TransferBinaryOut 0x006808C0 and 0x004EA26B: data =
 //   `size() > 0 ? first : (void*)this` (unsigned `ja`), byte count size() * sizeof; both accessors __forceinline, the
@@ -16,7 +16,8 @@ class CDataOutputStream { public:
     virtual void v02();
     virtual void v03();
     virtual void Write(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteULong(unsigned long value);                         // 0x00993EA0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 struct SPODElement_0046fe8a { unsigned char _bytes[0x18]; };
@@ -32,6 +33,6 @@ struct CPODVector_0046fe8a {                  // STLport vector, 12 bytes
 
 void CPODVector_0046fe8a::TransferBinaryOut(CDataOutputStream* stream) const
 {
-    stream->WriteULong(size());
+    stream->WriteULONG(size());
     stream->Write(data(), size() * sizeof(SPODElement_0046fe8a));
 }

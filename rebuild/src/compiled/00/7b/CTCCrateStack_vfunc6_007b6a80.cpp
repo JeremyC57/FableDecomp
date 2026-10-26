@@ -68,13 +68,14 @@ class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 
-struct CTCVillage_Model {
+class CTCVillage { public:
     unsigned char           _pad00[0x94];
     CDefPointer<CVillageDef> PDef;                          // +0x94 CDefPointer<const CVillageDef>
 };
 
 class CTCVillageMember { public:
-    CTCVillage_Model* GetPVillage() const;                  // 0x007EE540
+public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540
 };
 
 struct CGameSubsystem {                                     // the main game component's member at +0x1c (unidentified)
@@ -98,7 +99,7 @@ void CTCCrateStack::vfunc_6()
     {
         CTCVillageMember* member;
         ParentThing->GetInterface(&member, 0x23);           // TC_VILLAGE_MEMBER
-        CTCVillage_Model* village = member->GetPVillage();
+        CTCVillage* village = member->GetPVillage();
         if (village)
         {
             {

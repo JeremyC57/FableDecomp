@@ -1,15 +1,18 @@
 #pragma optimize("s", on)
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 class CBedDef
 { public:
     void* vftable;
 };
 extern void* const g_CBedDef_vftable;
-extern void __fastcall CBedDef_Destruct(void* def);
 void operator delete(void*);
 void* __fastcall scalar_deleting_destructor(CBedDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CBedDef_vftable;
-    CBedDef_Destruct(def);
+    ((CResource*)(def))->CResource::~CResource();
     if (flags & 1)
         operator delete(def);
     return def;

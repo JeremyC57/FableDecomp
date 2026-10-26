@@ -7,7 +7,19 @@
 // Shape: the thing is read into a local BEFORE the world call (esi), the nested call's arguments (0, pos, &result) are pushed
 //   before the world-map virtual is called (VC evaluates the object expression after the arguments).
 // Leaf: UpdateCollisionGroundIneractions
+#define CTCPhysicsBase CTCPhysicsBaseLayout
 #include "engine/CTCPhysicsBase.h"
+#undef CTCPhysicsBase
+class CWorld;
+
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCPhysicsBase : public CTCBase, public CTCPhysicsBaseLayout
+{
+};
 
 class C3DVector { public:
     float X, Y, Z;
@@ -36,7 +48,6 @@ class CThing { public:
 };
 
 struct CTCPhysicsBase_Methods : CTCPhysicsBase {
-    CWorld* GetWorld();                     // 0x00686A70
     CThing* GetThing() { return reinterpret_cast<CThing*>(sub); }
     void UpdateCollisionGroundIneractions(const C3DVector& pos);
 };
@@ -44,5 +55,5 @@ struct CTCPhysicsBase_Methods : CTCPhysicsBase {
 void CTCPhysicsBase_Methods::UpdateCollisionGroundIneractions(const C3DVector& pos)
 {
     CThing* thing = GetThing();
-    thing->OnCollision(3, pos, GetWorld()->GetWorldMap()->GetGroundFaceNormalAt(pos, 0));
+    thing->OnCollision(3, pos, GetWorld().GetWorldMap()->GetGroundFaceNormalAt(pos, 0));
 }

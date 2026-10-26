@@ -32,8 +32,9 @@ class CThing { public:
         return ((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-struct CTCCollisionFilter {                     // the interface-0x4D component
-    bool ShouldCollideWith(CThing* other);      // 0x00770DE0
+class CTCSolidToThing { public:                     // the interface-0x4D component
+public:
+    bool IsSolidToThing(const CThing*) const;   // 0x00770DE0
 };
 class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
@@ -60,8 +61,8 @@ bool CTCPhysicsStandard::IsCollisionWithThingToCauseResponse(CTCPhysicsBase* oth
     if (GetCollidesWithThings() || GetCollidesWithThingsOneWay()) {
         if (other->GetCollidesWithThings()) {
             if (ParentThing->HasTC(0x4d)) {
-                CTCCollisionFilter* filter = (CTCCollisionFilter*)ParentThing->GetTC(0x4d);
-                return filter->ShouldCollideWith(other->GetParentThing_rb());
+                CTCSolidToThing* filter = (CTCSolidToThing*)ParentThing->GetTC(0x4d);
+                return filter->IsSolidToThing(other->GetParentThing_rb());
             }
             return true;
         }

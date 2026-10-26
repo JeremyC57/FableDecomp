@@ -7,6 +7,7 @@
 #include "engine/CScriptThing.h"
 // VC7.1 single-inheritance member pointers contain one code address. View the vtable entry
 // by reference to retain virtual dispatch shape; fixture builds genuine member entries for each host ABI.
+namespace NScript { class CPredicateBase; }
 template<class M> __forceinline const M& VirtualSlot(void* table,long n) {
 #ifdef _MSC_VER
  typedef char NativeMemberPointerMustBeOneWord[sizeof(M)==sizeof(void*)?1:-1];
@@ -24,23 +25,28 @@ struct ThingMethods : CScriptThing {
  bool MsgIsUsedBy(const CCharString&);
  bool Used(const CCharString&s){return (this->*VirtualSlot<bool(ThingMethods::*)(const CCharString&)>(__vftable,20))(s);}
 };
-struct CExitWardensOffice {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CExitWardensOffice : public CEntityScriptBase {
  void* ScriptVptr;InterfaceMethods* Interface; ThingMethods Door;
  void* ParentClass;void* PMasterData;
- bool IsDone(); //F35B30
  void Main();
 };
 void CExitWardensOffice::Main() {
  Interface->Lock(Door,true);
- while(!IsDone()) {
+ while(!IsActiveThreadTerminating()) {
   bool used; { CCharString hero("SCRIPT_NAME_HERO",-1); used=Door.Used(hero); }
   if(used) {
-   if(IsDone())return;
+   if(IsActiveThreadTerminating())return;
    { CCharString notice("TEXT_QST_055_WARDENS_DOOR_LOCKED",-1); Interface->Info(notice); }
    while(!Interface->Clicked()) {
-    Interface->Frame();if(IsDone())return;
+    Interface->Frame();if(IsActiveThreadTerminating())return;
    }
-   if(IsDone())return;
+   if(IsActiveThreadTerminating())return;
   }
   Interface->Frame();
  }

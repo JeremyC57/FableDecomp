@@ -6,7 +6,18 @@
 // Callees: CRenderStateManager::RealiseRenderState @ 0x00A058C0; IDirect3DDevice9::DrawIndexedPrimitiveUP (COM slot 84,
 // +0x150) on PD3DDevice (+0x3CF0): D3DPT_TRIANGLELIST (4), min vertex 0, vertex count, triangle count, indices,
 // D3DFMT_INDEX16 (0x65), vertices, stride -- the pushes read the five arguments as (verts, stride, count, indices, tris).
+#define CRenderManagerCore CRenderManagerCoreLayout
 #include "engine/CRenderManagerCore.h"
+#undef CRenderManagerCore
+
+class CRenderStateManager
+{
+public:
+    void RealiseRenderState();   // 0x00A058C0
+};
+class CRenderManagerCore : public CRenderStateManager, public CRenderManagerCoreLayout
+{
+};
 
 // d3d9.h is not on the verifier include path, so the IDirect3DDevice9 vtable is declared locally:
 // COM methods are __stdcall with `this` pushed. Slots used here: 81 (+0x144) DrawPrimitive,
@@ -43,7 +54,6 @@ struct IDirect3DDevice9 {
 };
 
 struct CRenderManagerCore_Methods : CRenderManagerCore {
-    void RealiseRenderState();      // 0x00A058C0 (CRenderStateManager, the primary base at +0)
     long DrawAsIndexedTris(const void* vertices, unsigned long stride, unsigned long vertexCount,
                            const unsigned short* indices, unsigned long triangleCount);
 };

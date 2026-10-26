@@ -1,13 +1,16 @@
+class CAInputProcess {
+public:
+    virtual ~CAInputProcess();   // 0x00A0D3D0
+};
 class CInputProcessUseRangedWeaponZLock { public:
     void* vftable;
 };
 
-void __fastcall CInputProcessUseRangedWeaponZLock_dtor(CInputProcessUseRangedWeaponZLock* process);
 void operator delete(void*);
 
 void* __fastcall CInputProcessUseRangedWeaponZLock_scalar_deleting_destructor(CInputProcessUseRangedWeaponZLock* process, int edx_unused, unsigned int flags)
 {
-    CInputProcessUseRangedWeaponZLock_dtor(process);
+    ((CAInputProcess*)(process))->CAInputProcess::~CAInputProcess();
     if (flags & 1)
         operator delete(process);
     return process;

@@ -16,9 +16,14 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CThingPlayerCreature { public:
+class CThingCreatureBase
+{
+public:
+    bool IsChild() const;   // 0x00661F70
+};
+
+class CThingPlayerCreature : public CThingCreatureBase { public:
     bool IsExpressionAvailable(const CCharString& name);   // 0x006AC390
-    bool IsChild() const;                                   // 0x00661F70 (CThingCreatureBase)
 };
 bool __fastcall IsThingCarryingWeapon(const CThing* thing);   // 0x006A1540
 struct CThingFilter_IsValidTargetForPlayerCreature {

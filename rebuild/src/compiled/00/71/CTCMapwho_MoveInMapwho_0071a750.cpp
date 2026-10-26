@@ -7,7 +7,19 @@
 // Shape: the InMapwho bit is re-tested after the removal (the call may clear it); both accessor results are named locals
 // so the call runs BEFORE the argument pushes (a chained `GetWorldMap()->m->F(args)` pushes first); the manager load
 // lands between the two pushes.
+#define CTCMapwho CTCMapwhoLayout
 #include "engine/CTCMapwho.h"
+#undef CTCMapwho
+class CWorldMap;
+
+class CTCBase
+{
+protected:
+    CWorldMap& GetWorldMap();   // 0x00686D30
+};
+class CTCMapwho : public CTCBase, public CTCMapwhoLayout
+{
+};
 
 class C3DVector { public: float x, y, z; };
 
@@ -22,12 +34,11 @@ class CWorldMap { public:
 };
 
 struct CTCMapwhoMethods : CTCMapwho {
-    CWorldMap* GetWorldMap_00686d30();                                           // 0x00686D30 (CTCBase accessor)
     bool IsInMapwho() const { return (InMapwho[0] & 1) != 0; }
     void PlaceInMapwho(const C3DVector& pos)
     {
         if (!IsInMapwho()) {
-            CWorldMap* map = GetWorldMap_00686d30();
+            CWorldMap* map = (&GetWorldMap());
             map->m_pThingMapManager->PlaceThing(this, pos);
         }
     }
@@ -37,7 +48,7 @@ struct CTCMapwhoMethods : CTCMapwho {
 void CTCMapwhoMethods::MoveInMapwho(const C3DVector& pos)
 {
     if (IsInMapwho()) {
-        CWorldMap* map = GetWorldMap_00686d30();
+        CWorldMap* map = (&GetWorldMap());
         map->m_pThingMapManager->DestroyMapwhoNode(this);
     }
     PlaceInMapwho(pos);

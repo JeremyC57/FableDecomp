@@ -53,11 +53,11 @@ class CGameScriptInterface { public:
     virtual void AddQuestRegion(const CCharString& quest, const CCharString& region) const;   // slot 271 (+0x43c)
 };
 
-struct CQuestGlobals {
+class CScriptDef { public:
     unsigned char _pad[0xbe0];
     long          NumFlyBysBetweenSummonerSpawns;           // +0xbe0
 };
-extern CQuestGlobals* g_pQuestGlobals;                      // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                      // 0x0143E90C
 
 class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
@@ -94,7 +94,7 @@ void NScript::CQ_DragonBossFightScript::Init()
     NextSummonerSpawnPoint = 0;
     NumMinions = 0;
     NumSummoners = 0;
-    NumFlyBysBetweenSummonerSpawns = g_pQuestGlobals->NumFlyBysBetweenSummonerSpawns;
+    NumFlyBysBetweenSummonerSpawns = pGlobalScriptDef->NumFlyBysBetweenSummonerSpawns;
     CCharString region("DragonCliff2", -1);
     CCharString quest("Q_DragonBossFight", -1);
     GSI->AddQuestRegion(quest, region);

@@ -22,11 +22,12 @@ class CCompressorZlib : public CACompressor { public:                      // vt
     static long GetWorkspaceSize();                          // 0x00A3A7D0
     void Init();                                             // 0x00A3AA10
     void SetStreamInput(const void* source, long sourceSize);   // 0x00A3AB90
-    bool HasMoreInput();                                     // 0x00A3A7E0
     long CompressStream(unsigned char* dest, long destSize); // 0x00A3A7F0
     long FinishCompressStream(unsigned char* dest, long destSize, bool* finished);   // 0x00A3A8C0
     virtual ~CCompressorZlib();                              // 0x00A3ACC0
     CCompressorZlib() : CACompressor(GetWorkspaceSize()) { Init(); }
+public:
+    bool HasStreamInput() const;   // 0x00A3A7E0
 };
 struct CByteArray {                                          // retail vector<unsigned char>: begin/end/capacity
     unsigned char* m_begin; unsigned char* m_end; unsigned char* m_capacity;
@@ -58,7 +59,7 @@ void CDataOutputStream::WriteZlibCompressed(const void* data, long size, long bu
         CCompressorZlib compressor;
         compressor.SetStreamInput(data, size);
         long dataPosition = GetPosition();
-        while (compressor.HasMoreInput()) {
+        while (compressor.HasStreamInput()) {
             long written = compressor.CompressStream(buffer.GetData(), bufferSize);
             WriteData(buffer.GetData(), written);
         }

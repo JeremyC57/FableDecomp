@@ -2,7 +2,7 @@
 // Leaf: OnSerialise
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00706F40, 400 bytes (`ret 8`; labelled vfunc_1). Ego_r.pdb
 // `?OnSerialise@CTCHeroAttachableAppearanceModifiers@@UAEXAAVCPersistContext@@_N@Z`.
-// Callees: vector<CCharString>(size_type) @ 0x0057FCDD, CTCBase::GetDefinitions @ 0x006869D0, CDefinitionManager::
+// Callees: vector<CCharString>(size_type) @ 0x0057FCDD, CTCBase::GetDefinitionManager @ 0x006869D0, CDefinitionManager::
 // GetDefNameFromGlobalIndex(long) @ 0x009ACCC0 (CDefString by hidden pointer), CDefStringTable::GetString @ 0x009D49B0 on
 // g_DefStringTable @ 0x013CA828, CCharString::operator=(const CCharString&) @ 0x0099EFB0, ~CCharString @ 0x0099EAE0,
 // CPersistContext::Transfer(const char*, vector<CCharString>&) @ 0x0049B8D0 (shared COMDAT body; manifest TransferSignedChar),
@@ -48,8 +48,11 @@ struct CDefStringTable {
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
 class CDefinitionManager { public:
-    CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    CDefString GetDefNameFromGlobalIndex(long index) const;   // 0x009ACCC0
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 class CPersistContext { public:
     unsigned char _pad00[0x18];
@@ -79,7 +82,8 @@ class CTCBase { public:
     CThing* ParentThing;
     bool ToBeRemoved;
     bool IsInGlobalUpdateTCs;
-    CDefinitionManager* GetDefinitions();               // 0x006869D0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
 };
 class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void* __vftable_0c;                                 // +0x0c secondary vptr
@@ -103,7 +107,7 @@ void CTCHeroAttachableAppearanceModifiers::OnSerialise(CPersistContext& context,
         CModifierVector& hair = AppearanceModifiers[0];
         CCharStringVector names(hair.size());
         for (unsigned long i = 0; i < hair.size(); ++i) {
-            CCharString name = g_DefStringTable.GetString(GetDefinitions()->GetDefNameFromGlobalIndex(hair[i].DefIndex));
+            CCharString name = g_DefStringTable.GetString(GetDefinitionManager().GetDefNameFromGlobalIndex(hair[i].DefIndex));
             names[i] = name;
         }
         context.Transfer("HairModifierNames", names);
@@ -111,7 +115,7 @@ void CTCHeroAttachableAppearanceModifiers::OnSerialise(CPersistContext& context,
         CCharStringVector names;
         context.Transfer("HairModifierNames", names);
         for (unsigned long i = 0; i < names.size(); ++i) {
-            long defIndex = GetDefinitions()->GetDefGlobalIndexFromName(names[i]);
+            long defIndex = GetDefinitionManager().GetDefGlobalIndexFromName(names[i]);
             if (defIndex > 0)
                 AddAppearanceModifierWithReplace(defIndex);
         }

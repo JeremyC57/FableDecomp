@@ -5,7 +5,10 @@
 // (`fild [g] ; fmul [__real]`), adds the frame as the right operand (`fiadd`: the frame is the second
 // summand in the source, VC7.1 still evaluates the call first) and the sum is truncated to the long member at
 // +0x28 (PDB WFNextHappen +0x2c; the base's 16-byte vector is 12 bytes in retail).
-long __fastcall GFGetCurrentFrame();           // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};           // 0x0049D870
 extern long g_logicFramesPerSecond;            // 0x01375550 (15)
 
 struct CCombatSequence_TrollOpeningGroundPound_Retail {
@@ -17,6 +20,6 @@ struct CCombatSequence_TrollOpeningGroundPound_Retail {
 
 void CCombatSequence_TrollOpeningGroundPound_Retail::OnStart()
 {
-    long frame = GFGetCurrentFrame();
+    long frame = CWorld::GetFrame();
     WFNextHappen = g_logicFramesPerSecond * 15.0f + frame;
 }

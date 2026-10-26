@@ -1,6 +1,9 @@
 #include <cstdio>
 
-class CDefClassBase;
+class CDefClassBase {
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);
+};
 
 class CWifeDef { public:
     char pad[0x28];
@@ -9,9 +12,12 @@ class CWifeDef { public:
 };
 
 static int g_base_called = 0;
-void CWifeDef::base_clone(const CDefClassBase* src) {
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+{
+    const CDefClassBase* src = (const CDefClassBase*)&other_; (void)src;
     g_base_called = 1;
     (void)src;
+    return *this;
 }
 
 void __fastcall CWifeDef_Copy(CWifeDef* self, int /*edx*/, const CDefClassBase* src);

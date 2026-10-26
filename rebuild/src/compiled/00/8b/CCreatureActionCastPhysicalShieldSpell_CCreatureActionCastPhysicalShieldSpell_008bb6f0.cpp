@@ -14,13 +14,13 @@
 class CThingCreatureBase;
 
 #pragma pack(push, 1)
-struct CBasicStringChar {                       // CBasicString<char>
+template <class T> class CBasicString { public:                       // CBasicString<char>
     char*         PData;                        // +0x00
     unsigned long StringLength;                 // +0x04
     bool operator==(const char* text) const;    // 0x004115A0
 };
 class CCharStringData { public:
-    CBasicStringChar Data;                      // +0x00
+    CBasicString<char> Data;                      // +0x00
 };
 #pragma pack(pop)
 class CCharString {
@@ -46,7 +46,8 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_CastPhysicalShieldSpell : public CCombatActionBase { public:   // vtable 0x0127BDCC
@@ -74,9 +75,9 @@ CCreatureAction_CastPhysicalShieldSpell::CCreatureAction_CastPhysicalShieldSpell
     } else if (animationName.PStringData->Data == "")
         goto empty;
     OneAnimCast = true;
-    SetAnimationName(animationName);
+    SetCombatAnimation(animationName);
     return;
 empty:
     OneAnimCast = false;
-    SetAnimationName("ST_RELEASE_PHYSICAL_SHIELD");
+    SetCombatAnimation("ST_RELEASE_PHYSICAL_SHIELD");
 }

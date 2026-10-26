@@ -6,11 +6,11 @@ struct CDeviceOwner_009f8200 {
     void Flush();                                  // 0x009F8200
 };
 
-struct SDeviceRecord_013ca618 {
+class CSystemManager { public:
     unsigned char         _pad[0x6c];
     CDeviceOwner_009f8200* m_pOwner;               // +0x6c
 };
-SDeviceRecord_013ca618* __cdecl GetDeviceRecord_009a4ec0();   // 0x009A4EC0
+CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
 class CGraphicDataBank { public:
     void Reload(long flags);                       // 0x009FD100
@@ -30,7 +30,7 @@ class CEngineResourceManager { public:
 void CEngineResourceManager::Render(SRenderRequest_00b3b7c0* request)
 {
     if (request->m_kind == 0x40000000) {
-        GetDeviceRecord_009a4ec0()->m_pOwner->Flush();
+        GFGetSystemManager()->m_pOwner->Flush();
         m_pDataBank->Reload(1);
     }
 }

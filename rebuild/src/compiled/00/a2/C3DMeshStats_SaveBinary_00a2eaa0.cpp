@@ -16,15 +16,16 @@ class C3DVector { public: float X, Y, Z; };
 class CMatrix3x4 { public: float m_row[3][4]; };
 
 class CDataOutputStream { public:
-    void WriteBool(bool value);                           // 0x00993E30
     void WriteUShort(unsigned short value);               // 0x00993E80
-    void WriteULong(unsigned long value);                 // 0x00993EA0
-    void WriteLong(long value);                           // 0x00993EB0
     void WriteFloat(float value);                         // 0x00993EE0
     void Write3DVector(const C3DVector& value);           // 0x00993FD0
     void WriteMatrix3x4(const CMatrix3x4& m);             // 0x00994070
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
     void WriteBuffer(const void* data, long size);      // 0x00996610 (compressed block)
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteSLONG(long);   // 0x00993EB0
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 class CContainmentVolume { public:
@@ -91,7 +92,7 @@ class C3DMeshStats { public:
 void C3DMeshStats::SaveBinary(CDataOutputStream& out) const
 {
     out.WriteNullTerminatedString(Name);
-    out.WriteBool(AnimatedFlag);
+    out.WriteEBOOL(AnimatedFlag);
     out.Write3DVector(BoundingSphere.Center);
     out.WriteFloat(BoundingSphere.Radius);
     out.Write3DVector(BoundingBox.MinCoord);
@@ -105,7 +106,7 @@ void C3DMeshStats::SaveBinary(CDataOutputStream& out) const
     out.WriteBuffer(DummyObjects.m_pData, DummyObjects.m_count * sizeof(C3DDummyObject));
     out.WriteBuffer(PackedNames, PackedNamesSize);
     for (unsigned long i = 0; i < MeshVolumes.size(); ++i) {
-        out.WriteULong(MeshVolumes[i].first);
+        out.WriteULONG(MeshVolumes[i].first);
         const C3DMeshVolume& volume = MeshVolumes[i].second;
         out.WriteNullTerminatedString(volume.Name);
         volume.ConvexVolume->SaveBinary(out);
@@ -113,9 +114,9 @@ void C3DMeshStats::SaveBinary(CDataOutputStream& out) const
     for (unsigned long j = 0; j < MeshGenerators.size(); ++j) {
         const C3DGeneratorObject& generator = MeshGenerators[j];
         out.WriteMatrix3x4(generator.Transform);
-        out.WriteLong(generator.BoneIndex);
+        out.WriteSLONG(generator.BoneIndex);
         out.WriteNullTerminatedString(generator.ObjectName);
-        out.WriteULong(generator.BankIndex);
-        out.WriteBool(generator.UseLocalOrigin);
+        out.WriteULONG(generator.BankIndex);
+        out.WriteEBOOL(generator.UseLocalOrigin);
     }
 }

@@ -19,8 +19,13 @@ class CRGBColour { public:
 class CDataOutputStream { public:
     void WriteColour(const CRGBColour& colour);   // 0x00993F30
 };
-class CMemoryDataInputStream { public:
-    CRGBColour ReadColour();                      // 0x009945E0 (CDataInputStream::ReadColour)
+class CDataInputStream
+{
+public:
+    CRGBColour ReadColour();   // 0x009945E0
+};
+
+class CMemoryDataInputStream : public CDataInputStream { public:
 };
 
 struct CPersistContext_TransferableObjectBase {

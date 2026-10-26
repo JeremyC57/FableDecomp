@@ -9,8 +9,10 @@
 // The int-width `neg ; sbb ; inc` is the plain `return p == 0;` form (bool via a full register).
 #include "engine/CVillageTaskTorch.h"
 
-struct CBaseIntelligentPointerCalls {
-    void* GetPItem();                       // 0x00A01B50
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
 };
 
 struct CVillageTaskTorch_Methods : CVillageTaskTorch {
@@ -19,5 +21,5 @@ struct CVillageTaskTorch_Methods : CVillageTaskTorch {
 
 bool CVillageTaskTorch_Methods::IsTaskAvailable()
 {
-    return reinterpret_cast<CBaseIntelligentPointerCalls*>(&this->CreatureAssignedToTask[0])->GetPItem() == 0;
+    return reinterpret_cast<CBaseIntelligentPointer*>(&this->CreatureAssignedToTask[0])->GetPItem() == 0;
 }

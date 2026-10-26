@@ -21,8 +21,9 @@ class CGPUScratchBufferTextureManager { public:
     };
     void* Vtable; CResourceEntry* FirstResource; CResourceEntry* LastResource; CResourceEntry* EndResource;
     long AllocResourceEntry(long); // 00f372b0
-    void FreeResourceEntry(long); // 00f36f40
     long AllocateDepthBufferSurface(long,const C2DExtentsI&,const CPixelFormat&,long);
+private:
+    void FreeResourceEntry(long);   // 0x00F36F40
 };
 long CGPUScratchBufferTextureManager::AllocateDepthBufferSurface(long page,const C2DExtentsI& dimensions,const CPixelFormat& format,long multisample)
 {

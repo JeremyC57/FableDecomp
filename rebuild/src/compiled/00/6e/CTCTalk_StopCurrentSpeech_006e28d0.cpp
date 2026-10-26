@@ -1,4 +1,4 @@
-// CTCTalk::StopCurrentSpeech(CSpeechEmitter* emitter) -- stops the playing sample, ends the frame window now and resets the speech state
+// CTCTalk::StopCurrentSpeech(CTCSoundPlayer* emitter) -- stops the playing sample, ends the frame window now and resets the speech state
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E28D0, length 59 bytes (ret 4).
 // Callees: the emitter's stop-sample member @ 0x0066ADD0 (takes the sample id; manifest label
 // "CGameScriptThing::SetToKillOnLevelUnload" is propagated), the world frame getter @ 0x00416225 on g_pWorld @ 0x013B86A0.
@@ -6,8 +6,9 @@
 // SampleLoadedTime +0x20 (float, reset to -1.0f), SampleID +0x28, LipSynching +0x35.
 // Shape: the duration is cut to `frame - started - 1` so IsTalking() turns false at once; the zero stores share
 // one `xor eax,eax` register (the bool, the sample, the mime time and the id) while -1.0f is an immediate.
-struct CSpeechEmitter {
-    void StopSample(unsigned long sampleID);   // 0x0066ADD0
+class CTCSoundPlayer { public:
+public:
+    void StopAttachedSound(unsigned long);   // 0x0066ADD0
 };
 class CWorld { public:
     long GetFrame();                         // 0x00416225
@@ -29,12 +30,12 @@ class CTCTalk { public:
     bool          IsPureAISpeaker;           // +0x34
     bool          LipSynching;               // +0x35
     bool          UseLipSynching;            // +0x36
-    void StopCurrentSpeech(CSpeechEmitter* emitter);
+    void StopCurrentSpeech(CTCSoundPlayer* emitter);
 };
 
-void CTCTalk::StopCurrentSpeech(CSpeechEmitter* emitter)
+void CTCTalk::StopCurrentSpeech(CTCSoundPlayer* emitter)
 {
-    emitter->StopSample(SampleID);
+    emitter->StopAttachedSound(SampleID);
     SampleDurationFrames = g_pWorld->GetFrame() - SampleStartedFrame - 1;
     LipSynching = false;
     SpeechSample = 0;

@@ -1,32 +1,30 @@
 // CBaseIntelligentPointer::`scalar deleting destructor'(unsigned int) -- ~CBaseIntelligentPointer then optional operator delete
+// Leaf: ??_GCBaseIntelligentPointer@@UAEPAXI@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A01C50, oracle length 70 bytes.
 // Callees: operator delete @ 0x00BFE9BC (__cdecl, `add esp,4`) twice: the record in the inlined
 // ClearData (0x00A01B20) and the object itself when bit 0 of the flags argument is set.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+4] ; test eax,eax ; mov dword ptr [esi],offset vftable ;
-//                je E ; ... (the ~CBaseIntelligentPointer body of 0x00A01C10) ... ; E: test byte ptr [esp+8],1 ;
-//                je R ; push esi ; call operator delete ; add esp,4 ; R: mov eax,esi ; pop esi ; ret 4
 // Vtable slot 0 of 0x0129C95C (rtti-vtables.tsv): the compiler-generated `??_G` of a class with a
-// virtual destructor; the destructor body (0x00A01C10) is inlined into it.
+// virtual destructor (Ego_r.pdb ??_GCBaseIntelligentPointer@@UAEPAXI@Z); the destructor body (0x00A01C10) is inlined into it.
 class CBaseObject;
-
-struct CBaseObjectPointer {
-    CBaseObject* PItem;        // +0x00
-    long         RefCount;     // +0x04
+class CBaseObjectPointer {                             // Ego_r.pdb, 8 bytes
+public:
+    CBaseObject*  object;                              // +0x00 the observed object, 0 once it died
+    unsigned long refcount;                            // +0x04 intelligent pointers sharing this record
 };
-
-struct CBaseIntelligentPointer {
-    CBaseObjectPointer* m_pData;   // +0x04
-    void ClearData()               // 0x00A01B20, inlined here
+class CBaseIntelligentPointer {                        // vtable 0x0129C95C
+public:
+    virtual ~CBaseIntelligentPointer();                // 0x00A01C10; `??_G` is 0x00A01C50
+private:
+    void ClearData() const                             // 0x00A01B20 (private const in Ego_r), inlined here
     {
-        if (m_pData != 0) {
-            m_pData->RefCount--;
-            if (m_pData->RefCount == 0 && m_pData->PItem == 0)
-                delete m_pData;
-            m_pData = 0;
+        if (PData != 0) {
+            PData->refcount--;
+            if (PData->refcount == 0 && PData->object == 0)
+                delete PData;
+            PData = 0;
         }
     }
-    virtual ~CBaseIntelligentPointer();    // 0x00A01C10; `??_G` is 0x00A01C50
+    mutable CBaseObjectPointer* PData;                 // +0x04
 };
 
 CBaseIntelligentPointer::~CBaseIntelligentPointer()

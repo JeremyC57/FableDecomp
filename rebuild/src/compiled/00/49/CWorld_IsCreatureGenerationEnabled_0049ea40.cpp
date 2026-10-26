@@ -19,14 +19,16 @@ class CRegion { public:
 
 class CQuestManager { public:
     bool IsCreatureGenerationEnabled() const;      // 0x004AFC60
-    bool FindByName(const CCharString& name);      // 0x004AF610
     bool IsActiveQuestInRegion(const CRegion& region) const;   // 0x004AFDD0
+public:
+    bool IsQuestActive(const CCharString&) const;   // 0x004AF610
 };
 extern CQuestManager* g_pQuestManager;             // 0x013B89FC
 
 class CWorldMap { public:
     long GetLoadedRegion() const;                  // 0x004FB150
-    CRegion& GetRegion(long region);               // 0x004FC180
+public:
+    const CRegion& GetRegion(long) const;   // 0x004FC180
 };
 
 class CThingBaseDef { public:
@@ -56,11 +58,11 @@ bool CWorld::IsCreatureGenerationEnabled(const CThing& thing) const
 {
     if (CreatureGenerationEnabled && g_pQuestManager->IsCreatureGenerationEnabled())
     {
-        CRegion& region = PeekWorldMap()->GetRegion(PeekWorldMap()->GetLoadedRegion());
+        const CRegion& region = PeekWorldMap()->GetRegion(PeekWorldMap()->GetLoadedRegion());
         if (region.CreatureGenerationFlag && !g_pQuestManager->IsActiveQuestInRegion(region))
             return true;
     }
-    if (g_pQuestManager->FindByName(thing.SerialisationSectionName))
+    if (g_pQuestManager->IsQuestActive(thing.SerialisationSectionName))
         return true;
     const CThingBaseDef* def = thing.PBaseDef;
     if (def && def->CreatureGenerationBit)

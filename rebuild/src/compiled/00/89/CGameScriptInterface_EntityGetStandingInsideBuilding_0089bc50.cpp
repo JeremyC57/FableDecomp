@@ -109,15 +109,28 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
     CThing_Retail* t = thing.GetThing();
     return t && !t->m_dead;
 }
-struct CBaseObject_Retail {
+class CBaseObject_Retail { public:
     CScriptThing GetScriptThing();                 // 0x004C7E50
 };
-struct CBaseIntelligentPointer_Retail {
-    CBaseObject_Retail* GetPItem() const;          // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CTCInsideBuilding_Retail {
     unsigned char _pad[0xc];
-    CBaseIntelligentPointer_Retail m_building;     // +0x0c
+    CIntelligentPointer<CBaseObject_Retail> m_building;     // +0x0c
 };
 class CGameScriptInterface { public:
     virtual void v000();

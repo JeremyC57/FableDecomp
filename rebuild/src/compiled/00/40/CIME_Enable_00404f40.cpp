@@ -16,13 +16,13 @@ struct CIME {
 };
 
 // IME UI: clear the composition state / set the enabled state.
-extern void __fastcall CIME_cb_a(char b);
-extern void __fastcall CIME_cb_b(char b);
+void __fastcall ImeUi_FinalizeString(bool);   // 0x00CB2C60
+void __fastcall ImeUi_EnableIme(bool);   // 0x00CB5130
 
 void __fastcall CIME_Enable(CIME* ime, int edx, char enable)
 {
     if (ime->enabled) {
-        CIME_cb_a(0);
-        CIME_cb_b(enable != 0);
+        ImeUi_FinalizeString(0);
+        ImeUi_EnableIme(enable != 0);
     }
 }

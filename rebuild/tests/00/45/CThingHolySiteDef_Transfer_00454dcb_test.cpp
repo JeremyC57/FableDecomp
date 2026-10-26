@@ -1,36 +1,43 @@
 #include <cstdio>
-
-struct CArchive;
-static void* g_base_self; static void* g_base_ar;
-static void* g_a_ar; static void* g_a_p;
-static void* g_b_ar; static void* g_b_p;
-
-struct CArchive {
-    void TransferA(void* p){ g_a_ar=this; g_a_p=p; }
-    void TransferB(void* p){ g_b_ar=this; g_b_p=p; }
+// Behaviour test for 0x00454DCB: the reconstructed body (pragmas stripped) driven through recording stubs;
+// checks the transfer order, the helper chosen per member (kind) and the member address.
+static const void* g_p[32]; static int g_k[32]; static int g_n = 0;
+static void Rec(int k, const void* p) { if (g_n < 32) { g_k[g_n] = k; g_p[g_n] = p; } ++g_n; }
+class CEngineGraphic { public: unsigned char _body[0x0e]; };   // retail 14 bytes
+class CPersistContext { public:
+    template <class T> void Transfer(T& value);       // one-argument transfer helpers (namepass TR2)
 };
-
-struct CBase {
-    char pad[0x70];
-    char field70[0xE];
-    char field7e[0x10];
-    void BaseTransfer(CArchive* ar){ g_base_self=this; g_base_ar=ar; }
+class CThingBaseDef { public:
+    virtual void Transfer(CPersistContext& context);   // 0x00676BE0
+    unsigned char _body04[0x70 - 4];                   // retail def base (Ego_r.pdb CThingBaseDef 0x74 less 4)
 };
+class CThingHolySiteDef : public CThingBaseDef { public:
+    CEngineGraphic Graphic;         // +0x70
+    bool PlayerStart;               // +0x7e
+    virtual void Transfer(CPersistContext& context);
+};
+template <> void CPersistContext::Transfer<CEngineGraphic>(CEngineGraphic& value);
+template <> void CPersistContext::Transfer<bool>(bool& value);
 
-void __fastcall CThingHolySiteDef_Transfer(CBase* self, void* edx, CArchive* ar)
+void CThingHolySiteDef::Transfer(CPersistContext& context)
 {
-    self->BaseTransfer(ar);
-    ar->TransferA(&self->field70);
-    ar->TransferB(self->field7e);
+    CThingBaseDef::Transfer(context);
+    context.Transfer(Graphic);
+    context.Transfer(PlayerStart);
 }
-
+template <> void CPersistContext::Transfer<CEngineGraphic>(CEngineGraphic& v) { Rec(6, &v); }
+template <> void CPersistContext::Transfer<bool>(bool& v) { Rec(5, &v); }
+void CThingBaseDef::Transfer(CPersistContext& context) { Rec(1, this); }
+static CThingHolySiteDef d;
 int main()
 {
-    CBase b; CArchive a;
-    CThingHolySiteDef_Transfer(&b, 0, &a);
-    bool ok = (g_base_self==&b) && (g_base_ar==&a)
-        && (g_a_ar==&a) && (g_a_p==(void*)&b.field70)
-        && (g_b_ar==&a) && (g_b_p==(void*)&b.field7e);
-    if(ok){ std::printf("CThingHolySiteDef_00454dcb_TEST PASS\n"); return 0; }
-    std::printf("FAIL\n"); return 1;
+    CPersistContext c;
+    d.Transfer(c);
+    bool ok = g_n == 3;
+    ok = ok && g_k[0] == 1 && g_p[0] == (const void*)&d;
+    ok = ok && g_k[1] == 6 && g_p[1] == (const void*)&d.Graphic;
+    ok = ok && g_k[2] == 5 && g_p[2] == (const void*)&d.PlayerStart;
+    if (ok) { std::printf("CThingHolySiteDef_00454dcb_TEST PASS\n"); return 0; }
+    std::printf("FAIL %d\n", g_n);
+    return 1;
 }

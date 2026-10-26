@@ -168,7 +168,15 @@ template <class T> struct CRetailList {                      // STLport list (4 
     }
 };
 
-class CTCWound { public:
+class CTCBase
+{
+public:
+    virtual void v00();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCWound : public CTCBase { public:
     class CWound { public:
         CWoundMorphs::CEntry Desc;                           // +0x00
         unsigned long        Duration;                       // +0x28
@@ -183,12 +191,10 @@ class CTCWound { public:
             : Desc(desc), Duration(0), WoundTextureDecalEntryID(0), WoundBumpDecalEntryID(0), ScarTextureDecalEntryID(0),
               ScarBumpDecalEntryID(0), MorphIndex(morphIndex), Dead(false), HadUpdate(false) { }
     };
-    virtual void v00();
     CThing*               ParentThing;                       // +0x04
     unsigned char         _pad08[4];
     unsigned long         LastFrameChanged;                  // +0x0c
     CRetailList<CWound>   Wounds;                            // +0x10
-    const CWorld& PeekWorld() const;                         // 0x00686A80 (CTCBase)
     void AddWound(EBodyLocation location);
 };
 

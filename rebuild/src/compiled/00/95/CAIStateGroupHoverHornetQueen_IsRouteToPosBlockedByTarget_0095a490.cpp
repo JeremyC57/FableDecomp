@@ -35,18 +35,29 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IsAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() != 0 && !(p.GetPItem()->m_flags91 & 1); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IsAlive(const CIntelligentPointer<CThing>& p) { return p.GetPItem() != 0 && !(p.GetPItem()->m_flags91 & 1); }
 struct CIntelligentPointerVector {              // STLport vector<CIntelligentPointer<CThing> > (12 bytes)
-    CBaseIntelligentPointer* _M_start;
-    CBaseIntelligentPointer* _M_finish;
-    CBaseIntelligentPointer* _M_end_of_storage;
-    CBaseIntelligentPointer* begin() const { return _M_start; }
-    CBaseIntelligentPointer& operator[](long n) const { return *(begin() + n); }
+    CIntelligentPointer<CThing>* _M_start;
+    CIntelligentPointer<CThing>* _M_finish;
+    CIntelligentPointer<CThing>* _M_end_of_storage;
+    CIntelligentPointer<CThing>* begin() const { return _M_start; }
+    CIntelligentPointer<CThing>& operator[](long n) const { return *(begin() + n); }
 };
 
 class CAIBrain { public:
@@ -63,7 +74,7 @@ class CAIStateGroupBase { public:
     CThing* GetCreature() const { return PBrain->PCreature; }
 };
 struct CAIStateGroup_HoverMovementBase : CAIStateGroupBase {
-    CBaseIntelligentPointer PTarget;            // +0x14
+    CIntelligentPointer<CThing> PTarget;            // +0x14
 };
 struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_HoverMovementBase {
     C3DVector StartPos;                         // +0x1c

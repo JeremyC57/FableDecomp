@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCDNone_Destruct(void* none);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCDNone_ScalarDeletingDestructor(void* none, int, unsigned int flags)
 {
-    CTCDNone_Destruct(none);
+    ((CTCBase*)(none))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(none);
+        operator delete(none);
     return none;
 }

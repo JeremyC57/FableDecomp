@@ -1,7 +1,7 @@
 // NScript::CPersonalScript_EmptyScript::CLeader::Main() -- patrol leader: forever walks to Marker1 .. Marker6 in turn (MoveToThing at 0.5, then a 5-second pause), re-taking scripting control for each leg
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EF3F00, 547 bytes (+ int3 padding).
-// Callees: the is-alive predicate (vtable 0x012C2FE8, CScriptThing copy 0x004ABE90), SetPredicate 0x00F35B10,
+// Callees: the is-conscious predicate NScript::CIsThingConscious (vtable 0x012C2FE8, CScriptThing copy 0x004ABE90), SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, GFIntToCharString 0x0099F830 and operator+(const char*, const CCharString&) 0x0099F690
 //   (both __fastcall, hidden result in ecx), CCharString dtor 0x0099EAE0, the scripted-thing handle (CBaseObject ctor 0x0099A380
 //   / dtor 0x0099A430, IsScripting 0x00CD23B9, Release 0x00CD2770, MoveToThing 0x007E7300, out-of-line dtor 0x007E74D0, base
@@ -146,11 +146,11 @@ struct CScriptThingLocal {                              // a by-value CScriptThi
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-class CIsThingAlive:public CPredicateBase { public:
+class CIsThingConscious:public CPredicateBase { public:
  CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
+ __forceinline CIsThingConscious(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
- ~CIsThingAlive(){}
+ ~CIsThingConscious(){}
 };
 }
 class C2DCoordI;
@@ -1088,17 +1088,22 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
 extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
 CCharString __fastcall GFIntToCharString(long value);                        // 0x0099F830 (hidden result in ecx)
 CCharString __fastcall operator+(const char* left, const CCharString& right); // 0x0099F690 (hidden result in ecx)
-struct CLeader {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CLeader : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  void* ParentClass;                                 // +0x14 CPersonalScript_EmptyScript*
  void* PMasterData;                                 // +0x18 CEmptyData*
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CLeader::Main()
 {
- SetPredicate(NScript::CIsThingAlive(Me));
+ SetPredicate(NScript::CIsThingConscious(Me));
  Game->NewScriptFrame();
  if (IsActiveThreadTerminating()) return;
  long marker = 1;

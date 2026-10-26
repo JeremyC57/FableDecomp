@@ -65,13 +65,21 @@ class CWorld { public:
     unsigned char _pad00[0x68];
     CBulletTime* PBulletTime;                           // +0x68
 };
-struct CGameSubsystem;
+class CMainGameComponent;
 class CDoorDef { public:
     unsigned char _pad00[0x28];
     long TriggerType;                                   // +0x28 EDoorTriggerType
 };
-class CTCDoor { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCDoor : public CTCBase { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x10 - 0x08];
     bool CurrentOpen;                                   // +0x10
@@ -82,8 +90,6 @@ class CTCDoor { public:
     long UpdateID;                                      // +0x18
     long TriggerType;                                   // +0x1c
     const CDoorDef* PDef;                               // +0x20 CDefPointer<CDoorDef const>::Object
-    CGameSubsystem* GetGameSubsystem();                 // 0x00686D60 (CTCBase)
-    CWorld* GetWorld();                                 // 0x00686A70 (CTCBase)
     void UpdateAnimation();
 };
 
@@ -102,9 +108,9 @@ void CTCDoor::UpdateAnimation()
         Closing = false;
     }
     CAnimFrameTime time;
-    GetGameSubsystem();
+    (&PeekComponent());
     time.Seconds = 1.0f / g_framesPerSecond;
-    if (GetWorld()->PBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime())
-        time.Seconds /= GetWorld()->PBulletTime->GetTimeScale();
+    if (GetWorld().PBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime())
+        time.Seconds /= GetWorld().PBulletTime->GetTimeScale();
     anim.UpdateFrameLogic(time);
 }

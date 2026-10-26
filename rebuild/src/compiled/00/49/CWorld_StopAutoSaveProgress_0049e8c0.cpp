@@ -38,7 +38,7 @@ struct CCountedPointer_CAProgressDisplay {
 };
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);   // KERNEL32 (0x0143FE1C)
 double __fastcall GFGetTime();                     // 0x009E1BC0
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 void __fastcall StopProgress(bool stopNow, bool keepScreen);   // 0x009E9F20
 void __fastcall SetProgressDisplay(CCountedPointer_CAProgressDisplay* display);   // 0x009E9FD0
 extern bool g_bAutoSaveProgressShown;              // 0x013B89C1
@@ -52,7 +52,7 @@ void CWorld::StopAutoSaveProgress()
     if (g_bAutoSaveProgressShown) {
         while (GFGetTime() < g_AutoSaveProgressEndTime) {
             Sleep(100);
-            DisplayProgress("", -1.0f, false, false);
+            NProgressDisplay::DisplayProgress("", -1.0f, false, false);
         }
         StopProgress(true, false);
         SetProgressDisplay(&GOldAutoSaveProgressDisplay);

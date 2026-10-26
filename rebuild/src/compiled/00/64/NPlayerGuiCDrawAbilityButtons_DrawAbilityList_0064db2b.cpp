@@ -68,7 +68,8 @@ class CPlayer { public:
     CThing* GetControlledCreature();               // 0x00487DD0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 struct LongVector {
     long *Start, *Finish, *End;
@@ -107,7 +108,7 @@ class CDrawAbilityButtons { public:
 
 void CDrawAbilityButtons::DrawAbilityList(CEnginePrimitivePrepareInfo* info, float scale)
 {
-    CThing* hero = PlayerManager->GetMainPlayer()->GetControlledCreature();
+    CThing* hero = PlayerManager->GetMainPlayer().GetControlledCreature();
     if (!IS_THING_ALIVE(hero))
         return;
     LongVector offsets;

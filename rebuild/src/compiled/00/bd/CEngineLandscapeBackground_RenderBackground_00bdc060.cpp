@@ -2,7 +2,8 @@
 // CLandscapeBackgroundTreeNode::Render (0x00BF71D0). Kept as `call; ret` rather
 // than tail-called because the forwarder pushes an argument the callee cleans.
 class CLandscapeBackgroundTreeNode { public:
-    void Render(int flags);
+public:
+    void Render(unsigned long);   // 0x00BF71D0
 };
 
 struct CEngineLandscapeBackground {

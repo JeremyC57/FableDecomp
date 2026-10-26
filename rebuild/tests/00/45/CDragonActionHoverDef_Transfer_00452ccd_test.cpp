@@ -1,32 +1,31 @@
 #include <cstdio>
-
-struct CSubField { int x; };
-
-struct CSerializer {
-    CSubField* lastArg;
-    void Transfer(CSubField* p) { lastArg = p; }
+// Behaviour test for 0x00452CCD: the reconstructed body (pragmas stripped) driven through recording stubs;
+// checks the transfer order, the helper chosen per member (kind) and the member address.
+static const void* g_p[32]; static int g_k[32]; static int g_n = 0;
+static void Rec(int k, const void* p) { if (g_n < 32) { g_k[g_n] = k; g_p[g_n] = p; } ++g_n; }
+class CPersistContext { public:
+    template <class T> void Transfer(T& value);       // one-argument transfer helpers (namepass TR2)
 };
-
 class CDragonActionHoverDef { public:
-    char pad[0x28];
-    CSubField field28;
+    virtual void Transfer(CPersistContext& context);
+    unsigned char _base04[0x24];       // CSubDefClassBase body
+    float WindSpeed;        // +0x28
 };
+template <> void CPersistContext::Transfer<float>(float& value);
 
-void __fastcall CDragonActionHoverDef_Transfer(CDragonActionHoverDef* self, void* /*edx*/, CSerializer* s)
+void CDragonActionHoverDef::Transfer(CPersistContext& context)
 {
-    s->Transfer(&self->field28);
+    context.Transfer(WindSpeed);
 }
-
+template <> void CPersistContext::Transfer<float>(float& v) { Rec(2, &v); }
+static CDragonActionHoverDef d;
 int main()
 {
-    CDragonActionHoverDef def;
-    CSerializer s;
-    s.lastArg = 0;
-    CDragonActionHoverDef_Transfer(&def, 0, &s);
-    if (s.lastArg == &def.field28) {
-        std::printf("CDragonActionHoverDef_00452ccd_TEST PASS\n");
-        return 0;
-    }
-    std::printf("CDragonActionHoverDef_00452ccd_TEST FAIL\n");
+    CPersistContext c;
+    d.Transfer(c);
+    bool ok = g_n == 1;
+    ok = ok && g_k[0] == 2 && g_p[0] == (const void*)&d.WindSpeed;
+    if (ok) { std::printf("CDragonActionHoverDef_00452ccd_TEST PASS\n"); return 0; }
+    std::printf("FAIL %d\n", g_n);
     return 1;
 }

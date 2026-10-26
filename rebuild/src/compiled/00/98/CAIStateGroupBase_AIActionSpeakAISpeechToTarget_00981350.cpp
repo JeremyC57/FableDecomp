@@ -59,16 +59,16 @@ class CAIStateGroupBase
 { public:
     virtual void v00();
     unsigned char _pad04[0x10];
-    long AIAction_SpeakToTarget(long mode, CIntelligentPointer<const CThing> speaker,
-                                CIntelligentPointer<const CThingCreatureBase> target, long speech,
+    long AIAction_SpeakToTarget(long mode, CIntelligentPointer<CThingCreatureBase> speaker,
+                                CIntelligentPointer<const CThing> target, long speech,
                                 long a5, long a6, long a7);                 // 0x00980BD0
-    long AIAction_SpeakAISpeechToTarget(long mode, CIntelligentPointer<const CThing> speaker,
-                                        CIntelligentPointer<const CThingCreatureBase> target,
+    long AIAction_SpeakAISpeechToTarget(long mode, CIntelligentPointer<CThingCreatureBase> speaker,
+                                        CIntelligentPointer<const CThing> target,
                                         const CCharString& speechName, long a5, long a6, long a7);
 };
 
-long CAIStateGroupBase::AIAction_SpeakAISpeechToTarget(long mode, CIntelligentPointer<const CThing> speaker,
-                                                       CIntelligentPointer<const CThingCreatureBase> target,
+long CAIStateGroupBase::AIAction_SpeakAISpeechToTarget(long mode, CIntelligentPointer<CThingCreatureBase> speaker,
+                                                       CIntelligentPointer<const CThing> target,
                                                        const CCharString& speechName, long a5, long a6, long a7)
 {
     CSpeechMap* map = g_pEngine->SpeechMap;

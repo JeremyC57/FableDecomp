@@ -46,7 +46,6 @@ struct CDisplaySubsystem {
 extern CDisplaySubsystem* __stdcall FableDisplayGetSubsystem_004354c0(CDisplayRenderTarget* rt);
 
 // masked cdecl deallocator for the control block.
-extern "C" void __cdecl FableDisplayFree_004354c0(void* block);
 
 // counted-pointer reference-control block at this->m_ownerRef.
 struct CDisplayOwnerControl {
@@ -78,7 +77,7 @@ CDisplayEngine::~CDisplayEngine()
     if (m_ownerRef) {
         if (--m_ownerRef->owners == 0) {
             m_ownerRef->destroy(m_ownerRef->object);
-            FableDisplayFree_004354c0(m_ownerRef);
+            operator delete(m_ownerRef);
         }
     }
 

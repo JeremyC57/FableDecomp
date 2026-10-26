@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056FDC3, length 185 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: std::bitset::test @ 0x00410DE0 and CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (the inlined
 // CThing::GetInterface for interface 0x68 = CTCHeroExperience; the result is NOT checked, so the absent arm reads the never-written
-// out pointer), CTCBase::GetDefinitions() @ 0x006869D0 (+0xDC its CDefPointer<CHeroStatsDef>), CTCHeroExperience::
+// out pointer), CTCBase::GetDefinitionManager() @ 0x006869D0 (+0xDC its CDefPointer<CHeroStatsDef>), CTCHeroExperience::
 // GetTrainableStatMaxLevel(EHeroTrainableStatType) @ 0x006D6770, CTCInventoryBase::GetInventoryText(long) @ 0x005BD273 (inherited,
 // CWideString by hidden pointer), CWideString::CWideString(const CWideString&) @ 0x0099B720 on the empty wide string 0x013BCA24.
 // Twin of the landed GetExperienceAbilityDescription 0x0056FE7C (same TU, the abilities component and its def instead).
@@ -34,12 +34,13 @@ class CHeroStatsDef { public:
     CAbilityTrackDef* StatLevels_last;
     CAbilityTrackDef* StatLevels_end;
 };
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                       // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
 class CTCHeroExperience { public:                              // interface type 0x68
-    long GetTrainableStatMaxLevel(EHeroTrainableStatType stat);   // 0x006D6770
+public:
+    long GetTrainableStatMaxLevel(EHeroTrainableStatType) const;   // 0x006D6770
 };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType,CTCBase*>
     struct Entry { long type; void* component; };
@@ -58,9 +59,14 @@ class CThing { public:
         return false;
     }
 };
-struct CTCInventoryBase {
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+struct CTCInventoryBase : public CTCBase {
     void* __vftable; CThing* ParentThing;
-    CDefinitionHolder* GetDefinitions() const;          // 0x006869D0 (CTCBase)
     CWideString GetInventoryText(long text_id);         // 0x005BD273
 };
 class CTCInventoryExperience : public CTCInventoryBase { public:
@@ -70,7 +76,7 @@ CWideString CTCInventoryExperience::GetExperienceStatDescription(long stat, long
 {
     CTCHeroExperience* experience;
     ParentThing->GetInterface(&experience, 0x68);
-    const CHeroStatsDef* statsDef = GetDefinitions()->PHeroStatsDef;
+    const CHeroStatsDef* statsDef = GetDefinitionManager().PHeroStatsDef;
     long textId;
     if (level == experience->GetTrainableStatMaxLevel((EHeroTrainableStatType)stat) + 1)
         textId = statsDef->StatLevels_first[stat].MaxedOutDescription;

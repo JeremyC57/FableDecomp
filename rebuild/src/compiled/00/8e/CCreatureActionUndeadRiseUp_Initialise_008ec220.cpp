@@ -13,17 +13,28 @@ class CThingCreatureBase { public:                 // only virtual slot 28 and t
     virtual void SetUnderground(long flag); // slot 28
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThingCreatureBase* m_pItem;            // +4
-    CThingCreatureBase* GetPItem() const;   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];
-    CBaseIntelligentPointer PCreature;      // +8
+    CIntelligentPointer<CThingCreatureBase> PCreature;      // +8
     unsigned char _pad10[0x114 - 0x10];
 };
 

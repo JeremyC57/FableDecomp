@@ -21,7 +21,7 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
 class CBaseClass { public:
     virtual void v00();
-    ~CBaseClass();                                    // 0x0099A2E0
+    virtual ~CBaseClass();                                    // 0x0099A2E0
 };
 struct CStringParserCommentList {
     void* m_pHead;

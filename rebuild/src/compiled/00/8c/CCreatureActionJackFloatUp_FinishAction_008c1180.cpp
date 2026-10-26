@@ -1,7 +1,7 @@
 // CCreatureAction_JackFloatUp::FinishAction() -- make sure Jack's mode manager holds mode 0x31 (floating), then the base FinishAction
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C1180, length 101 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CVectorMap::LowerBound @ 0x0040F020 (the inlined
-// GetInterface lookup for type 0x31 = bit 17 of the presence word at +0x24), CTCCreatureModeManager::HasMode @ 0x0073A8A0,
+// GetInterface lookup for type 0x31 = bit 17 of the presence word at +0x24), CTCCreatureModeManager::IsModeActive @ 0x0073A8A0,
 // CTCCreatureModeManager::AddMode @ 0x0073AE10, CCombatActionBase::FinishAction @ 0x00859A20 (direct base call, last).
 // Shape: the GetInterface result is NOT tested -- the absent path reads the uninitialised out pointer from the lookup-key
 // frame word (`mov esi,[esp+8]`), the landed out-parameter GetInterface template (0x007504E0) reproduces that; the mode
@@ -32,21 +32,33 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCCreatureModeManager { public:             // interface type 0x31
-    bool HasMode(unsigned long mode);       // 0x0073A8A0
     bool AddMode(unsigned long mode);       // 0x0073AE10
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4: 0x00859A20
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
@@ -58,7 +70,7 @@ void CCreatureAction_JackFloatUp::FinishAction()
 {
     CTCCreatureModeManager* modes;
     PCreature.GetPItem()->GetInterface(&modes, 0x31);
-    if (!modes->HasMode(0x31))
+    if (!modes->IsModeActive(0x31))
         modes->AddMode(0x31);
     CCombatActionBase::FinishAction();
 }

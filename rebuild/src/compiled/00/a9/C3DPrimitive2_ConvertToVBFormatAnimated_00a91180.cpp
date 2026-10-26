@@ -42,7 +42,7 @@ struct CVertexElementArray {
 };
 class CBaseClass { public:
     virtual void v00();
-    ~CBaseClass();                                 // 0x0099A2E0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
 };
 class CVertexShaderInput : public CBaseClass { public:           // vtable 0x0129EA08
     CStreamInfoArray    DataStreams;               // +0x04

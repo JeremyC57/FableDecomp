@@ -19,7 +19,10 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 class CFaction;
 struct SCountBlock;
@@ -53,7 +56,7 @@ struct CFactionDatabase {
 
 CCountedPointer_CFaction* CFactionDatabase::FindFactionBySymbolName(const CCharString& name)
 {
-    CFactionMap::SEntry* it = m_factions.Find(Calc_004014a0(0, name.GetChars(), name.GetLength()));
+    CFactionMap::SEntry* it = m_factions.Find(CCRC::Calc(0, name.GetChars(), name.GetLength()));
     if (it == m_factions.end())
         return 0;
     return &it->second;

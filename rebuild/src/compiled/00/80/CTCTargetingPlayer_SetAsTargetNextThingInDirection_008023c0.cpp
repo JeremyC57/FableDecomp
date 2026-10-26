@@ -12,7 +12,10 @@
 
 typedef long ETargetNextThingMethod;
 
-extern long GFGetCurrentFrame();    // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};    // 0x0049D870
 
 struct CTCTargetingPlayer_Methods : CTCTargetingPlayer {
     void SetAsTargetNextThingInDirection(ETargetNextThingMethod method);
@@ -22,5 +25,5 @@ void CTCTargetingPlayer_Methods::SetAsTargetNextThingInDirection(ETargetNextThin
 {
     this->TargetNextThing = true;
     *(ETargetNextThingMethod*)&this->TargetNextThingMethod[0] = method;
-    this->FrameSetAsTargetNextThing = GFGetCurrentFrame();
+    this->FrameSetAsTargetNextThing = CWorld::GetFrame();
 }

@@ -18,13 +18,13 @@ struct CInterfaceMap_Retail {                 // CVectorMap<ETCInterfaceType, CT
     SEntry* LowerBound(const long* type);   // 0x0040F020 (a second copy of the same body sits at 0x004365B0)
 };
 struct CThingPhysics_Retail;
-struct CThing_Retail {
+class CThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
     virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031();
     virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037();
-    virtual CThing_Retail* GetStandingOnThing();    // slot 38 (+0x98)
+    virtual CThing* GetStandingOnThing();    // slot 38 (+0x98)
     unsigned char         _pad04[0xc];              // +0x04 .. +0x10
     unsigned char         m_type;                   // +0x10 (1 = the player creature, 2 = an AI creature, 3 = a building)
     unsigned char         _pad11[0xf];
@@ -42,9 +42,8 @@ struct CThing_Retail {
     unsigned char         m_93_0 : 1;               // +0x93
     unsigned char         m_killedByScript : 1;     //       bit 1
     unsigned char         m_93_2 : 6;
-    void Kill(bool flag);                           // 0x004C9B80 (CThing::Kill)
     CScriptThing GetScriptThing();                  // 0x004C7E50 (CThing::GetScriptThing, by value through the hidden result pointer)
-    void AssignHomeBuilding(CThing_Retail* building);   // 0x00512210 (landed as AssignTarget_00512210; the label "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated)
+    void AssignHomeBuilding(CThing* building);   // 0x00512210 (landed as AssignTarget_00512210; the label "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated)
     void SetNewBrain(CDefPointer_Retail brain);     // 0x00833010 (CThingAICreature::SetNewBrain, the counted def pointer by value)
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -60,11 +59,13 @@ struct CThing_Retail {
         return false;
     }
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }   // the masked word (a bool would narrow the test)
+public:
+    void Kill(bool);   // 0x004C9B80
 };
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
+    virtual CThing* GetThing() const;        // slot 11 (+0x2c)
         virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
         virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027();
         virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
@@ -74,7 +75,7 @@ class CScriptThing { public:
         virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067();
         virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
-    CThing_Retail* PImp_Data;                      // +0x04 (engine/CScriptThing.h: CCountedPointer<CScriptThing>::Data)
+    CThing* PImp_Data;                      // +0x04 (engine/CScriptThing.h: CCountedPointer<CScriptThing>::Data)
     void*          PImp_Info;                      // +0x08
     CScriptThing();                                // 0x008CFF40 (the default constructor)
 };
@@ -94,7 +95,7 @@ class CGameScriptInterface { public:
 void CGameScriptInterface::RemoveThing(const CScriptThing& thing, bool flag, bool byScript) const
 {
     if (thing.IsValid()) {
-        CThing_Retail* t = thing.GetThing();
+        CThing* t = thing.GetThing();
         if (t && !t->m_dead) {
             if (byScript)
                 t->m_killedByScript = true;

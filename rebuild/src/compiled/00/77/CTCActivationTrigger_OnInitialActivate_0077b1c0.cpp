@@ -51,7 +51,8 @@ public:
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CThingManager* GetThingManager();           // 0x00686AE0
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
 };
 class CTCActivationTrigger : public CTCBase {
 public:
@@ -64,7 +65,7 @@ public:
 void CTCActivationTrigger::OnInitialActivate()
 {
     if (ReceptorUID > 0) {
-        CThing* receptor = GetThingManager()->GetThingByUID(ReceptorUID);
+        CThing* receptor = GetThingManager().GetThingByUID(ReceptorUID);
         receptor->GetInterface(&PTCReceptor, 0x65);
         PTCReceptor->RegisterTrigger(this);
     }

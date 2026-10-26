@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCTavernJug_Destruct(void* jug);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCTavernJug_ScalarDeletingDestructor(void* jug, int, unsigned int flags)
 {
-    CTCTavernJug_Destruct(jug);
+    ((CTCBase*)(jug))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(jug);
+        operator delete(jug);
     return jug;
 }

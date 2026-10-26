@@ -1,6 +1,6 @@
 // CCreatureAction_PlayCombatAnimation::CCreatureAction_PlayCombatAnimation(CThingCreatureBase*, const CCharString&, bool) -- base CCombatActionBase(owner, 50, zeroed CSoundPair), own vtable (0x0127A604), the three flags at +0x114..+0x116 (the middle one from the argument), then the animation name is set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B7FF0, length 96 bytes.
-// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCombatActionBase::SetAnimationName @ 0x008574D0.
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCombatActionBase::SetCombatAnimation @ 0x008574D0.
 // Shape: `ret 0Ch`; the zero register (ebx) that built the sound pair also clears the two outer flags, the argument byte lands between them.
 class CThingCreatureBase; class CThing; class CCharString;
 class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
@@ -14,7 +14,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     CCombatActionBase(long actionCode);                                                                         // 0x00857E40
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:   // vtable 0x0127A604
@@ -31,5 +32,5 @@ CCreatureAction_PlayCombatAnimation::CCreatureAction_PlayCombatAnimation(CThingC
     , m_flag(flag)
     , m_started(0)
 {
-    SetAnimationName(name);
+    SetCombatAnimation(name);
 }

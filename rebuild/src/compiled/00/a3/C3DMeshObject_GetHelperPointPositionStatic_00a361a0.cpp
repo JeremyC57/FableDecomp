@@ -22,8 +22,13 @@ class C3DVector { public:
     C3DVector(const C3DVector& p):X(p.X),Y(p.Y),Z(p.Z) {}
 };
 class C3DHelperPoint { public: C3DVector Position; long BoneIndex; };
-class C3DMeshStats { public: C3DHelperPoint* GetHelperPoint(unsigned long,unsigned long); };
-unsigned long __fastcall ComputeCRC(unsigned long seed,const char* text,unsigned long length); // 0x004014A0
+class C3DMeshStats { public: public:
+    const C3DHelperPoint* GetHelperPoint(unsigned long, unsigned long) const;   // 0x00A2E8C0
+};
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+}; // 0x004014A0
 struct CMeshPointer { C3DMeshStats* Data; void* Info; C3DMeshStats* operator->() const { return Data; } };
 class C3DMeshObject { public:
     void* __vftable;
@@ -35,7 +40,7 @@ class C3DMeshObject { public:
 C3DVector C3DMeshObject::GetHelperPointPositionStatic(const CCharString& name,unsigned long index)
 {
     const CCharStringNativeView& text=*reinterpret_cast<const CCharStringNativeView*>(&name);
-    const C3DVector& position = Mesh->GetHelperPoint(ComputeCRC(0,text.c_str(),text.length()),index)->Position;
+    const C3DVector& position = Mesh->GetHelperPoint(CCRC::Calc(0,text.c_str(),text.length()),index)->Position;
     C3DVector point(position);
     // Transform the copied point in place, preserving the input coordinates needed later.
     const float x = point.X;

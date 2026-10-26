@@ -17,7 +17,8 @@ class CThingManager { public:
 class CThing { public:
     unsigned char _pad_0x00[0x8e];
     short m_level;                                    // +0x8E
-    bool IsLevelLess();                               // 0x004C7930
+public:
+    bool IsLevelLess() const;   // 0x004C7930
 };
 
 struct CUIDVector {                                   // retail 12-byte vector<unsigned __int64>

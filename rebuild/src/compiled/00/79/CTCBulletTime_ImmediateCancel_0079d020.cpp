@@ -12,7 +12,19 @@
 // Shape: the sound stop is the in-class inline member whose other call (in Pause, 0x0079CF30) is emitted out of line at
 // 0x0079CEE0: its by-value handle is loaded before the presence test; the slowdown removal goes through an inline CWorld
 // forwarder, the world for the filter removal is a named local fetched before the arguments; the effect kill is the Pause shape (one-bit `unsigned short` dead flag, temporary from 0).
+#define CTCBulletTime CTCBulletTimeLayout
 #include "engine/CTCBulletTime.h"
+#undef CTCBulletTime
+class CWorld;
+
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCBulletTime : public CTCBase, public CTCBulletTimeLayout
+{
+};
 struct CTCBaseInterface;
 struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBaseInterface* component; };
@@ -53,12 +65,16 @@ class CParticleEmitter { public:
     void Kill();                                // 0x00AEE8C0
 };
 }
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
-    void* m_pItem;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();         // 0x00A01C10
-    NParticleEngine::CParticleEmitter* GetPItem() const;   // 0x00A01B50
-    void SetPItem(NParticleEngine::CParticleEmitter* item); // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125A26C for <CParticleEmitter>
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
@@ -68,6 +84,9 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
         SetPItem(item);
         return *this;
     }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CEnvironmentSpellEffects {
     void RemoveFilter_006b83f0(long mode, void* key);   // 0x006B83F0 (descriptive)
@@ -96,7 +115,6 @@ struct CTCBulletTimeImpl : CTCBulletTime {
     {
         return *(CIntelligentPointer<NParticleEngine::CParticleEmitter>*)m_tpLoopingEffect;
     }
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
     __forceinline void StopSound(unsigned long sound)   // out of line at 0x0079CEE0
     {
         CTCSoundEmitter* emitter;
@@ -108,9 +126,9 @@ struct CTCBulletTimeImpl : CTCBulletTime {
 
 void CTCBulletTimeImpl::ImmediateCancel()
 {
-    GetWorld()->RemoveBulletTimeSlowdown((unsigned long)this);
+    GetWorld().RemoveBulletTimeSlowdown((unsigned long)this);
     StopSound(LoopSound);
-    CWorld* world = GetWorld();
+    CWorld* world = (&GetWorld());
     world->PEnvironment->SpellEffects->RemoveFilter_006b83f0(0, ScreenFilterKey);
     CIntelligentPointer<NParticleEngine::CParticleEmitter>& effect = LoopingEffect();
     if (effect.GetPItem() && !effect.GetPItem()->IsDead()) {

@@ -104,19 +104,24 @@ class CThing { public:
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing() { }
-    __forceinline CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer() { }
+    __forceinline CIntelligentPointer(T* item) { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CModeStandBase {                         // retail sizeof 0x68
@@ -130,7 +135,7 @@ namespace NCreatureMode {
 
 class CModeJackOfBladesScream : public CModeStandBase { public:
     unsigned char            _pad68[0x9c - 0x68];
-    CIntelligentPointerThing PEmitter;          // +0x9C
+    CIntelligentPointer<CThing> PEmitter;          // +0x9C
     virtual void OnActivate();
 };
 
@@ -149,7 +154,7 @@ void CModeJackOfBladesScream::OnActivate()
         if (effects->GetEffectFromString("FLOAT_SCREAM", effectType)) {
             CThing* effect = CreateEffectThing(effectType, &ParentThing->GetPosition(), false);
             if (effect && !effect->Dead) {
-                PEmitter = CIntelligentPointerThing(effect);
+                PEmitter = CIntelligentPointer<CThing>(effect);
                 if (effect->HasTC(0x4b)) {
                     CTCDParticleEmitter* emitter = (CTCDParticleEmitter*)effect->PTCDriver;
                     emitter->AttachToThing(ParentThing, 0xc, "TARGET_CURSOR_POINT", 0, 0.0f);

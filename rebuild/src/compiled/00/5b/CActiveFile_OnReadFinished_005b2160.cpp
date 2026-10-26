@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 // Leaf: OnReadFinished
-extern "C" void __cdecl retail_free(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 struct CActiveFile {
   void* buf;
   void OtherStep();
@@ -8,5 +8,5 @@ struct CActiveFile {
 void __fastcall OnReadFinished(CActiveFile* self) {
   self->OtherStep();
   if (self->buf)
-    retail_free(self->buf);
+    free(self->buf);
 }

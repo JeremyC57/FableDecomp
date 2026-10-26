@@ -17,6 +17,7 @@
 //   loop's return, out of line elsewhere, so all three handles and the cast map are destructor-less views destroyed by hand at every
 //   exit; the movie handle's ctor must be __forceinline (VC7.1 otherwise calls it out of line); the handle's operator= is an
 //   explicit __forceinline base-then-member copy (the implicit one is emitted out of line).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -49,7 +50,7 @@ class CScriptThing { public:
     virtual void t000();
     CCountedPointerWords PImp;
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 class CBaseObject { public:
@@ -132,8 +133,14 @@ class CGameScriptInterface { public:
     VPAD4(sa) VPAD2(sb) VPAD1(sc)                                                    // slots 372..378
     virtual void PauseAllNonScriptedEntities(bool pause);                            // slot 379 (+0x5EC)
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void f00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0
     CScriptThing m_thing;
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -142,8 +149,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;
     CScriptThing          Me;
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CQ_BowerstoneTownLifeIntroScript {
     unsigned char _pad[0x49];

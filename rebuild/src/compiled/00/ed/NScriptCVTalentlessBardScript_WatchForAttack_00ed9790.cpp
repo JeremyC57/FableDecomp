@@ -118,7 +118,7 @@ class CScriptThing : public CBaseClass { public:                          // vta
     }
 };
 namespace NScript {
-struct __declspec(novtable) CPredicateBase {               // vtable 0x012C2FF4 (never stored: novtable)
+class __declspec(novtable) CPredicateBase { public:               // vtable 0x012C2FF4 (never stored: novtable)
     virtual bool IsTrue() = 0;
 };
 }
@@ -168,8 +168,9 @@ class CGameScriptInterface { public:                   // retail vtable 0x01260F
 class CScriptBase { public:                                        // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
-    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00CB7920
     bool IsActiveThreadTerminating();                       // 0x00CB7940
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00CB7920
 };
 struct CQuestScriptBase : CScriptBase {
     CGameScriptInterface* Game;                             // +0x40

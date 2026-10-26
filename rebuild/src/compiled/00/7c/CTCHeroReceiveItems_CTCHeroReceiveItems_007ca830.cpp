@@ -6,7 +6,7 @@
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, malloc @ 0x00BFEA0E (the list's 0x14-byte sentinel node),
 // CBaseIntelligentPointer ctor @ 0x00A01B10 (vtables 0x0125A858 CIntelligentPointer<CThingObject>, 0x01238C6C
 // CIntelligentPointer<CThing>), CBaseClass ctor @ 0x0099A2D0 (CEnginePrimitiveHandle vtable 0x0122F598),
-// CTCBase::AddToGlobalUpdateTCs @ 0x00686ED0.
+// CTCBase::AddToGlobalTCs @ 0x00686ED0.
 // Layout (retail; the PDB's 12-byte list is the 4-byte STLport node pointer and the vector 12 bytes): Items +0x0c,
 // PickedUpItems +0x10, PCurrentItem +0x1c, PersistCurrentItem..SendMessage +0x24..+0x28, PContainer +0x29 (odd offset in the
 // PDB too: the intelligent-pointer class is 1-aligned), AmountThroughForAreaResize +0x34, FullSizeTimer +0x38, three C2DBoxF
@@ -24,7 +24,8 @@ class CTCBase { public:
     bool ToBeRemoved;                                   // +0x08
     bool IsInGlobalUpdateTCs;                           // +0x09
     CTCBase(CThing* thing);                             // 0x00686800
-    void AddToGlobalUpdateTCs();                        // 0x00686ED0
+public:
+    void AddToGlobalTCs();   // 0x00686ED0
 };
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -114,5 +115,5 @@ CTCHeroReceiveItems::CTCHeroReceiveItems(CThing* thing)
     : CTCBase(thing), PersistCurrentItem(false), ReceivingItems(false), DisplayingItems(false), ForceClear(false),
       SendMessage(false), AmountThroughForAreaResize(0), FullSizeTimer(1)
 {
-    AddToGlobalUpdateTCs();
+    AddToGlobalTCs();
 }

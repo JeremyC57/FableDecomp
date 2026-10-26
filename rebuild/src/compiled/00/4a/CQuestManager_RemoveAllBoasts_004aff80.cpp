@@ -5,7 +5,10 @@ struct BoastList {
     void Clear();   // 0x4b8c00
 };
 
-int MakeDefault();  // 0x49d870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};  // 0x49d870
 
 class CQuestManager { public:
     char pad[0x64];
@@ -19,5 +22,5 @@ void CQuestManager::RemoveAllBoasts()
 {
     this->a.Clear();
     this->b.Clear();
-    this->field64 = MakeDefault();
+    this->field64 = CWorld::GetFrame();
 }

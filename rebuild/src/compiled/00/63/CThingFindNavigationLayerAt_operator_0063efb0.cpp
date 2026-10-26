@@ -11,9 +11,9 @@ class C3DVector { public:
 };
 
 class CPhysicsMeshObject { public:
-    unsigned char _body[0x40];
+    unsigned char _body[0x40 - 4];
     CPhysicsMeshObject(const CPhysicsMeshObject& other);
-    ~CPhysicsMeshObject();                          // 0x00A127D0
+    virtual ~CPhysicsMeshObject();                          // 0x00A127D0
     long GetNavigationLevelAt(const C3DVector& pos);   // 0x00A11D10
 };
 
@@ -28,7 +28,8 @@ class CTCPhysicsBase { public:
     virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39();
     virtual void v40(); virtual void v41();
     virtual bool HasPhysicsMeshObject();            // slot 42 (+0xa8)
-    CPhysicsMeshObject GetPhysicsMeshObject();      // 0x006B0850
+public:
+    CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
 
 class CThing { public:

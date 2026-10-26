@@ -93,8 +93,15 @@ template <class T> struct vector {                      // STLport vector, 12 by
     T& operator[](unsigned long n) const { return *(_M_start + n); }
 };
 class CThing;
-class CTCObjectAugmentations { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCObjectAugmentations : public CTCBase { public:
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08
     bool          IsInGlobalUpdateTCs;                  // +0x09
@@ -102,7 +109,6 @@ class CTCObjectAugmentations { public:
     CDefPointer<const CDefBase> PDef;                   // +0x0c
     bool          LoadedFromSaveGame;                   // +0x10
     vector< CDefPointer<const CThingBaseDef> > Augmentations;   // +0x14
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
     void AttachAugmentationToSlot(long defIndex, long slot);
 private:
     void AttachAugmentationParticles();                 // 0x007677E0 (private in Ego_r/FableWin: AAEXXZ)

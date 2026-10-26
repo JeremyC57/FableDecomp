@@ -9,6 +9,7 @@
 //   `#pragma inline_depth` at the point it appears inside a body, so inline_depth(0) is toggled around exactly the four
 //   out-of-line dtor sites (the call sites then tail-merge as retail does). Without it every site is expanded and the
 //   round tail cross-jumps with the 5.5 wait loop.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -131,20 +132,31 @@ class CGameScriptInterface { public:                           // retail vtable 
     virtual void v508() const; virtual void v509() const;
     virtual void EntitySetAlpha(const CScriptThing& thing, float alpha, bool fade) const;   // slot 510 (+0x7f8)
 };
-struct CIsThingAlive {                                  // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                   // 0x00E241B0
 };
 
-class CCrateDeathMarker {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CCrateDeathMarker : public CEntityScriptBase {
 public:
     void*                 __vftable;                    // +0x00
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
-    bool IsDone();                                      // 0x00F35B30
     void Main();
 };
 
@@ -152,41 +164,41 @@ void CCrateDeathMarker::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
-    while (!IsDone()) {
+    while (!IsActiveThreadTerminating()) {
         while (!(Game->GetHero().IsAlive() && IsDistanceBetweenThingsUnder(Me, Game->GetHero(), 5.5f))) {
             Game->NewScriptFrame();
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
         }
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         {
             CScriptThing villager = Game->CreateCreature("CREATURE_BS_VILLAGER_MALE", Me.GetPos(), "", false);
             Game->EntitySetAlpha(villager, 0.0f, true);
             for (float alpha = 0.0f; alpha <= 1.0f; alpha += 0.05f) {
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                     return;
                 Game->EntitySetAlpha(villager, alpha, true);
                 Game->NewScriptFrame();
 #pragma inline_depth(0)
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                     return;
 #pragma inline_depth()
             }
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
 #pragma inline_depth(0)
             while (Game->GetHero().IsAlive() && !IsDistanceBetweenThingsOver(Me, Game->GetHero(), 8.0f)) {
                 Game->NewScriptFrame();
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                     return;
             }
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
         }
         Game->NewScriptFrame();

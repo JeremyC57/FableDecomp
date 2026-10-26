@@ -2,21 +2,23 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FDBE0, length 64 bytes.
 // Callees: CGraphicFrameData::Sizeof @ 0x009FCBF0, CManagedTexture::Sizeof @ 0x00A69E60 (on the member at +0x28). Shape: the `+4` folded onto the call's result
 // or the constant 4, then `lea edi,[eax+44h]`, the texture's data word tested inline.
-struct CGraphicFrameData_009fdbe0 {
-    long Sizeof();                                 // 0x009FCBF0
+class CGraphicFrameData { public:
+public:
+    unsigned long Sizeof() const;   // 0x009FCBF0
 };
-struct CManagedTexture_009fdbe0 {
+class CManagedTexture { public:
     long  m_0;
     void* m_pData;                                 // +0x04
     bool HasData() const { return m_pData != 0; }
-    long Sizeof();                                 // 0x00A69E60
+public:
+    unsigned long Sizeof() const;   // 0x00A69E60
 };
 
 struct CFrameData {
     unsigned char               _pad[0x1c];
-    CGraphicFrameData_009fdbe0* m_pGraphic;        // +0x1c
+    CGraphicFrameData* m_pGraphic;        // +0x1c
     unsigned char               _pad20[8];
-    CManagedTexture_009fdbe0    m_texture;         // +0x28
+    CManagedTexture    m_texture;         // +0x28
     long Sizeof();
 };
 

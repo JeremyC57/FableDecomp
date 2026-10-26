@@ -25,7 +25,7 @@ class CPhysicsMeshObject { public:
     float         PositionMatrix[12];              // +0x08 CMatrix3x4
     float         Scale;                           // +0x38
     float         OO_Scale;                        // +0x3c
-    ~CPhysicsMeshObject();                         // 0x00A127D0
+    virtual ~CPhysicsMeshObject();                         // 0x00A127D0
     bool HasContainmentVolume(const CCharString& name);   // 0x00A128A0
 };
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
@@ -37,7 +37,8 @@ class CTCPhysicsBase { public:
     FILL10(1) FILL10(2) FILL10(3) FILL10(4) FILL10(5) FILL10(6) FILL10(7) FILL10(8)
     virtual void v90(); virtual void v91(); virtual void v92();
     virtual void* GetPhysicsMesh() const;          // slot 93 (+0x174)
-    CPhysicsMeshObject GetPhysicsMeshObject();     // 0x006B0850
+public:
+    CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
 class CThing {
 public:
@@ -52,7 +53,8 @@ class CTCShop { public:
     bool StallLike;                                // +0x50
 };
 class CTCShopKeeper { public:
-    CTCShop* GetShopTC();                          // 0x00798F50
+public:
+    CTCShop* GetShopTC() const;   // 0x00798F50
 };
 
 class CThingFilter_IsPotentialCustomer { public:

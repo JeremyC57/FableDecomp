@@ -1,23 +1,20 @@
 // CSoundThemeDef::Transfer(CPersistContext& context) -- persist the sound theme: atmos index, music set, edit colour, gain/range/granularity, the "AtmosGroupMap" multimap (default 0) and the four inside/outside play flags
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0046329E, length 150 bytes (virtual, `?Transfer@CSoundThemeDef@@UAEXAAVCPersistContext@@@Z`).
-// Callees (per-type CPersistContext transfers of the definition module; the catalog's "CEngineLightingManager::UpdateShadowScene"
-// labels are propagated): long 0x00431102, CRGBColour 0x004595A3, float 0x00431061, bool 0x0043314A, and the map transfer 0x00463334
+// Callees (CPersistContext::Transfer<T> one-argument helpers, namepass TR2/DEF1; the catalog's "CEngineLightingManager::UpdateShadowScene"
+// labels were propagated): long 0x00431102, CRGBColour 0x004595A3, float 0x00431061, bool 0x0043314A, and the map transfer 0x00463334
 // (catalog TransferMap<EGameAction,CCharString>: same body shape) with "AtmosGroupMap" @ 0x012353A8.
 // Layout: Ego_r.pdb CSoundThemeDef (0x6c) less 4 in retail: EditColour +0x3c, AtmosIndex +0x40, MusicSet +0x44, Gain +0x48,
 // Range +0x4c, Granularity +0x50, AtmosGroupMap +0x54 (12-byte STLport tree), flags +0x60..+0x63.
 // TU: `optimize("y", off)` + `("s", on)`; the zero default `long` lives in the dead `context` slot (`and [ebp+8],0`).
 // Shape: the flags are transferred inside, outside, quietly-inside, quietly-outside (+0x60, +0x62, +0x61, +0x63).
-// Leaf: Transfer
+// Leaf: ?Transfer@CSoundThemeDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CRGBColour { public: unsigned char B, G, R, A; };
 struct CAtmosGroupMap { void* _M_header[3]; };       // STLport multimap<CCharString, long>, 12 bytes
 
 class CPersistContext { public:
-    void TransferBinary(long* value);                // 0x00431102
-    void TransferBinary(CRGBColour* value);          // 0x004595A3
-    void TransferBinary(float* value);               // 0x00431061
-    void TransferBinary(bool* value);                // 0x0043314A
+    template <class T> void Transfer(T& value);      // one-argument helpers (namepass TR2): long 0x00431102, CRGBColour 0x004595A3, float 0x00431061, bool 0x0043314A
     void TransferMap(const char* name, CAtmosGroupMap& map, const long& defaultValue);   // 0x00463334
 };
 
@@ -39,15 +36,15 @@ class CSoundThemeDef { public:
 
 void CSoundThemeDef::Transfer(CPersistContext& context)
 {
-    context.TransferBinary(&AtmosIndex);
-    context.TransferBinary(&MusicSet);
-    context.TransferBinary(&EditColour);
-    context.TransferBinary(&Gain);
-    context.TransferBinary(&Range);
-    context.TransferBinary(&Granularity);
+    context.Transfer(AtmosIndex);
+    context.Transfer(MusicSet);
+    context.Transfer(EditColour);
+    context.Transfer(Gain);
+    context.Transfer(Range);
+    context.Transfer(Granularity);
     context.TransferMap("AtmosGroupMap", AtmosGroupMap, 0);
-    context.TransferBinary(&PlayOnlyWhenInside);
-    context.TransferBinary(&PlayOnlyWhenOutside);
-    context.TransferBinary(&PlayQuietlyWhenInside);
-    context.TransferBinary(&PlayQuietlyWhenOutside);
+    context.Transfer(PlayOnlyWhenInside);
+    context.Transfer(PlayOnlyWhenOutside);
+    context.Transfer(PlayQuietlyWhenInside);
+    context.Transfer(PlayQuietlyWhenOutside);
 }

@@ -1,8 +1,12 @@
 // CAnimateThing::PreloadAnims(const CCompleteAnimation&) -- touch every animation the complete animation (and the delayed combination anims) will need
 // Layout: no engine/CAnimSet.h / CCompleteAnimation.h; retail STLport vector is 12 bytes and list 4 bytes, so CAnimSet is 0x54,
 // CCompleteAnimation keeps TransitionAnimSets at +0x54 / CombinationAnims at +0x58, CAnimateThing::DelayedAnim at +0x64 (ctor 0x0070E710).
-class C3DAnimationInfo { public: void Precache(bool wait); };                    // 0xA26730
-class CMeshDataBank { public: C3DAnimationInfo* PeekAnimation(unsigned long index) const; };   // 0xA242C0
+class C3DAnimationInfo { public: public:
+    void BeginLoading(bool) const;   // 0x00A26730
+};                    // 0xA26730
+class CMeshDataBank { public: public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
+};   // 0xA242C0
 class CWorld { public: char _pad[0x3c]; CMeshDataBank* PMainMeshBank; };
 class CMainGameComponent { public: char _pad[0x24]; CWorld* PWorld; };
 extern CMainGameComponent* g_PMainGameComponent;   // 0x13B86A0
@@ -35,7 +39,7 @@ class CBaseClass {                                 // vtable 0x01231710
 public:
     virtual void v000();
     CBaseClass();                                  // 0x0099A2D0
-    ~CBaseClass();                                 // 0x0099A2E0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
 };
 class C3DAnimationBlendState : public CBaseClass { public:       // vtable 0x01239838
     CIVCountedPointer Animation;
@@ -57,7 +61,7 @@ struct CAlphaVector {
 inline void PreloadAnimation(long anim)
 {
     CMeshDataBank* bank = g_PMainGameComponent->PWorld->PMainMeshBank;
-    bank->PeekAnimation(anim)->Precache(false);
+    bank->PeekAnimation(anim)->BeginLoading(false);
 }
 
 class CAnimSet

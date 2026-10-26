@@ -21,15 +21,21 @@ class CCharString { public:
 
 class CMatrix3x4 { public: float M[12]; };                    // 48 bytes: three axis vectors and the position
 
-class CMemoryDataInputStream { public:
+class CDataInputStream
+{
+public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10(); virtual void v14();
     virtual CCharString ReadNullTerminatedString();    // slot 6 (+0x18), by value
+public:
+    CMatrix3x4 ReadMatrix3x4();   // 0x00995340
+};
+
+class CMemoryDataInputStream : public CDataInputStream { public:
     unsigned long m_position;              // +4
     long StreamSize;
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
-    CMatrix3x4 ReadMatrix3x4();                        // 0x00995340
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)

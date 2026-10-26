@@ -107,7 +107,8 @@ struct CTCTable {                               // the interface-0xB8 component
 };
 class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();            // 0x006A1440
-    CThing* RemoveThingFromPrimarySlot(long flags);     // 0x006A1E00
+public:
+    CThing* RemoveThingFromPrimarySlot(bool);   // 0x006A1E00
 };
 struct CThingKill {
     void Kill(bool silent);                     // 0x004C9B80

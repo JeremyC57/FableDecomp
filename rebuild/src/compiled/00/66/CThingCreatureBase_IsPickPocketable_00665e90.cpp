@@ -73,7 +73,6 @@ class CThing { public:
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_statusFlags;           // +0x91 (bit 0: dead)
     const C3DVector& GetPosition() const;   // 0x004C73D0
-    CPlayerManager* GetPlayerManager_004c79f0();     // 0x004C79F0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -87,6 +86,8 @@ class CThing { public:
         }
         return false;
     }
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x004C79F0
 };
 class CTCPerceiveThing { public:
     CThing* GetPerceivedThing() const;          // 0x007446A0
@@ -103,7 +104,7 @@ bool CThingCreatureBase::IsPickPocketable()
     CCreatureDef* def = out.m_pObject;
     if (def) {
         if (def->PickPocketable) {
-            CThing* hero = GetPlayerManager_004c79f0()->GetMainPlayer()->GetPlayerCreature();
+            CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPlayerCreature();
             CTCPerceiveThing* perceive;
             if (hero && !(hero->m_statusFlags & 1) && GetInterface(&perceive, 0x34)) {
                 if (perceive->GetPerceivedThing() != hero || !perceive->CanSeeOrSmellPerceivedThing()) {

@@ -4,7 +4,7 @@
 // Callees: Combatants.find 0x006F0250 / erase(key) 0x006F50B0 (STLport map<unsigned __int64, CCombatantInfo>),
 //          DeregisterAttackingCombatant 0x006ED510, CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor (PLastAttacker = 0
 //          through a CIntelligentPointer<CThing> temporary, vtable 0x01238C6C), the attack-pattern def's slot 1,
-//          CThingCreatureBase::IsRegisteredCombatant 0x00662410.
+//          CThingCreatureBase::IsInMeleeAsAttacker 0x00662410.
 // Layout: the landed CCombatManager_Retail model (Combatants +0x10, node key +0x10, info +0x18); retail CCombatantInfo has a
 //          0x30-byte attacker part, so DefenderInfo sits at +0x34 (attackers map, PLastAttacker +0x28, PAttackPattern +0x30,
 //          AttackPatternIndex +0x34); the being-attacked flag is bit 3 of creature +0x15c.
@@ -17,20 +17,27 @@ class CThingCreatureBase { public:
     unsigned char    IsBeingAttacked : 1;              // +0x15c bit 3
     unsigned char    _bits15c_4 : 4;
     unsigned __int64 GetUID() const { return UniqueID; }
-    bool IsRegisteredCombatant();                      // 0x00662410
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                   // +0x04
-    CBaseIntelligentPointer();                         // 0x00A01B10
-    ~CBaseIntelligentPointer();                        // 0x00A01C10
-    CThing* GetPItem() const;                          // 0x00A01B50
-    void SetPItem(CThing* item);                       // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { T* item = other.GetPItem(); SetPItem(item); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CDefVirtual {
     virtual ~CDefVirtual();                            // slot 0
@@ -73,7 +80,7 @@ class CDefendingCombatantInfo { public:                       // retail 0x40 byt
     unsigned char CombatWheel[0x0c];                   // +0x0c
     float         LastVictimWheelUpdatePos[3];         // +0x18
     long          LastWheelUpdateWorldFrame;           // +0x24
-    CIntelligentPointerThing PLastAttacker;            // +0x28
+    CIntelligentPointer<CThing> PLastAttacker;            // +0x28
     CDefPointer<CAttackPatternDef> PAttackPattern;     // +0x30
     long          AttackPatternIndex;                  // +0x34
     long          FrameForNextInstruction;             // +0x38
@@ -150,6 +157,6 @@ void CCombatManager::DeregisterAttackedCombatant(CThingCreatureBase* attacked)
     info->DefenderInfo.PAttackPattern = 0;
     info->DefenderInfo.AttackPatternIndex = -1;
     attacked->IsBeingAttacked = 0;
-    if (!attacked->IsRegisteredCombatant())
+    if (!attacked->IsInMeleeAsAttacker())
         Combatants.erase(attacked->GetUID());
 }

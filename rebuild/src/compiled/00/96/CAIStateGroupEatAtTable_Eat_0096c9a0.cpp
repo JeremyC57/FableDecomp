@@ -25,15 +25,21 @@ class CSoundPair { public:
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                             // 0x00693EF0
+    virtual ~CCreatureActionBase();                             // 0x00693EF0
 };
 enum EPickUpMode { PICK_UP_MODE_28 = 0x28 };
 class CCreatureAction_PickUpThingAtTable : public CCreatureActionBase { public:
@@ -58,8 +64,11 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                      // +0x18
 };
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
-long __fastcall GFGetCurrentFrame();                    // 0x0049D870
+long __fastcall GFROR13(unsigned long);  // 0x00497890
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                    // 0x0049D870
 extern long g_FramesPerSecond;                          // 0x01375550
 
 struct CAIStateGroupEatAtTableMethods : CAIStateGroupBase {
@@ -81,12 +90,12 @@ bool CAIStateGroupEatAtTableMethods::Eat(CThing* food)
     if (AIAction_PerformActionAndWait(&CCreatureAction_PickUpFoodAtTable(GetCreature(), food), false) != 2)
         return false;
     long fps = g_FramesPerSecond;
-    long endFrame = GFGetCurrentFrame() + Random(7) * fps;
+    long endFrame = CWorld::GetFrame() + Random(7) * fps;
     do {
         if (AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_SAT_EATING_LOOP",
                 CSoundPair(), false, true, false, 0, 0), false) != 2)
             return false;
-    } while (endFrame > GFGetCurrentFrame());
+    } while (endFrame > CWorld::GetFrame());
     if (AIAction_PerformActionAndWait(&CCreatureAction_PutDownTankard(GetCreature()), false) != 2)
         return false;
     return true;

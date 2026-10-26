@@ -33,14 +33,19 @@ class CDiskFileWin32 : public CBase { public:                    // vtable 0x012
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099A6A0
     virtual void Close();                          // 0x0099A920
 };
-struct CFileDataOutputStream {                     // 0xc bytes
+class CDataOutputStream
+{
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
+};
+
+struct CFileDataOutputStream : public CDataOutputStream {                     // 0xc bytes
     void* m_vtable;
     void* m_pFile;
     long m_position;
     CFileDataOutputStream(CDiskFileWin32* file);   // 0x00994400
     ~CFileDataOutputStream();                      // 0x00994430
     void Write(const void* data, long size);       // 0x00994480
-    void WriteULong(unsigned long value);          // 0x00993EA0 (CDataOutputStream)
 };
 extern const unsigned char g_retailBankMagic[4];   // 0x0129B004
 
@@ -57,7 +62,7 @@ void CBankFileManager::CreateRetailBank(const CWideString& path)
     file.Open(path, FILE_ACCESS_WRITE, 2);
     CFileDataOutputStream stream(&file);
     stream.Write(g_retailBankMagic, 4);
-    stream.WriteULong(FileVersion);
-    stream.WriteULong(0);
-    stream.WriteULong(0);
+    stream.WriteULONG(FileVersion);
+    stream.WriteULONG(0);
+    stream.WriteULONG(0);
 }

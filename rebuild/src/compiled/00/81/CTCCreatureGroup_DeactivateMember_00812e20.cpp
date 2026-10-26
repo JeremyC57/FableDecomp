@@ -1,7 +1,7 @@
 // CTCCreatureGroup::DeactivateMember(CThing* member) -- mark a group member inactive (a dead member is removed instead), stamping the deactivation frame
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00812E20, length 144 bytes (vtable 0x0124326C slot 30).
-// Callees: map::find @ 0x00812790, CTCBase::GetWorld @ 0x00686A80 (thiscall, ignores this), CWorld::GetWorldFrame @ 0x0049D870
-// (static: `GetWorld()->GetWorldFrame()` still emits the GetWorld call), RemoveMember via vtable slot 29 (+0x74).
+// Callees: map::find @ 0x00812790, CTCBase::PeekWorld @ 0x00686A80 (thiscall, ignores this), CWorld::GetWorldFrame @ 0x0049D870
+// (static: `PeekWorld()->GetWorldFrame()` still emits the GetWorld call), RemoveMember via vtable slot 29 (+0x74).
 // Shape: the key is an inline by-value GetUID() temporary copied into the frame; `it != Members.Header` compares against
 // the header in memory; IsActive is re-read after the frame call (the store could alias it).
 // Layout: Ego_r.pdb CTCCreatureGroup (0x28): MemberCount +0xC, ActiveMemberCount +0x10, ShutdownOnEmpty +0x14,
@@ -50,7 +50,8 @@ public:
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CWorld* GetWorld() const;                   // 0x00686A80
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 class CTCCreatureGroup : public CTCBase {
 public:
@@ -74,7 +75,7 @@ bool CTCCreatureGroup::DeactivateMember(CThing* member)
     CMemberNode* it = Members.find(member->GetUID());
     if (it != Members.Header) {
         if (it->second.IsActive) {
-            it->second.DeactivatedFrame = GetWorld()->GetWorldFrame();
+            it->second.DeactivatedFrame = PeekWorld().GetWorldFrame();
             if (it->second.IsActive)
                 --ActiveMemberCount;
         }

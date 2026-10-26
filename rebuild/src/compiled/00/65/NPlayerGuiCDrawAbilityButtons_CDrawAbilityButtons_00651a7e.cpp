@@ -28,7 +28,10 @@ class CPlayerGuiDef { public:
     CRetailEffectDefVector AbilityButtonEffects;   // +0x7fc
 };
 
-extern CPlayerGuiDef* __fastcall PeekGuiDef();     // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};     // 0x00438570
 
 namespace N_0099a2d0 { struct CBase {                                     // vtable 0x01231710
     virtual void v00();
@@ -85,7 +88,7 @@ CDrawAbilityButtons::CDrawAbilityButtons(CPlayerGui* gui, void* drawList)
     : CDrawBase(gui, drawList), Columns(3), BackgroundPrimitiveHandle(), InteractBorderPrimitiveHandle(),
       SpecialPrimitiveHandles(), Effects()
 {
-    Effects.Resize(PeekGuiDef()->AbilityButtonEffects.size());
+    Effects.Resize(CPlayerGui::PeekGuiDef().AbilityButtonEffects.size());
 }
 
 }

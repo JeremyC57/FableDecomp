@@ -87,7 +87,8 @@ class CChunkedFileSuperChunk : public CChunkedFileChunk { public:   // retail si
     unsigned long CurrentChunkIndex;                                       // +0x28
     CChunkedFileSuperChunk(const char* type);                              // 0x00AA8360
     virtual void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const;   // 0x00AA78C0
-    CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char* type) const; // 0x00AA7F40
+public:
+    CCountedPointer<CChunkedFileChunk> const FindFirstSubChunkOfType(const char*) const;   // 0x00AA7F40
 };
 
 class C3DAnimFileRootChunk : public CChunkedFileSuperChunk { public:   // retail: LoopFlag +0x2c, Duration +0x30 (PDB +0x34/+0x38)

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00925330, length 89 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) @ 0x00857F30
 // (the five-parameter base constructor), CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("RISE_FROM_SURFACE"
-// @ 0x012906D8, -1), CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0 (the manifest's
+// @ 0x012906D8, -1), CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0 (the manifest's
 // "CTCInGameMenu::SetPDef" is a propagated label; every caller passes an animation name, see the landed
 // 0x008C0520), CCharString::~CCharString @ 0x0099EAE0.
 // Vtable 0x01290594 = `anonymous namespace'::CCreatureAction_KrakenRiseUp (rtti-vtables.tsv), so the manifest module CCombatAction_StabThing is a propagated label and wrong. Action code 0: VC reuses the pair's `xor eax,eax` for the pushed code and sinks the two zero stores below `push ecx ; push eax`.
@@ -25,7 +25,8 @@ class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetAnimationName(const CCharString& name);                                                         // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 struct CCreatureAction_KrakenRiseUp : CCombatActionBase {
@@ -37,5 +38,5 @@ CCreatureAction_KrakenRiseUp::CCreatureAction_KrakenRiseUp(CThingCreatureBase* o
     : CCombatActionBase(owner, target, 0, CSoundPair())
 {
     CCharString name("RISE_FROM_SURFACE", -1);
-    SetAnimationName(name);
+    SetCombatAnimation(name);
 }

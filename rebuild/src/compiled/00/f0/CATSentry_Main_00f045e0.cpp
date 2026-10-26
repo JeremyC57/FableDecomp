@@ -11,6 +11,7 @@
 // Shape: the frame loop is `for (;;) { if (IsActiveThreadTerminating()) return; ... }` -- the first three exits expand the
 //   locals' (implicit handle / __forceinline CScriptThing) destructors inline and share one tail; later exits sit under
 //   in-body inline_depth(0). A `while (!IsActiveThreadTerminating())` loop places the shared tail at the first exit.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
 class CCharString { public:
@@ -78,8 +79,9 @@ class CScriptThing : public CBaseClass { public:                     // vtable 0
 };
 class CBaseObject { public:                                   // vtable 0x0129A7D8
     void* m_pIntelligentPointer;
-    CBaseObject();                                     // 0x0099A380
-    virtual ~CBaseObject();                            // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
@@ -232,14 +234,19 @@ struct CArenaConvoyScript {
     unsigned char _pad5b[0xa8 - 0x5b];
     CScriptThingVector Guards;                         // +0xa8
 };
-struct CAT_Sentry {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CAT_Sentry : public CEntityScriptBase {
     void* VTable;
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing Me;                                   // +0x08
     CArenaConvoyScript* ParentClass;                   // +0x14
     void* PMasterData;                                 // +0x18
     bool Attacked;                                     // +0x1c
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 void CAT_Sentry::Main()

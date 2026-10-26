@@ -51,7 +51,8 @@ public:
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing {
 public:
-    bool IsFreeToPerformAction(const CCreatureActionBase& action);   // 0x00662210
+public:
+    bool IsFreeToPerformAction(const CCreatureActionBase&) const;   // 0x00662210
 };
 
 class CSoundPair {
@@ -101,7 +102,6 @@ public:
     void RemoveMode(unsigned long mode);                    // 0x0073ABA0
 };
 
-void DeleteCountBlock(void* block);                         // 0x00BFE9BC (operator delete)
 struct CCountBlock { long Count; void (__fastcall* Deleter)(void*); void* Object; };
 template <class T> class CCountedPointer {
 public:
@@ -114,7 +114,7 @@ public:
             --Block->Count;
             if (Block->Count == 0) {
                 Block->Deleter(Block->Object);
-                DeleteCountBlock(Block);
+                operator delete(Block);
             }
         }
         Object = 0;
@@ -122,10 +122,16 @@ public:
     }
 };
 
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    CThing* m_pItem;                                        // +0x04
-    ~CBaseIntelligentPointer();                             // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 class CBrainOutput {                                        // 0x48 bytes

@@ -69,16 +69,20 @@ class CTCCreatedEntity { public:                             // interface 0x32
     void SetPCreator(CThing* creator);                // 0x005ED440
 };
 class CWorldMap { public:
-    bool IsPosInMap(const C3DVector& pos);            // 0x004FC600
+    bool IsPosInMap(const C3DVector& pos) const;            // 0x004FC600
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 class CTCBase { public:
     void*   __vftable;                                // +0x00
     CThing* ParentThing;                              // +0x04
-    CWorldMap*          GetWorldMap();                // 0x00686D20
-    CDefinitionManager* GetDefinitionManager() const; // 0x006869D0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20
 };
 struct CTCMeshAutomaticEntityCreator : CTCBase {
     void AddOwnedEntityTC(CThing* created);           // 0x0072DD60
@@ -92,8 +96,8 @@ void CTCMeshAutomaticEntityCreator::CreateObject(const CCharString& dummyName, c
         C3DVector position;
         CRightHandedSet orientation;
         appearance->GetDummyObject(dummyName, i, 0, &position, &orientation, 1.0f);
-        if (GetWorldMap()->IsPosInMap(position)) {
-            long defIndex = GetDefinitionManager()->GetDefGlobalIndexFromName(objectName);
+        if (PeekWorldMap().IsPosInMap(position)) {
+            long defIndex = GetDefinitionManager().GetDefGlobalIndexFromName(objectName);
             if (defIndex) {
                 CThing* object;
                 {

@@ -32,7 +32,7 @@ class CScriptThing { public:                                       // vtable 0x0
     virtual bool IsAlive() const;                           // slot 75 (+0x12c)
     void* PImpData;
     void* PImpInfo;
-    ~CScriptThing();                                        // 0x004AA840
+    virtual ~CScriptThing();                                        // 0x004AA840
 };
 class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -80,10 +80,12 @@ class CGameScriptInterface { public:                       // the quest's game s
     virtual bool IsQuestActive(const CCharString& quest) const;   // slot 284 (+0x470) IsQuestActive
 };
 namespace NScript {
-struct CScriptBase {                                        // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                        // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                       // 0x00CB7940
 };
+namespace NScript {
 class CQ_GuildTrainingScript : public CScriptBase { public:
     CGameScriptInterface* Game;                             // +0x40
     void*                 Data;                             // +0x44

@@ -15,25 +15,27 @@
 // the second (edx) slot is an unused placeholder, the 'flags' word is the single
 // stack parameter (at [esp+8] after the push esi), matching the retail test.
 
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CLandscapeBackgroundPatch
 { public:
     fable_u32 vtbl; // this+0x00 (layout inferred; only 'this' is used)
 };
 
 // Scalar (ordinary) destructor; thisptr in ecx -> modeled __fastcall.
-extern void FABLE_FASTCALL CAbilityButtonGuiDef_dtor(CLandscapeBackgroundPatch* thisptr);
 
 // operator delete (engine allocator free), __cdecl argument pushed.
-extern void FABLE_CDECL CAbilityButtonGuiDef_opDelete(void* block);
 
 void* FABLE_FASTCALL CAbilityButtonGuiDef_vector_deleting_dtor(
     CLandscapeBackgroundPatch* thisptr, int edx_unused, fable_u32 flags)
 {
     (void)edx_unused;
-    CAbilityButtonGuiDef_dtor(thisptr);
+    ((CParentDefClassBase*)(thisptr))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
     {
-        CAbilityButtonGuiDef_opDelete(thisptr);
+        operator delete(thisptr);
     }
     return thisptr;
 }

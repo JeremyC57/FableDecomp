@@ -1,7 +1,7 @@
 #pragma optimize("s", on)
 // CTCInventory::RemoveContextSensitivePreferredItem(const CCharString& itemName) -- erases the named item's record from the static context-sensitive preferred-item list; true when one was removed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005829CD, length 73 bytes; size-optimised TU ("s").
-// Callees: CTCBase::GetDefinitions() 0x006869D0 (the game's definition manager via ParentThing; landed name),
+// Callees: CTCBase::GetDefinitionManager() 0x006869D0 (the game's definition manager via ParentThing; landed name),
 //          CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) 0x009AD410,
 //          vector<CPreferredItem>::erase(iterator) 0x0059310D on the static list 0x013B8B40.
 // Ego_r PDB: ?RemoveContextSensitivePreferredItem@CTCInventory@@QAE_NABVCCharString@@@Z.
@@ -14,7 +14,10 @@
 class CCharString;
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 
 struct CPreferredItem {
@@ -32,15 +35,26 @@ struct CPreferredItemVector {
     CPreferredItem* erase(CPreferredItem* where);    // 0x0059310D
 };
 
-class CTCInventory { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventory : public NInventory::CTCInventoryBase { public:
     static CPreferredItemVector ContextSensitivePreferredItems;   // 0x013B8B40
-    CDefinitionManager* GetDefinitions();            // CTCBase, 0x006869D0
     bool RemoveContextSensitivePreferredItem(const CCharString& itemName);
 };
 
 bool CTCInventory::RemoveContextSensitivePreferredItem(const CCharString& itemName)
 {
-    long item = GetDefinitions()->GetDefGlobalIndexFromName(itemName);
+    long item = GetDefinitionManager().GetDefGlobalIndexFromName(itemName);
     if (item > 0) {
         for (CPreferredItem* it = ContextSensitivePreferredItems.begin(); it != ContextSensitivePreferredItems.end(); ++it) {
             if (it->ItemType > 0 && it->ItemType == item) {

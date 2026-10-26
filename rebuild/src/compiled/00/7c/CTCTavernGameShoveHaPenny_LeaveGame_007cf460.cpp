@@ -24,9 +24,18 @@ class CWorld { public:
     CCameraManagerSource* GetCameraSource() { return m_pCameraSource; }
 };
 
-struct CTCTavernGameCoinBase {
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCTavernGame : public CTCBase
+{
+public:
+};
+
+struct CTCTavernGameCoinBase : public CTCTavernGame {
     unsigned char _pad[0x108];
-    CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
     void LeaveGame();                               // 0x008EF110
 };
 
@@ -38,7 +47,7 @@ void CTCTavernGameShoveHaPenny::vfunc_30()
 {
     CTCTavernGameCoinBase::LeaveGame();
     CGameCameraManager* camera;
-    GetWorld()->GetCameraSource()->GetCameraManager(&camera);
+    GetWorld().GetCameraSource()->GetCameraManager(&camera);
     camera->ReleaseScriptedControl();
     camera->ResetCamera();
 }

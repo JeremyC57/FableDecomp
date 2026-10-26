@@ -84,14 +84,24 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CThingList {                             // retail std::list<CIntelligentPointer<CThing>>: one sentinel pointer
-    struct SNode { SNode* m_pNext; SNode* m_pPrev; CBaseIntelligentPointer m_value; };
+    struct SNode { SNode* m_pNext; SNode* m_pPrev; CIntelligentPointer<CThing> m_value; };
     SNode* m_pHead;
     struct _List_iterator_base {
         SNode* _M_node;
@@ -102,7 +112,7 @@ struct CThingList {                             // retail std::list<CIntelligent
     };
     struct iterator : _List_iterator_base {
         iterator(SNode* x) : _List_iterator_base(x) {}
-        CBaseIntelligentPointer& operator*() const { return _M_node->m_value; }
+        CIntelligentPointer<CThing>& operator*() const { return _M_node->m_value; }
         iterator& operator++() { _M_incr(); return *this; }
     };
     iterator begin() { return iterator(m_pHead->m_pNext); }
@@ -140,7 +150,10 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};            // 0x0049D870
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -154,12 +167,12 @@ class CAIStateGroupBase { public:
 };
 struct CThingWorker {
     unsigned char _pad[0x170];
-    CBaseIntelligentPointer PWorkplace;         // +0x170
+    CIntelligentPointer<CThing> PWorkplace;         // +0x170
 };
 #pragma pack(push, 1)
 struct CAIStateGroup_WorkHammerAnvil : CAIStateGroupBase {
     bool TookActionPoint;                       // +0x14
-    CBaseIntelligentPointer PAnvil;             // +0x15 CIntelligentPointer<CThingObject>
+    CIntelligentPointer<CThing> PAnvil;             // +0x15 CIntelligentPointer<CThingObject>
     C3DVector ActionPointPos;                   // +0x1d
     unsigned char ActionPointRHSet[0x44 - 0x29];// +0x29 CRightHandedSet
     long ActionPointIndex;                      // +0x44
@@ -171,7 +184,7 @@ struct CAIStateGroup_WorkHammerAnvil : CAIStateGroupBase {
 
 bool CAIStateGroup_WorkHammerAnvil::IsRunnable()
 {
-    if (IsInWorkHours() && NextFrameHammer <= GFGetCurrentFrame()) {
+    if (IsInWorkHours() && NextFrameHammer <= CWorld::GetFrame()) {
         CThing* workplace = GetCreature()->PWorkplace.GetPItem();
         CTCThingOwner* owner;
         if (workplace && workplace->GetInterface(&owner, 0x21)) {

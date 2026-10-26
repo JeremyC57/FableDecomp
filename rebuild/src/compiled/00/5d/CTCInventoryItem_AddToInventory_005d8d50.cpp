@@ -11,7 +11,7 @@
 // both arms end in their own Kill + epilogue (the persistent arm falls out of the `if`, the other arms share the tail).
 class CBaseClass { public:
     CBaseClass();                                  // 0x0099A2D0
-    ~CBaseClass();                                 // 0x0099A2E0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
     virtual void v00();
 };
 namespace NTCMessages {

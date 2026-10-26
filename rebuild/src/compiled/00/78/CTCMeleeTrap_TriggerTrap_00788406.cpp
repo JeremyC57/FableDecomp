@@ -78,10 +78,19 @@ class CWorld { public:
     CMeshDataBankPointer PMainMeshBank;              // +0x3c
 };
 
-struct CTCMeleeTrap {
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCTrapBase : public CTCBase
+{
+public:
+};
+
+struct CTCMeleeTrap : public CTCTrapBase {
     unsigned char _pad00[0x04];
     CThing*       ParentThing;                       // +0x04
-    CWorld* GetWorld();                              // 0x00686A70 (CTCBase)
     void InitialiseAnimation(const CCharString& animationName, bool loop);   // 0x0078809B
     void SetStrikeTimes(float trigger, float second);   // 0x00787C35
     void TriggerTrap();
@@ -102,12 +111,12 @@ void CTCMeleeTrap::TriggerTrap()
     ParentThing->PDef->GetSubDef(&def);
     InitialiseAnimation(g_meleeTrapTriggerAnimName, false);
     const CAnimationEntry* trigger = def->Animations.GetAnimation(g_meleeTrapTriggerAnimName, 0, CAnimFilterAll());
-    CMeshDataBank* bank = GetWorld()->PMainMeshBank.Data;
+    CMeshDataBank* bank = GetWorld().PMainMeshBank.Data;
     float triggerTime = bank->GetAnimation(trigger->AnimationIndex)->Duration;
     float secondTime = 0.0f;
     if (def->Animations.HasAnimation(g_meleeTrapSecondAnimName, CAnimFilterAll())) {
         const CAnimationEntry* second = def->Animations.GetAnimation(g_meleeTrapSecondAnimName, 0, CAnimFilterAll());
-        CMeshDataBank* secondBank = GetWorld()->PMainMeshBank.Data;
+        CMeshDataBank* secondBank = GetWorld().PMainMeshBank.Data;
         secondTime = secondBank->GetAnimation(second->AnimationIndex)->Duration;
     }
     SetStrikeTimes(triggerTime, secondTime);

@@ -1,7 +1,7 @@
 // CKrakenMinion::Main() -- kraken minion entity script: register the alive-filter, run a frame, then (unless done) keep trying to start scripting Me at priority 3, add the "HUD_ORB_QUEST_CORE" minimap marker and give Me the hero as its best enemy target
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF4610, 281 bytes (+ int3 padding). Entity-script slot 1 (Main).
-// Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (CIsThingAlive filter, vtable 0x012C2FE8), filter registration
+// Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (NScript::CIsThingConscious filter, vtable 0x012C2FE8), filter registration
 //   0x00F35B10 / IsDone 0x00F35B30 on `this` (propagated manifest labels), CBaseObject ctor 0x0099A380 (labelled
 //   CBaseIntelligentPointer), the scripted-thing handle's IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0
 //   (labels HasPhysicsMesh / Clear / ~CScriptGameResourceObjectMovieBase are propagated), CCharString 0x0099EBF0 / 0x0099EAE0,
@@ -9,11 +9,12 @@
 //   451 GiveThingBestEnemyTarget.
 // Shape: the landed CFH_BriarRose / CV_ChickenKickingScript models: the handle is a 0x10-byte local (out-of-line base ctor,
 //   own vtable store, PImp words zeroed through eax, out-of-line dtor on every exit after its construction); the start loop is
-//   `while (!Start(...)) { NewScriptFrame(); if (IsDone()) return; }` (rotated); the marker name is an implicit conversion.
+//   `while (!Start(...)) { NewScriptFrame(); if (IsActiveThreadTerminating()) return; }` (rotated); the marker name is an implicit conversion.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    ~CScriptThing();                          // 0x004AA840
+    virtual ~CScriptThing();                          // 0x004AA840
 };
 class CCharString { public:
     void* PStringData;
@@ -22,9 +23,10 @@ class CCharString { public:
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGH = 3 };
 class CBaseObject { public:                           // CBaseIntelligentPointer root (vtable 0x0129A7D8 stored by its ctor)
-    virtual void v00();
     void* m_pIntelligentPointer;               // +0x04
-    CBaseObject();                             // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CCountedPointerWords {                  // {Data, Info}
     void* Data;
@@ -35,7 +37,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                 // +0x08 Data, +0x0c Info
     virtual void v00();
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
     bool IsScripting();                        // 0x00CD23B9
     void Release();                            // 0x00CD2770
 };
@@ -103,40 +105,51 @@ class CGameScriptInterface { public:
     virtual void v447(); virtual void v448(); virtual void v449(); virtual void v450();
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target);   // slot 451 (+0x70c)
 };
-struct CIsThingAlive {                         // vtable 0x012C2FE8: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
-    CScriptThing m_thing;                     // +0x04
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive() { }
 };
-class CKrakenMinion {
+class CIsThingConscious : public CPredicateBase { public:                         // vtable 0x012C2FE8 (operator(): IsAlive() && !IsUnconscious(), CScriptThing slots 75/61)
+    CScriptThing m_thing;                     // +0x04
+    CIsThingConscious(const CScriptThing& thing) : m_thing(thing) { }
+    ~CIsThingConscious() { }
+};
+}
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CKrakenMinion : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     CGameScriptInterface* Game;               // +0x04
     CScriptThing          Me;                 // +0x08
-    void RegisterFilter(CIsThingAlive& filter);   // 0x00F35B10
-    bool IsDone();                            // 0x00F35B30
     void Main();
 };
 
 void CKrakenMinion::Main()
 {
     {
-        CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        NScript::CIsThingConscious filter(Me);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
     if (handle.IsScripting())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_HIGH)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (!IsDone()) {
+    if (!IsActiveThreadTerminating()) {
         Game->MiniMapAddMarker(Me, "HUD_ORB_QUEST_CORE");
         Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     }

@@ -17,7 +17,10 @@
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 
-long __fastcall GFGetCurrentFrame();                   // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                   // 0x0049D870
 
 namespace std {
 struct __false_type { __false_type() { } };
@@ -123,7 +126,7 @@ void CTCVillage::OnSerialise(CPersistContext& context, bool fullSave)
         crimes.reserve(PlayersCrimes.size());
         std::copy(PlayersCrimes.begin(), PlayersCrimes.end(), std::back_inserter(crimes));
         context.TransferVector("PlayersCrimes", &crimes);
-        long framesSinceSeen = FramePlayerLastSeenByGuard - GFGetCurrentFrame();
+        long framesSinceSeen = FramePlayerLastSeenByGuard - CWorld::GetFrame();
         context.Transfer("FramePlayerLastSeenByGuard", framesSinceSeen, 0);
     } else {
         std::vector<long> crimes;
@@ -132,7 +135,7 @@ void CTCVillage::OnSerialise(CPersistContext& context, bool fullSave)
         for (std::vector<long>::iterator it = crimes.begin(); it != end; ++it)
             PlayersCrimes.insert(*it);
         context.Transfer("FramePlayerLastSeenByGuard", FramePlayerLastSeenByGuard);
-        FramePlayerLastSeenByGuard += GFGetCurrentFrame();
+        FramePlayerLastSeenByGuard += CWorld::GetFrame();
     }
     if (fullSave)
         context.Transfer("AmountOfFineAlreadyPaid", AmountOfFineAlreadyPaid);

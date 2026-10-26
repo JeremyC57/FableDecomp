@@ -66,7 +66,10 @@ struct CComponentList {                                 // STLport list<CAGraphi
     CComponentListNode* m_head;
 };
 
-long __fastcall GetWorldFrame();                        // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                        // 0x0049D870
 
 namespace NGraphicAppearance {
 
@@ -131,7 +134,7 @@ class CTCGraphicAppearance { public:
         for (CComponentListNode* node = Components.m_head->m_next; node != Components.m_head; node = node->m_next)
             node->m_value->ClearPrimitives();
         Primitives.clear();
-        FrameUpdatedWasRenderedFlag = GetWorldFrame() + 1;
+        FrameUpdatedWasRenderedFlag = CWorld::GetFrame() + 1;
     }
     void UnregisterComponent(const CAGraphicAppearanceComponent* component);
 };

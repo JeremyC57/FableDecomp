@@ -9,7 +9,10 @@
 // ResetCamera = true); the body sets WorldFrames = frames ? frames : 15, passes the `from` PARAMETER
 // (not the member) to CalculateIncrementVector, and adds the raw `frames` to the current frame.
 // Layout: PDB NCameraModes::CScriptModuleFOVZoom (see 0x008520F0). Parameter names are descriptive.
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                 // 0x0049D870
 
 class C3DVector { public:
     float X, Y, Z;
@@ -48,7 +51,7 @@ CScriptModuleFOVZoom::CScriptModuleFOVZoom(const C3DVector& lookAt, const C3DVec
 {
     WorldFrames = frames ? frames : 15;
     CalculateIncrementVector(from, to, WorldFrames);
-    EndFrame = GFGetCurrentFrame() + frames;
+    EndFrame = CWorld::GetFrame() + frames;
 }
 
 }

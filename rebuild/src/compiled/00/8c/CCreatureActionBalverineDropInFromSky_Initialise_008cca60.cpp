@@ -1,6 +1,6 @@
 // CCreatureAction_BalverineDropInFromSky::Initialise() -- names the animation "GENERATE_DROP", calls the creature's virtual slot 28 with true, attaches the particles of its interface-130 component, marks the creature as not willable, then runs the base Initialise
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CCA60, length 151 bytes (+ int3 padding).
-// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0,
+// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0,
 // CCharString::~CCharString @ 0x0099EAE0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, three times), the creature's
 // virtual slot 28 (+0x70) with one argument, CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 130 = bit 2 of
 // the bitset dword at +0x30), CTCParticleAttacher::AttachParticles @ 0x007F8890, SetThingAsNotBloodyWillableAtAll(CThing*, bool) @ 0x007E4040
@@ -40,10 +40,21 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatureBase>: vptr + item
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CCharString { public:                        // one pointer; the defaulted length lets the literal convert implicitly
     void* m_pData;
@@ -61,15 +72,19 @@ struct CThingCreatureCalls {                // the creature's own virtuals: slot
 class CTCParticleAttacher { public:                // the interface-130 component
     void AttachParticles();                 // 0x007F8890
 };
-void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
+class CTCWillResponse {
+public:
+    static void __fastcall SetThingAsNotBloodyWillableAtAll(CThing*, bool);   // 0x007E4040
+};   // 0x007E4040
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_BalverineDropInFromSky : public CCombatActionBase { public:
@@ -78,11 +93,11 @@ class CCreatureAction_BalverineDropInFromSky : public CCombatActionBase { public
 
 void CCreatureAction_BalverineDropInFromSky::Initialise()
 {
-    SetAnimationName("GENERATE_DROP");
+    SetCombatAnimation("GENERATE_DROP");
     ((CThingCreatureCalls*)PCreature.GetPItem())->SetInvisible(true);
     CTCParticleAttacher* pParticles;
     if (PCreature.GetPItem()->GetInterface(&pParticles, 130))
         pParticles->AttachParticles();
-    SetThingAsNotBloodyWillableAtAll(PCreature.GetPItem(), true);
+    CTCWillResponse::SetThingAsNotBloodyWillableAtAll(PCreature.GetPItem(), true);
     CCombatActionBase::Initialise();
 }

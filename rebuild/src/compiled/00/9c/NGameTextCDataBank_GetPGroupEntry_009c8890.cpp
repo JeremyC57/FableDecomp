@@ -37,14 +37,25 @@ template<class T>class CIVCountedPointer { public:
  CIVCountedPointer(const CIVCountedPointer& p):Object(p.Object){if(Object)++const_cast<CResource*>(static_cast<const CResource*>(Object))->IVRefCount;}
  ~CIVCountedPointer(){if(Object&&!--const_cast<CResource*>(static_cast<const CResource*>(Object))->IVRefCount)Object->Delete();}
 };
-class CBankFileAsyncData { public:bool IsFinished();}; //009D54E0
+class CBankFileAsyncData { public:public:
+    bool IsFinished() const;   // 0x009D54E0
+}; //009D54E0
+class CBankFile
+{
+public:
+    unsigned long GetEntryDataType(unsigned long) const;   // 0x009CC210
+};
+class CBankFileAsync : public CBankFile
+{
+public:
+};
+
 namespace NGameText {
 class CDataBank;class CDataBankGroupEntry;
 class CGroupEntry:public CResource { public:virtual bool UnloadResource();CArrayNative<long> Entries;CBankFileAsyncData* PFileData;void* FileDataInfo;CDataBankGroupEntry* Owner;};
 class CDataBankGroupEntry { public:CGroupEntry* PGroup;void BeginLoading(unsigned long,CDataBank*);/*009C80F0*/void BuildGroup();/*009C8700*/};
-class CDataBank { public:
+class CDataBank : public CBankFileAsync { public:
  unsigned char BankAsyncState[0x168];CResourceList ResourceCache,OtherResourceCache;CArrayNative<CDataBankGroupEntry*> Entries;
- unsigned long GetEntryDataType(unsigned long)const; //009CC210
  void FlushAsyncUpdates()const; //009D68B0: invokes009D6730 then009D5A90
  void QueueGroupLoad(unsigned long)const; //009C8220 out-of-line BeginLoadingGroup; manifest text label incorrect
  CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long,bool)const;

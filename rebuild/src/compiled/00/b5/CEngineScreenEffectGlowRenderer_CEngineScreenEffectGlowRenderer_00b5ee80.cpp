@@ -61,7 +61,7 @@ class CVertexShader : public CShaderBase { public:               // vtable 0x012
 class CEngineComponent { public:
     virtual void v00();
     void** m_ppOwnerLink;                          // +0x04
-    ~CEngineComponent();                           // 0x00B59730
+    virtual ~CEngineComponent();                           // 0x00B59730
 };
 
 class CTexture;

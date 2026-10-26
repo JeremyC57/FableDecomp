@@ -2,7 +2,7 @@
 // Leaf: ?Initialise@CCreatureAction_Ambush
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008BEEE0, 528 bytes, plain `ret`; virtual Initialise of CCreatureAction_Ambush.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PTarget +0xa8), CThing::GetPosition 0x004C73D0,
-//   CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetAnimationName 0x008574D0,
+//   CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation 0x008574D0,
 //   CCombatActionBase::GetCombatManager 0x00856B10, CombatDialogueManager::SaySpeech 0x008AFC40, the physics component's
 //   virtual slot 66 (+0x108, the facing fraction), _CIfmod 0x00BFEB28 (fmod intrinsic), CCombatActionBase::Initialise 0x00857520.
 // Globals: the reciprocal-square-root mantissa table 0x013CE558, 3.0f 0x0122DED4, 0.5f 0x0122F59C, 0.0f 0x0122DEDC,
@@ -95,21 +95,33 @@ class CCombatManager { public:
     unsigned char _pad00[0x38];
     CombatDialogueManager DialogueManager;  // +0x38
 };
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    CThing* m_pItem;
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];
-    CBaseIntelligentPointer PCreature;      // +0x08
+    CIntelligentPointer<CThing> PCreature;      // +0x08
     unsigned char _pad10[0xa8 - 0x10];
-    CBaseIntelligentPointer PTarget;        // +0xa8
+    CIntelligentPointer<CThing> PTarget;        // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
     CCombatManager* GetCombatManager();     // 0x00856B10
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 class CCreatureAction_Ambush : public CCombatActionBase { public:
     C3DVector JumpDest;                     // +0x114
@@ -123,9 +135,9 @@ void CCreatureAction_Ambush::Initialise()
     C3DVector side(dir.Y, -dir.X, 0.0f);
     const C3DVector& target = PTarget.GetPItem()->GetPosition();
     if (side.X * target.Y - side.Y * target.X > 0.0f) {
-        SetAnimationName("GENERATE_AMBUSH_LEFT");
+        SetCombatAnimation("GENERATE_AMBUSH_LEFT");
     } else {
-        SetAnimationName("GENERATE_AMBUSH_RIGHT");
+        SetCombatAnimation("GENERATE_AMBUSH_RIGHT");
         side = -side;
     }
     long speech;

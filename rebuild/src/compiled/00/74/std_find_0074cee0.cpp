@@ -11,11 +11,13 @@
 //   kept in a frame slot because ebp carries the first item.
 class CThing;
 
+class CBaseObject;
 class CBaseIntelligentPointer {
 public:
-    void* PData;                                // +0x04
-    virtual void v00();
-    void* GetPItem() const;                     // 0x00A01B50
+    CBaseObject* PData;                                // +0x04
+    virtual CBaseObject v00();
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
 };
 
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {

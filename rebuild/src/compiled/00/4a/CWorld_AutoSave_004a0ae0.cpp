@@ -23,7 +23,10 @@ class CUserProfileManager { public:
     CWideString GetAutoSavePathName() const;                 // 0x00406F70 ("AutoSave" path)
     CWideString GetAutoSaveQuestStartPathName() const;       // 0x00407FD0 ("AutoSave" + ".qs" path)
 };
-bool __fastcall PathExists(const CWideString& path);          // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};          // 0x00999230
 
 class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
 extern CQuestManager* g_pQuestManager;                        // 0x013B89FC
@@ -48,7 +51,7 @@ bool CWorld::AutoSave(bool ignoreQuestStart)
     if (!ignoreQuestStart && g_pQuestManager->IsBetweenQuestStartAndFinishScreens())
     {
         CWideString questStart = CUserProfileManager::Get().GetAutoSaveQuestStartPathName();
-        if (PathExists(questStart))
+        if (CAFile::PathExists(questStart))
         {
             StartAutoSaveProgress();
             CWideString autoSave = CUserProfileManager::Get().GetAutoSavePathName();

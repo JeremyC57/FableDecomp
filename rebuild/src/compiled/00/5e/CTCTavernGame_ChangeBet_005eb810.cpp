@@ -52,7 +52,10 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-long __fastcall GFGetCurrentFrame();                    // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                    // 0x0049D870
 extern long g_BetRepeatDelayFrames;                     // 0x0137D38C (6)
 extern long g_BetRepeatSlowPeriod;                      // 0x0137D390 (2)
 extern long g_BetRepeatFastPeriod;                      // 0x0137D394 (1)
@@ -79,19 +82,19 @@ void CTCTavernGame::ChangeBet(bool increase)
     CDefOut<CTavernGameDef> defOut;
     ParentThing->PDef->GetSubDef_005ed4a0(defOut);
     bool step = false;
-    if (FrameBetWasLastChanged == GFGetCurrentFrame() - 1) {
-        long held = GFGetCurrentFrame() - FrameBetChangeStarted - g_BetRepeatDelayFrames;
+    if (FrameBetWasLastChanged == CWorld::GetFrame() - 1) {
+        long held = CWorld::GetFrame() - FrameBetChangeStarted - g_BetRepeatDelayFrames;
         if (held == 0 || (held >= 0 && held % g_BetRepeatSlowPeriod == 0) ||
             (held >= g_BetRepeatDelayFrames && held % g_BetRepeatFastPeriod == 0))
             step = true;
         if (held != 0 && held % 30 == 0)
             Mult *= 2;
     } else {
-        FrameBetChangeStarted = GFGetCurrentFrame();
+        FrameBetChangeStarted = CWorld::GetFrame();
         step = true;
         Mult = 1;
     }
-    FrameBetWasLastChanged = GFGetCurrentFrame();
+    FrameBetWasLastChanged = CWorld::GetFrame();
     CDefHolder<CTavernGameDef> def(defOut.Object);
     bool changed = false;
     if (increase) {

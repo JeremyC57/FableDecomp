@@ -42,8 +42,10 @@ class CTCShop { public:
     bool IsShopKeeperAvailable();                                  // 0x00773AA0
 };
 
-class CTCShopKeeper;
-CTCShop* __fastcall GetShopTC(CTCShopKeeper* component);     // 0x00798F50
+class CTCShopKeeper {
+public:
+    CTCShop* GetShopTC() const;   // 0x00798F50
+};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -69,7 +71,7 @@ bool CAIStateGroup_WorkBase::IsInWorkHours()
 {
     CTCShopKeeper* pComponent;
     if (PBrain->Creature->GetInterface(&pComponent, 0x90)) {
-        CTCShop* pOwner = GetShopTC(pComponent);
+        CTCShop* pOwner = ((CTCShopKeeper*)(pComponent))->GetShopTC();
         if (pOwner != 0) {
             if (pOwner->IsShopKeeperAvailable())
                 return true;

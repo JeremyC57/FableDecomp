@@ -14,6 +14,7 @@
 //   are plain literals converted implicitly to const CCharString&, which VC builds before any other argument is
 //   evaluated (an explicit CCharString("...") temporary is built in argument order instead and loads the interface
 //   vtable first); VC itself keeps angle + 0.25 in ebp for its second use.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
@@ -128,18 +129,24 @@ class CGameScriptInterface { public:                            // vtable 0x0126
     virtual void v688(); virtual void v689();
     virtual unsigned long PlaySoundOnThing(const CScriptThing& thing, const CCharString& sound) const;   // slot 690 (+0xac8)
 };
-struct CQuestGlobals {
+class CScriptDef { public:
     unsigned char _pad[0x37c];
     long          ArcheryDummyStaticPoints;              // +0x37c (descriptive)
 };
-extern CQuestGlobals* g_pQuestGlobals;                   // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C
 struct CV_ArcheryCompetitionScript {
     unsigned char _pad00[0xa0];
     long          ContestState;                          // +0xa0
     void CalculateScoreForHit(long points, float distance);   // 0x00E36CA0
 };
 struct CQ_SunnyvaleMasterData;
-class CAC_DummyStatic {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CAC_DummyStatic : public CEntityScriptBase {
 public:
     void*                        __vftable;              // +0x00
     CGameScriptInterface*        Game;                   // +0x04
@@ -147,7 +154,6 @@ public:
     CV_ArcheryCompetitionScript* ParentClass;            // +0x14
     CQ_SunnyvaleMasterData*      PMasterData;            // +0x18
     long                         PointsValue;            // +0x1c
-    bool IsActiveThreadTerminating() const;              // 0x00F35B30 CEntityScriptBase
     void Main();
 };
 
@@ -160,7 +166,7 @@ void CAC_DummyStatic::Main()
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;
-    PointsValue = g_pQuestGlobals->ArcheryDummyStaticPoints;
+    PointsValue = pGlobalScriptDef->ArcheryDummyStaticPoints;
     float distance = 0.0f;
     while (!IsActiveThreadTerminating()) {
         while (ParentClass->ContestState != 3) {

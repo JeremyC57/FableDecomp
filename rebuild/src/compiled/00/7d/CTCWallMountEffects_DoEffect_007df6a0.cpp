@@ -55,13 +55,24 @@ class CTCTeleporter { public:                          // interface 0xdd
     void StartTeleporting(CThingPlayerCreature* hero);   // 0x007DFF90
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!p.GetPItem()->IsDead())
@@ -91,13 +102,14 @@ class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[4];
-    CPlayerManager* GetPlayerManager();         // 0x00686D40
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
 };
 
 class CTCWallMountEffects : public CTCBase { public:
     const CWallMountEffectsDef* PDef;           // +0x0c CDefPointer<CWallMountEffectsDef const>
     long                    WaitingForConfirmation;     // +0x10
-    CBaseIntelligentPointer CreaturePerformingAction;   // +0x14 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> CreaturePerformingAction;   // +0x14 CIntelligentPointer<CThingCreatureBase>
     long                    FrameEffectLastUsed;        // +0x1c
     bool                    ObjectWasGamePersistant;    // +0x20
     void DoEffect();
@@ -108,7 +120,7 @@ void CTCWallMountEffects::DoEffect()
     FrameEffectLastUsed = CWorld::GetWorldFrame();
     switch (PDef->Effect) {
     case WALL_MOUNT_EFFECT_TELEPORT: {
-        CThing* hero = GetPlayerManager()->GetMainPlayer().GetHeroThing();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
         if (hero && !hero->IsDead()) {
             CThing* thing = ParentThing;
             CTCTeleporter* teleporter = 0;

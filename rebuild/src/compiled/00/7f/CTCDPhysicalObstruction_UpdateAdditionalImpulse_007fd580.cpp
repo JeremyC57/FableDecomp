@@ -108,8 +108,19 @@ CKeepOutOffSmearedOutLine __fastcall ForEach(CThingCreatureBase** first, CThingC
     return f;
 }
 #pragma auto_inline(on)
-class CTCDPhysicalObstruction { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CThingSearchTools& GetThingSearchTools();   // 0x00686D80
+};
+class CTCDriverBase : public CTCBase
+{
+public:
+};
+
+class CTCDPhysicalObstruction : public CTCDriverBase { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
     C3DVector StartPos;                                 // +0x0c
@@ -117,7 +128,6 @@ class CTCDPhysicalObstruction { public:
     long  LifeTimer;                                    // +0x24
     float Radius;                                       // +0x28
     CRetailVector<CIntelligentPointer> ThingsToIgnoreObstruction;   // +0x2c
-    CThingSearchTools* GetThingSearchTools();           // 0x00686D80 (CTCBase)
     void UpdateAdditionalImpulse();
 };
 
@@ -126,7 +136,7 @@ void CTCDPhysicalObstruction::UpdateAdditionalImpulse()
     CRetailVector<CThingCreatureBase*> creatures;
     CThingFilter_IsWithinArea withinArea(StartPos, EndPos, Radius, false);
     C2DBoxI area = GetLineThingSearchArea(StartPos, EndPos, Radius);
-    GetThingSearchTools()->GetAllThingsInRoughArea<CThingCreatureBase>(area,
+    GetThingSearchTools().GetAllThingsInRoughArea<CThingCreatureBase>(area,
         CObstructionFilter(CThingFilter_IsNotList(ThingsToIgnoreObstruction), withinArea, CThingFilter_IsAffectedByObstructions()), creatures);
     ForEach(creatures.begin(), creatures.end(), CKeepOutOffSmearedOutLine(StartPos, EndPos, Radius));
 }

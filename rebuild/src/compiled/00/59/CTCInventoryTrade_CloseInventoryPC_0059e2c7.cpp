@@ -132,8 +132,11 @@ class CUserProfileManager { public:
 class CWorld { public:
     unsigned char _pad00[0x8c];
     long InventoryClosedFrame;                       // +0x8c
+
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
-long __fastcall GetWorldFrame();                     // 0x0049D870
+                     // 0x0049D870
 class CTCInventoryWeapons { public:
     void CheckForSoldWieldedWeapons();               // 0x005CB780
 };
@@ -167,7 +170,19 @@ public:
     }
 };
 
-class CTCInventoryTrade { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryTrade : public NInventory::CTCInventoryBase { public:
     void*            __vftable;                      // +0x00
     CThing*          ParentThing;                    // +0x04
     unsigned char    _pad08[0x0c - 0x08];
@@ -181,7 +196,6 @@ class CTCInventoryTrade { public:
     void RemoveTattooAndHairCategories();            // 0x0059D9AD
     void BaseCloseInventory();                       // 0x005BD597 (CTCInventoryBase::CloseInventory)
     void DeleteComponents();                         // 0x0059C8AE
-    CWorld* GetWorld();                              // 0x00686A70 (CTCBase)
     void CloseInventoryPC();
 };
 
@@ -200,8 +214,8 @@ void CTCInventoryTrade::CloseInventoryPC()
     g_frontEndNodeList.clear();
     CFrontEndManager::GetInstance()->Slot37();
     g_pMainGameComponent->World->Hud->SetEnabled(true);
-    CWorld* world = GetWorld();
-    world->InventoryClosedFrame = GetWorldFrame();
+    CWorld* world = (&GetWorld());
+    world->InventoryClosedFrame = CWorld::GetFrame();
     if (g_pSoundSystem) {
         g_pSoundSystem->RefreshCategory(0x10, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
         g_pSoundSystem->RefreshCategory(0x40, CUserProfileManager::Get().GetMusicVolume(), 0.0f);

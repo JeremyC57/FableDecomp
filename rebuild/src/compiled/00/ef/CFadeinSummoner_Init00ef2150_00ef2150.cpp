@@ -4,6 +4,7 @@
 // the filter by address; the manifest label "CWorldMap::AllocateMapThingUID" is propagated), CIsThingAlive::~CIsThingAlive @ 0x00E241B0, virtual slot 7 (+0x1c) of the thing, IsDone @ 0x00F35B30
 // (on `this`; a bool in al; the label "CCreatureAction_TrollWhackGroundBase::Initialise" is propagated), the thing's virtual slot 517 (+0x814). Shape: a 0x10-byte frame for the
 // filter (vptr + the 12-byte CScriptThing, built at the frame's top), the handle address kept in edi.
+namespace NScript { class CPredicateBase; }
 struct CThingVtable_00ef2150 {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void Update();                         // slot 7 (+0x1c)
@@ -79,19 +80,30 @@ class CScriptThing { public:                              // 12 bytes (the lande
     ~CScriptThing();                               // 0x004AA840
 };
 
-struct CIsThingAlive {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(void* thing) : m_thing(thing) { }
     ~CIsThingAlive();                          // 0x00E241B0 (out of line in this translation unit)
 };
 
-struct CFadeinSummoner {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CFadeinSummoner : public CEntityScriptBase {
     long                 m_0;
     CThingVtable_00ef2150*  m_pThing;                 // +0x04
     unsigned char        m_handle[4];              // +0x08
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Init_00ef2150();
 };
 
@@ -99,9 +111,9 @@ void CFadeinSummoner::Init_00ef2150()
 {
     {
         CIsThingAlive filter(m_handle);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     m_pThing->Update();
-    if (!IsDone())
+    if (!IsActiveThreadTerminating())
         m_pThing->AttachEffect(m_handle, 0, 1);
 }

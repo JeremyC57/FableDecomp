@@ -50,15 +50,26 @@ public:
 };
 class CThingBuilding : public CThing { };
 
-struct CBaseIntelligentPointer {
-    void*        _vfptr;
-    CThing*      m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct SBuildingNode {                          // STLport list node of list<CIntelligentPointer<CThingBuilding> >
     SBuildingNode*          _M_next;
     SBuildingNode*          _M_prev;
-    CBaseIntelligentPointer _M_data;            // +0x08
+    CIntelligentPointer<CThing> _M_data;            // +0x08
 };
 class CTCVillage {
 public:
@@ -84,10 +95,16 @@ class CThingSearchTools { public:
     template <class F, class T> bool GetPFirstThing(const F& filter, T** result) const;   // 0x006D3FB0
 };
 
-class CTCWife { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90
+};
+
+class CTCWife : public CTCBase { public:
     CThing* ParentThing;                        // +0x04
-    CThingSearchTools* GetThingSearchTools() const;   // 0x00686D90 (CTCBase)
     CThingBuilding* FindMaritalHome() const;
 };
 
@@ -100,7 +117,7 @@ CThingBuilding* CTCWife::FindMaritalHome() const
         village = member->GetPVillage();
     else {
         CThing* thing = 0;
-        if (GetThingSearchTools()->GetPFirstThing(CThingFilter_HasTC(0x22), &thing) && thing != 0 && thing->HasTC(0x22))
+        if (PeekThingSearchTools().GetPFirstThing(CThingFilter_HasTC(0x22), &thing) && thing != 0 && thing->HasTC(0x22))
             village = thing->GetTC<CTCVillage>(0x22);
     }
     if (village != 0) {

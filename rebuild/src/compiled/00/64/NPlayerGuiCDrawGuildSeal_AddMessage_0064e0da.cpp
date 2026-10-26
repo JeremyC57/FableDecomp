@@ -52,16 +52,19 @@ class CThing { public:
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
 class CThingCreatureBase : public CThing { public:
-    bool IsChild();                                // 0x00661F70
+public:
+    bool IsChild() const;   // 0x00661F70
 };
 class CPlayer { public:
     CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 struct CDefinitionOwner {
     unsigned char _pad[0x10];
@@ -94,7 +97,7 @@ class CDrawGuildSeal { public:
 
 void CDrawGuildSeal::AddMessage(const CCharString& text, long time, bool force)
 {
-    CThingCreatureBase* hero = PlayerManager->GetMainPlayer()->GetControlledCreature();
+    CThingCreatureBase* hero = PlayerManager->GetMainPlayer().GetControlledCreature();
     if (!IS_THING_ALIVE<CThing*>(hero) || hero->IsChild())
         return;
     if (!hero->HasInterface(0x11))

@@ -5,6 +5,10 @@
 // each member dtor is a this-only member (free __fastcall), and the final base
 // dtor is a tail jump.
 
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CGlobalDef;
 
 // Member sub-object destructors (distinct callees).
@@ -14,7 +18,6 @@ extern "C" void __fastcall CGlobalDef_dtor_0f4(void* thisptr); // [esi+0xf4]
 extern "C" void __fastcall CGlobalDef_dtor_shared(void* thisptr); // 0x546091, reused for ac/98/94/90
 
 // Base-class destructor (tail-called).
-extern "C" void __fastcall CGlobalDef_base_dtor(void* thisptr);
 
 extern "C" void __fastcall CGlobalDef_dtor(CGlobalDef* thisptr)
 {
@@ -29,5 +32,5 @@ extern "C" void __fastcall CGlobalDef_dtor(CGlobalDef* thisptr)
     CGlobalDef_dtor_shared(esi + 0x90);
 
     // mov ecx, esi ; jmp base_dtor  (tail call)
-    CGlobalDef_base_dtor(esi);
+    ((CParentDefClassBase*)(esi))->CParentDefClassBase::~CParentDefClassBase();
 }

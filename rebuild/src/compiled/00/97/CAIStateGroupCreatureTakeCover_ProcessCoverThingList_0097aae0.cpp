@@ -21,11 +21,13 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
 };
 
+class C2DVector;
 class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
-    C2DVector* Normalise();                         // 0x00A14540
+public:
+    C2DVector& Normalise();   // 0x00A14540
 };
 
 class CThing { public:
@@ -50,10 +52,21 @@ struct CThingVector {                               // std::vector<CThing*> {fir
     CThing** end() { return m_pLast; }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                  // +0x04
-    CThing* GetPItem() const;                       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CAIBrain { public:
@@ -73,7 +86,7 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_CreatureTakeCover : CAIStateGroupBase {
-    CBaseIntelligentPointer PThreat;                // +0x14 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PThreat;                // +0x14 CIntelligentPointer<CThing>
 protected:
     virtual void ProcessCoverThingList(CThingVector& coverThings);
 };

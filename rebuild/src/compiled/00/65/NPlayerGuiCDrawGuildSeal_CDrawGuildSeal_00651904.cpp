@@ -17,7 +17,10 @@ class CPlayerGuiDef { public:
     long          GuildSealLevelUpGraphic;         // +0x1bc
 };
 
-extern CPlayerGuiDef* __fastcall PeekGuiDef();     // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};     // 0x00438570
 
 namespace NPlayerGui {
 
@@ -70,7 +73,7 @@ class CDrawGuildSeal : public CDrawBase { public:                // vtable 0x012
 
 CDrawGuildSeal::CDrawGuildSeal(CPlayerGui* gui, void* drawList)
     : CDrawBase(gui, drawList), Enabled(false), ReadyToLevelUp(false), FlashAlpha(0), FlashCycles(0), FadeInOut(),
-      ReminderTime(0.0f), LevelUpPositions(), LevelUpGraphic(PeekGuiDef()->GuildSealLevelUpGraphic), CurrentMessageEndFrame(0),
+      ReminderTime(0.0f), LevelUpPositions(), LevelUpGraphic(CPlayerGui::PeekGuiDef().GuildSealLevelUpGraphic), CurrentMessageEndFrame(0),
       NextMessageDelayEndFrame(0), Messages()
 {
     PrimitiveHandles.Resize(10);

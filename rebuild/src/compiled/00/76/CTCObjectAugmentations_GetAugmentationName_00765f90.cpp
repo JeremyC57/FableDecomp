@@ -97,16 +97,16 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<con
 #pragma auto_inline(on)
 
 struct CIVCountedPointeeVirtual {
-    virtual void Destroy(int flags);             // slot 0
-    virtual void Delete();                       // slot 1
+    virtual void Destroy(int flags) const;             // slot 0
+    virtual void Delete() const;                       // slot 1
 };
 struct CIVRefCounted {                           // second base: the count at +4 behind the vptr
-    unsigned long IVRefCount;
-    __forceinline void DecRef() { --IVRefCount; }
+    mutable unsigned long IVRefCount;
+    __forceinline void DecRef() const { --IVRefCount; }
     __forceinline unsigned long GetRefCount() const { return IVRefCount; }
 };
 class CIVCountedPointeeBase : public CIVCountedPointeeVirtual, public CIVRefCounted { public:
-    __forceinline void ReleaseTemporary()
+    __forceinline void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -126,11 +126,11 @@ template <class T> class CIVCountedPointer { public:
 };
 
 namespace NGameText {
-class CGroupEntry : public CIVCountedPointeeBase { public:
+class CTextEntry : public CIVCountedPointeeBase { public:
     CWideString GetText() const;                 // 0x009C7A40
 };
 class CDataBank { public:
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
 }
 
@@ -153,7 +153,7 @@ CWideString __fastcall CTCObjectAugmentations::GetAugmentationName(long defIndex
     def->GetSubDef(&augmentation);
     if (augmentation->Name > 0) {
         NGameText::CDataBank* bank = g_pMainGameComponent->TextBank;
-        return bank->GetPGroupEntry(augmentation->Name, true)->GetText();
+        return bank->GetPTextEntry(augmentation->Name, true)->GetText();
     }
     return g_CWideString_013bad98;
 }

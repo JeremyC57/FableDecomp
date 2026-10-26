@@ -1,20 +1,26 @@
+// CThingNoiseDef::Transfer(CPersistContext& context) -- persist the CThingBaseDef part, then the "Noise" sub-component
+// Leaf: ?Transfer@CThingNoiseDef@@UAEXAAVCPersistContext@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00455F1A, virtual (Ego_r.pdb ?Transfer@CThingNoiseDef@@UAEXAAVCPersistContext@@@Z), `ret 4`.
+// Callees: CThingBaseDef::Transfer 0x00676BE0; CPersistContext::TransferSubComponent<CTCNoiseDef>(name, value) 0x00455F3C
+//   (Ego_r ??$TransferSubComponent@VCTCNoiseDef@@@CPersistContext@@QAEXPBDAAVCTCNoiseDef@@@Z; the name is "Noise" @ 0x012338F0).
+// Layout: Ego_r.pdb CThingNoiseDef (0xa8) less 4: Noise (CTCNoiseDef) +0x70.
+// namepass DEF1: the stand-in archive class and base were CPersistContext / CThingBaseDef (one name per callee).
 #pragma optimize("s",on)
-struct CArchive {
-    void Transfer(const void* name, void* field);
+class CTCNoiseDef { public: unsigned char _body[0x34]; };
+class CPersistContext { public:
+    template <class T> void TransferSubComponent(const char* name, T& value);
 };
-struct CThingDef {
-    void Transfer(CArchive* ar);
+class CThingBaseDef { public:
+    virtual void Transfer(CPersistContext& context);   // 0x00676BE0
+    unsigned char _body04[0x70 - 4];                   // retail def base (Ego_r.pdb CThingBaseDef 0x74 less 4)
 };
-class CThingNoiseDef : public CThingDef { public:
-    char extra[0x70];
-    int noise;
-    void Transfer(CArchive* ar);
+class CThingNoiseDef : public CThingBaseDef { public:
+    CTCNoiseDef Noise;                 // +0x70
+    virtual void Transfer(CPersistContext& context);
 };
 
-extern const char kName[];
-
-void CThingNoiseDef::Transfer(CArchive* ar)
+void CThingNoiseDef::Transfer(CPersistContext& context)
 {
-    CThingDef::Transfer(ar);
-    ar->Transfer(kName, &this->noise);
+    CThingBaseDef::Transfer(context);
+    context.TransferSubComponent("Noise", Noise);
 }

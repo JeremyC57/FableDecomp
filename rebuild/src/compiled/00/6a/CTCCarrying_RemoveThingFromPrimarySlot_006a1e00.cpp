@@ -8,7 +8,7 @@
 // 0x005D8E50, CTCWeapon::IsProjectileWeapon 0x005DAA40 / SetProjectileWeaponLoaded(bool, CThing*) 0x005DAC50 /
 // IsMeleeWeapon 0x005DAA70, CTCAnimatingObject::PlayDefaultAnimation 0x007F8F30.
 // Layout: CTCBase ParentThing +4; CThing bitset +0x20, map +0x44, dead flag +0x91; the 0x1A component's armed pointer +0x10.
-// Shape: the whole body sits in `if (!IsPrimarySlotEmpty()) { ... return thing; } return 0;` (an early `return 0` is laid
+// Shape: the whole body sits in `if (!IsPrimarySlotFree()) { ... return thing; } return 0;` (an early `return 0` is laid
 // out first); HasTC + ternary GetTC lookups sharing one key slot; `this` is homed in the frame for the final RemoveThing.
 class CTCBase;
 struct CInterfaceMap {
@@ -46,9 +46,10 @@ struct CTCInterface1A {
     void OnUseFailed();                                 // 0x005D8E50
 };
 class CTCWeapon { public:
-    bool IsProjectileWeapon();                          // 0x005DAA40
     void SetProjectileWeaponLoaded(bool loaded, CThing* ammo);   // 0x005DAC50
     bool IsMeleeWeapon();                               // 0x005DAA70
+public:
+    bool IsProjectileWeapon() const;   // 0x005DAA40
 };
 class CTCAnimatingObject { public:
     void PlayDefaultAnimation();                        // 0x007F8F30
@@ -58,16 +59,18 @@ void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner)
 class CTCCarrying { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
-    bool IsPrimarySlotEmpty();                          // 0x006A1270
-    CThing* GetThingInPrimarySlot();                    // 0x006A1440
     void RemoveThing(CThing* thing);                    // 0x006A19B0
     bool IsCarryingThing(CThing* thing);                // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool unused);
+public:
+    bool IsPrimarySlotFree() const;   // 0x006A1270
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 
 CThing* CTCCarrying::RemoveThingFromPrimarySlot(bool unused)
 {
-    if (!IsPrimarySlotEmpty()) {
+    if (!IsPrimarySlotFree()) {
         CThing* thing = GetThingInPrimarySlot();
         if (thing->HasTC(0x48))
             DropWeapon(thing, this, ParentThing);
@@ -85,7 +88,7 @@ CThing* CTCCarrying::RemoveThingFromPrimarySlot(bool unused)
         }
         if (thing->HasTC(0x83))
             thing->GetTC<CTCAnimatingObject>(0x83)->PlayDefaultAnimation();
-        if (!IsPrimarySlotEmpty()) {
+        if (!IsPrimarySlotFree()) {
             CThing* next = GetThingInPrimarySlot();
             if (next && !(next->m_flags & 1) && next->HasTC(0x48) && next->GetTCConst<CTCWeapon>(0x48)->IsMeleeWeapon())
                 RemoveThing(next);

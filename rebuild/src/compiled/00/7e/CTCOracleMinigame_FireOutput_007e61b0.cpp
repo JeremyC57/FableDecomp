@@ -24,8 +24,15 @@ class CWorld { public:
     CRandomGenerator* GetRandomGenerator();         // 0x0049D810
 };
 class CThing;
-class CTCOracleMinigame { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCOracleMinigame : public CTCBase { public:
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _base08[4];
     unsigned long CurrentText;                      // +0x0c
@@ -41,14 +48,13 @@ class CTCOracleMinigame { public:
     CThing* Symbols[4];                             // +0xb0
     long  SymbolsFiring[4];                         // +0xc0
     long  FramesFired[4];                           // +0xd0
-    CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
     unsigned long PlaySound(const CCharString& name);   // 0x007E60F0
     void FireOutput();
 };
 
 void CTCOracleMinigame::FireOutput()
 {
-    long symbol = GetWorld()->GetRandomGenerator()->Next() & 3;
+    long symbol = GetWorld().GetRandomGenerator()->Next() & 3;
     Output[NumOutputsFired] = symbol;
     SymbolsFiring[symbol] = 1;
     FramesFired[symbol] = GetWorldFrame();

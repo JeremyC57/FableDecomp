@@ -5,14 +5,25 @@
 // @ 0x006655A0. Globals: the long frame rate @ 0x01375550 (`fild`), the float 1.0f @ 0x0122DED8 (`fdivr`: 1.0f / rate).
 // Shape: the frame time is a named float local (`fstp [esp]` into the one-dword frame before the call -- a named float
 // local for a value that must survive a call, GOTCHAS), then the call result is multiplied by it (`fmul [esp]`).
-struct CThingCreatureBase_Calls {         // engine/CThingCreatureBase.h exists but is not used: only this call is modelled
+class CThingCreatureBase_Calls { public:         // engine/CThingCreatureBase.h exists but is not used: only this call is modelled
     float GetAnimationSpeedMultiplier() const;   // 0x006655A0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThingCreatureBase_Calls* m_pItem;      // +0x04
-    CThingCreatureBase_Calls* GetPItem() const;   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 extern long g_frameRate;                    // 0x01375550: frames per second (integer)
@@ -22,7 +33,7 @@ extern long g_frameRate;                    // 0x01375550: frames per second (in
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThingCreatureBase_Calls> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     float GetFrameUpdateTime() const;
 };
 

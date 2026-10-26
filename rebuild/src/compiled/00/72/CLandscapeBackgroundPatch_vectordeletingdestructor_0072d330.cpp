@@ -9,6 +9,17 @@
 //   push esi; call operator delete; add esp,4
 // S: mov eax,esi; pop esi; ret 4
 
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
 struct Sub;                 // subobject at offset +4
 class CLandscapeBackgroundPatch { public:
     int   m_vtbl;           // +0  (vtable / first dword)
@@ -17,10 +28,8 @@ class CLandscapeBackgroundPatch { public:
 
 // scalar destructor operating on the subobject located at self+4.
 // __fastcall => arg1 in ecx. Single pointer param = ecx.
-extern "C" void __fastcall InnerDtor_00a01c10(void* subAtPlus4);
 
 // operator delete (cdecl)
-extern "C" void __cdecl EngineOperatorDelete(void* p);
 
 // __fastcall: this in ecx, flags on the stack. Model via __fastcall with an
 // unused edx dummy so the real `flags` param lands on the stack (=> ret 4).
@@ -28,8 +37,8 @@ extern "C" void* __fastcall VecDelDtor(CLandscapeBackgroundPatch* self, int edxD
 {
     (void)edxDummy;
     // scalar dtor on the subobject at self+4
-    InnerDtor_00a01c10((char*)self + 4);
+    ((CBaseIntelligentPointer*)((char*)self + 4))->CBaseIntelligentPointer::~CBaseIntelligentPointer();
     if (flags & 1)
-        EngineOperatorDelete(self);
+        operator delete(self);
     return self;
 }

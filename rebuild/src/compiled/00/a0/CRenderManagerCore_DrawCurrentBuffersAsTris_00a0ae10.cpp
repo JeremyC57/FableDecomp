@@ -6,7 +6,18 @@
 // `this` goes through unchanged); IDirect3DDevice9::DrawPrimitive (COM slot 81, +0x144) on PD3DDevice (+0x3CF0).
 // Shape: the device pointer is re-read from `this` after the call (esi is reused for it), the two stack arguments are
 // forwarded in order behind the D3DPT_TRIANGLELIST (4) immediate; the HRESULT is returned untouched in eax.
+#define CRenderManagerCore CRenderManagerCoreLayout
 #include "engine/CRenderManagerCore.h"
+#undef CRenderManagerCore
+
+class CRenderStateManager
+{
+public:
+    void RealiseRenderState();   // 0x00A058C0
+};
+class CRenderManagerCore : public CRenderStateManager, public CRenderManagerCoreLayout
+{
+};
 
 // d3d9.h is not on the verifier include path, so the IDirect3DDevice9 vtable is declared locally:
 // COM methods are __stdcall with `this` pushed. Slots used here: 81 (+0x144) DrawPrimitive,
@@ -43,7 +54,6 @@ struct IDirect3DDevice9 {
 };
 
 struct CRenderManagerCore_Methods : CRenderManagerCore {
-    void RealiseRenderState();      // 0x00A058C0 (CRenderStateManager, the primary base at +0)
     long DrawCurrentBuffersAsTris(unsigned long startVertex, unsigned long triangleCount);
 };
 

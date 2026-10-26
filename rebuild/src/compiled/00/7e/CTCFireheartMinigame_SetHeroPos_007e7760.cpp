@@ -28,8 +28,8 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
 
 class CTCScriptedControl;
 class CScriptThing { public:
-    unsigned char _body[12];
-    ~CScriptThing();                            // 0x004AA840
+    unsigned char _body[12 - 4];
+    virtual ~CScriptThing();                            // 0x004AA840
 };
 
 class CTCPhysicsBase {
@@ -108,7 +108,8 @@ public:
     CThing* GetParentThing() const { return ParentThing; }
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CWorld* GetWorld();                         // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 
 class CTCFireheartMinigame : public CTCBase {
@@ -141,7 +142,7 @@ void CTCFireheartMinigame::SetHeroPos(long x, long y, bool instantly)
     }
     CTCScriptedControl* control = GetParentThing()->GetScriptedControl();
     if (g_pScriptRunner) {
-        GetWorld()->PGameScriptInterface->StartScriptingEntity(GetParentThing()->GetScriptThing(), ScriptData, 4);
+        GetWorld().PGameScriptInterface->StartScriptingEntity(GetParentThing()->GetScriptThing(), ScriptData, 4);
     }
     control->AddAction((CActionBase*)new CActionMoveTo(Markers[x][y]->GetPosition(), 3, 0.0f, true, false));
     Moving = true;

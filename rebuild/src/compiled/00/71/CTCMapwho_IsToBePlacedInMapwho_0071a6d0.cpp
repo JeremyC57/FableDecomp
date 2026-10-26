@@ -7,7 +7,19 @@
 // declares no member functions. Shape: the position argument is pushed before the accessor call (arguments first, then the
 // object expression); the manager is taken into a local BEFORE the second call's argument pushes (a chained call pushes
 // first); `if (!f()) return false; return true;` gives retail's `test al,al ; setne al`.
+#define CTCMapwho CTCMapwhoLayout
 #include "engine/CTCMapwho.h"
+#undef CTCMapwho
+class CWorldMap;
+
+class CTCBase
+{
+protected:
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20
+};
+class CTCMapwho : public CTCBase, public CTCMapwhoLayout
+{
+};
 
 class C3DVector { public: float x, y, z; };
 
@@ -18,19 +30,18 @@ struct CThingMapManager {
 class CWorldMap { public:
     unsigned char     _pad_0x00[0x10];
     CThingMapManager* m_pThingMapManager;                               // +0x10
-    bool IsPosInMap(const C3DVector& pos);                              // 0x004FC600
+    bool IsPosInMap(const C3DVector& pos) const;                              // 0x004FC600
 };
 
 struct CTCMapwhoMethods : CTCMapwho {
-    CWorldMap* GetWorldMap();                                           // 0x00686D20 (CTCBase accessor)
     bool IsToBePlacedInMapwho(const C3DVector& pos);
 };
 
 bool CTCMapwhoMethods::IsToBePlacedInMapwho(const C3DVector& pos)
 {
-    if (GetWorldMap()->IsPosInMap(pos))
+    if (PeekWorldMap().IsPosInMap(pos))
         return true;
-    CThingMapManager* manager = GetWorldMap()->m_pThingMapManager;
+    CThingMapManager* manager = PeekWorldMap().m_pThingMapManager;
     if (!manager->IsOverlappingCells(this, pos))
         return false;
     return true;

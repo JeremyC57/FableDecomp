@@ -33,8 +33,25 @@ class CTCBase { public:
     virtual void Trigger();                                 // slot 28 (+0x70)
 };
 
-class CThingAICreature { public:
-    CTCBase* AddTC(const CCharString& name, bool initialise, CTCParamsBase* params);   // 0x004C9D60 (CThing)
+class CThing
+{
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
+};
+class CThingPhysical : public CThing
+{
+public:
+};
+class CThingGameObject : public CThingPhysical
+{
+public:
+};
+class CThingCreatureBase : public CThingGameObject
+{
+public:
+};
+
+class CThingAICreature : public CThingCreatureBase { public:
 };
 
 struct CGameState {

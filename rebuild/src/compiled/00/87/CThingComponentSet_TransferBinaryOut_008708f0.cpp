@@ -1,6 +1,6 @@
 // CThingComponentSet::TransferBinaryOut(CDataOutputStream& stream) -- write the entry count, the raw 9-byte entries and the end marker
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008708F0, 61 bytes (+ int3 padding).
-// Callees: CDataOutputStream::WriteLong @ 0x00993EB0 (x2; the manifest "WriteCBYTE" is wrong: it writes 4 bytes),
+// Callees: CDataOutputStream::WriteSLONG @ 0x00993EB0 (x2; the manifest "WriteCBYTE" is wrong: it writes 4 bytes),
 //          CDataOutputStream::Write(const void*, long) virtual slot 4 (`call [edx+10h]`).
 // Layout: Entries.Start +0, Entries.Size (signed char) +4; entries are 9 bytes.
 // Shape: the data pointer is CSmallVector::GetData() (`Size > 0 ? Start : this`, the select written into the dead
@@ -23,7 +23,8 @@ struct CEntry {                         // CThingComponentSet::CEntry, 9 bytes (
 class CDataOutputStream { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, long bytes);  // slot 4
-    void WriteLong(long value);                        // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 template<class T, int N> class CSmallVector { public:
@@ -39,7 +40,7 @@ class CThingComponentSet { public:
 
 void CThingComponentSet::TransferBinaryOut(CDataOutputStream& stream) const
 {
-    stream.WriteLong(Entries.Size);
+    stream.WriteSLONG(Entries.Size);
     stream.Write(Entries.GetData(), Entries.Size * sizeof(CEntry));
-    stream.WriteLong(0x01AB6CCE);
+    stream.WriteSLONG(0x01AB6CCE);
 }

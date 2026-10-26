@@ -4,7 +4,7 @@
 // Label: the catalog name "CPersistTraits<NGraphicAppearance::CReplaceableMeshes>::TransferBinaryOut" is propagated:
 //   `this` is the vector, not a traits object (no direct callers (an out-of-line instantiation)). The element type is
 //   unknown; it is modelled by size (4 bytes) and the class named by address.
-// Callees: CDataOutputStream::WriteLong @ 0x00993EB0 (the count), CDataOutputStream::Write(const void*, unsigned long) = virtual
+// Callees: CDataOutputStream::WriteSLONG @ 0x00993EB0 (the count), CDataOutputStream::Write(const void*, unsigned long) = virtual
 //   slot 4 (+0x10).
 // Shape: the data/size idiom of the landed CSimVoice::TransferBinaryOut 0x006808C0 and 0x004EA26B: data =
 //   `size() > 0 ? first : (void*)this` (unsigned `ja`), byte count size() * sizeof; both accessors __forceinline, the
@@ -16,7 +16,8 @@ class CDataOutputStream { public:
     virtual void v02();
     virtual void v03();
     virtual void Write(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteLong(long value);                                 // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 struct SPODElement_00701e40 { unsigned char _bytes[4]; };
@@ -32,6 +33,6 @@ struct CPODVector_00701e40 {                  // STLport vector, 12 bytes
 
 void CPODVector_00701e40::TransferBinaryOut(CDataOutputStream* stream) const
 {
-    stream->WriteLong(size());
+    stream->WriteSLONG(size());
     stream->Write(data(), size() * sizeof(SPODElement_00701e40));
 }

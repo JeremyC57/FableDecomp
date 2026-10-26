@@ -42,7 +42,8 @@ class CTCTavernGame { public:
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed, CInputProcessTavernGame* process);   // slot 28 (+0x70)
 };
 class CTCGamePlayer { public:
-    CTCTavernGame* GetGame();                      // 0x005EDC90
+public:
+    CTCTavernGame* GetGame() const;   // 0x005EDC90
 };
 struct STCEntry {                                  // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long           m_kind;
@@ -71,7 +72,8 @@ class CPlayer { public:
     CThing* GetHeroCreature();                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 struct CMainGameComponentView {
     unsigned char   _pad[0x1c];
@@ -88,7 +90,7 @@ public:
 
 void CInputProcessTavernGame::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetHeroCreature();
     CTCGamePlayer* player = 0;
     if (hero->HasTC(0xd0))
         player = hero->GetTC(0xd0);

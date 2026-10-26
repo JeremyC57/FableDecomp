@@ -52,18 +52,29 @@ struct CCreatureModeBase {
 class CTCCreatureModeManager { public:                 // interface 0x31
     CCreatureModeBase* GetCurrentMode() const;  // 0x0073A6E0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* PData;                                // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCDParticleEmitter { public:
     virtual void v00();
     unsigned char           _base[0x8];         // CTCBase: ParentThing +4, flags +8/+9
     void*                   EmitterName;        // +0x0c CCharString
     long                    ParticleTypeID;     // +0x10
-    CBaseIntelligentPointer PEmitter;           // +0x14
-    CBaseIntelligentPointer PAttachedToThing;   // +0x1c
+    CIntelligentPointer<CThing> PEmitter;           // +0x14
+    CIntelligentPointer<CThing> PAttachedToThing;   // +0x1c
     unsigned char           _body[0x44 - 0x24]; // AttachmentFlags .. PCreationParameters
     unsigned char           Flags44;            // +0x44 (WaitingForParticleToLoad .. Moving)
     bool AttachedToThing : 1;                   // +0x45 bit 0

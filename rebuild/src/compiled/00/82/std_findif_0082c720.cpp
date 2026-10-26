@@ -7,11 +7,21 @@
 // Shape: the marker address is kept in edi (`lea edi,[esi+8]`), `last` is re-read from its slot (no free register).
 #include "engine/CMarkerInfo.h"
 class CThing;
-class CBaseIntelligentPointer {                   // 8 bytes: vptr + item
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                     // 0x00A01B50
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 template <class T> struct SListNode {             // VC6-era Dinkumware list node
     SListNode* next;                              // +0x00
@@ -42,7 +52,7 @@ public:
     CIsMarkerBoundToThing(const CThing* thing) : m_pThing(thing) {}
     bool operator()(const CMarkerInfo& marker) const
     {
-        return ((const CBaseIntelligentPointer*)marker.PThing)->GetPItem() == m_pThing && !marker.AutoMarker;
+        return ((const CIntelligentPointer<CThing>*)marker.PThing)->GetPItem() == m_pThing && !marker.AutoMarker;
     }
 };
 template CListIterator<CMarkerInfo> __fastcall std::find_if(CListIterator<CMarkerInfo>, CListIterator<CMarkerInfo>, CIsMarkerBoundToThing);

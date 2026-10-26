@@ -57,7 +57,7 @@ class CThing { public:
     }
 };
 
-struct CTCInventoryMenu {                            // interface type 0xF6
+class CTCQuickAccessMenu { public:                            // interface type 0xF6
     bool IsActive() const;                           // 0x00625930
     bool IsClosing() const;                          // 0x00625940
     void RequestClose();                             // 0x00625920
@@ -82,7 +82,7 @@ class CTCInventory : public CTCInventoryBase { public:
 
 void CTCInventory::AddCloseInventoryEvent()
 {
-    CTCInventoryMenu* menu = ParentThing->GetTC<CTCInventoryMenu>(0xF6);
+    CTCQuickAccessMenu* menu = ParentThing->GetTC<CTCQuickAccessMenu>(0xF6);
     if (menu->IsActive() && !menu->IsClosing())
         menu->RequestClose();
     else

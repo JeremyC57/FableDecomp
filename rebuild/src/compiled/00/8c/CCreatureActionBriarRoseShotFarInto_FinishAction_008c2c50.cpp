@@ -32,7 +32,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _pad10[0xa8 - 0x10];      // +0x10 rest of CCreatureActionBase (0xa8 bytes in retail)
     CBaseIntelligentPointer PTarget;        // +0xa8 CIntelligentPointer<CThing>
     unsigned char _padb0[0x114 - 0xb0];     // +0xb0
-    ~CCombatActionBase();                   // 0x0062E900
+    virtual ~CCombatActionBase();                   // 0x0062E900
 };
 
 struct CThingCreatureBase_Calls {

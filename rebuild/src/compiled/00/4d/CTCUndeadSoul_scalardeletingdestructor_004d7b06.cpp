@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCUndeadSoul_Destruct(void* soul);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCUndeadSoul_ScalarDeletingDestructor(void* soul, int, unsigned int flags)
 {
-    CTCUndeadSoul_Destruct(soul);
+    ((CTCBase*)(soul))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(soul);
+        operator delete(soul);
     return soul;
 }

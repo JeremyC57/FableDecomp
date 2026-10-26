@@ -3,11 +3,14 @@
 #include "rebuild_abi.h"
 
 // operator delete (relocation-masked target)
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
 // base-class destructor tail-called at end (relocation-masked target)
 class CPatchTesselationEdgeStrip;
-extern void __fastcall CPatchTesselationEdgeStrip_base_dtor(CPatchTesselationEdgeStrip* thisptr);
 
 class CPatchTesselationEdgeStrip { public:
     char _pad[0x6c + 4];
@@ -32,5 +35,5 @@ void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* this
     p = *(void**)((char*)thisptr + 0x3c);
     if (p) free(p);
 
-    CPatchTesselationEdgeStrip_base_dtor(thisptr);
+    ((CParentDefClassBase*)(thisptr))->CParentDefClassBase::~CParentDefClassBase();
 }

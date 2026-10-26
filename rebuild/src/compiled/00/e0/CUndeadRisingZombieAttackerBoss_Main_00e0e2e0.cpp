@@ -43,8 +43,9 @@ struct CCountedPointerWords {
 };
 class CBaseObject { public:                                    // CBaseIntelligentPointer root (polymorphic: vptr +0)
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseObject();                                      // 0x0099A380
-    virtual ~CBaseObject();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                          // +0x08

@@ -70,7 +70,7 @@ class CScriptThing : public CBaseClass { public:                     // vtable 0
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 namespace NScript {
 class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; virtual ~CPredicateBase() { } };
@@ -205,7 +205,14 @@ struct CArenaScript {
     long         CrowdSoundIndex;                      // +0xfc
     CScriptTimer CrowdTimer;                           // +0x100
 };
-struct CArenaEnemy {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CArenaEnemy : public CEntityScriptBase {
     void* VTable;
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing Me;                                   // +0x08
@@ -214,8 +221,6 @@ struct CArenaEnemy {
     long HealthBar;                                    // +0x1c
     bool HasHealthBar;                                 // +0x20
     long EnemyIndex;                                   // +0x24
-    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 void CArenaEnemy::Main()

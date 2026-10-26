@@ -78,7 +78,8 @@ inline __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(con
 
 class CQuestManager {
 public:
-    CThing* GetActiveQuestCardFromScriptName(const CCharString& name);   // 0x004B0C80
+public:
+    CThing* GetActiveQuestCardFromScriptName(const CCharString&) const;   // 0x004B0C80
 };
 extern CQuestManager* g_pQuestManager;                 // 0x013B89FC
 

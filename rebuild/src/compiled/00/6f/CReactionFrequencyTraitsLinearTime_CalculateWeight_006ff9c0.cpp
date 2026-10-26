@@ -12,7 +12,10 @@
 
 class CThingAICreature;
 
-long GetWorldFrame();                                   // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                                   // 0x0049D870
 
 inline const float& Clamp(const float& v, const float& lo, const float& hi)
 {
@@ -33,6 +36,6 @@ FABLE_STATIC_ASSERT(sizeof(CReactionFrequencyTraits_LinearTimeRetail) == sizeof(
 
 float CReactionFrequencyTraits_LinearTimeRetail::CalculateWeight(const CThingAICreature* creature)
 {
-    float elapsed = (float)(GetWorldFrame() - FrameHappened);
+    float elapsed = (float)(CWorld::GetFrame() - FrameHappened);
     return Clamp((elapsed - MinWait) / WaitRange, 0.0f, 1.0f);
 }

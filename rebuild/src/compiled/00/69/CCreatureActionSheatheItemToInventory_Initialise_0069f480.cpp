@@ -21,7 +21,6 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    CPlayer* GetPlayer_004c7a30();                   // 0x004C7A30
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -35,11 +34,24 @@ class CThing { public:
         }
         return false;
     }
+public:
+    CPlayer& GetPlayer();   // 0x004C7A30
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCHeroRangedAttacks { public:               // interface type 0x81 component
     void CancelAimingWeapon();              // 0x00789FF0
@@ -51,7 +63,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12, 0x00694D10
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
 };
 class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:
@@ -65,6 +77,6 @@ void CCreatureAction_SheatheItemToInventory::Initialise()
     if (PCreature.GetPItem()->GetInterface(&pRanged, 0x81)) {
         pRanged->CancelAimingWeapon();
         pRanged->ResetProjectileWeaponMode();
-        PCreature.GetPItem()->GetPlayer_004c7a30()->RemoveMode(0x22);
+        PCreature.GetPItem()->GetPlayer().RemoveMode(0x22);
     }
 }

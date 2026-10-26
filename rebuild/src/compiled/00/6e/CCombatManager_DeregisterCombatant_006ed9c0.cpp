@@ -1,5 +1,6 @@
 class CThingCreatureBase { public:
-    bool IsCombatant_00662410();
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 
 class CCombatManager { public:
@@ -9,6 +10,6 @@ class CCombatManager { public:
 
 void CCombatManager::DeregisterCombatant(CThingCreatureBase* c)
 {
-    if (c->IsCombatant_00662410())
+    if (c->IsInMeleeAsAttacker())
         this->RemoveCombatant_006ed510(c);
 }

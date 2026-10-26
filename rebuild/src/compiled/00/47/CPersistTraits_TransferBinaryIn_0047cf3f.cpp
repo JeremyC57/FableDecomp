@@ -4,7 +4,7 @@
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0047CF3F, 34 bytes. Pragmas: frame pointer kept
 // (`optimize("y",off)`) in a size-optimised TU, as every CPersistTraits<T>::TransferBinaryIn TU.
-// Callee: 0x009950F0 CMemoryDataInputStream::Read3DVector (__fastcall, C3DVector by hidden pointer).
+// Callee: 0x009950F0 CDataInputStream::Read3DVector (__fastcall, C3DVector by hidden pointer).
 //
 // The manifest label `CPhysicsForceModelGotoOutsideSimple::DoAttractToPoint` is propagated and
 // wrong. Its only caller is the binary branch of a CPersistContext::Transfer (0x004859F2), which
@@ -18,8 +18,13 @@ class C3DVector { public:
     float z;
 };
 
-class CMemoryDataInputStream { public:
-    C3DVector Read3DVector();              // 0x009950F0
+class CDataInputStream
+{
+public:
+    C3DVector Read3DVector();   // 0x009950F0
+};
+
+class CMemoryDataInputStream : public CDataInputStream { public:
 };
 
 template <class T> struct CPersistTraits {

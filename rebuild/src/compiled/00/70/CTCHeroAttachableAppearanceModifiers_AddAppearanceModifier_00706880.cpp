@@ -2,10 +2,10 @@
 // Leaf: AddAppearanceModifier
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00706880, length 200 bytes (+ int3 padding). __fastcall, `ret 4`.
 //         Ego_r.pdb: `?AddAppearanceModifier@CTCHeroAttachableAppearanceModifiers@@QAEXJ@Z`.
-// Callees: CTCBase::GetDefinitions() const @ 0x006869D0, CDefinitionManager::GetDef<CThingObjectDef>(long, CDefPointer<const
+// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0, CDefinitionManager::GetDef<CThingObjectDef>(long, CDefPointer<const
 //          T>*) const @ 0x0042B040, CDefClassBase::GetSubDef<CAppearanceModifierDef>(CDefPointer<const T>*) const @ 0x0057FF92,
 //          vector<CModifierEntry>::_M_insert_overflow(pos, const T&, const __true_type&, size_type, bool) @ 0x00708E40,
-//          CTCBase::GetWorld() const @ 0x00686A80, CWorld::GetWorldFrame (static) @ 0x0049D870, the defs' virtual slot 1.
+//          CTCBase::PeekWorld() const @ 0x00686A80, CWorld::GetWorldFrame (static) @ 0x0049D870, the defs' virtual slot 1.
 // Shape: two plain def out slots (thing first, then appearance: the zero stores go out in that order), the lookups
 //        chained in one condition (GetDef && GetSubDef) and both defs released by hand through the slots; the entry
 //        {defIndex, true} is a temporary built before the inline STLport push_back (placement copy when there is room,
@@ -51,7 +51,7 @@ class CDefinitionManager {
 public:
     template<class T> bool GetDef(long index, CDefOutPointer<const T>* out) const;   // 0x0042B040 for CThingObjectDef
 };
-class CDefinitionHolder : public CDefinitionManager { };
+class CGameDefinitionManager : public CDefinitionManager { };
 
 class CWorld { public:
     static long GetWorldFrame();                    // 0x0049D870
@@ -83,9 +83,17 @@ template <class T> struct CRetailVector {           // STLport vector (12 bytes)
 };
 
 class CThing;
-class CTCHeroAttachableAppearanceModifiers {
+class CTCBase
+{
 public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCHeroAttachableAppearanceModifiers : public CTCBase {
+public:
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[0x10 - 0x08];
     unsigned long FrameLastChanged;                 // +0x10
@@ -94,8 +102,6 @@ public:
     unsigned char AppearanceModifiersLoaded : 1;
     unsigned char _pad15[0x30 - 0x15];
     CRetailVector< CRetailVector<CModifierEntry> > AppearanceModifiers;   // +0x30
-    const CDefinitionHolder* GetDefinitions() const;   // 0x006869D0 (CTCBase)
-    CWorld* GetWorld() const;                       // 0x00686A80 (CTCBase)
     void AddAppearanceModifier(long defIndex);
 };
 
@@ -143,11 +149,11 @@ void CTCHeroAttachableAppearanceModifiers::AddAppearanceModifier(long defIndex)
 {
     CDefOutPointer<const CThingObjectDef> thingOut;
     CDefOutPointer<const CAppearanceModifierDef> appearanceOut;
-    if (GetDefinitions()->GetDef(defIndex, &thingOut) && thingOut.Object->GetSubDef(&appearanceOut)) {
+    if (GetDefinitionManager().GetDef(defIndex, &thingOut) && thingOut.Object->GetSubDef(&appearanceOut)) {
         AppearanceModifiers._M_start[appearanceOut.Object->Type].push_back(CModifierEntry(defIndex, true));
         Changed = true;
     }
-    FrameLastChanged = GetWorld()->GetWorldFrame();
+    FrameLastChanged = PeekWorld().GetWorldFrame();
     if (appearanceOut.Object && --appearanceOut.Object->RefCount == 0)
         appearanceOut.Object->Destroy();
     if (thingOut.Object && --thingOut.Object->RefCount == 0)

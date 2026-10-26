@@ -3,7 +3,18 @@
 // Combat action base is 0x114 retail versus donor 0x12c; sky-jump EndPos is +114.
 // The shared result is compared after both temporary actions are destroyed, then every path terminates.
 // Address-of-temporary syntax follows VC7.1; g++ fixtures compile the identical body with -fpermissive.
+#define CAIStateGroup_BalverineCornered CAIStateGroup_BalverineCorneredLayout
 #include "engine/CAIStateGroup_BalverineCornered.h"
+#undef CAIStateGroup_BalverineCornered
+
+class CAIStateGroupBase
+{
+public:
+    void Terminate();   // 0x008FCF40
+};
+class CAIStateGroup_BalverineCornered : public CAIStateGroupBase, public CAIStateGroup_BalverineCorneredLayout
+{
+};
 #include "engine/CAIBrain.h"
 class CThing;
 class CThingCreatureBase;
@@ -47,7 +58,7 @@ class C3DVector { public: float X,Y,Z; };
 class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x110];
-    ~CCombatActionBase(); // 0062E900
+    virtual ~CCombatActionBase(); // 0062E900
 };
 class CCreatureAction_BalverineLungeAttack : public CCombatActionBase { public:
     CCreatureAction_BalverineLungeAttack(CThingCreatureBase*,CThing*); // 008CCC70
@@ -60,7 +71,6 @@ struct CCorneredMethods : CAIStateGroup_BalverineCornered {
     CAIBrain* Brain() const {return *(CAIBrain* const*)_pad_0x04;}
     const CBaseIntelligentPointer& Target() const {return *(const CBaseIntelligentPointer*)PTarget;}
     long PerformActionAndWait(const CCombatActionBase*,bool); // 0097DA40
-    void Terminate(); // 008FCF40
     void Update();
 };
 void CCorneredMethods::Update() {

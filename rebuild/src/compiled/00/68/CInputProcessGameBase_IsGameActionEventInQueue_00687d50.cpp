@@ -10,8 +10,9 @@
 // Layout: engine/CInputProcessGameBase.h (PDB): MyPlayer +0x18, PGamePlayerInterface +0x24.
 #include "engine/CInputProcessGameBase.h"
 
-struct CPlayerCalls {
-    long GetPlayerNumber();                                       // 0x00487510
+class CPlayer { public:
+public:
+    long GetJoystickDeviceNumber() const;   // 0x00487510
 };
 struct CGamePlayerInterfaceCalls {
     bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber);   // 0x00446B10
@@ -24,5 +25,5 @@ struct CInputProcessGameBase_Methods : CInputProcessGameBase {
 bool CInputProcessGameBase_Methods::IsGameActionEventInQueue(long action, long buttonEventType)
 {
     return reinterpret_cast<CGamePlayerInterfaceCalls*>(PGamePlayerInterface)->IsGameActionEventInQueue(
-        action, buttonEventType, reinterpret_cast<CPlayerCalls*>(MyPlayer)->GetPlayerNumber());
+        action, buttonEventType, reinterpret_cast<CPlayer*>(MyPlayer)->GetJoystickDeviceNumber());
 }

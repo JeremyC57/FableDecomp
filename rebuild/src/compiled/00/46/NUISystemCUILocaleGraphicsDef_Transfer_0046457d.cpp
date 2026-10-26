@@ -31,7 +31,7 @@ class CPersistContext {
 public:
     void Transfer(std::map<EWorldMapNameGraphic, unsigned long >& value); // 0x004645AB
     void Transfer(std::vector<unsigned long >& value);           // 0x00464841
-    void Transfer(unsigned long& value);                         // 0x00431020
+    template <class T> void Transfer(T& value);                         // 0x00431020
 };
 namespace NUISystem {
 class CUILocaleGraphicsDef {

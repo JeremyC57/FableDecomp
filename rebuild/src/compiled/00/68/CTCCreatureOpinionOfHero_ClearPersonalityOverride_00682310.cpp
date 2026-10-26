@@ -40,7 +40,8 @@ class CCharString { public:
 class CTCWife { public:
     unsigned char _pad00[0x24];
     bool DivorcedHero;                                  // +0x24
-    bool IsMarriedToThePlayer();                        // 0x006CEC80
+public:
+    bool IsMarriedToThePlayer() const;   // 0x006CEC80
 };
 class COpinionOfHeroDef { public:
     unsigned char _pad00[0x30];

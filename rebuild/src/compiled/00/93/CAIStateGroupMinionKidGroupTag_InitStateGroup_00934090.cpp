@@ -15,8 +15,11 @@
 class CWorld;
 class CThingAICreature;
 
-long __fastcall GFGetCurrentFrame();        // 0x0049D870
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};        // 0x0049D870
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 extern long g_framesPerSecond;              // 0x01375550
 
 class CAIStateGroupBase { public:
@@ -53,7 +56,7 @@ struct CAIStateGroup_MinionKidGroupTag : CAIStateGroupBase {
 
 void CAIStateGroup_MinionKidGroupTag::InitStateGroup(const CWorld& world, CThingAICreature& creature)
 {
-    FrameLastPlayedIn = GFGetCurrentFrame() - RandomFramesWithin(7);
-    if (FrameLastPlayedIn > GFGetCurrentFrame())
-        FrameLastPlayedIn = GFGetCurrentFrame();
+    FrameLastPlayedIn = CWorld::GetFrame() - RandomFramesWithin(7);
+    if (FrameLastPlayedIn > CWorld::GetFrame())
+        FrameLastPlayedIn = CWorld::GetFrame();
 }

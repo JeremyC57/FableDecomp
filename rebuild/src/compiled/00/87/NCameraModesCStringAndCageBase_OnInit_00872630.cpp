@@ -48,7 +48,10 @@ public:
 };
 class CThingGameObject : public CThing { };
 extern long g_framesPerSecond;                               // 0x01375550
-long __fastcall GetWorldFrame();                             // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                             // 0x0049D870
 namespace NCameraModes {
 class CBase;
 }
@@ -135,6 +138,6 @@ void CStringAndCageBase::OnInit()
         LookAt = focal;
     }
     long fps = g_framesPerSecond;
-    NextAutoGoBehindWF = (long)(fps * GetAutoGoBehindTime() + GetWorldFrame());
+    NextAutoGoBehindWF = (long)(fps * GetAutoGoBehindTime() + CWorld::GetFrame());
 }
 }

@@ -1065,12 +1065,12 @@ struct CTimerManager {
     virtual void SetTimer(long index, long time);   // slot 89 (+0x164)
 };
 extern CTimerManager* g_pScriptTimerManager;  // 0x0143E8F8
-struct CQuestGlobals {
+class CScriptDef { public:
     unsigned char _pad[0x7fc];
     long          AcolyteTimerTime;           // +0x7fc
     long GetAcolyteTimerTime() const { return AcolyteTimerTime; }
 };
-extern CQuestGlobals* g_pQuestGlobals;        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;        // 0x0143E90C
 class CTimer { public:
     long TimerIndex;                          // +0x00
 };
@@ -1112,7 +1112,7 @@ void CTOL_AcolyteGood::Init()
             CCharString("ParentClass.", -1) + CCharString("WatchForAcolyteDeath", -1),
             0, &CQ_AcolyteParentScript::WatchForAcolyteDeath_00edc980, ParentClass, Thing),
         CCharString("", -1));
-    g_pScriptTimerManager->SetTimer(Timer.TimerIndex, g_pQuestGlobals->GetAcolyteTimerTime());
+    g_pScriptTimerManager->SetTimer(Timer.TimerIndex, pGlobalScriptDef->GetAcolyteTimerTime());
     GSI->SetThingFlags(Thing, 0, 0, 0);
     GSI->SetThingAsTarget(Thing, 0);
     ParentClass->AcolyteFlag5B = false;

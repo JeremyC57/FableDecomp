@@ -19,10 +19,16 @@ __forceinline long GetRandomBelow(CWorld* world, unsigned long n)
     *seed = GFROR13(*seed);
     return *seed % n;
 }
-class CTCWound { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCWound : public CTCBase { public:
     void* ParentThing;                           // +0x04
-    CWorld* GetWorld();                          // 0x00686A70 (CTCBase)
     void AddWound(long location);                // 0x00757B30
     bool AddPossibleWoundGivenStrikePoint(const C3DVector& point);
 };
@@ -33,7 +39,7 @@ bool CTCWound::AddPossibleWoundGivenStrikePoint(const C3DVector& point)
         location = 1;
     else
         location = 6;
-    if (GetRandomBelow(GetWorld(), 100) >= 95) {
+    if (GetRandomBelow((&GetWorld()), 100) >= 95) {
         AddWound(location);
         return true;
     }

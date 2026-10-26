@@ -16,15 +16,26 @@ class CThing { public:
     C3DVector* GetBonePosition(long bone, unsigned char flag);    // 0x004C73D0
 };
 
-struct CIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                                      // +0x04
-    CThing* GetPItem();                                 // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CActionEventContext {
     unsigned char       _pad[0x8];
-    CIntelligentPointer m_pThing;                       // +0x08
+    CIntelligentPointer<CThing> m_pThing;                       // +0x08
 };
 
 void __fastcall CreateCameraShake(C3DVector* position, long strength);   // 0x007F1B70
@@ -40,7 +51,7 @@ struct CActionEventCameraShake {
 
 void CActionEventCameraShake::Dispatch(const CActionEventContext& context)
 {
-    CThing* thing = const_cast<CIntelligentPointer&>(context.m_pThing).GetPItem();
+    CThing* thing = const_cast<CIntelligentPointer<CThing>&>(context.m_pThing).GetPItem();
     if (thing && !thing->m_isDead)
         CreateCameraShake(thing->GetBonePosition(m_bone, m_boneFlag), m_strength);
 }

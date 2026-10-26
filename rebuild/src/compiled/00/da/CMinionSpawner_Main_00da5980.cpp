@@ -8,6 +8,7 @@
 //   91 CreateCreature, 100 CreateEffect (+0x190), 108 RemoveThing, 376 Pause (+0x5e0), 475 EntitySetFacingAngleTowardsThing (+0x76c).
 // Layout: the entity-script base {vptr, Game +4, Me +8} of the landed entity Mains.
 // Shape: the distance is converted once to a float local (kept in ebx as its bit pattern for every loop push).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -98,12 +99,17 @@ class CGameScriptInterface { public:
     virtual void EntitySetFacingAngleTowardsThing(const CScriptThing& thing, const CScriptThing& target, bool b) const;   // slot 475 (+0x76c)
 };
 
-class CMinionSpawner {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CMinionSpawner : public CEntityScriptBase {
 public:
     void*                 __vftable;               // +0x00
     CGameScriptInterface* Game;                    // +0x04
     CScriptThing          Me;                      // +0x08
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -111,17 +117,17 @@ void CMinionSpawner::Main()
 {
     long distance = GFCharStringToInt(Me.GetDataString());
     if (distance == 0) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         distance = 10;
     }
     float range = (float)distance;
     while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), range)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->CreateEffect("SUMMON_CREATURE_SUMMON_EVIL", Me.GetPos(), "", 0.0f, false, false);
     Game->Pause(0.2f);

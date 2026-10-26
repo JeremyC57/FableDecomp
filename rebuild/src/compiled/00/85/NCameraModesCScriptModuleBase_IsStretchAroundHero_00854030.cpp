@@ -81,7 +81,8 @@ class CThing { public:
         }
         return false;
     }
-    CPlayer* GetPlayer();                            // 0x004C7A10 (CThingCreatureBase::GetPlayer)
+public:
+    const CPlayer& PeekPlayer() const;   // 0x004C7A10
 };
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -140,7 +141,7 @@ bool CScriptModuleBase::IsStretchAroundHero() const
             return true;
     }
     if (GetPThingOrigin() && !GetPThingOrigin()->IsDead() && GetPThingOrigin()->m_type == 2
-        && GetPThingOrigin()->GetPlayer()->IsMainPlayer())
+        && GetPThingOrigin()->PeekPlayer().IsMainPlayer())
         return true;
     return false;
 }

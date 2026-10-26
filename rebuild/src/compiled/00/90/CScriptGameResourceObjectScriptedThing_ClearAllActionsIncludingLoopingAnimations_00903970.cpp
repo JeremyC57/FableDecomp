@@ -9,7 +9,7 @@
 // `this` uses engine/CScriptGameResourceObjectScriptedThing.h (PThing reached through a local view).
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
-struct CThing_Retail {
+class CThing_Retail { public:
     unsigned char  _pad00[0x6c];
     unsigned char  m_flags;                        // +0x6c
     unsigned char  _pad6d[0x24];
@@ -19,10 +19,21 @@ struct CThing_Retail {
     void FinishCurrentAction();                    // 0x00662650
     void ReleaseLoopingAnimation();                // 0x006633A0
 };
-struct CIntelligentPointer_Retail {
-    virtual void v00();
-    void* m_pItem;
-    CThing_Retail* GetPItem();                     // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CScriptGameResourceObjectScriptedThing_Methods : CScriptGameResourceObjectScriptedThing {
@@ -31,7 +42,7 @@ struct CScriptGameResourceObjectScriptedThing_Methods : CScriptGameResourceObjec
 
 void CScriptGameResourceObjectScriptedThing_Methods::ClearAllActionsIncludingLoopingAnimations()
 {
-    CIntelligentPointer_Retail* thing = (CIntelligentPointer_Retail*)PThing;
+    CIntelligentPointer<CThing_Retail>* thing = (CIntelligentPointer<CThing_Retail>*)PThing;
     if (thing->GetPItem()) {
         if (!thing->GetPItem()->m_dead) {
             if (thing->GetPItem()->m_flags & 8) {

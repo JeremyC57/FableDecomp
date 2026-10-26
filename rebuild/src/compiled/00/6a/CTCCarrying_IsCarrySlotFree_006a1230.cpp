@@ -11,10 +11,16 @@
 //   `xor al,al`, a present one `GetPItem() == 0` as `neg ; sbb ; inc` (a bool built from the pointer test).
 class CThing;
 
-struct CBaseIntelligentPointer {                    // 8 bytes: vptr, item block
-    void* m_vtable;
-    void* m_pBlock;
-    CThing* GetPItem() const;                       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 struct SCarrySlotEntry {                            // pair<long, CIntelligentPointer<CThing>>, 12 bytes

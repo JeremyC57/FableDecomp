@@ -33,9 +33,10 @@ struct CInstantiatedDefInfo {
 class CDefinitionManager { public:
     unsigned char          _pad[0xa4];             // +0x00 vptr, maps, symbol tables, compressed data
     CInstantiatedDefInfo** InstantiatedDefs;       // +0xa4 CArray<CInstantiatedDefInfo*>::m_begin
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
     void LoadDef(unsigned long globalIndex);                   // 0x009AD6E0
     CDefPointer GetPDefFromInstantiationName(const CCharString& name);
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 
 CDefPointer CDefinitionManager::GetPDefFromInstantiationName(const CCharString& name)

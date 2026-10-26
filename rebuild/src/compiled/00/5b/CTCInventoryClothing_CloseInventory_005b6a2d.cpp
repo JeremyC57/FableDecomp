@@ -18,7 +18,7 @@ struct CMorphPrimitiveHandleMap {                                // retail std::
     unsigned long m_spare;
     void clear();                                                // 0x004E4108
 };
-struct CTCInventoryClothing_Retail {
+class CTCInventoryClothing { public:
     unsigned char            _pad_0x000[0x58];
     bool                     InventoryOpen;                      // +0x058 (CTCInventoryBase)
     unsigned char            _pad_0x059[0xF3];
@@ -28,7 +28,7 @@ struct CTCInventoryClothing_Retail {
     void ClearClothingMenuEntries();                             // 0x005B432C
     void CloseInventory();
 };
-void CTCInventoryClothing_Retail::CloseInventory()
+void CTCInventoryClothing::CloseInventory()
 {
     MorphPrimitiveHandles.clear();
     UseMannequin = false;

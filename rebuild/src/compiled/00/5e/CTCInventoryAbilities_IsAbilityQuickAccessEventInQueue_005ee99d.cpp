@@ -3,7 +3,7 @@
 // Retail 0x005EE99D, 254 bytes, `ret 4`. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: GetAbilityPDef(EHeroAbility) const 0x005EDFD9 (counted CDefPointer by value, built in the dead `ability`
 // argument slot), std::bitset::test 0x00410DE0 + the const CVectorMap::LowerBound 0x004365B0 (inline GetInterface for the
-// inventory component 0x11), CTCBase::GetPlayerManager() const 0x00686D50, CPlayerManager::GetMainPlayer() const
+// inventory component 0x11), CTCBase::PeekPlayerManager() const 0x00686D50, CPlayerManager::GetMainPlayer() const
 // 0x00449960, CPlayer::GetPlayerNumber 0x00487510, the main game component's (0x013B86A0) game player interface
 // getter 0x00416359, CGamePlayerInterface::IsAssignableSpecialMoveButtonInQueue(long, EInputButtonEventType, long)
 // 0x004460C0, the def's slot 1 on release.
@@ -94,13 +94,24 @@ struct CAbilityVector {                              // STLport vector<SAbilityE
     SAbilityEntry* _M_end_of_storage;
     const SAbilityEntry& operator[](unsigned long n) const { return *(_M_start + n); }
 };
-class CTCInventoryAbilities { public:
+class CTCBase
+{
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryAbilities : public NInventory::CTCInventoryBase { public:
     void* __vftable;
     CThing* ParentThing;                             // +0x04
     unsigned char _pad_0x08[0x160 - 0x08];
     CAbilityVector Abilities;                        // +0x160 (PDB +0x180)
     CDefPointer<CHeroAbilityDef> GetAbilityPDef(EHeroAbility ability) const;   // 0x005EDFD9
-    const CPlayerManager* GetPlayerManager() const;  // 0x00686D50 (CTCBase)
     bool IsAbilityQuickAccessEventInQueue(EHeroAbility ability);
 };
 
@@ -127,7 +138,7 @@ bool CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue(EHeroAbility abilit
                         break;
                     if (data[i] == item &&
                         GetMainGameComponent()->GetGamePlayerInterface()->IsAssignableSpecialMoveButtonInQueue(
-                            i, 2, GetPlayerManager()->GetMainPlayer()->GetPlayerNumber()))
+                            i, 2, PeekPlayerManager().GetMainPlayer()->GetPlayerNumber()))
                         return true;
                 }
             }

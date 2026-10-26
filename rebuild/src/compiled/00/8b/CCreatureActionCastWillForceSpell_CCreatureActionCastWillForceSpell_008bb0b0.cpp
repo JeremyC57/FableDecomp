@@ -1,7 +1,7 @@
 // CCreatureAction_CastWillForceSpell::CCreatureAction_CastWillForceSpell(CThingCreatureBase*, CThing*) -- will-spell combat action on a target (action code 150, silent sound pair): not immediate, not one-anim, level -1, animation "WILL_CAST_FORCE_SPELL_INTO"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BB0B0, length 119 bytes, `ret 8`. Vtable 0x0127B50C.
 // Callees: CCombatActionBase::CCombatActionBase(owner, target, actionCode, const CSoundPair&) @ 0x00857F30,
-//          CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName @ 0x008574D0
+//          CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0
 //          (manifest label "CTCInGameMenu::SetPDef" is propagated), CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the CSoundPair temporary is zeroed by its inline constructor from ebx, which also serves the two bool
 //   initialisers after the vtable store (ImmediateCast, OneAnimCast) -- the landed CastBattleCharge shape; LevelToCast
@@ -28,7 +28,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetAnimationName(const CCharString& name);                                                            // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_CastWillForceSpell : public CCombatActionBase { public:   // vtable 0x0127B50C
@@ -47,6 +48,6 @@ CCreatureAction_CastWillForceSpell::CCreatureAction_CastWillForceSpell(CThingCre
 {
     {
         CCharString name("WILL_CAST_FORCE_SPELL_INTO", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
 }

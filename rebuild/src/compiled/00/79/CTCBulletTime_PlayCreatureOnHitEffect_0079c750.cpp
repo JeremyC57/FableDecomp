@@ -74,7 +74,13 @@ class CWorld { public:
     CWorldEffects* PEffects;                    // +0x18
 };
 
-class CTCBulletTime {
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCBulletTime : public CTCBase {
 public:
     void*         __vftable;                    // +0x00 (CTCBase)
     CThing*       ParentThing;                  // +0x04
@@ -83,15 +89,14 @@ public:
     unsigned char _pad24[0x44 - 0x24];
     CIntelligentPointer<CThing> HitCreatureBlur;   // +0x44
     void*         RadialBlurKey;                // +0x4c
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
     void PlayCreatureOnHitEffect(CThing* creature);
 };
 
 void CTCBulletTime::PlayCreatureOnHitEffect(CThing* creature)
 {
     HitCreatureBlur = CIntelligentPointer<CThing>(creature);
-    CEnvironmentSpellEffectInterface* spellEffects = GetWorld()->PEffects->SpellEffects;
-    CRadialBlurManager* blurs = GetWorld()->PEffects->RadialBlurs;
+    CEnvironmentSpellEffectInterface* spellEffects = GetWorld().PEffects->SpellEffects;
+    CRadialBlurManager* blurs = GetWorld().PEffects->RadialBlurs;
     CThing* parent = ParentThing;
     if (HitCreatureBlur.GetPItem() == parent) {
         RadialBlurKey = blurs->AddRadialBlur(0, 0, PDef->DamageRadialBlur.ThresholdCol, PDef->DamageRadialBlur.Length,

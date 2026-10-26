@@ -61,7 +61,9 @@ class CTCHeroStats : public CTCHeroStatsDonor {
  public:                           // retail layout (PDB - 0x18 here)
 };
 
-struct CTCTavernGameCardBase {
+class CTCTavernGame
+{
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -77,6 +79,13 @@ struct CTCTavernGameCardBase {
     virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58();
     virtual void v59();
     virtual void ShuffleCards();                // slot 60
+public:
+    void GetHeroStats(CTCHeroStats**);   // 0x005EB4B0
+};
+
+struct CTCTavernGameCardBase : public CTCTavernGame {
+    virtual void EndRound();
+
     unsigned char _pad_0x04[0x1d];
     bool          GameWon;                      // +0x21
     unsigned char _pad_0x22[2];
@@ -94,7 +103,6 @@ struct CTCTavernGameCardBase {
     long          GameType;                     // +0x300
     long          CardOrder;                    // +0x304
     void GetCardDef(CDefPointer* out);          // 0x008F0B20
-    void GetHeroStats(CTCHeroStats** stats);    // 0x005EB4B0 (CTCTavernGame)
     void SetState(long state);                  // 0x005E9B20 (CTCTavernGame, ETavernGameStates)
 };
 struct CTCTavernGameCardSorting : CTCTavernGameCardBase {

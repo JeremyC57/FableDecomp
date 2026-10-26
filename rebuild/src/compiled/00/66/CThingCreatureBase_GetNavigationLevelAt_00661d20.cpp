@@ -14,12 +14,25 @@ class CWorldMap {
 public:
     long GetNavigationLayerAt(const C3DVector& pos, const CThing* ignore) const;   // 0x0063E590
 };
-class CThingCreatureBase {
+class CThing
+{
+protected:
+    const CWorldMap& PeekWorldMap() const;   // 0x004C79E0
+};
+class CThingPhysical : public CThing
+{
 public:
-    CWorldMap& GetWorldMap() const;                      // 0x004C79E0 (out of line)
+};
+class CThingGameObject : public CThingPhysical
+{
+public:
+};
+
+class CThingCreatureBase : public CThingGameObject {
+public:
     long GetNavigationLevelAt(const C3DVector& pos) const;
 };
 long CThingCreatureBase::GetNavigationLevelAt(const C3DVector& pos) const
 {
-    return GetWorldMap().GetNavigationLayerAt(pos, 0);
+    return PeekWorldMap().GetNavigationLayerAt(pos, 0);
 }

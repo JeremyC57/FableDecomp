@@ -45,10 +45,21 @@ class CTCLook { public:                           // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
 };
 
-struct CBaseIntelligentPointer {           // vtable + PData (8 bytes)
-    virtual void v00();
-    void* PData;
-    CThing* GetPItem() const;              // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
@@ -64,8 +75,8 @@ struct CModeStandBase : CModeBase {        // retail sizeof 0x68
 namespace NCreatureMode {
 struct CModeScreamerAggressive : CModeStandBase {
     unsigned char           Filter[0x0c];  // +0x68 CAnimFilterOfGroup
-    CBaseIntelligentPointer PEffect;       // +0x74
-    CBaseIntelligentPointer PTarget;       // +0x7c
+    CIntelligentPointer<CThing> PEffect;       // +0x74
+    CIntelligentPointer<CThing> PTarget;       // +0x7c
     void FrameUpdate();
 };
 }

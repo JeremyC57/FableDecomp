@@ -23,16 +23,23 @@ class CTCBase { public:
     long    m_baseWord;                            // +0x08
 };
 
-struct CBaseIntelligentPointer {
-    CBaseIntelligentPointer();                     // 0x00A01B10
-    ~CBaseIntelligentPointer();                    // 0x00A01C10
-    virtual void v00();
-    void* m_pItem;                                 // +0x04
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
-    virtual void v00();
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CDefBase {                                  // counted def: vptr, count at +4

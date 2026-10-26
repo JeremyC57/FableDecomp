@@ -13,12 +13,12 @@ struct CActiveFile
 void __fastcall ActiveFile_Dispatch(void* obj, void* arg);
 
 // cdecl free/delete at 0xbfea14
-void ActiveFile_Free(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 // this-in-ecx modeled as __fastcall(self, edx-unused)
 void __fastcall OnReadFinished(CActiveFile* self)
 {
     ActiveFile_Dispatch(self->field0, self->DstFileHandle);
     if (self->field0)
-        ActiveFile_Free(self->field0);
+        free(self->field0);
 }

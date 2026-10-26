@@ -32,8 +32,7 @@ public:
 };
 class CPersistContext {
 public:
-    void Transfer(long& value);                                  // 0x00431102
-    void Transfer(float& value);                                 // 0x00431061
+    template <class T> void Transfer(T& value);                                  // 0x00431102
     void Transfer(std::vector<CLensFlareElementDef >& value);    // 0x004769D0
 };
 class CSkyDef {

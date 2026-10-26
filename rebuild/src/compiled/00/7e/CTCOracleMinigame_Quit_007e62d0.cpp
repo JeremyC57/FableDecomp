@@ -105,8 +105,15 @@ struct CInputList {                             // std::list<EOracleMinigameInpu
         head->prev = head;
     }
 };
-class CTCOracleMinigame { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCOracleMinigame : public CTCBase { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[4];
     unsigned long CurrentText;                  // +0x0c
@@ -120,7 +127,6 @@ class CTCOracleMinigame { public:
     CInputList InputsPending;                   // +0xe0
     CThing* SpeechMarker;                       // +0xe4
     COracleMinigameDef* PDef;                   // +0xe8 CDefPointer<const COracleMinigameDef>
-    CPlayerManager* GetPlayerManager();         // 0x00686D40 (CTCBase)
     void SetText(unsigned long text);           // 0x007E6230
     void Quit();
 };
@@ -128,7 +134,7 @@ class CTCOracleMinigame { public:
 void CTCOracleMinigame::Quit()
 {
     Stage = 5;
-    CPlayer* player = GetPlayerManager()->GetMainPlayer();
+    CPlayer* player = GetPlayerManager().GetMainPlayer();
     if (player->GetCurrentMode() == 0x29)
         player->RemoveMode(0x29);
     InputsPending.clear();

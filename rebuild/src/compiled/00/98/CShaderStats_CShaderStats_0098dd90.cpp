@@ -13,7 +13,7 @@ extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
-    ~CBaseClass();                                 // 0x0099A2E0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
 };
 class CCharString { public:
     void* m_pData;

@@ -3,7 +3,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50; CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const 0x004365B0
 //   and non-const 0x0040F020 (interface 0x6F CTCInventoryAbilities = presence word 3 bit 15, `test ch,ch ; jns`);
 //   CTCInventoryAbilities::GetButtonAbilityIsSetTo 0x005EDF33, IsAbilityQuickAccessEventInQueue 0x005EE99D and the empty
-//   0x005EDCEF (descriptive name ClearQuickAccessState: a bare `ret`); CThing::GetPlayer 0x004C7A30, CPlayer::GetPlayerNumber
+//   0x005EDCEF (descriptive name ClearQuickAccessState: a bare `ret`); CThing::GetPlayer 0x004C7A30, CPlayer::GetJoystickDeviceNumber
 //   0x00487510, CMainGameComponent::GetGamePlayerInterface 0x00416359, CGamePlayerInterface::IsAssignableSpecialMoveButtonInQueue
 //   0x00445E90; g_pMainGameComponent 0x013B86A0.
 // Layout: Ego_r.pdb CWillButtonHelperTimer (56) with the retail 12-byte STLport vector: ButtonHeldDownTimer +0, WillAccumulatedLevel
@@ -18,7 +18,8 @@ class CBaseObject;
 class CTCBase;
 class CPlayer {
 public:
-    long GetPlayerNumber();                         // 0x00487510
+public:
+    long GetJoystickDeviceNumber() const;   // 0x00487510
 };
 class CGamePlayerInterface {
 public:
@@ -46,7 +47,6 @@ public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Flags91;                          // +0x91 (bit 0: dead / being removed)
-    CPlayer* GetPlayer();                           // 0x004C7A30
     __forceinline bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -69,6 +69,8 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->type ? end : it)->component;
     }
+public:
+    CPlayer& GetPlayer();   // 0x004C7A30
 };
 
 class CTCInventoryAbilities {
@@ -142,7 +144,7 @@ void CWillButtonHelperTimer::FrameUpdate()
                 abilities = (CTCInventoryAbilities*)creature->GetTC(0x6f);
             long button = -1;
             if ((!abilities->QuickAccessPending && abilities->GetButtonAbilityIsSetTo(MyAbility, &button)
-                 && GetMainGameComponent()->GetGamePlayerInterface()->IsAssignableSpecialMoveButtonInQueue(button, 2, PCreature->GetPlayer()->GetPlayerNumber()))
+                 && GetMainGameComponent()->GetGamePlayerInterface()->IsAssignableSpecialMoveButtonInQueue(button, 2, PCreature->GetPlayer().GetJoystickDeviceNumber()))
                 || (abilities->QuickAccessPending && abilities->IsAbilityQuickAccessEventInQueue(MyAbility))) {
                 ++ButtonHeldDownTimer;
                 if (WillAccumulatedLevel < CurMaxLevels

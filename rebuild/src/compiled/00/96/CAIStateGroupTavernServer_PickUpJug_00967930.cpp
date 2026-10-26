@@ -23,16 +23,24 @@ class CThing { public:
 };
 class CThingCreatureBase;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!p.GetPItem()->IsDead())
@@ -55,11 +63,11 @@ class CCharString { public:                            // 4 bytes: the shared st
 class CCreatureActionBase { public:                    // the action root (vptr + body up to the pointer member)
     virtual void v00();
     unsigned char _body[0xa8 - 4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 
 class CCreatureAction_PickUpThingAtTable : public CCreatureActionBase { public:   // retail sizeof 0xb4
-    CBaseIntelligentPointer PThing;             // +0xa8
+    CIntelligentPointer<CThing> PThing;             // +0xa8
     unsigned char _pad_0xb0[4];
     CCreatureAction_PickUpThingAtTable(CThingCreatureBase* owner, CThing* thing, const CCharString& animation, long mode);   // 0x008440C0
 };
@@ -86,7 +94,7 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_TavernServer : CAIStateGroupBase {
-    CBaseIntelligentPointer PJug;               // +0x14 CIntelligentPointer<CThingObject>
+    CIntelligentPointer<CThing> PJug;               // +0x14 CIntelligentPointer<CThingObject>
     void FreeBarPoint();                        // 0x00967110
     bool PickUpJug();
 };

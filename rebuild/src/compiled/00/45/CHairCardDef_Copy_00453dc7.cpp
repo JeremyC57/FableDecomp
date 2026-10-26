@@ -1,12 +1,12 @@
 
 #include "engine/CHairCardDef.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CHairCardBase {
-    void Copy(CHairCardDef* other);
+class CDefClassBase { public:
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
 void __fastcall CHairCardDef_Copy(CHairCardDef* self, int edx_dummy, CHairCardDef* other)
 {
     (void)edx_dummy;
-    reinterpret_cast<CHairCardBase*>(self)->Copy(other);
+    reinterpret_cast<CDefClassBase*>(self)->operator=(*(const CDefClassBase*)(other));
     self->HairObject = other->HairObject;
 }

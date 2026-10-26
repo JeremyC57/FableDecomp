@@ -7,17 +7,18 @@
 // Tiny-body shape `ForwardConstant` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CTarget {
-    void Method_0073ae10(long value);               // 0x0073AE10
+class CTCCreatureModeManager { public:
+public:
+    bool AddMode(unsigned long);   // 0x0073AE10
 };
 
 struct CAIStateGroup_MinionBehaviourSad {
     unsigned char _pad[0x24];
-    CTarget* m_pObject;                    // +0x24
+    CTCCreatureModeManager* m_pObject;                    // +0x24
     void OnActivateLeaf();
 };
 
 void CAIStateGroup_MinionBehaviourSad::OnActivateLeaf()
 {
-    m_pObject->Method_0073ae10(20);
+    m_pObject->AddMode(20);
 }

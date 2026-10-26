@@ -28,7 +28,8 @@ class CCharString { public:
 };
 class CScriptBase { public:
     unsigned char _body[0x40];
-    bool IsActiveThreadTerminating() const;        // 0x00CB7940
+public:
+    bool IsActiveThreadTerminating();   // 0x00CB7940
 };
 namespace NScript {
 class CV_ChapelOfEvilScript : public CScriptBase {

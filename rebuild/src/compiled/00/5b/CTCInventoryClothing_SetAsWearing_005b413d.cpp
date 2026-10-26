@@ -72,8 +72,9 @@ __declspec(noinline) bool CThingObjectDef::GetSubDef(CDefPointer<CAppearanceModi
 }
 #pragma auto_inline(on)
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
     bool GetDef(long globalIndex, CDefPointer<CThingObjectDef>* out);   // 0x0042B040
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 void* FindDef_s7r_1();
 long TmplSink_s7_1(const void* self, long seen);   // stand-in: the work FindDef_s7r_1 does (outside the bytes graded here)

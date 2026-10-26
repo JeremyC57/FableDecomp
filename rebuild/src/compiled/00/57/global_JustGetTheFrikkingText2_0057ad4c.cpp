@@ -33,20 +33,23 @@ public:
 
 struct CCounted {
     virtual void v00();
-    virtual void Destroy();
-    long RefCount;
-    void DecRef() { --RefCount; }
+    virtual void Destroy() const;
+    mutable long RefCount;
+    void DecRef() const { --RefCount; }
     long GetRefCount() const { return RefCount; }
-    void Release()
+    void Release() const
     {
         DecRef();
         if (GetRefCount() == 0)
             Destroy();
     }
 };
-struct CTextEntry : CCounted {
+namespace NGameText {
+class CTextEntry : public CCounted { public:
     CWideString GetText() const;                            // 0x009C7A40
 };
+}
+using NGameText::CTextEntry;
 template <class T> class CIVCountedPointer { public:
     T* Data;
     __forceinline ~CIVCountedPointer()
@@ -58,10 +61,13 @@ template <class T> class CIVCountedPointer { public:
     }
     T* operator->() const { return Data; }
 };
-struct CDataBank {
-    unsigned long LookupValue(unsigned long crc);           // 0x009CC410
-    CIVCountedPointer<CTextEntry> GetPTextEntry(unsigned long id, bool flag) const;   // 0x009C9070
+namespace NGameText {
+class CDataBank { public:
+    unsigned long LookupValue(unsigned long crc) const;           // 0x009CC410
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long id, bool flag) const;   // 0x009C9070
 };
+}
+using NGameText::CDataBank;
 struct CWorldGlobal {
     unsigned char _pad00[0x14];
     CDataBank* PDataBank;                                   // +0x14

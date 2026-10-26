@@ -22,8 +22,9 @@ class CCharString { public:
 enum EPlayerMode { PLAYER_MODE_FIREHEART_MINIGAME = 0x2a };
 
 class CPlayer { public:
-    EPlayerMode GetCurrentMode();                           // 0x00633BE0
     void RemoveMode(EPlayerMode mode);                      // 0x00634190
+public:
+    EPlayerMode GetCurrentMode() const;   // 0x00633BE0
 };
 
 class CPlayerManager { public:
@@ -55,22 +56,28 @@ template <class T> struct CRetailVector {                   // STLport vector (1
 
 class CThing;
 
-class CTCFireheartMinigame { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCFireheartMinigame : public CTCBase { public:
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[0x4c - 0x08];
     bool          InSession;                                // +0x4c
     bool          ForceQuit;                                // +0x4d
     unsigned char _pad4e[0x8c - 0x4e];
     CRetailVector<CEnginePrimitiveHandle> Handles;          // +0x8c
-    CPlayerManager* GetPlayerManager();                     // 0x00686D40 (CTCBase)
     void Quit();
 };
 
 void CTCFireheartMinigame::Quit()
 {
     InSession = false;
-    CPlayer* player = GetPlayerManager()->GetMainPlayer();
+    CPlayer* player = GetPlayerManager().GetMainPlayer();
     if (player->GetCurrentMode() == PLAYER_MODE_FIREHEART_MINIGAME)
         player->RemoveMode(PLAYER_MODE_FIREHEART_MINIGAME);
     g_pPlayerGui->FireheartQuitPending = true;

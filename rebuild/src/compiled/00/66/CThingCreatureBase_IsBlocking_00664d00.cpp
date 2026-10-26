@@ -37,7 +37,7 @@ class CThing { public:
     CTCBase* GetTC(long kind) const { return m_tcs.Find(kind); }
 };
 
-struct CTCCombatBlocking {                      // component kind 0x30
+class CTCCombat { public:                      // component kind 0x30
     bool IsBlocking() const;                    // 0x007331E0
 };
 
@@ -48,6 +48,6 @@ class CThingCreatureBase : public CThing { public:
 bool CThingCreatureBase::IsBlocking() const
 {
     if (HasTC(0x30))
-        return ((CTCCombatBlocking*)GetTC(0x30))->IsBlocking();
+        return ((CTCCombat*)GetTC(0x30))->IsBlocking();
     return false;
 }

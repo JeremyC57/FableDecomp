@@ -15,7 +15,8 @@ public:
 };
 class CDisplayManager {
 public:
-    const C2DBoxF GetVVisibleTelevisionScreenArea() const;   // 0x009BECE0
+public:
+    C2DBoxF GetVVisibleTelevisionScreenArea() const;   // 0x009BECE0
 };
 class CSystemManager {
 public:

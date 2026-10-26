@@ -39,7 +39,7 @@ CCharString __fastcall operator+(const char* text, const CCharString& string);  
 
 class CBaseClass { public:
     virtual void v00();
-    ~CBaseClass();                          // 0x0099A2E0
+    virtual ~CBaseClass();                          // 0x0099A2E0
 };
 struct CStringParserCommentList {           // retail std::list<CStringParserCommentBoundaries>: sentinel only
     void* m_pHead;
@@ -64,10 +64,10 @@ class CParsedItem { public:                        // 12 bytes
     const CCharString& GetString();         // 0x009B9880
     const CCharString& GetSymbol();         // 0x009B9870
 };
-struct CConsole_Retail;
+class CConsole;
 class CConsoleInputBase { public:
     virtual void v00();
-    virtual void Execute(const CCharString& commandLine, CConsole_Retail* console);  // slot 1 (+0x04)
+    virtual void Execute(const CCharString& commandLine, CConsole* console);  // slot 1 (+0x04)
 };
 struct CInputPointer {                      // CCountedPointer<CConsoleInputBase>
     CConsoleInputBase* Object;
@@ -99,19 +99,20 @@ struct CBaseClassLine : CBaseClass {        // CConsoleCommandLine, vtable 0x012
     virtual void v00();
     CCharString GetEntry() const { return CurrentEntry; }
 };
-struct CConsole_Retail {
+class CConsole { public:
     virtual void v00();
     unsigned char  _maps[0x18];             // +0x04 KeyBindingMap, +0x10 StringBindingMap
     CBaseClassLine FrontCommandLine;        // +0x1c
     CBaseClassLine BackCommandLine;         // +0x2c
     CCharString    HelpBarString;           // +0x3c
     CInputMap      RegisteredConsoleInputs; // +0x40
-    void SendMessageToUser(const CCharString& message);     // 0x009EB260
     void RunCommandLine();
     __forceinline SInputNode* FindInput(const CCharString& key) { return RegisteredConsoleInputs.find(key); }
+public:
+    void SendMessageToUser(const CCharString&);   // 0x009EB260
 };
 
-void CConsole_Retail::RunCommandLine()
+void CConsole::RunCommandLine()
 {
     CStringParser parser(FrontCommandLine.GetEntry(), 0, CCharString(""), 0);
     CParsedItem item;

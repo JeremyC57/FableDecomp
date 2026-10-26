@@ -102,7 +102,7 @@ public:
 class CModeStandBase {
 public:
     virtual void v00();
-    ~CModeStandBase();                                      // 0x0073D860
+    virtual ~CModeStandBase();                                      // 0x0073D860
     unsigned char _pad04[0x68 - 0x04];
 };
 

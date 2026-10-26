@@ -22,10 +22,21 @@ class CThingCreatureBase : public CThing { public:
     unsigned char _pad11[0x1c0 - 0x11];
     C3DVector     Velocity;                     // +0x1C0
 };
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CWorldMap;
 class CGameDefinitionManager;
@@ -40,11 +51,11 @@ public:
     virtual void FinishAction();                // slot 4 (+0x10)
     virtual void FrameUpdate();                 // 0x00859D80
     unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;          // +0x08
+    CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0x0c];
     long                    CurrentFrame;       // +0x1C
     unsigned char           _pad20[0xa8 - 0x20];
-    CBaseIntelligentPointer PTarget;            // +0xA8
+    CIntelligentPointer<CThing> PTarget;            // +0xA8
     unsigned char           _padb0[0xdc - 0xb0];
     bool                    FinishWhenMoving;   // +0xDC
     unsigned char           _paddd[0x114 - 0xdd];   // retail sizeof(CCombatActionBase) = 0x114

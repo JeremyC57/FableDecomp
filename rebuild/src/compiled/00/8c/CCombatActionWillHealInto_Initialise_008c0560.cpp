@@ -15,7 +15,8 @@
 class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();                        // 0x00857520
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCombatAction_WillHealInto : public CCombatActionBase { public:
@@ -26,7 +27,7 @@ void CCombatAction_WillHealInto::Initialise()
 {
     {
         CCharString name("ST_HEAL_INTO", -1);       // a named local: a bare temporary would reuse the ctor's eax
-        SetAnimationName(name);            // instead of re-deriving `lea eax,[esp+4]` as retail does
+        SetCombatAnimation(name);            // instead of re-deriving `lea eax,[esp+4]` as retail does
     }
     CCombatActionBase::Initialise();
 }

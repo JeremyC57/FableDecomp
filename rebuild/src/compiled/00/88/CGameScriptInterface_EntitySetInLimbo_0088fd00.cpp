@@ -5,7 +5,7 @@ struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 class CWorld;
 struct CThingPhysics_Retail;
-struct CThing_Retail {
+class CThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -58,12 +58,13 @@ struct CThing_Retail {
     void SetCutscenePauseBehaviour(long behaviour);   // 0x004C78A0 (CThing)
     long GetSex();                                 // 0x00661FF0 (CThingCreatureBase; the label "CPixelShader::CountReferences" is propagated)
     void PreloadBasicAnimations();                 // 0x00663610 (CThingCreatureBase)
-    void SetInLimbo(bool inLimbo);                 // 0x004C8CF0 (CThing)
+public:
+    void SetInLimbo(bool);   // 0x004C8CF0
 };
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
+    virtual CThing* GetThing() const;        // slot 11 (+0x2c)
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027();
     virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
@@ -88,7 +89,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::EntitySetInLimbo(const CScriptThing& thing, bool inLimbo, bool keepScript) const
 {
-    CThing_Retail* t = thing.GetThing();
+    CThing* t = thing.GetThing();
     if (t && !t->m_dead) {
         t->SetInLimbo(inLimbo);
         t->m_limboKeepsScript = inLimbo && keepScript;

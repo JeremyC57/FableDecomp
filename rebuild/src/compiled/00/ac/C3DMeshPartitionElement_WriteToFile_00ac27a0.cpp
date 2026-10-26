@@ -26,9 +26,10 @@ class C3DBoundingSphere { public:
 };
 
 class CDataOutputStream { public:
-    void WriteBool(bool value);            // 0x00993E30
-    void WriteLong(long value);            // 0x00993EB0
     void WriteFloat(float value);          // 0x00993EE0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 class C3DMeshPartitionElement { public:
@@ -52,13 +53,13 @@ void C3DMeshPartitionElement::WriteToFile(CDataOutputStream& out) const
     out.WriteFloat(BoundingSphere.GetCenter().Y);
     out.WriteFloat(BoundingSphere.GetCenter().Z);
     out.WriteFloat(BoundingSphere.GetRadius());
-    out.WriteLong(StartTriangle);
-    out.WriteLong(TriangleCount);
+    out.WriteSLONG(StartTriangle);
+    out.WriteSLONG(TriangleCount);
     if (SubElements[0]) {
-        out.WriteBool(true);
+        out.WriteEBOOL(true);
         SubElements[0]->WriteToFile(out);
         SubElements[1]->WriteToFile(out);
     }
     else
-        out.WriteBool(false);
+        out.WriteEBOOL(false);
 }

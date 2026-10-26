@@ -1,4 +1,7 @@
+class CThingGameObject {
+public:
+    virtual ~CThingGameObject();   // 0x00838A00
+};
 struct C {};
 extern int g_vtbl;
-extern void __fastcall base_dtor(C*);
-void __fastcall Dtor(C* village){ *(void**)village = &g_vtbl; base_dtor(village); }
+void __fastcall Dtor(C* village){ *(void**)village = &g_vtbl; ((CThingGameObject*)(village))->CThingGameObject::~CThingGameObject(); }

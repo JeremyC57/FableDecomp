@@ -77,6 +77,9 @@ class CWorld { public:
     unsigned char         _pad_0x20[0x18];
     CGameScriptInterface* PGameScriptInterface;      // +0x38 scoped_ptr<CGameScriptInterface>
     CGameScriptInterface* GetGameScriptInterface() const { return PGameScriptInterface; }
+
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 
 class CThingPlayerCreature : public CThing { public:};
@@ -84,7 +87,8 @@ class CPlayer { public:
     CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                  // 0x00449960
+public:
+    const CPlayer& GetMainPlayer() const;   // 0x00449960
 };
 
 class CTCHeroOpinionDeedLog { public:
@@ -106,7 +110,7 @@ struct CDefinitionHolder {
 };
 
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
+                 // 0x0049D870
 extern float g_DrunkennessSoberRate;                 // 0x0137CBD8
 extern long g_framesPerSecond;                       // 0x01375550
 
@@ -153,18 +157,18 @@ void CTCHeroStats::ProcessDrunkenness()
         long fps = g_framesPerSecond;
         FrameToVomit = (GetHeroStatsDef()->MinSecondsToVomit +
                         GFRandom(GetHeroStatsDef()->MaxSecondsToVomit - GetHeroStatsDef()->MinSecondsToVomit + 1,
-                                 GetPRandomSeed())) * fps + GFGetCurrentFrame();
+                                 GetPRandomSeed())) * fps + CWorld::GetFrame();
     }
-    if (FrameToVomit != -1 && FrameToVomit < GFGetCurrentFrame())
+    if (FrameToVomit != -1 && FrameToVomit < CWorld::GetFrame())
         Vomit();
     if (FrameEndVomit != 0)
         Drunkenness -= GetHeroStatsDef()->VomitSoberAmount / g_framesPerSecond;
     if (Drunkenness < 0.0f)
         Drunkenness = 0.0f;
-    if (DeedHandle != -1 && GFGetCurrentFrame() > FrameEndVomit) {
+    if (DeedHandle != -1 && CWorld::GetFrame() > FrameEndVomit) {
         DeedHandle = -1;
         FrameEndVomit = 0;
-        CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer()->GetPPlayerCharacter();
+        CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer().GetPPlayerCharacter();
         if (hero) {
             CTCHeroOpinionDeedLog* log;
             if (hero->GetInterface(&log, 0x51))

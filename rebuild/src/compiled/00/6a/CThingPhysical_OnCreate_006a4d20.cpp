@@ -16,8 +16,9 @@ class CTCBase;
 class CTCParamsBase;
 class CThing { public:
     virtual void v00();
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     unsigned char OnCreate();                                // 0x004C9560 (CThing's, called non-virtually)
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 class CThingPhysical : public CThing { public:
     virtual bool OnCreate();

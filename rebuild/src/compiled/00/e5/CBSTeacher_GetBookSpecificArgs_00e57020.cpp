@@ -9,6 +9,7 @@
 //   +0x18 (CQ_SunnyvaleMasterData: PostSavePosition +4, BanditCampTwinbladeKilled +0x3a, TeddySolution +0x54).
 #include <string.h>
 #pragma intrinsic(strcmp)
+namespace NScript { class CPredicateBase; }
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 #pragma pack(push, 1)
 struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
@@ -67,14 +68,19 @@ struct CQ_SunnyvaleMasterData {
 };
 class CScriptThing { public: void* vptr; void* PImp[2]; };
 struct CV_BookCollectingScript;
-class CBS_Teacher {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CBS_Teacher : public CEntityScriptBase {
 public:
     void*                    __vftable;                // +0x00
     CGameScriptInterface*    Game;                     // +0x04
     CScriptThing             Me;                       // +0x08
     CV_BookCollectingScript* ParentClass;              // +0x14
     CQ_SunnyvaleMasterData*  PMasterData;              // +0x18
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void GetBookSpecificArgs(long book, CTextArgMap& args);
 };
 

@@ -10,11 +10,14 @@
 #include <math.h>
 extern float         g_fEpsilon;                        // 0x0129BA3C
 extern long          g_FramesPerSecond;                 // 0x01375550 (descriptive)
-unsigned long GetCurrentFrame();                        // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                        // 0x0049D870
 __forceinline bool FramesExceed(const unsigned long& since, float seconds)
 {
     long fps = g_FramesPerSecond;
-    return (float)(GetCurrentFrame() - since) > (float)fps * seconds;
+    return (float)(CWorld::GetFrame() - since) > (float)fps * seconds;
 }
 template<class T> inline void ClampMin(T& v, const T& lo) { if (v < lo) v = lo; }
 template<class T> inline void ClampMax(T& v, const T& hi) { if (v > hi) v = hi; }
@@ -63,7 +66,7 @@ void CPlayerGui::UpdateStat(float value, float jumpThreshold, float step, float 
             return;
         }
         if (bar->FrameCurrentValueLastMoved == 0) {
-            bar->FrameCurrentValueLastMoved = GetCurrentFrame();
+            bar->FrameCurrentValueLastMoved = CWorld::GetFrame();
             return;
         }
         if (FramesExceed(bar->FrameCurrentValueLastMoved, settleTime)) {
@@ -71,7 +74,7 @@ void CPlayerGui::UpdateStat(float value, float jumpThreshold, float step, float 
             bar->UpdateRecentMax();
             if (fabs(bar->RecentMaxValue - bar->OldRecentMaxValue) < g_fEpsilon) {
                 if (bar->FrameFullyOpenedOn == 0) {
-                    bar->FrameFullyOpenedOn = GetCurrentFrame();
+                    bar->FrameFullyOpenedOn = CWorld::GetFrame();
                     return;
                 }
                 if (holdTime > 0.0f

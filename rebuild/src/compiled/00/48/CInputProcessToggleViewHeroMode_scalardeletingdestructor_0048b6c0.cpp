@@ -2,7 +2,6 @@
 // Retail 0x0048b6c0, __fastcall, returns this pointer.
 
 // operator delete @ 0xbfe9bc
-extern "C" void __cdecl eng_operator_delete(void* p);
 
 class CInputProcessToggleViewHeroMode
 { public:
@@ -15,6 +14,6 @@ void* CInputProcessToggleViewHeroMode::scalar_deleting_destructor(unsigned int f
 {
     this->lbp_scalar_dtor();
     if (flags & 1)
-        eng_operator_delete(this);
+        operator delete(this);
     return this;
 }

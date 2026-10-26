@@ -6,9 +6,10 @@
 // Layout: Ego_r.pdb CFadeinSummoner (40 bytes): ParentClass +0x14 (CQ_MinionCampScript*), MyAlpha +0x1c, AlphaGradient +0x20, AlphaMax +0x24
 // (as the landed Init 0x00D9F660). The parent's timer at retail +0x60 is ChantTimer (PDB +0x74: the retail quest-script base is 0x14 smaller).
 // Shape: every script query is guarded by IsDone (the script macro returns the default 0.0f); written as `if (time <= 0) {...} else
-// {...}` with each arm `if (IsDone()) return 0.0f; else return value;` -- the `> 0` test then branches forward to the timer arm
+// {...}` with each arm `if (IsActiveThreadTerminating()) return 0.0f; else return value;` -- the `> 0` test then branches forward to the timer arm
 // and the shared `return 0.0f` exit stays in the fall-through arm (an if/return without `else` moves it to the later arm);
 // `fild t ; fmul AlphaGradient ; fadd 0.12`.
+namespace NScript { class CPredicateBase; }
 struct CTimerManager {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -37,7 +38,13 @@ struct CQ_MinionCampScript {
     CTimer        ChantTimer;                 // +0x60 (retail)
 };
 
-class CFadeinSummoner {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CFadeinSummoner : public CEntityScriptBase {
 public:
     void*                __vftable;           // +0x00
     void*                Game;                // +0x04
@@ -47,19 +54,18 @@ public:
     float                MyAlpha;             // +0x1c
     float                AlphaGradient;       // +0x20
     bool                 AlphaMax;            // +0x24
-    bool IsDone();                            // 0x00F35B30
     float GetAlphaChange();
 };
 
 float CFadeinSummoner::GetAlphaChange()
 {
     if (ParentClass->ChantTimer.GetTime() <= 0) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return 0.0f;
         else
             return 0.02f;
     } else {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return 0.0f;
         else
             return AlphaGradient * ParentClass->ChantTimer.GetTime() + 0.12f;

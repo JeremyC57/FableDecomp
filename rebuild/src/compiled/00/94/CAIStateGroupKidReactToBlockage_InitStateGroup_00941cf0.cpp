@@ -15,8 +15,11 @@
 class CWorld;
 class CThingAICreature;
 
-long __fastcall GFGetCurrentFrame();                        // 0x0049D870
-unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                        // 0x0049D870
+long __fastcall GFROR13(unsigned long);      // 0x00497890
 extern long g_framesPerSecond;                              // 0x01375550
 
 class CAIStateGroupBase { public:
@@ -55,6 +58,6 @@ protected:
 
 void CAIStateGroup_KidReactToBlockage::InitStateGroup(const CWorld& world, CThingAICreature& creature)
 {
-    LastEndState = GFGetCurrentFrame();
+    LastEndState = CWorld::GetFrame();
     CurrentActivationMinInterval = (long)(g_framesPerSecond * 5.0f + (float)RandomFramesWithin(10.0f));
 }

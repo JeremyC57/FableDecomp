@@ -8,10 +8,11 @@
 // Shape: the landed CSummonerToKill::Main (0x00D83DC0) model: a scoped filter object (its vtable constant kept in ebx for both
 //          stores), the nested `Game->GiveThingBestEnemyTarget(Me, Game->GetHero())` (the outer vtable fetched before the inner
 //          call), then a frame loop on the parent's state that bails out when the script is done (the constant 4 in ebx).
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -76,8 +77,14 @@ class CGameScriptInterface { public:
     virtual void v445(); virtual void v446(); virtual void v447(); virtual void v448(); virtual void v449(); virtual void v450();
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target);   // slot 451 (+0x70c)
 };
-struct CIsThingAlive {                              // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                              // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -86,15 +93,20 @@ struct CDBSummonerParent {                         // the owning quest script (d
     unsigned char _body[0x48];
     long          m_state;                         // +0x48
 };
-class CDBSummoner {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CDBSummoner : public CEntityScriptBase {
 public:
     void*                 __vftable;               // +0x00
     CGameScriptInterface* Game;                    // +0x04
     CScriptThing          Me;                      // +0x08
     CDBSummonerParent*    ParentClass;             // +0x14
     void*                 PMasterData;             // +0x18
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -102,18 +114,18 @@ void CDBSummoner::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->Update();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     while (ParentClass->m_state != 4) {
         Game->Update();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->RemoveThing(Me, true, true);
 }

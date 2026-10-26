@@ -25,7 +25,6 @@ class CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC  current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14 bytes left in the current chunk
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {
@@ -43,6 +42,8 @@ class CDataInputStream { public:
         else
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 
 struct CChunkedFileRawDataChunk_Methods : CChunkedFileRawDataChunk {

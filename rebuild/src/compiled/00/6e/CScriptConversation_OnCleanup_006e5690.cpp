@@ -52,13 +52,24 @@ class CThing { public:
     }
 };
 
-struct CBaseIntelligentPointer {               // CIntelligentPointer<CThing>: 8 bytes
-    virtual void v00();
-    CThing* m_pItem;                           // +0x04
-    CThing* GetPItem() const;                  // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -68,12 +79,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 struct CRetailPointerVector {                  // retail vector<CIntelligentPointer<CThing> >: first, last, end of storage
-    CBaseIntelligentPointer* m_pFirst;
-    CBaseIntelligentPointer* m_pLast;
-    CBaseIntelligentPointer* m_pEnd;
-    CBaseIntelligentPointer* begin() const { return m_pFirst; }
+    CIntelligentPointer<CThing>* m_pFirst;
+    CIntelligentPointer<CThing>* m_pLast;
+    CIntelligentPointer<CThing>* m_pEnd;
+    CIntelligentPointer<CThing>* begin() const { return m_pFirst; }
     unsigned long size() const { return m_pLast - m_pFirst; }
-    CBaseIntelligentPointer& operator[](unsigned long index) const { return *(begin() + index); }
+    CIntelligentPointer<CThing>& operator[](unsigned long index) const { return *(begin() + index); }
 };
 
 class CTCTargetingBase { public:

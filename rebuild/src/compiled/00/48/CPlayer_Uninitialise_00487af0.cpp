@@ -15,18 +15,24 @@ class CThingPlayerCreature { public:
     void Kill(bool removeImmediately);             // 0x004C9B80 (CThing::Kill)
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThingPlayerCreature* PItem;                   // +0x04
-    CBaseIntelligentPointer();                     // 0x00A01B10
-    ~CBaseIntelligentPointer();                    // 0x00A01C10
-    CThingPlayerCreature* GetPItem() const;        // 0x00A01B50
-    void SetPItem(CThingPlayerCreature* item);     // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerPlayerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
-    virtual void v00();
-    CIntelligentPointerPlayerCreature(CThingPlayerCreature* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerPlayerCreature& operator=(const CIntelligentPointerPlayerCreature& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CInitBaseClass { public:
@@ -37,7 +43,7 @@ class CInitBaseClass { public:
 
 class CPlayer : public CInitBaseClass { public:                  // engine/CPlayer.h layout
     unsigned char                     _pad04[0x34 - 0x04];
-    CIntelligentPointerPlayerCreature PlayerCharacter;   // +0x34
+    CIntelligentPointer<CThingPlayerCreature> PlayerCharacter;   // +0x34
     void Uninitialise();
 };
 
@@ -46,7 +52,7 @@ void CPlayer::Uninitialise()
     if (IsInitialised() == true) {
         if (PlayerCharacter.GetPItem()) {
             PlayerCharacter.GetPItem()->Kill(false);
-            PlayerCharacter = CIntelligentPointerPlayerCreature(0);
+            PlayerCharacter = CIntelligentPointer<CThingPlayerCreature>(0);
         }
     }
     CInitBaseClass::Uninitialise();

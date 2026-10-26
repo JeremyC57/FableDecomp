@@ -5,7 +5,7 @@ class CSystemManager { public:
     bool IsApplicationActive();                    // 0x009A57B0
     bool HasInputFocus();                          // 0x009A4FB0 (`mov al,[ecx+0Ah]`; labelled "CTCInventoryBase::GetCanItemBeQuickAssigned")
 };
-CSystemManager* __cdecl GFGetSystemManager();      // 0x009A4EC0
+CSystemManager* __fastcall GFGetSystemManager();      // 0x009A4EC0
 struct CKeyboardDX {
     virtual void v000();
     virtual void v001();

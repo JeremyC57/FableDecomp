@@ -55,7 +55,8 @@ class CTCBase { public:
     CThing* ParentThing;                             // +0x04
     bool    ToBeRemoved;                             // +0x08
     bool    IsInGlobalUpdateTCs;                     // +0x09
-    CWorld* GetWorld();                              // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 
 class CTCHeroPodium : public CTCBase { public:
@@ -68,13 +69,13 @@ void CTCHeroPodium::FrameUpdate()
 {
     CThing* podium = ParentThing;
     const C3DVector& podiumPos = podium->GetPosition();
-    CThing* hero = GetWorld()->GetCurrentPlayer()->GetControlledCreature();
+    CThing* hero = GetWorld().GetCurrentPlayer()->GetControlledCreature();
     if (hero) {
         const C3DVector& heroPos = hero->GetPosition();
         float dx = podiumPos.X - heroPos.X;
         float dy = podiumPos.Y - heroPos.Y;
         bool onPodium = dx * dx + dy * dy < g_podiumRadiusSquared_0126a88c ? true : false;
-        CMessageEventManager* messages = GetWorld()->PMessageEventManager;
+        CMessageEventManager* messages = GetWorld().PMessageEventManager;
         CMessageEvent* message = messages->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x23));
         if (onPodium) {
             if (message == 0) {

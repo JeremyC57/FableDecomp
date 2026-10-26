@@ -1,12 +1,14 @@
 #pragma optimize("s", on)
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 extern void __fastcall DestructMember_0045645d(void* member);
-extern void __fastcall CRegionDef_Destruct(void* def);
-extern void __cdecl OperatorDelete(void* object);
 void* __fastcall CRegionDef_CompositeScalarDeletingDestructor(void* def, int, unsigned int flags)
 {
     DestructMember_0045645d(static_cast<unsigned char*>(def) + 80);
-    CRegionDef_Destruct(def);
+    ((CParentDefClassBase*)(def))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        OperatorDelete(def);
+        operator delete(def);
     return def;
 }

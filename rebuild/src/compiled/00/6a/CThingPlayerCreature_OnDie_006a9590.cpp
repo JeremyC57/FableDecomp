@@ -12,7 +12,8 @@ struct CWorldState {
 };
 
 class CTCVillage { public:
-    void ProcessCrimeDeeds();                            // 0x0065C2D0
+public:
+    void ClearCrimes();   // 0x0065C2D0
 };
 
 class CThingCreatureBase;
@@ -21,12 +22,26 @@ class CPlayer { public:
     unsigned char _pad00[0x3c];
     long          PlayerRespawnDelay;                             // +0x3c
     void        GlobalEventCreatureDied(CThingCreatureBase* creature);   // 0x0087C580
-    bool        IsMainPlayer();                          // 0x00487520
     CTCVillage* GetPNearestTCVillage();                  // 0x00488620
+public:
+    bool IsMainPlayer() const;   // 0x00487520
 };
 
-class CThingCreatureBase { public:
-    CPlayer*     GetPlayer();                            // 0x004C7A30 (CThing)
+class CThing
+{
+public:
+    CPlayer& GetPlayer();   // 0x004C7A30
+};
+class CThingPhysical : public CThing
+{
+public:
+};
+class CThingGameObject : public CThingPhysical
+{
+public:
+};
+
+class CThingCreatureBase : public CThingGameObject { public:
     CWorldState* GetWorldState();                        // 0x004C79A0
     void         OnDie();                                // 0x00663F50
 };
@@ -37,14 +52,14 @@ class CThingPlayerCreature : public CThingCreatureBase { public:
 
 void CThingPlayerCreature::OnDie()
 {
-    CPlayer* player = GetPlayer();
+    CPlayer* player = (&GetPlayer());
     player->GlobalEventCreatureDied(this);
     if (player->IsMainPlayer())
     {
         player->PlayerRespawnDelay = GetWorldState()->m_value80;
         CTCVillage* village = player->GetPNearestTCVillage();
         if (village)
-            village->ProcessCrimeDeeds();
+            village->ClearCrimes();
     }
     CThingCreatureBase::OnDie();
 }

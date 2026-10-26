@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CAIStateGroup_SeekPerceivedThing_Destruct(void* stateGroup);
-extern void __cdecl OperatorDelete(void* object);
+class CAIStateGroupBase {
+public:
+    virtual ~CAIStateGroupBase();   // 0x008FD288
+};
 void* __fastcall CAIStateGroup_SeekPerceivedThing_ScalarDeletingDestructor(void* stateGroup, int, unsigned int flags)
 {
-    CAIStateGroup_SeekPerceivedThing_Destruct(stateGroup);
+    ((CAIStateGroupBase*)(stateGroup))->CAIStateGroupBase::~CAIStateGroupBase();
     if (flags & 1)
-        OperatorDelete(stateGroup);
+        operator delete(stateGroup);
     return stateGroup;
 }

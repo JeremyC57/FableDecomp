@@ -26,7 +26,8 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 struct CDefStringTable {
-    CCharString GetString(long id);                     // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
 class CSpecialAbilitiesSummonSpellDef {
@@ -46,8 +47,9 @@ public:
 class CDefinitionManager {
 public:
     long GetGlobalIndexFromClassIndex(const CCharString& className, long classIndex) const;   // 0x009AD390
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
     template<class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0079BD10 for the summon-spell def
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager {
 public:

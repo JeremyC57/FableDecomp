@@ -1,5 +1,5 @@
 // NUISystem::CKeyRedefiner::OnHovered() -- CClickable hover handling, then switch to state 3 (hovered)
-// Retail 0x00557860, 22 bytes (vtable 0x0124ADBC slot 143). Callees: CClickable::OnHovered 0x0055AEB0, ChangeState (slot 48, +0xC0).
+// Retail 0x00557860, 22 bytes (vtable 0x0124ADBC slot 143). Callees: NUISystem::CClickable::OnHovered 0x0055AEB0, ChangeState (slot 48, +0xC0).
 // Name: Ego_r.pdb ?OnHovered@CKeyRedefiner@NUISystem@@MAEXXZ.
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -135,10 +135,11 @@ class CClickable : public CChangingStateComponent, public CHoverableBase { publi
  unsigned char _pad184[0x188 - 0x184];
  CActionList* PActionsOnRightClicked; // +0x188
  unsigned char _pad18c[0x194 - 0x18c];
- void OnHovered();                    // 0x0055AEB0
  void OnUnhovered();                  // 0x0055AEF0
  void OnLeftUnclicked();              // 0x0055ACF0
  void OnRightClicked();
+protected:
+    virtual void OnHovered();   // 0x0055AEB0
 };
 // STLport list<EGameAction>: one sentinel pointer, malloc/free node allocator, no size member.
 struct CGameActionList {

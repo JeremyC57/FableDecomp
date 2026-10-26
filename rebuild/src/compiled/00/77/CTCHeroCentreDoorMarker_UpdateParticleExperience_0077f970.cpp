@@ -2,7 +2,7 @@
 // Leaf: UpdateParticleExperience
 //
 // Retail 0x0077F970, 395 bytes (+5 int3 padding). Called from CTCHeroCentreDoorMarker::FrameUpdate @ 0x0077FB00 for door type 1.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCBase::GetWorld @ 0x00686A80 (twice, one per arm), CThing::Kill(bool)
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCBase::PeekWorld @ 0x00686A80 (twice, one per arm), CThing::Kill(bool)
 // @ 0x004C9B80, CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10, CCharString(const char*, long)
 // @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPosition @ 0x004C73D0, the `__fastcall` effect factory
 // Create(const CCharString&, const C3DVector&, bool) @ 0x006E0970, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020
@@ -53,20 +53,24 @@ class CTCDParticleEmitter {
 public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
-    virtual void v00();
-    void* PData;
-    CThing* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CThing* item);                        // 0x00A01B90
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
 public:
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& o) { SetPItem(o.GetPItem()); return *this; }
-    virtual void v00();
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 template <class P> inline bool IS_THING_ALIVE(const P& p) { return p.GetPItem() && !p.GetPItem()->Dead; }
 
@@ -79,7 +83,8 @@ public:
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    CWorld* GetWorld() const;                           // 0x00686A80
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 #pragma pack(push, 1)
 class CTCHeroCentreDoorMarker : public CTCBase {        // vtable 0x0126B044
@@ -96,11 +101,11 @@ public:
 void CTCHeroCentreDoorMarker::UpdateParticleExperience()
 {
     if (IS_THING_ALIVE(PParticle)) {
-        if (!GetWorld()->ExperienceSpendingEnabled) {
+        if (!PeekWorld().ExperienceSpendingEnabled) {
             PParticle.GetPItem()->Kill(true);
             PParticle = CIntelligentPointer<CThing>(0);
         }
-    } else if (GetWorld()->ExperienceSpendingEnabled) {
+    } else if (PeekWorld().ExperienceSpendingEnabled) {
         PParticle = CIntelligentPointer<CThing>(Create("EXPERIENCE_SPEND", ParentThing->GetPosition(), false));
         if (IS_THING_ALIVE(PParticle)) {
             CTCDParticleEmitter* emitter = 0;

@@ -12,6 +12,7 @@
 // Shape: CScriptThing's GetPos / GetDataString are inline virtuals (devirtualised on the locals, so expanded inline);
 //   the swap runs through a default-constructed temporary declared before the loop with the inline CCountedPointer
 //   copy-assign.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
 class CCharString { public:
@@ -64,7 +65,7 @@ class CBaseClass { public:                                 // polymorphic root (
 class CScriptThing : public CBaseClass { public:                  // vtable 0x01238C8C
  CCountedPointer PImp;
  CScriptThing() { }
- ~CScriptThing();                                   // 0x004AA840
+ virtual ~CScriptThing();                                   // 0x004AA840
  CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
  virtual void v1(); virtual void v2();
  virtual CCharString GetDataString() const { if (PImp.Data == 0) return g_EmptyString; return PImp.Data->GetDataString(); }   // slot 3
@@ -138,13 +139,18 @@ struct CQ_HangingTreeGoodScript {
  CScriptThing  TrackedThing;                        // +0x68
  void SpawnEnemies(const C3DVector& position, CCharString name, long count);   // 0x00D736B0
 };
-struct CHTG_AmbushPointBackup {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CHTG_AmbushPointBackup : public CEntityScriptBase {
  void* VTable;                                      // +0x00
  CGameScriptInterface* Game;                        // +0x04
  CScriptThing Me;                                   // +0x08
  CQ_HangingTreeGoodScript* ParentClass;             // +0x14
  void* PMasterData;                                 // +0x18
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CHTG_AmbushPointBackup::Main()

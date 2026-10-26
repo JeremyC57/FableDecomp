@@ -11,8 +11,9 @@ public:
 class CPersistContext {
 public:
     template <class T> void TransferVectorBinary(std::vector<T>& v);   // 0x0043318D for CActionInputControl
-    void TransferBool(bool& value);                      // 0x0043314A
+    template <class T> void Transfer(T& value);                      // 0x0043314A
 };
+template <> void CPersistContext::Transfer<bool>(bool& value);
 class CControlsDef {
 public:
     virtual void Transfer(CPersistContext& context);     // slot 0
@@ -28,18 +29,20 @@ public:
 void CControlsDef::Transfer(CPersistContext& context)
 {
     context.TransferVectorBinary(Controls);
-    context.TransferBool(ToggleZTarget);
-    context.TransferBool(ToggleSpells);
-    context.TransferBool(ToggleSneak);
-    context.TransferBool(ToggleExpressionMenu);
-    context.TransferBool(ToggleExpressionShift);
-    context.TransferBool(FlourishNeedsAttackButtonHeld);
+    context.Transfer(ToggleZTarget);
+    context.Transfer(ToggleSpells);
+    context.Transfer(ToggleSneak);
+    context.Transfer(ToggleExpressionMenu);
+    context.Transfer(ToggleExpressionShift);
+    context.Transfer(FlourishNeedsAttackButtonHeld);
 }
 
 class CActionInputControl { public: int x; };
 static int g_seq[8]; static int g_n; static void* g_vec;
 template <class T> void CPersistContext::TransferVectorBinary(std::vector<T>& v) { g_vec = &v; g_seq[g_n++] = -1; }
-void CPersistContext::TransferBool(bool& value) { g_seq[g_n++] = (int)value; value = !value; }
+template <> void CPersistContext::Transfer<bool>(bool& value_)
+{
+    bool& value = *(bool*)&value_; (void)&value; g_seq[g_n++] = (int)value; value = !value; }
 int main()
 {
     CControlsDef d; CPersistContext c;

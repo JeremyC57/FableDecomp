@@ -5,7 +5,7 @@ struct CActiveFile {
 };
 
 void __fastcall Helper_004dba86(CActiveFile* self);
-void __cdecl free(void*);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall OnReadFinished_9(CActiveFile* self)
 {

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BC290, 182 bytes (+ int3 padding), `ret 4` (thiscall).
 // Callers: four sites, 0x004FDF25 / 0x004FDFC6 / 0x00507A7A / 0x00507B6E (the world-map region load/save loops).
 // Callees: CPersistContext::CheckCRC @ 0x00404500 (the empty key "" @ 0x0122D70E, x3), CPersistTraits<bool>::
-//   TransferBinaryIn @ 0x00403EB0 (load), CDataOutputStream::WriteBool @ 0x00993E30 (save).
+//   TransferBinaryIn @ 0x00403EB0 (load), CDataOutputStream::WriteEBOOL @ 0x00993E30 (save).
 // Identity: Ego_r.pdb ?TransferGameState@CRegion@@QAEXAAVCPersistContext@@@Z.
 // Layout: Ego_r.pdb CRegion with the retail 12-byte STLport vectors/map (engine/CRegion.h keeps the PDB's 16-byte
 //   containers, so a local model is used): Maps +0, VisMaps +0xC, Name +0x18, DisplayName +0x1C, RegionDefName +0x20,
@@ -16,13 +16,14 @@
 // Label correction: the catalog `CGameState_TransferBoolFlags` is descriptive.
 class CMemoryDataInputStream;
 class CDataOutputStream { public:
-    void WriteBool(bool value);                         // 0x00993E30
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
 };
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<bool> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value);   // 0x00403EB0
-    static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteBool(value); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteEBOOL(value); }
 };
 class CPersistContext {
 public:

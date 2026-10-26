@@ -58,7 +58,9 @@ class CTCInventoryBase { public:                          // TC 0x11 / 0x12 / 0x
 };
 }
 class CPlayer { public: CThing* GetHeroThing(); };          // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); }; // 0x00449970
+class CPlayerManager { public: public:
+    CPlayer& GetMainPlayer();   // 0x00449970
+}; // 0x00449970
 class CWorld { public:
     unsigned char   _pad00[0xc];
     CPlayerManager* PlayerManager;                            // +0x0C
@@ -74,7 +76,7 @@ bool CWorld::AutoSaveCheckPoint()
 {
     MostRecentSaveType = 2;
     MostRecentSaveTypeBeforeManualSave = 2;
-    CThing* hero = PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
     if (hero && !hero->Dead)
     {
         if (hero->HasTC(0x11))

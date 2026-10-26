@@ -16,7 +16,7 @@ class CThing;
 class CBaseClass { public:
     CBaseClass();                                   // 0x0099A2D0
     virtual void v00();
-    ~CBaseClass();                                  // 0x0099A2E0 (non-virtual here: only the direct call is emitted)
+    virtual ~CBaseClass();                                  // 0x0099A2E0 (non-virtual here: only the direct call is emitted)
 };
 
 class CCPPointerInfo { public:

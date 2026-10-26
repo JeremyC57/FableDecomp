@@ -1,5 +1,4 @@
 #pragma optimize("s",on)
-extern void __cdecl engine_operator_delete(void *p);
 
 class CHeroMarriageDef { public:
     void *vptr;
@@ -11,6 +10,6 @@ void * CHeroMarriageDef::CHeroMarriageDef_scalar_deleting_destructor(unsigned in
 {
     this->real_dtor();
     if (flags & 1)
-        engine_operator_delete(this);
+        operator delete(this);
     return this;
 }

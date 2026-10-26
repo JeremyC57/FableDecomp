@@ -9,6 +9,7 @@
 // Shape: a positive remaining time or a finished script returns at once (both branch to the single `pop esi ; ret`);
 // the speech handle lives in ebx; each `Game->Slot(..., Game->GetHero())` is the plain nested call, so the outer
 // call's vtable is fetched into ebp BEFORE the inner call (`mov edx,ecx ; mov ebp,[edx]`).
+namespace NScript { class CPredicateBase; }
 class CCharString;
 class CScriptThing { public:
     unsigned char _body[0x0c];
@@ -86,7 +87,13 @@ class CTimer { public:
     long TimerIndex;                          // +0x00
 };
 
-class CBriarRose {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CBriarRose : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     CGameScriptInterface* Game;               // +0x04
@@ -99,7 +106,6 @@ public:
     long                  NumHitsBetweenForcePushes;   // +0x44
     CTimer                SpeechTimer;        // +0x48
     bool                  IsPlayingChantAnim; // +0x4c
-    bool IsDone();                            // 0x00F35B30
     void DoSpeech(const CCharString& line);
 };
 
@@ -107,7 +113,7 @@ void CBriarRose::DoSpeech(const CCharString& line)
 {
     if (g_pScriptTimerManager->GetTimer(SpeechTimer.TimerIndex) > 0)
         return;
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     long speech = Game->StartSpeech(Me, 0, 0);
     Game->SetSpeechListener(speech, Game->GetHero());

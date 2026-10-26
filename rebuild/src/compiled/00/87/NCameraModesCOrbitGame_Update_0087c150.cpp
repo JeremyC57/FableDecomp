@@ -1,7 +1,7 @@
 // NCameraModes::COrbitGame::Update() -- while the hero is playing a tavern game, take the coin-golf game's camera position and target into the camera's go-to and look-at positions (and clear the observed-position Z offset)
 // Leaf: Update
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087C150, 252 bytes, plain `ret`.
-// Callees: NCameraModes::CBase::GetWorld 0x0084D050, CWorld::GetMainPlayer 0x0049D9D0, CPlayer::GetHeroThing 0x00487DC0,
+// Callees: NCameraModes::CBase::GetWorld 0x0084D050, CWorld::PeekMyPlayer 0x0049D9D0, CPlayer::GetHeroThing 0x00487DC0,
 //   CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (two inlined unchecked out-parameter GetInterface lookups:
 //   CTCGamePlayer 0xd0, CTCTavernGameCoinGolf 0xcf), CTCGamePlayer::GetGame 0x005EDC90 (twice),
 //   CTCTavernGameCoinGolf::GetCamera(C3DVector&, C3DVector&) 0x007D3560.
@@ -54,7 +54,8 @@ class CPlayer { public:
     CThing* GetHeroThing() const;               // 0x00487DC0
 };
 class CWorld { public:
-    CPlayer* GetMainPlayer() const;             // 0x0049D9D0
+public:
+    const CPlayer* PeekMyPlayer() const;   // 0x0049D9D0
 };
 struct CPhysicsState {                          // retail 0x30 bytes
     C3DVector     Position;
@@ -85,7 +86,7 @@ struct COrbitGame : CBase {
 
 void COrbitGame::Update()
 {
-    CThing* hero = GetWorld().GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetWorld().PeekMyPlayer()->GetHeroThing();
     CTCGamePlayer* player;
     hero->GetInterface(&player, 0xd0);
     if (player && player->GetGame()) {

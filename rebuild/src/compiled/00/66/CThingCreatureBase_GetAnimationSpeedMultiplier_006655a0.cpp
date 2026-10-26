@@ -21,16 +21,17 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CBulletTime {
+class CBulletTimeManager { public:
     unsigned char _pad00[4];
     long          Frames;                       // +0x04
     unsigned char _pad08[4];
     bool          Active;                       // +0x0c
-    float GetTimeScale();                       // 0x004C5FA0
+public:
+    float GetBulletTimeSlowdownMultiplier() const;   // 0x004C5FA0
 };
 class CWorld { public:
     unsigned char _pad[0x68];
-    CBulletTime*  BulletTime;                   // +0x68
+    CBulletTimeManager*  BulletTime;                   // +0x68
 };
 class CThing {
 public:
@@ -80,7 +81,9 @@ class CTCHeroExperience { public:
     float GetMinStrikeSpeed();                                  // 0x006D6530
     float GetMaxStrikeSpeed();                                  // 0x006D6540
 };
-class CTCCarrying { public: CThing* GetThingInPrimarySlot(); };        // 0x006A1440
+class CTCCarrying { public: public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
+};        // 0x006A1440
 class CTCWeapon { public: float GetAnimationSpeedValue(); };           // 0x005DA850
 class CThingCreatureBase : public CThing {
 public:
@@ -142,9 +145,9 @@ float CThingCreatureBase::GetAnimationSpeedMultiplier()
             scale = maxSpeed;
         multiplier *= scale;
     }
-    CBulletTime* bulletTime = GetWorld()->BulletTime;
+    CBulletTimeManager* bulletTime = GetWorld()->BulletTime;
     if ((bulletTime->Active || bulletTime->Frames) && IsAffectedByBulletTime()) {
-        float timeScale = GetWorld()->BulletTime->GetTimeScale();
+        float timeScale = GetWorld()->BulletTime->GetBulletTimeSlowdownMultiplier();
         return sqrtf(multiplier / (timeScale * timeScale));
     }
     return sqrtf(multiplier);

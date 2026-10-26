@@ -8,7 +8,7 @@
 // Shape: the stepped seed is stored before the rotate and the rotated value stored again; the modulo is unsigned (`div`)
 // on the returned value, guarded by `range != 0` written as the taken arm (the `== 0` early return lays the zero
 // exit out first).
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed)
 {

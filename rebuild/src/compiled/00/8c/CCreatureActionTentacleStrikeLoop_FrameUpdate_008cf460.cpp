@@ -39,10 +39,21 @@ class CThing { public:
     }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 static inline bool IsThingAlive(const CThing* thing)    // one fetch for the null and dead tests
@@ -55,7 +66,7 @@ class CTCKraken { public:
 };
 class CTCKrakenTentacle { public:
     unsigned char           _pad[0x10];
-    CBaseIntelligentPointer PKraken;            // +0x10
+    CIntelligentPointer<CThing> PKraken;            // +0x10
 };
 
 class CCombatActionBase { public:
@@ -66,7 +77,7 @@ class CCombatActionBase { public:
     virtual void FinishAction();                // slot 4 (+0x10)
     virtual void FrameUpdate();                 // 0x00859D80
     unsigned char           _pad04[4];          // +0x04
-    CBaseIntelligentPointer PCreature;          // +0x08
+    CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];
     __forceinline CTCKrakenTentacle* GetTentacle() const
     {

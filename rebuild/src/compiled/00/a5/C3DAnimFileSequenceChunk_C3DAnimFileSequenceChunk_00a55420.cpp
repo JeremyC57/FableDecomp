@@ -29,7 +29,7 @@ struct CMatrixArray {                              // CArray<CMatrix3x4>
 class CChunkedFileSuperChunk { public:
     virtual void v00();
     unsigned char _body[0x28];                     // chunk type/parent, SubChunks, RegisteredSubChunkTypes, CurrentChunkIndex
-    ~CChunkedFileSuperChunk();                     // 0x00AA8490
+    virtual ~CChunkedFileSuperChunk();                     // 0x00AA8490
 };
 
 struct __declspec(novtable) C3DAnimFileSequenceChunk : CChunkedFileSuperChunk {

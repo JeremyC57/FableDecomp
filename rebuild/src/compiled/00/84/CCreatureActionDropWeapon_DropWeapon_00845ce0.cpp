@@ -220,9 +220,10 @@ public:
 };
 class CTCCarrying {
 public:
-    CThing* GetThingInCarrySlot(long slot);                                  // 0x006A11F0
     void RemoveThing(CThing* thing);                                         // 0x006A19B0
     void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);    // 0x006A1F80
+public:
+    CThing* GetThingInCarrySlot(long) const;   // 0x006A11F0
 };
 class CTCWeapon { public:
     bool IsMeleeWeapon() const;                       // 0x005DAA00

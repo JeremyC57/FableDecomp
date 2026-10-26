@@ -105,20 +105,28 @@ class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                  // +4
-    CBaseIntelligentPointer();                        // 0x00A01B10
-    ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
-    void SetPItem(CThing* item);                      // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { T* item = other.GetPItem(); SetPItem(item); return *this; }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -142,9 +150,9 @@ struct CModeStandBase : CModeBase {
 };
 struct CModeSummonerLightningOrb : CModeStandBase {
     unsigned char            _filter[0xc];            // +0x68 CAnimFilterOfGroup Filter
-    CIntelligentPointerThing PTarget;                 // +0x74
-    CIntelligentPointerThing PChargeEffect;           // +0x7c
-    CIntelligentPointerThing POrbChargeEffect;        // +0x84
+    CIntelligentPointer<CThing> PTarget;                 // +0x74
+    CIntelligentPointer<CThing> PChargeEffect;           // +0x7c
+    CIntelligentPointer<CThing> POrbChargeEffect;        // +0x84
     long                     Timer;                   // +0x8c
     virtual void OnActivate();
 };
@@ -158,7 +166,7 @@ void CModeSummonerLightningOrb::OnActivate()
     if (m_pThing->GetDef()->GetSubDef(&effects)) {
         long effect;
         if (effects->CalcAndLookup("LIGHTNING_ORB_CHARGE", &effect)) {
-            POrbChargeEffect = CIntelligentPointerThing(CreateSpecialEffect(effect, m_pThing->GetPosition(), false));
+            POrbChargeEffect = CIntelligentPointer<CThing>(CreateSpecialEffect(effect, m_pThing->GetPosition(), false));
             if (IS_THING_ALIVE(POrbChargeEffect)) {
                 CTCDParticleEmitter* emitter;
                 CThing* orb = POrbChargeEffect.GetPItem();
@@ -168,7 +176,7 @@ void CModeSummonerLightningOrb::OnActivate()
             }
         }
         if (effects->CalcAndLookup("LIGHTNING_CHARGE", &effect))
-            PChargeEffect = CIntelligentPointerThing(CreateSpecialEffect(effect, m_pThing->GetPosition(), false));
+            PChargeEffect = CIntelligentPointer<CThing>(CreateSpecialEffect(effect, m_pThing->GetPosition(), false));
     }
     m_pThing->AddTC("CTCElectrocuteOnTouch", true, 0);
     Timer = (long)(g_LightningOrbChargeSeconds * g_FramesPerSecond_0122ded4);

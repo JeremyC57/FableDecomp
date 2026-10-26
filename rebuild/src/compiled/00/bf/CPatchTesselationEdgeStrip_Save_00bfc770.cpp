@@ -7,8 +7,9 @@
 // Shape: the stream kept in edi; the words are zero-extended with `xor eax,eax ; mov ax,[esi+4]`, the bool with
 // `xor edx,edx ; mov dl,[esi+29h]`; each SaveVerts is a __fastcall member on the strip taking (array*, stream); `ret 4`.
 class CDataOutputStream { public:
-    void WriteBool(bool value);                    // 0x00993E30
     void WriteUShort(unsigned short value);        // 0x00993E80
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
 };
 
 template <class T>
@@ -39,7 +40,7 @@ void CPatchTesselationEdgeStrip::Save(CDataOutputStream* stream)
 {
     stream->WriteUShort(StartPos);
     stream->WriteUShort(Size);
-    stream->WriteBool(Vertical);
+    stream->WriteEBOOL(Vertical);
     SaveVerts(&Verts, stream);
     SaveVerts(&FanBaseVerts, stream);
     SaveVerts(&WaterVerts, stream);

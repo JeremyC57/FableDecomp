@@ -54,8 +54,9 @@ struct CTimingEventMultimap {                           // STLport multimap<CCha
 
 class CBaseObject { public:
     void* m_pFirstPointer;                              // +0x04
-    CBaseObject();                                      // 0x0099A380
-    virtual void v00();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 
 enum EAnimationType { ANIMATION_TYPE_NONE = 0 };

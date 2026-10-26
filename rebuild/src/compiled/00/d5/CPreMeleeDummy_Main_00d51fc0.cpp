@@ -8,6 +8,7 @@
 // Layout: Ego_r.pdb CPreMeleeDummy (0x1c): CEntityScriptBase vptr, Game +4, Me +8, ParentClass +0x14; the parent
 // CQ_GuildTrainingPreMeleeScript is PDB - 0x14 (PreMeleeMode +0x4c, DummyHits +0x50).
 // Shape: the calls on the member Me stay virtual; ebx is saved only after the first wait loop (retail shrink-wrap).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -95,7 +96,8 @@ class CEntityScriptBase { public:
     virtual ~CEntityScriptBase();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
 };
 struct CPreMeleeDummy : CEntityScriptBase {
     CQ_GuildTrainingPreMeleeScript* ParentClass;       // +0x14

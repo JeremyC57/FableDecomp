@@ -18,7 +18,6 @@ class CUserProfileManager { public:
     bool CameraFPBowYZInvertedNewProfile;           // +0xd2
     bool CameraPCBowXYInvertedNewProfile;           // +0xd3
     bool CameraPCBowYZInvertedNewProfile;           // +0xd4
-    void ApplyValues();                             // 0x00407370
     void Save();                                    // 0x0040A740
     void SetCameraFPBowYZInverted(bool inverted, bool save)
     {
@@ -39,6 +38,8 @@ class CUserProfileManager { public:
             Save();
     }
     void SetCameraBowYZInverted(bool inverted, bool save);
+protected:
+    void ApplyValues();   // 0x00407370
 };
 
 void CUserProfileManager::SetCameraBowYZInverted(bool inverted, bool save)

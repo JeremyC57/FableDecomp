@@ -142,12 +142,23 @@ CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool 
 long GFGetCurrentFrame();                             // 0x0049D870
 extern long g_LastBeamExplosionFrame;                 // 0x013BAF10
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;
-    CThing* GetPItem() const;                         // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!p.GetPItem()->IsDead())
@@ -169,9 +180,9 @@ class CTCKraken { public:
     unsigned char           _pad08[0x0c - 0x08];
     CKrakenDef*             PKrakenDef;               // +0x0c
     unsigned char           _pad10[0x20 - 0x10];
-    CBaseIntelligentPointer PTarget;                  // +0x20
+    CIntelligentPointer<CThing> PTarget;                  // +0x20
     unsigned char           _pad28[0x34 - 0x28];
-    CBaseIntelligentPointer PBeamWeaponEffect;        // +0x34
+    CIntelligentPointer<CThing> PBeamWeaponEffect;        // +0x34
     unsigned char           _pad3c[0x64 - 0x3c];
     long                    Mode;                     // +0x64
     CDefinitionManager* GetDefinitionManager();       // 0x006869D0

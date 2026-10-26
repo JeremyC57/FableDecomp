@@ -1,8 +1,9 @@
 // CMirroredTextureHighlightsChunk::WriteToFile(CDataOutputStream& stream) -- write the vertex index count then each index of TriangleVertexIndexList (begin +0x10, end +0x14) as a 4-byte word
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC4F50, length 59 bytes.
-// Callees: CDataOutputStream::WriteULong @ 0x00993EA0 (labelled WriteCBYTE, propagated; thiscall with one dword, `ret 4`). Vtable slot 8 of CMirroredTextureHighlightsChunk. Shape: the count in esi (signed pointer difference), the stream in ebp, an unsigned counted loop re-reading the begin pointer each pass, `ret 8` (a second, unused argument).
+// Callees: CDataOutputStream::WriteULONG @ 0x00993EA0 (labelled WriteCBYTE, propagated; thiscall with one dword, `ret 4`). Vtable slot 8 of CMirroredTextureHighlightsChunk. Shape: the count in esi (signed pointer difference), the stream in ebp, an unsigned counted loop re-reading the begin pointer each pass, `ret 8` (a second, unused argument).
 class CDataOutputStream { public:
-    void WriteULong(unsigned long value);          // 0x00993EA0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 class CMirroredTextureHighlightsChunk { public:
@@ -20,7 +21,7 @@ class CMirroredTextureHighlightsChunk { public:
 void CMirroredTextureHighlightsChunk::WriteToFile(CDataOutputStream& stream, long flags)
 {
     unsigned long count = m_pIndexEnd - m_pIndexBegin;
-    stream.WriteULong(count);
+    stream.WriteULONG(count);
     for (unsigned long i = 0; i < count; ++i)
-        stream.WriteULong(m_pIndexBegin[i]);
+        stream.WriteULONG(m_pIndexBegin[i]);
 }

@@ -78,6 +78,9 @@ public:
         return false;
     }
 };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};
 template<class T> struct vector {
     T* _M_start;
     T* _M_finish;
@@ -92,7 +95,8 @@ public:
     virtual void v00();
     void* Thing;
     unsigned char _pad08[4];
-    const CDefinitionManager* GetDefinitions() const;   // 0x006869D0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
 };
 class CTCHeroAttachableAppearanceModifiers : public CTCBase {
 public:
@@ -125,7 +129,7 @@ void CTCHeroAttachableAppearanceModifiers::UpdateHiddenModifiers()
             CDefPointer<const CAppearanceModifierDef> mod;
             if (!e->Visible)
                 continue;
-            if (!GetDefinitions()->GetDef(e->DefIndex, def))
+            if (!GetDefinitionManager().GetDef(e->DefIndex, def))
                 continue;
             if (def->GetSubDef(&mod)) {
                 unsigned long mask = mod->HideMask;
@@ -134,7 +138,7 @@ void CTCHeroAttachableAppearanceModifiers::UpdateHiddenModifiers()
                     for (CModifierEntry* l = lower._M_start; l != lower._M_finish; ++l) {
                         CDefPointer<const CDefinition> ldef;
                         CDefPointer<const CAppearanceModifierDef> lmod;
-                        if (!GetDefinitions()->GetDef(l->DefIndex, ldef))
+                        if (!GetDefinitionManager().GetDef(l->DefIndex, ldef))
                             continue;
                         if (ldef->GetSubDef(&lmod) && (lmod->HideMask & mask))
                             l->Visible = false;

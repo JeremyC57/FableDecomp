@@ -12,12 +12,12 @@
 // Non-virtual destructors keep the lander on the plain `??1` body (GOTCHAS). One of 9 bodies.
 #include "fable_string.h"
 
-struct CBase_009fc550 {
+class CResource { public:
     virtual void v00();
-    ~CBase_009fc550();                          // 0x009FC550
+    virtual ~CResource();                          // 0x009FC550
 };
 
-class CDefPointeeBase : public CBase_009fc550 { public:
+class CDefPointeeBase : public CResource { public:
     virtual void v00();
     ~CDefPointeeBase() { }                          // inline: inlined into every derived destructor
 };

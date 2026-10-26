@@ -2,7 +2,15 @@
 // Retail0x0091D190,270 bytes. GetApology91D0A0; player manager8FCF90,main player449970,hero487DC0;
 // RTTI pointers1237f1c/123e7d8 slot0 deleting dtors48a4f0/4d6915, genuine virtual base destructor.
 // intelligent pointer ctor/set A01B10/A01B90; speech981EA0; terminate8FCF40.
+#define CAIStateGroupBase CAIStateGroupBaseLayout
 #include "engine/CAIStateGroupBase.h"
+#undef CAIStateGroupBase
+
+class CAIStateGroupBase : public CAIStateGroupBaseLayout
+{
+public:
+    void Terminate();   // 0x008FCF40
+};
 #include "engine/CAIBrain.h"
 #include "engine/CTCEntityEvents.h"
 #include "engine/CPlayerManager.h"
@@ -34,7 +42,7 @@ struct CIntelligentCreature : CBaseIntelligentPointer { CIntelligentCreature(CTh
 extern CCharString g_ApologyAccepted; // 0x13BB684
 extern CCharString g_ApologyRejected; // 0x13BB688
 struct CAIStateGroup_MinionReactToApology : CAIStateGroupBase {
- CPlayerManagerMethods* GetPPlayerManager(); void Terminate();
+ CPlayerManagerMethods* GetPPlayerManager(); 
  long AIAction_SpeakAISpeechToTarget(long,CIntelligentCreature,CIntelligentConstThing,const CCharString&,bool,long);
  void Update();
 };

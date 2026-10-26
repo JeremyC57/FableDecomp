@@ -23,8 +23,9 @@ struct CRetailList_CountedPointer {
 class CTCCreatureModeManager { public:
     unsigned char              _pad[0xc];
     CRetailList_CountedPointer m_modes;            // +0x0c
-    void AddMode(long mode);                       // 0x0073AE10
     void ClearModes();
+public:
+    bool AddMode(unsigned long);   // 0x0073AE10
 };
 
 void CTCCreatureModeManager::ClearModes()

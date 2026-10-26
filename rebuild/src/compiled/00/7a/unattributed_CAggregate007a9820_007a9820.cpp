@@ -9,9 +9,8 @@
 // destructor (@ 0x0062E900) is reached by tail call. Member types are named from the destructor
 // labels when unique, else by the destructor address. The manifest label (`_Dest_val<...>` /
 // `~CSymbolInfo>_>`) is propagated. One of 19 bodies of this shape.
-struct CMember_0062e900 {
-    unsigned char _body[0x4];
-    ~CMember_0062e900();                            // 0x0062E900
+class CCombatActionBase { public:
+    virtual ~CCombatActionBase();                            // 0x0062E900
 };
 
 struct CMember_00a01c10 {
@@ -20,7 +19,7 @@ struct CMember_00a01c10 {
 };
 
 struct CAggregate_007a9820 {
-    CMember_0062e900 m_first;            // +0 (its destructor is the tail call)
+    CCombatActionBase m_first;            // +0 (its destructor is the tail call)
     unsigned char _gap0[0x110];
     CMember_00a01c10 m_114;            // +0x114
     CMember_00a01c10 m_11c;            // +0x11c

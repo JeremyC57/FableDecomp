@@ -117,8 +117,6 @@ struct CFrontendGameComponent : CGameComponent {           // vtables 0x01238768
 
     CFrontendGameComponent(CMainGameComponentParent* parent, long unused);
     virtual ~CFrontendGameComponent();
-    bool InitGraphics();                                   // 0x00494840
-    void PrepareWorldList();                               // 0x00495890 (mode 10)
     void SetMode(long mode)
     {
         Mode = mode;
@@ -126,7 +124,7 @@ struct CFrontendGameComponent : CGameComponent {           // vtables 0x01238768
         memset(String, 0, sizeof(String));
         StringPos = 0;
         if (Mode == 10) {
-            PrepareWorldList();
+            GetWorldNames();
             return;
         }
         if (mode == 11) {
@@ -140,6 +138,9 @@ struct CFrontendGameComponent : CGameComponent {           // vtables 0x01238768
             ProfileNamesOffset = 0;
         }
     }
+private:
+    bool InitGraphics();   // 0x00494840
+    void GetWorldNames();   // 0x00495890
 };
 
 CFrontendGameComponent::CFrontendGameComponent(CMainGameComponentParent* parent, long unused)

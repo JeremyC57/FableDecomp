@@ -14,8 +14,7 @@ struct CBaseClassNonCopyable {              // vtable 0x0129A7C4 (.?AVCBaseClass
     ~CBaseClassNonCopyable();               // 0x0099A300 (re-points to the CBaseClass vtable)
 };
 class CScriptThing { public:                       // vtable 0x01238C8C (.?AVCScriptThing@@)
-    void* _vptr;
-    ~CScriptThing();                        // 0x004AA840
+    virtual ~CScriptThing();                        // 0x004AA840
 };
 void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
 
@@ -33,7 +32,7 @@ void* __fastcall CActionSummonerLightningAttackTarget_CompositeScalarDeletingDes
 {
     CObject_00719120* object = static_cast<CObject_00719120*>(action);
     object->Member1c.~CBaseClassNonCopyable();
-    object->Memberc.~CScriptThing();
+    object->Memberc.CScriptThing::~CScriptThing();
     object->Member0.~CBaseClassNonCopyable();
     if (flags & 1)
         operator delete(object);

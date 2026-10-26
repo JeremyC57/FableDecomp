@@ -34,16 +34,16 @@ CWideString __fastcall operator+(const unsigned short* left, const CWideString& 
 CWideString __fastcall IntToWideString(long value);       // 0x00405F00
 
 struct CRefCounted {
-    unsigned long m_count;
-    void DecRef() { --m_count; }
+    mutable unsigned long m_count;
+    void DecRef() const { --m_count; }
     unsigned long GetRefCount() const { return m_count; }
 };
 struct CIVCountedVirtual {
-    virtual void Destroy(int flags);
-    virtual void Delete();                                 // slot 1
+    virtual void Destroy(int flags) const;
+    virtual void Delete() const;                                 // slot 1
 };
 class CIVCountedPointeeBase : public CIVCountedVirtual, public CRefCounted { public:
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -60,12 +60,12 @@ template <class T> class CIVCountedPointer { public:
     T* operator->() const { return Object; }
 };
 namespace NGameText {
-class CGroupEntry : public CIVCountedPointeeBase { public:
+class CTextEntry : public CIVCountedPointeeBase { public:
     CWideString GetText() const;                           // 0x009C7A40
 };
 class CDataBank { public:
     unsigned long LookupValue(unsigned long key) const;    // 0x009CC410
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
 }
 class CMainGameComponent { public:
@@ -120,7 +120,7 @@ void CTCBoastingPodium::OnHeroEnterBoastArea(long boastID, bool canAfford, CThin
         unsigned long entry = textBank->LookupValue(CCharString("TEXT_GUI_GOLD").GetCRC());
         if (entry) {
             NGameText::CDataBank* bank = g_pMainGameComponent->TextBank;
-            CWideString goldText = bank->GetPGroupEntry(entry, true)->GetText();
+            CWideString goldText = bank->GetPTextEntry(entry, true)->GetText();
             goldText += L": " + IntToWideString(boast->Cost);
             g_pPlayerGui->SubtitleRenderer.SetText(g_pMainGameComponent->Font, boast->Text, goldText, L"", L"", 0, 2.5f, false, true);
         }

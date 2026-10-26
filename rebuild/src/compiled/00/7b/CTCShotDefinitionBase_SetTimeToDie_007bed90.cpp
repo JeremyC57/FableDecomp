@@ -14,7 +14,10 @@
 // hoists the call and `fild`s the global afterwards; the rate has to be read into a named local first.
 
 extern long g_FramesPerSecond;                  // 0x01375550
-long GetWorldFrame();                           // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                           // 0x0049D870
 
 struct CTCShotDefinitionBase_Retail {
     void*         __vftable;                    // +0x00
@@ -27,5 +30,5 @@ struct CTCShotDefinitionBase_Retail {
 void CTCShotDefinitionBase_Retail::SetTimeToDie(float seconds)
 {
     long framesPerSecond = g_FramesPerSecond;
-    DieOnFrame = (long)(framesPerSecond * seconds + GetWorldFrame());
+    DieOnFrame = (long)(framesPerSecond * seconds + CWorld::GetFrame());
 }

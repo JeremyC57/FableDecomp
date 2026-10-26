@@ -1,6 +1,6 @@
 // CTCInventoryMap::FindQuestsForActiveRegion() -- rebuilds ActiveRegionQuestPositions: the marker position of every active quest that contains the active region (zero markers skipped)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FD0F0, length 224 bytes (+ int3 padding); speed TU (no frame pointer).
-// Callees: CTCBase::GetWorld() const @ 0x00686A80 (manifest "CViewBase::GetDisplayEngine" is propagated), CWorld virtual slot 13 (+0x34,
+// Callees: CTCBase::PeekWorld() const @ 0x00686A80 (manifest "CViewBase::GetDisplayEngine" is propagated), CWorld virtual slot 13 (+0x34,
 // PeekWorldMap), CWorldMap::GetRegion(long) @ 0x004FC180 (CRegion&), CQuestManager::CActiveQuest::ContainsRegion(const CRegion&) const
 // @ 0x004AFD80 (manifest "CHitParameters::IsDivineWrathStrike" is propagated), vector<C2DCoordI>::_M_insert_overflow(pos, x, __false_type,
 // n, bool) @ 0x00618550 (manifest "CVector_InsertRange"); the active-quest list is g_pQuestManager(0x013B89FC)->ActiveQuests (+0x38).
@@ -52,13 +52,14 @@ struct CCoordVector {                              // std::vector<C2DCoordI> (12
 };
 class CRegion;
 class CWorldMap { public:
-    CRegion& GetRegion(long index);                // 0x004FC180
+public:
+    const CRegion& GetRegion(long) const;   // 0x004FC180
 };
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();              // slot 12
-    virtual CWorldMap* PeekWorldMap();             // slot 13 (+0x34)
+    virtual CWorldMap* PeekWorldMap() const;             // slot 13 (+0x34)
 };
 struct CActiveQuest {                              // CQuestManager::CActiveQuest
     unsigned char _pad00[0x1c];
@@ -81,18 +82,29 @@ class CQuestManager { public:
     CActiveQuestList ActiveQuests;                 // +0x38
 };
 extern CQuestManager* g_pQuestManager;             // 0x013B89FC
-class CTCInventoryMap { public:
+class CTCBase
+{
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
     unsigned char _pad00[0x1dc];
     CCoordVector  ActiveRegionQuestPositions;      // +0x1dc
     unsigned char _pad1e8[0x238 - 0x1e8];
     long          ActiveRegionIndex;               // +0x238
-    CWorld* GetWorld() const;                      // 0x00686A80 (CTCBase)
     void FindQuestsForActiveRegion();
 };
 void CTCInventoryMap::FindQuestsForActiveRegion()
 {
     ActiveRegionQuestPositions.clear();
-    const CRegion& region = GetWorld()->PeekWorldMap()->GetRegion(ActiveRegionIndex);
+    const CRegion& region = PeekWorld().PeekWorldMap()->GetRegion(ActiveRegionIndex);
     CActiveQuestNode* node;
     CActiveQuest* quest;
     const CActiveQuestList& quests = g_pQuestManager->ActiveQuests;

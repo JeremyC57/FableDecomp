@@ -8,7 +8,9 @@ static CTCMapwho* g_order[4];
 static int g_n = 0;
 
 void __fastcall CTCMapwho_Method(CTCMapwho* self){ g_method++; g_order[g_n++]=self; }
-void CTCMapwho_FreeFn(CTCMapwho* p){ g_free++; g_order[g_n++]=p; }
+void __cdecl operator delete(void* p)
+{
+    CTCMapwho* p_c = (CTCMapwho*)p; (void)p_c; g_free++; g_order[g_n++]=p_c; }
 
 void __fastcall OnDie(CTCMapwho* self);
 

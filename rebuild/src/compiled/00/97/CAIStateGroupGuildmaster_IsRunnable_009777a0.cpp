@@ -20,17 +20,19 @@
 //   keeps `lea edi,[esi+18h]` (this of SetPItem) after the temporary's GetPItem call as retail; the inline expression form hoists it.
 class CThingCreatureBase;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThingCreatureBase* GetPItem() const;       // 0x00A01B50
-    void SetPItem(void* item);                  // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    virtual void v00();                         // one vtable per instantiation
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
@@ -38,6 +40,9 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
         SetPItem(item);
         return *this;
     }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CPlayer { public:
@@ -45,7 +50,8 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 
 class CCombatManager { public:
@@ -86,7 +92,7 @@ protected:
 
 bool CAIStateGroup_Guildmaster::IsRunnable()
 {
-    PEnemy = CIntelligentPointer<CThingCreatureBase>(GetPPlayerManager()->GetMainPlayer()->GetPCharacter());
+    PEnemy = CIntelligentPointer<CThingCreatureBase>(GetPPlayerManager()->GetMainPlayer().GetPCharacter());
     CThingCreatureBase* creature = PBrain->PCreature;
     CCombatManager* combat = GetPWorld()->m_pCombatManager;
     combat->RegisterCombatant(creature, PEnemy.GetPItem(), true);

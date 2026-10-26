@@ -35,7 +35,7 @@ class CCreatureActionBase { public:               // retail sizeof 0xa8
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    ~CCombatActionBase();                  // 0x0062E900
+    virtual ~CCombatActionBase();                  // 0x0062E900
 };
 class CCreatureAction_ForcePushOutOf : public CCombatActionBase { public:   // vtable 0x01286874, retail sizeof 0x118
     bool OnlyHitEnemies;                   // +0x114

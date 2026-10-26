@@ -1,8 +1,9 @@
 // CReadableDef::Copy @ 004e00a3
-class CDefClassBase { public: char pad[0x40]; };
+class CDefClassBase { public: char pad[0x40]; 
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
+};
 
 struct CReadableBase {
-    void Copy(CDefClassBase const* src); // __fastcall base at 0x431f10
 };
 
 class CReadableDef : public CReadableBase { public:
@@ -13,6 +14,6 @@ class CReadableDef : public CReadableBase { public:
 
 void __fastcall CReadableDef_Copy(CReadableDef* self, int /*edx*/, CDefClassBase const* src)
 {
-    self->CReadableBase::Copy(src);
+    ((CDefClassBase*)(self))->operator=(*(const CDefClassBase*)(src));
     self->UseInfoDisplay = ((const CReadableDef*)src)->UseInfoDisplay;
 }

@@ -3,7 +3,15 @@
 #include "engine/CAIBrain.h"
 #include "engine/CAIStateGroup_SeekEnemy.h"
 #include "engine/CThingAICreature.h"
+#define CTCPerceiveThing CTCPerceiveThingLayout
 #include "engine/CTCPerceiveThing.h"
+#undef CTCPerceiveThing
+
+class CTCPerceiveThing : public CTCPerceiveThingLayout
+{
+public:
+    bool IsAwareOfThing() const;   // 0x00643B3B
+};
 #include "engine/CTCBase.h"
 #include "engine/_quarantine/CThing.h"
 
@@ -52,7 +60,6 @@ struct CBaseIntelligentPointer {
 
 struct CTCPerceiveThingAccess : CTCPerceiveThing {
     CThing* GetPerceivedThing();                               // direct 0x007446a0 -> 0x00a01b50
-    bool IsAwareOfThing();                                     // 0x00643b3b
 };
 
 struct CThingNativeState : CThing {

@@ -6,18 +6,25 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (landed-trusted)
 inline void* operator new(unsigned int, void* p) { return p; }   // placement form: the null test on its result is what retail emits
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                       // +4
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    CBaseObject* GetPItem() const;              // 0x00A01B50
-    void SetPItem(CBaseObject* item);           // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-struct SValue_00783dd0 { long a, b; CIntelligentPointer m_target; };   // two words then the family-44 intelligent-pointer copy (inlined)
+struct SValue_00783dd0 { long a, b; CIntelligentPointer<CThing> m_target; };   // two words then the family-44 intelligent-pointer copy (inlined)
 struct SNode_00783dd0 {                     // 32 bytes: colour / parent / left / right, then the value
     unsigned char m_color; unsigned char _pad[3];
     SNode_00783dd0* m_pParent;

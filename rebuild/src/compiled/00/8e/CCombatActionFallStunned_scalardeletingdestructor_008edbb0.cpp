@@ -1,13 +1,16 @@
+class CCombatActionBase {
+public:
+    virtual ~CCombatActionBase();   // 0x0062E900
+};
 class CCombatAction_FallStunned { public:
     void* vftable;
 };
 
-void __fastcall CCombatAction_FallStunned_dtor(CCombatAction_FallStunned* action);
 void operator delete(void*);
 
 void* __fastcall CCombatAction_FallStunned_scalar_deleting_destructor(CCombatAction_FallStunned* action, int edx_unused, unsigned int flags)
 {
-    CCombatAction_FallStunned_dtor(action);
+    ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
     if (flags & 1)
         operator delete(action);
     return action;

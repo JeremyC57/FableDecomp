@@ -2,7 +2,7 @@
 // Leaf: GetValidTeleportPos
 // Retail 0x007AA9E0, 624 bytes, `ret 8` (hidden result + one argument). Callees: CIntelligentPointer::GetPItem
 // 0x00A01B50, CTCBase::GetWorld 0x00686A70 (virtual +0x34), CThing::GetPosition 0x004C73D0, the placement object's
-// virtual +0x118 (facing, by out pointer), CTCAssassinRush::FindValidTeleportPos 0x007AA880, C3DVector::RotateAboutZ
+// virtual +0x118 (facing, by out pointer), CTCAssassinRush::FindValidTeleportPos 0x007AA880, C3DVector::RotateXY
 // 0x00A14040, CThingCreatureBase::GetHeightZBelowAt 0x00666D40. Constants 1.0f 0x0122DED8, 1/36 0x0126C324.
 // Layout: Ego_r.pdb CTCAssassinRush (PDef +0x14, CollidedThing +0x39); retail CSpecialAbilitiesAssassinRushDef
 // distance +0x3c, size scale +0x40; CThing placement object +0x60 (its radius +0x34); the rusher's radius +0x34.
@@ -16,7 +16,8 @@ class C3DVector { public:
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
     C3DVector& operator*=(float f) { X *= f; Y *= f; Z *= f; return *this; }
-    void RotateAboutZ(float angle);                     // 0x00A14040
+public:
+    void RotateXY(float);   // 0x00A14040
 };
 struct CPlacement {
     virtual void v000();
@@ -129,14 +130,19 @@ struct CAssassinRushDef {
     float         SizeScale;                            // +0x40
 };
 #pragma pack(push, 1)
-class CTCAssassinRush { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCAssassinRush : public CTCBase { public:
     void*                   __vftable;                  // +0x00
     CThing*                 ParentThing;                // +0x04
     unsigned char           _pad08[0x14 - 0x08];
     CAssassinRushDef*       PDef;                       // +0x14
     unsigned char           _pad18[0x39 - 0x18];
     CBaseIntelligentPointer CollidedThing;              // +0x39
-    CWorld* GetWorld();                                 // 0x00686A70
     bool FindValidTeleportPos(const C3DVector& from, const C3DVector& to, CWorldMapRef* map, const CThing* rusher,
                               float scale);             // 0x007AA880
     C3DVector GetValidTeleportPos(const CThing* rusher);
@@ -146,7 +152,7 @@ class CTCAssassinRush { public:
 C3DVector CTCAssassinRush::GetValidTeleportPos(const CThing* rusher)
 {
     CThing* collided = CollidedThing.GetPItem();
-    CWorldMapRef* map = GetWorld()->GetWorldMap();
+    CWorldMapRef* map = GetWorld().GetWorldMap();
     float scale = PDef->SizeScale * rusher->Radius;
     if (scale < 1.0f)
         scale = 1.0f;
@@ -168,7 +174,7 @@ C3DVector CTCAssassinRush::GetValidTeleportPos(const CThing* rusher)
         }
         C3DVector temp;
         C3DVector back = -collided->Placement->GetFacing(&temp);
-        back.RotateAboutZ(angle);
+        back.RotateXY(angle);
         candidate = collided->GetPosition() + back * distance;
         if (++tries > 10) {
             candidate = fallback;

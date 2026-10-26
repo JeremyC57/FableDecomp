@@ -10,7 +10,22 @@
 //          group ducks while the cover and the enemy live, the hidden cover position stays within 1.0 of the creature (XY,
 //          a named float from fsqrt) and the group is still runnable; every exit terminates.
 // Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (pack(1): enemy +0x14, PCoverThing +0x1F) behind engine/CAIStateGroupBase.h.
+#define CAIStateGroup_CreatureUseCoverBase CAIStateGroup_CreatureUseCoverBaseLayout
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
+#undef CAIStateGroup_CreatureUseCoverBase
+
+class CAIStateGroupBase
+{
+public:
+    void Terminate();   // 0x008FCF40
+};
+class CAIStateGroup_EnemyCreatureBase : public CAIStateGroupBase
+{
+public:
+};
+class CAIStateGroup_CreatureUseCoverBase : public CAIStateGroup_EnemyCreatureBase, public CAIStateGroup_CreatureUseCoverBaseLayout
+{
+};
 
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
@@ -53,12 +68,23 @@ class CTCPerceiveThing { public:                       // interface 0x34
     CThing* GetPerceivedThing();                // 0x007446A0
     void SetAsDirectlyAwareOfPerceivedThing();  // 0x007449B0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -75,11 +101,11 @@ __forceinline bool IS_THING_ALIVE(CThing* const& thing)
     return false;
 }
 struct CIntelligentPointerVector {              // vector<CIntelligentPointer<CThing> > (retail: first, last, end of storage)
-    CBaseIntelligentPointer* first;
-    CBaseIntelligentPointer* last;
-    CBaseIntelligentPointer* endOfStorage;
+    CIntelligentPointer<CThing>* first;
+    CIntelligentPointer<CThing>* last;
+    CIntelligentPointer<CThing>* endOfStorage;
     unsigned long size() const { return (unsigned long)(last - first); }
-    void erase(CBaseIntelligentPointer* from, CBaseIntelligentPointer* to);   // 0x004AC0F0
+    void erase(CIntelligentPointer<CThing>* from, CIntelligentPointer<CThing>* to);   // 0x004AC0F0
     void clear() { erase(first, last); }
 };
 
@@ -92,15 +118,14 @@ class CAIBrain { public:
 struct CAIStateGroupCreatureFindCoverMethods : CAIStateGroup_CreatureUseCoverBase {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThing* GetCreature() const { return Brain()->PCreature; }
-    CBaseIntelligentPointer& Enemy() { return *(CBaseIntelligentPointer*)_pad_0x14; }
-    CBaseIntelligentPointer& Cover() { return *(CBaseIntelligentPointer*)PCoverThing; }
+    CIntelligentPointer<CThing>& Enemy() { return *(CIntelligentPointer<CThing>*)_pad_0x14; }
+    CIntelligentPointer<CThing>& Cover() { return *(CIntelligentPointer<CThing>*)PCoverThing; }
     bool GetHiddenCoverPosAndSetUpCoverThing(C3DVector& result);   // 0x00970CD0
     void SetFailedToFindCover();                // 0x00970590
     bool MoveIntoCover(C3DVector& pos);         // 0x009711D0
     bool DuckBehindCover(bool dive);            // 0x009713E0
     bool GetHiddenCoverPos(C3DVector& result, CThing* cover);   // 0x00970930
     bool IsStillRunnable();                     // 0x0097CB10
-    void Terminate();                           // 0x008FCF40
     void Update();
 };
 

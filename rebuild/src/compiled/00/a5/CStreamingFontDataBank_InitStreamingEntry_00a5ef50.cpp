@@ -59,12 +59,22 @@ template <class T> class CCountedPointer { public:
 class CSymbolMap;
 class CBankFileAsyncEntry;
 
-class CStreamingFontDataBank {
+class CBankFile
+{
 public:
     virtual void v00();
+public:
+    unsigned long FindIndexBySymbol(const CCharString&) const;   // 0x009CCDC0
+};
+class CBankFileAsync : public CBankFile
+{
+public:
+};
+
+class CStreamingFontDataBank : public CBankFileAsync {
+public:
     unsigned char                        _bank[0x184];  // CBankFileAsync part, StateBlock +0x164, Fonts +0x178, Filename +0x184
     CCountedPointer<CBankFileAsyncEntry> streamingEntry;   // +0x188
-    unsigned long FindIndexBySymbol(const CCharString& symbol) const;               // 0x009CCDC0 (CBankFile)
     CCountedPointer<CBankFileAsyncEntry> GetAsyncEntry(unsigned long index);       // 0x009D58D0 (CBankFileAsync)
     void InitStreamingEntry(CSymbolMap& symbols);
 };

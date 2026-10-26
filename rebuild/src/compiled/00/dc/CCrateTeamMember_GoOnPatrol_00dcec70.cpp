@@ -1,6 +1,6 @@
 // CCrateTeamMember::GoOnPatrol() -- an idle member (state 0) picks a patrol spot through the script interface (3 units out when its team is the parent script's current team, 1 unit otherwise, where the move flag is also cleared) unless it is out of action, then moves itself from its team's state-0 counter to state 1; a member already in another state only re-checks that it is out of action
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DCEC70, length 157 bytes (+ int3 padding).
-// Callees: CCrateTeamMember::IsOutOfAction @ 0x00F35B30 (bool: virtual slot 3's thing through 0x00CB7940; the manifest
+// Callees: CEntityScriptBase::IsActiveThreadTerminating @ 0x00F35B30 (bool: virtual slot 3's thing through 0x00CB7940; the manifest
 // "CCreatureAction_TrollWhackGroundBase::Initialise" label is propagated; a `jmp` tail call on the non-idle path), the script
 // interface at +4: virtual slot 70 (+0x118: float distance, bool flag -> a position handle), slot 229 (+0x394: a script thing and
 // the handle) and slot 238 (+0x3b8: a script thing and 0).
@@ -11,6 +11,7 @@
 // Layout: Ego_r.pdb CCrateTeamMember (60 bytes): vptr +0, the script interface +4 (unnamed), a CScriptThing +8 (unnamed),
 // ParentClass +0x14, PMasterData +0x18, CurrentAIState +0x1c, PreviousAIState +0x20, TeamID +0x24, MemberState +0x28, MyTeam +0x2c,
 // ThingToPatrolTo +0x30; CCrateTeamManager (landed 0x00CDB360): StateCounter[6] at +0.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                       // 12 bytes: vptr + counted pointer
     virtual void v00();
     void* PImp_Data;
@@ -71,8 +72,15 @@ struct CScriptInterface {                   // the game script API object at +4:
     virtual void SetThingMoveFlag(CScriptThing* thing, long flag);      // slot 238 (+0x3b8)
 };
 
-struct CCrateTeamMember {                   // Ego_r.pdb: 60 bytes
+class CEntityScriptBase
+{
+public:
     virtual void v00();
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CCrateTeamMember : public CEntityScriptBase {                   // Ego_r.pdb: 60 bytes
     CScriptInterface*          m_pScript;        // +0x04
     CScriptThing               m_thing;          // +0x08: this member's own thing
     CQ_OrchardFarmRaidScript*  ParentClass;      // +0x14
@@ -83,22 +91,21 @@ struct CCrateTeamMember {                   // Ego_r.pdb: 60 bytes
     long                       MemberState;      // +0x28
     CCrateTeamManager*         MyTeam;           // +0x2c
     CScriptThing               ThingToPatrolTo;  // +0x30
-    bool IsOutOfAction();                   // 0x00F35B30
     void GoOnPatrol();
 };
 
 void CCrateTeamMember::GoOnPatrol()
 {
     if (MemberState != 0) {
-        IsOutOfAction();                    // a non-idle member only re-checks itself (the tail call)
+        IsActiveThreadTerminating();                    // a non-idle member only re-checks itself (the tail call)
         return;
     }
     if (TeamID == ParentClass->m_currentTeamID) {
-        if (IsOutOfAction())
+        if (IsActiveThreadTerminating())
             return;
         m_pScript->SetPatrolTarget(&m_thing, m_pScript->FindPatrolPosition(3.0f, true));
     } else {
-        if (IsOutOfAction())
+        if (IsActiveThreadTerminating())
             return;
         m_pScript->SetPatrolTarget(&m_thing, m_pScript->FindPatrolPosition(1.0f, true));
         m_pScript->SetThingMoveFlag(&m_thing, 0);

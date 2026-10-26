@@ -8,7 +8,10 @@
 // the frame plus the member re-read from memory (`add eax,[esi+4Ch]`, the call clobbering the argument).
 // Layout: PDB WFDuration +0x4c, EndFrame +0x50 (sizeof 0x54) over the 0x4c-byte CScriptModuleBase;
 // the landed IsFinished 0x00851E50 compares the frame with EndFrame. No engine header exists.
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                 // 0x0049D870
 
 struct CScriptModuleBase {
     virtual void v00();
@@ -28,7 +31,7 @@ struct CScriptModuleSelfTerminateBase : CScriptModuleBase {   // vtable 0x012759
 CScriptModuleSelfTerminateBase::CScriptModuleSelfTerminateBase(long duration)
     : WFDuration(duration)
 {
-    EndFrame = GFGetCurrentFrame() + WFDuration;
+    EndFrame = CWorld::GetFrame() + WFDuration;
 }
 
 }

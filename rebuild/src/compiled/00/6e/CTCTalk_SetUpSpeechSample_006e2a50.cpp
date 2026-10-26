@@ -43,7 +43,7 @@ struct CSpeakerInfo {
     unsigned char _pad_0x00[0xAC];
     CCharString SpeechSymbol;                                    // +0xAC
 };
-struct COwnerSystem {
+class CGameDefinitionManager { public:
     unsigned char _pad_0x00[0xD0];
     CSpeakerInfo* PSpeakerInfo;                                  // +0xD0
     CSpeakerInfo* GetSpeakerInfo() const { return PSpeakerInfo; }
@@ -53,7 +53,14 @@ extern "C" double __fastcall GFGetTime();                        // 0x009E1BC0
 
 class CThing;
 
-class CTCTalk {
+class CTCBase
+{
+protected:
+    const CASoundBank& PeekSampleBank() const;   // 0x00686D70
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCTalk : public CTCBase {
 public:
     void* m_pVtable;                         // +0x00 CTCBase
     CThing* ParentThing;                     // +0x04
@@ -67,15 +74,13 @@ public:
     float SampleLoadedTime;                  // +0x20
     CASoundBank* PSpeechBank;                // +0x24
 
-    CASoundBank* GetDefaultSpeechBank();                         // 0x00686D70
-    COwnerSystem* GetOwnerSystem();                              // 0x006869D0
     long GetSampleDurationFrames(long sample);                   // 0x006E2940
 
     CLipSyncDataBank* GetLipSyncBank()
     {
         if (!g_pSpeechBankMap)
             return 0;
-        CASoundBank* bank = PSpeechBank ? PSpeechBank : GetDefaultSpeechBank();
+        const CASoundBank* bank = PSpeechBank ? PSpeechBank : (&PeekSampleBank());
         CLipSyncDataBank* lipSync = (CLipSyncDataBank*)g_pSpeechBankMap->FindValueForSymbol((long)bank);
         if (!lipSync)
             lipSync = (CLipSyncDataBank*)g_pSpeechBankMap->FindFirstValue();
@@ -93,7 +98,7 @@ void CTCTalk::SetUpSpeechSample()
     if (lipSync) {
         CASoundBank* soundBank = (CASoundBank*)g_pSpeechBankMap->FindSymbolForValue((long)lipSync);
         if (soundBank)
-            SpeechSample = soundBank->GetSoundIndexFromSymbol(GetOwnerSystem()->GetSpeakerInfo()->SpeechSymbol);
+            SpeechSample = soundBank->GetSoundIndexFromSymbol(GetDefinitionManager().GetSpeakerInfo()->SpeechSymbol);
         lipSync->BeginLoadingEntry(SpeechSample);
     }
     MimeStartTime = (float)GFGetTime();

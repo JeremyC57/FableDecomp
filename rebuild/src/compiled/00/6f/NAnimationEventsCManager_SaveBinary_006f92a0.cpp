@@ -35,14 +35,16 @@ class CDiskFileWin32 : public CBase { public:                     // vtable 0x01
     CWideString Pathname;                           // +0x18
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
     ~CDiskFileWin32() { Close(); }
-    void Write(const void* data, long size, CASuspendableProcess* process);   // 0x0099AA90
+public:
+    virtual void Write(const void*, long, CASuspendableProcess*);   // 0x0099AA90
 };
 
 class CDataOutputStream { public:
     void WriteEBOOL(bool value);                    // 0x00993E30
     void WriteULONG(unsigned long value);           // 0x00993EA0
     void WriteSLONG(long value);                    // 0x00993EB0
-    void WriteFLOAT(float value);                   // 0x00993EE0
+public:
+    void WriteFloat(float);   // 0x00993EE0
 };
 
 class CMemoryDataOutputStream : public CDataOutputStream { public:
@@ -100,7 +102,7 @@ void CManager::SaveBinary(const CWideString& fileName)
             stream.WriteULONG(events[j].Packed & 0x3fffffff);
             stream.WriteEBOOL((events[j].Packed & 0x40000000) == 0x40000000);
             stream.WriteEBOOL((events[j].Packed & 0x80000000) == 0x80000000);
-            stream.WriteFLOAT(events[j].Time);
+            stream.WriteFloat(events[j].Time);
         }
     }
     CDiskFileWin32 file(fileName, FILE_ACCESS_WRITE, 2);

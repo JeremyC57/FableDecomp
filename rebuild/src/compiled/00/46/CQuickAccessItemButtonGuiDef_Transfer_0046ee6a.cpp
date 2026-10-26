@@ -14,7 +14,7 @@ public:
 };
 class CPersistContext {
 public:
-    void Transfer(long& value);                                  // 0x00431102
+    template <class T> void Transfer(T& value);                                  // 0x00431102
     void Transfer(C2DVector& value);                             // 0x004568BC
 };
 class CQuickAccessItemButtonGuiDef {

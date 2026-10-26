@@ -39,9 +39,10 @@ public:
 };
 class CBaseObject {
 public:
-    virtual void v00();
     void* IntelligentPointer;                               // +0x04
-    CBaseObject();                                          // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 
 namespace std {

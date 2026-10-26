@@ -44,7 +44,8 @@ class C2DExtentsI { public:
 class CPixelFormat { public:
     unsigned long m_format;
     void Initialise(unsigned long format);         // 0x009E3830
-    unsigned long GetColourDepth();                // 0x009E3820
+public:
+    unsigned long GetColourDepth() const;   // 0x009E3820
 };
 
 class CDisplayManager { public:

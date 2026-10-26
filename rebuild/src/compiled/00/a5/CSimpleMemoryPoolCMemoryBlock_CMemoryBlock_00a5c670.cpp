@@ -1,7 +1,10 @@
 // CSimpleMemoryPool::CMemoryBlock::CMemoryBlock(unsigned long size) -- the CIVCountedPointeeBase base inline (reference count 1), this class's vtable (0x0129D568), the size stored (+0x10), the used count cleared (+0x14), the block allocated 16-aligned (0x009F2BE0, `__fastcall(size, 16)`) into +8 and marked owned (+0xc)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5C670, length 53 bytes.
 // Callees: AllocateAligned @ 0x009F2BE0. Shape: `this` in esi, the size moved to ecx and the alignment to edx before the stores, `ret 4`.
-void* __fastcall AllocateAligned_009f2be0(unsigned long size, unsigned long alignment);   // 0x009F2BE0
+class CMemoryAllocator {
+public:
+    static void* __fastcall AllocateAligned(unsigned long, long);   // 0x009F2BE0
+};   // 0x009F2BE0
 void __fastcall DeallocateAligned_009f2b20(void* block);   // 0x009F2B20
 
 class CIVCountedPointeeBase { public:                     // vtable 0x012354D0
@@ -26,6 +29,6 @@ struct CMemoryBlock : CIVCountedPointeeBase {      // vtable 0x0129D568
 CSimpleMemoryPool::CMemoryBlock::CMemoryBlock(unsigned long size)
     : CIVCountedPointeeBase(), m_size(size), m_used(0)
 {
-    m_pData = AllocateAligned_009f2be0(size, 16);
+    m_pData = CMemoryAllocator::AllocateAligned(size, 16);
     m_owned = true;
 }

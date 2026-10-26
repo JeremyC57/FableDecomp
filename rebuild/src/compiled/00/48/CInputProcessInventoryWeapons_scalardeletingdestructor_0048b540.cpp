@@ -10,12 +10,11 @@ class CInputProcessInventoryWeapons
 };
 
 // External targets (bodies live elsewhere) -> emitted as real calls, not inlined.
-void operator_delete_impl(void* p);        // 0xbfe9bc == ::operator delete
 
 void* CInputProcessInventoryWeapons::deleting(unsigned int flags)
 {
     this->destroy();
     if (flags & 1)
-        operator_delete_impl(this);
+        operator delete(this);
     return this;
 }

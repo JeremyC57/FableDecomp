@@ -15,6 +15,7 @@
 //   CV_TravellingHeroesScript sits 0x14 below the Ego_r.pdb offsets: MazeCutsceneDone +0x7b.
 // Shape: the CTH_ThunderBoy row 0x00EDF3A0 (same TU) with a local scripted-thing handle (its virtual calls devirtualised);
 //   the talk and hit blocks each run a paused movie sequence (VC7.1 expands the movie ctor/dtor inline only in the first).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -80,8 +81,14 @@ template <class T> struct vector {                     // STLport vector (retail
     unsigned int size() const { return _M_finish - _M_start; }
     T& operator[](unsigned int n) { return *(_M_start + n); }
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0
+namespace NScript {
+class __declspec(novtable) CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                  // 0x00E241B0
@@ -90,12 +97,13 @@ typedef long EScriptAIPriority;
 typedef long EScriptEntityMoveType;
 typedef long ETextGroupSelectionMethod;
 typedef long EGameflowPosition;
-struct CBaseIntelligentPointer {                       // vtable 0x0129A7D8
+class CBaseObject { public:                       // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                       // +0x04
-    CBaseIntelligentPointer();                         // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -202,14 +210,15 @@ struct GameCalls {                                     // CGameScriptInterface v
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-namespace NScript {
 struct CEntityScriptBase {                             // retail 0x14 bytes
     virtual void e00();
     GameCalls*   Game;                                 // +0x04
     CScriptThing Me;                                   // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
-    bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
+namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CV_TravellingHeroesScript { public:
     unsigned char _pad[0x78];

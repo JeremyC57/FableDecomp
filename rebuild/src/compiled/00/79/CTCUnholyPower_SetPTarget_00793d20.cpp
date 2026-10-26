@@ -3,7 +3,7 @@
 // Callees: CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10,
 //          CIntelligentPointer<const CThing>::CIntelligentPointer(const CThing*) @ 0x00668B60 (vtable 0x0123E7D8),
 //          CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @ 0x004365B0 (interface 8, bitset word 0 bit 8:
-//          `test ch,1`), the targeting component's slot 33 (+0x84), CThing::GetPlayer @ 0x004C7A10.
+//          `test ch,1`), the targeting component's slot 33 (+0x84), CThing::PeekPlayer @ 0x004C7A10.
 // Label: the catalog says CTCDivineWrath, but the only caller is CTCUnholyPower::FrameUpdate (0x00795300, vtable
 //        0x0126BFDC slot 9) and the CTCDivineWrath copy of this body is 0x0078E820; both classes share the PDB layout.
 // Shape: `PTarget = CIntelligentPointer<...>()` -- the first temporary's constructor is inlined (base ctor, vtable,
@@ -59,7 +59,6 @@ class CThing { public:
     unsigned long ThingTypeFlags;                   // +0x6C (bit 3 creature, bit 5 player creature)
     unsigned char _pad70[0x91 - 0x70];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    CPlayer* GetPlayer();                           // 0x004C7A10
 
     __forceinline bool HasTC(long type) const
     {
@@ -75,6 +74,8 @@ class CThing { public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->type ? end : it)->component;
     }
+public:
+    const CPlayer& PeekPlayer() const;   // 0x004C7A10
 };
 
 struct CTCTargeting {                               // interface type 8 component
@@ -109,7 +110,7 @@ void CTCUnholyPower::SetPTarget()
                 CIntelligentPointerConstThing newTarget(target);
                 PTarget = newTarget;
             }
-            IsZTargetting = ParentThing->GetPlayer()->ZTargeting;
+            IsZTargetting = ParentThing->PeekPlayer().ZTargeting;
         }
     }
 }

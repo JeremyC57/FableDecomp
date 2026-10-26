@@ -32,7 +32,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                 // 0x00BFEA0
 extern "C" int __cdecl _stricmp(const char* left, const char* right);   // 0x00BFEBA8
 extern const char g_emptyLiteral_0129aaf4[];                         // 0x0129AAF4: ""
 
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     char*         PData;                                // +0x00
     long          StringLength;                         // +0x04
     bool operator==(const char* text) const;            // 0x004115A0
@@ -40,13 +40,13 @@ struct CBasicStringChar {
 // A same-TU stand-in for the out-of-line comparison (retail's body is at 0x004115A0): with its body visible VC7.1 knows the
 // call only reads memory, so the filter string's data pointer stays in ebx across it, as retail's does.
 #pragma auto_inline(off)
-__declspec(noinline) bool CBasicStringChar::operator==(const char* text) const
+template <class T> __declspec(noinline) bool CBasicString<T>::operator==(const char* text) const
 {
     return strcmp(PData, text) == 0;
 }
 #pragma auto_inline(on)
 class CCharStringData { public:
-    CBasicStringChar Data;                              // +0x00
+    CBasicString<char> Data;                              // +0x00
 };
 
 class CCharString

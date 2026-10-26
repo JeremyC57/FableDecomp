@@ -12,8 +12,9 @@ class CMemoryAllocator { public:
     long          m_bytesByIndex[0x104];           // +0x000: per-allocator-index byte counters
     unsigned long m_noSubAllocators;               // +0x410
     unsigned char m_currentIndex;                  // +0x414
-    long GetAllocationSize(void* block);           // 0x009F2390
     void InitDebugInfo(void* block, long tag, long size);
+public:
+    unsigned long GetAllocationSize(void*);   // 0x009F2390
 };
 
 void CMemoryAllocator::InitDebugInfo(void* block, long tag, long size)

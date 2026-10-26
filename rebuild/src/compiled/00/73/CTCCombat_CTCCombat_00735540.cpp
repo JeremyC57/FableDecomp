@@ -71,7 +71,8 @@ class CTCBase { public:
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
     CTCBase(CThing* thing);                             // 0x00686800
-    CWorld* GetWorld();                                 // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CThingCreatureBase;
 class CTCCombat : public CTCBase { public:
@@ -110,7 +111,7 @@ class CTCCombat : public CTCBase { public:
 
 CTCCombat::CTCCombat(CThing* thing)
     : CTCBase(thing)
-    , CombatManager(GetWorld()->PCombatManager)
+    , CombatManager(GetWorld().PCombatManager)
     , ParentCreature(0)
     , CurrentAbilityIndex(-1)
     , UnsheathingWeaponType(0)

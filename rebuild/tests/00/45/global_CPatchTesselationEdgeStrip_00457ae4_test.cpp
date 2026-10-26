@@ -23,7 +23,14 @@ class CPatchTesselationEdgeStrip { public:
 };
 
 static int g_base = 0;
-void __fastcall CPatchTesselationEdgeStrip_base_dtor(CPatchTesselationEdgeStrip*) { ++g_base; }
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();
+};
+CParentDefClassBase::~CParentDefClassBase()
+{
+     ++g_base;
+}
 
 int main() {
     CPatchTesselationEdgeStrip obj;

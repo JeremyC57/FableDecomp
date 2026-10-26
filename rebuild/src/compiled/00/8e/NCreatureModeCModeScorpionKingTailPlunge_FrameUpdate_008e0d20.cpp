@@ -100,12 +100,22 @@ class CThing { public:
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                  // +4
-    CThing* GetPItem() const;                         // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public: 
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
 
 struct CModeBase {
     virtual ~CModeBase();
@@ -126,9 +136,9 @@ class CModeScorpionKingTailPlunge : public CModeBase { public:
     bool                bRecovering;            // +0x88
     C3DVector           TargetPos;              // +0x89
     C3DVector           TailPos;                // +0x95
-    CIntelligentPointerThing PTarget;           // +0xa1
-    CIntelligentPointerThing PTailEmitter;      // +0xa9
-    CIntelligentPointerThing PDustTrailEmitter; // +0xb1
+    CIntelligentPointer<CThing> PTarget;           // +0xa1
+    CIntelligentPointer<CThing> PTailEmitter;      // +0xa9
+    CIntelligentPointer<CThing> PDustTrailEmitter; // +0xb1
     void FrameUpdate();
     void Spike();                               // 0x008DA0F0
     void Recover();                             // 0x008DF510

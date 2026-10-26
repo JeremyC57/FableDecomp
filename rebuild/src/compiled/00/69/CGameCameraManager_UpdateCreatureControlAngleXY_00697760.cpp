@@ -11,7 +11,10 @@ class CCamera { public:
     float GetAngleXY();                                     // 0x00A0C380
 };
 
-long GetGameFrame();                                        // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                                        // 0x0049D870
 
 class CGameCameraManager { public:
     void*         __vftable;                                // +0x00
@@ -39,7 +42,7 @@ void CGameCameraManager::UpdateCreatureControlAngleXY()
         ControlAngleXY = Camera.GetAngleXY();
     if (ControlNoControlMovement) {
         if (ControlNoControlMovementStartFrame == 0)
-            ControlNoControlMovementStartFrame = GetGameFrame();
+            ControlNoControlMovementStartFrame = CWorld::GetFrame();
     }
     if (!ControlNoControlMovement) {
         if (ControlNoControlMovementStartFrame != 0)

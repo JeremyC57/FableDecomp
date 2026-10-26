@@ -13,10 +13,21 @@
 class CThing { public:
     void ClearCurrentAction();              // 0x006633A0
 };
-struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatureBase>: vptr + item
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 extern long g_framesPerSecond;              // 0x01375550
 
@@ -37,7 +48,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v60(); virtual void v61();
     virtual float GetFrameTimeStep();       // slot 62 (+0xf8)
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     long  TotalTime;                        // +0x10
     long  ActionTime;                       // +0x14
     long  AnimDelayTime;                    // +0x18

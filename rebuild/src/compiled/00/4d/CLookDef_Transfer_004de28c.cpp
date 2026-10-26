@@ -11,8 +11,7 @@
 #pragma optimize("s", on)
 class CPersistContext {
 public:
-    void Transfer(float& value);                                 // 0x00431061
-    void Transfer(bool& value);                                  // 0x0043314A
+    template <class T> void Transfer(T& value);                                 // 0x00431061
 };
 class CLookDef {
 public:

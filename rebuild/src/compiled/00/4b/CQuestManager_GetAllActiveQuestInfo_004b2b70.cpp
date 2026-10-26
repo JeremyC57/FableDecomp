@@ -7,7 +7,7 @@
 // ~CCharString 0x0099EAE0.
 // Note: retail appends BOTH strings to the first vector (esi) -- the second list is only cleared; the source keeps
 // that behaviour.
-// Layout (retail): ActiveQuestCards (STLport list<CIntelligentPointer<CThing>>, head pointer, node data +8) +0x5c;
+// Layout (retail): ActiveQuestCards (STLport list<CIntelligentPointer<CThing> >, head pointer, node data +8) +0x5c;
 // CThing TC mask +0x20 (0x6c = word 3 bit 12), Components +0x44; Ego_r.pdb CTCQuestCard ScriptQuestName +0x28.
 // Shape: the uninitialised `CTCQuestCard* tc; if (HasTC) tc = GetTC;` of the landed 0x004B0C80 family (VC keeps the
 // first argument's word as the stale value); STLport push_back with a placement copy under VC's null test and a
@@ -93,9 +93,21 @@ class CTCQuestCard { public:                                  // TC type 0x6c (E
     CCharString   ScriptQuestName;                     // +0x28
 };
 
-struct CBaseIntelligentPointer {
-    void* Info;
-    CThing* GetPItem() const;                          // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 template <class T> struct _List_node {
     _List_node* _M_next;
@@ -105,7 +117,7 @@ template <class T> struct _List_node {
 
 class CQuestManager { public:
     unsigned char _pad00[0x5c];
-    _List_node<CBaseIntelligentPointer>* ActiveQuestCards;   // +0x5c (list head)
+    _List_node<CIntelligentPointer<CThing> >* ActiveQuestCards;   // +0x5c (list head)
     void GetAllActiveQuestInfo(vector<CCharString>& scriptNames, vector<CCharString>& defNames);
 };
 
@@ -113,7 +125,7 @@ void CQuestManager::GetAllActiveQuestInfo(vector<CCharString>& scriptNames, vect
 {
     scriptNames.clear();
     defNames.clear();
-    for (_List_node<CBaseIntelligentPointer>* n = ActiveQuestCards->_M_next; n != ActiveQuestCards; n = n->_M_next) {
+    for (_List_node<CIntelligentPointer<CThing> >* n = ActiveQuestCards->_M_next; n != ActiveQuestCards; n = n->_M_next) {
         CThing* card = n->_M_data.GetPItem();
         CTCQuestCard* tc;
         if (card->HasTC(0x6c))

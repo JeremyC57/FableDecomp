@@ -33,7 +33,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  struct InlineCopy { };                                 // tag: the inline copy retail expands at by-value call sites
  CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
  CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
- ~CScriptThing();                                       // 0x004AA840
+ virtual ~CScriptThing();                                       // 0x004AA840
  CScriptThing& operator=(const CScriptThing& other);    // 0x008AB980
 };
 #include "engine/CGameScriptInterface.h"
@@ -943,8 +943,9 @@ class CCharString { public:
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 class CBaseObject { public:
  void* m_pIntelligentPointer;
- CBaseObject();                                     // 0x0099A380
- virtual ~CBaseObject();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
  CCountedPointerWords PImp;
@@ -961,15 +962,20 @@ struct CQ_HangingTreeGoodScript {
  unsigned char _pad[0x68];
  CScriptThing  TrackedThing;                         // +0x68
 };
-struct CHTG_Audience {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CHTG_Audience : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CQ_HangingTreeGoodScript* ParentClass;              // +0x14
  void* PMasterData;                                  // +0x18
  CScriptThing ChopBlockMarker;                       // +0x1c
  CScriptThing ExecutionerGuy;                        // +0x28
  CScriptThing PrisonerGuy;                           // +0x34
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CHTG_Audience::Main()

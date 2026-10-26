@@ -1,7 +1,7 @@
 extern void* g_vtbl_CTCInventoryItem;
 extern "C" void __fastcall SomeCleanup(void* self);
 extern "C" void __fastcall SubMemberDtor(void* sub);
-extern "C" void __cdecl FreeMem(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 extern "C" void __fastcall BaseOnDie(void* self);
 
 class CTCInventoryItem { public:
@@ -18,7 +18,7 @@ void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* self)
     SomeCleanup(self);
     SubMemberDtor(&self->sub20);
     if (self->PInventory) {
-        FreeMem(self->PInventory);
+        free(self->PInventory);
     }
     BaseOnDie(self);
 }

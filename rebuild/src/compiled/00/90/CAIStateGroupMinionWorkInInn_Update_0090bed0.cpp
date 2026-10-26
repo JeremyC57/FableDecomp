@@ -22,14 +22,25 @@ class C3DVector { public:
 class CThing { public:
     const C3DVector& GetPosition();             // 0x004C73D0
 };
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem();                         // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CThingAICreature { public:
     unsigned char _pad[0x170];
-    CBaseIntelligentPointer PWorkplace;         // +0x170 (descriptive)
+    CIntelligentPointer<CThing> PWorkplace;         // +0x170 (descriptive)
     CThing* GetPWorkplace() { return PWorkplace.GetPItem(); }
 };
 class CAIBrain { public:
@@ -37,7 +48,7 @@ class CAIBrain { public:
     CThingAICreature* PCreature;                // +0x18
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();

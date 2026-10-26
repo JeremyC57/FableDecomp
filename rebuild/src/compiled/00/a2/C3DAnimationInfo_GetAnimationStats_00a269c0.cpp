@@ -67,10 +67,11 @@ class C3DAnimationInfo { public:                  // engine/C3DAnimationInfo.h o
     void* Bank;                            // +4
     unsigned long Index;                   // +8
     CAnimationData* Data;                  // +0xc
-    void BeginLoading(bool wait);          // 0x00A26730
     bool HasStats() const { return Data && Data->Stats.m_pObject; }
     bool IsLoading() const { return Data && Data->LoadTask; }
     CCountedPointer<const C3DAnimationStats> GetAnimationStats();
+public:
+    void BeginLoading(bool) const;   // 0x00A26730
 };
 
 CCountedPointer<const C3DAnimationStats> C3DAnimationInfo::GetAnimationStats()

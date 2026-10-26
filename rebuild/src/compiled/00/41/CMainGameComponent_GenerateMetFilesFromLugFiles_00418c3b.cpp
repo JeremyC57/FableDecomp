@@ -16,7 +16,10 @@ class CWideString { public:
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);       // 0x0099BF30
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name, CWideString* extension);   // 0x00997620
+class CAFile {
+public:
+    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+};   // 0x00997620
 struct CFindFileData {
     wchar_t       FileName[260];
     unsigned long Attributes;
@@ -72,7 +75,7 @@ void CMainGameComponent::GenerateMetFilesFromLugFiles()
             CWideString extension;
             {
                 CWideString fileName(data.FileName);
-                SplitPath(fileName, 0, 0, &name, &extension);
+                CAFile::SplitPath(fileName, 0, 0, &name, &extension);
             }
             CMemoryFile file(GetSoundDirectory() + name + L".met", 3, 2);
             CBinaryFileDataWriter writer(&file);

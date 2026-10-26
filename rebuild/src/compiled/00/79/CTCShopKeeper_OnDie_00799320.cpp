@@ -17,8 +17,9 @@ class CTCShop { public:
 class CTCShopKeeper { public:
     void*   m_vtable;                        // +0
     CThing* m_pOwner;                        // +4
-    CTCShop* GetShopTC();                    // 0x00798F50
     void OnDie();
+public:
+    CTCShop* GetShopTC() const;   // 0x00798F50
 };
 
 void CTCShopKeeper::OnDie()

@@ -73,9 +73,14 @@ class CPlayerManager { public:
 };
 extern const float g_mapEdgeZ;                  // 0x01253D40 (51.0f)
 
+class CTCBase
+{
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
+
 namespace NInventory {
-class CTCInventoryBase { public:
-    CPlayerManager* GetPlayerManager_00686d50() const;   // 0x00686D50 (CTCBase, const)
+class CTCInventoryBase : public CTCBase { public:
     long GetMiniMapGraphic(const CRegion* region);
 };
 long CTCInventoryBase::GetMiniMapGraphic(const CRegion* region)
@@ -98,7 +103,7 @@ long CTCInventoryBase::GetMiniMapGraphic(const CRegion* region)
             isPrisonCourtyard = true;
     }
     {
-        CThing* hero = GetPlayerManager_00686d50()->GetMainPlayer()->GetControlledCreature();
+        CThing* hero = PeekPlayerManager().GetMainPlayer()->GetControlledCreature();
         if (IS_THING_ALIVE(hero) && isPrisonCourtyard && hero->GetPosition().Z > g_mapEdgeZ) {
             SGraphicNode* upperCourtyard;
             {

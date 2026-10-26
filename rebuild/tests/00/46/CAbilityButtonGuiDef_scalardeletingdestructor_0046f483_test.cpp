@@ -6,22 +6,24 @@ class CLandscapeBackgroundPatch
     fable_u32 vtbl;
 };
 
-extern void FABLE_FASTCALL CAbilityButtonGuiDef_dtor(CLandscapeBackgroundPatch* thisptr);
-extern void FABLE_CDECL CAbilityButtonGuiDef_opDelete(void* block);
 extern void* FABLE_FASTCALL CAbilityButtonGuiDef_vector_deleting_dtor(
     CLandscapeBackgroundPatch* thisptr, int edx_unused, fable_u32 flags);
 
 static int g_dtorCalls = 0;
 static int g_deleteCalls = 0;
 static void* g_deletedBlock = 0;
-
-void FABLE_FASTCALL CAbilityButtonGuiDef_dtor(CLandscapeBackgroundPatch* thisptr)
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();
+};
+CParentDefClassBase::~CParentDefClassBase()
 {
+    CLandscapeBackgroundPatch* thisptr = (CLandscapeBackgroundPatch*)this; (void)thisptr;
     (void)thisptr;
     ++g_dtorCalls;
 }
 
-void FABLE_CDECL CAbilityButtonGuiDef_opDelete(void* block)
+void __cdecl operator delete(void* block)
 {
     ++g_deleteCalls;
     g_deletedBlock = block;

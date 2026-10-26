@@ -9,23 +9,31 @@
 // pointer at +0x18 through SetPItem @ 0x00A01B90; the argument's destructor @ 0x00A01C10
 // runs before returning. The manifest label (`CTCInventoryBase::GetItemDescription`) is
 // propagated; the class is named descriptively. One of 14 bodies of this shape.
-struct CBaseObjectPointer;
+class CBaseObjectPointer;
 
-struct CIntelligentPointer {              // CBaseIntelligentPointer: 8 bytes (struct_layouts_egor.tsv)
-    void* m_pLink;                         // +0
-    CBaseObjectPointer* m_pData;           // +4
-    CBaseObjectPointer* GetPItem();        // 0x00A01B50
-    void SetPItem(CBaseObjectPointer* item);   // 0x00A01B90
-    ~CIntelligentPointer();                // 0x00A01C10
+class CBaseObject;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CItemOwner_00969730 {
     unsigned char _pad[0x18];
-    CIntelligentPointer m_item;            // +0x18
-    void SetItem_CItemOwner_00969730(CIntelligentPointer item);
+    CIntelligentPointer<CBaseObjectPointer> m_item;            // +0x18
+    void SetItem_CItemOwner_00969730(CIntelligentPointer<CBaseObjectPointer> item);
 };
 
-void CItemOwner_00969730::SetItem_CItemOwner_00969730(CIntelligentPointer item)
+void CItemOwner_00969730::SetItem_CItemOwner_00969730(CIntelligentPointer<CBaseObjectPointer> item)
 {
     m_item.SetPItem(item.GetPItem());
 }

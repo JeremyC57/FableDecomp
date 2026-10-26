@@ -14,7 +14,8 @@
 #include "engine/CThingSearchTools.h"
 
 class CThing { public:
-    bool IsIncludedInThingScans();                       // 0x0048BC40
+public:
+    bool IsIncludedInThingScans() const;   // 0x0048BC40
 };
 
 struct CThingList {                                      // std::list<CThing*> (VC6)

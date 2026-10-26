@@ -1,7 +1,7 @@
 // CTCHeroStats::GetMaxExtraMaxStamina() const -- the hero-stats definition's cap on bonus stamina points, read through a counted def-pointer copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057A962, 39 bytes.
 // Retry (Fable landing session): the sibling-proven by-value accessor form the author left ungraded grades RELOCATION_MATCH.
-// Callees: CTCBase::GetDefinitions() @ 0x006869D0 (ParentThing's definition holder: the global @ 0x013B8A1C, +0x20),
+// Callees: CTCBase::GetDefinitionManager() @ 0x006869D0 (ParentThing's definition holder: the global @ 0x013B8A1C, +0x20),
 //          CHeroStatsDef virtual slot 1 (+0x04, destroy when the count drops to zero).
 //
 // Shape: the holder's CDefPointer<const CHeroStatsDef> (+0xDC) copied into a local through an inline accessor that
@@ -35,22 +35,27 @@ struct CHeroStatsDefPointer {                  // CDefPointer<const CHeroStatsDe
     CHeroStatsDef* operator->() const { return Object; }
 };
 
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char        _pad_0x00[0xDC];
     CHeroStatsDefPointer PHeroStatsDef;        // +0xDC
     CHeroStatsDefPointer GetHeroStatsDef() const { return PHeroStatsDef; }
 };
 
-struct CTCHeroStats_Retail {
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+struct CTCHeroStats_Retail : public CTCBase {
     void*         __vftable;                   // +0x00
     void*         ParentThing;                 // +0x04 CTCBase
 
-    CDefinitionHolder* GetDefinitions() const; // 0x006869D0
     long GetMaxExtraMaxStamina() const;
 };
 
 long CTCHeroStats_Retail::GetMaxExtraMaxStamina() const
 {
-    CHeroStatsDefPointer def = GetDefinitions()->GetHeroStatsDef();
+    CHeroStatsDefPointer def = GetDefinitionManager().GetHeroStatsDef();
     return def->MaxExtraMaxStaminaPoints;
 }

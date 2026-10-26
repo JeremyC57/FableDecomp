@@ -21,12 +21,12 @@ struct CFreeableBuffer {                                    // a malloc'd block 
     }
 };
 
-struct CResource_Calls {                                    // engine/CResource.h: the 0x1c-byte root
+class CResource { public:                                    // engine/CResource.h: the 0x1c-byte root
     virtual void v00();
-    ~CResource_Calls();                                     // 0x009FC550
+    virtual ~CResource();                                     // 0x009FC550
 };
 
-class CDefPointeeBase : public CResource_Calls { public:                  // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:                  // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }                                  // inline, empty: inlined into every derived destructor
 };

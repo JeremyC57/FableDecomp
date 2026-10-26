@@ -4,8 +4,8 @@
 // Members are destroyed last to first: the holder's inline destructor (EH state 0 while the first
 // member is alive), then the first member out of line. The manifest label (`OnDie`) is propagated
 // garbage; the class is named by address.
-void __cdecl Release_00bfeb1c(void* block);   // 0x00BFEB1C
 
+void __cdecl operator delete[](void* p);   // 0x00BFEB1C (MSVCR71)
 struct CMember_00c3b6b0 {                  // +0
     unsigned char _body[4];
     ~CMember_00c3b6b0();                   // 0x00C0BA40
@@ -13,7 +13,7 @@ struct CMember_00c3b6b0 {                  // +0
 
 struct CBlockHolder_00c3b6b0 {             // +4
     void* m_pBlock;
-    ~CBlockHolder_00c3b6b0() { if (m_pBlock) { Release_00bfeb1c(m_pBlock); m_pBlock = 0; } }
+    ~CBlockHolder_00c3b6b0() { if (m_pBlock) { operator delete[](m_pBlock); m_pBlock = 0; } }
 };
 
 struct CTCInventoryItem_00c3b6b0 {

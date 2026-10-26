@@ -14,8 +14,7 @@ class CDefString { public: long m_index; };
 template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
 class CPersistContext { public:
-    void Transfer(CDefString& v);           // 0x0045228F
-    void Transfer(float& v);                // 0x00431061
+    template <class T> void Transfer(T& value);           // 0x0045228F
     void Transfer(CStlVector<float>& v);    // 0x00464CBF
     void Transfer(CStlVector<long>& v);     // 0x00466A47
 };

@@ -16,8 +16,9 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 class CThing;
-struct CTCCollisionExclusion {                  // the component behind ETCInterfaceType 0x4d (class not identified)
-    bool CanCollideWith(CThing* thing);         // 0x00770DE0
+class CTCSolidToThing { public:                  // the component behind ETCInterfaceType 0x4d (class not identified)
+public:
+    bool IsSolidToThing(const CThing*) const;   // 0x00770DE0
 };
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -67,7 +68,7 @@ bool CThingFilter_CanCollideWithThing::operator()(CThing* thing) const
     if (physics && physics != TCPhysics && physics->GetCollidesWithThings()) {
         CThing* owner = TCPhysics->ParentThing;
         if (owner->HasTC(0x4d))
-            return owner->GetTC<CTCCollisionExclusion>(0x4d)->CanCollideWith(thing);
+            return owner->GetTC<CTCSolidToThing>(0x4d)->IsSolidToThing(thing);
         return true;
     }
     return false;

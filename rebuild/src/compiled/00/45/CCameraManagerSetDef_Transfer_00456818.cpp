@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 class CPersistContext { public:
-  void Transfer(int* p);
+  template <class T> void Transfer(T& value);
 };
 class CCameraManagerSetDef { public:
   char pad0[0x3c];
@@ -10,8 +10,8 @@ class CCameraManagerSetDef { public:
   int CameraManagerPCMain;
 };
 void __fastcall CCameraManagerSetDef_Transfer(CCameraManagerSetDef* def, void* unused, CPersistContext* ctx) {
-  ctx->Transfer(&def->f3c);
-  ctx->Transfer(&def->CameraManagerMain);
-  ctx->Transfer(&def->CameraManagerCombat);
-  ctx->Transfer(&def->CameraManagerPCMain);
+  ctx->Transfer(*(long*)(&def->f3c));
+  ctx->Transfer(*(long*)(&def->CameraManagerMain));
+  ctx->Transfer(*(long*)(&def->CameraManagerCombat));
+  ctx->Transfer(*(long*)(&def->CameraManagerPCMain));
 }

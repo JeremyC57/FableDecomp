@@ -40,6 +40,9 @@ inline void ReleaseDef(CDefClassBase* def)
 class CDefinitionManager { public:
     bool GetDef(long globalDefIndex, CDefPointerClassBase* out) const;   // 0x0042AF3C
 };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
@@ -59,12 +62,17 @@ class CThing { public:
     unsigned short DefIndex;                // +0x8C
 };
 
-class CTCVillageMember { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCVillageMember : public CTCBase { public:
     void*                       __vftable;  // +0x00
     CThing*                     Thing;      // +0x04
     unsigned char               _pad_0x08[0x4];
     CDefPointerVillageMemberDef PDef;       // +0x0C
-    const CDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
     void OnCreate();
 };
 

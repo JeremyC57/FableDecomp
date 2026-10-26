@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00886400, length 36 bytes.
 // Callees: GFGetTime @ 0x009E1BC0 (a double in st0, stored straight into +0x20). Shape: the -1 store is an immediate, the weight copy goes through ecx as a dword;
 // `ret 4`.
-double __cdecl GFGetTime();                        // 0x009E1BC0
+double __fastcall GFGetTime();                        // 0x009E1BC0
 
 struct CEnvironmentThemePriorityStackEntry {
     float         m_currentWeight;                 // +0x00

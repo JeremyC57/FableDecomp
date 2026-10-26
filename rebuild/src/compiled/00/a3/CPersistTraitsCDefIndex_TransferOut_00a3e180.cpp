@@ -18,11 +18,11 @@
 #pragma intrinsic(strcmp)
 class CCharStringData;
 class CStringParser;
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     bool operator==(const char* text) const;            // 0x004115A0
 };
 class CCharString { public:
-    CBasicStringChar* PStringData;
+    CBasicString<char>* PStringData;
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
@@ -39,7 +39,8 @@ class CCharString { public:
 };
 
 struct CDefStringTable {
-    CCharString GetString(long id);                     // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
 class CDefString { public:
@@ -51,7 +52,8 @@ class CDefIndex { public:
     long Val;                                           // +0x00 (PDB)
 };
 class CDefinitionManager { public:
-    CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
+public:
+    CDefString GetDefNameFromGlobalIndex(long) const;   // 0x009ACCC0
 };
 class CPersistContext { public:
     CDefinitionManager* PDefinitionManager;             // +0x00

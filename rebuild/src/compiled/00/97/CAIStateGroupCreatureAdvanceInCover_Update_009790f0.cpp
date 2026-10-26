@@ -15,7 +15,22 @@
 //          __forceinline, and the creature comes through an inline GetCreature() accessor.
 // Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (pack(1): enemy +0x14, PCoverThing +0x1F, CoverList +0x28) behind
 //          engine/CAIStateGroupBase.h.
+#define CAIStateGroup_CreatureUseCoverBase CAIStateGroup_CreatureUseCoverBaseLayout
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
+#undef CAIStateGroup_CreatureUseCoverBase
+
+class CAIStateGroupBase
+{
+public:
+    void Terminate();   // 0x008FCF40
+};
+class CAIStateGroup_EnemyCreatureBase : public CAIStateGroupBase
+{
+public:
+};
+class CAIStateGroup_CreatureUseCoverBase : public CAIStateGroup_EnemyCreatureBase, public CAIStateGroup_CreatureUseCoverBaseLayout
+{
+};
 
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
@@ -62,8 +77,8 @@ struct CIntelligentPointerVector {              // vector<CIntelligentPointer<CT
 };
 
 class CCombatActionBase { public:
-    unsigned char _body[0x114];
-    ~CCombatActionBase();                       // 0x0062E900
+    unsigned char _body[0x114 - 4];
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCreatureAction_ProjectileCrouch : public CCombatActionBase { public:
     unsigned char _crouch[0x124 - 0x114];       // the crouch action is 0x124 bytes (the frame slot it takes)
@@ -88,7 +103,6 @@ struct CAIStateGroupCreatureAdvanceInCoverMethods : CAIStateGroup_CreatureUseCov
     bool IsStillRunnable();                     // 0x00978F10
     void RefreshCoverList();                    // 0x009710D0
     void RemoveThingFromCoverList(CThing* thing);   // 0x009708A0
-    void Terminate();                           // 0x008FCF40
     long AIAction_PerformActionAndWait(CCombatActionBase* action, bool stopWhenReplaced);   // 0x0097DB70
     void Update();
 };

@@ -1,11 +1,13 @@
 #pragma optimize("s",on)
-extern void __fastcall CCameraManagerSetDef_dtor(void* def);
-extern void __cdecl op_delete(void* p);
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 
 void* __fastcall CCameraManagerSetDef_scalar_deleting_destructor(void* def, int /*edx*/, unsigned int flags)
 {
-    CCameraManagerSetDef_dtor(def);
+    ((CParentDefClassBase*)(def))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        op_delete(def);
+        operator delete(def);
     return def;
 }

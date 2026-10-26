@@ -36,7 +36,8 @@ class CThing {
 public:
     unsigned char _pad[0x10];
     unsigned char m_thingType;                          // +0x10 (2 = creature)
-    CPlayer* GetPlayer() const;                         // 0x004C7A30
+public:
+    CPlayer& GetPlayer();   // 0x004C7A30
 };
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -113,7 +114,13 @@ class CStealthDef { public:
     unsigned char _pad[0x40];
     float DangerFeedbackHangtimeSeconds;                // +0x40
 };
-class CTCStealth { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCStealth : public CTCBase { public:
     void*         __vftable;                            // +0x00
     CThing*       ParentThing;                          // +0x04
     bool          ToBeRemoved;                          // +0x08
@@ -134,7 +141,6 @@ class CTCStealth { public:
     long          RunningAwayFromCombatTimer;           // +0x30
     long          InDangerCoolOffTimer;                 // +0x34
     CDangerThingVector DangerThings;                    // +0x38
-    CWorld* GetWorld();                                 // 0x00686A70 (CTCBase)
     void SetAsInDanger(const CThing* thing, long status);
 };
 
@@ -146,10 +152,10 @@ void CTCStealth::SetAsInDanger(const CThing* thing, long status)
     else {
         entry->second = CDangerStatus(status);
     }
-    if (ParentThing->GetPlayer()->IsMainPlayer() && ParentThing->m_thingType == 2 && InDangerCoolOffTimer < 0) {
-        CWorld* world = GetWorld();
+    if (ParentThing->GetPlayer().IsMainPlayer() && ParentThing->m_thingType == 2 && InDangerCoolOffTimer < 0) {
+        CWorld* world = (&GetWorld());
         world->PMusicManager->EnableDangerMusic(true);
-        CWorld* world2 = GetWorld();
+        CWorld* world2 = (&GetWorld());
         world2->PEnvironment->SetRainEnabled(false);
     }
     InDangerCoolOffTimer = (long)(PDef ? PDef->DangerFeedbackHangtimeSeconds * g_framesPerSecond : 1.0f);

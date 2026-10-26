@@ -19,7 +19,7 @@ class CAnimateThing { public:
 class CTCBase { public:
     virtual void v00();
     unsigned char _pad[0x8];                    // +0x04..+0x0b
-    ~CTCBase();                                 // 0x00686830
+    virtual ~CTCBase();                                 // 0x00686830
 };
 
 class CTCAnimationComplex : public CTCBase { public:

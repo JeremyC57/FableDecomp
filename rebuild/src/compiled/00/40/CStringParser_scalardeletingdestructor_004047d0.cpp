@@ -11,10 +11,13 @@
 //
 // Matching: `flags` is the stack argument after the unused edx register; `flags & 1` is a `test ...,1`;
 // `operator delete` is the plain global one.
+class CBaseClass {
+public:
+    virtual ~CBaseClass();   // 0x0099A2E0
+};
 struct CInner { void* v; };
 extern void __fastcall Inner14_dtor(void* p);   // destructor of the sub-object at +0x14
 extern void __fastcall Inner_dtor(void* p);     // destructor of the sub-objects at +0x10 and +0x0C
-extern void __fastcall CLBP_dtor(void* p);      // the class destructor proper
 extern void __cdecl operator_delete_stub(void* p);
 void operator delete(void* p);
 
@@ -33,7 +36,7 @@ void* __fastcall CStringParser_scalar_deleting_destructor(CStringParser* parser,
     Inner14_dtor((char*)parser + 0x14);
     Inner_dtor((char*)parser + 0x10);
     Inner_dtor((char*)parser + 0xc);
-    CLBP_dtor(parser);
+    ((CBaseClass*)(parser))->CBaseClass::~CBaseClass();
     // Bit 0: the caller used `delete`, so give the storage back too.
     if (flags & 1)
         operator delete(parser);

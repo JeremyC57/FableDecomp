@@ -14,10 +14,21 @@ class CThing { public:
 class CThingBuilding : public CThing { public: };
 CThingBuilding* __fastcall GetPBuildingThingOccupying(CThing* thing);   // 0x006989D0
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 namespace NCameraModes { class CBase; }
@@ -54,7 +65,7 @@ class CGameCameraManager { public:
     bool          ObservedThingInMelee;                     // +0xa9
     bool          ObservedThingInBuilding;                  // +0xaa
     unsigned char _padab[0x55];                             // +0xab
-    CBaseIntelligentPointer PObservedThing;                 // +0x100
+    CIntelligentPointer<CThing> PObservedThing;                 // +0x100
     static bool __stdcall IsCameraModeInterruptable(CCountedPointer<NCameraModes::CBase> mode);   // 0x00697A50
     void PushBuildingCameraMode();                          // 0x0069AD10
     void RemoveBuildingCameraMode();                        // 0x0069B610

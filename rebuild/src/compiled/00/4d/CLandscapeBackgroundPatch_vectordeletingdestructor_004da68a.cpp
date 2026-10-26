@@ -4,7 +4,6 @@ struct Sub {
 };
 
 extern "C" void __fastcall Sub_dtor_0099eae0(Sub* self);
-extern "C" void __cdecl eng_delete(void* p);
 
 class CLandscapeBackgroundPatch { public:
     int pad0;
@@ -16,7 +15,7 @@ void* __fastcall vector_deleting_destructor(CLandscapeBackgroundPatch* self, int
     (void)edx_unused;
     Sub_dtor_0099eae0(&self->sub);
     if (flags & 1) {
-        eng_delete(self);
+        operator delete(self);
     }
     return self;
 }

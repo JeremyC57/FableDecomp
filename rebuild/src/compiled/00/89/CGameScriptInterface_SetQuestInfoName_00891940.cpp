@@ -3,7 +3,7 @@
 // Leaf: ?SetQuestInfoName@CGameScriptInterface
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00891940, length 192 bytes, `ret 4`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, the CRC Calc @ 0x004014A0 (`__fastcall(seed,
-// data, length)`), NGameText::CDataBank::GetTagFromCRC @ 0x009CC410 (the bank's CRC -> tag map at +0xD0, 0 when
+// data, length)`), NGameText::NGameText::CDataBank::LookupValue @ 0x009CC410 (the bank's CRC -> tag map at +0xD0, 0 when
 // absent; labelled CVectorMap::LookupValue), ~CCharString @ 0x0099EAE0, NGameText::CDataBank::GetPGroupEntry(unsigned
 // long, bool) const @ 0x009C9070, NGameText::CGroupEntry::GetText() const @ 0x009C7A40, CWideString::operator= @
 // 0x0099B7D0, ~CWideString @ 0x0099B510, the entry's slot 1 on release. Globals: the engine 0x013B86A0 (+0x14 the
@@ -39,18 +39,18 @@ public:
 };
 
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CRefVirtual {
     virtual void v00();
-    virtual void Destroy();                         // slot 1
+    virtual void Destroy() const;                         // slot 1
 };
 namespace NGameText {
-class CGroupEntry : public CRefVirtual, public CRefCounted { public:
+class CTextEntry : public CRefVirtual, public CRefCounted { public:
     CWideString GetText() const;                    // 0x009C7A40
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -66,8 +66,9 @@ template <class T> class CIVCountedPointer { public:
 namespace NGameText {
 class CDataBank {
 public:
-    unsigned long GetTagFromCRC(unsigned long crc) const;                             // 0x009CC410
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool b) const;   // 0x009C9070
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool b) const;   // 0x009C9070
+public:
+    unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
 class CEngine { public:
@@ -101,9 +102,9 @@ class CGameScriptInterface { public:
 void CGameScriptInterface::SetQuestInfoName(const char* symbol) const
 {
     NGameText::CDataBank* bank = g_pEngine->PGameTextDataBank;
-    unsigned long tag = bank->GetTagFromCRC(CCharString(symbol, -1).GetCRC());
+    unsigned long tag = bank->LookupValue(CCharString(symbol, -1).GetCRC());
     if (tag > 0) {
-        CIVCountedPointer<NGameText::CGroupEntry> entry = bank->GetPGroupEntry(tag, true);
+        CIVCountedPointer<const NGameText::CTextEntry> entry = bank->GetPTextEntry(tag, true);
         g_pPlayerGui->GetQuestInfo().Name = entry->GetText();
     }
 }

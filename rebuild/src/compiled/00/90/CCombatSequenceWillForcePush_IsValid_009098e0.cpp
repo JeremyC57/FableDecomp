@@ -53,20 +53,32 @@ class CThingCreatureBase : public CThing { public: };
 
 bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +4
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CPlayer { public:
     unsigned char _pad[0x34];
-    CBaseIntelligentPointer PCharacter;         // +0x34
-    const CBaseIntelligentPointer& GetCharacter() const { return PCharacter; }
+    CIntelligentPointer<CThing> PCharacter;         // +0x34
+    const CIntelligentPointer<CThing>& GetCharacter() const { return PCharacter; }
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 
 struct CMainGameComponent_Retail {
@@ -95,7 +107,7 @@ bool CCombatSequence_WillForcePush::IsValid()
     CTCWillPower* willPower;
     if (m_pOwner->GetInterface(&willPower, 0xce)) {
         if (willPower->Active) {
-            CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetCharacter().GetPItem();
+            CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetCharacter().GetPItem();
             if (!AreThingsEnemies(hero, m_pOwner)) {
                 if ((hero->GetPosition() - m_pOwner->GetPosition()).GetLength() < 8.0f)
                     return false;

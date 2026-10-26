@@ -26,7 +26,8 @@ class CTCBase { public:                                            // engine/CTC
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
     unsigned char _pad0a[2];
-    CWorld* GetWorld();                                     // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CTCRegionDisplay : public CTCBase { public:                         // vtable 0x0125A0EC
     CWideString   CurrentAreaName;                          // +0x0c
@@ -48,7 +49,7 @@ void CTCRegionDisplay::SetCurrentAreaName(const CWideString& name, float display
     if (name != L"") {
         CurrentAreaName = name;
         CurrentAreaNameExtra = L"";
-        FrameNameChanged = GetWorld()->GetWorldFrame();
+        FrameNameChanged = GetWorld().GetWorldFrame();
         LastAlpha = 0;
     } else {
         CurrentAreaName = L"";

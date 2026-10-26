@@ -28,9 +28,12 @@ class CWideString { public:
 
 extern const CWideString g_EmptyWideString;          // 0x013BCA24
 
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);  // 0x009C95E0
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;  // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 
 struct CEngineGlobals {
     unsigned char _pad_0x00[0x14];
@@ -44,7 +47,8 @@ class CRegion { public:
 };
 
 class CWorldMap { public:
-    CRegion& GetRegion(long index);                  // 0x004FC180
+public:
+    const CRegion& GetRegion(long) const;   // 0x004FC180
 };
 
 struct CLongVector {                                 // std::vector<long> {first, last, end}

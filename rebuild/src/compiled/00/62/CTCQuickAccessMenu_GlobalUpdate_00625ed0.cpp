@@ -164,7 +164,13 @@ struct CRetailVector_Component {                            // retail std::vecto
     void clear() { erase(_M_start, _M_finish); }
 };
 
-class CTCQuickAccessMenu { public:                                 // vtable 0x01258B74
+class CTCBase
+{
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCQuickAccessMenu : public CTCBase { public:                                 // vtable 0x01258B74
     void*                   __vftable;                      // +0x00
     CThingIface*            ParentThing;                    // +0x04
     bool                    ToBeRemoved;                    // +0x08
@@ -173,7 +179,6 @@ class CTCQuickAccessMenu { public:                                 // vtable 0x0
     bool                    Active;                         // +0x0c
     CRetailVector_Component Components;                     // +0x10
     bool                    Quitting;                       // +0x1c
-    CPlayerManager* GetPlayerManager();                     // 0x00686D40
     void GlobalUpdate(bool);
 };
 
@@ -191,7 +196,7 @@ void CTCQuickAccessMenu::GlobalUpdate(bool)
         CFrontEndManager::GetInstance()->ResetInput();
         Active = false;
         Quitting = false;
-        GetPlayerManager()->GetMainPlayer()->RemoveMode(0x24);
+        GetPlayerManager().GetMainPlayer()->RemoveMode(0x24);
         CTC11* tc = 0;
         ParentThing->GetInterface(0x11, &tc);
         tc->m_setA.clear();

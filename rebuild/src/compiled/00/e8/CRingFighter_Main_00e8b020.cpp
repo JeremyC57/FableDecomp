@@ -89,9 +89,10 @@ struct CAndPredicate : CScriptPredicate {               // vtable 0x012EA430
     virtual CScriptPredicate* Clone() const;
 };
 class CBaseObject { public:                                    // vtable 0x0129A7D8
-    CBaseObject();                                      // 0x0099A380
-    virtual ~CBaseObject();                             // 0x0099A430
     void* IntelligentPointer;                           // +0x04
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}

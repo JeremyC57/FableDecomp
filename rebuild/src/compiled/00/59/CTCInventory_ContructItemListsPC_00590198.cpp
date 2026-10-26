@@ -29,8 +29,12 @@ class CCharString { public:
 class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};
 class CMainGameComponent { public:
-    const CDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
+public:
+    const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
 };
 extern CMainGameComponent* g_pMainGameComponent;               // 0x013B86A0
 

@@ -20,14 +20,10 @@ enum ETutorialCategory { };                                 // enumerators not n
 enum EUIInventoryCategory { };                              // enumerators not needed
 class CPersistContext {
 public:
-    void Transfer(CEngineGraphic& value);                        // 0x00451E11
-    void Transfer(unsigned long& value);                         // 0x00431020
-    void Transfer(long& value);                                  // 0x00431102
-    void Transfer(float& value);                                 // 0x00431061
+    template <class T> void Transfer(T& value);                        // 0x00451E11
     void Transfer(EInventoryActionType& value);                  // 0x00451E59
     void Transfer(ETCInterfaceType& value);                      // 0x00451EFD
     void Transfer(EInventoryObjectOrientation& value);           // 0x00451FA1
-    void Transfer(bool& value);                                  // 0x0043314A
     void Transfer(ETutorialCategory& value);                     // 0x00452045
     void Transfer(EUIInventoryCategory& value);                  // 0x00452086
 };

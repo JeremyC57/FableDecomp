@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DFCF0, 295 bytes (plain `ret`, /GS cookie 0x0139C8A8).
 // Callees: CTCBase::GetWorld() 0x00686A70 (x2); CThing::GetPosition() const 0x004C73D0 (x3, one per component);
 //          CMemoryBuffer::Copy(unsigned long, const void*) 0x009F1760 (x7); the physics component's GetFacingAngleXY (slot
-//          63, `call [edx+0FCh]`); CTCBase::GetPlayerManager() const 0x00686D50; CPlayerManager::GetMainPlayerNumber()
+//          63, `call [edx+0FCh]`); CTCBase::PeekPlayerManager() const 0x00686D50; CPlayerManager::GetMainPlayerNumber()
 //          0x00449700; CWorld::HandleMoveHeroToRegionGameEvent(CGameEvent*) 0x0049EAF0; __security_check_cookie 0x00BFE9F9.
 // Layout (retail): CWorld +0x12f is DisplayMiniMapOnRegionLoad in engine/CWorld.h (retail STLport 4.6 offsets: Ego_r.pdb
 //          +0x13f less the 0x10 of four shrunk containers; RegionLoadViaTeleporter is +0x12c). Five other hero moves
@@ -61,7 +61,7 @@ class CWorld { public:
     void HandleMoveHeroToRegionGameEvent(CGameEvent* event);   // 0x0049EAF0
 };
 class CPlayerManager { public:
-    long GetMainPlayerNumber();                 // 0x00449700
+    long GetMainPlayerNumber() const;                 // 0x00449700
 };
 
 class CTCBase { public:
@@ -70,8 +70,9 @@ class CTCBase { public:
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
     unsigned char _pad0a[2];
-    CWorld* GetWorld();                         // 0x00686A70
-    CPlayerManager* GetPlayerManager() const;   // 0x00686D50
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CTCTeleporter : public CTCBase { public:
     void TeleportHero();
@@ -79,7 +80,7 @@ class CTCTeleporter : public CTCBase { public:
 
 void CTCTeleporter::TeleportHero()
 {
-    GetWorld()->DisplayMiniMapOnRegionLoad = true;
+    GetWorld().DisplayMiniMapOnRegionLoad = true;
     CGameEvent event(0x2c);
     event.AddFloat(ParentThing->GetPosition().X);
     event.AddFloat(ParentThing->GetPosition().Y);
@@ -88,6 +89,6 @@ void CTCTeleporter::TeleportHero()
     event.AddBool(true);
     event.AddBool(false);
     event.AddBool(false);
-    event.Player = (signed char)GetPlayerManager()->GetMainPlayerNumber();
-    GetWorld()->HandleMoveHeroToRegionGameEvent(&event);
+    event.Player = (signed char)PeekPlayerManager().GetMainPlayerNumber();
+    GetWorld().HandleMoveHeroToRegionGameEvent(&event);
 }

@@ -30,10 +30,21 @@ class CThing { public:
 class CThingObject : public CThing { };              // CThingObject derives from CThing (PositionMesh takes the base)
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    void* _vfptr;                               // +0x00
-    void* m_pItem;                              // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class Coin { public:                                   // 0x3c bytes
     long      _pad_0x00;
@@ -43,7 +54,7 @@ class Coin { public:                                   // 0x3c bytes
     float     Angle;                            // +0x18
     unsigned char _pad_0x1c[0x8];
     bool      Owned;                            // +0x24
-    CBaseIntelligentPointer Thing;              // +0x25
+    CIntelligentPointer<CThing> Thing;              // +0x25
     unsigned char _pad_0x2d[0x3];
     float     Radius;                           // +0x30
     int       Owner;                            // +0x34

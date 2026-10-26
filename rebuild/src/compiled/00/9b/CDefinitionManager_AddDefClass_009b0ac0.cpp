@@ -29,7 +29,7 @@ class CCharString { public:
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 struct CCRC { static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0
 template <class T> struct CRetailVector {   // STLport vector (12 bytes)
     T* _M_start;
@@ -132,7 +132,7 @@ class CDefinitionManager { public:
 
 void CDefinitionManager::AddDefClass(const CDefClassInit& init)
 {
-    DisplayProgress("Add Def Class", -1.0f, false, false);
+    NProgressDisplay::DisplayProgress("Add Def Class", -1.0f, false, false);
     CDefClassInfo info(init);
     DefClassInfo.Add(CCRC::Calc(0, init.Name.GetString(), init.Name.GetLength()), info);
     DefClassInfo.Sort();

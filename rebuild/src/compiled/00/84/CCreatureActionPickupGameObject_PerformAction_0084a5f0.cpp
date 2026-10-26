@@ -239,8 +239,9 @@ bool CDefLookup::GetCarryable(DefPointer<CCarryableDef>* out)const {
 
 class CTCCarrying { public:
  bool IsCarrySlotEmpty(long); //006A1230: absent entry returns false; present entry tests null intelligent pointer
- CThing* GetThingInCarrySlot(long); //006A11F0
  void PutThingInCarrySlot(CThing*,long,bool); //006A1F80
+public:
+    CThing* GetThingInCarrySlot(long) const;   // 0x006A11F0
 };
 void __fastcall DropWeapon(CThing*,CTCCarrying*,CThingCreatureBase*); //00845CE0
 class CCreatureAction_PickupGameObject:public CCreatureActionBase { public:

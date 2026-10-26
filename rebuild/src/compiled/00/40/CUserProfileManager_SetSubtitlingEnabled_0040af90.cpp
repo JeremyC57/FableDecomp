@@ -4,9 +4,10 @@ class CUserProfileManager { public:
     char SubtitlingEnabled;
     char pad_e[0xcd - 0xe];
     char SubtitlingEnabledNewProfile;
-    void ApplyCamera();
     void NotifyReset();
     void SetSubtitlingEnabled(char a1, char a2);
+protected:
+    void ApplyValues();   // 0x00407370
 };
 
 void CUserProfileManager_SetSubtitlingEnabled(CUserProfileManager* manager, char a1, char a2);
@@ -16,7 +17,7 @@ void CUserProfileManager::SetSubtitlingEnabled(char a1, char a2)
     if (this->UseNewProfileValues)
         this->SubtitlingEnabledNewProfile = a1;
     this->SubtitlingEnabled = a1;
-    this->ApplyCamera();
+    ApplyValues();
     if (a2)
         this->NotifyReset();
 }

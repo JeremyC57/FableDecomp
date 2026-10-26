@@ -18,12 +18,23 @@
 // after the delete; the same-TU find body under auto_inline(off) is what keeps the node in edi (and the deed in ebx).
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 
-struct CBaseIntelligentPointer {                       // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    void* m_pItem;                                     // +0x04
-    ~CBaseIntelligentPointer();                        // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer { };   // CIntelligentPointer<const CThing>
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public: 
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};   // CIntelligentPointer<const CThing>
 
 class C3DVector { public: float X, Y, Z; };
 
@@ -32,7 +43,7 @@ class COpinionDeed { public:                                  // Ego_r.pdb, 0x28
     long                DeedHandle;                    // +0x04
     C3DVector           Position;                      // +0x08
     long                FrameHappened;                 // +0x14
-    CIntelligentPointer PTarget;                       // +0x18
+    CIntelligentPointer<const CThing> PTarget;                       // +0x18
     bool                WasSearchingForWitnesses;      // +0x20
     bool                IsStillHappening;              // +0x21
     bool                IsCrimeReportedToVillage;      // +0x22

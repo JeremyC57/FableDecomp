@@ -20,7 +20,10 @@ class CWideString { public:
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);        // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);            // 0x0099BF30
-bool __fastcall PathExists(const CWideString& path);        // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};        // 0x00999230
 bool __fastcall IsRoomForFile(long size, const CWideString& path);   // 0x00999AB0
 CWideString __fastcall GetValidProfileName(const CWideString& name);   // 0x00406350
 namespace NResourceDirectoryNames {
@@ -70,10 +73,10 @@ bool CTattooDef::CopyCustomTattooToUserDir() const
 {
     CUserProfileManager* profiles = CUserProfileManager::Get();
     CWideString destination = NResourceDirectoryNames::GetSaveDir_0041a650() + GetValidProfileName(profiles->ProfileName) + L"\\" + CustomFileName.ToWideString();
-    if (PathExists(destination))
+    if (CAFile::PathExists(destination))
         return true;
     CWideString source = NResourceDirectoryNames::GetCustomTattooDir() + CustomFileNameBase.ToWideString();
-    if (!PathExists(source))
+    if (!CAFile::PathExists(source))
         return false;
     CDiskFileWin32 from(source, FILE_ACCESS_READ, 2);
     if (IsRoomForFile(from.Length, destination)) {

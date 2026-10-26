@@ -26,7 +26,7 @@ class CCreatureActionBase { public:
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];                    // +0xa8..+0x113
     CCombatActionBase(CThingCreatureBase* creature, long actionType, const CSoundPair& sound);   // 0x00858030
-    ~CCombatActionBase();                           // 0x0062E900
+    virtual ~CCombatActionBase();                           // 0x0062E900
 };
 
 class CCreatureAction_TentacleRise : public CCombatActionBase { public:     // vtable 0x01290304

@@ -28,18 +28,27 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CBaseIntelligentPointer();              // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CCreatureAction_ScorpionChargeInto : public CCombatActionBase { public:   // vtable 0x01280ED4
     long m_chargeCount;                     // +0x114 (descriptive)
-    CIntelligentPointer PTarget;            // +0x118
+    CIntelligentPointer<CThing> PTarget;            // +0x118
     virtual void v00();
     CCreatureAction_ScorpionChargeInto(CThingCreatureBase* owner, CThing* thing, long chargeCount);
 };

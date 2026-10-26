@@ -14,14 +14,14 @@
 struct Node { Node* next; Node* prev; };    // ring links
 struct List { Node* head; void Clear(); };  // the sentinel node
 // Returns a node to the engine heap.
-extern "C" void __cdecl Free2(void* p);   // 0x00bfea14
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 void List::Clear() {
     Node* n = this->head->next;
     while (n != this->head) {
         // Read the successor before the node goes away.
         Node* cur = n;
         n = n->next;
-        Free2(cur);
+        free(cur);
     }
     // Sentinel points at itself: empty list.
     this->head->next = this->head;

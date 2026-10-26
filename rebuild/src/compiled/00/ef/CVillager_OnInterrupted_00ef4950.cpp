@@ -6,6 +6,7 @@
 // as in the landed CMeanBandit::OnInterrupted (0x00EF42D0). PDB CVillager: Crate (CScriptThing) at +0x1c.
 // Shape: nested ifs; `Crate.IsCarrying(Me.GetDataHandle())` fetches the crate's vtable into ebp BEFORE the inner call (the
 // plain nested call form); &Me in edi is reused as the final argument. Slot names are descriptive.
+namespace NScript { class CPredicateBase; }
 class CScriptThing;
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -91,19 +92,24 @@ class CScriptThing { public:
     virtual bool IsValid() const;                         // slot 75 (+0x12c)
     unsigned char _body[0x10];
 };
-struct CVillager {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CVillager : public CEntityScriptBase {
     long                   m_0;
     CGameScriptInterface*  m_pInterface;    // +0x04
     CScriptThing           Me;              // +0x08
     CScriptThing           Crate;           // +0x1c
-    bool IsScriptPaused();                  // 0x00F35B30
     void OnInterrupted();
 };
 void CVillager::OnInterrupted()
 {
     if (Crate.IsValid()) {
         if (Crate.IsCarrying(Me.GetDataHandle())) {
-            if (!IsScriptPaused())
+            if (!IsActiveThreadTerminating())
                 m_pInterface->OnScriptThingStopped(&Me);
         }
     }

@@ -77,9 +77,28 @@ class CTCTalk { public:                                        // interface 0xF
 class CTCParamsBase;
 enum ESex { SEX_NONE = 0, SEX_MALE = 1, SEX_FEMALE = 2 };
 
-class CThingAICreature {
+class CThing
+{
 public:
     virtual void v00();
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
+};
+class CThingPhysical : public CThing
+{
+public:
+};
+class CThingGameObject : public CThingPhysical
+{
+public:
+};
+class CThingCreatureBase : public CThingGameObject
+{
+public:
+};
+
+class CThingAICreature : public CThingCreatureBase {
+public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -113,7 +132,6 @@ public:
     }
     ESex GetSex() const;                                // 0x00661FF0 (CThingCreatureBase)
     unsigned long* GetRandomSeed();                     // 0x004C7AE0 (CThing)
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60 (CThing)
     void AutoSetupSexuality(float maleChance);
 };
 

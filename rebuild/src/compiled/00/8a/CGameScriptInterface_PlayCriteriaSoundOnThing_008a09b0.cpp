@@ -105,8 +105,9 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
     return t && !t->m_dead;
 }
 extern unsigned long g_InvalidSoundHandle;         // 0x0129D25C
-struct CTCSound_Retail {
-    unsigned long PlaySound(const CCharString& sound, bool b1, long a, long b, long c);   // 0x0066BD00
+class CTCSoundPlayer { public:
+public:
+    unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };
 class CGameScriptInterface { public:
     virtual void v000();
@@ -121,8 +122,8 @@ class CGameScriptInterface { public:
 
 unsigned long CGameScriptInterface::PlayCriteriaSoundOnThing(const CScriptThing& thing, const CCharString& sound) const
 {
-    CTCSound_Retail* tc;
+    CTCSoundPlayer* tc;
     if (thing.IsValid() && GetTCOut(thing.GetThing(), 0x10, &tc))
-        return tc->PlaySound(sound, true, 0, 0, -1);
+        return tc->PlayAttachedCriteria(sound, true, 0, 0, -1);
     return g_InvalidSoundHandle;
 }

@@ -127,19 +127,25 @@ class CTCBoss { public:
     void IncrementBossPhase();                  // 0x007AED20
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;
-    CBaseIntelligentPointer();             // 0x00A01B10
-    ~CBaseIntelligentPointer();            // 0x00A01C10
-    CThing* GetPItem() const;              // 0x00A01B50
-    void SetPItem(CThing* item);           // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing() { }
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
+    CIntelligentPointer() { }
+    CIntelligentPointer(T* item) { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 extern long g_GameFramesPerSecond;              // 0x01375550
 struct CModeBase {
@@ -157,7 +163,7 @@ struct CModeBriarRoseTeleportInvulnerable : CModeStandBase {
     unsigned char _pad68[0x0c];
     long          FrameCount;                   // +0x74
     unsigned char _pad78[0x08];
-    CIntelligentPointerThing PEffect;           // +0x80
+    CIntelligentPointer<CThing> PEffect;           // +0x80
     void OnActivate();
 };
 void CModeBriarRoseTeleportInvulnerable::OnActivate()
@@ -180,7 +186,7 @@ void CModeBriarRoseTeleportInvulnerable::OnActivate()
     if (found) {
         CThing* effect = CreateEffectThing(effectType, &GetParent()->GetPosition(), false);
         if (effect && !(effect->m_flags91 & 1))
-            PEffect = CIntelligentPointerThing(effect);
+            PEffect = CIntelligentPointer<CThing>(effect);
     }
     }
 }

@@ -10,6 +10,7 @@
 //   ParentClass +0x14 is the owning quest script whose bool at +0x58 records that the quest card was given.
 // Shape: every literal is an implicit CCharString conversion (built right to left before the call's other arguments,
 //   GetActiveQuestName last); the IsDone exit skips the closing RemoveThing.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -115,13 +116,18 @@ struct CQ_BanditTollOwner {
     bool          QuestCardGiven;                  // +0x58
 };
 
-class CGuildSealWarning {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CGuildSealWarning : public CEntityScriptBase {
 public:
     void*                 __vftable;               // +0x00
     CGameScriptInterface* Game;                    // +0x04
     CScriptThing          Me;                      // +0x08
     CQ_BanditTollOwner*   ParentClass;             // +0x14
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -130,7 +136,7 @@ void CGuildSealWarning::Main()
     Game->HeroReceiveMessageFromGuildMaster("TEXT_QST_011_GUILDSEAL_MESSAGE", "", true, true);
     Game->Pause(2.0f);
     if (!ParentClass->QuestCardGiven) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         Game->GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_BANDIT_TOLL", Game->GetActiveQuestName(), false);
         ParentClass->QuestCardGiven = true;

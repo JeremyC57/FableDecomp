@@ -31,7 +31,7 @@ class CScriptThing { public:                                   // 12 bytes, vtab
  CScriptThingImpl* PImp_Data;
  void* PImp_Info;
  CScriptThing(const CScriptThing& other);   // 0x004ABE90
- ~CScriptThing();                           // 0x004AA840
+ virtual ~CScriptThing();                           // 0x004AA840
  bool IsAlive() const;                      // slot 75, inlined below
 };
 struct CScriptThingImpl {
@@ -1020,8 +1020,9 @@ class CCharString { public:
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 class CBaseObject { public:
  void* m_pIntelligentPointer;
- CBaseObject();                                     // 0x0099A380
- virtual ~CBaseObject();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
  CCountedPointerWords PImp;
@@ -1029,10 +1030,11 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
  bool IsScripting();                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
- void PlayCombatAnimation(const CCharString& anim, bool a, bool b, bool c, bool d, bool e, bool f);   // 0x007E73E0
  void PlayLoopingAnimation(const CCharString& anim, long loops, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // 0x007E73F0
  void ClearAllActionsIncludingLoopingAnimations();  // 0x007E7410
- bool IsPerformingScriptTask() const;               // 0x007E7450
+public:
+    virtual bool IsPerformingScriptTask() const;   // 0x007E7450
+    virtual void PlayCombatAnimation(const CCharString&, bool, bool, bool, bool, bool, bool);   // 0x007E73E0
 };
 extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
@@ -1048,12 +1050,17 @@ struct CQ_TraderEscortScript {
  unsigned char _pad55[0x6d - 0x55];
  bool MissionFailed;                                // +0x6D (PDB +0x81)
 };
-struct CInfectedBalverine {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CInfectedBalverine : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CQ_TraderEscortScript* ParentClass;                // +0x14
  void* PMasterData;                                 // +0x18
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CInfectedBalverine::Main()

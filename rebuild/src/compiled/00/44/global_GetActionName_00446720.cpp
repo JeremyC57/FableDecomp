@@ -38,7 +38,7 @@ public:
 namespace NGameText {
 class CDataBank {
 public:
-    CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
 }
 class CMainGameComponent { public:

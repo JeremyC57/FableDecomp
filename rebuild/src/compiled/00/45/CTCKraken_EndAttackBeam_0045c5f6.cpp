@@ -3,6 +3,10 @@
 // push esi; mov esi,ecx; lea ecx,[esi+0x70]; mov [ecx],vtbl(0x1230ba0);
 // call 0x9fc550(ecx); mov ecx,esi; pop esi; jmp 0x454b4c(this)
 
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 struct Sub {
     void** vtbl;
 };
@@ -11,7 +15,6 @@ struct Sub {
 extern void* Sub_vtbl_1230ba0;
 
 // helper at 0x9fc550, __fastcall on the subobject (ecx = sub)
-void __fastcall helper_9fc550(Sub* sub);
 
 class CTCKraken { public:
     char pad[0x70];
@@ -24,6 +27,6 @@ class CTCKraken { public:
 void CTCKraken::EndAttackBeam()
 {
     this->sub.vtbl = (void**)&Sub_vtbl_1230ba0;
-    helper_9fc550(&this->sub);
+    ((CResource*)(&this->sub))->CResource::~CResource();
     this->Base454b4c();
 }

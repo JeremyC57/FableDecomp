@@ -104,7 +104,8 @@ class CTCShop { public:
     void SetStockState(long state);             // 0x00773C00
 };
 class CTCShopKeeper { public:
-    CTCShop* GetShopTC();                       // 0x00798F50
+public:
+    CTCShop* GetShopTC() const;   // 0x00798F50
 };
 
 struct CAIStateGroup_SetupWares : CAIStateGroupBase {

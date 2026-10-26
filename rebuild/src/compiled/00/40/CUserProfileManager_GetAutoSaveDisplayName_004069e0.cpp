@@ -14,9 +14,12 @@ class CCharString { public:
     ~CCharString();                          // 0x0099EAE0
 };
 
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol); // 0x009C95E0, returns by value
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const; // 0x009C95E0, returns by value
 };
+}
+using NGameText::CDataBank;
 
 struct SlotA { char pad[0x14]; CDataBank* f14; };
 struct SlotB { char pad[0x60]; CDataBank* f60; };

@@ -62,7 +62,7 @@ class CAnimateThing { public:
     unsigned char SettingMainAnim : 1;          // +0x94 bit 0
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
 };
-struct CTCAnimation {                           // interface type 0x5a
+class CTCAnimationComplex { public:                           // interface type 0x5a
     CAnimateThing& GetAnimation();              // 0x0070B460
 };
 
@@ -93,9 +93,9 @@ public:
 
 void CThingPlayerCreature::vfunc_68(long animIndex, bool flag)
 {
-    CTCAnimation* component = 0;
+    CTCAnimationComplex* component = 0;
     if (HasTC(0x5a))
-        component = GetTC<CTCAnimation>(0x5a);
+        component = GetTC<CTCAnimationComplex>(0x5a);
     CAnimateThing& animation = component->GetAnimation();
     CAnimSet& main = animation.MainAnimSet;
     if (*main.Anims.begin() == animIndex && !main.Anims.empty() && !main.Finished)

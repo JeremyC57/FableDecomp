@@ -49,6 +49,18 @@ public:
     }
     T* operator->() const { return Object; }
 };
+template<class T> class CIVCountedPointer {
+public:
+    T* Object;
+    __forceinline ~CIVCountedPointer()
+    {
+        if (Object) {
+            Object->Release();
+            Object = 0;
+        }
+    }
+    T* operator->() const { return Object; }
+};
 class CTitleDef : public CDefClassBase {
 public:
     unsigned char _pad08[0x2c - 0x08];
@@ -63,6 +75,7 @@ class CDefinitionManager {
 public:
     CCountedPointer<CDefClassBase> GetPDefFromGlobalIndex(long index);   // 0x009AD9E0
 };
+namespace NGameText {
 class CTextEntry {
 public:
     virtual void v00();
@@ -78,10 +91,15 @@ public:
     }
     CWideString GetText() const;                        // 0x009C7A40
 };
+}
+using NGameText::CTextEntry;
+namespace NGameText {
 class CDataBank {
 public:
-    CCountedPointer<CTextEntry> GetPTextEntry(long id, bool flag);   // 0x009C9070
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long id, bool flag) const;   // 0x009C9070
 };
+}
+using NGameText::CDataBank;
 struct CGameTextManager {
     unsigned char _pad00[0x14];
     CDataBank* PDataBank;                               // +0x14
@@ -182,7 +200,7 @@ CWideString CTCHeroExperience::GetFullHeroTitle() const
         def->GetSubDef(&titleDef);
         if (titleDef.Object && titleDef->Enabled && age->Age >= titleDef->MinAge && GetTotalStatLevel(0) >= titleDef->MinStat[0]
             && GetTotalStatLevel(1) >= titleDef->MinStat[1] && GetTotalStatLevel(2) >= titleDef->MinStat[2]) {
-            CCountedPointer<CTextEntry> text = GetGameTextBank()->GetPTextEntry(titleDef->TextID, true);
+            CIVCountedPointer<const CTextEntry> text = GetGameTextBank()->GetPTextEntry(titleDef->TextID, true);
             if (text.Object) {
                 if (title != (const unsigned short*)L"")
                     title += (const unsigned short*)L" - ";

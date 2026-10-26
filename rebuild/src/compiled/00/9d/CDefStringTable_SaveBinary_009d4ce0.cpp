@@ -39,11 +39,10 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:                   
     virtual void Close();                          // 0x0099A920
 };
 struct CFileDataOutputStream {                     // 0xc bytes
-    void* __vftable;
     void* m_pFile;
     long m_position;
     CFileDataOutputStream(CDiskFileWin32* file);   // 0x00994400
-    ~CFileDataOutputStream();                      // 0x00994430
+    virtual ~CFileDataOutputStream();                      // 0x00994430
 };
 
 struct SRbTreeNode {

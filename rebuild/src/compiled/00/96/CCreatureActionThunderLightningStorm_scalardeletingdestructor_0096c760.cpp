@@ -1,13 +1,16 @@
+class CCombatActionBase {
+public:
+    virtual ~CCombatActionBase();   // 0x0062E900
+};
 class CCreatureAction_ThunderLightningStorm { public:
     void* vftable;
 };
 
-void __fastcall CCreatureAction_ThunderLightningStorm_dtor(CCreatureAction_ThunderLightningStorm* action);
 void operator delete(void*);
 
 void* __fastcall CCreatureAction_ThunderLightningStorm_scalar_deleting_destructor(CCreatureAction_ThunderLightningStorm* action, int edx_unused, unsigned int flags)
 {
-    CCreatureAction_ThunderLightningStorm_dtor(action);
+    ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
     if (flags & 1)
         operator delete(action);
     return action;

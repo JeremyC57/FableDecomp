@@ -41,12 +41,10 @@ public:
 enum EObjectAugmentationType { };                           // enumerators not needed
 class CPersistContext {
 public:
-    void Transfer(long& value);                                  // 0x00431102
+    template <class T> void Transfer(T& value);                                  // 0x00431102
     void Transfer(std::map<EObjectAugmentationType, CObjectAugmentationParticleSet >& value); // 0x004EC825
-    void Transfer(unsigned long& value);                         // 0x00431020
     void Transfer(std::vector<long >& value);                    // 0x00466A47
     void Transfer(std::map<EObjectAugmentationType, CDefString >& value); // 0x004EC5FA
-    void Transfer(CCharString& value);                           // 0x00431143
 };
 class CObjectAugmentationsDef {
 public:

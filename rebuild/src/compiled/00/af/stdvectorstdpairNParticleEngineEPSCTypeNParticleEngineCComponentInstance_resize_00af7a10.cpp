@@ -37,7 +37,7 @@ class CBaseClass {                              // vtable 0x01231710
 public:
     virtual void v000();
     CBaseClass();                               // 0x0099A2D0
-    ~CBaseClass();                              // 0x0099A2E0
+    virtual ~CBaseClass();                              // 0x0099A2E0
 };
 namespace NParticleEngine {
 enum EPSCType { PSC_NONE = 0 };

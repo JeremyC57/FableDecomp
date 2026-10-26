@@ -1,7 +1,7 @@
 // CPersistContext::Transfer<EScriptingStateGroups>(const char* name, EScriptingStateGroups& value, const EScriptingStateGroups& defaultValue) -- persist one EScriptingStateGroups member: CRC-check the key, then by mode text load (seeding the default first when asked), text save, binary load, binary save, or reset to the default
 // Leaf: Transfer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AD6D0, 216 bytes incl. the 5-entry jump table, `ret 0Ch`.
-// Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteLong 0x00993EB0, CPersistTraits<EScriptingStateGroups>::TransferBinaryIn 0x007AD7F0, CPersistContext::TransferObjectSaveText 0x009BAD60 and
+// Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteSLONG 0x00993EB0, CPersistTraits<EScriptingStateGroups>::TransferBinaryIn 0x007AD7F0, CPersistContext::TransferObjectSaveText 0x009BAD60 and
 //   TransferObjectLoadText 0x009BBA40 (both take the CPersistContext_TransferableComponent<EScriptingStateGroups> wrapper, vtable 0x0126D3AC).
 // Shape: the speed-TU persist switch of the landed Transfer<EArcheryState> 0x00CDCC20 / Transfer<ENumAcceptedBoasts>
 //   0x004B8D70 (mode +0x18: 0 text load, 1 text save, 2 binary load, 3 binary save, 4 reset; `default: __assume(0)`
@@ -11,7 +11,8 @@
 //   value-initialising constructor: it is zeroed once before the jump (`mov [esp+14h],0`, the dead key-argument
 //   slot) and the binary-load arm passes that slot, as in the landed Transfer<EArcheryState> 0x00CDCC20.
 class CDataOutputStream { public:
-    void WriteLong(long value);                   // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 class CMemoryDataInputStream;
 // The enum's name is from the catalog label; it is a 4-byte enum written with WriteLong.
@@ -55,7 +56,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
         value = defaultValue;
         break;
     case 3:
-        PSaveStream->WriteLong(value);
+        PSaveStream->WriteSLONG(value);
         break;
     case 2: {
         traits.TransferBinaryIn(PLoadStream, &value);

@@ -8,7 +8,7 @@
 // action's +0x2c pointer, and the component's target pointer is assigned through an inline by-value operator= when the target is alive.
 // Layout: Level at retail +0x114 (PDB +0x12c).
 class CTCParamsBase;
-class CBaseObject;
+class CTCBase;
 
 class CCharString { public:
     void* PStringData;
@@ -38,11 +38,12 @@ class CThing { public:
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     unsigned char _pad44[0x91 - 0x44];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    CBaseObject* AddTC(const CCharString& name, bool a2, CTCParamsBase* params);   // 0x004C9D60
     __forceinline unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 
 class CCombatActionBase { public:

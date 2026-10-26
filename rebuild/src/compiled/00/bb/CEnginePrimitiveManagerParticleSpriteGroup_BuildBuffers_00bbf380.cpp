@@ -9,7 +9,15 @@
 #include "engine/CEnginePrimitiveManagerParticleSpriteGroup.h"
 #undef CEnginePrimitiveManagerParticleSpriteGroup
 #include "engine/CVertexBufferWin32.h"
+#define CIndexBuffer CIndexBufferLayout
 #include "engine/CIndexBuffer.h"
+#undef CIndexBuffer
+
+class CIndexBuffer : public CIndexBufferLayout
+{
+public:
+    unsigned char* Lock(unsigned long, unsigned long, unsigned long);   // 0x00AC1FB0
+};
 #include "engine/CEngineResourceManager.h"
 enum EVertexType {VertexTypeDefault=0};
 enum EVertexBufferPool {VertexPoolManaged=1};
@@ -31,7 +39,6 @@ struct CVertexBufferWin32_Retail {
 struct CIndexBuffer_Methods:CIndexBuffer {
  void Initialise(unsigned long,unsigned long,EIndexBufferFormat,EIndexBufferPool,EPrimitiveType); //00AC1F70
  long GetSize()const; //00AC1F10
- unsigned char* Lock(unsigned long,unsigned long,unsigned long); //00AC1FB0
  void Unlock(); //00AC1F00
 };
 struct ShaderArray {void* First;void* Last;void* End;};

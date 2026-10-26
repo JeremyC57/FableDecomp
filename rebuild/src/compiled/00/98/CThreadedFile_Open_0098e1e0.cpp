@@ -15,7 +15,7 @@
 #include <string.h>
 typedef unsigned short wchar_t;                                // VC7.1 without /Zc:wchar_t
 #pragma pack(push, 1)
-struct CBasicStringChar {                                      // CBasicString<char>, 13 bytes
+template <class T> class CBasicString { public:                                      // CBasicString<char>, 13 bytes
     char*         PData;                                       // +0x00
     unsigned long StringLength;                                // +0x04
     unsigned long DataLength : 31;                             // +0x08
@@ -23,7 +23,7 @@ struct CBasicStringChar {                                      // CBasicString<c
     bool operator==(const char* text) const;                   // 0x004115A0
 };
 class CCharStringData { public:                                       // 17 bytes
-    CBasicStringChar Data;                                     // +0x00
+    CBasicString<char> Data;                                     // +0x00
     long             NoRefs;                                   // +0x0d
 };
 #pragma pack(pop)
@@ -48,8 +48,14 @@ public:
     const wchar_t* GetChars_0099af00() const;                  // 0x0099AF00 (retail's second operator const wchar_t* copy)
     CCharString ConvertToCharString() const;                   // 0x0099B2C0
 };
-CWideString __fastcall ConvertPathToFullPath(const CWideString& path);   // 0x00999110
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* dir, CWideString* name, CWideString* ext);   // 0x00997620
+class CAFile {
+public:
+    static CWideString __fastcall ConvertPathToFullPath(const CWideString&);   // 0x00999110
+
+public:
+    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+};   // 0x00999110
+   // 0x00997620
 
 extern "C" __declspec(dllimport) void* __stdcall CreateFileW(const wchar_t* name, unsigned long access, unsigned long share,
                                                              void* security, unsigned long disposition, unsigned long flags,
@@ -78,9 +84,9 @@ public:
 
 bool CThreadedFile::Open(const CWideString& filename, bool unbuffered)
 {
-    CWideString fullPath = ConvertPathToFullPath(filename);
+    CWideString fullPath = CAFile::ConvertPathToFullPath(filename);
     CWideString drive;
-    SplitPath(fullPath, &drive, 0, 0, 0);
+    CAFile::SplitPath(fullPath, &drive, 0, 0, 0);
     OpenedForWrite = false;
     bool onDriveD = drive.ConvertToCharString().ToUpper() == "D:";
     DeviceID = (EThreadedFileDeviceID)(onDriveD != 0);

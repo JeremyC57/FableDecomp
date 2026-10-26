@@ -102,7 +102,8 @@ class CPlayer { public:
     CThing* GetControlledCreature() const;         // 0x00487DD0
 };
 class CPlayerManager { public:
-    const CPlayer* GetMainPlayer() const;          // 0x00449960 (the const overload)
+public:
+    const CPlayer& GetMainPlayer() const;   // 0x00449960
 };
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
@@ -123,7 +124,7 @@ class CMiniMapDisplay { public:
 void CMiniMapDisplay::InitialiseInformationMarkers()
 {
     if (m_pRegion) {
-        CThing* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetControlledCreature();
+        CThing* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer().GetControlledCreature();
         if (hero && !(hero->m_flags91 & 1)) {
             long bodyGuard = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_BODY_GUARD");
             long bodyGuardWeak = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_BODY_GUARD_WEAK");

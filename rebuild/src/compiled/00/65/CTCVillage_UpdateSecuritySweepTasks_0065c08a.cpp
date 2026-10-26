@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065C08A, 188 bytes (plain `ret`, `leave`): frame-pointer size TU,
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)`. Ego_r.pdb `?UpdateSecuritySweepTasks@CTCVillage@@AAEXXZ`.
 // Callees: CTCVillage::IsHeroCriminal() 0x0065BFCE; CTCVillage::InvalidateAndClearAllSecuritySweepTasks() 0x006590A0;
-//          CTCBase::GetWorld() const 0x00686A80 (its result only feeds the static frame getter); CWorld::GetWorldFrame()
+//          CTCBase::PeekWorld() const 0x00686A80 (its result only feeds the static frame getter); CWorld::GetWorldFrame()
 //          0x0049D870 (static); __ftol2 0x00BFEA70; CTCBase::GetPlayerManager() 0x00686D40; CPlayerManager::GetMainPlayer()
 //          0x00449970 (Ego_r.pdb returns CPlayer&); CPlayer::GetHeroThing() 0x00487DC0; CThing::GetPosition() const
 //          0x004C73D0; CTCVillage::CalculateSecuritySweepTasks() 0x00659800. Globals: g_framesPerSecond 0x01375550;
@@ -36,7 +36,14 @@ struct CTaskList {                              // retail STLport list: the head
     bool empty() const { return _M_node->_M_next == _M_node; }
 };
 
-class CTCVillage { public:
+class CTCBase
+{
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCVillage : public CTCBase { public:
     void*         __vftable;                    // +0x00
     void*         ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x8];
@@ -44,8 +51,6 @@ class CTCVillage { public:
     C3DVector     PositionPlayerWasInWhenSecuritySweepCalculated;   // +0x14
     unsigned char _pad_0x20[0x3c];
     CTaskList     SecuritySweepTasks;           // +0x5c list<CCountedPointer<CVillageTaskSecuritySweep> >
-    CWorld* GetWorld() const;                   // 0x00686A80 (CTCBase)
-    CPlayerManager* GetPlayerManager();         // 0x00686D40 (CTCBase)
     bool IsHeroCriminal();                      // 0x0065BFCE
     void InvalidateAndClearAllSecuritySweepTasks();   // 0x006590A0
     void CalculateSecuritySweepTasks();         // 0x00659800
@@ -60,11 +65,11 @@ void CTCVillage::UpdateSecuritySweepTasks()
             return;
         }
         bool recalculate = false;
-        CWorld* world = GetWorld();
+        const CWorld* world = (&PeekWorld());
         long framesPerSecond = g_framesPerSecond;
         if ((world->GetWorldFrame() - FrameStartedSecuritySweep) % (long)(framesPerSecond * 7.5f) == 0)
             recalculate = true;
-        CThing* hero = GetPlayerManager()->GetMainPlayer().GetHeroThing();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
         if (hero) {
             const C3DVector& position = hero->GetPosition();
             float dx = PositionPlayerWasInWhenSecuritySweepCalculated.X - position.X;

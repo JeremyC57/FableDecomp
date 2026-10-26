@@ -3,7 +3,7 @@
 //
 // Retail 0x007BB800, 147 bytes (`ret 4`). Ego_r.pdb `??0CTCDrunkenness@@QAE@AAVCThing@@@Z`. Callees:
 // CTCBase::CTCBase(CThing*) @ 0x00686800, CDefClassBase::GetSubDef<CSpecialAbilitiesDrunkennessDef>
-// @ 0x007BB920 (manifest name is a byte-twin template), CTCBase::GetPLocalSeed() @ 0x00686DA0
+// @ 0x007BB920 (manifest name is a byte-twin template), CTCBase::GetPWorldSeed() @ 0x00686DA0
 // (manifest "CViewBase::GetDisplayEngine", propagated), GFFloatRandom(float, unsigned long*) @
 // 0x004978A0 (`__fastcall`: the seed in ecx, the float on the stack). Globals: 0x01375550 the integer
 // frame rate, 0x0126DEA4 1.0f, 0x0122F59C 0.5f. Vtable 0x0126DEB4 = CTCDrunkenness.
@@ -78,7 +78,8 @@ class CTCBase { public:
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
     CTCBase(CThing* thing);                                 // 0x00686800
-    unsigned long* GetPLocalSeed() const;                   // 0x00686DA0
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x00686DA0
 };
 
 class CTCDrunkenness : public CTCBase { public:                           // vtable 0x0126DEB4
@@ -98,6 +99,6 @@ CTCDrunkenness::CTCDrunkenness(CThing* thing)
 {
     CDrunkennessDefPointer def;
     ParentThing->GetDef()->GetSubDef(&def);
-    float factor = GFFloatRandom(1.0f, GetPLocalSeed()) + 0.5f;
+    float factor = GFFloatRandom(1.0f, GetPWorldSeed()) + 0.5f;
     ThisDrunkennessThreshold = factor * def->DrunkennessThreshold;
 }

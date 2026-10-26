@@ -17,9 +17,9 @@ double __fastcall GFGetFastSubFrameTimer();         // 0x009E1C70
 enum LS_LOADING_STATUS { LS_NONE, LS_LOADED, LS_LOADING, LS_FAILED };
 class CDataInputStream;
 class CMemoryDataInputStream { public:
-    unsigned char _d[0x1c];
+    unsigned char _d[0x1c - 4];
     CMemoryDataInputStream(const char* data, long size);   // 0x00994930
-    ~CMemoryDataInputStream();                      // 0x00993B10
+    virtual ~CMemoryDataInputStream();                      // 0x00993B10
     operator CDataInputStream&() { return *reinterpret_cast<CDataInputStream*>(this); }
 };
 class CEngineStaticMapFileBlockManager { public:

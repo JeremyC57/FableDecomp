@@ -26,9 +26,7 @@ public:
 class CPersistContext {
 public:
     void Transfer(CArray<CEnvironmentThemeDef >& value);         // 0x00476E3E
-    void Transfer(float& value);                                 // 0x00431061
-    void Transfer(long& value);                                  // 0x00431102
-    void Transfer(CRGBColour& value);                            // 0x004595A3
+    template <class T> void Transfer(T& value);                                 // 0x00431061
 };
 class CEnvironmentThemeDaySetDef {
 public:

@@ -19,13 +19,14 @@
 // `__forceinline` destructor of a `__declspec(novtable)` model so it inlines without a vtable store.
 class CThing;
 
-struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
+class CTCBase { public:                                      // engine/CTCBase.h layout (0xc bytes)
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase_Calls(CThing* thing);                           // 0x00686800
-    virtual ~CTCBase_Calls();                               // 0x00686830
-    void RemoveFromGlobalTCs();                             // 0x00686DF0
+    CTCBase(CThing* thing);                           // 0x00686800
+    virtual ~CTCBase();                               // 0x00686830
+public:
+    void RemoveFromGlobalTCs();   // 0x00686DF0
 };
 
 class CDefPointeeBase { public:                                    // counted definition object
@@ -49,7 +50,7 @@ class CDefPointer { public:
     }
 };
 
-struct __declspec(novtable) CTCActionUseBase : CTCBase_Calls {   // 0x14 bytes
+struct __declspec(novtable) CTCActionUseBase : CTCBase {   // 0x14 bytes
     CDefPointer<CDefPointeeBase> PActionUseDef;             // +0x0c
     bool                         Usable;                    // +0x10
     CTCActionUseBase(CThing* owner);                        // 0x004DA939

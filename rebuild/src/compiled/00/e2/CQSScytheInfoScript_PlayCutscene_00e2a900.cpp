@@ -60,11 +60,11 @@ template <class T> class CCountedPointer { public:
 };
 class CScriptThing;
 class CBaseObject { public:                                        // CBaseIntelligentPointer root
-    virtual void v00();
     void* m_pIntelligentPointer;                            // +0x04
-    CBaseObject();                                          // 0x0099A380
-    ~CBaseObject();                                         // 0x0099A430
-    CBaseObject& operator=(const CBaseObject& other);       // 0x0099A3B0
+protected:
+    CBaseObject();                                       // 0x0099A380
+    CBaseObject& operator=(const CBaseObject& other);    // 0x0099A3B0
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectBase : public CBaseObject { public:        // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}

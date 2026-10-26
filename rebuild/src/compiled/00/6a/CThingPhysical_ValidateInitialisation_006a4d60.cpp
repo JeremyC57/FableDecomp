@@ -14,7 +14,8 @@ class CTCPhysicsBase { public:
     C3DVector     Position;                                  // +0x0c
 };
 class CWorldMap { public:
-    bool IsPosInMap(const C3DVector& position);              // 0x004FC600
+public:
+    bool IsPosInMap(const C3DVector&) const;   // 0x004FC600
 };
 class CThingPhysical { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

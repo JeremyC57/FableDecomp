@@ -158,11 +158,11 @@ struct CTimerManager {
     virtual void SetTimer(long index, long time);   // slot 89 (+0x164)
 };
 extern CTimerManager* g_pScriptTimerManager;  // 0x0143E8F8
-struct CQuestGlobals {
+class CScriptDef { public:
     unsigned char _pad[0xd38];
     long          NumHitsBetweenForcePushes;  // +0xd38
 };
-extern CQuestGlobals* g_pQuestGlobals;        // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;        // 0x0143E90C
 struct CQ_MinionCampScript {
     unsigned char _pad[0xa8];
     long          m_counter;                  // +0xa8
@@ -193,7 +193,7 @@ void CBriarRose::Init()
     Game->SetThingFlags(Me, 1, 0, 0);
     Game->SetThingAsTarget(Me, 0);
     Game->SetThingImmortal(Me, 0);
-    NumHitsBetweenForcePushes = g_pQuestGlobals->NumHitsBetweenForcePushes;
+    NumHitsBetweenForcePushes = pGlobalScriptDef->NumHitsBetweenForcePushes;
     ParentClass->m_counter = 0;
     g_pScriptTimerManager->SetTimer(SpeechTimer.TimerIndex, 0);
 }

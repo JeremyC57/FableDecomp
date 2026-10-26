@@ -3,7 +3,7 @@ struct CMember { int x; };
 
 class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
     void Transfer_004de566(CMember* value);         // 0x004DE566 per-type transfer instantiation, element type not attributed
-    void TransferBool(CMember* value);              // 0x0043314A Transfer(bool&)
+    template <class T> void Transfer(T& value);              // 0x0043314A Transfer(bool&)
 };
 
 class CGuildMasterDef { public:
@@ -15,5 +15,5 @@ class CGuildMasterDef { public:
 void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* def, void* edx, CPersistContext* ctx)
 {
     ctx->Transfer_004de566(&def->m28);
-    ctx->TransferBool(&def->m2c);
+    ctx->Transfer(*(bool*)(&def->m2c));
 }

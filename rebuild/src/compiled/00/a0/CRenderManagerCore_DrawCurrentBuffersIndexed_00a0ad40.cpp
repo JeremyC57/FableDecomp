@@ -7,7 +7,18 @@
 // engine/CIndexBuffer.h: +0x0C EPrimitiveType PrimitiveType (held as 4 opaque bytes in the generated header).
 // Shape: the primitive type is read into a local (edi) BEFORE RealiseRenderState (0x00A058C0) runs, so it is captured
 // up front; then IDirect3DDevice9::DrawIndexedPrimitive (COM slot 82, +0x148) with base vertex index 0.
+#define CRenderManagerCore CRenderManagerCoreLayout
 #include "engine/CRenderManagerCore.h"
+#undef CRenderManagerCore
+
+class CRenderStateManager
+{
+public:
+    void RealiseRenderState();   // 0x00A058C0
+};
+class CRenderManagerCore : public CRenderStateManager, public CRenderManagerCoreLayout
+{
+};
 #include "engine/CIndexBuffer.h"
 
 // d3d9.h is not on the verifier include path, so the IDirect3DDevice9 vtable is declared locally:
@@ -45,7 +56,6 @@ struct IDirect3DDevice9 {
 };
 
 struct CRenderManagerCore_Methods : CRenderManagerCore {
-    void RealiseRenderState();      // 0x00A058C0 (CRenderStateManager, the primary base at +0)
     long DrawCurrentBuffersIndexed(unsigned long minVertexIndex, unsigned long vertexCount,
                                    unsigned long startIndex, unsigned long primitiveCount);
 };

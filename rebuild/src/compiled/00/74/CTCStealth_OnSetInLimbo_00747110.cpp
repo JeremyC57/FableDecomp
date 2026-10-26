@@ -36,7 +36,8 @@ class CRegion { public:                                // CWorldMap::CRegion
 };
 class CWorldMap { public:
     long GetCurrentRegionNumber();              // 0x004FB150
-    CRegion& GetRegion_004fb490(long region);            // 0x004FB490
+public:
+    CRegion& GetRegion(long);   // 0x004FB490
 };
 class CWorld { public:
     virtual void w000(); virtual void w001(); virtual void w002(); virtual void w003(); virtual void w004(); virtual void w005();
@@ -49,7 +50,8 @@ class CTCBase { public:
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
-    CWorld* GetWorld();                         // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CTCStealth : public CTCBase { public:
     unsigned char _pad0c[0x48 - 0x0c];
@@ -61,7 +63,7 @@ void CTCStealth::OnSetInLimbo(bool on)
 {
     RegionBasedMaxNumberOfDangerThings = -1;
     if (!on) {
-        CRegion& region = GetWorld()->GetWorldMap()->GetRegion_004fb490(GetWorld()->GetWorldMap()->GetCurrentRegionNumber());
+        CRegion& region = GetWorld().GetWorldMap()->GetRegion(GetWorld().GetWorldMap()->GetCurrentRegionNumber());
         if (CDefPointerTest<CRegionDef>(region.PDef).Object != 0)
             RegionBasedMaxNumberOfDangerThings = CDefPointer<CRegionDef>(region.PDef)->MaxNumAttackersOnHero;
     }

@@ -50,20 +50,26 @@ public:
     }
 };
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();                    // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                    // +0x04
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CThing* item);                        // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CThingCreatureBase;
 class CCreatureActionBase { public:
@@ -71,8 +77,8 @@ class CCreatureActionBase { public:
 };
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _pad04[0x2c - 0x04];
-    CIntelligentPointerThing PItem;                     // +0x2c (destroyed by the base destructor)
-    ~CCombatActionBase();                               // 0x0062E900
+    CIntelligentPointer<CThing> PItem;                     // +0x2c (destroyed by the base destructor)
+    virtual ~CCombatActionBase();                               // 0x0062E900
 };
 class CCreatureAction_CastUnholyPowerSpell : public CCombatActionBase { public:   // vtable 0x0127ECE4, 0x114 bytes
     unsigned char _pad34[0x114 - 0x34];

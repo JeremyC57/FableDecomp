@@ -1,6 +1,6 @@
 // C3DPrimitive2::SaveBinary(CDataOutputStream&) const -- write the primitive header, static/animated blocks, the vertex buffer (format block + raw data), the index buffer and every cloth primitive
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A8FD40, 528 bytes (ret 4).
-// Callees: CDataOutputStream::WriteLong 0x00993EB0, Write3DVector 0x00993FD0, WriteFloat 0x00993EE0, WriteULong 0x00993EA0,
+// Callees: CDataOutputStream::WriteSLONG 0x00993EB0, Write3DVector 0x00993FD0, WriteFloat 0x00993EE0, WriteULong 0x00993EA0,
 //   WriteBool 0x00993E30, WriteUChar 0x00993E50, WriteData (vtable slot 4), WriteBuffer 0x00996610 (compressed block),
 //   CAnimatedBlock::SaveBinary 0x00A8E770, CVertexBufferWin32::Lock 0x00AC20A0 / Unlock 0x00AC20B0,
 //   C3DPrimitive2::UploadToIndexBuffer 0x00A8F9E0, CIndexBuffer::Lock 0x00AC1FB0 / Unlock 0x00AC1F00,
@@ -18,13 +18,14 @@ class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
 class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteBool(bool value);                         // 0x00993E30
     void WriteUChar(unsigned char value);               // 0x00993E50
-    void WriteULong(unsigned long value);               // 0x00993EA0
-    void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
     void Write3DVector(const C3DVector& value);         // 0x00993FD0
     void WriteBuffer(const void* data, long size);      // 0x00996610 (compressed block)
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteSLONG(long);   // 0x00993EB0
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 class CVertexBufferWin32 { public:
@@ -96,27 +97,27 @@ class C3DPrimitive2 { public:
 
 void C3DPrimitive2::SaveBinary(CDataOutputStream& out)
 {
-    out.WriteLong(MaterialIndex);
-    out.WriteLong(RepeatingMeshReps);
+    out.WriteSLONG(MaterialIndex);
+    out.WriteSLONG(RepeatingMeshReps);
     out.Write3DVector(BoundingCenter);
     out.WriteFloat(BoundingRadius);
     out.WriteFloat(AverageTextureStretch);
-    out.WriteULong(StaticBlockCount);
-    out.WriteULong(AnimatedBlockCount);
-    out.WriteULong(VertexCount);
-    out.WriteULong(TriangleCount);
-    out.WriteULong(IndexCount);
-    out.WriteULong(InitFlags);
-    out.WriteULong(StaticBlockCount);
-    out.WriteULong(AnimatedBlockCount);
+    out.WriteULONG(StaticBlockCount);
+    out.WriteULONG(AnimatedBlockCount);
+    out.WriteULONG(VertexCount);
+    out.WriteULONG(TriangleCount);
+    out.WriteULONG(IndexCount);
+    out.WriteULONG(InitFlags);
+    out.WriteULONG(StaticBlockCount);
+    out.WriteULONG(AnimatedBlockCount);
     for (unsigned long i = 0; i < StaticBlockCount; ++i) {
         const CStaticBlock& block = StaticBlocks[i];
-        out.WriteULong(block.StartIndex);
-        out.WriteULong(block.PrimitiveCount);
-        out.WriteBool(block.DiffuseFlag);
+        out.WriteULONG(block.StartIndex);
+        out.WriteULONG(block.PrimitiveCount);
+        out.WriteEBOOL(block.DiffuseFlag);
         out.WriteUChar(block.TextureStage);
-        out.WriteBool(block.BumpFlag);
-        out.WriteLong(block.MaterialIndex);
+        out.WriteEBOOL(block.BumpFlag);
+        out.WriteSLONG(block.MaterialIndex);
     }
     for (unsigned long j = 0; j < AnimatedBlockCount; ++j)
         AnimatedBlocks[j].SaveBinary(out);
@@ -128,8 +129,8 @@ void C3DPrimitive2::SaveBinary(CDataOutputStream& out)
     CVertexBufferWin32* vb = VertexBuffer;
     CVertexCompressionParams params = vb->CompressionParams;
     out.WriteData(&params, sizeof(params));
-    out.WriteULong(vb->VertexType);
-    out.WriteULong(vb->VertexSize);
+    out.WriteULONG(vb->VertexType);
+    out.WriteULONG(vb->VertexSize);
     void* vertices = vb->Lock(0, 0, 0);
     out.WriteBuffer(vertices, vb->ByteLength);
     vb->Unlock();
@@ -141,7 +142,7 @@ void C3DPrimitive2::SaveBinary(CDataOutputStream& out)
     ib->Unlock();
 
     unsigned long clothCount = ClothPrimitives.size();
-    out.WriteULong(clothCount);
+    out.WriteULONG(clothCount);
     for (unsigned long c = 0; c < clothCount; ++c)
         ClothPrimitives[c].Data->SaveBinary(out);
 }

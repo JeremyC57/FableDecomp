@@ -25,9 +25,12 @@ class CWideString { public:
     ~CWideString();                                                       // 0x0099B510
 };
 
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);              // 0x009C95E0
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;              // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 
 struct CEngineGlobals {
     unsigned char _pad[0x14];
@@ -66,15 +69,16 @@ class CTCHeroOnlineScoreboard { public:
     CComponent*    PClanMenuEntry;                                        // +0x5c
     CComponent*    PConnectingMessage;                                    // +0x60
     CComponent*    PConnectingMessage1;                                   // +0x64
-    void ShowMessage(const CWideString& text);                            // 0x0055EF00
     void ClearScoreboard();                                               // 0x00562E10
     void AbortWithMessage(const CCharString& textSymbol);
+public:
+    void DisplayErrorMessage(const CWideString&);   // 0x0055EF00
 };
 
 void CTCHeroOnlineScoreboard::AbortWithMessage(const CCharString& textSymbol)
 {
     CWideString text = g_pEngineGlobals_013b86a0->m_pTextBank->GetTextBySymbol(textSymbol);
-    ShowMessage(text);
+    DisplayErrorMessage(text);
     ClearScoreboard();
     ScoreboardState = 0;
     TaskState = 100;

@@ -172,7 +172,7 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void AddLineToConversation(long, CCharString const &, bool, CScriptThing const &, CScriptThing const &) const; //slot366 0x00890750
 };
 namespace NScript {
-struct __declspec(novtable) CPredicateBase {               // vtable 0x012C2FF4 (never stored: novtable)
+class __declspec(novtable) CPredicateBase { public:               // vtable 0x012C2FF4 (never stored: novtable)
     virtual bool IsTrue() = 0;
 };
 }
@@ -185,8 +185,9 @@ struct CIsThingAlive : NScript::CPredicateBase {            // vtable 0x012C32F0
 class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                              // +0x04 .. +0x40
-    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00CB7920
     bool IsActiveThreadTerminating();                       // 0x00CB7940
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00CB7920
 };
 struct CV_ChapelOfEvilScript : CScriptBase {
     GameCalls*    Game;                                     // +0x40

@@ -3,7 +3,7 @@
 // Leaf: SetEnemyToHeroStatus
 // Retail: Fable.exe @ 0x0065A852, 156 bytes; size TU (unaligned entry): `optimize("s",on)`.
 // Callees: std::bitset<>::test(size_t) const 0x00410DE0 (interface 73); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound
-//          0x0040F020 (inlined GetInterface); CTCBase::GetPlayerManager() 0x00686D40 (x2); CPlayerManager::GetCurrentPlayer()
+//          0x0040F020 (inlined GetInterface); CTCBase::GetPlayerManager() 0x00686D40 (x2); CPlayerManager::GetMainPlayer()
 //          0x00449970 (x2); CPlayer::GetCharacterThing() 0x00487DC0 (x2); IS_THING_ALIVE<CThing*>(CThing* const&) 0x00436380
 //          (__fastcall); CTCEnemy::AddEnemyThing(CThing*) 0x0076D1B0 (manifest "CCreature_AddEnemyToList" is a gap-scan
 //          name), CTCEnemy::RemoveEnemyThing(CThing*) 0x0076CC00.
@@ -49,19 +49,26 @@ class CPlayer { public:
     CThing* GetCharacterThing();                // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetCurrentPlayer();                // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CTCEnemy { public:
     void AddEnemyThing(CThing* enemy);          // 0x0076D1B0
     void RemoveEnemyThing(CThing* enemy);       // 0x0076CC00
 };
 
-class CTCVillage { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCVillage : public CTCBase { public:
     CThing*       ParentThing;                  // +0x04
     unsigned char _pad_0x08[0x90];
     long          StanceToHero;                 // +0x98 EVillageStanceToHero
-    CPlayerManager* GetPlayerManager();         // 0x00686D40 (CTCBase)
     void SetEnemyToHeroStatus();
 };
 
@@ -70,10 +77,10 @@ void CTCVillage::SetEnemyToHeroStatus()
     CTCEnemy* enemy;
     ParentThing->GetInterface(&enemy, 73);
     if (StanceToHero == 1) {
-        CThing* hero = GetPlayerManager()->GetCurrentPlayer()->GetCharacterThing();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetCharacterThing();
         if (IS_THING_ALIVE_00436380(hero))
             enemy->AddEnemyThing(hero);
     } else {
-        enemy->RemoveEnemyThing(GetPlayerManager()->GetCurrentPlayer()->GetCharacterThing());
+        enemy->RemoveEnemyThing(GetPlayerManager().GetMainPlayer().GetCharacterThing());
     }
 }

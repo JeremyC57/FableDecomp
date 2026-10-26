@@ -59,12 +59,13 @@ class CScriptThing { public:
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
-struct CPlayer_Retail {
+class CPlayer { public:
     CThing_Retail* GetHeroCreature();              // 0x00487DC0
     CThing_Retail* GetControlledCreature();        // 0x00487DD0
 };
-struct CPlayerManager_Retail {
-    CPlayer_Retail* GetMainPlayer();               // 0x00449970
+class CPlayerManager { public:
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CCharString;
 struct CDefinitionManager_Retail {
@@ -111,14 +112,14 @@ class CGameScriptInterface { public:
     CMainGameComponent*         Component;         // +0x08
     CDisplayEngine*             DisplayEngine;     // +0x0c
     CDefinitionManager_Retail*  DefinitionManager; // +0x10
-    CPlayerManager_Retail*      PlayerManager;     // +0x14
+    CPlayerManager*      PlayerManager;     // +0x14
     CThingSearchTools*          ThingSearchTools;  // +0x18
     virtual void CancelUsingAbility(long ability) const;
 };
 
 void CGameScriptInterface::CancelUsingAbility(long ability) const
 {
-    CThing_Retail* hero = PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetHeroCreature();
     CTCSpecialAbilities_Retail* abilities;
     if (hero && !hero->m_dead && GetTCOut(hero, 0xa7, &abilities))
         abilities->CancelUsingAbility(ability);

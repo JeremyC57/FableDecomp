@@ -68,14 +68,17 @@ struct CThingDef : CDefClassBase {
     bool GetSubDef(CDefPointer<CResurrectionItemDef>* out);    // 0x005C0CFB
 };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingDef>* out);   // 0x0042AF3C
+    bool GetDef(long index, CDefPointer<CThingDef>* out) const;   // 0x0042AF3C
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 
 // Same-TU stand-ins (see the Shape note).
 CDefClassBase* LookUpDef(long index);
 CDefClassBase* LookUpSubDef(const CDefClassBase* def);
 #pragma auto_inline(off)
-bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out)
+bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out) const
 {
     CThingDef* def = (CThingDef*)LookUpDef(index);
     out->Object = def;
@@ -109,11 +112,16 @@ struct CItemVector {                                        // STLport vector<NI
     NInventory::CItem& operator[](unsigned long n) { return _M_start[n]; }
 };
 
-struct CTCInventoryBase {
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+struct CTCInventoryBase : public CTCBase {
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04 CTCBase
 
-    CDefinitionManager* GetDefinitions() const;             // 0x006869D0 (CTCBase)
     void GetAllItems(CItemVector& items);                   // 0x005BF482
     CThing* CreateInventoryObject(long defIndex);           // 0x005BE8F3
     CThing* GetResurrectionItemInInventory();
@@ -137,7 +145,7 @@ CThing* CTCInventoryBase::GetResurrectionItemInInventory()
     for (unsigned long i = 0; i < count; ++i) {
         NInventory::CItem& item = items[i];
         CDefPointer<CThingDef> thingDef;
-        GetDefinitions()->GetDef(item.DefIndex, &thingDef);
+        GetDefinitionManager().GetDef(item.DefIndex, &thingDef);
         CDefPointer<CResurrectionItemDef> resurrectionDef;
         if (thingDef->GetSubDef(&resurrectionDef)) {
             CThing* object = CreateInventoryObject(item.DefIndex);

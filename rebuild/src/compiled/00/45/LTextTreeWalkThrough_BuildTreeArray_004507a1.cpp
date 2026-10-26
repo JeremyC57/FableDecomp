@@ -10,13 +10,13 @@ struct CTreeWalk {
     void BuildTreeArray(TreeNode* node);
 };
 
-extern void FreeTreeNode(TreeNode* node);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void CTreeWalk::BuildTreeArray(TreeNode* node) {
     while (node) {
         this->BuildTreeArray(node->child);
         TreeNode* next = node->next;
-        FreeTreeNode(node);
+        free(node);
         node = next;
     }
 }

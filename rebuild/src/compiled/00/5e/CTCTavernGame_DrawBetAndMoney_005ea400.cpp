@@ -40,7 +40,10 @@ class CPlayerGuiDef { public:
     unsigned char _pad00[0x2e8];
     long          StatBoxWidth;                 // +0x2e8
 };
-CPlayerGuiDef* __fastcall PeekGuiDef();         // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};         // 0x00438570
 
 class CTavernGameDef { public:
     virtual void v00();
@@ -115,17 +118,17 @@ void CTCTavernGame::DrawBetAndMoney(const CEnginePrimitivePrepareInfo& info, flo
     DrawStatBoxWithText(info, BetHandles,
                         C2DVector(betX * g_pDisplayDevice->GetRenderTargetDimensions().X,
                                   betY * g_pDisplayDevice->GetRenderTargetDimensions().Y),
-                        PeekGuiDef()->StatBoxWidth, GetBetText(), 0, 0xff, false);
+                        CPlayerGui::PeekGuiDef().StatBoxWidth, GetBetText(), 0, 0xff, false);
     if (State == 5)
         DrawStatBoxWithText(info, MoneyHandles,
                             C2DVector(moneyX * g_pDisplayDevice->GetRenderTargetDimensions().X,
                                       moneyY * g_pDisplayDevice->GetRenderTargetDimensions().Y),
-                            PeekGuiDef()->StatBoxWidth, GetMoneyText(), 0, 0xff, true);
+                            CPlayerGui::PeekGuiDef().StatBoxWidth, GetMoneyText(), 0, 0xff, true);
     else
         DrawStatBoxWithText(info, MoneyHandles,
                             C2DVector(moneyX * g_pDisplayDevice->GetRenderTargetDimensions().X,
                                       moneyY * g_pDisplayDevice->GetRenderTargetDimensions().Y),
-                            PeekGuiDef()->StatBoxWidth, GetMoneyText(), 0, 0xff, false);
+                            CPlayerGui::PeekGuiDef().StatBoxWidth, GetMoneyText(), 0, 0xff, false);
     if (thirdX != 0.0f && thirdY != 0.0f)
         DrawStatBoxWithText(info, ThirdHandles,
                             C2DVector(thirdX * g_pDisplayDevice->GetRenderTargetDimensions().X,

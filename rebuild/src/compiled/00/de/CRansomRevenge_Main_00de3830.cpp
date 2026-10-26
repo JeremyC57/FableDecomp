@@ -15,6 +15,7 @@
 // Shape: the sibling CRandomAttacker::Main 0x00DE21D0; the two "going for the hero" arms are identical and VC7.1
 // cross-jumps them (and the AddLineToConversation tails of all three); the hit test is a break-out `if (a || (b && !c))` chain whose
 // conditional string temporaries carry ebx flag bits 1, 2, 4.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -44,10 +45,16 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     virtual bool IsAlive() const;                      // slot 75 (+0x12c)
     void* PImp[2];
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -82,8 +89,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void RegisterFilter(CIsThingAlive& filter);        // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CRansomRevenge : CEntityScriptBase {
     void* ParentClass;                                 // +0x14 CQ_RansomVictimScript*
@@ -95,7 +103,7 @@ void CRansomRevenge::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

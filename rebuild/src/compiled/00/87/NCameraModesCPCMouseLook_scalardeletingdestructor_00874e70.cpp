@@ -1,12 +1,15 @@
 #pragma optimize("t", on)
 extern void __fastcall DestructMember_00874cc0(void* member);
-extern void __fastcall CPCMouseLook_Destruct(void* look);
-extern void __cdecl OperatorDelete(void* object);
+namespace NCameraModes {
+struct CBase {                                         // RTTI base of every camera mode
+    virtual ~CBase();                                  // 0x0056E0E0 (Ego_r ??1CBase@NCameraModes@@UAE@XZ)
+};
+}
 void* __fastcall CPCMouseLook_CompositeScalarDeletingDestructor(void* look, int, unsigned int flags)
 {
     DestructMember_00874cc0(static_cast<unsigned char*>(look) + 164);
-    CPCMouseLook_Destruct(look);
+    ((NCameraModes::CBase*)look)->NCameraModes::CBase::~CBase();   // the base destructor (namepass CAM2)
     if (flags & 1)
-        OperatorDelete(look);
+        operator delete(look);
     return look;
 }

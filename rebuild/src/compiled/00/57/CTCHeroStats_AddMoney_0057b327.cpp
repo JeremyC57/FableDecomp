@@ -68,7 +68,7 @@ class CHeroStatsDef { public:
     long          MaxMoney;                          // +0x5C
 };
 
-class CDefinitionManager { public:
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC
 };
@@ -77,7 +77,13 @@ class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);  // 0x0055F3B0
 };
 
-class CTCHeroStats { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCHeroStats : public CTCBase { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x34];
@@ -87,7 +93,6 @@ class CTCHeroStats { public:
     long          TotalMoneyEarned;                  // +0x48 (PDB +0x50)
     long          TotalMoneySpent;                   // +0x4C (PDB +0x54)
 
-    CDefinitionManager* GetDefinitionManager() const;  // 0x006869D0 (CTCBase)
     void AddMoney(long amount, bool countTransaction);
 };
 
@@ -95,7 +100,7 @@ void CTCHeroStats::AddMoney(long amount, bool countTransaction)
 {
     long oldMoney = Money;
     Money = oldMoney + amount;
-    GFLimit(Money, 0L, GetDefinitionManager()->PHeroStatsDef->MaxMoney);
+    GFLimit(Money, 0L, GetDefinitionManager().PHeroStatsDef->MaxMoney);
     MaxMoney = Max(MaxMoney, amount);
     long change = Money - oldMoney;
     if (change > 0) {

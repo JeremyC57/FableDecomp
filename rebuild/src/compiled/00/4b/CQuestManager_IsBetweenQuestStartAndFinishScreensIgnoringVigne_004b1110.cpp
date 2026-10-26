@@ -26,7 +26,7 @@ struct CTCMap_Retail {                             // the thing's component map 
         return it->m_pTC;
     }
 };
-struct CThing_Retail {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -36,7 +36,7 @@ struct CThing_Retail {
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-__forceinline CTCBase_Retail* GetTC(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+__forceinline CTCBase_Retail* GetTC(const CThing* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CCharString { public:
     void* m_pStringData;
 };
@@ -54,13 +54,14 @@ class CTCQuestCard { public:
 class CQuestManager { public:
     unsigned char             _pad_0x00[0x4c];
     CRetailVector<CCharString> BetweenStartAndEndScreenQuests;   // +0x4c
-    CThing_Retail* GetActiveQuestCardFromScriptName(const CCharString& name);   // 0x004B0C80
     bool IsBetweenQuestStartAndFinishScreensIgnoringVignettes();
+public:
+    CThing* GetActiveQuestCardFromScriptName(const CCharString&) const;   // 0x004B0C80
 };
 bool CQuestManager::IsBetweenQuestStartAndFinishScreensIgnoringVignettes()
 {
     for (unsigned long i = 0; i < BetweenStartAndEndScreenQuests.size(); ++i) {
-        CThing_Retail* card = GetActiveQuestCardFromScriptName(BetweenStartAndEndScreenQuests[i]);
+        CThing* card = GetActiveQuestCardFromScriptName(BetweenStartAndEndScreenQuests[i]);
         if (card && !card->m_dead && card->HasTC(0x6c)) {
             if (!((CTCQuestCard*)GetTC(card, 0x6c))->IsVignette())
                 return true;

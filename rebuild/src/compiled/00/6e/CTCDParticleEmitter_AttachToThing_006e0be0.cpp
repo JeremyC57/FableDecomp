@@ -8,7 +8,7 @@
 //   0x0071A8F0), CTCDParticleEmitter::UpdateEmitterThingAttachment(bool, float) 0x006DFFB0, CDefClassBase::GetSubDef
 //   0x0065F604 (the CEntitySoundDef instantiation, as the landed 0x0066B1D0), CCharString::operator!=(const char*)
 //   0x0099E960 ("" 0x0122D70E), CCharString::ToUpper 0x0099EE20, operator+(const char*, const CCharString&) 0x0099F690
-//   (__fastcall, "PARTICLE_" 0x0125FFA4), ~CCharString 0x0099EAE0, CTCSound::PlaySound 0x0066BD00 (interface 0x10),
+//   (__fastcall, "PARTICLE_" 0x0125FFA4), ~CCharString 0x0099EAE0, CTCSoundPlayer::PlaySound 0x0066BD00 (interface 0x10),
 //   CThing::IsAffectedByBulletTime 0x004C9920.
 // Layout: Ego_r.pdb CTCDParticleEmitter (PEmitter +0x14, PAttachedToThing +0x1c, AttachmentFlags +0x24,
 //   AttachmentPosName +0x28, AttachmentPosIndex +0x2c, FloatOffset +0x30, AttachedToThing/AlwaysUpdate +0x45 bits 0/1);
@@ -121,23 +121,28 @@ class CThing { public:
 struct CTCDependentThings {                                 // interface 0xd8
     void RemoveDependentThing(CThing* thing);               // 0x0071A940
 };
-struct CTCSound {                                           // interface 0x10
-    unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
+class CTCSoundPlayer { public:                                           // interface 0x10
+public:
+    unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                          // +0x04
-    CBaseIntelligentPointer();                              // 0x00A01B10
-    ~CBaseIntelligentPointer();                             // 0x00A01C10
-    void* GetPItem() const;                                 // 0x00A01B50
-    void SetPItem(void* item);                              // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing> vtable 0x01238C6C
-    virtual void v00();
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 namespace NParticleEngine {
@@ -208,9 +213,9 @@ void CTCDParticleEmitter::AttachToThing(CThing& thing, long flags, const CCharSt
         if (PEmitter.GetPItem()) {
             NParticleEngine::CParticleEmitter* emitter = PEmitter.GetPItem();
             CCharString criteria = "PARTICLE_" + emitter->Name.ToUpper();
-            CTCSound* sound;
+            CTCSoundPlayer* sound;
             if (thing.GetTC(&sound, 0x10))
-                sound->PlaySound(criteria, 1, 0, 0, -1);
+                sound->PlayAttachedCriteria(criteria, 1, 0, 0, -1);
         }
     }
     if (!thing.IsAffectedByBulletTime())

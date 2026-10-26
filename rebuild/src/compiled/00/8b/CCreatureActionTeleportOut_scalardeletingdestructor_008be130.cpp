@@ -1,13 +1,16 @@
+class CCombatActionBase {
+public:
+    virtual ~CCombatActionBase();   // 0x0062E900
+};
 class CCreatureAction_TeleportOut { public:
     void* vftable;
 };
 
-void __fastcall CCreatureAction_TeleportOut_dtor(CCreatureAction_TeleportOut* action);
 void operator delete(void*);
 
 void* __fastcall CCreatureAction_TeleportOut_scalar_deleting_destructor(CCreatureAction_TeleportOut* action, int edx_unused, unsigned int flags)
 {
-    CCreatureAction_TeleportOut_dtor(action);
+    ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
     if (flags & 1)
         operator delete(action);
     return action;

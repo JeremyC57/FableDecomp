@@ -57,7 +57,10 @@ class CTCCreatureGroup { public:
     bool DeactivateMember(const CThing* member);        // vtable slot 30: 0x00812E20
 };
 
-long GetWorldFrame();                       // 0x0049D870 (returns the global frame counter @ 0x013B89BC)
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                       // 0x0049D870 (returns the global frame counter @ 0x013B89BC)
 
 class CTCCreatureGroupTag : public CTCCreatureGroup { public:
     unsigned __int64 TaggerUID;             // +0x28
@@ -73,7 +76,7 @@ bool CTCCreatureGroupTag::SetTagger(const CThing* tagger)
 {
     if (IsActiveMember(tagger)) {
         TaggerUID = tagger->UniqueID;
-        TaggedFrame = GetWorldFrame();
+        TaggedFrame = CWorld::GetFrame();
     }
     return false;
 }

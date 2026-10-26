@@ -8,11 +8,18 @@
 //   vectors (begin/end/end-of-storage, empty allocator). Local model with the PDB member names.
 // Size-optimised TU: #pragma optimize("s", on) (`push dword ptr [esi+N]`, `fld ; push ecx ; fstp [esp]`).
 #pragma optimize("s", on)
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteFloat(float);   // 0x00993EE0
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteLong(long value);                     // 0x00993EB0
-    void WriteFloat(float value);                   // 0x00993EE0
 };
 
 class CDefString { public: long Index; };
@@ -43,10 +50,10 @@ void CPersistTraits<CObjectAugmentationParticleSet>::TransferBinaryOut(CDataOutp
 {
     CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)stream;
     out->WriteFloat(value->PeriodSecs);
-    out->WriteLong(value->ParticleEffect);
-    out->WriteLong(value->ParticleEffectToBlendTo);
-    out->WriteLong(value->AttackParticleEffect);
-    out->WriteLong(value->AttackParticleEffectToBlendTo);
+    out->WriteSLONG(value->ParticleEffect);
+    out->WriteSLONG(value->ParticleEffectToBlendTo);
+    out->WriteSLONG(value->AttackParticleEffect);
+    out->WriteSLONG(value->AttackParticleEffectToBlendTo);
     GFSerialiseVectorBinaryOut(stream, &value->StartPoint);
     GFSerialiseVectorBinaryOut(stream, &value->EndPoint);
 }

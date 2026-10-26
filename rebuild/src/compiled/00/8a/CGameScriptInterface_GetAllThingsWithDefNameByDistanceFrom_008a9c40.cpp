@@ -107,10 +107,18 @@ template <class It, class Cmp> void __fastcall sort(It first, It last, Cmp comp)
 struct CThing_Retail {
     CScriptThing GetScriptThing();                      // 0x004C7E50
 };
-class CGameDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+class CDefinitionManager
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
-CGameDefinitionManager* __fastcall GetGameDefinitionManager();   // 0x0044C6B0
+
+class CGameDefinitionManager : public CDefinitionManager { public:
+
+public:
+    static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
+};
+   // 0x0044C6B0
 class CThingSearchTools { public:
     void GetAllThings(const CThingFilter_HasDefGlobalIndex& filter, CThingVector& out);   // 0x008ADBA0
 };
@@ -137,7 +145,7 @@ class CGameScriptInterface { public:
 long CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom(const CScriptThingFrom& from, const CCharString& defName, CScriptThingVector& things) const
 {
     CThingVector found;
-    World->ThingSearchTools->GetAllThings(CThingFilter_HasDefGlobalIndex(GetGameDefinitionManager()->GetDefGlobalIndexFromName(defName)), found);
+    World->ThingSearchTools->GetAllThings(CThingFilter_HasDefGlobalIndex(CGameDefinitionManager::Get().GetDefGlobalIndexFromName(defName)), found);
     if (found.empty())
         return 0;
     things.reserve(found.size());

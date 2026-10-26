@@ -10,6 +10,7 @@
 //   GetSquaredDistanceBetweenThings 0x00CBE512 (__fastcall), IsActiveThreadTerminating 0x00F35B30, operator delete 0x00BFE9BC;
 //   CGameScriptInterface slots 70 GetHero, 72 GetThingWithScriptName, 91 CreateCreature, 472 EntityTeleportToThing,
 //   474 EntitySetFacingAngle. Default position 0x0143E8E0 for an empty handle.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -102,11 +103,16 @@ class CGameScriptInterface { public:                              // vtable 0x01
     VPAD1(p473_0)                                                                // slots 473..473
     virtual void EntitySetFacingAngle(const CScriptThing& entity, float angle, bool b) const; // slot 474 (+0x768)
 };
-struct CTollBanditScript {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CTollBanditScript : public CEntityScriptBase {
     void*                 __vftable;          // +0x00
     CGameScriptInterface* Game;               // +0x04
     CScriptThing          Me;                 // +0x08
-    bool IsActiveThreadTerminating();         // 0x00F35B30
     void HandleBanditToll();
 };
 

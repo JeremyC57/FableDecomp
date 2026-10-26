@@ -13,7 +13,14 @@ static int g_freed = 0;
 static int g_based = 0;
 
 extern "C" void __cdecl engine_free_0045855a(void* p) { (void)p; g_freed = 1; }
-void __fastcall base_OnDie_0045855a(CTCInventoryItem* t) { (void)t; g_based = 1; }
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();
+};
+CParentDefClassBase::~CParentDefClassBase()
+{
+    CTCInventoryItem* t = (CTCInventoryItem*)this; (void)t; (void)t; g_based = 1;
+}
 
 int main()
 {

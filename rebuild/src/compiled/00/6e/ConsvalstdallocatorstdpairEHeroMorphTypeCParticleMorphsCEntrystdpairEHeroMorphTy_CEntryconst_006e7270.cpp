@@ -2,11 +2,13 @@
 // Leaf: CEntry>_const&>
 // a void member->void member forward, so retail is `mov ecx,[ecx+d]; jmp rel32`.
 #pragma pack(push,1)
-struct Sub { void Run_00434c90(); };
+class CDisplayEngine { public: public:
+    void EndScreenFadeOut();   // 0x00434C90
+};
 struct T {
     char pad[0xc];
-    Sub* sub;
+    CDisplayEngine* sub;
     void Run();
 };
 #pragma pack(pop)
-void T::Run() { this->sub->Run_00434c90(); }
+void T::Run() { this->sub->EndScreenFadeOut(); }

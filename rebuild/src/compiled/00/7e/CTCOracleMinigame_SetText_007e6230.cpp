@@ -50,12 +50,18 @@ class CPlayer { public:
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                       // 0x00449960
 };
-class CTCOracleMinigame { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
+
+class CTCOracleMinigame : public CTCBase { public:
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _base08[4];
     unsigned long CurrentText;                      // +0x0c
-    CPlayerManager* GetPlayerManager_00686d50();             // 0x00686D50 (CTCBase)
     CWideString GetTextWithNarrator(unsigned long text);   // 0x007E5FF0
     void SetText(unsigned long text);
 };
@@ -63,7 +69,7 @@ class CTCOracleMinigame { public:
 void CTCOracleMinigame::SetText(unsigned long text)
 {
     if (CurrentText != text) {
-        CThing* hero = GetPlayerManager_00686d50()->GetMainPlayer()->GetHeroThing();
+        CThing* hero = PeekPlayerManager().GetMainPlayer()->GetHeroThing();
         if (hero && !(hero->m_flags91 & 1)) {
             CTCRegionDisplay* display = 0;
             hero->GetInterface(&display, 0x8e);

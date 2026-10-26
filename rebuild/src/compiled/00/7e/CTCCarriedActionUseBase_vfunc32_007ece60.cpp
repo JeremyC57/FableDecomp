@@ -40,7 +40,7 @@ struct CCountedPointer_CCreatureActionBase {   // {object, count block}
 class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
-    ~CCreatureActionBase();                 // 0x00693EF0
+    virtual ~CCreatureActionBase();                 // 0x00693EF0
 };
 class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:   // retail sizeof 0xb0
     CCountedPointer_CCreatureActionBase PNextAction;   // +0xa8 follow-up action

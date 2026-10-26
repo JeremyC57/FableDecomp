@@ -1,7 +1,7 @@
 // CCreatureAction_DragonSwoop::CCreatureAction_DragonSwoop(CThingCreatureBase*, const CCharString&, const C3DVector&, const C3DVector&, const C3DVector&) -- combat action (action code 150, silent sound pair) with the given animation and three swoop points
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F4F40, length 143 bytes, `ret 14h` (five arguments). Vtable 0x012887D4.
 // Callees: CCombatActionBase::CCombatActionBase(owner, actionCode, const CSoundPair&) @ 0x00858030,
-//          CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0 (manifest label
+//          CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0 (manifest label
 //          "CTCInGameMenu::SetPDef" is propagated).
 // Shape: CSoundPair temporary zeroed from eax by its inline constructor; after the vtable store the animation name
 //   argument is forwarded by reference, then the body copies each point into SwoopPoints[i]: a C3DVector POD
@@ -23,7 +23,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);                                           // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_DragonSwoop : public CCombatActionBase { public:   // vtable 0x012887D4
@@ -37,7 +38,7 @@ CCreatureAction_DragonSwoop::CCreatureAction_DragonSwoop(CThingCreatureBase* own
                                                          const C3DVector& point0, const C3DVector& point1, const C3DVector& point2)
     : CCombatActionBase(owner, 150, CSoundPair())
 {
-    SetAnimationName(animation);
+    SetCombatAnimation(animation);
     SwoopPoints[0] = point0;
     SwoopPoints[1] = point1;
     SwoopPoints[2] = point2;

@@ -10,7 +10,7 @@
 // Shape: the map owner is a named local fetched first (its vtable is loaded into ebx before the position call).
 class C3DVector;
 
-struct CNavMapSource {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -22,18 +22,23 @@ class CThing { public:
     const C3DVector& GetPosition() const;                   // 0x004C73D0
 };
 
-class CTCSwitchableNavigation { public:
+class CTCBase
+{
+protected:
+    CWorldMap& GetWorldMap();   // 0x00686D30
+};
+
+class CTCSwitchableNavigation : public CTCBase { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
     long    MapIndex;                                       // +0x0c
-    CNavMapSource* GetNavMapSource();                       // 0x00686D30 (CTCBase)
     void OnCreate();
 };
 
 void CTCSwitchableNavigation::OnCreate()
 {
-    CNavMapSource* source = GetNavMapSource();
+    CWorldMap* source = (&GetWorldMap());
     MapIndex = source->GetNavMapIndex(ParentThing->GetPosition());
 }

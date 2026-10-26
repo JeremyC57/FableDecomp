@@ -10,6 +10,7 @@
 // Shape: the landed CDoorToMothersTortureChamber::Main (0x00DEF1B0) with the loop condition not
 // negated: top-tested `while` duplicated at the bottom, parent and flag re-read every iteration, the
 // abort test returning straight out of the loop; `add esi,8` forms the thing's address.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:
     unsigned char _body[8];
 };
@@ -100,14 +101,19 @@ struct CV_ParanoidWhispersScript {
 
 struct CQ_SunnyvaleMasterData;
 
-struct CPW_NecklaceDiggingSpot {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CPW_NecklaceDiggingSpot : public CEntityScriptBase {
     void*                       __vftable;         // +0x00
     CQuestScriptInterface*      PQuest;            // +0x04
     CScriptThing                DiggingSpot;       // +0x08
     unsigned char               _pad10[4];         // +0x10
     CV_ParanoidWhispersScript*  ParentClass;       // +0x14
     CQ_SunnyvaleMasterData*     PMasterData;       // +0x18
-    bool IsAborted();                              // 0x00F35B30
     void Main();
 };
 
@@ -115,10 +121,10 @@ void CPW_NecklaceDiggingSpot::Main()
 {
     while (ParentClass->HideDiggingSpot) {
         PQuest->Tick();
-        if (IsAborted())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsAborted())
+    if (IsActiveThreadTerminating())
         return;
     PQuest->SetDiggingSpotAsHidden(DiggingSpot, false);
 }

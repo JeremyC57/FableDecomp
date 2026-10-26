@@ -6,14 +6,27 @@
 // tail-jumps to the base/next destructor with this in ecx. Shape:
 //   push esi; mov esi,ecx; lea ecx,[esi+0x1b]; call member_dtor;
 //   mov ecx,esi; pop esi; jmp base_dtor.
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+class CAIStateGroupBase {
+public:
+    virtual ~CAIStateGroupBase();   // 0x008FD288
+};
 struct FableDestMember_008fe094;
 struct FableDestHost_008fe094;
 
-extern "C" void FABLE_FASTCALL FableMemberDtor_008fe094(FableDestMember_008fe094* m);
-extern "C" void FABLE_FASTCALL FableBaseDtor_008fe094(FableDestHost_008fe094* self);
 
 extern "C" void FABLE_FASTCALL FableDestVal_008fe094(FableDestHost_008fe094* self)
 {
-    FableMemberDtor_008fe094((FableDestMember_008fe094*)((char*)self + 0x1b));
-    FableBaseDtor_008fe094(self);
+    ((CBaseIntelligentPointer*)((FableDestMember_008fe094*)((char*)self + 0x1b)))->CBaseIntelligentPointer::~CBaseIntelligentPointer();
+    ((CAIStateGroupBase*)(self))->CAIStateGroupBase::~CAIStateGroupBase();
 }

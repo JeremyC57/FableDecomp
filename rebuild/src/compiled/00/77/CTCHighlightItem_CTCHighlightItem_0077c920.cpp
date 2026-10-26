@@ -21,15 +21,23 @@ class CTCBase { public:
     CTCBase(CThing* thing);                 // 0x00686800
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                   // +0x04
-    CBaseIntelligentPointer();              // 0x00A01B10
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {          // vtable 0x01238C6C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {          // vtable 0x01238C6C
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class C3DVector { public:
@@ -41,7 +49,7 @@ struct CTCHighlightItem : CTCBase {
     bool                Running;            // +0x0D
     long                LifeTimer;          // +0x10
     C3DVector           StartPos;           // +0x14
-    CIntelligentPointer PParticleEmitter;   // +0x20
+    CIntelligentPointer<CThing> PParticleEmitter;   // +0x20
     virtual void v00();
     CTCHighlightItem(CThing* thing);
 };

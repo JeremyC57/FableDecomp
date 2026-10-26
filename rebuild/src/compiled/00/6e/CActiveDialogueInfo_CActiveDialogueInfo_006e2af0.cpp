@@ -9,22 +9,29 @@
 // float literal 0 is folded to an integer immediate store.
 class CBaseObject;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* PItem;                                          // +0x04 (the pointer is 8 bytes)
-    CBaseIntelligentPointer();                                   // 0x00A01B10
-    void SetPItem(CBaseObject* item);                            // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {           // vtable 0x01238C6C
-    virtual void v00();
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {           // vtable 0x01238C6C
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { SetPItem(0); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
 enum EDialogueLayer { DIALOGUE_LAYER_NONE = 3 };
 
 struct CActiveDialogueInfo {
-    CIntelligentPointer ThingSpeaking;                           // +0x00 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> ThingSpeaking;                           // +0x00 CIntelligentPointer<CThing>
     unsigned long       SoundID;                                 // +0x08
     EDialogueLayer      Layer;                                   // +0x0c
     bool                IsLayerHead;                             // +0x10

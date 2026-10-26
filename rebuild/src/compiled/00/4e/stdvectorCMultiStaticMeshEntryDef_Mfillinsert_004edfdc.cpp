@@ -16,12 +16,12 @@
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CBase_009fc550 {
+class CResource {
 public:
     virtual void v00();
-    ~CBase_009fc550();                               // 0x009FC550 (labelled "~CMemoryBlock")
+    virtual ~CResource();                               // 0x009FC550 (labelled "~CMemoryBlock")
 };
-class CDefPointeeBase : public CBase_009fc550 {      // vtable 0x01230BA0
+class CDefPointeeBase : public CResource {      // vtable 0x01230BA0
 public:
     virtual void v00();
     ~CDefPointeeBase() { }

@@ -1,7 +1,7 @@
 // CPersistContext::Transfer<double>(const char* name, double& value, const double& defaultValue) -- persist one double member: CRC-check the key, then by mode text load (seeding the default first when asked), text save, binary load, binary save truncated to a long, or reset to the default
 // Leaf: Transfer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004AB710, 212 bytes incl. the 5-entry jump table, `ret 0Ch`.
-// Callees: CPersistContext::CheckCRC 0x00404500, __ftol2 0x00BFEA70, CDataOutputStream::WriteLong 0x00993EB0, CPersistTraits<double>::TransferBinaryIn 0x004AA360, CPersistContext::TransferObjectSaveText 0x009BAD60 and
+// Callees: CPersistContext::CheckCRC 0x00404500, __ftol2 0x00BFEA70, CDataOutputStream::WriteSLONG 0x00993EB0, CPersistTraits<double>::TransferBinaryIn 0x004AA360, CPersistContext::TransferObjectSaveText 0x009BAD60 and
 //   TransferObjectLoadText 0x009BBA40 (both take the CPersistContext_TransferableComponent<double> wrapper, vtable 0x01238C80).
 // Shape: the speed-TU persist switch of the landed Transfer<EArcheryState> 0x00CDCC20 / Transfer<ENumAcceptedBoasts>
 //   0x004B8D70 (mode +0x18: 0 text load, 1 text save, 2 binary load, 3 binary save, 4 reset; `default: __assume(0)`
@@ -12,7 +12,8 @@
 //   big for an argument slot, so the block-scoped named local shares the 8-byte frame with the text wrapper
 //   (`lea ecx,[esp+10h]`); a temporary or a function-scope local gets a frame of its own.
 class CDataOutputStream { public:
-    void WriteLong(long value);                   // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 class CMemoryDataInputStream;
 template <class T> struct CPersistTraits {
@@ -53,7 +54,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
         value = defaultValue;
         break;
     case 3:
-        PSaveStream->WriteLong((long)value);
+        PSaveStream->WriteSLONG((long)value);
         break;
     case 2: {
         CPersistTraits<T> traits;

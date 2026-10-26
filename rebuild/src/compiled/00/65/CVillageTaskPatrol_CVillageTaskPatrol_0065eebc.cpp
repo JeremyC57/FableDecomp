@@ -28,8 +28,9 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 class CBaseObjectPointer;
 class CBaseObject : public CBaseClass {                  // 8 bytes, vtable 0x0129A7D8
 public:
-    virtual ~CBaseObject();                              // 0x0099A430
     CBaseObjectPointer* IntelligentPointer;              // +0x04
+protected:
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CVillageTaskBase : public CBaseObject {            // 8 bytes, vtable 0x0125A830
 public:

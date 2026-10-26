@@ -9,7 +9,7 @@ static int g_delete_called = 0;
 void FABLE_FASTCALL CAttackPatternDef_dtor(CLandscapeBackgroundPatch* thisptr)
 { (void)thisptr; g_dtor_called++; }
 
-void FABLE_CDECL fable_operator_delete(void* p)
+void __cdecl operator delete(void* p)
 { (void)p; g_delete_called++; }
 
 extern void* FABLE_FASTCALL CAttackPatternDef_vector_dtor(

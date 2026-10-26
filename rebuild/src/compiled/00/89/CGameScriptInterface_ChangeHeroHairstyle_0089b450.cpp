@@ -58,16 +58,18 @@ class CScriptThing { public:
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
-struct CPlayer_Retail {
+class CPlayer { public:
     CThing_Retail* GetHeroCreature();              // 0x00487DC0
     CThing_Retail* GetControlledCreature();        // 0x00487DD0
 };
-struct CPlayerManager_Retail {
-    CPlayer_Retail* GetMainPlayer();               // 0x00449970
+class CPlayerManager { public:
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CCharString;
-struct CDefinitionManager_Retail {
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+class CDefinitionManager { public:
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CWorld; class CMainGameComponent; class CDisplayEngine; class CThingSearchTools;
 __forceinline CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
@@ -103,25 +105,26 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
     CThing_Retail* t = thing.GetThing();
     return t && !t->m_dead;
 }
-struct CTCHeroAttachableAppearanceModifiers_Retail {
-    void AddAppearanceModifierWithReplace(long defIndex);   // 0x00706950
+class CTCHeroAttachableAppearanceModifiers { public:
+public:
+    void AddAppearanceModifierWithReplace(long);   // 0x00706950
 };
 class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
     CMainGameComponent*         Component;         // +0x08
     CDisplayEngine*             DisplayEngine;     // +0x0c
-    CDefinitionManager_Retail*  DefinitionManager; // +0x10
-    CPlayerManager_Retail*      PlayerManager;     // +0x14
+    CDefinitionManager*  DefinitionManager; // +0x10
+    CPlayerManager*      PlayerManager;     // +0x14
     CThingSearchTools*          ThingSearchTools;  // +0x18
     virtual void ChangeHeroHairstyle(const CCharString& defName) const;
 };
 
 void CGameScriptInterface::ChangeHeroHairstyle(const CCharString& defName) const
 {
-    CThing_Retail* hero = PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetHeroCreature();
     if (hero && !hero->m_dead && hero->HasTC(0x5e)) {
-        CTCHeroAttachableAppearanceModifiers_Retail* mods = (CTCHeroAttachableAppearanceModifiers_Retail*)GetTC(hero, 0x5e);
+        CTCHeroAttachableAppearanceModifiers* mods = (CTCHeroAttachableAppearanceModifiers*)GetTC(hero, 0x5e);
         long defIndex = DefinitionManager->GetDefGlobalIndexFromName(defName);
         if (defIndex > 0)
             mods->AddAppearanceModifierWithReplace(defIndex);

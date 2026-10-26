@@ -11,14 +11,21 @@
 // vector<pair<EAttackHistoryType, EDamageAttribute>> +0, float Multiplier +0xC.
 // Shape: the count as `size()` (`sar eax,3`), then an iterator loop with end() re-read every pass, two WriteSLONG per
 // pair; the float goes out by value from +0xC.
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteFloat(float);   // 0x00993EE0
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 enum EAttackHistoryType { EAttackHistoryType_Force32 = 0x7fffffff };
 enum EDamageAttribute { EDamageAttribute_Force32 = 0x7fffffff };
 
 struct COutputStreamMethods : CDataOutputStream {
-    void WriteSLONG(long value);                            // 0x00993EB0
-    void WriteFloat(float value);                           // 0x00993EE0
 };
 
 namespace std {

@@ -18,14 +18,23 @@ class CThing { public:
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
-    virtual void v00();
-    void* m_pItem;                                          // +4
-    CBaseIntelligentPointer();                              // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x01238C6C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {      // vtable 0x01238C6C
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(pop)
 
@@ -48,7 +57,7 @@ class CTCDRegionExit : public CTCDriverBase_Calls { public:               // vta
     unsigned __int64    EntranceConnectedToUID;             // +0x20
     bool                ReversedOnMiniMap;                  // +0x28
     bool                HiddenOnMiniMap;                    // +0x29
-    CIntelligentPointer PEntranceConnectedTo;               // +0x2a
+    CIntelligentPointer<CThing> PEntranceConnectedTo;               // +0x2a
     virtual void v00();
     CTCDRegionExit(CThing* thing);
 };

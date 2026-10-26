@@ -7,12 +7,14 @@ namespace std {
 template <class T> inline const T& min(const T& a, const T& b) { return b < a ? b : a; }
 template <class T> inline const T& max(const T& a, const T& b) { return a < b ? b : a; }
 }
+class C2DVector;
 class C2DVector {
 public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
-    C2DVector& Normalise();   // 0x00A14510
+public:
+    C2DVector& AccurateNormalise();   // 0x00A14510
 };
 class C2DLineF {
 public:
@@ -53,8 +55,8 @@ bool C2DLineF::IntersectsWith(const C2DLineF& other, C2DVector& intersection, fl
     dirA.Y = Y2 - Y1;
     dirB.X = other.X2 - other.X1;
     dirB.Y = other.Y2 - other.Y1;
-    dirA.Normalise();
-    dirB.Normalise();
+    dirA.AccurateNormalise();
+    dirB.AccurateNormalise();
     float dot = dirA.X * dirB.X + dirA.Y * dirB.Y;
     float denominator = dot * dot - 1.0f;
     if (denominator != 0.0f) {

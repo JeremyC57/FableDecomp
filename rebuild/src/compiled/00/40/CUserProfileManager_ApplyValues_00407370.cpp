@@ -32,7 +32,8 @@ class CPlayer { public:
 class CPlayerManager { public:
     long GetMainPlayerNumber();                             // 0x00449700
     bool IsPlayer(long number);                             // 0x00449880
-    CPlayer* GetMainPlayer();                               // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
@@ -132,6 +133,6 @@ void CUserProfileManager::ApplyValues()
     if (g_pMainGameComponent) {
         CPlayerManager* players = g_pMainGameComponent->PlayerManager;
         if (players->IsPlayer(players->GetMainPlayerNumber()))
-            players->GetMainPlayer()->Object->Refresh();
+            players->GetMainPlayer().Object->Refresh();
     }
 }

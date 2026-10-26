@@ -3,7 +3,7 @@
 // Callees: CCreatureActionBase::GetAnimationFraction @ 0x006925E0 (float: elapsed share of the action animation; the manifest
 // "CInputTypeMouseMovementEvent::operator==" label is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8),
 // CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 0x31 = bit 17 of the bitset dword at +0x24),
-// CTCCreatureModeManager::HasMode(unsigned long) @ 0x0073A8A0, CCombatActionBase::FrameUpdate @ 0x00859D80 (direct base call).
+// CTCCreatureModeManager::IsModeActive(unsigned long) @ 0x0073A8A0, CCombatActionBase::FrameUpdate @ 0x00859D80 (direct base call).
 // Float constant: 0x01238170 = 0.3f. `fcomp ; test ah,41h ; jne` skips on "<=", i.e. the body runs for `fraction > 0.3f`.
 // Shape: the mode manager pointer is NULL-INITIALISED (`xor esi,esi` before the GetPItem call), so it lives in esi rather than in the
 // frame word of the lookup key and the miss path falls through with esi = 0 into the single HasMode call (no tail duplication, unlike
@@ -33,20 +33,32 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCCreatureModeManager { public:             // interface type 0x31 component
-    bool HasMode(unsigned long mode);       // 0x0073A8A0
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void FrameUpdate();             // 0x00859D80
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     long TotalTime;                         // +0x10
     unsigned char _pad14[0x114 - 0x14];     // +0x14
     float GetAnimationFraction();           // 0x006925E0 (CCreatureActionBase)
@@ -61,7 +73,7 @@ void CCreatureAction_ScreamerAdvance::FrameUpdate()
     if (GetAnimationFraction() > 0.3f) {
         CTCCreatureModeManager* pModes = 0;
         PCreature.GetPItem()->GetInterface(&pModes, 0x31);
-        if (pModes->HasMode(0x44))
+        if (pModes->IsModeActive(0x44))
             TotalTime = 1;
     }
     CCombatActionBase::FrameUpdate();

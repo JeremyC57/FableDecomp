@@ -23,12 +23,12 @@ class CCharString { public:
     CCharString(const char* text, long length);        // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 void* FindRef_free_DisplayProgress_1();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
 // VC7.1 knows the caller's address-taken local does not escape the call.
 #pragma auto_inline(off)
-__declspec(noinline) void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b)
+__declspec(noinline) void __fastcall NProgressDisplay::DisplayProgress(const CCharString& text, float progress, bool a, bool b)
 {
     void* p = FindRef_free_DisplayProgress_1();
     if (!p)
@@ -96,7 +96,7 @@ template <class T> void CEngine::AddEngineComponent(T* component, T*& globalPoin
 {
     {
         CCharString text("Engine: Add Engine Component", -1);
-        DisplayProgress(text, -1.0f, false, false);
+        NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
     }
     globalPointer = component;
     component->SetGlobalPointerAddress(reinterpret_cast<void**>(&globalPointer));

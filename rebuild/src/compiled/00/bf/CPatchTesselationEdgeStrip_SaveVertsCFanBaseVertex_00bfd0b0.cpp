@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BFD0B0, 135 bytes, __fastcall (`this` unused), `ret 8`. Ego_r.pdb
 //   ??$SaveVerts@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z
 //   (a private member template).
-// Callees: CDataOutputStream::WriteLong 0x00993EB0 (manifest "WriteCBYTE" is propagated), the stream's virtual
+// Callees: CDataOutputStream::WriteSLONG 0x00993EB0 (manifest "WriteCBYTE" is propagated), the stream's virtual
 //   Write(const void*, long) (slot 4, +0x10), CRangeCompressor::Compress(void*, long count, long stride,
 //   CArray<unsigned char>*) 0x00F3AFC0, free 0x00BFEA14.
 // Layout: Ego_r.pdb CEdgeStipVertexArray<T> { T* Data; long Count; }; CFanBaseVertex is 0x38 bytes (the pushed stride).
@@ -18,7 +18,8 @@ class CDataOutputStream {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, long size);    // slot 4 (+0x10)
-    void WriteLong(long value);                          // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 template <class T> class CArray { public:
@@ -56,13 +57,13 @@ public:
 template <class T>
 void CPatchTesselationEdgeStrip::SaveVerts(CEdgeStipVertexArray<T>& verts, CDataOutputStream& stream)
 {
-    stream.WriteLong(verts.Count);
+    stream.WriteSLONG(verts.Count);
     if (verts.Count > 0) {
         CRangeCompressor compressor;
         CArray<unsigned char> buffer;
         T* data = verts.Data;
         long size = compressor.Compress(data, verts.Count, sizeof(T), &buffer);
-        stream.WriteLong(size);
+        stream.WriteSLONG(size);
         stream.Write(buffer.GetData(), size);
     }
 }

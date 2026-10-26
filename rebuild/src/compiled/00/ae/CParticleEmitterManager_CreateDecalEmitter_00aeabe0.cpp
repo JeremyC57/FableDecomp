@@ -22,7 +22,7 @@ class CBaseClass {                                 // polymorphic root of the in
 public:
     virtual void v00();
     CBaseClass();                                  // 0x0099A2D0
-    ~CBaseClass();                                 // 0x0099A2E0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
 };
 class C3DPositionInterpolator : public CBaseClass { public:      // 0x1c bytes
     C3DVector Start;                               // +0x04

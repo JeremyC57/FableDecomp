@@ -21,11 +21,7 @@ template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_stora
 
 class CPersistContext {
 public:
-    void Transfer(unsigned long& value);          // 0x00431020
-    void Transfer(CDefString& v);                 // 0x0045228F
-    void Transfer(long& value);                   // 0x00431102
-    void Transfer(float& value);                  // 0x00431061
-    void Transfer(bool& value);                   // 0x0043314A
+    template <class T> void Transfer(T& value);          // 0x00431020
     template <class T> void TransferVectorOfSubComponents(vector<T>& value);   // <CPrizeScoreDef> 0x004ED953
 };
 

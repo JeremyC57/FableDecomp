@@ -6,7 +6,7 @@
 //   melee test @ 0x00733190 (`mov ecx,[ecx+24h] ; jmp 0x00661E80`, a creature flag test; named after the PDB CTCCombat::IsInMelee),
 //   CWorld::GetWorldFrame() @ 0x0049D870 (static, the inline IsUpdatingThisFrame of the landed 0x007443F0), GetPItem @ 0x00A01B50,
 //   ResetPerceptionVariables @ 0x00744DB0, UpdateDistanceFromPerceivedThing @ 0x007447E0, UpdatePerception @ 0x00745730,
-//   CTCBase::GetWorld() const @ 0x00686A80, CWorld::PeekMyPlayer() const @ 0x0049D9D0 (landed callers say GetCurrentPlayer; PDB
+//   CTCBase::PeekWorld() const @ 0x00686A80, CWorld::PeekMyPlayer() const @ 0x0049D9D0 (landed callers say GetCurrentPlayer; PDB
 //   ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ), CPlayer::GetControlledCreature @ 0x00487DD0, SetThingToPerceive(const CThing*)
 //   @ 0x007447A0 (manifest "DeleteData" is propagated; the body stores Perceiving = true and the thing).
 // Layout: engine/CTCPerceiveThing.h (Ego_r.pdb, PDB = retail): PerceivedThing +0x0c, FramesSinceDirectlyPerceivedThing +0x1c,
@@ -55,22 +55,44 @@ class CWorld { public:
     static long GetWorldFrame();                        // 0x0049D870
     const CPlayer* PeekMyPlayer() const;                // 0x0049D9D0
 };
-struct CBaseIntelligentPointer {                        // CIntelligentPointer<const CThing> (8 bytes)
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CPerceivedThingDef { public:
     unsigned char _pad00[0x40];
     long          Type;                                 // +0x40 EPerceivedThingType (0: the player)
 };
-class CTCPerceiveThing { public:
+class CTCBase
+{
+public:
     virtual void v00();
+    virtual void FrameUpdate();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCPerceiveThing : public CTCBase {
+public:
+    virtual void FrameUpdate();
+ public:
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08
     bool          IsInGlobalUpdateTCs;                  // +0x09
     unsigned char _pad0a[2];
-    CBaseIntelligentPointer PerceivedThing;             // +0x0c
+    CIntelligentPointer<CThing> PerceivedThing;             // +0x0c
     float         DistanceFromPerceivedThingSquared;    // +0x14
     float         AwarenessTimer;                       // +0x18
     long          FramesSinceDirectlyPerceivedThing;    // +0x1c
@@ -88,13 +110,11 @@ class CTCPerceiveThing { public:
     float         Radii[5];                             // +0x3c..+0x4c
     bool          PerceptionCombat;                     // +0x50
     long          FrameHitByPerceivedThing;             // +0x54
-    const CWorld* GetWorld() const;                     // 0x00686A80 (CTCBase)
     bool IsUpdatingThisFrame() const { return CWorld::GetWorldFrame() % 4 == UpdateOffset; }
     void ResetPerceptionVariables();                    // 0x00744DB0
     void UpdateDistanceFromPerceivedThing();            // 0x007447E0
     void UpdatePerception();                            // 0x00745730
     void SetThingToPerceive(const CThing* thing);       // 0x007447A0
-    virtual void FrameUpdate();
 };
 
 void CTCPerceiveThing::FrameUpdate()
@@ -116,6 +136,6 @@ void CTCPerceiveThing::FrameUpdate()
             }
         }
     } else if (SearchingForThingToPerceive && PDef->Type == 0)
-        SetThingToPerceive(GetWorld()->PeekMyPlayer()->GetControlledCreature());
+        SetThingToPerceive(PeekWorld().PeekMyPlayer()->GetControlledCreature());
     PerceptionCombat = inMelee;
 }

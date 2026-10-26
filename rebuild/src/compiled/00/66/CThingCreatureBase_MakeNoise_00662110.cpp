@@ -1,6 +1,6 @@
 // CThingCreatureBase::MakeNoise(const CCharString& noiseDefName) -- spawn a CThingNoise of the named def at the creature's position and hand it the creature
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00662110, 74 bytes (+ int3 padding).
-// Callees: CThing::GetDefinitionManager @ 0x004C7990 (reads the main game component global's +0x20; propagated
+// Callees: CThing::PeekDefinitionManager @ 0x004C7990 (reads the main game component global's +0x20; propagated
 //          label "CViewBase::GetDisplayEngine"), CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410,
 //          CThing::GetPosition @ 0x004C73D0 (`[this+60h] + 0Ch`), CThingNoise::Create(long def, const C3DVector& pos,
 //          float radius) @ 0x008385B0 (static __fastcall: def in ecx, position in edx, radius on the stack),
@@ -11,14 +11,18 @@ class CCharString;
 class C3DVector;
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;    // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 
 class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;                       // +0x91 bit 0
-    CDefinitionManager* GetDefinitionManager();     // 0x004C7990
     const C3DVector& GetPosition();                 // 0x004C73D0
+public:
+    const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x004C7990
 };
 
 class CThingNoise : public CThing { public:
@@ -32,7 +36,7 @@ class CThingCreatureBase : public CThing { public:
 
 void CThingCreatureBase::MakeNoise(const CCharString& noiseDefName)
 {
-    long defIndex = GetDefinitionManager()->GetDefGlobalIndexFromName(noiseDefName);
+    long defIndex = PeekDefinitionManager().GetDefGlobalIndexFromName(noiseDefName);
     if (defIndex) {
         CThingNoise* noise = CThingNoise::Create(defIndex, GetPosition(), -1.0f);
         if (noise && !noise->m_dead)

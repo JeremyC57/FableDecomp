@@ -1,9 +1,17 @@
 // Actual GFSerialiseMapBinaryOut<CHeroStatIncreaseData,EDamageAttribute>, not manifest WriteToStream.
 // PDB0058CFB0 / fablewin01F0B3F0. ECX outputstream, EDX const outer map. Leaf: WriteStatIncreaseMap
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 #include "engine/_quarantine/CHeroExperienceDef.h"
 #include <stdlib.h>
-struct OutputMethods:CDataOutputStream {OutputMethods();void WriteSLONG(long);}; //defaultPDBAFBE40; WriteSLONG993EB0/PDBAFBF50
+struct OutputMethods:CDataOutputStream {OutputMethods();}; //defaultPDBAFBE40; WriteSLONG993EB0/PDBAFBF50
 // Real enum keys; native storage four bytes. Values and container layouts from CHeroExperienceDef/CHeroStatIncreaseData donor.
 #ifdef _MSC_VER
 enum EDamageAttributeABI {DamageUnknown=0};enum EHeroExperienceStatCategoryABI {ExperienceUnknown=0};

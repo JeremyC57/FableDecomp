@@ -8,7 +8,10 @@
 // `fild [fps] ; fmul [3600.0f]`.
 #include "engine/CTCWife.h"
 
-long GetWorldFrame();                                       // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                                       // 0x0049D870
 extern long g_FramesPerSecond;                              // 0x01375550
 
 struct CTCWife_Hours : CTCWife {
@@ -18,7 +21,7 @@ struct CTCWife_Hours : CTCWife {
 float CTCWife_Hours::GetNumHoursMarriedFor() const
 {
     float hours = 0.0f;
-    if (FrameGotMarriedToThePlayer <= GetWorldFrame())
-        hours = (float)(GetWorldFrame() - FrameGotMarriedToThePlayer) / (g_FramesPerSecond * 3600.0f);
+    if (FrameGotMarriedToThePlayer <= CWorld::GetFrame())
+        hours = (float)(CWorld::GetFrame() - FrameGotMarriedToThePlayer) / (g_FramesPerSecond * 3600.0f);
     return hours;
 }

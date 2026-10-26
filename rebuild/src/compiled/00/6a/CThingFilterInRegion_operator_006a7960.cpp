@@ -11,7 +11,8 @@ class CThing { public:
 };
 
 class CWorldMap { public:
-    long GetRegionNumberMapIsIn(long map);          // 0x004FC190
+public:
+    long GetRegionNumberMapIsIn(long) const;   // 0x004FC190
 };
 
 class CThingFilter_InRegion { public:

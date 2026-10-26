@@ -81,15 +81,26 @@ public:
     __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     CDefPointer<CDefClassBase> GetDef() const { return Def; }
 };
-struct CBaseIntelligentPointer {
-    void* _vfptr;
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(push, 1)
 struct CTCStealable {
     unsigned char _pad00[0x0d];
-    CBaseIntelligentPointer Item;               // +0x0d
+    CIntelligentPointer<CThing> Item;               // +0x0d
 };
 #pragma pack(pop)
 class CScriptThing { public:

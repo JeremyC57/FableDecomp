@@ -5,7 +5,7 @@
 //   "CTCObjectAugmentations_UpdateTreeStructure" is descriptive. Its only caller is SetupAugmentationSounds 0x00766C00,
 //   whose first act is to clear the sound maps it then refills.
 // Callees: CInterfaceMap::LowerBound 0x0040F020 (inline GetInterface, 0x10 = CTCSoundPlayer: bitset word +0x20 bit 16),
-//   CTCSoundPlayer::StopSample(unsigned long) 0x0066ADD0 (catalog "CGameScriptThing::SetToKillOnLevelUnload" is a
+//   CTCSoundPlayer::StopAttachedSound(unsigned long) 0x0066ADD0 (catalog "CGameScriptThing::SetToKillOnLevelUnload" is a
 //   propagated twin), _Rb_tree<EObjectAugmentationType, pair<const ..., CObjectAugmentationSoundSet> >::_M_erase
 //   0x00769650 (both maps share the instantiation; catalog "LTextTreeWalkThrough::BuildTreeArray" is propagated).
 // Layout: CTCBase PThing +0x04; CTCObjectAugmentations InitSounds +0x20, LoopingSounds +0x2C (STLport maps, 12 bytes:
@@ -45,7 +45,8 @@ public:
 
 class CTCSoundPlayer {                                      // interface 0x10
 public:
-    void StopSample(unsigned long sampleID);                // 0x0066ADD0
+public:
+    void StopAttachedSound(unsigned long);   // 0x0066ADD0
 };
 
 enum EObjectAugmentationType { OBJECT_AUGMENTATION_TYPE_NONE };
@@ -236,7 +237,7 @@ void CTCObjectAugmentations::ClearAllSounds()
         if ((*it).second.Played) {
             CTCSoundPlayer* player;
             if (PThing->GetInterface(&player, 0x10))
-                player->StopSample((*it).second.Handle);
+                player->StopAttachedSound((*it).second.Handle);
         }
     }
     LoopingSounds.clear();

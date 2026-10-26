@@ -1,7 +1,7 @@
 // CParticleEmitterList::ClearLowestPriorityNonVisibleEmitterDecals(CIEngine*) -- walking the active list from the back (lowest priority first), clears the decals of the first initialised, non-visible emitter that has any allocated
 // Leaf: ClearLowestPriorityNonVisibleEmitterDecals
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEAF80, 87 bytes (`ret 4`). 0x00AEAF20 is the particle twin.
-// Callees: CParticleEmitter::IsVisible @ 0x00AED010, CParticleEmitter::HasAllocatedDecals @ 0x00AED220,
+// Callees: NParticleEngine::CParticleEmitter::IsVisible @ 0x00AED010, CParticleEmitter::HasAllocatedDecals @ 0x00AED220,
 // CParticleEmitter::ClearAllDecals @ 0x00AED1E0.
 // Label: the chunk names both twins "ClearLowestPriorityNonVisibleEmitterDecals"; the callees and the callers
 // (CParticleSystem::AllocateParticle 0x00AF5010 / AllocateDecal 0x00AF5380) make this the decals one.
@@ -31,12 +31,13 @@ class CParticleEmitter { public:
     unsigned short WaitingToSleep : 1;
     unsigned short Sleeping : 1;                     // bit 10
     unsigned short Emitter2D : 1;
-    bool IsVisible() const;                          // 0x00AED010 (labelled "CTCPhysicsStandard::CanCollideWithLandscape")
     bool HasAllocatedParticles() const;              // 0x00AED1B0
     bool HasAllocatedDecals() const;                 // 0x00AED220
     void ClearAllParticles(CIEngine* engine);        // 0x00AED140
     void ClearAllDecals(CIEngine* engine);           // 0x00AED1E0
     void GetParticleStats(CParticleStats* stats);    // 0x00AED290
+public:
+    bool IsVisible();   // 0x00AED010
 };
 
 struct SCountBlock;

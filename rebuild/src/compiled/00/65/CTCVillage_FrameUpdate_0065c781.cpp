@@ -175,7 +175,15 @@ class CVillageDef { public:
     CCharString CookEndText;                    // +0xf0
     CCharString CookStartText;                  // +0xf4
 };
-class CTCVillage { public:
+class CTCBase
+{
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+    CWorldMap& GetWorldMap();   // 0x00686D30
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCVillage : public CTCBase { public:
     void* _vfptr;
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x2c - 0x08];
@@ -190,9 +198,6 @@ class CTCVillage { public:
     bool WasCurfewTime;                         // +0xb1
     unsigned char _padb2;
     bool AnnouncementsDisabled;                 // +0xb3
-    CWorldMap* GetWorldMap();                   // 0x00686D30 (CTCBase)
-    CWorld* GetWorld_00686a80();                         // 0x00686A80 (CTCBase)
-    CPlayerManager* GetPlayerManager();         // 0x00686D40 (CTCBase)
     void ClearOutNullMembers();                 // 0x0065890B
     void ReleaseInvalidTasks();                 // 0x0065BE32
     void UpdateCrowds();                        // 0x006594BB
@@ -214,7 +219,7 @@ void CTCVillage::FrameUpdate()
     ReleaseInvalidTasks();
     UpdateCrowds();
     if (g_RepopulateVillages) {
-        GetWorldMap()->PopulateRegionWithVillagers(ParentThing);
+        GetWorldMap().PopulateRegionWithVillagers(ParentThing);
         g_RepopulateVillages = false;
     }
     bool torchesUpdated = false;
@@ -242,8 +247,8 @@ void CTCVillage::FrameUpdate()
                     if (thing->HasTC(0x27)) {
                         CTCLight* light = (CTCLight*)thing->GetTC(0x27);
                         bool onDuringDay = light->OnDuringDay;
-                        if (onDuringDay == GetWorld_00686a80()->PTimeManager->IsDay())
-                            light->SetActive(!GetWorld_00686a80()->PTimeManager->IsDay());
+                        if (onDuringDay == PeekWorld().PTimeManager->IsDay())
+                            light->SetActive(!PeekWorld().PTimeManager->IsDay());
                     }
                 }
             }
@@ -278,7 +283,7 @@ void CTCVillage::FrameUpdate()
                         long sample = soundBank->GetSoundIndexFromSymbol("SND_" + entry->SoundName);
                         if (sample > 0) {
                             C3DVector pos = ParentThing->GetPosition();
-                            CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+                            CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer()->GetHeroThing();
                             if (IS_THING_ALIVE_0043dbd0(hero)) {
                                 C3DVector offset = hero->PhysicsTC->GetRHSet().Forward * 20.0f;
                                 pos = hero->GetPosition() + offset;

@@ -40,10 +40,11 @@ public:
 enum EHeroAbility { HERO_ABILITY_NONE = 0 };
 class CTCInventoryAbilities { public:
     bool IsAbilityPotentiallyAvailable(EHeroAbility ability);       // 0x005EE02E
-    long GetAbilityMaximumLevel(EHeroAbility ability);              // 0x005EDEA3
     long GetAbilityLevel(EHeroAbility ability);                     // 0x005EDE93
     long GetAbilityStatType(EHeroAbility ability);                  // 0x005EDEEB
     long GetExperienceCostToUpgradeAbility(EHeroAbility ability, long levels, bool flag);   // 0x005EE77C
+public:
+    long GetAbilityMaximumLevel(EHeroAbility) const;   // 0x005EDEA3
 };
 template <class T> struct CRetailVector {                   // STLport vector (12 bytes)
     T* _M_start;

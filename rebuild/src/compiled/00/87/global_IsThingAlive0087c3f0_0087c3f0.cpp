@@ -15,11 +15,24 @@ class CThing { public:
     bool IsDead() const { return (m_flags & 1) != 0; }
 };
 
-struct CBaseIntelligentPointer {
-    CThing* GetPItem();                    // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-inline bool IsThingAlive(CBaseIntelligentPointer& pointer)
+inline bool IsThingAlive(CIntelligentPointer<CThing>& pointer)
 {
     if (pointer.GetPItem() != 0) {
         if (!pointer.GetPItem()->IsDead())
@@ -28,7 +41,7 @@ inline bool IsThingAlive(CBaseIntelligentPointer& pointer)
     return false;
 }
 
-struct CHolder { unsigned char _pad[0xc]; CBaseIntelligentPointer m_pointer; };
+struct CHolder { unsigned char _pad[0xc]; CIntelligentPointer<CThing> m_pointer; };
 
 bool __fastcall IsThingAlive_0087c3f0(CHolder& holder)
 {

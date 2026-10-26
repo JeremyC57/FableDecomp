@@ -8,7 +8,7 @@ struct RegionVec {
     CRegion** cap;                 // third field -> 16-byte local frame
     void Build(CRegion* region);   // 0x514160 __fastcall(CRegion*)
 };
-extern "C" void __cdecl FreeArrayBuf(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 // CWorldMap: model the two virtual slots at +0x28 and +0x4c.
 // 0x28/4 = slot 10, 0x4c/4 = slot 19.
@@ -42,5 +42,5 @@ void CRegionMinimap_Methods::InitialiseRegionMinimapSize(CWorldMap* worldMap, CR
         }
         begin = vec.begin; // reload
     }
-    if (vec.begin) FreeArrayBuf(vec.begin);
+    if (vec.begin) free(vec.begin);
 }

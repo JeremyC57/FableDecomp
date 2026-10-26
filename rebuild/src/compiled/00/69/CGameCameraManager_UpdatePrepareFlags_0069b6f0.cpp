@@ -9,7 +9,8 @@
 // Shape: the subtitle query is a named bool taken BEFORE the script-module tests (it rides in bl); the timer clamp re-reads the member
 // at the join and the decrement is `dec dword ptr [esi+0E4h]`.
 class CSubtitleRenderer { public:
-    bool IsWaitingForClickPast();           // 0x0048DB46
+public:
+    bool IsWaitingForClickPast() const;   // 0x0048DB46
 };
 class CPlayerGui { public:
     unsigned char     _pad[0x18];

@@ -112,10 +112,13 @@ template <class T, class P1> struct CSpawnedFunc1 : CSpawnedFuncBase {
 };
 
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
+public:
+    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
 };
+namespace NScript {
 class CV_ExposeMayorScript : public CScriptBase { public:
     unsigned char _pad40[0x48 - 0x40];
     long  Path;                                         // +0x48 PATH_ID

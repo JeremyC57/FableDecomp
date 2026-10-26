@@ -30,9 +30,12 @@ class CWideString { public:
     ~CWideString();                                    // 0x0099B510
 };
 bool __fastcall ConstructString(CWideString& text, long value0, long value1);   // 0x009C7B80
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                            // +0x14
@@ -94,7 +97,8 @@ class CPlayer { public:
     CThing* GetHeroCreature();                         // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                          // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 template <class T> struct vector {                     // STLport vector<T> (12 bytes)
     T* _M_start;
@@ -141,7 +145,7 @@ void CWorld::DisplayCollectableRentInformation()
         }
     }
     if (collectableRent > 0) {
-        CThing* hero = PlayerManager->GetMainPlayer()->GetHeroCreature();
+        CThing* hero = PlayerManager->GetMainPlayer().GetHeroCreature();
         if (IsThingAlive(hero)) {
             CTCRegionDisplay* display;
             if (hero->GetInterface(&display, 0x8e) && display) {

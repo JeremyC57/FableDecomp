@@ -20,15 +20,23 @@ class C3DVector { public:
     void Rotate(const C3DVector& axis, float angle);  // 0x00A13C60
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                             // +4
-    CBaseIntelligentPointer();                        // 0x00A01B10
-    ~CBaseIntelligentPointer();                       // 0x00A01C10
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
-    virtual void v00();
+class CThingCreatureBase;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(push, 1)
 struct CProngHead {                                   // the PDB's byte-packed head of CProng
@@ -40,7 +48,7 @@ struct CProngHead {                                   // the PDB's byte-packed h
 #pragma pack(pop)
 struct CProng : CProngHead {                          // CDefendingCombatantInfo::CProng, 28 bytes
     long ProngBlockageTimer;                          // +0x10
-    CIntelligentPointer POccupier;                    // +0x14
+    CIntelligentPointer<CThingCreatureBase> POccupier;                    // +0x14
     CProng(const C3DVector& prong) : CProngHead(prong), ProngBlockageTimer(0), POccupier() { }
     CProng(const CProng& other);                      // 0x006EFF60
 };

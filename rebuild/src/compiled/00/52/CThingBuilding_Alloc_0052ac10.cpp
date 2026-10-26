@@ -20,15 +20,24 @@ public:
     virtual void v00();
 };
 
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CThingPointer : CBaseIntelligentPointer {            // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CThingPointer() { }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {            // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CThing : public CClass {
@@ -44,7 +53,7 @@ public:
 
 class CThingGameObject : public CThingPhysical {           // vtable 0x01244F7C
 public:
-    CThingPointer PThingStandingOn;             // +0xc0
+    CIntelligentPointer<CThing> PThingStandingOn;             // +0xc0
     unsigned char m_gameObjectFlags;            // +0xc8 (bitfield group, not initialised here)
     unsigned char _padc9[7];                    // +0xc9 tail padding (the class is 8-aligned through its 64-bit UID)
     virtual void v00();

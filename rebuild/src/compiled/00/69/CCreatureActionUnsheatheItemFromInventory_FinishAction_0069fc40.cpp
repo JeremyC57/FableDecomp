@@ -65,7 +65,8 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
     bool GetPerformedAction();              // 0x006925A0 (PerformedAction byte at +0x62)
-    void FinishAction();                    // 0x00694430
+public:
+    virtual void FinishAction();   // 0x00694430
 };
 
 class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:

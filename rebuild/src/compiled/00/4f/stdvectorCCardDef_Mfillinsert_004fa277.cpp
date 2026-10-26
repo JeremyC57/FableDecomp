@@ -72,7 +72,7 @@ public:
     virtual void v00();
     CParentDefClassBase(const CParentDefClassBase& other);                     // 0x0046EE98
     CParentDefClassBase& operator=(const CParentDefClassBase& other);          // 0x00431ED0
-    ~CParentDefClassBase();                                                    // 0x00430300
+    virtual ~CParentDefClassBase();                                                    // 0x00430300
 };
 #pragma pack(pop)
 class CCardDef : public CParentDefClassBase {        // vtable 0x01243A44, 0x44 bytes

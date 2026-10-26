@@ -23,7 +23,7 @@ class CScriptThing { public:
     virtual bool MsgIsKilledBy(const CCharString& killer) const;  // slot 18 (+0x48)
     void* m_pImpObject;                                  // +0x04 PImp
     void* m_pImpCount;                                   // +0x08
-    ~CScriptThing();                                     // 0x004AA840
+    virtual ~CScriptThing();                                     // 0x004AA840
 };
 class CGameScriptInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

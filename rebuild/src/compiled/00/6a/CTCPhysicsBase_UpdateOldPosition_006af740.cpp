@@ -20,7 +20,9 @@ class CWorld { public:
     static long GetFrameNumber();              // 0x0049D870 (`mov eax,[0x013B89BC] ; ret`, no this)
 };
 
-class CTCPhysicsBase { public:                        // 0x40 bytes
+class CTCBase
+{
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -42,6 +44,14 @@ class CTCPhysicsBase { public:                        // 0x40 bytes
     virtual void v90(); virtual void v91(); virtual void v92(); virtual void v93(); virtual void v94();
     virtual void v95();
     virtual void UpdateOldPosition();   // slot 96, +0x180
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCPhysicsBase : public CTCBase {
+public:
+    virtual void UpdateOldPosition();
+ public:                        // 0x40 bytes
     void*     m_tcBase[2];                     // +0x04 CTCBase body
     C3DVector Position;                        // +0x0c
     C3DVector OldPosition;                     // +0x18
@@ -51,7 +61,6 @@ class CTCPhysicsBase { public:                        // 0x40 bytes
     void*     PhysicsDef;                      // +0x38 CDefPointer<CPhysicsDef const>::Object
     bool Moving : 1;                           // +0x3c bit 0
     bool OldMoving : 1;                        // +0x3c bit 1
-    CWorld* GetWorld();                        // 0x00686A70 (`mov eax,[0x013B8A1C] ; mov eax,[eax+24h]`)
 };
 
 struct CTCPhysicsStandard : CTCPhysicsBase {   // 0x88 bytes
@@ -73,7 +82,7 @@ struct CTCPhysicsStandard : CTCPhysicsBase {   // 0x88 bytes
 
 void CTCPhysicsBase::UpdateOldPosition()
 {
-    long frame = GetWorld()->GetFrameNumber();
+    long frame = GetWorld().GetFrameNumber();
     if (OldPositionLastFrameSet != frame) {
         OldPosition = Position;
         OldPositionLastFrameSet = frame;

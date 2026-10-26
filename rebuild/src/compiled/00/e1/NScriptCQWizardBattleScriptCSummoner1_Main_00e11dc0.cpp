@@ -27,7 +27,7 @@ class CScriptThing { public:                                   // 12 bytes, vtab
  CScriptThingImpl* PImp_Data;
  void* PImp_Info;
  CScriptThing(const CScriptThing& other);   // 0x004ABE90
- ~CScriptThing();                           // 0x004AA840
+ virtual ~CScriptThing();                           // 0x004AA840
  bool IsAlive() const;                      // slot 75, inlined below
 };
 struct CScriptThingImpl {
@@ -1016,8 +1016,9 @@ class CCharString { public:
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 class CBaseObject { public:
  void* m_pIntelligentPointer;
- CBaseObject();                                     // 0x0099A380
- virtual ~CBaseObject();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
  CCountedPointerWords PImp;
@@ -1033,10 +1034,15 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  void ClearAllActionsIncludingLoopingAnimations();  // 0x007E7410
 };
 extern bool g_bScriptAnimationFlag;                 // 0x01375748
-struct CSummoner1 {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CSummoner1 : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CSummoner1::Main()

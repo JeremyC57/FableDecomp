@@ -14,8 +14,8 @@ class C3DVector;
 extern CCharString g_containmentVolumeName;     // 0x013BAC98
 
 class CPhysicsMeshObject { public:
-    unsigned char _body[0x40];
-    ~CPhysicsMeshObject();                                                      // 0x00A127D0
+    unsigned char _body[0x40 - 4];
+    virtual ~CPhysicsMeshObject();                                                      // 0x00A127D0
     bool IsInContainmentVolume(const CCharString& volume, const C3DVector& pos, float tolerance);  // 0x00A128E0
 };
 
@@ -40,7 +40,8 @@ class CTCPhysicsBase { public:
     virtual void v85(); virtual void v86(); virtual void v87(); virtual void v88(); virtual void v89();
     virtual void v90(); virtual void v91(); virtual void v92();
     virtual const void* GetPhysicsMesh();               // slot 93 (0x006B13B0 in the base: returns 0)
-    CPhysicsMeshObject GetPhysicsMeshObject();          // 0x006B0850
+public:
+    CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
 
 class CThingBuilding { public:

@@ -1,3 +1,13 @@
-extern void* __fastcall r_h1(void*);
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
 extern bool __fastcall r_h2(void*);
-bool __fastcall IsToCauseRecoil(void* action){ return r_h2(r_h1(reinterpret_cast<char*>(action)+8)); }
+bool __fastcall IsToCauseRecoil(void* action){ return r_h2(((void*)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(action)+8))->GetPItem()))); }

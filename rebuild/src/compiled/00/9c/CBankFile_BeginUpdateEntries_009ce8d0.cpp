@@ -30,7 +30,10 @@ public:
     ~CWideString();                                // 0x0099B510
     long GetLength() const;                        // 0x0099B220
 };
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name, CWideString* extension);   // 0x00997620
+class CAFile {
+public:
+    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+};   // 0x00997620
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& a, const wchar16* b);       // 0x0099BF30
 
@@ -104,7 +107,7 @@ void CBankFile::BeginUpdateEntries()
         CWideString directory;
         CWideString name;
         CWideString extension;
-        SplitPath(Filename, &drive, &directory, &name, &extension);
+        CAFile::SplitPath(Filename, &drive, &directory, &name, &extension);
         ChecksumCache.Open(drive + directory + name + L".cks");
     }
     WriteFileInformation(false);

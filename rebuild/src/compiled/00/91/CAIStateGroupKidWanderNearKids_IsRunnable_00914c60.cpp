@@ -6,7 +6,7 @@
 //   -- 0x0040F020 (first lookup, interface 0xd3) and 0x004365B0 (second lookup, interface 0x31). The copies are separate
 //   COMDATs in retail, so they must be separate symbols here; they are modelled as the non-const / const overloads of
 //   the same lookup (a modelling device: which retail instance is the const one is not proven).
-//   CTCIdleScheduler::IsPreferredIdle 0x00801BE0, CTCCreatureModeManager::HasMode(ulong) 0x0073A8A0 (manifest "CPlayer::HasMode"
+//   CTCIdleScheduler::IsPreferredIdle 0x00801BE0, CTCCreatureModeManager::IsModeActive(ulong) 0x0073A8A0 (manifest "CPlayer::HasMode"
 //   is propagated), CAIStateGroupBase::GetPWorld 0x008FCFA0 (manifest "CPlayer::GetCurrentMode" is propagated; body
 //   PBrain->+0x1c->+0x24, as landed), CWorld::GetPRandomSeed 0x0049D810, GFROR13 0x00497890,
 //   CAIStateGroupBase::PeekThingSearchTools 0x008FD000, CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_IsNot,
@@ -44,7 +44,9 @@ class CThing { public:
 };
 struct CWorld_Methods : CWorld { unsigned int* GetPRandomSeed(); };          // 0x0049D810
 class CTCIdleScheduler : public CTCBase { public: bool IsPreferredIdle(CAIStateGroupBase* group); };   // 0x00801BE0
-class CTCCreatureModeManager : public CTCBase { public: bool HasMode(unsigned long mode); };          // 0x0073A8A0
+class CTCCreatureModeManager : public CTCBase { public: public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
+};          // 0x0073A8A0
 struct CAIStateGroupBase_Methods : CAIStateGroupBase {
     CWorld* GetPWorld();                                // 0x008FCFA0
     CThingSearchTools* PeekThingSearchTools();          // 0x008FD000
@@ -70,7 +72,7 @@ inline CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsChild> operator&&(const 
 struct CThingSearchTools_Methods : CThingSearchTools {
     template<class F, class T> bool GetPFirstThing(const F& filter, T** out);   // <Bind2<IsNot,IsChild>,CThingAICreature>: 0x00914AA0
 };
-unsigned int __fastcall GFROR13(unsigned int);          // 0x00497890
+long __fastcall GFROR13(unsigned long);          // 0x00497890
 
 bool CAIStateGroup_KidWanderNearKids_Methods::IsRunnable() {
     CAIStateGroupBase_Methods* stateGroup = (CAIStateGroupBase_Methods*)(CAIStateGroupBase*)this;
@@ -80,7 +82,7 @@ bool CAIStateGroup_KidWanderNearKids_Methods::IsRunnable() {
     }
     if (((CThing*)stateGroup->PBrain->Creature)->UsingComponents[1] & 0x20000) {
         CTCCreatureModeManager* modes=((CThing*)(stateGroup->PBrain->Creature))->GetTCConst<CTCCreatureModeManager>(0x31);
-        if (modes->HasMode(8) || modes->HasMode(9)) {
+        if (modes->IsModeActive(8) || modes->IsModeActive(9)) {
             unsigned int* seed=((CWorld_Methods*)stateGroup->GetPWorld())->GetPRandomSeed();
             *seed=*seed*0x24a1+0x24df;
             *seed=GFROR13(*seed);

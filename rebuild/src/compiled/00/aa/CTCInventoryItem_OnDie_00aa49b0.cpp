@@ -2,7 +2,7 @@
 // Leaf: OnDie
 // Frees a heap pointer held at +0x10 (operator delete), then tail-calls base OnDie.
 
-void __cdecl free_target(void* p);        // 0xbfea14  operator delete(void*)
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 class CTCInventoryItem
 { public:
@@ -16,6 +16,6 @@ void CTCInventoryItem::OnDie_impl()
 {
     void* p = this->m_ptr;
     if (p)
-        free_target(p);
+        free(p);
     this->BaseOnDie_00aa75c0();
 }

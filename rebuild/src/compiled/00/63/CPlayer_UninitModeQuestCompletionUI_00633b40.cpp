@@ -11,8 +11,9 @@
 typedef long EPlayerMode;
 class CProcessedInput;
 
-struct CAInputProcessCalls {
-    void RemoveFromInterface();                       // 0x00A0D2D0 (non-virtual)
+class CAInputProcess { public:
+public:
+    void RemoveFromInterface();   // 0x00A0D2D0
 };
 
 struct CInputProcessVirtuals {
@@ -27,5 +28,5 @@ struct CPlayer_Methods : CPlayer {
 void CPlayer_Methods::UninitModeQuestCompletionUI(EPlayerMode mode, CProcessedInput* input)
 {
     reinterpret_cast<CInputProcessVirtuals*>(this->InputProcessMain_ptr)->AddToInterface(this->PlayerInterface);
-    reinterpret_cast<CAInputProcessCalls*>(this->InputProcessQuestCompletionUI_ptr)->RemoveFromInterface();
+    reinterpret_cast<CAInputProcess*>(this->InputProcessQuestCompletionUI_ptr)->RemoveFromInterface();
 }

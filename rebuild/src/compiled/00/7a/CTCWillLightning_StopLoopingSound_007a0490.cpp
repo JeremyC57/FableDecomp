@@ -5,7 +5,7 @@
 //   the handle is invalid); Ego_r.pdb `?StopLoopingSound@CTCWillLightning@@QAEXXZ` / `?StartLoopingSound@...`. Callers
 //   0x007A099B (the ctor block) and 0x007A29B8. The catalog's "CThing_OnLevelUnload" is descriptive.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (inline GetInterface: 0x10 = the sound player,
-//   bitset word +0x20 bit 16), CTCSoundPlayer::StopSample(unsigned long) 0x0066ADD0. g_InvalidSoundHandle 0x0129D25C.
+//   bitset word +0x20 bit 16), CTCSoundPlayer::StopAttachedSound(unsigned long) 0x0066ADD0. g_InvalidSoundHandle 0x0129D25C.
 // Layout: retail CTCWillLightning LoopingSound +0x98 (PDB +0xa4; the PDB list / intelligent pointers are 12 bytes larger).
 // Shape: `sound = LoopingSound; if (sound != g_InvalidSoundHandle) { if (has-0x10) player->StopSample(sound); LoopingSound =
 //   g_InvalidSoundHandle; }` -- the handle is a named local (edi from the compare to the call; reading the member twice
@@ -44,7 +44,8 @@ public:
 
 class CTCSoundPlayer {                                   // interface 0x10
 public:
-    void StopSample(unsigned long sampleID);             // 0x0066ADD0
+public:
+    void StopAttachedSound(unsigned long);   // 0x0066ADD0
 };
 
 class CTCWillLightning {
@@ -63,7 +64,7 @@ void CTCWillLightning::StopLoopingSound()
     if (sound != g_InvalidSoundHandle) {
         CTCSoundPlayer* player;
         if (ParentThing->GetInterface(&player, 0x10))
-            player->StopSample(sound);
+            player->StopAttachedSound(sound);
         LoopingSound = g_InvalidSoundHandle;
     }
 }

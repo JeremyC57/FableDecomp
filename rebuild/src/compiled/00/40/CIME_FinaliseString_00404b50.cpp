@@ -18,7 +18,7 @@ struct CIME {
 };
 
 // IME UI: end the composition (true = finalise, false = cancel).
-extern void __fastcall CIME_sink(bool b);
+void __fastcall ImeUi_FinalizeString(bool);   // 0x00CB2C60
 
 void __fastcall CIME_FinaliseString(CIME* self, void* /*edx*/, char param)
 {
@@ -29,6 +29,6 @@ void __fastcall CIME_FinaliseString(CIME* self, void* /*edx*/, char param)
             if (self->CancelOnOKClick)
                 v = 0;
         }
-        CIME_sink(v != 0);
+        ImeUi_FinalizeString(v != 0);
     }
 }

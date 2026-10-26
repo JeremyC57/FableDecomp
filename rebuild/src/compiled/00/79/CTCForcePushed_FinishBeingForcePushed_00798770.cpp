@@ -37,10 +37,20 @@ public:
     void AddDamageWithAttribute(long attribute, float damage);             // 0x00868CA0 (EDamageAttribute)
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                // +0x04
-    CThing* GetPItem() const;                       // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CThing {
@@ -74,7 +84,7 @@ public:
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -88,8 +98,8 @@ public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[4];
-    CBaseIntelligentPointer PThingCausingForcePush; // +0x0C
-    CBaseIntelligentPointer PParticle;              // +0x14
+    CIntelligentPointer<CThing> PThingCausingForcePush; // +0x0C
+    CIntelligentPointer<CThing> PParticle;              // +0x14
     C3DVector PositionForcePushStarted;             // +0x1C
     float DistanceBeingPushed;                      // +0x28
     C3DVector DirectionBeingPushed;                 // +0x2C

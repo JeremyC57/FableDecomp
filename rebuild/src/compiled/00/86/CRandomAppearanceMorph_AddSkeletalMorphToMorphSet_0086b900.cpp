@@ -38,7 +38,8 @@ public:
 class CDefStringTable
 {
 public:
-    CCharString GetString(long tablePos);            // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;             // 0x013CA828
 

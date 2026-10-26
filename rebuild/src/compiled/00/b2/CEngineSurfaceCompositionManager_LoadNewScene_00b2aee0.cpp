@@ -1,6 +1,10 @@
 #include "engine/CEngineSurfaceCompositionManager.h"  // retyped onto the PDB layout; byte parity re-verified
-struct Sub; extern void __fastcall sub_009fd0c0(Sub* p);
+class CGraphicDataBank {
+public:
+    void ChangeScene();   // 0x009FD0C0
+};
+struct Sub; 
 struct CEngineSurfaceCompositionManager_Methods : CEngineSurfaceCompositionManager {
     char M(int params);
 };
-char CEngineSurfaceCompositionManager_Methods::M(int params){ sub_009fd0c0((Sub*)((char*)this+0x31c)); return 0; }
+char CEngineSurfaceCompositionManager_Methods::M(int params){ ((CGraphicDataBank*)((Sub*)((char*)this+0x31c)))->ChangeScene(); return 0; }

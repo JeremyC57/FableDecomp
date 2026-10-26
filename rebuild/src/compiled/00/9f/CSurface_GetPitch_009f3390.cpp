@@ -40,15 +40,16 @@ struct IDirect3DSurface9 {
 };
 
 // CPixelFormat with its D3DFORMAT constructor and depth queries (the engine header holds only the layout).
-struct CPixelFormatFromD3D {
+class CPixelFormat { public:
     long FormatIndex;                              // +0x00 (PDB CPixelFormat::FormatIndex)
-    CPixelFormatFromD3D(unsigned long d3dFormat);  // 0x009E3830 (CPixelFormat::Initialise / constructor)
-    unsigned long GetColourDepth() const;          // 0x009E3820 (bits per pixel)
+    CPixelFormat(unsigned long d3dFormat);  // 0x009E3830 (CPixelFormat::Initialise / constructor)
     unsigned long GetByteColourDepth() const;      // 0x009E3800 (bytes per pixel)
+public:
+    unsigned long GetColourDepth() const;   // 0x009E3820
 };
 
 struct CSurface_Methods : CSurface {
-    CPixelFormatFromD3D GetPixelFormat() const;
+    CPixelFormat GetPixelFormat() const;
     unsigned long GetWidth() const
     {
         D3DSURFACE_DESC_Local desc;
@@ -58,11 +59,11 @@ struct CSurface_Methods : CSurface {
     unsigned long GetPitch() const;
 };
 
-CPixelFormatFromD3D CSurface_Methods::GetPixelFormat() const
+CPixelFormat CSurface_Methods::GetPixelFormat() const
 {
     D3DSURFACE_DESC_Local desc;
     PD3DSurface->GetDesc(&desc);
-    return CPixelFormatFromD3D(desc.Format);
+    return CPixelFormat(desc.Format);
 }
 
 unsigned long CSurface_Methods::GetPitch() const

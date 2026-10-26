@@ -9,13 +9,17 @@ class CInputProcessStrafe
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 static void *g_deleted = 0;
-
-void __fastcall CInputProcessStrafe_dtor(CInputProcessStrafe *process)
+class CAInputProcess {
+public:
+    virtual ~CAInputProcess();
+};
+CAInputProcess::~CAInputProcess()
 {
+    CInputProcessStrafe * process = (CInputProcessStrafe *)this; (void)process;
     (void)process;
     g_dtor_calls++;
 }
-extern "C" void __cdecl fable_op_delete(void *p)
+void __cdecl operator delete(void* p)
 {
     g_delete_calls++;
     g_deleted = p;

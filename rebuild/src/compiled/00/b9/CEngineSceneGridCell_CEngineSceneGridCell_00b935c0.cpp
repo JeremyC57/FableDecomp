@@ -78,7 +78,7 @@ class CEngineSceneGridCell { public:                      // 0x48 bytes (PDB lay
     CEngineSceneGridCell(CEngineSceneGridCell* parent);
 };
 
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 struct CRandomSeed {
     unsigned long m_seed;

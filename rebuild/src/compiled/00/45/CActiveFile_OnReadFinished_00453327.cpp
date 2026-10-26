@@ -6,13 +6,13 @@ struct CActiveFile {
 };
 
 extern void __fastcall Reader_Op(void* self, void* edx, char* buf);
-extern void FreeThing(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     char local;
     Reader_Op(self->p, self->DstFileHandle, &local);
     if (self->p) {
-        FreeThing(self->p);
+        free(self->p);
     }
 }

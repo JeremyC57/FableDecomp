@@ -66,14 +66,25 @@ class CThing { public:
     }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -161,7 +172,7 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
     CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
-unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
+long __fastcall GFROR13(unsigned long);      // 0x00497890
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
@@ -186,7 +197,7 @@ struct CTCStoryTeller {                         // the interface-0xb8 component
 
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     unsigned char _pad14[0x10];
-    CBaseIntelligentPointer PStoryListener;     // +0x24
+    CIntelligentPointer<CThing> PStoryListener;     // +0x24
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
     bool PlayAnims(const CCharString& into, const CCharString& loop, const CCharString& outOf, float loopTime);   // 0x00948EF0
     bool TellStory();

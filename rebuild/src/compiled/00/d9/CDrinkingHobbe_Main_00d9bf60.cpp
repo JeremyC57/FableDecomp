@@ -24,7 +24,7 @@ class CScriptThing { public:                                   // 12 bytes, vtab
  void* PImp_Data;
  void* PImp_Info;
  CScriptThing(const CScriptThing& other);   // 0x004ABE90
- ~CScriptThing();                           // 0x004AA840
+ virtual ~CScriptThing();                           // 0x004AA840
 };
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
@@ -933,8 +933,9 @@ class CCharString { public:
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 class CBaseObject { public:
  void* m_pIntelligentPointer;
- CBaseObject();                                     // 0x0099A380
- virtual ~CBaseObject();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
  CCountedPointerWords PImp;
@@ -948,12 +949,17 @@ struct CQ_HobbeToothContestScript {
  unsigned char BaseState[0x5a];
  bool DrinkingHobbesNotHit;                         // +0x5a (PDB +0x6e)
 };
-struct CDrinkingHobbe {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CDrinkingHobbe : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CQ_HobbeToothContestScript* ParentClass;           // +0x14
  void* PMasterData;                                 // +0x18
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CDrinkingHobbe::Main()

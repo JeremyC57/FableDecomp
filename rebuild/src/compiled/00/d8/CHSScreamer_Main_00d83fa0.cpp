@@ -16,6 +16,7 @@
 // Shape: in this large body retail calls the handle and CTimer constructors/destructors and the CScriptThing copy/destructor
 //   out of line, and expands only the last (discarded) CreateEffect result's destructor inline: CScriptThing keeps its inline
 //   destructor and inline_depth limits the earlier sites.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -72,8 +73,14 @@ class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:  
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CIsThingAlive {                                  // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04 (copied and destroyed out of line)
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();
@@ -251,8 +258,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CHS_Screamer : CEntityScriptBase {
     CQ_HeroSoulsMotherScript* ParentClass;              // +0x14
@@ -266,7 +274,7 @@ void CHS_Screamer::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

@@ -41,13 +41,15 @@ class C3DVector { public:
         Y *= r;
         Z *= r;
     }
-    void RotateAboutZ(float angle);                         // 0x00A14040
+public:
+    void RotateXY(float);   // 0x00A14040
 };
 class CInputEvent { public:
     unsigned char _body[0x34];
     CInputEvent();                                          // 0x00A04410
     ~CInputEvent();                                         // 0x00A03B30
-    C2DVector GetAnaloguePosition() const;                  // 0x00A043A0
+public:
+    C2DVector GetJoystickPosition() const;   // 0x00A043A0
 };
 class CInputManager { public:
     bool IsJoystickEventInQueue(long type, long a, CInputEvent* event, long player);   // 0x009F4C60
@@ -85,7 +87,7 @@ void CTCBattleCharge::UpdateDirectionOverride()
     CThingPlayerCreature* thing = ParentThing;
     CInputManager* input = GFGetSystemManager()->InputManager;
     if (input->IsJoystickEventInQueue(0x11, 0, &event, thing->GetPlayer()->GetPlayerNumber())) {
-        C2DVector stick = event.GetAnaloguePosition();
+        C2DVector stick = event.GetJoystickPosition();
         if (stick.GetLength() > 0.05f) {
             DirectionOverrideVector.X = stick.X;
             DirectionOverrideVector.Y = -stick.Y;
@@ -93,7 +95,7 @@ void CTCBattleCharge::UpdateDirectionOverride()
             DirectionOverrideVector.Z = 0.0f;
             DirectionOverrideVector.Normalise();
             float angle = ParentThing->GetCurrentRelativeMovementAngleXY();
-            DirectionOverrideVector.RotateAboutZ(angle);
+            DirectionOverrideVector.RotateXY(angle);
         }
     }
 }

@@ -29,7 +29,7 @@ class CCharString { public:
 };
 namespace NGameText {
 class CDataBank { public:
-    CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
 }
 class CMainGameComponent { public:
@@ -62,7 +62,8 @@ class CTCBase { public:
     bool          ToBeRemoved;                  // +0x08
     bool          IsInGlobalUpdateTCs;          // +0x09
     unsigned char _pad0a[2];
-    CThingManager* GetThingManager();           // 0x00686AE0
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
 };
 class CTCTrophy : public CTCBase { public:
     CTrophyDef*   PDef;                         // +0x0c (CDefPointer<const CTrophyDef>)
@@ -84,7 +85,7 @@ class CTCTrophy : public CTCBase { public:
 void CTCTrophy::FrameUpdate()
 {
     UpdateGainedWitnessSounds();
-    if (!MinigameInProgress || GetThingManager()->PausedA || GetThingManager()->PausedB)
+    if (!MinigameInProgress || GetThingManager().PausedA || GetThingManager().PausedB)
         return;
     long framesLeft = --MinigameCurrentFramesLeft;
     if (framesLeft <= 0) {

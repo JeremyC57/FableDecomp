@@ -8,9 +8,10 @@
 //   interface slots 7 NewScriptFrame, 70 GetHero, 508/509 (names from ghidra_out/cgsi_slots_aligned.tsv:
 //   EntityUnsheatheMeleeWeapon / EntityUnsheatheRangedWeapon, both (const CScriptThing&, bool)).
 // Layout: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8} as the landed CHTE_Prisoner::Main 0x00D69F50.
-// Shape: the filter is a scoped frame object; each wait is `while (!test) { NewScriptFrame(); if (IsDone()) return; }`
-//   followed by `if (IsDone()) return;`; the outer loop is a top-tested `while (!IsDone())` after the first frame and
+// Shape: the filter is a scoped frame object; each wait is `while (!test) { NewScriptFrame(); if (IsActiveThreadTerminating()) return; }`
+//   followed by `if (IsActiveThreadTerminating()) return;`; the outer loop is a top-tested `while (!IsActiveThreadTerminating())` after the first frame and
 //   its own early-out test.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                          // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
@@ -89,20 +90,31 @@ class CGameScriptInterface { public:                 // vtable slots per ghidra_
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 
-struct CIsThingAlive {                         // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                         // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                     // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                         // 0x00E241B0
 };
 
-class CTestPos {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CTestPos : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     CGameScriptInterface* Game;               // +0x04
     CScriptThing          Me;                 // +0x08
-    void RegisterFilter(CIsThingAlive& filter);   // 0x00F35B10
-    bool IsDone();                            // 0x00F35B30
     void Main();
 };
 
@@ -110,26 +122,26 @@ void CTestPos::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
-    while (!IsDone()) {
+    while (!IsActiveThreadTerminating()) {
         while (!IsDistanceBetweenThingsUnder(Game->GetHero(), Me, 1.4f)) {
             Game->NewScriptFrame();
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
         }
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         Game->EntityUnsheatheMeleeWeapon(Game->GetHero(), false);
         while (!IsDistanceBetweenThingsOver(Game->GetHero(), Me, 3.0f)) {
             Game->NewScriptFrame();
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
         }
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         Game->EntityUnsheatheRangedWeapon(Game->GetHero(), false);
         Game->NewScriptFrame();

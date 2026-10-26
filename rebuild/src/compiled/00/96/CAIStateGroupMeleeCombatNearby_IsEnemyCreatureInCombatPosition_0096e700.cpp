@@ -26,8 +26,9 @@ class CBaseObject;
 struct CThingPhysics { char _prefix[0x34]; float Radius; };                  // +0x34
 class CThingCreatureBase { public:
     char _prefix[0x60]; CThingPhysics* Physics;                             // +0x60
-    bool IsAttackingCombatant();                        // 0x00662410
     const C3DVector& GetPosition();                     // 0x004C73D0 (CThing::GetPosition)
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 struct CBaseIntelligentPointer { void* __vftable; void* PData; CBaseObject* GetPItem() const; };   // 0x00A01B50
 class CCombatManager { public:
@@ -44,7 +45,7 @@ struct CAIStateGroup_MeleeCombatNearby_Methods : CAIStateGroup_MeleeCombatNearby
     bool IsEnemyCreatureInCombatPosition();
 };
 bool CAIStateGroup_MeleeCombatNearby_Methods::IsEnemyCreatureInCombatPosition() {
-    if (Creature()->IsAttackingCombatant()) {
+    if (Creature()->IsInMeleeAsAttacker()) {
         CThingCreatureBase* actor = Creature(); CWorld* world = GetPWorld();
         C3DVector preferred = world->PThingCombatManager_ptr->GetPreferredPos(actor);
         const C3DVector& position = Creature()->GetPosition();

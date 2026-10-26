@@ -9,6 +9,7 @@
 // Shape: the landed CHTE_Prisoner::Main (0x00D69F50) filter block (the filter vtable kept in ebx for both stores); the quest name is a
 //   CCharString in its own block and the test result is taken as `IsQuestActive(...) ? false : true` (8-bit `neg ; sbb ; inc` kept
 //   in bl across the string destructor).
+namespace NScript { class CPredicateBase; }
 class CThing;
 struct SCount { long m_references; };
 struct CCountedPointer_CThing {
@@ -21,18 +22,24 @@ class CBaseClass { public:
 class CScriptThing : public CBaseClass { public:                // 12 bytes
     CCountedPointer_CThing PImp;                  // +4
     CScriptThing(const CScriptThing& other);      // 0x004ABE90
-    ~CScriptThing();                              // 0x004AA840
+    virtual ~CScriptThing();                              // 0x004AA840
 };
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                               // 0x0099EAE0
 };
-struct CIsThingAlive {                            // vtable 0x012C32F0: a thing filter holding the script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
+    virtual bool operator()(CThing* thing) const;
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                            // vtable 0x012C32F0: a thing filter holding the script thing
     CScriptThing m_thing;                         // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
-    virtual bool operator()(CThing* thing) const;
 };
 struct CGameScriptInterface_Calls {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -95,14 +102,19 @@ struct CGameScriptInterface_Calls {
 };
 struct CPersonalScript_GlobalThingsScript;
 struct CQ_SunnyvaleMasterData;
-struct COF_MainGates {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct COF_MainGates : public CEntityScriptBase {
     void*                               __vftable;    // +0x00
     CGameScriptInterface_Calls*         Game;         // +0x04
     CScriptThing                        Me;           // +0x08
     CPersonalScript_GlobalThingsScript* ParentClass;  // +0x14
     CQ_SunnyvaleMasterData*             PMasterData;  // +0x18
-    void RegisterFilter(CIsThingAlive& filter);       // 0x00F35B10
-    bool IsDone();                                    // 0x00F35B30
     void Main();
 };
 
@@ -110,16 +122,16 @@ void COF_MainGates::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->Update();
-    if (!IsDone()) {
+    if (!IsActiveThreadTerminating()) {
         bool raidInactive;
         {
             CCharString quest("Q_OrchardFarmRaid", -1);
             raidInactive = Game->IsQuestActive(quest) ? false : true;
         }
-        if (raidInactive && !IsDone())
+        if (raidInactive && !IsActiveThreadTerminating())
             Game->OpenDoor(Me);
     }
 }

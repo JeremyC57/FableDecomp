@@ -9,7 +9,8 @@ static int g_delete_called = 0;
 extern "C" void __fastcall CBrainDef_dtor(CBrainDef *thisptr) {
     (void)thisptr; g_dtor_called = 1;
 }
-extern "C" void __cdecl sub_operator_delete(void *p) {
+void __cdecl operator delete(void* p)
+{
     (void)p; g_delete_called = 1;
 }
 

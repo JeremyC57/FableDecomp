@@ -2,8 +2,7 @@
 struct CMember { int x; };
 
 class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
-    void TransferFloat(CMember* value);             // 0x00431061 Transfer(float&)
-    void TransferLong(CMember* value);              // 0x00431102 Transfer(long&)
+    template <class T> void Transfer(T& value);             // 0x00431061 Transfer(float&)
 };
 
 class CGuildMasterDef { public:
@@ -14,6 +13,6 @@ class CGuildMasterDef { public:
 
 void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->TransferFloat(&def->m28);
-    ctx->TransferLong(&def->m2c);
+    ctx->Transfer(*(float*)(&def->m28));
+    ctx->Transfer(*(long*)(&def->m2c));
 }

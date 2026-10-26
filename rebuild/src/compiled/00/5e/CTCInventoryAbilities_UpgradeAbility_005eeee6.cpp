@@ -6,12 +6,12 @@
 //          above under `auto_inline(off)`: VC7.1 then knows it leaves edx alone and keeps the entry address in edx
 //          across the call), UpdateWillMorph() @ 0x005EE887, CThingPlayerCreature::LearnAbility(EHeroAbility, bool,
 //          long, bool) @ 0x006AC690, std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020,
-//          CTCBase::GetDefinitions() @ 0x006869D0, CTCHeroStats::SetAge(float) @ 0x0057B05F.
+//          CTCBase::GetDefinitionManager() @ 0x006869D0, CTCHeroStats::SetAge(float) @ 0x0057B05F.
 // Shape: the level is a value local (edi) read through `Abilities[ability]`, whose address VC keeps in edx; an owned
 // ability (`> -1`) below its maximum is bumped by indexing again (`++Abilities[ability].Level` -> `inc dword ptr
 // [edx]`; a reference local makes VC store edi + 1 instead); the hero-stats component comes
 // from the parent's inline GetInterface(&stats, 4) with the key in the dead argument slot, used without a null
-// test: `stats->SetAge(stats->Age + GetDefinitions()->PHeroAbilitiesDef->AgeIncreasePerUpgrade)`.
+// test: `stats->SetAge(stats->Age + GetDefinitionManager()->PHeroAbilitiesDef->AgeIncreasePerUpgrade)`.
 // Layout: retail CTCInventoryAbilities Abilities vector<pair<long, CDefPointer<const CHeroAbilityDef>>> +0x160
 // (8-byte entries); retail CTCHeroStats Age +0x30; definition holder +0xD0 -> def +0xD0 the age step.
 // Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
@@ -68,7 +68,7 @@ struct CHeroAbilitiesDef {
     float         AgeIncreasePerUpgrade;             // +0xD0
 };
 
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char      _pad_0x00[0xD0];
     CHeroAbilitiesDef* PHeroAbilitiesDef;            // +0xD0
 };
@@ -89,13 +89,24 @@ struct CAbilityEntryVector {
 template <class T> inline const T& Min(const T& left, const T& right) { return right < left ? right : left; }
 static const long MAX_ABILITY_LEVEL = 3;
 
-class CTCInventoryAbilities { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryAbilities : public NInventory::CTCInventoryBase { public:
     void*                 __vftable;                 // +0x00
     CThingPlayerCreature* ParentThing;               // +0x04 CTCBase
     unsigned char         _pad_0x08[0x158];
     CAbilityEntryVector   Abilities;                 // +0x160
 
-    CDefinitionHolder* GetDefinitions() const;       // 0x006869D0 (CTCBase)
     long GetAbilityMaximumLevel(long ability);       // 0x005EDEA3 (defined below)
     void UpdateWillMorph();                          // 0x005EE887
     void UpgradeAbility(long ability);
@@ -131,5 +142,5 @@ void CTCInventoryAbilities::UpgradeAbility(long ability)
     }
     CTCHeroStats* stats;
     if (ParentThing->GetInterface(&stats, 4))
-        stats->SetAge(stats->Age + GetDefinitions()->PHeroAbilitiesDef->AgeIncreasePerUpgrade);
+        stats->SetAge(stats->Age + GetDefinitionManager().PHeroAbilitiesDef->AgeIncreasePerUpgrade);
 }

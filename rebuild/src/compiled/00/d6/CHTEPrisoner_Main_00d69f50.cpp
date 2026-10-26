@@ -12,12 +12,13 @@
 // Layout = Ego_r.pdb CHTE_Prisoner (28 bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14,
 // PMasterData +0x18.
 // Shape: the landed CFadeinSummoner "Init" (0x00CDF430, also slot 1) with a wait loop: the filter is a scoped 0x10-byte frame
-// object, the address of Me stays in edi; `do { Update(); } while (!IsDone());` after the hand-over gives the
+// object, the address of Me stays in edi; `do { Update(); } while (!IsActiveThreadTerminating());` after the hand-over gives the
 // aligned loop head (`lea ebx,[ebx+0]`) with the test at the bottom.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    ~CScriptThing();                          // 0x004AA840
+    virtual ~CScriptThing();                          // 0x004AA840
 };
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -118,22 +119,33 @@ class CGameScriptInterface { public:
     virtual void HoldThing(const CScriptThing& thing, long flag);   // slot 745 (+0xba4)
 };
 
-struct CIsThingAlive {                         // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                         // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                     // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
 
-class CHTE_Prisoner {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CHTE_Prisoner : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     CGameScriptInterface* Game;               // +0x04
     CScriptThing          Me;                 // +0x08
     void*                 ParentClass;        // +0x14 CQ_HangingTreeEvilScript*
     void*                 PMasterData;        // +0x18
-    void RegisterFilter(CIsThingAlive& filter);   // 0x00F35B10
-    bool IsDone();                            // 0x00F35B30
     void Main();
 };
 
@@ -141,13 +153,13 @@ void CHTE_Prisoner::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->Update();
-    if (!IsDone()) {
+    if (!IsActiveThreadTerminating()) {
         Game->HoldThing(Me, 0);
         do {
             Game->Update();
-        } while (!IsDone());
+        } while (!IsActiveThreadTerminating());
     }
 }

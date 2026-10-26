@@ -79,9 +79,14 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
 }
 #pragma auto_inline(on)
 class CThingObjectDef : public CDefBase { public: };
-class CGameDefinitionManager { public:
+class CDefinitionManager
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};
+
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                    // 0x0044C6B0
-    long GetDefGlobalIndexFromName(const CCharString& name);            // 0x009AD410
     bool GetDef(long globalIndex, CCountedDefPointer<CThingObjectDef>* out);   // 0x0042B040
 };
 void* FindDef_CDefinitionManager_GetDef(const void* manager, long globalIndex);   // stand-in callee
@@ -123,8 +128,9 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CTCSpike {                               // interface type 0x7D
-    void Trigger();                             // 0x00788388
+class CTCTrapBase { public:                               // interface type 0x7D
+public:
+    void ManualTrigger();   // 0x00788388
 };
 class CThing { public:
     unsigned char  _pad0[0x20];
@@ -202,7 +208,7 @@ void CModeScorpionKingTailPlunge::Spike()
     CGameDefinitionManager::Get().GetDef(spikeIndex, &spikeDef);
     C3DVector position = TargetPos;
     CThing* spike = CThingObject::Create(spikeIndex, position, PCreature->Player, 0, 0, "");
-    spike->GetTCIfPresent<CTCSpike>(0x7d)->Trigger();
+    spike->GetTCIfPresent<CTCTrapBase>(0x7d)->ManualTrigger();
     CDefPointer<CSpecialEffectsDef> effectsSlot;
     long effectType = 0;
     ParentThing->PDef->GetSubDef(effectsSlot);

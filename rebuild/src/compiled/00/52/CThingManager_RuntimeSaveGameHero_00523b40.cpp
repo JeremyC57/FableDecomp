@@ -55,7 +55,8 @@ public:
 };
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer();                                                          // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char   _pad_0x00[0x1c];
@@ -231,7 +232,7 @@ __declspec(noinline) void CThingManager::SaveEntitiesBinary(CMemoryDataOutputStr
 
 void CThingManager::RuntimeSaveGameHero(bool binary)
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetHeroThing();
     if (hero != 0 && !hero->Dead) {
         std::vector<CThing*> things;
         things.push_back(hero);

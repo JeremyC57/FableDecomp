@@ -44,13 +44,23 @@ class CThing { public:
         }
     }
 };
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -65,7 +75,6 @@ class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 struct CCountBlock { long Count; void (__fastcall* Deleter)(void*); void* Object; };
-void DeleteCountBlock(void* p);                // 0x00BFE9BC (operator delete)
 struct CCountedPointer {                        // CCountedPointer<T>: object + count block, released inline
     void* Object;
     CCountBlock* Block;
@@ -75,7 +84,7 @@ struct CCountedPointer {                        // CCountedPointer<T>: object + 
             --Block->Count;
             if (Block->Count == 0) {
                 Block->Deleter(Block->Object);
-                DeleteCountBlock(Block);
+                operator delete(Block);
             }
         }
         Object = 0;
@@ -86,7 +95,7 @@ class CBrainOutput { public:
     unsigned char _pad[0x20];
     CCountedPointer Counted;                    // +0x20
     unsigned char _pad28[0x40 - 0x28];
-    CBaseIntelligentPointer PTarget;            // +0x40 (retail offset; the frame places it 0x40 into the 0x48-byte local)
+    CIntelligentPointer<CThing> PTarget;            // +0x40 (retail offset; the frame places it 0x40 into the 0x48-byte local)
     CBrainOutput();                             // 0x00835620
 };
 class CAIBrain { public:
@@ -102,7 +111,7 @@ class CAIStateGroupBase { public:
     CThing* GetCreature() const { return PBrain->PCreature; }
 };
 struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
-    CBaseIntelligentPointer PSeat;              // +0x14
+    CIntelligentPointer<CThing> PSeat;              // +0x14
     bool GotSeat;                               // +0x1c (descriptive)
     bool Sitting;                               // +0x1d (descriptive)
     unsigned char _pad1e[2];

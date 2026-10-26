@@ -24,19 +24,24 @@ class CThing { public:
     unsigned __int64 UniqueID;                              // +0x18 (only the low 40 bits identify the thing)
 };
 
-class CTCSwitchableNavigation { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCSwitchableNavigation : public CTCBase { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
     long    MapIndex;                                       // +0x0c
-    CWorld* GetWorld();                                     // CTCBase::GetWorld @ 0x00686A70
     void InitialActivate();
 };
 
 void CTCSwitchableNavigation::InitialActivate()
 {
-    CNavigatorManager* navigation = GetWorld()->PNavigationManager;
+    CNavigatorManager* navigation = GetWorld().PNavigationManager;
     if (navigation->IsNavigationMapActivated(MapIndex))
         navigation->SetSwitchableNodesAsBlocked(MapIndex, ParentThing->UniqueID & 0xFFFFFFFFFFui64, true);
 }

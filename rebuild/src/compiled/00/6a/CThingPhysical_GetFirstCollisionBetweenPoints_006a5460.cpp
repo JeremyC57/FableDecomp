@@ -29,8 +29,8 @@ struct CPhysicsHit {
     float     Time;
 };
 class CPhysicsMeshObject { public:
-    unsigned char Data[0x40];
-    ~CPhysicsMeshObject();                                  // 0x00A127D0
+    unsigned char Data[0x40 - 4];
+    virtual ~CPhysicsMeshObject();                                  // 0x00A127D0
     bool GetSphereIntersectionFromTo(float radius, const C3DVector& from, const C3DVector& to, CPhysicsHit& hit) const;   // 0x00A120D0
 };
 class CTCPhysicsBase { public:

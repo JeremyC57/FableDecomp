@@ -29,19 +29,25 @@ class CThingManager { public:
 };
 extern CThingManager* g_pThingManager;                   // 0x013B8A1C
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                                       // +0x04
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
     CBaseIntelligentPointer();                           // 0x00A01B10
-    ~CBaseIntelligentPointer();                          // 0x00A01C10
-    CThing* GetPItem() const;                            // 0x00A01B50
-    void SetPItem(CThing* item);                         // 0x00A01B90
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CThingPointer : CBaseIntelligentPointer {         // CIntelligentPointer<CThing>, vtable 0x01237F1C
-    virtual void v00();
-    CThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CThingPointer& operator=(const CThingPointer& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {         // CIntelligentPointer<CThing>, vtable 0x01237F1C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CThing {
@@ -57,7 +63,7 @@ class CThingSoundEmitter : public CThing {
 public:
     void*          m_pSoundPlayer;                       // +0x98 (retail-only member, not in Ego_r.pdb)
     bool           AttachedToThing;                      // +0x9c
-    CThingPointer  PAttachedThing;                       // +0x9d
+    CIntelligentPointer<const CThing>  PAttachedThing;                       // +0x9d
     bool           ContinuePlayingAfterAttachedThingDeath;   // +0xa5
     C3DVector      Pos;                                  // +0xa6
 protected:

@@ -13,7 +13,7 @@ class CCharString { public:                                // 4 bytes
 class CThingGameObject { public:                           // retail 0xd0 bytes
     virtual void v00();
     unsigned char _pad04[0xcc];                     // +0x04
-    ~CThingGameObject();                            // 0x00838A00
+    virtual ~CThingGameObject();                            // 0x00838A00
 };
 class CThingTrackNode : public CThingGameObject { public:         // vtable 0x01272CE4
     virtual void v00();

@@ -16,13 +16,9 @@ struct CShopItemDefVector { void* _M_start; void* _M_finish; void* _M_end_of_sto
 struct COpinionAttitudeFloatMap { void* _M_header; unsigned long _M_node_count; unsigned long _M_compare; };
 
 class CPersistContext { public:
-    void Transfer(unsigned long& value);            // 0x00431020
-    void Transfer(CCharString& value);              // 0x00431143
+    template <class T> void Transfer(T& value);            // 0x00431020
     void Transfer(CShopItemDefVector& value);       // 0x004ECF6E
-    void Transfer(float& value);                    // 0x00431061
     void Transfer(COpinionAttitudeFloatMap& value); // 0x004ECD36
-    void Transfer(bool& value);                     // 0x0043314A
-    void Transfer(long& value);                     // 0x00431102
 };
 
 class CShopDef { public:

@@ -71,7 +71,8 @@ class CTCBase { public:
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
     unsigned char _pad0a[2];
-    CWorld* GetWorld();                                 // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CTCPhysicalShieldSpell : public CTCBase { public:
     CSpecialAbilitiesPhysicalShieldDef* PDef;           // +0x0c CDefPointer<const CSpecialAbilitiesPhysicalShieldDef>::Object
@@ -81,7 +82,7 @@ class CTCPhysicalShieldSpell : public CTCBase { public:
 void CTCPhysicalShieldSpell::OnHitAtPos(const C3DVector& position)
 {
     CCharString effectName;
-    if (GFFloatRandom(1.0f, GetWorld()->GetPRandomSeed()) < 0.5f)
+    if (GFFloatRandom(1.0f, GetWorld().GetPRandomSeed()) < 0.5f)
         effectName = "PHYSICAL_HIT1";
     else
         effectName = "PHYSICAL_HIT2";

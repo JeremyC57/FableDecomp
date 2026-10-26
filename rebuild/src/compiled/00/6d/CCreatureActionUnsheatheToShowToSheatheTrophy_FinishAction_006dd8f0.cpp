@@ -36,7 +36,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
-    ~CCreatureActionBase();                 // 0x00693EF0
+    virtual ~CCreatureActionBase();                 // 0x00693EF0
 };
 
 #pragma pack(push, 1)

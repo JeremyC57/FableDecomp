@@ -108,15 +108,21 @@ struct CMessageEventManager_Retail {
     CMessageEvent_Retail* FindMostRecentMessage(const CSeenOrHeardFilter& filter);   // 0x008ABED0
     void RemoveMessage(const CMessageEvent_Retail* message);   // 0x00493B5B
 };
-struct CBaseIntelligentPointer_Retail {
-    virtual void v00();
-    void* m_pItem;                                  // +0x04
-    void* GetPItem();                               // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 struct CTCOpinionSource_Retail;
 struct COpinionReactionManager_Retail {
     unsigned char                  _pad[0x714];
-    CBaseIntelligentPointer_Retail m_exclusiveSource;   // +0x714 (a CIntelligentPointer)
+    CBaseIntelligentPointer m_exclusiveSource;   // +0x714 (a CIntelligentPointer)
     void* GetExclusiveOpinionSource() { return m_exclusiveSource.GetPItem(); }   // inline: the intelligent pointer's item
     const CCharString& GetThingAttitudeToPlayerAsString(CThing_Retail* thing);   // 0x007018B0
     float GetOpinionValue(CThing_Retail* thing, long opinion);   // 0x00701750 (labelled COpinionReactionManager_GetOpinionValue)

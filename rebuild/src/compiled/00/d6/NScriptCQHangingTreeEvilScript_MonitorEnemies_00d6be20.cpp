@@ -66,12 +66,14 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
 };
 
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
     __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
+namespace NScript {
 class CQ_HangingTreeEvilScript : public CScriptBase {
 public:
     CGameScriptInterface* GSI;                          // +0x40

@@ -11,7 +11,8 @@
 // the world call and loads the manager straight into ecx). One shared `xor al,al` false tail.
 // Base layout modelled locally (PDB names).
 class CThingCreatureBase { public:
-    bool IsRegisteredCombatant();           // 0x00662410
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 
 class CCombatManager { public:
@@ -44,7 +45,7 @@ struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
 
 bool CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureNearCombatPosition()
 {
-    if (PBrain->Creature->IsRegisteredCombatant()) {
+    if (PBrain->Creature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->Creature;
         if (GetPWorld()->GetPCombatManager()->Combat_CheckRingRangeToTarget(creature))
             return true;

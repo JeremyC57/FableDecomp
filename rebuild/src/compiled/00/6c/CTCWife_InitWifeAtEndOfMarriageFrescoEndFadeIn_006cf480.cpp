@@ -70,15 +70,22 @@ class CPlayer { public:
     CThing* GetHeroThing() const;               // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CTCHeroStats { public:
     void AddMoney(long amount, bool showMessage);   // 0x0057B327
 };
-class CTCWife { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCWife : public CTCBase { public:
     CThing* ParentThing;                         // +0x04
-    CPlayerManager* GetPlayerManager();          // 0x00686D40 (CTCBase)
     void InitWifeAtEndOfMarriageFrescoEndFadeIn();
 };
 void CTCWife::InitWifeAtEndOfMarriageFrescoEndFadeIn()
@@ -87,7 +94,7 @@ void CTCWife::InitWifeAtEndOfMarriageFrescoEndFadeIn()
     CWifeDef* def = 0;
     if (thingDef) {
         if (thingDef->GetSubDef(&def) && def->Dowry > 0) {
-            CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+            CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
             if (hero && !(hero->Flags91 & 1)) {
                 CTCHeroStats* stats;
                 if (hero->GetInterface(&stats, 4))

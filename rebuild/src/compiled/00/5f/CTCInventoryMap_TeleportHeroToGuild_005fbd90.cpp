@@ -1,7 +1,7 @@
 // CTCInventoryMap::TeleportHeroToGuild() -- while the hero creature is alive, find the guild teleport marker among the world's teleporters and send the hero through it
 // Leaf: TeleportHeroToGuild
 // Retail 0x005FBD90, 272 bytes (+ int3), esp frame (speed TU).
-// Callees: CTCBase::GetPlayerManager() const 0x00686D50, CPlayerManager::GetMainPlayer 0x00449960,
+// Callees: CTCBase::PeekPlayerManager() const 0x00686D50, CPlayerManager::GetMainPlayer 0x00449960,
 // CPlayer::GetControlledCreature 0x00487DD0, malloc 0x00BFEA0E (the STLport list head node), CTCBase::GetWorld
 // 0x00686A70 (non-const twin of 0x00686A80), the search tools' GetAllThings<CThing, list, CThingFilter_HasTC>
 // 0x00617860 (manifest "GetAllLeafThings<CThingBuilding const, vector>" is propagated: the body fills a list),
@@ -22,7 +22,8 @@ class CCharString { public:
     ~CCharString();                                   // 0x0099EAE0
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();  // 0x0044C6B0
@@ -109,24 +110,36 @@ class CPlayer { public:
     CThing* GetControlledCreature() const;            // 0x00487DD0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                   // 0x00449960
+public:
+    const CPlayer& GetMainPlayer() const;   // 0x00449960
 };
 
-class CTCInventoryMap { public:
-    CPlayerManager* GetPlayerManager() const;         // 0x00686D50 (CTCBase)
-    CWorld* GetWorld();                               // 0x00686A70 (CTCBase)
+class CTCBase
+{
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
     void TeleportHeroToTeleporter(CThing* teleporter);   // 0x005FBD20
     void TeleportHeroToGuild();
     __forceinline void GetAllThings(const CThingFilter_HasTC& filter, list<CThing*>& things)
     {
-        CWorld* world = GetWorld();
+        CWorld* world = (&GetWorld());
         world->ThingSearchTools->GetAllThings(filter, things);
     }
 };
 
 void CTCInventoryMap::TeleportHeroToGuild()
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetControlledCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer().GetControlledCreature();
     if (hero && !hero->IsDead) {
         list<CThing*> teleporters;
         GetAllThings(CThingFilter_HasTC(0xDD), teleporters);

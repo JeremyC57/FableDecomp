@@ -180,14 +180,29 @@ struct COpenCloseHelper {
     }
 };
 
-class CTCChest {
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCContainer : public CTCBase
+{
+public:
+};
+class CTCContainerRewardHero : public CTCContainer
+{
+public:
+};
+
+class CTCChest : public CTCContainerRewardHero {
 public:
     void*            __vftable;                                // +0x00
     CThing*          ParentThing;                              // +0x04
     unsigned char    _pad08[0x1c - 0x08];
     COpenCloseHelper ChestOpener;                              // +0x1c
     bool             ChestOpen;                                // +0x30
-    CWorld* GetWorld();                                        // 0x00686A70 (CTCBase)
+
+private:
     void InitClosed();
 };
 
@@ -202,7 +217,7 @@ void CTCChest::InitClosed()
     CDefPointer<CAppearanceDef> appearance;
     thingDef->GetSubDef(&appearance);
     const CAnimationEntry* entry = appearance->Animation.GetAnimation("CHEST_OPEN", 0, CAnimFilterNoGroup());
-    CMeshDataBank* meshBank = GetWorld()->PMainMeshBank;
+    CMeshDataBank* meshBank = GetWorld().PMainMeshBank;
     float duration = meshBank->PeekAnimation(entry->AnimIndex)->GetNonLoopingDuration();
     CAnimInit init(0, 0, entry->AnimIndex, 1, false, 0, 100);
     animator.SetMainAnim(init, 1, 0);

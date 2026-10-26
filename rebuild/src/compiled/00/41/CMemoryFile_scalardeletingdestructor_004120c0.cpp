@@ -9,9 +9,8 @@ class CMemoryFile { public:
 extern const void* CMemoryFile_vtbl[];
 extern void __fastcall Cleanup_5d72d0(void* file);
 extern void __fastcall SubDtor_589450(void* sub);
-extern void __cdecl Free_7ec954(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 extern void __fastcall BaseDtor_588240(void* file);
-extern void __cdecl OpDelete_7ec8fc(void* p);
 
 void* __fastcall CMemoryFile_scalar_deleting_destructor(CMemoryFile* file, void* /*edx*/, unsigned int flags)
 {
@@ -19,9 +18,9 @@ void* __fastcall CMemoryFile_scalar_deleting_destructor(CMemoryFile* file, void*
     Cleanup_5d72d0(file);
     SubDtor_589450(&file->Pathname);
     if (file->member10)
-        Free_7ec954(file->member10);
+        free(file->member10);
     BaseDtor_588240(file);
     if (flags & 1)
-        OpDelete_7ec8fc(file);
+        operator delete(file);
     return file;
 }

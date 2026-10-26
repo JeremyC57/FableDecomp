@@ -15,21 +15,28 @@ inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
 class CBaseObject;
 
-struct CBaseIntelligentPointer {            // sizeof 8: vptr + item
-    virtual void v00();
-    CBaseObject* m_pItem;                   // +0x04
-    CBaseIntelligentPointer();              // 0x00A01B10
-    CBaseObject* GetPItem() const;          // 0x00A01B50
-    void SetPItem(CBaseObject* item);       // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CActiveDialogueInfo {                // sizeof 0x18 (Ego_r.pdb layout)
-    CIntelligentPointer ThingSpeaking;      // +0x00 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> ThingSpeaking;      // +0x00 CIntelligentPointer<CThing>
     unsigned long       SoundID;            // +0x08
     long                Layer;              // +0x0c EDialogueLayer
     unsigned char       IsLayerHead;        // +0x10 (bool)

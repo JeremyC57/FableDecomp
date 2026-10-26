@@ -12,6 +12,7 @@
 // Shape: `!Me.MsgIsUsedBy("...")` is a byte computed (`neg ; sbb ; inc`) before the string's dtor, the rotated wait loop
 // repeats it; the sword test `IsAlive() && !IsBeingCarriedBy("...")` keeps a conditional-temporary flag zeroed at entry;
 // the forwarding IsBeingCarriedBy needs `__forceinline virtual` (a plain inline virtual is called out of line).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -68,8 +69,14 @@ class CGameScriptInterface { public:
     virtual void v137(); virtual void v138(); virtual void v139(); virtual void v140(); virtual void v141();
     virtual void MakeHeroCarryItemInHand(const CScriptThing& thing, bool a, bool b) const;   // slot 142 (+0x238)
 };
-struct CIsThingAlive {                                  // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                   // 0x00E241B0
@@ -77,15 +84,20 @@ struct CIsThingAlive {                                  // vtable 0x012C32F0: a 
 struct CPersonalScript_EmptyScript;
 struct CEmptyData;
 
-class CSwordChest {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CSwordChest : public CEntityScriptBase {
 public:
     void*                        __vftable;             // +0x00
     CGameScriptInterface*        Game;                  // +0x04
     CScriptThing                 Me;                    // +0x08
     CPersonalScript_EmptyScript* ParentClass;           // +0x14
     CEmptyData*                  PMasterData;           // +0x18
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
-    bool IsDone();                                      // 0x00F35B30
     void Main();
 };
 
@@ -93,17 +105,17 @@ void CSwordChest::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     while (!Me.MsgIsUsedBy("SCRIPT_NAME_HERO")) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptThing sword = Game->GetThingWithScriptName("LovelyBigSword");
     if (sword.IsAlive() && !sword.IsBeingCarriedBy("SCRIPT_NAME_HERO"))

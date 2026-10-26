@@ -78,9 +78,10 @@ class CThing { public:
     }
 };
 class CThingPlayerCreature : public CThing { public: };
-struct CTCSoundInfo {                           // interface 0x10
-    unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
-    void StopSample(unsigned long sampleID);    // 0x0066ADD0
+class CTCSoundPlayer { public:                           // interface 0x10
+public:
+    void StopAttachedSound(unsigned long);   // 0x0066ADD0
+    unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };
 struct CVillage {
     unsigned char _pad[0xa8];
@@ -168,18 +169,18 @@ void CAIStateGroup_MinionGuardBribed::Update()
         if (AIAction_DoNothing() != 4)
             break;
         if (GetPWorld()->GetWorldFrame() >= nextWhistle) {
-            CTCSoundInfo* sound;
+            CTCSoundPlayer* sound;
             if (GetCreature()->GetInterfaceInline(&sound, 0x10))
-                sample = sound->PlaySound("WHISTLE_GUARD_BRIBED", 0, 0, 0, -1);
+                sample = sound->PlayAttachedCriteria("WHISTLE_GUARD_BRIBED", 0, 0, 0, -1);
             delay = GetPWorld()->Random(g_BribedWhistleRepeatMax - g_BribedWhistleRepeatMin, GetPWorldSeed());
             nextWhistle = CWorld::GetWorldFrame() + delay;
             nextWhistle += g_BribedWhistleRepeatMin;
         }
     }
     if (sample != g_InvalidSoundHandle) {
-        CTCSoundInfo* sound;
+        CTCSoundPlayer* sound;
         if (GetCreature()->GetInterface(&sound, 0x10))
-            sound->StopSample(sample);
+            sound->StopAttachedSound(sample);
     }
     CTCVillageMember* member;
     if (GetCreature()->GetInterface(&member, 0x23) && member->GetPVillage())

@@ -1,7 +1,7 @@
 // CTCSpecialAbilities::SetupEnflameSpell() -- start the creature's enflame-spell cast: target the creature's current combat target (with the player's lock flag when both are player-flagged), and when a primary-slot weapon is alive wrap a heap cast action holding the weapon in a generic strike response; returns whether the action was accepted
 // Retail: Fable.exe @ 0x0072C790, 416 bytes (plain `ret`, no EH frame).
 // Callees: LowerBound 0x0040F020 / 0x004365B0 (const), CTCInventory::GetThingInPrimarySlot 0x006A1440, combat TC virtual
-//   slot 33 (+0x84, current target), CThing::GetPlayer 0x004C7A10, operator new 0x00BFEA1A,
+//   slot 33 (+0x84, current target), CThing::PeekPlayer 0x004C7A10, operator new 0x00BFEA1A,
 //   CCreatureAction_CastWillEnflameSpell ctor 0x008BB500 / ~CCombatActionBase 0x0062E900, CBaseIntelligentPointer ctor
 //   0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10, CCombatAction_GenericStrikeResponse ctor
 //   0x0069F060 / dtor 0x0072D390, CThingCreatureBase::SetCurrentAction 0x006644F0.
@@ -12,17 +12,23 @@
 void* operator new(size_t size);                       // 0x00BFEA1A
 class CThing;
 class CPlayer { public: unsigned char _pad[0x20a]; bool LockFlag; };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CThing* item);                        // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) { SetPItem(item); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCBase;
 struct CInterfaceMap {
@@ -40,7 +46,8 @@ public:
     unsigned char Flags6c;                              // +0x6c
     unsigned char _pad6d[0x24];
     unsigned char Dead : 1;                             // +0x91 bit 0
-    CPlayer* GetPlayer();                               // 0x004C7A10
+public:
+    const CPlayer& PeekPlayer() const;   // 0x004C7A10
 };
 class CTCInventory { public: CThing* GetThingInPrimarySlot(); };   // 0x006A1440
 class CTCCombat { public:
@@ -84,7 +91,7 @@ class CCombatActionBase { public:
     unsigned char _pad04[0x28];
 };
 class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase { public:
-    CIntelligentPointerThing Weapon;                    // +0x2c
+    CIntelligentPointer<CThing> Weapon;                    // +0x2c
     unsigned char _pad34[0x11c - 0x34];
     CCreatureAction_CastWillEnflameSpell(CThing* creature, CThing* target, bool lock, long flags);   // 0x008BB500
     ~CCreatureAction_CastWillEnflameSpell();            // 0x0062E900
@@ -125,12 +132,12 @@ bool CTCSpecialAbilities::SetupEnflameSpell()
         CTCCombat* combat = (CTCCombat*)(it == map->last || 8 < it->type ? map->last : it)->component;
         target = combat->GetCurrentTarget();
         if (target && !target->Dead && (target->Flags6c & 8) && (Creature->Flags6c & 0x20))
-            lock = Creature->GetPlayer()->LockFlag;
+            lock = Creature->PeekPlayer().LockFlag;
     }
     if (weapon && !weapon->Dead)
     {
         CCreatureAction_CastWillEnflameSpell* action = new CCreatureAction_CastWillEnflameSpell(Creature, target, lock, 0);
-        action->Weapon.SetPItem(CIntelligentPointerThing(weapon).GetPItem());
+        action->Weapon.SetPItem(CIntelligentPointer<CThing>(weapon).GetPItem());
         CCombatAction_GenericStrikeResponse response(Creature, g_StrikeResponseName, action, 0);
         return Creature->SetCurrentAction(*(CCombatActionBase*)&response);
     }

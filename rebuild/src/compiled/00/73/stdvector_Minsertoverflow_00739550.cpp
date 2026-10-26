@@ -1,4 +1,4 @@
-// std::vector::_M_insert_overflow(CIntelligentPointer<CThing>* position, const CIntelligentPointer<CThing>& x, const __false_type&, unsigned int fill_len, bool atend) -- grow an intelligent-pointer vector and insert fill_len copies of x
+// std::vector::_M_insert_overflow(CIntelligentPointer<const CThing>* position, const CIntelligentPointer<const CThing>& x, const __false_type&, unsigned int fill_len, bool atend) -- grow an intelligent-pointer vector and insert fill_len copies of x
 // Leaf: ?_M_insert_overflow@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00739550, 263 bytes, `ret 0x14`.
 // Label correction: catalog "Vector_Reallocate_IntelligentPointer" -> STLport 4.x
@@ -113,6 +113,6 @@ void vector<T, Alloc>::_M_insert_overflow(T* position, const T& x, const __false
     _M_set(new_start, new_finish, new_start + len);
 }
 
-template class vector<CIntelligentPointer<CThing> >;
+template class vector<CIntelligentPointer<const CThing> >;
 
 }

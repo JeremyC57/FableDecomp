@@ -25,7 +25,10 @@ public:
     const char* GetPString() const { return PStringData == 0 ? g_emptyLiteral_0129aaf4 : PStringData->PData; }
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC-32
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC-32
 
 class CBase {
 public:
@@ -129,6 +132,6 @@ public:
 void CCRCSymbolMap::AddSymbolDirty(const CCharString& name, long value)
 {
     if (CheckForDuplicateSymbols)
-        NamesUsed.insert(Calc_004014a0(0, name.GetPString(), name.GetLength()));
-    SLONGMap.Insert(Calc_004014a0(0, name.GetPString(), name.GetLength()), value);
+        NamesUsed.insert(CCRC::Calc(0, name.GetPString(), name.GetLength()));
+    SLONGMap.Insert(CCRC::Calc(0, name.GetPString(), name.GetLength()), value);
 }

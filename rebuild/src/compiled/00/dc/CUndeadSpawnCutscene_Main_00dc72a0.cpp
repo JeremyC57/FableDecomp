@@ -13,19 +13,26 @@
 //   (the virtual takes none). The flag store sits behind a final terminating test.
 // Retail layout: UndeadCutsceneStarted +0x50 in CQ_OpeningGraveyardSecretPassageScript (Ego_r.pdb 0x64, retail = PDB - 0x14, as in the landed
 //   InitializeVariables 0x00DC3CF0).
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C
-    unsigned char _body[0xc];
+    unsigned char _body[0xc - 4];
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    ~CScriptThing();                                     // 0x004AA840
+    virtual ~CScriptThing();                                     // 0x004AA840
 };
 
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-struct CIsThingConscious {                               // NScript predicate, vtable 0x012C2FE8: Thing alive and not unconscious
+namespace NScript {
+class CPredicateBase
+{
+public:
+    virtual bool operator()() const;                     // slot 0 (0x00CDDAB0)
+};
+}
+struct CIsThingConscious : public NScript::CPredicateBase {                               // NScript predicate, vtable 0x012C2FE8: Thing alive and not unconscious
     CScriptThing Thing;                                  // +0x04
     CIsThingConscious(const CScriptThing& thing) : Thing(thing) {}
     ~CIsThingConscious() {}
-    virtual bool operator()() const;                     // slot 0 (0x00CDDAB0)
 };
 
 class CGameScriptInterface { public:                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
@@ -92,8 +99,9 @@ class CEntityScriptBase { public:                               // retail 0x14 b
     virtual void v00();
     CGameScriptInterface* Game;                          // +0x04
     CScriptThing          Me;                            // +0x08
-    void SetPredicate(CIsThingConscious& predicate);     // 0x00F35B10
     bool IsActiveThreadTerminating() const;              // 0x00F35B30 (PDB: const)
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 
 struct CUndeadSpawnCutscene : CEntityScriptBase {

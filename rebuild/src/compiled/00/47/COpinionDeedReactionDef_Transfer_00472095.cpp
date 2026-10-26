@@ -34,8 +34,7 @@ enum EOpinionAttitudeType { };                              // enumerators not n
 class CPersistContext {
 public:
     void Transfer(std::vector<EOpinionAttitudeType >& value);    // 0x004720C3
-    void Transfer(CDefString& value);                            // 0x0045228F
-    void Transfer(unsigned long& value);                         // 0x00431020
+    template <class T> void Transfer(T& value);                            // 0x0045228F
 };
 class COpinionDeedReactionDef {
 public:

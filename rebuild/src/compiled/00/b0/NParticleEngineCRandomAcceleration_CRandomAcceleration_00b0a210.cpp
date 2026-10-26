@@ -14,7 +14,7 @@ class C3DVector { public:
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
+long __fastcall GFROR13(unsigned long);  // 0x00497890
 
 struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                             // 0x0099A2F0

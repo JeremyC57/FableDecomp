@@ -1,19 +1,21 @@
 #pragma optimize("s",on)
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 extern const void* CThingMultiArrowShotDef_vftable;
-extern "C" void __cdecl FableFreeMem(void* p);
 
 class CThingMultiArrowShotDef { public:
     const void** vft;
 };
 
-void __fastcall CThingMultiArrowShotDef_dtor(CThingMultiArrowShotDef* def);
 
 void* __fastcall CThingMultiArrowShotDef_scalar_deleting_destructor(CThingMultiArrowShotDef* def, int edx, unsigned int flags) {
     (void)edx;
     def->vft = (const void**)&CThingMultiArrowShotDef_vftable;
-    CThingMultiArrowShotDef_dtor(def);
+    ((CResource*)(def))->CResource::~CResource();
     if (flags & 1) {
-        FableFreeMem(def);
+        operator delete(def);
     }
     return def;
 }

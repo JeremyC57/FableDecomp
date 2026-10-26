@@ -66,8 +66,9 @@ class CIsThingAlive : public CPredicateBase { public:                // vtable 0
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 class CBaseObject { public:
     void* m_pIntelligentPointer;
-    CBaseObject();                                     // 0x0099A380
-    virtual ~CBaseObject();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
@@ -182,14 +183,19 @@ struct CArenaPhase3Script {
     unsigned char _pad4a[0xa8 - 0x4a];
     CScriptThingVector Guards;                         // +0xa8
 };
-struct CAT_Phase3Archer {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CAT_Phase3Archer : public CEntityScriptBase {
     void* VTable;
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing Me;                                   // +0x08
     CArenaPhase3Script* ParentClass;                   // +0x14
     void* PMasterData;                                 // +0x18
-    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 void CAT_Phase3Archer::Main()

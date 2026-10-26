@@ -16,11 +16,11 @@
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CResource_Calls {                           // engine/CResource.h: the root of the def hierarchy
+class CResource { public:                           // engine/CResource.h: the root of the def hierarchy
     virtual void v00();
-    ~CResource_Calls();                            // 0x009FC550
+    virtual ~CResource();                            // 0x009FC550
 };
-class CDefPointeeBase : public CResource_Calls { public:         // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:         // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }
 };

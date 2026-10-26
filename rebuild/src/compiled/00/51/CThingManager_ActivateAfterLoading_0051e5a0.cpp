@@ -14,7 +14,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 class CThing {
 public:
     unsigned char _pad00[0x8e];
@@ -46,7 +46,7 @@ void CThingManager::ActivateAfterLoading(long level)
     for (SThingListNode* node = Things->_M_next; node != Things; node = node->_M_next) {
         {
             CCharString text("Activate After Loading");
-            DisplayProgress(text, -1.0f, false, false);
+            NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
         }
         CThing* thing = node->_M_data;
         if (thing && !thing->m_dead && !(thing->m_flags93 & 0xc) && thing->m_level == level) {

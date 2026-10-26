@@ -29,8 +29,8 @@ public:
 class CMemoryDataOutputStream
 {
 public:
-    unsigned char _body[0x18];                         // vptr + CCharString name + buffer pointer + ...
-    ~CMemoryDataOutputStream();                        // 0x00996B30
+    unsigned char _body[0x18 - 4];                         // vptr + CCharString name + buffer pointer + ...
+    virtual ~CMemoryDataOutputStream();                        // 0x00996B30
 };
 
 namespace std

@@ -14,7 +14,8 @@
 // in the `push ecx` frame word.
 class CBankFileAsyncData {
 public:
-    unsigned char IsFinished();                      // 0x009D54E0
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
 class C3DAnimation2;
 

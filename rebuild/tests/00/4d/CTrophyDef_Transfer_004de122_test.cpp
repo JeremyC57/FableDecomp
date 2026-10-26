@@ -12,12 +12,13 @@
 class CDefString { public: long TablePos; };
 class CCharString { public: void* PStringData; };
 class CPersistContext { public:
-    void Transfer(float&);                              // 0x00431061
-    void Transfer(long&);                               // 0x00431102
-    void Transfer(bool&);                               // 0x0043314A
-    void Transfer(CDefString&);                         // 0x0045228F
-    void Transfer(CCharString&);                        // 0x00431143
+    template <class T> void Transfer(T& value);                              // 0x00431061
 };
+template <> void CPersistContext::Transfer<float>(float& value);
+template <> void CPersistContext::Transfer<long>(long& value);
+template <> void CPersistContext::Transfer<bool>(bool& value);
+template <> void CPersistContext::Transfer<CDefString>(CDefString& value);
+template <> void CPersistContext::Transfer<CCharString>(CCharString& value);
 class CTrophyDef { public:
     virtual void Transfer(CPersistContext&);            // vtable slot 18 in retail
     unsigned char _base[0x24];                          // +0x04..+0x27 def base
@@ -63,11 +64,11 @@ void CTrophyDef::Transfer(CPersistContext& c)
 #include <string.h>
 static int g_n; static int g_off[32]; static char g_kind[32]; static unsigned char* g_base;
 static void rec(void* p, char k) { g_off[g_n] = (int)((unsigned char*)p - g_base); g_kind[g_n++] = k; }
-void CPersistContext::Transfer(float& v) { rec(&v, 'f'); }
-void CPersistContext::Transfer(long& v) { rec(&v, 'l'); }
-void CPersistContext::Transfer(bool& v) { rec(&v, 'b'); v = !v; }
-void CPersistContext::Transfer(CDefString& v) { rec(&v, 'd'); v.TablePos = 42; }
-void CPersistContext::Transfer(CCharString& v) { rec(&v, 's'); }
+template <> void CPersistContext::Transfer<float>(float& v) { rec(&v, 'f'); }
+template <> void CPersistContext::Transfer<long>(long& v) { rec(&v, 'l'); }
+template <> void CPersistContext::Transfer<bool>(bool& v) { rec(&v, 'b'); v = !v; }
+template <> void CPersistContext::Transfer<CDefString>(CDefString& v) { rec(&v, 'd'); v.TablePos = 42; }
+template <> void CPersistContext::Transfer<CCharString>(CCharString& v) { rec(&v, 's'); }
 int main() {
     static const int eo[16] = {0x28,0x2c,0x30,0x34,0x35,0x38,0x3c,0x40,0x44,0x48,0x4c,0x50,0x54,0x58,0x5c,0x60};
     static const char ek[] = "fflbbldffsssssss";

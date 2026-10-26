@@ -11,6 +11,7 @@
 // its mother-rescued flag at +0x67), PMasterData +0x18.
 // Shape: both strings are implicit conversion temporaries (the use test's result kept in bl across its destructor); the
 // outer loop tests the parent flag at the bottom, every wait checks IsActiveThreadTerminating and returns.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
@@ -125,14 +126,19 @@ public:
     bool          MotherRescued;                         // +0x67
 };
 class CQ_SunnyvaleMasterData;
-class CTortureDoorPassage {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CTortureDoorPassage : public CEntityScriptBase {
 public:
     void*                              __vftable;        // +0x00
     CGameScriptInterface*              Game;             // +0x04
     CScriptThing                       Me;               // +0x08
     CQ_PrisonEscapeRescueMotherScript* ParentClass;      // +0x14
     CQ_SunnyvaleMasterData*            PMasterData;      // +0x18
-    bool IsActiveThreadTerminating();                    // 0x00F35B30
     void Main();
 };
 

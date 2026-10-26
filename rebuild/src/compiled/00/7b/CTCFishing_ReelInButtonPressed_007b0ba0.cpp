@@ -58,10 +58,21 @@ public:
         return (it == end || type < it->type ? end : it)->component;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                        // +0x04
-    CThing* GetPItem() const;                               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCFish { public:
     unsigned char _pad00[0x14];
@@ -77,7 +88,10 @@ class CFishingDef { public:
     unsigned char _pad00[0x78];
     float StrainIncreasePerPress;                           // +0x78
 };
-long __fastcall GFGetCurrentFrame();                        // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                        // 0x0049D870
 
 enum EFishingStage { FISHING_STAGE_HOOKING = 3, FISHING_STAGE_REELING = 4 };
 
@@ -86,7 +100,7 @@ public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
-    CBaseIntelligentPointer PFish;                          // +0x0c
+    CIntelligentPointer<CThing> PFish;                          // +0x0c
     long  Stage;                                            // +0x14 EFishingStage
     bool  StageInitialised;                                 // +0x18
     long  FrameStageFinishes;                               // +0x1c
@@ -141,7 +155,7 @@ void CTCFishing::ReelInButtonPressed()
                 PressedThisFrame = true;
                 Distance -= distance;
             }
-            LastFramePressed = GFGetCurrentFrame();
+            LastFramePressed = CWorld::GetFrame();
         }
         break;
     }

@@ -68,7 +68,7 @@ public:
 };
 extern void*         g_pGameState;              // 0x013B8394 (no sound while null)
 extern unsigned long g_InvalidSoundHandle;      // 0x0129D25C
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 class CRandomGenerator {                        // the landed 0x0066B300 model
 public:
     unsigned long Seed;
@@ -92,9 +92,10 @@ public:
     CThingSoundEmitter* CreatePAttachedEmitter(bool flag);   // 0x0066AEF0
     unsigned long InternalPlaySoundEventAtPos(CASoundBank& bank, const C3DVector& pos, const CCharString& name, bool loop, bool attached);
     unsigned long PlayUnattachedSample(long sample, const CSoundInit& init, bool loop, bool attached);
-    unsigned long InternalPlayAttachedSample(CASoundBank& bank, long sample, const CSoundInit& init, bool flag, bool loop, bool attached);
     unsigned long InternalPlaySoundEvent(CASoundBank& bank, const CCharString& name, bool flag, bool loop, bool attached, long overrideID);
     unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool flag, bool loop, bool attached);
+private:
+    unsigned long InternalPlayAttachedSample(CASoundBank&, long, const CSoundInit&, bool, bool, bool);   // 0x0066B080
 };
 
 unsigned long CTCSoundPlayer::PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool flag, bool loop, bool attached)

@@ -24,7 +24,7 @@ class CScriptThing { public:                                   // 12 bytes, vtab
  CScriptThingImpl* PImp_Data;
  void* PImp_Info;
  CScriptThing(const CScriptThing& other);   // 0x004ABE90
- ~CScriptThing();                           // 0x004AA840
+ virtual ~CScriptThing();                           // 0x004AA840
  bool IsAlive() const;                      // slot 75, inlined below
 };
 struct CScriptThingImpl {
@@ -1028,11 +1028,16 @@ struct CV_MazeResearchScript {
  unsigned char BaseState[0x49];
  bool BookRead;                                     // +0x49 (PDB +0x5d)
 };
-struct CHistoryBookcase {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CHistoryBookcase : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CV_MazeResearchScript* ParentClass;                // +0x14
  void* PMasterData;                                 // +0x18
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CHistoryBookcase::Main()

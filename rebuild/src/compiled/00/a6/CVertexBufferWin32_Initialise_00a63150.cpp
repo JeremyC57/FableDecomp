@@ -12,8 +12,8 @@ struct D3DVertexBufferDeviceMethods {
 };
 struct D3DVertexBufferDevice { D3DVertexBufferDeviceMethods* Methods; };
 struct CBufferDisplayView { unsigned char BeforeDevice[0x58]; D3DVertexBufferDevice* D3DDevice; };
-struct CBufferSystemView { unsigned char BeforeDisplay[0x60]; CBufferDisplayView* PDisplayManager; };
-CBufferSystemView* __fastcall GetBufferSystemManager(); // 0x009A4EC0
+class CSystemManager { public: unsigned char BeforeDisplay[0x60]; CBufferDisplayView* PDisplayManager; };
+CSystemManager* __fastcall GFGetSystemManager(); // 0x009A4EC0
 struct CVertexDecodeScaleOffset {
     float ScaleX, ScaleY, ScaleZ, ScaleW;
     float OffsetX, OffsetY, OffsetZ, OffsetW;
@@ -32,7 +32,7 @@ struct CVertexBufferInitialiseView {
 };
 bool CVertexBufferInitialiseView::Initialise(long type, long vertexCount, long stride, unsigned long usage, long pool)
 {
-    D3DVertexBufferDevice* device = GetBufferSystemManager()->PDisplayManager->D3DDevice;
+    D3DVertexBufferDevice* device = GFGetSystemManager()->PDisplayManager->D3DDevice;
     long size = vertexCount * stride;
     long result = device->Methods->CreateVertexBuffer(device, size, usage, type, pool, &Buffer, 0);
     Size = size;

@@ -21,7 +21,10 @@ class CCharString { public:
 };
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 
 struct CContextSensitiveItem {
@@ -39,20 +42,31 @@ struct CContextSensitiveItemVector {                 // std::vector<CContextSens
     void push_back(const CContextSensitiveItem& item);   // 0x00594782
 };
 
-class CTCInventory { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventory : public NInventory::CTCInventoryBase { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
 
     static CContextSensitiveItemVector ContextSensitivePreferredItems;   // 0x013B8B40
 
-    CDefinitionManager* GetDefinitionManager() const;    // 0x006869D0 (CTCBase)
     long GetNumberOfItemsOfTypeInInventory(long defIndex);   // 0x005BDF08 (CTCInventoryBase)
     bool AddContextSensitivePreferredItem(const CCharString& defName, long button, long priority);
 };
 
 bool CTCInventory::AddContextSensitivePreferredItem(const CCharString& defName, long button, long priority)
 {
-    long defIndex = GetDefinitionManager()->GetDefGlobalIndexFromName(defName);
+    long defIndex = GetDefinitionManager().GetDefGlobalIndexFromName(defName);
     if (defIndex > 0 && GetNumberOfItemsOfTypeInInventory(defIndex) > 0) {
         for (CContextSensitiveItem* it = ContextSensitivePreferredItems.begin();
              it != ContextSensitivePreferredItems.end(); ++it) {

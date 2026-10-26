@@ -17,8 +17,8 @@ class CCharString { public:
     bool operator!=(const char* text) const;       // 0x0099E960
 };
 class CScriptThing { public:
-    unsigned char _body[12];
-    ~CScriptThing();                               // 0x004AA840
+    unsigned char _body[12 - 4];
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CThing { public:
     unsigned char    _pad00[0x10];

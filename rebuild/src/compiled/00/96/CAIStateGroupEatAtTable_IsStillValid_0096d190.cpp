@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096D190, length 105 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface, interface 0x31 =
 // CTCCreatureModeManager: bitset word 1 bit 17 -> `test dword ptr [eax+24h],20000h`),
-// CTCCreatureModeManager::RemoveMode(ulong) @ 0x0073ABA0, CTCCreatureModeManager::HasMode(ulong) @ 0x0073A8A0 (the
+// CTCCreatureModeManager::RemoveMode(ulong) @ 0x0073ABA0, CTCCreatureModeManager::IsModeActive(ulong) @ 0x0073A8A0 (the
 // manifest's CPlayer::HasMode label is propagated), `this`'s virtual slot 15 (+0x3c).
 // Shape: the MazeTeleport (0x009543B0) form -- the lookup's bool is not tested, so the miss path reads the
 // uninitialised out slot (`mov esi,[esp+8]`); the mode manager stays in esi for both calls; `return false` when
@@ -38,7 +38,8 @@ class CThingAICreature { public:
 
 class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
-    bool HasMode(unsigned long mode);           // 0x0073A8A0
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 
 class CAIBrain { public:
@@ -71,7 +72,7 @@ bool CAIStateGroup_EatAtTable::IsStillValid()
     CTCCreatureModeManager* modes;
     PBrain->Creature->GetInterface(&modes, 0x31);
     modes->RemoveMode(0x28);
-    if (modes->HasMode(0x28))
+    if (modes->IsModeActive(0x28))
         return false;
     return IsStateGroupStillValid();
 }

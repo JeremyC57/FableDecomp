@@ -15,11 +15,10 @@
 // the parent's thread is terminating, copy the def's target minion/summoner counts (the def pointer reloads after the
 // first store because the store may alias). Graded RELOCATION_MATCH on the first build.
 class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
- void* __vftable;
  void* PImp_Data;
  void* PImp_Info;
  CScriptThing(const CScriptThing& other);   // 0x004ABE90
- ~CScriptThing();                           // 0x004AA840
+ virtual ~CScriptThing();                           // 0x004AA840
 };
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
@@ -944,15 +943,20 @@ struct CQ_DragonBossFightScript {
  bool IsActiveThreadTerminating();  // 0x00CB7940 CScriptBase
  void SpawnEnemies();               // 0x00D25C20
 };
-struct CDragon {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CDragon : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CQ_DragonBossFightScript* ParentClass;   // +0x14
  void* PMasterData;                       // +0x18
  float MediumHealth;                      // +0x1c
  float LowHealth;                         // +0x20
  float VeryLowHealth;                     // +0x24
- void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
- bool IsActiveThreadTerminating();                    // 0x00F35B30
  void Main();
 };
 void CDragon::Main()

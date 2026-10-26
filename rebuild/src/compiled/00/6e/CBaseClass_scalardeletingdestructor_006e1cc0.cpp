@@ -13,14 +13,15 @@ struct Sub;                 // subobject at offset +4
 class CBaseClass { public:
     int   m_vtbl;           // +0  (vtable / first dword)
     Sub*  dummy;            // placeholder so member sits at +4
+
+public:
+    virtual ~CBaseClass();   // 0x0099A2E0
 };
 
 // scalar destructor operating on the subobject located at self+4.
 // __fastcall => arg1 in ecx. Single pointer param = ecx.
-extern "C" void __fastcall InnerDtor_0099a2e0(void* subAtPlus4);
 
 // operator delete (cdecl)
-extern "C" void __cdecl EngineOperatorDelete(void* p);
 
 // __fastcall: this in ecx, flags on the stack. Model via __fastcall with an
 // unused edx dummy so the real `flags` param lands on the stack (=> ret 4).
@@ -28,8 +29,8 @@ extern "C" void* __fastcall VecDelDtor(CBaseClass* baseClass, int edxDummy, unsi
 {
     (void)edxDummy;
     // scalar dtor on the subobject at self+4
-    InnerDtor_0099a2e0((char*)baseClass + 4);
+    ((CBaseClass*)((char*)baseClass + 4))->CBaseClass::~CBaseClass();
     if (flags & 1)
-        EngineOperatorDelete(baseClass);
+        operator delete(baseClass);
     return baseClass;
 }

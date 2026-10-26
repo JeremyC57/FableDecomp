@@ -23,7 +23,8 @@ struct PairVectorLong {                // std::pair<C3DVector, long>, 16 bytes
 
 class CVectorCompare_BestForTargeting { public:
     unsigned char _body[0x2c];
-    float GetCompareValueForPoint(const C3DVector& point);     // 0x007F9660
+public:
+    float GetCompareValueForPoint(const C3DVector&) const;   // 0x007F9660
 };
 
 struct CCompareTargetedPositionsForFirstPersonTargeting {      // anonymous namespace in retail, 0x2c bytes

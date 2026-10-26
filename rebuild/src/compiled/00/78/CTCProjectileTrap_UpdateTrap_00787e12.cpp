@@ -109,8 +109,15 @@ class CTrapDef { public:
     long  NumShotsToFireBeforeIdle;                     // +0x58 (PDB +0x5c)
     float SecondsIdle;                                  // +0x5c (PDB +0x60)
 };
-class CTCTrapBase { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCTrapBase : public CTCBase { public:
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x54 - 0x08];
     const CTrapDef* PTrapDef;                           // +0x54
@@ -118,7 +125,6 @@ class CTCTrapBase { public:
     bool          Triggered;                            // +0x59
     bool          LastTriggerOnProximity;               // +0x5a
     long          TrapType;                             // +0x5c ETrapType
-    CPlayerManager* GetPlayerManager();                 // 0x00686D40 (CTCBase)
 };
 struct CTCProjectileTrap : CTCTrapBase {
     long ShotTimer;                                     // +0x60
@@ -142,7 +148,7 @@ void CTCProjectileTrap::UpdateTrap()
     if (!Triggered || !Active)
         return;
     if (!IS_THING_ALIVE(&PTarget)) {
-        CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+        CThing* hero = GetPlayerManager().GetMainPlayer()->GetHeroThing();
         if (IS_THING_ALIVE(hero))
             PTarget = hero;
     }

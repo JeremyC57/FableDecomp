@@ -19,7 +19,8 @@ class CThing { public:
 
 class CVectorCompare_BestForTargeting { public:
     unsigned char _body[0x2c];
-    float GetCompareValueForPoint(const C3DVector& point);     // 0x007F9660
+public:
+    float GetCompareValueForPoint(const C3DVector&) const;   // 0x007F9660
 };
 
 class CThingCompare_BestForTargeting2 { public:

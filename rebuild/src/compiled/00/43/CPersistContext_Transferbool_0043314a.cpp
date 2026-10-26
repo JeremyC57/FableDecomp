@@ -1,0 +1,56 @@
+// CPersistContext::Transfer<bool>(bool&) -- one-argument transfer helper (member template; see the landed 0x00431061 Transfer<float>):
+//   CheckCRC("") (0x00404500, the empty key 0x0122D70E), then the binary load (mode 2) / save (mode 3) switch.
+//   namepass: one name for 0x0043314A -- its callers call CPersistContext::Transfer<T>; the catalog label
+//   "CEngineLightingManager::UpdateShadowScene" / Transfer*_xxx was propagated or descriptive.
+// Leaf: ??$Transfer@_N@CPersistContext@@QAEXAA_N@Z
+#pragma optimize("s",on)
+
+// CPersistContext::TransferBool @ 0x0043314A  (__fastcall, ret 4)
+//
+// Retail idiom:
+//   push ebp; mov ebp,esp; push ecx          -> 1 local byte at [ebp-4]
+//   push esi; push 0x122d70e; mov esi,ecx     -> save this=esi; push tag
+//   call <Prep>                               -> __stdcall Prep(0x122d70e)
+//   mov eax,[esi+0x18]; dec eax; dec eax       -> switch(this->mode)
+//   mov byte[ebp-4],0                          -> local.flag = 0
+//   je case2; dec eax; jne end                 -> case 2 / case 3 dispatch
+//   case3: movzx eax,byte[p]; ecx=[esi+0x28]; push; call  -> sink28->Take((unsigned char)*p)
+//   case2: push p; lea ecx,[ebp-4]; push [esi+0x24]; call -> local.Fill(this->obj24, p)
+//   pop esi; leave; ret 4
+
+struct Sink {
+    void Take_00993e30(int v);            // __fastcall, ecx=this, one dword arg
+};
+
+struct Local {
+    unsigned char flag;          // [ebp-4] byte, set to 0
+    void Fill(int a, void* b);   // __fastcall, ecx=&local, two dword args
+};
+
+class CPersistContext {
+public:
+    char  pad00[0x18];
+    int   mode;                  // +0x18
+    char  pad1C[0x08];
+    int   PLoadStream;                 // +0x24
+    Sink* PSaveStream;                // +0x28
+    template <class T> void Transfer(T& value);
+};
+
+extern void __stdcall Prep(unsigned int tag);   // push 0x122d70e; call
+
+template <> void CPersistContext::Transfer<bool>(bool& value)
+{
+    unsigned char* p = (unsigned char*)&value;
+    Local h;
+    Prep(0x122d70eU);
+    h.flag = 0;
+    switch (this->mode) {
+    case 2:
+        h.Fill(this->PLoadStream, p);
+        break;
+    case 3:
+        this->PSaveStream->Take_00993e30(*p);
+        break;
+    }
+}

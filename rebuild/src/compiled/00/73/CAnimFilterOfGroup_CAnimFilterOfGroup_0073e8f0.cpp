@@ -22,7 +22,10 @@ class CCharString { public:
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }   // "" = the shared empty literal 0x0129AAF4
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC-32 kernel
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC-32 kernel
 
 class CAnimFilterOfGroup { public:
     virtual void v00();                                         // vtable 0x01267568
@@ -35,5 +38,5 @@ CAnimFilterOfGroup::CAnimFilterOfGroup(const CCharString& name)
     : Group()
 {
     Group = name;
-    GroupCRC = Calc_004014a0(0, name.GetPString(), name.GetLength());
+    GroupCRC = CCRC::Calc(0, name.GetPString(), name.GetLength());
 }

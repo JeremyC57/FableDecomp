@@ -61,10 +61,21 @@ class CThing { public:
     void UpdateGraphicAppearance(long reason);       // 0x004C7590
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CThing* GetPItem() const;                        // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 CThing* __fastcall CreateThing(long defIndex, const C3DVector& position, long flags);   // 0x006E0880
@@ -87,7 +98,7 @@ struct CTCHighlightItem {
     bool          Running;                           // +0x0D
     long          LifeTimer;                         // +0x10
     C3DVector     StartPos;                          // +0x14
-    CBaseIntelligentPointer PParticleEmitter;        // +0x20 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PParticleEmitter;        // +0x20 CIntelligentPointer<CThing>
 
     CGameSubsystem* GetGameSubsystem() const;        // 0x00686D60 (CTCBase: main game component +0x1C)
     void DoStartRunning();                           // 0x0077CBE0

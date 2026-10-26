@@ -22,7 +22,8 @@ public:
 };
 
 struct CDefStringTable {
-    CCharString GetString(long index);              // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;            // 0x013CA828
 
@@ -32,7 +33,8 @@ class CDefString { public:
 };
 
 class CDefinitionManager { public:
-    CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
+public:
+    CDefString GetDefNameFromGlobalIndex(long) const;   // 0x009ACCC0
 };
 
 class CTCBase;

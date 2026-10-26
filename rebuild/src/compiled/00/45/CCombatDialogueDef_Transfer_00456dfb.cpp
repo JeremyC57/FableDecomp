@@ -11,8 +11,7 @@
 #include "fable_persist_context.h"
 #undef CPersistContext
 class CPersistContext : public CPersistContext_PDB { public:
-    void Transfer(float& value); // 0x00431061
-    void Transfer(long& value);  // 0x00431102
+    template <class T> void Transfer(T& value); // 0x00431061
 };
 class CCombatDialogueDef { public:
     void* __vftable;

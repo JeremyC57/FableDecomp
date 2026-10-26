@@ -5,7 +5,7 @@
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times per minion), CThing::SetInLimbo(bool) @
 // 0x004C8CF0.
 // Layout: Ego_r.pdb CTCGhostSword with retail 12-byte vectors: PDef +0xc, Minions
-// (vector<CIntelligentPointer<CThingAICreature>>) +0x10, MinionEffects +0x1c, MinionAliveTimer +0x28,
+// (vector<CIntelligentPointer<CThingAICreature> >) +0x10, MinionEffects +0x1c, MinionAliveTimer +0x28,
 // FadeInTimer +0x2c, CurFadeInTimer +0x30, SpellLevel +0x3c, PItemRemoved +0x40, CutSceneCancelled +0x48.
 // Shape: the landed CTCBoss::ClearEffects loop (0x007AEF60) with a SIGNED index and count
 // (`(long)Minions.size()` gives `test eax,0FFFFFFF8h ; jle` and `jl`): operator[] as `*(begin() + i)`,
@@ -17,12 +17,23 @@ class CThing { public:
     void SetInLimbo(bool inLimbo);                          // 0x004C8CF0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CThing* GetPItem() const;                               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
+};
+inline bool IsThingAlive(const CIntelligentPointer<CThing>& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
 
 template <class T> struct CRetailVector {                   // STLport vector (12 bytes)
     T* _M_start;
@@ -39,8 +50,8 @@ class CTCGhostSword { public:
     bool          ToBeRemoved;                              // +0x08
     bool          IsInGlobalUpdateTCs;                      // +0x09
     void*         PDef;                                     // +0x0c CDefPointer<const CSpecialAbilitiesGhostSwordDef>
-    CRetailVector<CBaseIntelligentPointer> Minions;         // +0x10
-    CRetailVector<CBaseIntelligentPointer> MinionEffects;   // +0x1c
+    CRetailVector<CIntelligentPointer<CThing> > Minions;         // +0x10
+    CRetailVector<CIntelligentPointer<CThing> > MinionEffects;   // +0x1c
     long          MinionAliveTimer;                         // +0x28
     long          FadeInTimer;                              // +0x2c
     CRetailVector<long> CurFadeInTimer;                     // +0x30

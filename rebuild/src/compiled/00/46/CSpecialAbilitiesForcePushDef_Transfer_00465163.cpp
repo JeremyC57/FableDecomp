@@ -29,8 +29,7 @@ public:
 }
 class CPersistContext {
 public:
-    void Transfer(float& value);                                 // 0x00431061
-    void Transfer(long& value);                                  // 0x00431102
+    template <class T> void Transfer(T& value);                                 // 0x00431061
     void Transfer(std::vector<float >& value);                   // 0x00464CBF
 };
 class CSpecialAbilitiesForcePushDef {

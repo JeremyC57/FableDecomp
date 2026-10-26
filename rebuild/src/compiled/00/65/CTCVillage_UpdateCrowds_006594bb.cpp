@@ -167,7 +167,10 @@ class CThing { public:
     template <class T> __forceinline T* GetTC(long type) { return (T*)m_interfaces.Find(type)->component; }
     template <class T> __forceinline T* GetTC(long type) const { return (T*)m_interfaces.Find(type)->component; }
 };
-long __fastcall GFGetCurrentFrame();                    // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                    // 0x0049D870
 
 class CTCVillage { public:
     void*   __vftable;                                  // +0x00
@@ -196,7 +199,7 @@ void CTCVillage::UpdateCrowds()
             cheer = soundDef->SoundMap.GetPSoundPair(name);
         }
         if (crowd->CanStartEvent(0xe, LastAweCrowdEventFrame) && cheer) {
-            LastAweCrowdEventFrame = GFGetCurrentFrame();
+            LastAweCrowdEventFrame = CWorld::GetFrame();
             player->PlayAttachedSample(*cheer, CSoundInit(), true, false, false);
         }
         const CSoundPair* boo;
@@ -205,7 +208,7 @@ void CTCVillage::UpdateCrowds()
             boo = soundDef->SoundMap.GetPSoundPair(name);
         }
         if (crowd->CanStartEvent(0xf, LastLynchCrowdEventFrame) && boo) {
-            LastLynchCrowdEventFrame = GFGetCurrentFrame();
+            LastLynchCrowdEventFrame = CWorld::GetFrame();
             player->PlayAttachedSample(*boo, CSoundInit(), true, false, false);
         }
     }

@@ -5,7 +5,7 @@
 // Callees: CPlayerGui::GetPHeroInfoScreensManager() 0x00437CD0; CWideString::operator!=(const wchar_t*) const 0x0099B150
 //          (L"" 0x0122D70C); CWideString(const wchar_t*) 0x0099B6B0; CSubtitleRenderer::SetText(CFontBank*, five const
 //          CWideString&, unsigned long, float, bool, bool) 0x00492973 and the two-button overload 0x00492F69;
-//          ~CWideString 0x0099B510; CTCBase::AddToGlobalUpdateTCs() 0x00686ED0.
+//          ~CWideString 0x0099B510; CTCBase::AddToGlobalTCs() 0x00686ED0.
 // Globals: g_pPlayerGui 0x013B8790 (subtitle renderer at +0x18), g_pMainGameComponent 0x013B86A0 (font +0x1614C).
 // Layout (retail, lists 4 bytes): CTCTrophy WaitingForConfirmation +0x3c (PDB +0x4c), IsGlobalTC +0x40 (PDB +0x50);
 //          NHeroInformationScreens::CManager +0x34 an active-screen flag.
@@ -35,7 +35,8 @@ class CManager { public:
 class CPlayerGui { public:
     unsigned char     _pad_0x00[0x18];
     CSubtitleRenderer SubtitleRenderer;         // +0x18
-    NHeroInformationScreens::CManager* GetPHeroInfoScreensManager();   // 0x00437CD0
+public:
+    NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 class CMainGameComponent { public:
@@ -50,7 +51,8 @@ class CTCBase { public:
     bool          ToBeRemoved;                  // +0x08
     bool          IsInGlobalUpdateTCs;          // +0x09
     unsigned char _pad0a[2];
-    void AddToGlobalUpdateTCs();                // 0x00686ED0
+public:
+    void AddToGlobalTCs();   // 0x00686ED0
 };
 class CTCTrophy : public CTCBase { public:
     unsigned char _pad_0x0c[0x30];
@@ -72,7 +74,7 @@ void CTCTrophy::StartDialogBox(CWideString text, unsigned long flags, CWideStrin
         g_pPlayerGui->SubtitleRenderer.SetText(g_pMainGameComponent->Font, text, L"", button1, button2, flags, 0.0f, true, true);
     WaitingForConfirmation = true;
     if (!IsGlobalTC) {
-        AddToGlobalUpdateTCs();
+        AddToGlobalTCs();
         IsGlobalTC = true;
     }
 }

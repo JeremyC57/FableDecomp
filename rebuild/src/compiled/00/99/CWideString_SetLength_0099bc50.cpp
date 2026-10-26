@@ -5,7 +5,7 @@
 #ifndef FABLE_WIDE_STRING_HOST_TYPES
 #include "fable_string.h"
 #endif
-extern "C" void __cdecl FreeWideCharacters(void*); // 0x00BFEA14
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 struct CWideAllocator { CWideAllocator() {} };
 struct CWideStringDataActions : CWideStringData {
     long RemoveReference() { return --owners; }
@@ -15,7 +15,7 @@ struct CWideStringDataActions : CWideStringData {
         Initialize(length, fill, allocator);
         owners = 1;
     }
-    ~CWideStringDataActions() { if (text) FreeWideCharacters(text); }
+    ~CWideStringDataActions() { if (text) free(text); }
 };
 struct CWideStringLengthView {
     CWideStringDataActions* storage_;

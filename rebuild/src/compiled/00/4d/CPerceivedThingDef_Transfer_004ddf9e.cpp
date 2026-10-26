@@ -12,7 +12,7 @@
 enum EPerceivedThingType { };                               // enumerators not needed
 class CPersistContext {
 public:
-    void Transfer(float& value);                                 // 0x00431061
+    template <class T> void Transfer(T& value);                                 // 0x00431061
     void Transfer(EPerceivedThingType& value);                   // 0x004DE019
 };
 class CPerceivedThingDef {

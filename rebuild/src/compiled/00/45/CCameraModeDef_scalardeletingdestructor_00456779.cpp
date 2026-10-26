@@ -1,14 +1,16 @@
 #pragma optimize("s",on)
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CCameraModeDef { public:
     int f0;
     void* vf;
 };
-extern void __fastcall CCameraModeDef_dtor(CCameraModeDef* mode);
-extern void __cdecl operator_delete_stub(void* p);
 void* __fastcall CCameraModeDef_scalar_deleting_destructor(CCameraModeDef* mode, int edx_unused, unsigned int flags)
 {
-    CCameraModeDef_dtor(mode);
+    ((CParentDefClassBase*)(mode))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        operator_delete_stub(mode);
+        operator delete(mode);
     return mode;
 }

@@ -19,7 +19,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
+long __fastcall GFROR13(unsigned long);  // 0x00497890
 inline unsigned long GFNextRandomSeed(unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
@@ -62,7 +62,8 @@ class CThingCreatureBase { public:
     virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71();
     virtual void v72();
     virtual bool HasAnimation(const CCharString& name, bool loadedOnly);   // slot 73 (+0x124)
-    const CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool flag);   // 0x00662FA0
+public:
+    const CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString&, bool) const;   // 0x00662FA0
 };
 class CTCCreatureExpression { public:
     virtual void v00();

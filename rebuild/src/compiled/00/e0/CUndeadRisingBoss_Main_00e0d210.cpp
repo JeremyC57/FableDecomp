@@ -10,6 +10,7 @@
 //   +0x18. CQ_UndeadRisingScript is retail = Ego_r.pdb - 0x14: number_of_boss_kills_in_right_area +0x4c, quest_status +0x5c.
 // Shape: generated script code; CScriptThing destructors out of line; the effect is reassigned through the inline
 //   counted-pointer operator= (as CQ_HangingTreeGoodScript::UpdateWayPoint 0x00D74E80); IsAlive is the `Data && ...` form.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
@@ -217,13 +218,18 @@ struct CQ_UndeadRisingScript {
     unsigned char _pad50[0x5c - 0x50];
     long          quest_status;                             // +0x5c
 };
-struct CUndeadRisingBoss {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CUndeadRisingBoss : public CEntityScriptBase {
     void*                  VTable;
     GameCalls*             Game;                            // +0x04
     CScriptThing           Me;                              // +0x08
     CQ_UndeadRisingScript* ParentClass;                     // +0x14
     void*                  PMasterData;                     // +0x18
-    bool IsActiveThreadTerminating();                       // 0x00F35B30
     void Main();
 };
 

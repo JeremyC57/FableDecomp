@@ -2,7 +2,9 @@
 // Profiled two-case dispatch with a zero-initialised local handle.
 // __fastcall this=ecx, arg=stack (ret 4).
 struct Ctx { int value; };
-struct Sink { void Take(int value); };
+class CDataOutputStream { public: public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 struct Handle {
     int value;
     void Fill_004311df(void* source, Ctx* arg);
@@ -13,7 +15,7 @@ struct T {
     int mode;
     char pad1c[0x08];
     void* source;    // this+0x24
-    Sink* sink;      // this+0x28
+    CDataOutputStream* sink;      // this+0x28
     void UpdateShadowScene(Ctx* arg);
 };
 #pragma pack(pop)
@@ -28,7 +30,7 @@ void T::UpdateShadowScene(Ctx* arg) {
         local.Fill_004311df(this->source, arg);
         break;
     case 3:
-        this->sink->Take(arg->value);
+        this->sink->WriteSLONG(arg->value);
         break;
     }
 }

@@ -11,7 +11,7 @@
 // itself; the range helper is the ternary `range ? seed % range : 0` (the if/return form puts the zero arm first).
 #include <new>
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
-extern unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {

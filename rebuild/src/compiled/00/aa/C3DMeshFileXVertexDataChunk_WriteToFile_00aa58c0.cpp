@@ -1,6 +1,6 @@
 // C3DMeshFileXVertexDataChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const -- version 2, the four format words, the vertex-compression parameters, then the raw vertex bytes in one WriteData
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA58C0, length 109 bytes.
-// Callees: 0x00993EA0 CDataOutputStream::WriteULong, 0x00AA4D20 __fastcall WriteToFile(const CVertexCompressionParams&,
+// Callees: 0x00993EA0 CDataOutputStream::WriteULONG, 0x00AA4D20 __fastcall WriteToFile(const CVertexCompressionParams&,
 // CDataOutputStream&) (eight WriteFloat), CDataOutputStream slot 4 (+0x10) WriteData(data, size).
 // Layout: the PDB header (engine/C3DMeshFileXVertexDataChunk.h) agrees on every offset up to VertexData (+0x40)
 // but its CArray<char> is 0x10 wide; retail's is three pointers (the factory 0x00AA59C0 allocates 0x4c), so
@@ -40,12 +40,13 @@ class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteUShort(unsigned short value);             // 0x00993E80
-    void WriteULong(unsigned long value);               // 0x00993EA0
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
     void WriteBool(bool value);                         // 0x00993E30
     void WriteMatrix3x4(const CMatrix3x4& m);           // 0x00994070
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 class CDataInputStream { public:
     virtual void v0(); virtual void v1();
@@ -108,11 +109,11 @@ class C3DMeshFileXVertexDataChunk : public CChunkedFileChunk { public:
 
 void C3DMeshFileXVertexDataChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
-    out.WriteULong(2);
-    out.WriteULong(FormatID);
-    out.WriteULong(VertexCount);
-    out.WriteULong(VertexSize);
-    out.WriteULong(InitFlags);
+    out.WriteULONG(2);
+    out.WriteULONG(FormatID);
+    out.WriteULONG(VertexCount);
+    out.WriteULONG(VertexSize);
+    out.WriteULONG(InitFlags);
     ::WriteToFile(VBCParams, out);
     out.WriteData(VertexData.GetData(), VertexData.Size());
 }

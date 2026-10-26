@@ -1,7 +1,7 @@
 // CTCStealth::GetVisibilityMultiplier() const -- how visible the thing is: the stealth def's day / night / twilight multiplier when its interface-0x27 component is in effect (else 1), times the interface-0x68 component's multiplier and the interface-4 component's factor when present
 // Leaf: GetVisibilityMultiplier
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00747660, 289 bytes (plain `ret`, float in st0).
-// Callees: the const interface LowerBound @ 0x004365B0 (interfaces 0x27, 0x68, 4), CTCBase::GetWorld() const @ 0x00686A80
+// Callees: the const interface LowerBound @ 0x004365B0 (interfaces 0x27, 0x68, 4), CTCBase::PeekWorld() const @ 0x00686A80
 //   (twice), CGameTimeManager::IsDay() const @ 0x006BB2C0, CGameTimeManager::IsNightTime() const @ 0x006BB210, the 0x68
 //   component's multiplier getter @ 0x006D6620 (manifest "CTCHeroExperience::GetSoundRadiusMultiplier", unverified). 0.5f
 //   from 0x0122F59C.
@@ -71,18 +71,24 @@ struct CTCVisibility4 {                                 // interface 4
     unsigned char _pad00[0xac];
     float         VisibilityFactor;                     // +0xac
 };
-class CTCStealth { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCStealth : public CTCBase { public:
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x1c - 0x08];
     const CStealthDef* PDef;                            // +0x1c CDefPointer<const CStealthDef>
-    CWorld* GetWorld() const;                           // 0x00686A80 (CTCBase)
     const CStealthDef* GetDef() const { return PDef; }
     __forceinline float GetTimeOfDayVisibilityMultiplier() const
     {
-        if (GetWorld()->GameTimeManager->IsDay())
+        if (PeekWorld().GameTimeManager->IsDay())
             return GetDef()->DayTimeLampVisibilityMultiplier;
-        if (GetWorld()->GameTimeManager->IsNightTime())
+        if (PeekWorld().GameTimeManager->IsNightTime())
             return GetDef()->NightTimeLampVisibilityMultiplier;
         return (GetDef()->NightTimeLampVisibilityMultiplier + GetDef()->DayTimeLampVisibilityMultiplier) * 0.5f;
     }

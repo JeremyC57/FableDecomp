@@ -11,7 +11,8 @@ class C2DCoordI;
 class CWorldMap { public:
     unsigned char _pad[0x4c];
     bool m_disabled;                                     // +0x4c
-    float GetGroundSizeZAtBlock(const C2DCoordI& block); // 0x0063A660
+public:
+    float GetGroundSizeZAtBlock(const C2DCoordI&) const;   // 0x0063A660
 };
 
 class CWorld { public:

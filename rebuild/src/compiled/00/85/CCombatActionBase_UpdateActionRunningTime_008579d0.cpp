@@ -75,7 +75,8 @@ struct CTCCameraPoint {                             // interface 0x3F component
 };
 
 class CGameCameraManager { public:
-    bool IsUsingScriptedCameraMode();               // 0x00697AE0
+public:
+    bool IsUsingScriptedCameraMode() const;   // 0x00697AE0
 };
 
 struct CGameCamera {

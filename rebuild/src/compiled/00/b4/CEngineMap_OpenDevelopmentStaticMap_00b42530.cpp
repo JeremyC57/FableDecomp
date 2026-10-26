@@ -49,7 +49,7 @@ class CMemoryDataInputStream : public CDataInputStream { public: // vtable 0x012
     SZeroed m_source;                              // +0x18
     virtual void v00();
     CMemoryDataInputStream() { }
-    ~CMemoryDataInputStream();                     // 0x00993B10
+    virtual ~CMemoryDataInputStream();                     // 0x00993B10
     void OpenMemorySource(void* data, unsigned long size);   // 0x00994570
 };
 

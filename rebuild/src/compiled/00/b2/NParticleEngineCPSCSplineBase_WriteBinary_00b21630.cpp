@@ -1,7 +1,7 @@
 // NParticleEngine::CPSCSplineBase::WriteBinary(CDataOutputStream&) -- write the spline's control-point count and points (from a copy of the array), then a presence flag and the body of the random-offset and pos-param data when they exist
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B21630, length 192 bytes. Virtual: slot 16 of
 // NParticleEngine::CPSCSplineBase's vtable 0x012A0B14.
-// Callees: CDataOutputStream::WriteULong @ 0x00993EA0, Write3DVector @ 0x00993FD0, WriteBool @ 0x00993E30 (x2);
+// Callees: CDataOutputStream::WriteULONG @ 0x00993EA0, Write3DVector @ 0x00993FD0, WriteBool @ 0x00993E30 (x2);
 //          CArray<C3DVector> copy constructor @ 0x006F0810; CSplineRandomOffsetData::WriteBinary @ 0x00B20630
 //          (manifest label correct); CSplinePosParamData::WriteBinary @ 0x00B20B10 (manifest label
 //          "C3DMeshFileUniqueVerticesChunk::WriteToFile" is propagated); free @ 0x00BFEA14 (the copy's storage).
@@ -25,9 +25,10 @@ template<class T> class CArray { public:                          // retail CArr
 };
 
 class CDataOutputStream { public:
-    void WriteBool(bool value);                            // 0x00993E30
-    void WriteULong(unsigned long value);                  // 0x00993EA0
     void Write3DVector(const C3DVector& value);            // 0x00993FD0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 namespace NParticleEngine {
@@ -72,7 +73,7 @@ class CPSCSplineBase : public CPSCBase { public:          // vtable 0x012A0B14
 void CPSCSplineBase::WriteBinary(CDataOutputStream& stream)
 {
     unsigned long count = Spline.ControlPoints.Size();
-    stream.WriteULong(count);
+    stream.WriteULONG(count);
     CArray<C3DVector> points(Spline.ControlPoints);
     if (count > 0) {
         C3DVector* point = points.m_pData;
@@ -81,12 +82,12 @@ void CPSCSplineBase::WriteBinary(CDataOutputStream& stream)
     }
 
     bool hasRandomOffset = SplineRandomOffsetData.Data != 0;
-    stream.WriteBool(hasRandomOffset);
+    stream.WriteEBOOL(hasRandomOffset);
     if (hasRandomOffset)
         SplineRandomOffsetData->WriteBinary(stream);
 
     bool hasPosParam = SplinePosParamData.Data != 0;
-    stream.WriteBool(hasPosParam);
+    stream.WriteEBOOL(hasPosParam);
     if (hasPosParam)
         SplinePosParamData->WriteBinary(stream);
 }

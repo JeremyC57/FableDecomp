@@ -1,6 +1,6 @@
 // CTCInventoryMap::TeleportHeroToTeleporter(CThing* teleporter) -- while the hero creature is alive, sends it through the teleporter thing's teleporter component
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FBD20, length 98 bytes (+ int3), `ret 4`; `this` only feeds the player-manager getter.
-// Callees: CTCBase::GetPlayerManager() const @ 0x00686D50 (manifest "CViewBase::GetDisplayEngine", propagated),
+// Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50 (manifest "CViewBase::GetDisplayEngine", propagated),
 // CPlayerManager::GetMainPlayer @ 0x00449960, CPlayer::GetControlledCreature @ 0x00487DD0 (manifest a propagated _Cons_val),
 // CVectorMap::LowerBound @ 0x0040F020 (the inline CThing::GetInterface for interface 0xDD: bit 29 of the bitset dword at +0x38),
 // CTCTeleporter::TeleportHero() @ 0x007DFCF0.
@@ -38,20 +38,32 @@ class CPlayer { public:
     CThing* GetControlledCreature() const;      // 0x00487DD0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;             // 0x00449960
+public:
+    const CPlayer& GetMainPlayer() const;   // 0x00449960
 };
 class CTCTeleporter { public:                          // interface type 0xDD
     void TeleportHero();                        // 0x007DFCF0
 };
 
-class CTCInventoryMap { public:
-    CPlayerManager* GetPlayerManager() const;   // 0x00686D50 (CTCBase)
+class CTCBase
+{
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
     void TeleportHeroToTeleporter(CThing* teleporter);
 };
 
 void CTCInventoryMap::TeleportHeroToTeleporter(CThing* teleporter)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetControlledCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer().GetControlledCreature();
     if (hero && !hero->IsDead) {
         CTCTeleporter* teleporterTC;
         if (teleporter->GetInterface(&teleporterTC, 0xDD))

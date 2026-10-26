@@ -1,7 +1,7 @@
 // CCreatureAction_GeneralInterruptedAttack::CCreatureAction_GeneralInterruptedAttack(CThingCreatureBase*, CThing*, CCharString) -- base CCombatActionBase(owner, target, 200, zeroed CSoundPair), own vtable, the by-value name handed to the base setter, then its destructor
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087CF90, length 80 bytes.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) @ 0x00857F30,
-// CCombatActionBase::SetAnimationName @ 0x008574D0 (propagated manifest label), CCharString::~CCharString @ 0x0099EAE0.
+// CCombatActionBase::SetCombatAnimation @ 0x008574D0 (propagated manifest label), CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the third argument is a CCharString BY VALUE -- its address is taken in the argument area (`lea eax,[esp+18h]`)
 // for the setter and the destructor runs on that slot before the return (a reference would be pushed from the slot
 // instead). The class adds no data (vtable 0x01277A14). `ret 0Ch`: three argument slots.
@@ -24,7 +24,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_GeneralInterruptedAttack : public CCombatActionBase { public:   // vtable 0x01277A14
@@ -35,5 +36,5 @@ class CCreatureAction_GeneralInterruptedAttack : public CCombatActionBase { publ
 CCreatureAction_GeneralInterruptedAttack::CCreatureAction_GeneralInterruptedAttack(CThingCreatureBase* owner, CThing* target, CCharString animName)
     : CCombatActionBase(owner, target, 200, CSoundPair())
 {
-    SetAnimationName(animName);
+    SetCombatAnimation(animName);
 }

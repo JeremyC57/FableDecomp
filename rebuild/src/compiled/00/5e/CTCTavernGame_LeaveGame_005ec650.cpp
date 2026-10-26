@@ -6,7 +6,7 @@
 //          0x00687540 (on the world's manager at +0x60); CPlayerManager::GetMainPlayer 0x00449970; CPlayer::RemoveMode
 //          0x00634190; CPlayer::GetHeroThing 0x00487DC0; the hero's virtual slot 28 (+0x70); CThing::SetInLimbo(bool)
 //          0x004C8CF0; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (interface 0xD0 = word 6 bit 16);
-//          CTCGamePlayer::SetGame(CTCTavernGame*) 0x005EDC00; CPlayerGui::Close 0x004374B0 (manifest "Open" is
+//          CTCGamePlayer::SetGame(CTCTavernGame*) 0x005EDC00; CPlayerGui::Open 0x004374B0 (manifest "Open" is
 //          propagated); CTCTavernGame::GetHeroStats 0x005EB4B0; CTCHeroStats::SetMoney(long, bool) 0x0057A774;
 //          CTCTavernGame::ClearBox 0x005EC5C0, ::ClearBetAndMoney 0x005E9F30; CSubtitleRenderer::Clear(bool) 0x00492BAB;
 //          the virtual LeaveGame (slot 30) through the inline SetState.
@@ -104,17 +104,28 @@ class CPlayerGui { public:
     CSubtitleRenderer Subtitles;                // +0x18
     unsigned char     _pad_0x19[0x2a4];
     bool              m_bShowing;               // +0x2bd
-    void Close();                               // 0x004374B0
+public:
+    void Open();   // 0x004374B0
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
-class CTCTavernGame { public:
+class CTCBase
+{
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
     virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
     virtual void LeaveGame();                   // slot 30 (+0x78)
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCTavernGame : public CTCBase {
+public:
+    virtual void LeaveGame();
+ public:
     unsigned char     _pad_0x04[0x1c];
     bool              IsBeingPlayed;            // +0x20
     unsigned char     _pad_0x21[0x1f];
@@ -134,7 +145,6 @@ class CTCTavernGame { public:
         PreviousTavernGameState = TavernGameState;
         TavernGameState = state;
     }
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
     void GetHeroStats(CTCHeroStats** stats);    // 0x005EB4B0
     void ClearBox();                            // 0x005EC5C0
     void ClearBetAndMoney();                    // 0x005E9F30
@@ -147,7 +157,7 @@ void CTCTavernGame::LeaveGame()
     if (PGameMaster.Get() && !PGameMaster.Get()->IsDead()) {
         CThing* gameMaster = PGameMaster.Get();
         long framesPerSecond = g_framesPerSecond;
-        CMessageEventManager* messages = GetWorld()->m_pMessages;
+        CMessageEventManager* messages = GetWorld().m_pMessages;
         messages->AddMessage(0x40, framesPerSecond * 5, (C3DVector*)&gameMaster->GetPosition(),
                                        PGameMaster.Get(), 0, 0.0f, 0.0f, 0);
     }
@@ -161,7 +171,7 @@ void CTCTavernGame::LeaveGame()
         hero->GetInterface(&gamePlayer, 0xd0);
         gamePlayer->SetGame(0);
     }
-    g_pPlayerGui->Close();
+    g_pPlayerGui->Open();
     g_pPlayerGui->m_bShowing = false;
     {
         CTCHeroStats* stats;

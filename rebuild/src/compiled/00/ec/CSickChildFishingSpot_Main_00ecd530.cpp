@@ -6,7 +6,8 @@
 // Layout = Ego_r.pdb CSickChildFishingSpot (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18;
 // the parent's flag byte is at +0x69 in retail (PDB CV_SickChildScript::GotFishingSpotMushroom +0x7d).
 // Shape: the landed CHHUndead::Main 0x00E95E80 prelude; the first IsDone test is explicit and the second is the rotated
-// `while (!IsDone())` entry test; the disabled-spot exit re-tests IsDone before the flag store and returns.
+// `while (!IsActiveThreadTerminating())` entry test; the disabled-spot exit re-tests IsDone before the flag store and returns.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
@@ -166,8 +167,14 @@ class CGameScriptInterface { public:                     // vtable 0x01260F0C (r
     virtual void v242();
     virtual bool IsFishingSpotEnabled(const CScriptThing& thing) const;    // slot 243 (+0x3cc), 0x008958F0
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
@@ -178,15 +185,20 @@ struct CV_SickChildScript {
 };
 struct CQ_SunnyvaleMasterData;
 
-class CSickChildFishingSpot {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CSickChildFishingSpot : public CEntityScriptBase {
 public:
     void*                   __vftable;             // +0x00
     CGameScriptInterface*   Game;                  // +0x04
     CScriptThing            Me;                    // +0x08
     CV_SickChildScript*     ParentClass;           // +0x14
     CQ_SunnyvaleMasterData* PMasterData;           // +0x18
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -194,14 +206,14 @@ void CSickChildFishingSpot::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
-    while (!IsDone()) {
+    while (!IsActiveThreadTerminating()) {
         if (!Game->IsFishingSpotEnabled(Me)) {
-            if (!IsDone())
+            if (!IsActiveThreadTerminating())
                 ParentClass->GotFishingSpotMushroom = true;
             return;
         }

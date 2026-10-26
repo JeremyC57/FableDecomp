@@ -181,7 +181,19 @@ class CPlayerGui { public:
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 void __fastcall OnCloseMenus();                      // 0x0041D165 (NUISystem::CManager, static)
 
-class CTCInventoryTrade { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryTrade : public NInventory::CTCInventoryBase { public:
     void*            __vftable;                      // +0x00
     CThing*          ParentThing;                    // +0x04
     unsigned char    _pad08[0x0c - 0x08];
@@ -193,7 +205,6 @@ class CTCInventoryTrade { public:
     long             PreviousScreenType;             // +0x174
     void RemoveTattooAndHairCategories();            // 0x0059D9AD
     void BaseCloseInventory();                       // 0x005BD597 (CTCInventoryBase::CloseInventory)
-    CWorld* GetWorld();                              // 0x00686A70 (CTCBase)
     void CloseInventory();
 };
 
@@ -212,7 +223,7 @@ void CTCInventoryTrade::CloseInventory()
     g_frontEndNodeList.clear();
     CFrontEndManager::GetInstance()->Slot37();
     g_pMainGameComponent->World->Hud->SetEnabled(true);
-    CWorld* world = GetWorld();
+    CWorld* world = (&GetWorld());
     world->InventoryClosedFrame = GetWorldFrame();
     if (g_pSoundSystem) {
         g_pSoundSystem->RefreshCategory(0x10, CUserProfileManager::Get().GetSFXVolume(), 0.0f);

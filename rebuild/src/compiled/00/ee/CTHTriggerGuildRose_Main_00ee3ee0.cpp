@@ -17,6 +17,7 @@
 //        its destructor below the slot-108 call).
 // Layout: Ego_r.pdb CTH_Trigger_Guild_Rose (28 bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass
 //         +0x14 (CV_TravellingHeroesScript*), PMasterData +0x18 (CQ_SunnyvaleMasterData*: PostSavePosition +4).
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                          // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
@@ -99,8 +100,14 @@ class CGameScriptInterface { public:
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-struct CIsThingAlive {                         // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                         // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                     // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                         // 0x00E241B0 (out of line in this module)
@@ -112,15 +119,20 @@ struct CQ_SunnyvaleMasterData {
 struct CV_TravellingHeroesScript {
     void OnRoseQuestCutscene_00ee2db0(CCharString name);   // 0x00EE2DB0 (one CCharString by value)
 };
-class CTH_Trigger_Guild_Rose {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CTH_Trigger_Guild_Rose : public CEntityScriptBase {
 public:
     void*                     __vftable;      // +0x00
     CGameScriptInterface*     Game;           // +0x04
     CScriptThing              Me;             // +0x08
     CV_TravellingHeroesScript* ParentClass;   // +0x14
     CQ_SunnyvaleMasterData*   PMasterData;    // +0x18
-    void SetPredicate(CIsThingAlive& filter); // 0x00F35B10
-    bool IsActiveThreadTerminating();         // 0x00F35B30
     void Main();
 };
 

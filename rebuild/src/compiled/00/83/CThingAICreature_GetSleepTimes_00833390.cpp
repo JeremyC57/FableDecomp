@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00833390, length 349 bytes (`ret 8`).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (the const copy; inlined GetTC on the
 //   village-member interface 0x23), CTCVillageMember::GetPVillage @ 0x007EE540 (manifest "IS_THING_ALIVE<...>" is
-//   propagated; landed callers 0x007B6A80 / 0x00833710 name it), CThing::GetDefinitionManager @ 0x004C7990 (propagated
+//   propagated; landed callers 0x007B6A80 / 0x00833710 name it), CThing::PeekDefinitionManager @ 0x004C7990 (propagated
 //   "CViewBase::GetDisplayEngine"), the village def's virtual slot 1 (destroy at refcount zero).
 // Layout: retail CThing interface bitset +0x20 (bit 0x23 = byte +0x24 bit 3), CVectorMap +0x44; CThingCreatureBase PDef
 //   +0xE0 (landed ConstructFromParams 0x00830360) whose +0xC4 word is the creature's age (1 child, 2 adult, 3 elderly:
@@ -53,6 +53,9 @@ class CDefinitionManager { public:
     unsigned char _pad00[0xd0];
     CDefaultVillageTimes* DefaultVillageDef;                // +0xd0
 };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};
 
 template <class T>
 class CDefPointer { public:
@@ -101,7 +104,8 @@ class CThing { public:
         const CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    CDefinitionManager* GetDefinitionManager();             // 0x004C7990
+public:
+    const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x004C7990
 };
 
 class CThingAICreature : public CThing { public:
@@ -136,7 +140,7 @@ void CThingAICreature::GetSleepTimes(long& start, long& end)
             }
         }
     }
-    CDefinitionManager* manager = GetDefinitionManager();
+    const CDefinitionManager* manager = (&PeekDefinitionManager());
     CDefaultVillageTimes* def = manager->DefaultVillageDef;
     switch (PDef->Age) {
     case 1:

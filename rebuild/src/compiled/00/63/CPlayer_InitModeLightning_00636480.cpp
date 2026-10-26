@@ -74,8 +74,9 @@ class CTCCreatureModeManager { public:                         // interface 0x31
     bool AddMode(unsigned long mode);                   // 0x0073AE10
 };
 class CTCCarrying { public:                                    // interface 0x46
-    bool HasPendingActions();                           // 0x006A1270
     CThing* RemoveThingFromPrimarySlot(bool drop);      // 0x006A1E00
+public:
+    bool IsPrimarySlotFree() const;   // 0x006A1270
 };
 class CTCTargetingPlayer { public:                             // interface 0x08
     void SetAsPickUpNewLockTarget();                    // 0x008023A0
@@ -120,7 +121,7 @@ void CPlayer_Methods::InitModeLightning(EPlayerMode mode, CProcessedInput* input
             CTCCarrying* carrying = 0;
             if (hero->HasTC(0x46))
                 carrying = hero->GetTC<CTCCarrying>(0x46);
-            if (!carrying->HasPendingActions())
+            if (!carrying->IsPrimarySlotFree())
                 carrying->RemoveThingFromPrimarySlot(false);
         }
     }

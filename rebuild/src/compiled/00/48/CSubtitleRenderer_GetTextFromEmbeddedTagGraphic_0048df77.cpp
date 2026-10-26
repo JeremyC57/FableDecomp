@@ -23,9 +23,12 @@ public:
     CCharString& operator=(const char* text);      // 0x0099EFE0
     bool operator!=(const char* text) const;       // 0x0099E960
 };
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                        // +0x14
@@ -42,7 +45,10 @@ class CPlayerGuiDef { public:
     long          ControllerDPadLeftGraphic;       // +0x684
     long          ControllerDPadRightGraphic;      // +0x688
 };
-const CPlayerGuiDef* __fastcall PeekGuiDef();      // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};      // 0x00438570
 class CSubtitleRenderer { public:
     CWideString GetTextFromEmbeddedTagGraphic(long graphic) const;
 };
@@ -50,7 +56,7 @@ class CSubtitleRenderer { public:
 CWideString CSubtitleRenderer::GetTextFromEmbeddedTagGraphic(long graphic) const
 {
     CCharString tag;
-    const CPlayerGuiDef* gui = PeekGuiDef();
+    const CPlayerGuiDef* gui = (&CPlayerGui::PeekGuiDef());
     if (graphic == gui->ControllerAGraphic)
         tag = "TEXT_GUI_CONTROLLER_LEFT";
     else if (graphic == gui->ControllerBGraphic)

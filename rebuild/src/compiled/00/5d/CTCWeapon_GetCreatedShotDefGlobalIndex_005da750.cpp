@@ -12,8 +12,13 @@ class CCharString { public:
     CCharString(const char* text, long length);  // 0x0099EBF0
     ~CCharString();                              // 0x0099EAE0
 };
-class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+class CDefinitionManager
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};
+
+class CGameDefinitionManager : public CDefinitionManager { public:
 };
 class CWeaponDef { public:
     virtual void v00();
@@ -30,12 +35,18 @@ template <class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 class CThing;
-class CTCWeapon { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCWeapon : public CTCBase { public:
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[4];
     CDefPointer<CWeaponDef> WeaponDef;           // +0x0c
-    const CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
     __forceinline CDefPointer<CWeaponDef> GetWeaponDef() const { return WeaponDef; }
     long GetCreatedShotDefGlobalIndex() const;
 };
@@ -44,5 +55,5 @@ long CTCWeapon::GetCreatedShotDefGlobalIndex() const
     if (GetWeaponDef()->CreatedShotDefIndex)
         return GetWeaponDef()->CreatedShotDefIndex;
     CCharString name("SHOT_CROSSBOW_BOLT", -1);
-    return GetDefinitionManager()->GetDefGlobalIndexFromName(name);
+    return GetDefinitionManager().GetDefGlobalIndexFromName(name);
 }

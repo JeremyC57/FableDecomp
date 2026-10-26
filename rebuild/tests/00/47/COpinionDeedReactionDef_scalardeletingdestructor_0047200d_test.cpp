@@ -11,9 +11,16 @@ static void* g_freed = 0;
 
 void FABLE_FASTCALL COpinionDeedReactionDef_Member_dtor(
         COpinionDeedReactionDef_Member*) { ++g_member_dtor; }
-void FABLE_FASTCALL COpinionDeedReactionDef_dtor(
-        CEngineSubPrimitiveText*) { ++g_main_dtor; }
-void FABLE_CDECL fable_operator_delete(void* p) { ++g_deleted; g_freed = p; }
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();
+};
+CParentDefClassBase::~CParentDefClassBase()
+{
+     ++g_main_dtor;
+}
+void __cdecl operator delete(void* p)
+{ ++g_deleted; g_freed = p; }
 
 void* FABLE_FASTCALL COpinionDeedReactionDef_scalar_deleting_dtor(
         CEngineSubPrimitiveText* thisptr, int edx, unsigned int flags);

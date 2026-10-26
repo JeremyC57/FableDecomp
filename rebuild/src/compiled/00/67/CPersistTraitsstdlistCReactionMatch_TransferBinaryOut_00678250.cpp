@@ -8,10 +8,17 @@
 //   the sentinel through the list each iteration (`cmp esi,[ebp]`) because the virtual calls may modify it, and the match
 //   pointer is held in edi across both virtual calls.
 // The stream uses engine/CDataOutputStream.h with its out-of-line WriteLong declared in a methods view.
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteLong(long value);                                        // 0x00993EB0
 };
 
 enum EReactionMatchType { REACTION_MATCH_TYPE_FORCE_DWORD = 0x7fffffff };
@@ -61,10 +68,10 @@ template <class T> struct CPersistTraits {
 template <> void CPersistTraits<std::list<CReactionMatch*> >::TransferBinaryOut(CDataOutputStream& out, const std::list<CReactionMatch*>& value) const
 {
     CDataOutputStream_Methods& stream = static_cast<CDataOutputStream_Methods&>(out);
-    stream.WriteLong(value.size());
+    stream.WriteSLONG(value.size());
     for (std::_List_iterator<CReactionMatch*> it = value.begin(); it != value.end(); ++it) {
         CReactionMatch* match = *it;
-        stream.WriteLong(match->GetMatchType());
+        stream.WriteSLONG(match->GetMatchType());
         match->TransferBinaryOut(out);
     }
 }

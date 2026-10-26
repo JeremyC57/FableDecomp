@@ -19,7 +19,7 @@ class CCharString { public:
     CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
     ~CCharString();                                     // 0x0099EAE0
 };
-CCharString __fastcall IntToCharString(long value);                              // 0x0099F830
+CCharString __fastcall GFIntToCharString(long);                              // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
 
@@ -167,7 +167,7 @@ long CParticleEmitterManager::GetVisibleEmitterNames(CCharStringVector& names)
     long total = 0;
     for (int i = 0; i < names.size(); ++i) {
         total += counts[i];
-        names[i] += " (" + IntToCharString(counts[i]) + ")";
+        names[i] += " (" + GFIntToCharString(counts[i]) + ")";
     }
     return total;
 }

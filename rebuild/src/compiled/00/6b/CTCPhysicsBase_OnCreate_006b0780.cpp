@@ -107,7 +107,9 @@ class CThing { public:
     unsigned char _pad00[0x8c];
     unsigned short DefGlobalIndex;                      // +0x8c (PDB +0x9c)
 };
-class CTCPhysicsBase { public:
+class CTCBase
+{
+public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -202,6 +204,14 @@ class CTCPhysicsBase { public:
     virtual void v091();
     virtual void v092();
     virtual CThingPhysicsMeshInfo* GetPhysicsMeshInfo();    // slot 93 (+0x174)
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCPhysicsBase : public CTCBase {
+public:
+    virtual void OnCreate();
+ public:
     CThing*   ParentThing;                              // +0x04 (CTCBase)
     bool      ToBeRemoved;                              // +0x08
     bool      IsInGlobalUpdateTCs;                      // +0x09
@@ -214,7 +224,6 @@ class CTCPhysicsBase { public:
     CDefPointer<CPhysicsDef> PhysicsDef;                // +0x38
     bool      Moving : 1;                               // +0x3c bit 0
     bool      OldMoving : 1;                            // +0x3c bit 1
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
     float CalculateRadius()
     {
         CThingPhysicsMeshInfo* mesh = GetPhysicsMeshInfo();

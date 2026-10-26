@@ -19,6 +19,7 @@
 // Shape: the landed CCorneredGuard::Main 0x00DA7830 model (same TU and parent) plus the CDF_ShineLight handle classes; unlike
 //   CCorneredGuard the spawn argument Me goes through the out-of-line const copy 0x004ABE90 (no non-const inline copy ctor),
 //   and the hero handle's ctor is kept out of line with `inline_depth(0)`.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -63,15 +64,16 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     CCPPointerImp PImp;                                // +0x04
     CScriptThing();                                    // 0x006E7B40
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
 };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
@@ -157,14 +159,27 @@ struct CQ_MinionClifftopChaseScript : CScriptBase {
     bool ShownIntroCutscene;                           // +0x4d (descriptive)
     void GuardChatter(CScriptThing guard);             // 0x00DA71E0
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
 struct CQ_SunnyvaleMasterData;
-class CMinionWarningGuard {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CMinionWarningGuard : public CEntityScriptBase {
 public:
     void*                         __vftable;           // +0x00
     CGameScriptInterface*         Game;                // +0x04
@@ -172,8 +187,6 @@ public:
     CQ_MinionClifftopChaseScript* ParentClass;         // +0x14
     CQ_SunnyvaleMasterData*       PMasterData;         // +0x18
     long                          HealthBarID;         // +0x1c
-    void RegisterFilter(CIsThingAlive& filter);        // 0x00F35B10
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 
@@ -181,7 +194,7 @@ void CMinionWarningGuard::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

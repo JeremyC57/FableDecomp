@@ -90,15 +90,20 @@ __forceinline bool IsCrime(const COpinionDeed* deed)
 class CTCCreatureOpinionOfHero;
 __forceinline void ReportList(CTCHeroOpinionDeedLog* log, CTCVillage* village, CTCCreatureOpinionOfHero* informed,
                               CLongList& deeds);
-class CTCCreatureOpinionOfHero { public:
+class CTCBase
+{
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90
+};
+
+class CTCCreatureOpinionOfHero : public CTCBase { public:
     void*         __vftable;                                 // +0x00
     CThing*       Thing;                                     // +0x04
     unsigned char _pad08[0x54 - 0x08];
     CLongList     PendingDeeds;                              // +0x54
     long          LastFrameAppliedDeedEffect[92];            // +0x58
     CLongList     KnownDeeds[92];                            // +0x1c8
-    const CPlayerManager* GetPlayerManager() const;          // 0x00686D50
-    const CThingSearchTools* GetThingSearchTools() const;    // 0x00686D90
     void InformOfDeed(long handle, bool flag);               // 0x00683590
     void ReportAllCrimes(CTCCreatureOpinionOfHero* informed);
 };
@@ -134,10 +139,10 @@ void CTCCreatureOpinionOfHero::ReportAllCrimes(CTCCreatureOpinionOfHero* informe
     CTCVillage* village = GFGetPVillageInterface(villager);
     {
         CThingAICreature* guard;
-        if (!GetThingSearchTools()->GetPFirstLeafThing(CThingFilter_AICreatureHasProperty(3), &guard))
+        if (!PeekThingSearchTools().GetPFirstLeafThing(CThingFilter_AICreatureHasProperty(3), &guard))
             return;
     }
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature_00487dd0();
+    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetHeroCreature_00487dd0();
     if (!hero)
         return;
     CTCHeroOpinionDeedLog* log;

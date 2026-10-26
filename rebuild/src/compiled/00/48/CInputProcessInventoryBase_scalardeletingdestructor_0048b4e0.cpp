@@ -7,13 +7,12 @@ struct CInputProcessInventoryBase
 };
 
 // operator delete (0x00bfe9bc)
-void __cdecl EngineOperatorDelete(void* p);
 
 void* __fastcall CInputProcessInventoryBase_scalar_deleting_destructor(
     CInputProcessInventoryBase* process, int /*edx*/, unsigned int flags)
 {
     process->ScalarDtor();
     if (flags & 1)
-        EngineOperatorDelete(process);
+        operator delete(process);
     return process;
 }

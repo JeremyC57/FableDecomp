@@ -14,14 +14,25 @@ class C3DVector { public:
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CThingPos {
+class CThingPos { public:
     C3DVector* GetPosition();                   // 0x004C73D0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThingPos* m_pItem;                         // +0x04
-    CThingPos* GetPItem() const;                // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CAIStateGroupBase { public:
@@ -37,7 +48,7 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     CTCTalk* PTCTalk;                           // +0x14
     long CurrentReactionType;                   // +0x18
     bool ReactionFlags[79];                     // +0x1c
-    CBaseIntelligentPointer ThingReactingTo;    // +0x6b CIntelligentPointer<CThing>
+    CIntelligentPointer<CThingPos> ThingReactingTo;    // +0x6b CIntelligentPointer<CThing>
     bool TryAndLookOnAwarenessUpdate();
 };
 #pragma pack(pop)

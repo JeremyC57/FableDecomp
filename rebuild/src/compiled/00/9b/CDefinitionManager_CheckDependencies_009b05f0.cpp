@@ -28,7 +28,10 @@ class CWideString { public:
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);       // 0x0099BF30
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name, CWideString* extension);   // 0x00997620
+class CAFile {
+public:
+    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+};   // 0x00997620
 struct CFileScanState { long _body[2]; };
 bool __fastcall ScanFirstFile(const CWideString& directory, CFileScanState& state, CWideString& fileName);   // 0x00999C50
 bool __fastcall ScanNextFile(const CWideString& directory, CFileScanState& state, CWideString& fileName);    // 0x00999CB0
@@ -142,7 +145,7 @@ void CDefinitionManager::CheckDependencies(const CWideStringVector& paths)
     CWideString drive;
     CWideString directory;
     CWideString name;
-    SplitPath(CompiledFileName, &drive, &directory, &name, 0);
+    CAFile::SplitPath(CompiledFileName, &drive, &directory, &name, 0);
     CWideString checksumPath = drive + directory + name + L".cks";
     CChecksumFile checksums(0x10000);
     checksums.Open(checksumPath);

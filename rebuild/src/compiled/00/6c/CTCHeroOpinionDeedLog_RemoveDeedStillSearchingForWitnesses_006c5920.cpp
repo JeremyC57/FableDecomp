@@ -9,16 +9,28 @@
 // Layout: retail OpinionDeedMap +0x0c, OpinionDeedsSearchingForWitnesses +0x18 (list head; entry data at node +8: Handle +8,
 // PThing +0x10); COpinionDeed: frame +0x14, still-searching flag +0x21 (descriptive names).
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
-long __fastcall GetWorldFrame();                // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                // 0x0049D870
 
 class CThing;
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    virtual void v00();
-    void* PData;
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+private:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
 class COpinionDeed { public:
     unsigned char _pad00[0x14];
     long          FrameWitnessSearchEnded;      // +0x14
@@ -103,7 +115,7 @@ void CTCHeroOpinionDeedLog::RemoveDeedStillSearchingForWitnesses(long handle)
     CDeedMapIterator it = OpinionDeedMap.find(handle);
     SDeedNode* node = it._M_node;
     if (node != OpinionDeedMap._M_header) {
-        node->second->FrameWitnessSearchEnded = GetWorldFrame();
+        node->second->FrameWitnessSearchEnded = CWorld::GetFrame();
         node->second->SearchingForWitnesses = false;
     }
     SWitnessNode* head = OpinionDeedsSearchingForWitnesses._M_node;

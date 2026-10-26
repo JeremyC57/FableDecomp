@@ -954,12 +954,17 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  void PlayLoopingAnimation(const CCharString& anim, long loops, bool waitForFinish, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 20, 0x007E73F0
 };
 extern bool g_bScriptAnimationFlag;                 // 0x01375748 (a global bool the script headers pass as an animation default)
-struct COracleTablet {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct COracleTablet : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  void* ParentClass;                                  // +0x14
  void* PMasterData;                                  // +0x18
  bool AlreadyDugHere;                                // +0x1c
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void RemoveCursedTablets();
 };
 void COracleTablet::RemoveCursedTablets()

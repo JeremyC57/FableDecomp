@@ -2,7 +2,7 @@
 // Leaf: ?UpdateFlight@CTCCreatureFlyInCircles@@IAEXAAVC3DVector@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DD270, 437 bytes, `ret 8`.
 // Callees: CCreatureActionBase::GetProgressRatio 0x006925E0 (catalog "operator==" / landed "GetMovementRatio" are
-//   propagated), C3DVector::RotateAboutZ 0x00A14040, C3DVector::AccurateNormalise @ 0x00A14440; constants -0.25 0x01230C8C,
+//   propagated), C3DVector::RotateXY 0x00A14040, C3DVector::AccurateNormalise @ 0x00A14440; constants -0.25 0x01230C8C,
 //   1.0 0x0122DED8, 0.1 0x0122EE58.
 // Layout: CTCCreatureFlyInCircles (Ego_r.pdb): Creature +0x0c, Centre +0x10, Speed +0x1c, DeltaSpeed +0x20,
 //   SpeedChangeTicks +0x24, CurrentRadius +0x28, DeltaRadius +0x2c, RadiusChangeTicks +0x30, Mode +0x34,
@@ -19,7 +19,8 @@ class C3DVector { public:
     C3DVector& operator-=(const C3DVector& o) { X -= o.X; Y -= o.Y; Z -= o.Z; return *this; }
     C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
     C3DVector& AccurateNormalise();                                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-    void RotateAboutZ(float angle);                          // 0x00A14040
+public:
+    void RotateXY(float);   // 0x00A14040
 };
 
 class CCreatureActionBase { public:
@@ -47,6 +48,8 @@ public:
     long                RadiusChangeTicks;                   // +0x30
     EFlyMode            Mode;                                // +0x34
     bool                Transitioning;                       // +0x38
+
+protected:
     void UpdateFlight(C3DVector& position, C3DVector& velocity);
 };
 
@@ -75,7 +78,7 @@ void CTCCreatureFlyInCircles::UpdateFlight(C3DVector& position, C3DVector& veloc
         bank = -0.25f;
     float height = position.Z;
     velocity.Z = 0.0f;
-    velocity.RotateAboutZ(-bank);
+    velocity.RotateXY(-bank);
     position += velocity * Speed;
     position -= Centre;
     position.Z = 0.0f;
@@ -86,5 +89,5 @@ void CTCCreatureFlyInCircles::UpdateFlight(C3DVector& position, C3DVector& veloc
     velocity = position - oldPosition;
     velocity.Z = 0.0f;
     velocity.AccurateNormalise();
-    velocity.RotateAboutZ(bank);
+    velocity.RotateXY(bank);
 }

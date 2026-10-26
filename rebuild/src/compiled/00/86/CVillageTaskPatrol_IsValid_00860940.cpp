@@ -1,3 +1,13 @@
 #include "engine/CVillageTaskPatrol.h"  // retyped onto the PDB layout; byte parity re-verified
-extern int __fastcall probe(void*);
-bool __fastcall IsValid(CVillageTaskPatrol* task){ return probe(reinterpret_cast<char*>(task)+8) != 0; }
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+bool __fastcall IsValid(CVillageTaskPatrol* task){ return ((int)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(task)+8))->GetPItem())) != 0; }

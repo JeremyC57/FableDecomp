@@ -5,7 +5,7 @@ struct Node {
     Node* child;  // +0xc
 };
 
-extern "C" void __cdecl freeNode(Node* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CTree {
     void BuildTreeArray(Node* n);
@@ -17,7 +17,7 @@ void CTree::BuildTreeArray(Node* n)
         do {
             this->BuildTreeArray(n->child);
             Node* next = n->next;
-            freeNode(n);
+            free(n);
             n = next;
         } while (n);
     }

@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCGeneratesExperienceOnKilling_Destruct(void* killing);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCGeneratesExperienceOnKilling_ScalarDeletingDestructor(void* killing, int, unsigned int flags)
 {
-    CTCGeneratesExperienceOnKilling_Destruct(killing);
+    ((CTCBase*)(killing))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(killing);
+        operator delete(killing);
     return killing;
 }

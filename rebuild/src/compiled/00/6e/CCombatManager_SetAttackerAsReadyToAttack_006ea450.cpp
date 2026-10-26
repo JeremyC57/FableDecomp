@@ -44,12 +44,14 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public: };
 
 class CTCCarrying { public:                            // interface type 0x46
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 
 class CTCWeapon { public:                              // interface type 0x48
-    bool IsProjectileWeapon();                  // 0x005DAA40
     void ReadyProjectile();                     // 0x005DA4E0
+public:
+    bool IsProjectileWeapon() const;   // 0x005DAA40
 };
 
 struct CCombatantInfo {                         // retail layout (Ego_r.pdb names)

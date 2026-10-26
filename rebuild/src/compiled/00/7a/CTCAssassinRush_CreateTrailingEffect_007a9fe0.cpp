@@ -109,20 +109,28 @@ class CThing { public:
 };
 CThing* __fastcall CreateScaledEffect(long lowEffect, long effect, float scale, const C3DVector& pos, bool attached);   // 0x006E11F0
 CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CThing* item);                        // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { T* item = other.GetPItem(); SetPItem(item); return *this; }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_stateFlags & 1))
@@ -147,18 +155,23 @@ class CWorld { public:
     unsigned char _pad00[0x18];
     CEnvironment* PEnvironment;                         // +0x18
 };
-class CTCAssassinRush { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCAssassinRush : public CTCBase { public:
     void*                    __vftable;                 // +0x00
     CThing*                  ParentThing;               // +0x04
     unsigned char            _pad08[0x14 - 0x08];
     CAssassinRushDef*        PDef;                      // +0x14
-    CIntelligentPointerThing AssassinTrail;             // +0x18
-    CIntelligentPointerThing AssassinDisplacementTrail; // +0x20
+    CIntelligentPointer<CThing> AssassinTrail;             // +0x18
+    CIntelligentPointer<CThing> AssassinDisplacementTrail; // +0x20
     unsigned char            _pad28[0x8c - 0x28];
     long                     SpellLevel;                // +0x8c
     unsigned char            _pad90[0x98 - 0x90];
     void*                    RadialBlurFadeKey;         // +0x98
-    CWorld* GetWorld();                                 // 0x00686A70
     void CreateTrailingEffect();
 };
 
@@ -178,7 +191,7 @@ void CTCAssassinRush::CreateTrailingEffect()
                 long maxLevel = abilities->GetAbilityMaximumLevel(13);
                 scale = (float)SpellLevel / maxLevel;
             }
-            AssassinTrail = CIntelligentPointerThing(CreateScaledEffect(lowEffect, startEffect, scale, ParentThing->GetPosition(), false));
+            AssassinTrail = CIntelligentPointer<CThing>(CreateScaledEffect(lowEffect, startEffect, scale, ParentThing->GetPosition(), false));
             if (IS_THING_ALIVE(AssassinTrail)) {
                 CTCDParticleEmitter* emitter = 0;
                 AssassinTrail.GetPItem()->GetInterface(&emitter, 0x4b);
@@ -188,7 +201,7 @@ void CTCAssassinRush::CreateTrailingEffect()
         }
         long displacement = 0;
         if (effects->CalcAndLookup("DISPLACEMENT_EFFECT", &displacement)) {
-            AssassinDisplacementTrail = CIntelligentPointerThing(CreateSpecialEffect(displacement, ParentThing->GetPosition(), false));
+            AssassinDisplacementTrail = CIntelligentPointer<CThing>(CreateSpecialEffect(displacement, ParentThing->GetPosition(), false));
             if (IS_THING_ALIVE(AssassinDisplacementTrail)) {
                 CTCDParticleEmitter* emitter = 0;
                 AssassinDisplacementTrail.GetPItem()->GetInterface(&emitter, 0x4b);
@@ -197,7 +210,7 @@ void CTCAssassinRush::CreateTrailingEffect()
             }
         }
     }
-    CEnvironmentSpellEffects* spellEffects = GetWorld()->PEnvironment->SpellEffects;
+    CEnvironmentSpellEffects* spellEffects = GetWorld().PEnvironment->SpellEffects;
     RadialBlurFadeKey = spellEffects->RadialBlurFadeTo(PDef->BlurStrength, 2, PDef->Blur[0], PDef->Blur[1], PDef->Blur[2],
                                                       PDef->Blur[3], PDef->Blur[4], PDef->Blur[5]);
     C3DVector pos = parent->GetPosition();

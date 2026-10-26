@@ -10,12 +10,12 @@ class CCharString { public:
     CCharString& operator=(const CCharString& o);        // 0x0099EFB0
 };
 
-struct CDefBase {
+class CDefClassBase { public:
     unsigned char _body[0x28];                           // vptr + def header
-    CDefBase& Copy(const CDefBase& o);                   // 0x00431F10
+    CDefClassBase& operator=(const CDefClassBase& other);                   // 0x00431F10
 };
 
-class CArenaCreatureDef : public CDefBase { public:
+class CArenaCreatureDef : public CDefClassBase { public:
     CCharString CreatureType;                            // +0x28
     long NumCreatures;                                   // +0x2c
     CCharString HUDType;                                 // +0x30
@@ -25,7 +25,7 @@ class CArenaCreatureDef : public CDefBase { public:
 
 CArenaCreatureDef& CArenaCreatureDef::Copy(const CArenaCreatureDef& o)
 {
-    CDefBase::Copy(o);
+    CDefClassBase::operator=((const CDefClassBase&)(o));
     CreatureType = o.CreatureType;
     NumCreatures = o.NumCreatures;
     HUDType = o.HUDType;

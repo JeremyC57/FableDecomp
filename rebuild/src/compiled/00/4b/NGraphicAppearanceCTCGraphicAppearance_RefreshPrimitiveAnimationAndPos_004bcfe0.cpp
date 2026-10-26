@@ -68,9 +68,8 @@ struct CComponentList {                                 // STLport list<CAGraphi
     CComponentListNode* m_head;
 };
 
-struct CInterpolatorBase {                              // vptr only; out-of-line destructor
-    void* __vftable;
-    ~CInterpolatorBase();                               // 0x0099A2E0
+class CBaseClass { public:                              // vptr only; out-of-line destructor
+    virtual ~CBaseClass();                               // 0x0099A2E0
 };
 
 class CRightHandedSet { public: float m[6]; };
@@ -83,13 +82,13 @@ class C3DAnimationInterpolator { public:                       // 20 bytes
 };
 
 class C3DPositionInterpolator { public:                        // 28 bytes
-    CInterpolatorBase m_base;
+    CBaseClass m_base;
     C3DVector         StartPosition;
     C3DVector         EndPosition;
 };
 
 class C3DOrientationInterpolator { public:                     // 52 bytes
-    CInterpolatorBase m_base;
+    CBaseClass m_base;
     CRightHandedSet   StartOrientation;
     CRightHandedSet   EndOrientation;
 };

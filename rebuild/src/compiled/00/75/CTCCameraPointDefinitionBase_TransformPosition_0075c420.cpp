@@ -44,8 +44,9 @@ public:
     bool    UsingRelativeCoords;                // +0x3a
     bool    UsingRelativeOrientation;           // +0x3b
     bool    Activated;                          // +0x3c
-    C3DVector TransformVector(const C3DVector& vector, const CRightHandedSet* axes) const;   // 0x0075C280
     C3DVector TransformPosition(const C3DVector& position, const C3DVector* origin, const CRightHandedSet* axes) const;
+protected:
+    C3DVector TransformVector(const C3DVector&, const CRightHandedSet*) const;   // 0x0075C280
 };
 #pragma pack(pop)
 

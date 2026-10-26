@@ -1,38 +1,33 @@
 #include <cstdio>
 
-struct FableCharStringResult_004d39eb
+class CCharString
 {
-    const char* seen_text;
-    int seen_len;
-    void* build(const char* text, int length);
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-static FableCharStringResult_004d39eb* g_last;
-void* FableCharStringResult_004d39eb::build(const char* text, int length)
-{
-    seen_text = text;
-    seen_len = length;
-    g_last = this;
-    return this;
-}
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
 
-extern "C" FableCharStringResult_004d39eb* __fastcall
-FableStatGetClassTypeName_004d39eb(FableCharStringResult_004d39eb* result, void*);
+class CTCCameraPointBuilding
+{
+public:
+    static CCharString __fastcall StatGetClassTypeName();
+};
 
 int main()
 {
-    FableCharStringResult_004d39eb obj;
-    obj.seen_text = 0;
-    obj.seen_len = 0;
-    FableCharStringResult_004d39eb* ret = FableStatGetClassTypeName_004d39eb(&obj, 0);
-
-    bool ok = (ret == &obj)
-        && (obj.seen_text == (const char*)19115712)
-        && (obj.seen_len == -1);
-
-    if (ok)
-        printf("004d39eb_TEST PASS\n");
-    else
-        printf("FAIL text=%p len=%d ret=%p\n", obj.seen_text, obj.seen_len, ret);
+    {
+        CCharString name = CTCCameraPointBuilding::StatGetClassTypeName();
+        if (g_ctorCount != 1 || name.PStringData != &name) { std::printf("BAD_IDENTITY\n"); return 1; }
+        if (g_seenLength != -1) { std::printf("BAD_LEN\n"); return 1; }
+        if (g_seenText != (const char*)0x0123AEC0) { std::printf("BAD_TEXT\n"); return 1; }
+    }
+    std::printf("004d39eb_TEST PASS\n");
     return 0;
 }

@@ -15,7 +15,8 @@
 class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();                        // 0x00857520
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_DiagonalStrafeBL : public CCombatActionBase { public:
@@ -26,7 +27,7 @@ void CCreatureAction_DiagonalStrafeBL::Initialise()
 {
     {
         CCharString name("MOVEMENT_STRAFE_BACK_LEFT", -1);       // a named local: a bare temporary would reuse the ctor's eax
-        SetAnimationName(name);            // instead of re-deriving `lea eax,[esp+4]` as retail does
+        SetCombatAnimation(name);            // instead of re-deriving `lea eax,[esp+4]` as retail does
     }
     CCombatActionBase::Initialise();
 }

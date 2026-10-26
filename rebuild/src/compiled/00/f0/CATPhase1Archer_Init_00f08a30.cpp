@@ -22,6 +22,7 @@
 #include "engine/CScriptThing.h"
 #include "engine/CASuspendableProcess.h"
 
+namespace NScript { class CPredicateBase; }
 class CCPPointerInfo { public: long References; };
 class C3DVector { public: float X, Y, Z; };
 
@@ -834,13 +835,18 @@ struct CSpawnedFuncAmbush : CSpawnedFuncBaseRuntime {
 FABLE_STATIC_ASSERT(sizeof(CSpawnedFuncAmbush) == 0x48);
 #endif
 
-struct CAT_Phase1Archer {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CAT_Phase1Archer : public CEntityScriptBase {
     void* __vftable;
     CGameScriptInterface* GSI;
     CScriptThingRuntime Thing;
     CQ_AmbushTradersScript* ParentClass; // PDB +0x14
     void* PMasterData;                   // PDB +0x18
-    bool IsDone();                       // 0x00F35B30
     void Init();
 };
 #if defined(_MSC_VER)
@@ -868,7 +874,7 @@ void CAT_Phase1Archer::Init()
     GSI->EntitySetThingAsEnemyOfThing(GSI->GetHero(), Thing);
     for (unsigned int i = 0; i < ParentClass->AllBandits.size(); ++i) {
         if (ParentClass->AllBandits[i].IsAlive()) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             GSI->EntitySetThingAsEnemyOfThing(Thing, ParentClass->AllBandits[i]);
             GSI->EntitySetThingAsEnemyOfThing(ParentClass->AllBandits[i], Thing);

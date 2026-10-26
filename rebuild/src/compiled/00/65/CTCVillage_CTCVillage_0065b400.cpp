@@ -27,14 +27,24 @@ class CTCBase { public:
     CTCBase(CThing* parent);                    // 0x00686800
 };
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerCreature : CBaseIntelligentPointer {     // vtable 0x0123E7E0
-    virtual void v01();
-    CIntelligentPointerCreature() {}
+class CThingAICreature;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {     // vtable 0x0123E7E0
+public:
+    CIntelligentPointer() {}
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(pop)
 struct CEmptyAllocator {                        // std::allocator<T> (empty)
@@ -111,13 +121,13 @@ class CTCVillage : public CTCBase { public:
     bool             SecuritySweepUrgent;                    // +0xb4
     float            InitialSecuritySweepRadius;             // +0xb8
     bool             TeacherTeaching;                        // +0xbc
-    CIntelligentPointerCreature GuardFollowingPlayer;        // +0xbd
+    CIntelligentPointer<CThingAICreature> GuardFollowingPlayer;        // +0xbd
     long             NextFrameToFollowPlayer;                // +0xc8
     bool             LightActiveStateToChange;               // +0xcc
     long             MaxFrameToAssignTask;                   // +0xd0
     long             HeroEnemyOfGuardsUntil;                 // +0xd4
     long             LastFrameApologised;                    // +0xd8
-    CIntelligentPointerCreature GuardWarningHero;            // +0xdc
+    CIntelligentPointer<CThingAICreature> GuardWarningHero;            // +0xdc
     bool             CurrentIsHeroCriminal;                  // +0xe4
 
     virtual void v01();

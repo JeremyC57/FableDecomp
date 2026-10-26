@@ -44,10 +44,11 @@ public:
 };
 class CBaseObject {
 public:
+    void* IntelligentPointer;                            // +0x04
+protected:
     CBaseObject();                                       // 0x0099A380
     CBaseObject(const CBaseObject& other);               // 0x0099A390
     virtual ~CBaseObject();                              // 0x0099A430
-    void* IntelligentPointer;                            // +0x04
 };
 class CScriptGameResourceObjectBase : public CBaseObject {
 public:

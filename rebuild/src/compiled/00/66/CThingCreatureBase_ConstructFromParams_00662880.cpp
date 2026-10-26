@@ -24,8 +24,8 @@ class CThingGameObject { public:
     unsigned char  _pad00[0x8c];
     unsigned short m_defGlobalIndex;            // +0x8c
     CDefinitionManager* GetDefinitionManager() const;       // 0x004C7990
-    bool ConstructFromParams(long defIndex, const C3DVector& position, long a3, unsigned long a4,
-                             const CCharString& name, CThingPhysical* p1, CThingPhysical* physical, bool flag);   // 0x008388D0
+protected:
+    bool ConstructFromParams(long, const C3DVector&, long, unsigned long, const CCharString&, CThingPhysical*, CThingPhysical*, bool);   // 0x008388D0
 };
 
 class CThingCreatureBase : public CThingGameObject { public:

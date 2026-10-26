@@ -14,7 +14,8 @@
 
 class CMemoryDataInputStream;
 class CDataOutputStream { public:
-    void WriteLong(long value);               // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 class CDefString { public:                           // the TablePos word of a CDefString member
     long TablePos;
@@ -35,7 +36,7 @@ class CPersistContext { public:
             value.ReadBinary(LoadStream);
             break;
         case 3:
-            SaveStream->WriteLong(value.TablePos);
+            SaveStream->WriteSLONG(value.TablePos);
             break;
         }
     }

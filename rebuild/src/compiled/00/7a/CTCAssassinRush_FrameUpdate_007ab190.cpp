@@ -99,7 +99,13 @@ struct CAssassinRushDef {
     unsigned char _pad48[0x4c - 0x48];
     float         BlurFadeTime;                         // +0x4c
 };
-class CTCAssassinRush { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCAssassinRush : public CTCBase { public:
     void*                   __vftable;                  // +0x00
     CThing*                 ParentThing;                // +0x04
     unsigned char           _pad08[0x14 - 0x08];
@@ -119,7 +125,6 @@ class CTCAssassinRush { public:
     bool                    FakeCollideWithSomething;   // +0x9f
     long                    RushDelayFrameCount;        // +0xa0
     bool                    CompletedExitModes;         // +0xa4
-    CWorld* GetWorld();                                 // 0x00686A70
     void CreateTrailingEffect();                        // 0x007A9FE0
     void RushForwards();                                // 0x007AAC50
     void CancelMove();                                  // 0x007AA480
@@ -139,7 +144,7 @@ void CTCAssassinRush::FrameUpdate()
     } else if (StartTrailDelay) {
         --TrailDelay;
         C3DVector pos = parent->GetPosition();
-        CWorld* world = GetWorld();
+        CWorld* world = (&GetWorld());
         world->PEnvironment->SpellEffects->RadialBlurSetCenterWorldPos(RadialBlurFadeKey,
             C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurHeight));
     } else {
@@ -147,7 +152,7 @@ void CTCAssassinRush::FrameUpdate()
     }
     if (SlowTimeLength > 0) {
         if (--SlowTimeLength <= 0)
-            GetWorld()->RemoveBulletTimeSlowdown((unsigned long)this);
+            GetWorld().RemoveBulletTimeSlowdown((unsigned long)this);
     }
     if (TrailDelay <= 0) {
         if (!CompletedExitModes) {
@@ -162,7 +167,7 @@ void CTCAssassinRush::FrameUpdate()
             if (parent->State == 1)
                 ParentThing->SetSuspendAnimation(false, 0);
             else
-                GetWorld()->RemoveBulletTimeSlowdown((unsigned long)this);
+                GetWorld().RemoveBulletTimeSlowdown((unsigned long)this);
         }
         --RushDelayFrameCount;
         if (IS_THING_ALIVE(AssassinTrail))
@@ -171,7 +176,7 @@ void CTCAssassinRush::FrameUpdate()
             AssassinDisplacementTrail.GetPItem()->Kill(true);
         if (RadialBlurFadeKey) {
             CAssassinRushDef* def = PDef;
-            CWorld* world = GetWorld();
+            CWorld* world = (&GetWorld());
             world->PEnvironment->SpellEffects->RadialBlurFadeOut(def->BlurFadeTime, RadialBlurFadeKey);
             RadialBlurFadeKey = 0;
         }

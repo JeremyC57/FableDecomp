@@ -17,13 +17,21 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 class CBaseObject;
 class CThingAICreature;
-class CBaseIntelligentPointer {
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    virtual void v00();
-    CBaseObject* PData;                                      // +0x04
-    ~CBaseIntelligentPointer();                              // 0x00A01C10
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+private: 
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
 class CGroupMemberData {                                     // 0x14 bytes (Ego_r.pdb)
 public:
     CIntelligentPointer<const CThingAICreature> PMember;     // +0x00

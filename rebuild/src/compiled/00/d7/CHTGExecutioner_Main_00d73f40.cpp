@@ -10,6 +10,7 @@
 //   (CQ_HangingTreeGoodScript, retail = PDB - 0x14 with 12-byte STLport vectors: ExecutionerBeenAttacked +0x55,
 //   ExecutionerBeenAttackedByHero +0x56, HTG_State +0x5c, CurrentGuardVector +0xac), PMasterData +0x18,
 //   AudienceMembers +0x1c (12-byte STLport vector; the PDB view is 16).
+namespace NScript { class CPredicateBase; }
 enum EHeroAbility { HERO_ABILITY_NONE };
 class CCharString { public:
     void* PStringData;
@@ -62,12 +63,13 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
     ~CScriptThing();                                    // 0x004AA840
 };
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -82,8 +84,14 @@ struct CScriptThingVector {                             // std::vector<CScriptTh
     CScriptThing* erase(CScriptThing* first, CScriptThing* last);   // 0x008AC9D0
     void clear() { erase(_M_start, _M_finish); }
 };
-struct CIsThingAlive {                                  // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -210,8 +218,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CHTG_Executioner : CEntityScriptBase {
     CQ_HangingTreeGoodScript* ParentClass;              // +0x14
@@ -224,7 +233,7 @@ void CHTG_Executioner::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

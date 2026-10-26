@@ -48,10 +48,11 @@ class CThing { public:
     }
 };
 
-struct CTCTargetedFlags {                  // the type-9 component: a flags word at +0xc with an out-of-line setter
+class CTCTargeted { public:                  // the type-9 component: a flags word at +0xc with an out-of-line setter
     unsigned char _pad00[0x0c];
     unsigned long m_flags;                 // +0x0c
-    void SetFlags(unsigned long flags);    // 0x007EA270
+public:
+    void SetTargetingFlags(unsigned long);   // 0x007EA270
 };
 
 class CTCCombat { public:                         // interface 0x30
@@ -72,9 +73,9 @@ struct CModeStunned : CModeBase {
 
 void NCreatureMode::CModeStunned::LeafInit()
 {
-    CTCTargetedFlags* targeted;
+    CTCTargeted* targeted;
     if (ParentThing->GetInterface(&targeted, 9))
-        targeted->SetFlags(4);
+        targeted->SetTargetingFlags(4);
     if (ParentThing->HasTC(0x30))
         ParentThing->GetTC<CTCCombat>(0x30)->RemoveFromCombat();
 }

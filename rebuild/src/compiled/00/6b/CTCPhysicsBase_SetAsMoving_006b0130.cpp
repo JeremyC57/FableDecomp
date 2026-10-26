@@ -10,8 +10,9 @@
 // "moving" bit; the xor/and/xor sequence is VC7.1's single-bit bitfield store.
 #include "engine/CTCPhysicsBase.h"
 
-struct CThingCalls {
-    void SetAsFrameUpdated();       // 0x004C7C40
+class CThing { public:
+public:
+    void SetAsFrameUpdated();   // 0x004C7C40
 };
 
 struct CPhysicsMovingFlags {
@@ -25,6 +26,6 @@ struct CTCPhysicsBase_Methods : CTCPhysicsBase {
 
 void CTCPhysicsBase_Methods::SetAsMoving(bool moving)
 {
-    reinterpret_cast<CThingCalls*>(this->sub)->SetAsFrameUpdated();
+    reinterpret_cast<CThing*>(this->sub)->SetAsFrameUpdated();
     reinterpret_cast<CPhysicsMovingFlags*>(&this->OldMoving[0])->Moving = moving;
 }

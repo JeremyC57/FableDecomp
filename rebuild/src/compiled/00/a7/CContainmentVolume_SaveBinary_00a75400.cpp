@@ -9,17 +9,18 @@
 // engine/CDataOutputStream.h exists (vptr + NewLine string) but only the two methods are needed.
 #include "engine/CContainmentVolume.h"
 
-struct CDataOutputStream_Calls {
-    void WriteLong(long value);                        // 0x00993EA0
+class CDataOutputStream { public:
     void WriteBuffer(const void* data, long size);     // 0x00996610
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 struct CContainmentVolume_Methods : CContainmentVolume {
-    void SaveBinary(CDataOutputStream_Calls& stream) const;
+    void SaveBinary(CDataOutputStream& stream) const;
 };
 
-void CContainmentVolume_Methods::SaveBinary(CDataOutputStream_Calls& stream) const
+void CContainmentVolume_Methods::SaveBinary(CDataOutputStream& stream) const
 {
-    stream.WriteLong(Size);
+    stream.WriteULONG(Size);
     stream.WriteBuffer(ContainmentPlanes, Size * 16);
 }

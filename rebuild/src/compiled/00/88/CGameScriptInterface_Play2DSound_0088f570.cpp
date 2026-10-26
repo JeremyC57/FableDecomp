@@ -54,12 +54,13 @@ class CSoundInit { public:                                 // Ego_r.pdb CSoundIn
         GainFaderBits = 0;
     }
 };
-struct CASoundBank_Retail {
-    long GetSoundIndexFromSymbol(const CCharString& symbol);   // 0x00A01920
+class CASoundBank { public:
+public:
+    long GetSoundIndexFromSymbol(const CCharString&) const;   // 0x00A01920
 };
 struct CSoundPlayer_Retail {
     virtual void v000(); virtual void v001(); virtual void v002();
-    virtual long PlaySample(CASoundBank_Retail& bank, long sample, bool loop, const CSoundInit& init, bool attached);   // slot 3 (+0x0c)
+    virtual long PlaySample(CASoundBank& bank, long sample, bool loop, const CSoundInit& init, bool attached);   // slot 3 (+0x0c)
 };
 struct CGameState_Retail {
     virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
@@ -68,8 +69,8 @@ struct CGameState_Retail {
 };
 struct CEngine_Retail {
     unsigned char       _pad00[0x10];
-    CASoundBank_Retail* m_pSoundBank;               // +0x10
-    CASoundBank_Retail& GetSampleBank() const { return *m_pSoundBank; }
+    CASoundBank* m_pSoundBank;               // +0x10
+    CASoundBank& GetSampleBank() const { return *m_pSoundBank; }
 };
 extern CEngine_Retail*    g_pEngine;                // 0x013B86A0
 extern CGameState_Retail* g_pGameState;             // 0x013B8394

@@ -13,8 +13,9 @@
 //   pointer is read through a full-expression CTexturePointer copy (+1 then -1 on its count, before the null test); the
 //   success path is nested so the callee-saved pushes stay at entry and both failures share one `xor al,al` exit.
 class CBankFileAsyncData { public:
-    bool IsFinished();                             // 0x009D54E0
-    void WaitUntilFinished();                      // 0x009D5B60
+public:
+    bool IsFinished() const;   // 0x009D54E0
+    bool WaitUntilFinished();   // 0x009D5B60
 };
 class CResource;
 class CResourceList { public:

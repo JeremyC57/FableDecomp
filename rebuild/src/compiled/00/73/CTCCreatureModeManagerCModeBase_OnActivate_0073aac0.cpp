@@ -25,7 +25,10 @@ class CCharString { public:
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
@@ -35,7 +38,7 @@ class CAnimFilterOfGroup { public:                // vtable 0x01267568
     __forceinline void SetGroupInline(const CCharString& group)
     {
         Group = group;
-        GroupCRC = Calc_004014a0(0, group.GetPString(), group.GetLength());
+        GroupCRC = CCRC::Calc(0, group.GetPString(), group.GetLength());
     }
 };
 
@@ -85,7 +88,8 @@ class CThing { public:
 };
 
 class CTCCarrying { public:                       // interface type 0x46
-    CThing* GetThingInPrimarySlot();       // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 
 class CTCWeapon { public:                         // interface type 0x48

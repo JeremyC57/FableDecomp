@@ -67,21 +67,29 @@ class CThingCreatureBase : public CThing { public:
 class CTCCreatureNavigation { public:                  // interface 7
     bool GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector* result);   // 0x006CB840
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(const CThing* item);          // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerCreature : CBaseIntelligentPointer {     // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
-    virtual void v00();
-    __forceinline CIntelligentPointerCreature(CThingCreatureBase* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); return *this; }
-    CThingCreatureBase* GetPCreature() const { return (CThingCreatureBase*)GetPItem(); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {     // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
+public:
+    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    T* GetPCreature() const { return (T*)GetPItem(); }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThingCreatureBase>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -105,7 +113,7 @@ class CAIStateGroupBase { public:
         bool a, bool b, bool c, CThing* avoid, bool d, float speed);        // 0x0097E890
 };
 struct CAIStateGroup_ReactToDeadLeader : CAIStateGroupBase {
-    CIntelligentPointerCreature PEnemy;         // +0x14
+    CIntelligentPointer<CThingCreatureBase> PEnemy;         // +0x14
     long FramesRunning;                         // +0x1c
     virtual void Update();
 };
@@ -127,12 +135,12 @@ void CAIStateGroup_ReactToDeadLeader::Update()
             } while (!IsStopping() && IS_THING_ALIVE(PEnemy) && FramesRunning < g_scaled_013bb738 && result == 4);
         }
         if (result != 2)
-            PEnemy = CIntelligentPointerCreature(0);
+            PEnemy = CIntelligentPointer<CThingCreatureBase>(0);
         if (!IsStopping() && IS_THING_ALIVE(PEnemy) && FramesRunning < g_scaled_013bb738) {
             const CThing* creature = GetCreature();
             const CThing* enemy = PEnemy.GetPItem();
             if ((enemy->GetPosition() - creature->GetPosition()).GetMagnitudeSquared() > 400.0f)
-                PEnemy = CIntelligentPointerCreature(0);
+                PEnemy = CIntelligentPointer<CThingCreatureBase>(0);
         }
     }
     Terminate();

@@ -47,7 +47,8 @@ class CPlayer { public:
     CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 struct CRefCounted {
     long m_count;
@@ -97,7 +98,7 @@ class CDrawQuickAccessIcons { public:
 
 float CDrawQuickAccessIcons::GetActivationTimeForButton(long button)
 {
-    CThingCreatureBase* hero = PlayerManager->GetMainPlayer()->GetControlledCreature();
+    CThingCreatureBase* hero = PlayerManager->GetMainPlayer().GetControlledCreature();
     if (IS_THING_ALIVE<CThing*>(hero)) {
         if (button == -2)
             return 2.0f;

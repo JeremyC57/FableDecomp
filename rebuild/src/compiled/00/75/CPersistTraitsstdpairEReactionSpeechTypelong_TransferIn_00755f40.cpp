@@ -13,11 +13,11 @@
 //   discarded. Speed-optimised (default) TU.
 #include <string.h>
 #pragma intrinsic(strcmp)
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     bool operator==(const char* text) const;            // 0x004115A0
 };
 class CCharString { public:
-    CBasicStringChar* PStringData;
+    CBasicString<char>* PStringData;
     ~CCharString();                                     // 0x0099EAE0
     __forceinline bool operator==(const char* text) const
     {

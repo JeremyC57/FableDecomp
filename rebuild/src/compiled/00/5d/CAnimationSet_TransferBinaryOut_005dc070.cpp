@@ -1,6 +1,6 @@
 // CAnimationSet::TransferBinaryOut(CDataOutputStream& stream) -- write the entry count, each (key, CAnimationEntry) pair, then the default flags / transition time / delay / group
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005DC070, length 178 bytes, ret 4.
-// Callees: CDataOutputStream::WriteULong(unsigned long) @ 0x00993EA0, CDataOutputStream::WriteLong(long) @ 0x00993EB0,
+// Callees: CDataOutputStream::WriteULONG(unsigned long) @ 0x00993EA0, CDataOutputStream::WriteSLONG(long) @ 0x00993EB0,
 // CAnimationEntry::TransferBinaryOut(CDataOutputStream&) @ 0x005DB630.
 // Layout: retail CAnimationSet (see the landed ctor 0x005DD2E0): CVectorMap<unsigned long, CAnimationEntry> Anims +0
 // (12-byte vector of 20-byte pairs, comparator +0x0c, Dirty +0x0d), DefaultFlags +0x10, DefaultTransitionTime +0x14,
@@ -8,8 +8,9 @@
 // Shape: size() is the signed pointer difference / 20 (`imul 0x66666667 ; sar 3`) returned as unsigned, re-evaluated on
 // every pass (unsigned `jb`); the element offset steps by 0x14 in edi.
 class CDataOutputStream { public:
-    void WriteULong(unsigned long value);       // 0x00993EA0
-    void WriteLong(long value);                 // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 class CDefString { public:
@@ -48,13 +49,13 @@ class CAnimationSet { public:
 
 void CAnimationSet::TransferBinaryOut(CDataOutputStream& stream)
 {
-    stream.WriteULong(Anims.size());
+    stream.WriteULONG(Anims.size());
     for (unsigned long i = 0; i < Anims.size(); ++i) {
-        stream.WriteULong(Anims[i].first);
+        stream.WriteULONG(Anims[i].first);
         Anims[i].second.TransferBinaryOut(stream);
     }
-    stream.WriteLong(DefaultFlags);
-    stream.WriteLong(DefaultTransitionTime);
-    stream.WriteLong(DefaultDelay);
-    stream.WriteLong(DefaultGroup.TablePos);
+    stream.WriteSLONG(DefaultFlags);
+    stream.WriteSLONG(DefaultTransitionTime);
+    stream.WriteSLONG(DefaultDelay);
+    stream.WriteSLONG(DefaultGroup.TablePos);
 }

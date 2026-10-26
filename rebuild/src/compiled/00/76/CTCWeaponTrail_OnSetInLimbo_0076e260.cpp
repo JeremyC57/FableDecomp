@@ -8,12 +8,13 @@
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
 class CTCWeaponTrail { public:
-    void Update();                         // 0x0076E150
     void OnSetInLimbo(bool enable);
+public:
+    void ClearAllWeaponTrails();   // 0x0076E150
 };
 
 void CTCWeaponTrail::OnSetInLimbo(bool enable)
 {
     if (enable)
-        Update();
+        ClearAllWeaponTrails();
 }

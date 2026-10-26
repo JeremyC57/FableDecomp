@@ -37,10 +37,10 @@ class CSoundPair { public:
     CSoundPair() : m_first(0), m_second(0) { }
 };
 class CCreatureActionBase { public:
-    void* __vftable;
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                     // 0x00693EF0
-    long GetActionID();                         // 0x00692620
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
+public:
+    long GetActionID() const;   // 0x00692620
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
@@ -54,7 +54,9 @@ class CAIBrain { public:
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct CAIStateGroup_Clean {
+class CAIStateGroupBase
+{
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
@@ -62,6 +64,13 @@ struct CAIStateGroup_Clean {
     virtual void Update();                      // slot 12 (+0x30)
     virtual void OnActivate();                  // slot 13 (+0x34)
     virtual CThingBuilding* GetBuilding();      // slot 14 (+0x38)
+public:
+    void Terminate();   // 0x008FCF40
+};
+
+struct CAIStateGroup_Clean : public CAIStateGroupBase {
+    virtual void Update();
+
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x14 - 0x08];
     bool Cleaning;                              // +0x14
@@ -72,7 +81,6 @@ struct CAIStateGroup_Clean {
     bool Activated;                             // +0x24
     CThing* GetCreature() const { return PBrain->PCreature; }
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
-    void Terminate();                           // 0x008FCF40
     long AIAction_DoNothing();                  // 0x0097E200
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
         bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890

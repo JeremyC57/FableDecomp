@@ -14,7 +14,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
 };
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 class CMapInfo { public:                                            // 0x48 bytes
@@ -46,7 +46,7 @@ void CWorldMap::LoadLoadableGlobalThings()
 {
     for (long i = 1; i < Maps.size(); ++i)
     {
-        DisplayProgress("Loading global things", (float)i / (Maps.size() + 1), false, false);
+        NProgressDisplay::DisplayProgress("Loading global things", (float)i / (Maps.size() + 1), false, false);
         const CMapInfo& map = Maps[i];
         if (map.Used && map.LoadedOnPlayerProximity)
             LoadLoadableGlobalThingsForLevel(i);

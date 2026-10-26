@@ -13,18 +13,29 @@ class CThing { public:
     bool IsDead() const { return (Flags91 & 1) != 0; }
     void Kill(bool immediately);                // 0x004C9B80
 };
-struct CBaseIntelligentPointer {                // CIntelligentPointer<CThing> (8 bytes)
-    virtual void v00();
-    void* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IsThingAlive(const CIntelligentPointer<CThing>& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
 class CTCPhysicalShieldSpell { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x28];
-    CBaseIntelligentPointer ShieldEffect;       // +0x30
-    CBaseIntelligentPointer SwirlyEffect;       // +0x38
+    CIntelligentPointer<CThing> ShieldEffect;       // +0x30
+    CIntelligentPointer<CThing> SwirlyEffect;       // +0x38
     unsigned long LoopingSound;                 // +0x40
     bool    Pausable;                           // +0x44
     bool    Paused;                             // +0x45

@@ -9,9 +9,19 @@
 // flag direct awareness, reset the staleness counter and tail-call the reaction at 0x00744730.
 #include "engine/CTCPerceiveThing.h"
 
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
 class CThing;
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (ecx = the CIntelligentPointer object).
-CThing* __fastcall IntelligentPointer_GetPItem_00a01b50(void* intelligentPointer);
 
 struct CTCPerceiveThing_Methods : CTCPerceiveThing {
     void OnDirectlyAwareOfPerceivedThing();     // 0x00744730
@@ -20,7 +30,7 @@ struct CTCPerceiveThing_Methods : CTCPerceiveThing {
 
 void CTCPerceiveThing_Methods::SetAsDirectlyAwareOfPerceivedThing()
 {
-    if (IntelligentPointer_GetPItem_00a01b50(&this->PerceivedThing[0])) {
+    if (((CThing*)(((CBaseIntelligentPointer*)(&this->PerceivedThing[0]))->GetPItem()))) {
         this->DirectAwareness = true;
         this->FramesSinceDirectlyPerceivedThing = 0;
         OnDirectlyAwareOfPerceivedThing();

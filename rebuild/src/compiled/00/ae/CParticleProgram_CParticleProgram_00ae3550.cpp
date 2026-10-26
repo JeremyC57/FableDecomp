@@ -1,7 +1,7 @@
 // CParticleProgram::CParticleProgram() -- default constructor: the embedded initial simulation (counted render data cleared, no memory block, then reset), the export-particle map, the render / index / group arrays, the constraint stream and the loop stack all empty, no memory block, then Clear()
 // Leaf: ??0CParticleProgram
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE3550, 285 bytes, `ret`. Called from 0x00AC3D4F and 0x00AC3E40.
-// Callees: CParticleSimulation::Reset 0x00ADF1E0 (the inlined CParticleSimulation constructor's body),
+// Callees: CParticleSimulation::Clear 0x00ADF1E0 (the inlined CParticleSimulation constructor's body),
 //   CMemoryDataOutputStream::CMemoryDataOutputStream() 0x00996AF0, CParticleProgram::Clear 0x00AE3360 (PDB
 //   ?Clear@CParticleProgram@@QAEXXZ; catalogued as a propagated "allocator::construct"). Vtables: CParticleProgram 0x0129F0D8,
 //   CParticleSimulation 0x0129F0C4 (rtti-vtables.tsv).
@@ -55,9 +55,10 @@ class CParticleSimulation : public CMovableResource { public:        // 0x80 byt
     bool                        BoundingBoxValid;      // +0x70
     long                        MemoryHandle;          // +0x74
     CMovableResourceMemoryPool* MemoryPool;            // +0x78
-    CParticleSimulation() : MemoryHandle(-1), MemoryPool(0) { Reset(); }
+    CParticleSimulation() : MemoryHandle(-1), MemoryPool(0) { Clear(); }
     virtual ~CParticleSimulation();                    // 0x00AE0630
-    void Reset();                                      // 0x00ADF1E0
+public:
+    void Clear();   // 0x00ADF1E0
 };
 
 template <class T> struct CAllocator {                 // STLport allocator<T>: empty

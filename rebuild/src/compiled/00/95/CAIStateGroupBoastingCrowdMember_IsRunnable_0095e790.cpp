@@ -43,7 +43,9 @@ class CThing
 };
 
 class CPlayer { public: CThing* GetHeroThing(); };                     // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };            // 0x00449970
+class CPlayerManager { public: public:
+    CPlayer& GetMainPlayer();   // 0x00449970
+};            // 0x00449970
 class CEngine
 { public:
     unsigned char _pad00[0x1c];
@@ -102,7 +104,7 @@ struct CAIStateGroup_BoastingCrowdMember
 
 bool CAIStateGroup_BoastingCrowdMember::IsRunnable()
 {
-    CThing* hero = g_pEngine->GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = g_pEngine->GetPlayerManager()->GetMainPlayer().GetHeroThing();
     CCrowdGroup* group;
     CTCBoastingCrowdControl* crowd;
     if (hero && !(hero->m_flags91 & 1) && hero->GetInterface(0x73, &crowd))

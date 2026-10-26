@@ -118,10 +118,11 @@ class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
 };
-struct CThingCombatant {
+class CThingCreatureBase { public:
     unsigned char _pad[0xb4];
     float Health;                               // +0xb4
-    bool IsCombatant();                         // 0x00662410
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 struct CTCTrap {                                // the interface-0x7D component
     void Reset();                               // 0x00787C07
@@ -146,13 +147,13 @@ struct CAIStateGroup_ScorpionKing : CAIStateGroupBase {
 
 void CAIStateGroup_ScorpionKing::Cleanup()
 {
-    if (((CThingCombatant*)PBrain->PCreature)->IsCombatant()) {
+    if (((CThingCreatureBase*)PBrain->PCreature)->IsInMeleeAsAttacker()) {
         CThing* combatant = PBrain->PCreature;
         CWorld* world = GetPWorld();
         world->PCombatManager->DeregisterCombatant(combatant);
     }
     CThing* creature = PBrain->PCreature;
-    if (creature != 0 && !(creature->m_flags91 & 1) && !(((CThingCombatant*)creature)->Health < 1.0f))
+    if (creature != 0 && !(creature->m_flags91 & 1) && !(((CThingCreatureBase*)creature)->Health < 1.0f))
         return;
     for (unsigned long i = 0; i < TrapThings.size(); ++i) {
         if (IS_THING_ALIVE(TrapThings[i])) {

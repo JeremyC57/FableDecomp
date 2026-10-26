@@ -14,6 +14,7 @@
 // Shape: ~CScriptThing and operator= are plain inline bodies (expanded in the attacker-search loop); inline_depth(0) on the hint
 //   line sends the later temporaries and every exit out of line; the __forceinline CSpawnedFunc1 constructor is defined under
 //   inline_depth(0) so it still expands while its by-value CScriptThing is destroyed out of line.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -104,12 +105,13 @@ namespace N_006e7b40 { struct CScriptThing : CBase {                           /
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }   // out-of-line copy 0x008AB980
     CScriptThing();                                     // 0x006E7B40
 }; } using N_006e7b40::CScriptThing;
-namespace N_0099a380 { struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-}; } using N_0099a380::CBaseIntelligentPointer;
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
+};
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -118,8 +120,14 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-struct CIsThingAlive {                                  // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04 (copied and destroyed out of line)
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();
@@ -273,8 +281,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CGuardToLeadTheWay : CEntityScriptBase {
     CQ_MinionClifftopChaseScript* ParentClass;          // +0x14
@@ -287,7 +296,7 @@ void CGuardToLeadTheWay::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

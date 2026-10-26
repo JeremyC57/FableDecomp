@@ -13,13 +13,13 @@
 //   (VC7.1 then homes its `this` on the value slot); the closing ")" is read and discarded. Speed-optimised (default) TU.
 #include <string.h>
 #pragma intrinsic(strcmp)
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     char*         PData;
     unsigned long StringLength;
     bool operator==(const char* text) const;           // 0x004115A0
 };
 class CCharString { public:
-    CBasicStringChar* PStringData;
+    CBasicString<char>* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     __forceinline bool operator==(const char* text) const

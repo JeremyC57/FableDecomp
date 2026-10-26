@@ -23,10 +23,21 @@ class CThing { public:
     const C3DVector& GetPosition() const;   // 0x004C73D0
     CWorld* GetWorld() const;               // 0x004C7AB0
 };
-struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatureBase>: vptr + item
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCreatureActionBase { public:                // retail sizeof 0xa8
@@ -43,7 +54,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual bool IsUsingAnimationMovement();       // slot 57 (+0xe4)
     virtual void UpdateActionForcedMovement();     // slot 58 (+0xe8)
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x54 - 0x10];      // +0x10
     C3DVector AnimMovementStep;             // +0x54
     unsigned char _pad60[4];                // +0x60

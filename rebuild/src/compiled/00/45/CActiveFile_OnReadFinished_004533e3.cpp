@@ -6,7 +6,7 @@ struct CActiveFile {
 };
 
 extern void __fastcall Consume_00450ab2(void* ecxArg, void* edxArg, char* buf);
-extern void FreeThing(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
@@ -14,6 +14,6 @@ void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
     Consume_00450ab2(self->p, self->DstFileHandle, &local);
     void* q = self->p;
     if (q) {
-        FreeThing(q);
+        free(q);
     }
 }

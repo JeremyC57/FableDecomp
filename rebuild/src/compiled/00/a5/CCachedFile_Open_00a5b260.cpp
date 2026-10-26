@@ -25,8 +25,14 @@ class CWideString { public:
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
-CWideString __fastcall ConvertPathToFullPath(const CWideString& path);   // 0x00999110
-bool __fastcall PathExists(const CWideString& path);                     // 0x00999230
+class CAFile {
+public:
+    static CWideString __fastcall ConvertPathToFullPath(const CWideString&);   // 0x00999110
+
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};   // 0x00999110
+                     // 0x00999230
 class CExceptionBase {
 public:
     CExceptionBase(const char*) { }
@@ -74,8 +80,8 @@ class CCachedFile { public:
 
 void CCachedFile::Open(const CWideString& filename, FileAccessType access, unsigned long flags)
 {
-    CWideString path = ConvertPathToFullPath(filename);
-    if (PathExists(path)) {
+    CWideString path = CAFile::ConvertPathToFullPath(filename);
+    if (CAFile::PathExists(path)) {
         CDiskFileWin32 file(filename, access, flags);
         BufferValid = false;
         Pathname = filename;

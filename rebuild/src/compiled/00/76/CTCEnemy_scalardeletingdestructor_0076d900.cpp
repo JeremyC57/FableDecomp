@@ -10,8 +10,7 @@
 #undef CTCBase
 #pragma optimize("t", on)
 class CTCBase { public:                            // vtable 0x0125BE0C (.?AVCTCBase@@)
-    void* _vptr;
-    ~CTCBase();                             // 0x00686830 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
+    virtual ~CTCBase();                             // 0x00686830 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
 };
 struct CList_004406a0 {                     // unattributed STLport list (one word, the sentinel node): nodes cleared @ 0x0043F230, then free(sentinel)
     void* _M_node;

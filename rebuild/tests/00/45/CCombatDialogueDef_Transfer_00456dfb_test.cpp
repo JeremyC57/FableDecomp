@@ -183,9 +183,10 @@ public:
 
 #undef CPersistContext
 class CPersistContext : public CPersistContext_PDB { public:
-    void Transfer(float& value); // 0x00431061
-    void Transfer(long& value);  // 0x00431102
+    template <class T> void Transfer(T& value); // 0x00431061
 };
+template <> void CPersistContext::Transfer<float>(float& value);
+template <> void CPersistContext::Transfer<long>(long& value);
 class CCombatDialogueDef { public:
     void* __vftable;
     unsigned char nativePrefix[0x38];
@@ -236,8 +237,8 @@ void CCombatDialogueDef::Transfer(CPersistContext& context) {
 
 struct Observations { void* seen[20]; unsigned char kind[20]; int count; };
 static Observations observations;
-void CPersistContext::Transfer(float& value){observations.seen[observations.count]=&value;observations.kind[observations.count++]=1;value+=1.0f;}
-void CPersistContext::Transfer(long& value){observations.seen[observations.count]=&value;observations.kind[observations.count++]=2;value+=1;}
+template <> void CPersistContext::Transfer<float>(float& value){observations.seen[observations.count]=&value;observations.kind[observations.count++]=1;value+=1.0f;}
+template <> void CPersistContext::Transfer<long>(long& value){observations.seen[observations.count]=&value;observations.kind[observations.count++]=2;value+=1;}
 int main() {
     CCombatDialogueDef object={};
     CPersistContext context;

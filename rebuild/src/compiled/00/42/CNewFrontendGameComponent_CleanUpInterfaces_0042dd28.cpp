@@ -51,7 +51,7 @@ class CSystemManager { public:
     CMeshBankManager* MeshBankManager;                   // +0x74
     CMeshBankManager* GetMeshBankManager() const { return MeshBankManager; }
 };
-CSystemManager* __cdecl GFGetSystemManager();            // 0x009A4EC0
+CSystemManager* __fastcall GFGetSystemManager();            // 0x009A4EC0
 
 class CNewFrontendGameComponent {
 public:

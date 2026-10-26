@@ -8,7 +8,15 @@
 //   @ 0x009E3F60, CPixelFormat::GetByteColourDepth() const @ 0x009E3800 (per pixel).
 // Shape: two count-down loops (rows in a frame word, columns in edi); the row cursor is ebx, the pixel cursor esi.
 #include "engine/CSurface.h"
+#define CPixelFormat CPixelFormatLayout
 #include "engine/CPixelFormat.h"
+#undef CPixelFormat
+
+class CPixelFormat : public CPixelFormatLayout
+{
+public:
+    unsigned long GetByteColourDepth() const;   // 0x009E3800
+};
 #include <string.h>
 
 struct D3DSURFACE_DESC_Local {                     // D3DSURFACE_DESC, 0x20 bytes
@@ -56,7 +64,6 @@ class CRGBColour { public: unsigned char B, G, R, A; };
 
 struct CPixelFormat_Methods : CPixelFormat {
     void Initialise(unsigned long d3dFormat);      // 0x009E3830 (D3DFORMAT)
-    unsigned long GetByteColourDepth() const;      // 0x009E3800
     void ConvertRGBToPFDData(const CRGBColour& colour, unsigned char* data) const;   // 0x009E3F60
 };
 

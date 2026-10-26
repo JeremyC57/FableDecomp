@@ -63,15 +63,20 @@ class CVillageMemberDef { public:
     bool          NeedsVillageToFunctionCorrectly;   // +0x25
 };
 
-class CTCVillageMember { public:
+class CTCBase
+{
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
+    CThingSearchTools& GetThingSearchTools();   // 0x00686D80
+};
+
+class CTCVillageMember : public CTCBase { public:
     void*              __vftable;               // +0x00
     CThing*            ParentThing;             // +0x04 (CTCBase)
     unsigned char      _pad_0x08[0x4];
     CVillageMemberDef* PDef;                    // +0x0c CDefPointer<const CVillageMemberDef>::Object
     unsigned char      PVillage[0x8];           // +0x10 CIntelligentPointer<CThing>
     unsigned __int64   VillageUID;              // +0x18
-    CThingManager* GetThingManager();           // 0x00686AE0 (CTCBase)
-    CThingSearchTools* GetThingSearchTools();   // 0x00686D80 (CTCBase)
     CTCVillage* GetPVillage() const;            // 0x007EE540
     void OnInitialActivate();
 };
@@ -79,7 +84,7 @@ class CTCVillageMember { public:
 void CTCVillageMember::OnInitialActivate()
 {
     if (VillageUID != 0) {
-        CThing* villageThing = GetThingManager()->GetThingWithUID(VillageUID);
+        CThing* villageThing = GetThingManager().GetThingWithUID(VillageUID);
         if (villageThing) {
             CTCVillage* village;
             villageThing->GetInterface(&village, 0x22);
@@ -89,6 +94,6 @@ void CTCVillageMember::OnInitialActivate()
     }
     if (g_bCheckVillageMembers_013b86d8 && VillageUID == 0 && PDef && PDef->NeedsVillageToFunctionCorrectly) {
         CThingVillage* village;
-        GetThingSearchTools()->GetPFirstThing(CThingFilter_HasTC(0x22), &village);
+        GetThingSearchTools().GetPFirstThing(CThingFilter_HasTC(0x22), &village);
     }
 }

@@ -1,13 +1,16 @@
+class CCombatActionBase {
+public:
+    virtual ~CCombatActionBase();   // 0x0062E900
+};
 class CCreatureAction_BanditKingUnstuck { public:
     void* vftable;
 };
 
-void __fastcall CCreatureAction_BanditKingUnstuck_dtor(CCreatureAction_BanditKingUnstuck* action);
 void operator delete(void*);
 
 void* __fastcall CCreatureAction_BanditKingUnstuck_scalar_deleting_destructor(CCreatureAction_BanditKingUnstuck* action, int edx_unused, unsigned int flags)
 {
-    CCreatureAction_BanditKingUnstuck_dtor(action);
+    ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
     if (flags & 1)
         operator delete(action);
     return action;

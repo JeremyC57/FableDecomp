@@ -50,7 +50,7 @@ public:
     unsigned long GetCRC() const { return CCRC::Calc(0, GetAsCharArray(), GetLength()); }
 };
 
-unsigned long __fastcall GFROR13(unsigned long value);       // 0x00497890
+long __fastcall GFROR13(unsigned long);       // 0x00497890
 __forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;

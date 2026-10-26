@@ -48,12 +48,23 @@ public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
+};
+inline bool IsThingAlive(const CIntelligentPointer<CThing>& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
 template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;
@@ -98,8 +109,8 @@ public:
     bool BCountStrikes;                         // +0x20
     bool EnablePhaseChanges;                    // +0x21
     C3DVector PhaseStartPos;                    // +0x22
-    CRetailVector<CBaseIntelligentPointer> HelperCreatures;   // +0x30 vector<CIntelligentPointer<CThingAICreature>>
-    CRetailVector<CBaseIntelligentPointer> Effects;           // +0x3c vector<CIntelligentPointer<CThing>>
+    CRetailVector<CIntelligentPointer<CThing> > HelperCreatures;   // +0x30 vector<CIntelligentPointer<CThingAICreature> >
+    CRetailVector<CIntelligentPointer<CThing> > Effects;           // +0x3c vector<CIntelligentPointer<CThing> >
     CTCBoss(CThing* owner);
     virtual ~CTCBoss();
     void ClearEffects();

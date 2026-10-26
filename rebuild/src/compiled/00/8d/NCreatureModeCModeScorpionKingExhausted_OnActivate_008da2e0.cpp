@@ -109,7 +109,8 @@ class CThing { public:
 };
 
 class CThingCreatureBase : public CThing { public:
-    bool IsPerformingAnyAction();          // 0x006622A0
+public:
+    bool IsPerformingAnyAction() const;   // 0x006622A0
 };
 
 struct CCreatureController {               // what PCreature's slot 28 is called on

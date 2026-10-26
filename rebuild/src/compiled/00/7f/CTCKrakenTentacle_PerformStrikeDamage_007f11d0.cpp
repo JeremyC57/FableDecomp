@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F11D0, 575 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10 (CIntelligentPointer<CThing> vtable
 //   0x01238C6C), LowerBound @ 0x0040F020 (interface 0xE2 = CTCKraken), the physics TC's GetFacingVector (slot 70, +0x118,
-//   C3DVector by value), CThing::GetPosition @ 0x004C73D0, C3DVector::RotateInPlace @ 0x00A14040, CCharString
+//   C3DVector by value), CThing::GetPosition @ 0x004C73D0, C3DVector::RotateXY @ 0x00A14040, CCharString
 //   @ 0x0099EBF0/0x0099EAE0, CTCBase::GetDefinitions @ 0x006869D0, CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410,
 //   CTCDExplosion::Create @ 0x0080C460 (__fastcall), CTCKraken::AddStrikeExplosion @ 0x007FBA20, CTCKrakenTentacle::
 //   RemoveObstruction @ 0x007F0810, CTCDPhysicalObstruction::Create @ 0x007FD4B0 (__fastcall).
@@ -14,7 +14,16 @@
 // Shape: the owner position is a C3DVector value copy (only X/Y reach the frame) and the origin is built (pos.X, pos.Y, 0)
 //   then its Z assigned from the target, which keeps the target height on the x87 stack across the three points (popped
 //   after the last) as retail; a C3DVector(x, y, z) constructor consumes it on the last point.
+#define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
+#undef CTCBase
+class CGameDefinitionManager;
+
+class CTCBase : public CTCBaseLayout
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
 
 
 class C3DVector { public:
@@ -22,11 +31,12 @@ class C3DVector { public:
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    void RotateInPlace(float fraction);                     // 0x00A14040
     C3DVector& operator*=(float s) { X *= s; Y *= s; Z = s * Z; return *this; }
     C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
     C3DVector operator*(float s) const { C3DVector r; r.X = X * s; r.Y = Y * s; r.Z = Z * s; return r; }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
+public:
+    void RotateXY(float);   // 0x00A14040
 };
 
 struct CPhysicsBody {
@@ -147,7 +157,10 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 class CTCDExplosion { public:
     static CThing* __fastcall Create(long defIndex, const C3DVector& position);   // 0x0080C460
@@ -156,7 +169,6 @@ class CTCDPhysicalObstruction { public:
     static CThing* __fastcall Create(const C3DVector& start, const C3DVector& end, float radius);   // 0x007FD4B0
 };
 struct CTCBaseDefs : CTCBase {
-    CDefinitionManager* GetDefinitions();                   // 0x006869D0 (CTCBase)
 };
 class CKrakenTentacleDef { public:
     unsigned char _pad00[0x4c];
@@ -196,13 +208,13 @@ void CTCKrakenTentacle::PerformStrikeDamage()
             C3DVector facing = ParentThing->m_pPhysics->GetFacingVector();
             C3DVector pos = ParentThing->GetPosition();
             const CKrakenTentacleDef* def = PTentacleDef;
-            facing.RotateInPlace(def->TentacleExplosionBodgeAngle * 0.0027777778f);
+            facing.RotateXY(def->TentacleExplosionBodgeAngle * 0.0027777778f);
             C3DVector origin(pos.X, pos.Y, 0.0f);
             origin.Z = target->GetPosition().Z;
             C3DVector obstructionStart = facing * def->TentacleObstructionRadiusMin + origin;
             C3DVector obstructionEnd = facing * def->TentacleObstructionRadiusMax + origin;
             C3DVector explosionPos = facing * def->TentacleExplosionRadius + origin;
-            CThing* explosion = CTCDExplosion::Create(GetDefinitions()->GetDefGlobalIndexFromName("KRAKEN_TENTACLE_WHACK"), explosionPos);
+            CThing* explosion = CTCDExplosion::Create(GetDefinitionManager().GetDefGlobalIndexFromName("KRAKEN_TENTACLE_WHACK"), explosionPos);
             if (explosion)
                 kraken->AddStrikeExplosion(explosion);
             RemoveObstruction();

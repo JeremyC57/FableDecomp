@@ -7,7 +7,7 @@
 // by address.
 // Shape: no vtable store and no base destructor: a NON-polymorphic class deleted through `delete` -- VC7.1 then emits a
 // non-virtual `??_G...QAEPAXI@Z` with the flag test; a word at +0 with a trivial destructor precedes the list.
-void __cdecl free(void* block);                // 0x00BFEA14
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct SListNode_004ad650;
 

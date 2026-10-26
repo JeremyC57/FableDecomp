@@ -1,7 +1,7 @@
 // CTCPhysicsBase::GetOrientationInterpolator(C3DOrientationInterpolator& out) const -- the orientation interpolator from the last frame's set to the current one; under bullet time for a thing it affects, the pair is instead two sets interpolated between them at the current and next sub-step of the bullet-time cycle
 // Leaf: ?GetOrientationInterpolator@CTCPhysicsBase@@QBEXAAVC3DOrientationInterpolator@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B0460, 310 bytes, `ret 4`.
-// Callees: CTCBase::GetWorld() const 0x00686A80 (twice), CThing::IsAffectedByBulletTime 0x004C9920, CBulletTime::GetTimeScale
+// Callees: CTCBase::PeekWorld() const 0x00686A80 (twice), CThing::IsAffectedByBulletTime 0x004C9920, CBulletTime::GetTimeScale
 //   0x004C5FA0, CWorld::GetWorldFrame 0x0049D870 (static), _ftol 0x00BFEA70, CRightHandedSet::Interpolate(const
 //   CRightHandedSet&, float) const 0x00A23190 (hidden result), C3DOrientationInterpolator(const CRightHandedSet&, const
 //   CRightHandedSet&) 0x005508D0, C3DOrientationInterpolator::operator= 0x006B0E00 (landed), ~CBase 0x0099A2E0, the
@@ -49,7 +49,8 @@ public:
     bool IsAffectedByBulletTime() const;            // 0x004C9920
 };
 
-class CTCPhysicsBase {
+class CTCBase
+{
 public:
     virtual void v000();
     virtual void v001();
@@ -125,15 +126,20 @@ public:
     virtual void v071();
     virtual const CRightHandedSet& GetRightHandedSet() const;      // slot 72 (+0x120)
     virtual const CRightHandedSet& GetOldRightHandedSet() const;   // slot 73 (+0x124)
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCPhysicsBase : public CTCBase {
+public:
     CThing* ParentThing;                            // +0x04 (CTCBase)
-    const CWorld* GetWorld() const;                 // 0x00686A80 (CTCBase)
     void GetOrientationInterpolator(C3DOrientationInterpolator& out) const;
 };
 
 void CTCPhysicsBase::GetOrientationInterpolator(C3DOrientationInterpolator& out) const
 {
-    if (GetWorld()->m_pBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime()) {
-        float timeScale = GetWorld()->m_pBulletTime->GetTimeScale();
+    if (PeekWorld().m_pBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime()) {
+        float timeScale = PeekWorld().m_pBulletTime->GetTimeScale();
         long step = (CWorld::GetWorldFrame() - 1) % (long)timeScale;
         float stepSize = 1.0f / timeScale;
         CRightHandedSet start = GetOldRightHandedSet().Interpolate(GetRightHandedSet(), step * stepSize);

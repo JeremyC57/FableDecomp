@@ -41,10 +41,21 @@ public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CHeroCrowdNode {                         // _Rb_tree_node<pair<const unsigned __int64, CIntelligentPointer<CThing>>>
     long _M_color;
@@ -52,7 +63,7 @@ struct CHeroCrowdNode {                         // _Rb_tree_node<pair<const unsi
     CHeroCrowdNode* _M_left;
     CHeroCrowdNode* _M_right;
     unsigned __int64 first;                     // +0x10
-    CBaseIntelligentPointer second;             // +0x18
+    CIntelligentPointer<CThing> second;             // +0x18
 };
 struct CHeroCrowdMap {                          // STLport map<unsigned __int64, CIntelligentPointer<CThing>>
     CHeroCrowdNode* _M_header;

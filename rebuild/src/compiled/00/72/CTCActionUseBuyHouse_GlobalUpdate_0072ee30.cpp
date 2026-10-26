@@ -53,15 +53,26 @@ public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {                // CIntelligentPointer<CThing>: 8 bytes
-    void* m_vfptr;
-    void* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(push, 1)
 class CTCOwnedEntity { public:                         // interface 0x33
     unsigned char _pad00[0x0d];
-    CBaseIntelligentPointer POwner;             // +0x0d
+    CIntelligentPointer<CThing> POwner;             // +0x0d
 };
 #pragma pack(pop)
 class CTCBuyableHouse { public:                        // interface 0xD5
@@ -91,7 +102,13 @@ template <class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 
-class CTCActionUseBase {
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCActionUseBase : public CTCBase {
 public:
     void*   __vftable;                          // +0x00 (CTCBase)
     CThing* ParentThing;                        // +0x04
@@ -99,7 +116,6 @@ public:
     bool    IsInGlobalUpdateTCs;                // +0x09
     void*   PActionUseDef;                      // +0x0c
     bool    Usable;                             // +0x10
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
 };
 enum EHouseQuestion { HOUSE_QUESTION_NONE = 0, HOUSE_QUESTION_BUY = 1, HOUSE_QUESTION_RENT = 2 };
 class CTCActionUseBuyHouse : public CTCActionUseBase {
@@ -115,12 +131,12 @@ public:
 void CTCActionUseBuyHouse::GlobalUpdate(long frame)
 {
     if (WaitingForConfirmation) {
-        CMessageEventManager* messages = GetWorld()->PMessageEventManager;
+        CMessageEventManager* messages = GetWorld().PMessageEventManager;
         CMessageEvent* answer = messages->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x10));
         if (answer) {
             CTCOwnedEntity* owned;
             if (ParentThing->GetInterface(&owned, 0x33)) {
-                CBaseIntelligentPointer& owner = owned->POwner;
+                CIntelligentPointer<CThing>& owner = owned->POwner;
                 CThing* thing = owner.GetPItem();
                 if (thing && !(thing->m_stateFlags & 1)) {
                     thing = owner.GetPItem();

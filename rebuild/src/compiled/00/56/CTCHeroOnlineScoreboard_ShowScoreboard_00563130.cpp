@@ -20,7 +20,7 @@ extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 
 #pragma pack(push, 1)
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     char*         PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
@@ -28,7 +28,7 @@ struct CBasicStringChar {
     bool operator==(const char* text) const;        // 0x004115A0
 };
 class CCharStringData { public:
-    CBasicStringChar Data;
+    CBasicString<char> Data;
     long             NoRefs;
 };
 #pragma pack(pop)
@@ -55,9 +55,12 @@ class CWideString { public:
 };
 extern const CWideString g_emptyWideString;             // 0x013BCA24
 
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 struct CEngineGlobals {
     unsigned char _pad[0x14];
     CDataBank*    m_pTextBank;                          // +0x14

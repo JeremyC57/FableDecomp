@@ -3,7 +3,7 @@
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10
 // (CIntelligentPointer vtable 0x0123E7D8), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0, the targeting
 // component's virtual slot 33 (+0x84, the targeted thing; as CTCCarriedActionUseTrophy 0x007EDEE0), CIntelligentPointer<const
-// CThing>::CIntelligentPointer(const CThing*) @ 0x00668B60 (out of line), CThing::GetPlayer @ 0x004C7A10.
+// CThing>::CIntelligentPointer(const CThing*) @ 0x00668B60 (out of line), CThing::PeekPlayer @ 0x004C7A10.
 // Layout: Ego_r.pdb CTCDivineWrath PTarget +0x71 / IsZTargetting +0x79 sit at retail +0x6d / +0x75 (4 bytes lower; the pointer
 // classes are `pack(1)`); retail CThing ThingTypeFlags +0x6c (PDB +0x7c), dead bit +0x91; the player's Z-targeting byte +0x20a
 // (named descriptively).
@@ -39,7 +39,8 @@ class CThing { public:
         const CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
-    CPlayer* GetPlayer();                               // 0x004C7A10
+public:
+    const CPlayer& PeekPlayer() const;   // 0x004C7A10
 };
 struct CTCTargetSource {                                // the interface-8 component
 #define V(n) virtual void v##n();
@@ -85,7 +86,7 @@ void CTCDivineWrath::SetPTarget()
         const CThing* target = ((CTCTargetSource*)ParentThing->GetTCSelect(8))->GetTargetThing();
         if (target && !(target->Flags91 & 1) && (target->ThingTypeFlags & 8) && (ParentThing->ThingTypeFlags & 0x20)) {
             PTarget = target;
-            IsZTargetting = ParentThing->GetPlayer()->ZTargeting;
+            IsZTargetting = ParentThing->PeekPlayer().ZTargeting;
         }
     }
 }

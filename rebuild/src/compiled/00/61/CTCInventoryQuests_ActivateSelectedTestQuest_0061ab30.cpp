@@ -74,11 +74,22 @@ public:
     void ExecuteConfigFile(const CWideString& path);   // 0x009EC890
 };
 
-class CTCInventoryQuests { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryQuests : public NInventory::CTCInventoryBase { public:
     unsigned char _pad_0x000[0x157];
     bool ActiveTestQuestMode;                      // +0x157
     long TestQuestSelectedIndex;                   // +0x158
-    CWorld* GetWorld();                            // 0x00686A70 (CTCBase)
     void GetTestQuestsToDisplay(CTestQuestVector* quests);   // 0x0061A8A0
     void ActivateSelectedTestQuest();
 };
@@ -114,7 +125,7 @@ void CTCInventoryQuests::ActivateSelectedTestQuest()
     }
     g_pQuestManager->DeactivateQuest(quest.QuestName, 0);
     g_pQuestManager->ClearQuestPersistScript(quest.QuestName);
-    GetWorld()->LoadQuestHSP(quest.HSPName);
+    GetWorld().LoadQuestHSP(quest.HSPName);
     if (quest.QuestCardDefName != "")
         g_pQuestManager->ActivateTestQuestCard(quest.QuestName, quest.QuestCardDefName);
     else

@@ -25,9 +25,10 @@ extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 
 struct CBaseObjectPointer;
 class CBaseObject { public:                        // vtable 0x0129A7D8
-    virtual void v00();
     CBaseObjectPointer* IntelligentPointer; // +0x04
-    CBaseObject();                          // 0x0099A380 (manifest label CBaseIntelligentPointer is propagated)
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CBaseIntelligentPointer {
     virtual void v00();

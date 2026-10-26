@@ -1,19 +1,30 @@
 // CIsHitEventHasHitByThing::operator()(const SHitEvent* event) -- true when the event's record (+8) still points at a live thing (the intelligent pointer at +0x50, GetPItem @ 0x00A01B50; +0x91 bit 0 clear)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00810F90, length 48 bytes.
 // Shape: `this` unused, `test byte ptr [eax+91h],1`, `mov al,1` / `xor al,al`, `ret 4`.
-struct CThing_Retail {
+class CThing_Retail { public:
     unsigned char _pad[0x91];
     unsigned char m_91_0 : 1;                      // +0x91 bit 0
     unsigned char m_91_1 : 7;
 };
-struct CIntelligentPointer_Retail {
-    virtual void v00();
-    void* m_pItem;
-    CThing_Retail* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct SHitRecord_00810f90 {
     unsigned char              _pad[0x50];
-    CIntelligentPointer_Retail m_hitBy;            // +0x50
+    CIntelligentPointer<CThing_Retail> m_hitBy;            // +0x50
     CThing_Retail* GetHitBy() const { return m_hitBy.GetPItem(); }   // `lea ecx,[eax+50h]`: an inline accessor on the record
 };
 struct SHitEvent_00810f90 {

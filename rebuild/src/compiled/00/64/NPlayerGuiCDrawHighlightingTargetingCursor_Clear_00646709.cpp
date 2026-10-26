@@ -15,7 +15,7 @@ struct CTCGraphicAppearance {
     void ClearMeshEffect(void* key);               // 0x004BFFC0
 };
 
-struct CThingWithAppearance {
+class CBaseObject { public:
     unsigned char _pad[0x64];
     CTCGraphicAppearance* m_pGraphicAppearance;    // +0x64
     CTCGraphicAppearance* GetGraphicAppearance() const { return m_pGraphicAppearance; }   // inline: the pointer lands in ecx directly
@@ -24,8 +24,9 @@ struct CThingWithAppearance {
 struct CBaseIntelligentPointer {
     void* m_pItem;
     void* m_pInfo;
-    CThingWithAppearance* GetPItem() const;        // 0x00A01B50
     ~CBaseIntelligentPointer();                    // 0x00A01C10
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
 };
 
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {

@@ -8,6 +8,7 @@
 //   GetPos (CScriptThing slot 6, virtual on the member). Float 2.0f 0x0122DCDC.
 // Layout: CTollBandit as Ego_r.pdb (Game +4, Me +8, ParentClass +0x14, BanditEscapeMarker +0x28); CV_BanditTollScript
 //   BanditsFlee +0x4f (PDB - 0x14); CScriptDef TollBanditCloseToExit +0x43c, TollBanditTimeToFade +0x440 (retail; PDB +0x470/+0x474).
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CScriptThing { public:                                       // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing();                                // 0x004AA840
@@ -52,7 +53,13 @@ struct CV_BanditTollScript {
     unsigned char _pad[0x4f];
     bool          BanditsFlee;                              // +0x4f
 };
-class CTollBandit {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CTollBandit : public CEntityScriptBase {
 public:
     void*                 __vftable;                        // +0x00
     CGameScriptInterface* Game;                             // +0x04
@@ -64,7 +71,6 @@ public:
     bool                  KilledReluctantTrader;            // +0x21
     long                  TollBanditPayMeDistance;          // +0x24
     CScriptThing          BanditEscapeMarker;               // +0x28
-    bool IsActiveThreadTerminating();                       // 0x00F35B30
     void Should_I_Flee(CScriptGameResourceObjectScriptedThingBase& bandit);
 };
 

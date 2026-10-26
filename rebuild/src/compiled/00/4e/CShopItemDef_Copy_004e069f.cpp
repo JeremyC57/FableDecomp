@@ -9,7 +9,6 @@
 #pragma optimize("s", on)
 #include "engine/CShopItemDef.h"
 
-class CDefClassBase;
 
 class CShopItem { public:                              // CShopItemDef::Item (+0x2c), 0x1c bytes
     float Quantity;
@@ -21,15 +20,15 @@ class CShopItem { public:                              // CShopItemDef::Item (+0
     float SalesPerDayRandomness;
 };
 
-struct CDefBase_00431f10 {                      // the definition base sub-object (+0x00..+0x28)
-    CDefBase_00431f10& operator=(const CDefBase_00431f10& other);   // 0x00431F10
+class CDefClassBase { public:                      // the definition base sub-object (+0x00..+0x28)
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
 struct CShopItemDef_Methods : CShopItemDef {
     CShopItem&       Item()       { return *reinterpret_cast<CShopItem*>(&Item_Quantity); }
     const CShopItem& Item() const { return *reinterpret_cast<const CShopItem*>(&Item_Quantity); }
-    CDefBase_00431f10&       Base()       { return *reinterpret_cast<CDefBase_00431f10*>(this); }
-    const CDefBase_00431f10& Base() const { return *reinterpret_cast<const CDefBase_00431f10*>(this); }
+    CDefClassBase&       Base()       { return *reinterpret_cast<CDefClassBase*>(this); }
+    const CDefClassBase& Base() const { return *reinterpret_cast<const CDefClassBase*>(this); }
     void Copy(const CDefClassBase* source);
 };
 

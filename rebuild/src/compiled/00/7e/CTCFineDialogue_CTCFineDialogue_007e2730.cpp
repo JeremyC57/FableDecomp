@@ -2,7 +2,7 @@
 // Leaf: ??0CTCFineDialogue
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E2730, length 40 bytes.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite", propagated),
-// CTCBase::AddToGlobalUpdateTCs() @ 0x00686ED0 (named by the landed CTCActionUseBuyHouse constructor 0x0072E690).
+// CTCBase::AddToGlobalTCs() @ 0x00686ED0 (named by the landed CTCActionUseBuyHouse constructor 0x0072E690).
 // Vtable 0x01270274 = CTCFineDialogue (rtti-vtables.tsv): the chunk label "CTCQuickAccessMenu::CTCQuickAccessMenu" is propagated.
 // Layout = Ego_r.pdb CTCFineDialogue (0x1c): Fine +0x0c, Money +0x10, GivePlayerChanceToPayFine +0x14,
 // WaitingForConfirmation +0x15, Village +0x18 (Fine, Money and Village are left uninitialised).
@@ -10,18 +10,19 @@
 // immediates after it.
 class CThing;
 
-struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
+class CTCBase { public:                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase_Calls(CThing* thing);                           // 0x00686800
-    void AddToGlobalUpdateTCs();                            // 0x00686ED0
+    CTCBase(CThing* thing);                           // 0x00686800
+public:
+    void AddToGlobalTCs();   // 0x00686ED0
 };
 
 class CTCVillage;
 
-class CTCFineDialogue : public CTCBase_Calls { public:                    // vtable 0x01270274
+class CTCFineDialogue : public CTCBase { public:                    // vtable 0x01270274
     long        Fine;                                       // +0x0c
     long        Money;                                      // +0x10
     bool        GivePlayerChanceToPayFine;                  // +0x14
@@ -32,9 +33,9 @@ class CTCFineDialogue : public CTCBase_Calls { public:                    // vta
 };
 
 CTCFineDialogue::CTCFineDialogue(CThing* thing)
-    : CTCBase_Calls(thing)
+    : CTCBase(thing)
     , GivePlayerChanceToPayFine(true)
     , WaitingForConfirmation(false)
 {
-    AddToGlobalUpdateTCs();
+    AddToGlobalTCs();
 }

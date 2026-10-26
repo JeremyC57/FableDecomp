@@ -80,8 +80,9 @@ class CThing { public:
 };
 class CPlayer {
 public:
-    bool IsFirstPersonTargeting();                 // 0x004874D0
     CThing* GetHeroThing();                        // 0x00487DC0
+public:
+    bool IsFirstPersonTargeting() const;   // 0x004874D0
 };
 extern bool g_rangedWeaponModeGate;                // 0x01375752
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;

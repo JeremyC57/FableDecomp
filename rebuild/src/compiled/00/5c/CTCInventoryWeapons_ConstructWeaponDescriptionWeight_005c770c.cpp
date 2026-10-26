@@ -27,7 +27,10 @@ class CWideString { public:
     ~CWideString();                                     // 0x0099B510
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
-struct CDataBank { CWideString GetTextBySymbol(const CCharString& symbol); };   // 0x009C95E0
+namespace NGameText {
+class CDataBank { public: const CWideString GetTextBySymbol(const CCharString& symbol) const; };
+}
+using NGameText::CDataBank;   // 0x009C95E0
 class CMainGameComponent { public: unsigned char _pad[0x14]; CDataBank* TextBank; };   // +0x14
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 template <class T> struct vector {

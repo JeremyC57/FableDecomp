@@ -49,7 +49,7 @@ template <class T> class CCountedPointer { public:
     }
 };
 class CGraphicDataBank;
-float __stdcall GFAXToVX_009e1da0(float x);                 // 0x009E1DA0
+float __fastcall GFAXToVX(float);                 // 0x009E1DA0
 float __stdcall GFAYToVY_009e1dd0(float y);                 // 0x009E1DD0
 struct CRenderManager2D {
     bool Draw2DScaledGraphic(const C2DBoxF& box, CGraphicDataBank* bank, unsigned long graphic,
@@ -106,9 +106,9 @@ void CSprite::DrawWithRenderManager()
     box.BRY = pos.Y + dim.Y;
     if (IsCentred())
         box.MoveTo(C2DVector(pos.X - dim.X * 0.5f, pos.Y - dim.Y * 0.5f));
-    box.TLX = GFAXToVX_009e1da0(box.TLX);
+    box.TLX = GFAXToVX(box.TLX);
     box.TLY = GFAYToVY_009e1dd0(box.TLY);
-    box.BRX = GFAXToVX_009e1da0(box.BRX);
+    box.BRX = GFAXToVX(box.BRX);
     box.BRY = GFAYToVY_009e1dd0(box.BRY);
     CCountedPointer<CGraphicDataBank> bank = CFrontEndManager::GetInstance()->PGraphicBank;
     CSystemManager* system = GFGetSystemManager();

@@ -11,11 +11,18 @@
 //
 // Lane feedback: `if (ok) { ...; return true; } return false;` gives retail's block order; the early
 // `if (!ok) return false;` form differs by 2 bytes. RELOCATION_MATCH.
+#define CHandleBasedMemoryPool CHandleBasedMemoryPoolLayout
 #include "engine/CHandleBasedMemoryPool.h"
+#undef CHandleBasedMemoryPool
+
+class CHandleBasedMemoryPool : public CHandleBasedMemoryPoolLayout
+{
+public:
+    bool BeginShutdown(float);   // 0x00A02220
+    void EndShutdown();   // 0x00A02370
+};
 
 struct CHandleBasedMemoryPool_Methods : CHandleBasedMemoryPool {
-    bool BeginShutdown(float timeBudget);     // 0x00A02220
-    void EndShutdown();                       // 0x00A02370
     bool ResizePool(unsigned long newPoolSize, float timeBudget);
 };
 

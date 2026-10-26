@@ -45,11 +45,21 @@ public:
     }
 };
 
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    virtual void v00();
-    CThing* PItem;
-    CThing* GetPItem() const;                                   // 0x00A01B50
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CTCVillage {
@@ -63,7 +73,7 @@ public:
     CThing*                 ParentThing;                        // +0x04
     unsigned char           _pad08[4];                          // CTCBase flags
     void*                   PDef;                               // +0x0c CDefPointer<const CVillageMemberDef>
-    CBaseIntelligentPointer PVillage;                           // +0x10 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PVillage;                           // +0x10 CIntelligentPointer<CThing>
     unsigned long           VillageUID[2];                      // +0x18
     CTCVillage* GetPVillage() const;
 };

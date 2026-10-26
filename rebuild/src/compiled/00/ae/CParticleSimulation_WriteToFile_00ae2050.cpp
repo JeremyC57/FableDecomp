@@ -17,9 +17,10 @@ public:
     virtual void v02();
     virtual void v03();
     virtual void Write(const void* data, long length);   // slot 4 (+0x10)
-    void WriteBool(bool value);                            // 0x00993E30
-    void WriteULong(unsigned long value);                  // 0x00993EA0
     void WriteFloat(float value);                          // 0x00993EE0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 void __fastcall WriteVectors_00ae18c0(const C4DVector* vectors, unsigned long count, CDataOutputStream& stream);   // 0x00AE18C0
@@ -50,16 +51,16 @@ class CParticleSimulation { public:
 void CParticleSimulation::WriteToFile(CDataOutputStream& stream)
 {
     stream.WriteFloat(Timestep);
-    stream.WriteULong(TimestepChanged);
+    stream.WriteULONG(TimestepChanged);
     stream.WriteFloat(TimestepMultiplier);
-    stream.WriteULong(Size);
+    stream.WriteULONG(Size);
     WriteVectors_00ae18c0(Positions, Size, stream);
     stream.Write(SimulationAlphas, Size * sizeof(float));
     stream.WriteFloat(GravityStrength);
     stream.WriteFloat(WindStrength);
-    stream.WriteBool(DraggingEnable);
-    stream.WriteBool(DraggingRotational);
+    stream.WriteEBOOL(DraggingEnable);
+    stream.WriteEBOOL(DraggingRotational);
     stream.WriteFloat(DraggingStrength);
-    stream.WriteBool(AccelerationEnable);
+    stream.WriteEBOOL(AccelerationEnable);
     stream.WriteFloat(GlobalDamping);
 }

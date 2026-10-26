@@ -139,7 +139,7 @@ void ThingSearchMethods::GetAllWithScriptName(const HasScriptName& filter,ThingV
 }
 #pragma auto_inline(on)
  //005ED860
-unsigned long __fastcall GFROR13(unsigned long); //00497890
+long __fastcall GFROR13(unsigned long); //00497890
 struct WorldMethods:CWorld{unsigned long* GetPRandomSeed();}; //0049D810
 __forceinline unsigned long RandomIndex(unsigned long* seed,unsigned long count){*seed=*seed*9377+9439;*seed=GFROR13(*seed);return count?*seed%count:0;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods GetRandomThingWithScriptName(const CCharString&)const;};

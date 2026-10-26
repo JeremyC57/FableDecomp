@@ -115,7 +115,7 @@ template <class A, class B> struct pair { A first; B second; };
 class CEngineComponent { public:
     virtual void v00();
     void** m_ppOwnerLink;                          // +0x04
-    ~CEngineComponent();                           // 0x00B59730
+    virtual ~CEngineComponent();                           // 0x00B59730
 };
 
 struct COccluderFlareEntry { unsigned long Handle; unsigned long Result; };

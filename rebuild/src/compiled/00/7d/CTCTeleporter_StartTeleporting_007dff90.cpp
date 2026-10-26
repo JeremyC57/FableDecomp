@@ -3,10 +3,10 @@
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DFF90, 314 bytes (`ret 4`, /GS cookie 0x0139C8A8).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (the inline GetInterface, interface 0x1B =
-//          CTCInventoryMap: bit 27 of the bitset word +0x20); CTCBase::GetWorld() const 0x00686A80;
+//          CTCInventoryMap: bit 27 of the bitset word +0x20); CTCBase::PeekWorld() const 0x00686A80;
 //          CTCInventoryMap::BuildMapTeleportUI(long, bool, bool*) 0x0060C900 (`ret 0Ch`; the third argument is an out
 //          flag, the landed caller's `bool keepSelection` spelling is wrong); CMemoryBuffer::Copy 0x009F1760;
-//          CTCBase::GetPlayerManager() const 0x00686D50; CPlayerManager::GetMainPlayerNumber() 0x00449700;
+//          CTCBase::PeekPlayerManager() const 0x00686D50; CPlayerManager::GetMainPlayerNumber() 0x00449700;
 //          CMainGameComponent::AddGameEvent(const CGameEvent&) 0x0041649C on g_pMainGameComponent 0x013B86A0;
 //          __security_check_cookie 0x00BFE9F9. Globals: g_pPlayerGui 0x013B8790 (+0xfd, an unidentified blocking flag),
 //          g_epsilon_0129ba3c (1e-4f).
@@ -84,19 +84,20 @@ class CWorld { public:
     long          m_mode;                       // +0x104
 };
 class CPlayerManager { public:
-    long GetMainPlayerNumber();                 // 0x00449700
+    long GetMainPlayerNumber() const;                 // 0x00449700
 };
 
-struct CTCBaseModel {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
     unsigned char _pad0a[2];
-    const CWorld* GetWorld() const;             // 0x00686A80
-    CPlayerManager* GetPlayerManager() const;   // 0x00686D50
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
-class CTCTeleporter : public CTCBaseModel { public:
+class CTCTeleporter : public CTCBase { public:
     void StartTeleporting(CThing* hero);
 };
 
@@ -106,13 +107,13 @@ void CTCTeleporter::StartTeleporting(CThing* hero)
     hero->GetInterface(&map, 0x1b);
     map->InventoryScreen = false;
     map->OpenedViaGuildSeal = false;
-    if (!g_pPlayerGui->m_blockingFD && GetWorld()->m_mode == 0) {
+    if (!g_pPlayerGui->m_blockingFD && PeekWorld().m_mode == 0) {
         bool built = false;
         map->BuildMapTeleportUI(0, true, &built);
         if (built && !(hero->m_flags91 & 1) && hero->Health > g_epsilon_0129ba3c) {
             CGameEvent event(0x1a);
             event.AddULONG(8);
-            event.Player = (signed char)GetPlayerManager()->GetMainPlayerNumber();
+            event.Player = (signed char)PeekPlayerManager().GetMainPlayerNumber();
             g_pMainGameComponent->AddGameEvent(event);
             return;
         }

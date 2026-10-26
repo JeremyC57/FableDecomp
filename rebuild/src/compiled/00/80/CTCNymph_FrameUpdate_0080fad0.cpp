@@ -11,7 +11,16 @@
 // Layout: PTarget +0x68 (retail; Ego_r.pdb CTCNymph is 0x74, retail 0x70 with the narrower spline vector).
 // Shape: both CIntelligentPointer temporaries are named block locals -- the targeting one so operator= gets the local's
 //   address (a temporary passes the ctor's eax), the POldEffect reset one so the two destructor calls tail-merge as retail.
+#define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
+#undef CTCBase
+class CWorld;
+
+class CTCBase : public CTCBaseLayout
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
 
 class CCharStringData;
 class CCharString { public:
@@ -218,7 +227,6 @@ class CNymphDef { public:
     float FadeOutTime;                                      // +0x4c
 };
 struct CTCBaseFrame : CTCBase {
-    class CWorld* GetWorld();                              // 0x00686A70 (CTCBase)
     void FrameUpdate();                                     // 0x006868A0 (CTCBase)
 };
 class CTCNymph : public CTCBaseFrame { public:
@@ -252,7 +260,7 @@ void CTCNymph::FrameUpdate()
 {
     if (FlyingAround) {
         if (FadeCounter == 0) {
-            float t = (float)(GetWorld()->GetWorldFrame() - LastTargetTick) / g_FramesPerSecondF;
+            float t = (float)(GetWorld().GetWorldFrame() - LastTargetTick) / g_FramesPerSecondF;
             if (t < 1.0f) {
                 C3DVector position;
                 FlightSpline.GetSplinePosition(&position, t * 0.75f + 0.25f);

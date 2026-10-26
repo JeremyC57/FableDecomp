@@ -12,7 +12,7 @@
 //   { while (result == previous) ... }` form keeps the first result in eax and previous in ebx (145v134).
 extern "C" __declspec(dllimport) void __stdcall OutputDebugStringW(const unsigned short* text);   // KERNEL32 import (IAT 0x0143FE14); WCHAR is unsigned short (no /Zc:wchar_t)
 
-unsigned long __fastcall GFROR13(unsigned long value);       // 0x00497890 (rotate right by 13)
+long __fastcall GFROR13(unsigned long);       // 0x00497890 (rotate right by 13)
 
 __forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {

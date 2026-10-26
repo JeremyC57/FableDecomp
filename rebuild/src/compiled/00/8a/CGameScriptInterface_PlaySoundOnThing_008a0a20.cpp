@@ -110,11 +110,13 @@ struct MainGameSoundView{unsigned char BeforeSampleBank[16];CASoundBank* PSample
 extern unsigned long g_InvalidSoundHandle; //0129D25C
 class CSoundPair{ public:long FirstSound,LastSound;CSoundPair(long n):FirstSound(n),LastSound(n){}};
 class CSoundInit{ public:float Volume,Pitch,Pan;long NoPlays,PlaybackType;unsigned long GainFaderBits,PitchFaderBits;long OverrideID;CSoundInit():Volume(1.0f),Pitch(1.0f),Pan(0.0f),NoPlays(1),PlaybackType(1),GainFaderBits(0),PitchFaderBits(0),OverrideID(-1){}};
-struct SoundPlayerMethods{unsigned long PlayAttachedSample(const CSoundPair&,const CSoundInit&,bool,bool,bool);}; //0066B280, donor PlayAttachedSample without explicit bank
+class CTCSoundPlayer{ public:public:
+    unsigned long PlayAttachedSample(const CSoundPair&, const CSoundInit&, bool, bool, bool);   // 0x0066B280
+}; //0066B280, donor PlayAttachedSample without explicit bank
 struct CGameScriptInterfaceMethods:CGameScriptInterface{unsigned long PlaySoundOnThing(const ScriptMethods&,const CCharString&)const;};
 unsigned long CGameScriptInterfaceMethods::PlaySoundOnThing(const ScriptMethods& thing,const CCharString& symbol)const{
  if(thing.IsAlive()){
  CASoundBank* bank=g_MainGameComponent->PSampleBank;long sound=bank->GetSoundIndexFromSymbol(symbol);
- if(sound){CThingNative* owner=thing.GetPThing();if(owner->UsingComponents[0]&0x10000){ComponentMap* map=&owner->Components;ComponentEntry* it=map->LowerBound(16);ComponentEntry* end=map->Finish;SoundPlayerMethods* player=static_cast<SoundPlayerMethods*>((it==end||it->Type>16?end:it)->Component);
+ if(sound){CThingNative* owner=thing.GetPThing();if(owner->UsingComponents[0]&0x10000){ComponentMap* map=&owner->Components;ComponentEntry* it=map->LowerBound(16);ComponentEntry* end=map->Finish;CTCSoundPlayer* player=static_cast<CTCSoundPlayer*>((it==end||it->Type>16?end:it)->Component);
  CSoundInit init;init.GainFaderBits=0x8010;return player->PlayAttachedSample(CSoundPair(sound),init,true,false,false);
  }}}return g_InvalidSoundHandle;}

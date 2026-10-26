@@ -11,6 +11,7 @@
 //   std::vector<CCharString> route members is 12 bytes, not 16).
 // Shape: the landed CAC_Owner::GetRandomSpeech (0x00E2E440) with two stages: an empty string, a copy of it returned on every
 //   IsDone exit, and the chosen line assigned to a third local and copied out (no NRVO).
+namespace NScript { class CPredicateBase; }
 class CCharString
 { public:
     void* PStringData;
@@ -40,9 +41,16 @@ struct CQR_EscortTraderScript                       // retail layout of the memb
     EscortTraderQuestStage QuestStage;              // +0x11c
 };
 
-struct CTraderToEscort
+class CEntityScriptBase
 {
+public:
     virtual void v00();
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CTraderToEscort
+: public CEntityScriptBase {
     CGameScriptInterface*   GSI;                    // +0x04
     unsigned char           _pad08[0x14 - 0x08];    // Me (CScriptThing)
     CQR_EscortTraderScript* ParentClass;            // +0x14
@@ -51,7 +59,6 @@ struct CTraderToEscort
     long lastRandomSpeechFollowIdx2;                // +0x20
     long lastRandomSpeechWaitIdx1;                  // +0x24
     long lastRandomSpeechWaitIdx2;                  // +0x28
-    bool IsDone();                                  // 0x00F35B30
     CCharString GetRandomSpeech();
 };
 
@@ -63,16 +70,16 @@ CCharString CTraderToEscort::GetRandomSpeech()
     long index;
     for (;;)
     {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return none;
         if (ParentClass->QuestStage == ESCORT_STAGE_FOLLOW)
         {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return none;
             index = rand() % 10;
             if (index != lastRandomSpeechFollowIdx1 && index != lastRandomSpeechFollowIdx2)
             {
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                     return none;
                 lastRandomSpeechFollowIdx2 = lastRandomSpeechFollowIdx1;
                 lastRandomSpeechFollowIdx1 = index;
@@ -82,12 +89,12 @@ CCharString CTraderToEscort::GetRandomSpeech()
         }
         else if (ParentClass->QuestStage == ESCORT_STAGE_WAIT)
         {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return none;
             index = rand() % 5;
             if (index != lastRandomSpeechWaitIdx1 && index != lastRandomSpeechWaitIdx2)
             {
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                     return none;
                 lastRandomSpeechWaitIdx2 = lastRandomSpeechWaitIdx1;
                 lastRandomSpeechWaitIdx1 = index;
@@ -97,7 +104,7 @@ CCharString CTraderToEscort::GetRandomSpeech()
         }
         GSI->NewScriptFrame();
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return none;
     return speech;
 }

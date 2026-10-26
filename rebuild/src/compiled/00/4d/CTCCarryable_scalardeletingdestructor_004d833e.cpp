@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCCarryable_Destruct(void* carryable);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCCarryable_ScalarDeletingDestructor(void* carryable, int, unsigned int flags)
 {
-    CTCCarryable_Destruct(carryable);
+    ((CTCBase*)(carryable))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(carryable);
+        operator delete(carryable);
     return carryable;
 }

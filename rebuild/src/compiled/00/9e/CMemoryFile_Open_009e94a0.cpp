@@ -26,8 +26,14 @@ class CWideString { public:
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
-CWideString __fastcall ConvertPathToFullPath(const CWideString& path);   // 0x00999110
-bool __fastcall PathExists(const CWideString& path);                    // 0x00999230
+class CAFile {
+public:
+    static CWideString __fastcall ConvertPathToFullPath(const CWideString&);   // 0x00999110
+
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};   // 0x00999110
+                    // 0x00999230
 
 class CExceptionBase {
 public:
@@ -59,7 +65,8 @@ class CDiskFileWin32 : public CBase { public:                         // vtable 
     CWideString Pathname;                               // +0x18
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
     ~CDiskFileWin32() { Close(); }
-    void Read(void* buffer, long size, CASuspendableProcess* process);   // 0x0099A960
+public:
+    virtual void Read(void*, long, CASuspendableProcess*);   // 0x0099A960
 };
 
 template <class T> struct vector {                      // STLport vector, 12 bytes
@@ -85,8 +92,8 @@ public:
 
 void CMemoryFile::Open(const CWideString& pathname, FileAccessType access, unsigned long flags)
 {
-    CWideString fullPath = ConvertPathToFullPath(pathname);
-    if (PathExists(fullPath)) {
+    CWideString fullPath = CAFile::ConvertPathToFullPath(pathname);
+    if (CAFile::PathExists(fullPath)) {
         CDiskFileWin32 file(pathname, access, flags);
         Length = file.Length;
         DataBuffer.resize(file.Length, 0);

@@ -64,7 +64,9 @@ class CThingShotDef { public:                          // descriptive
     bool KillOnSubShots;                        // +0xa8
 };
 extern long g_framesPerSecond;                  // 0x01375550
-struct CTCShotDefinitionBase {
+class CTCBase
+{
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -79,6 +81,11 @@ struct CTCShotDefinitionBase {
     virtual void UpdateSound();                 // slot 39 (+0x9c)
     virtual void TriggerSubShots();             // slot 40 (+0xa0)
     virtual void OnPassedTarget();              // slot 41 (+0xa4)
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+struct CTCShotDefinitionBase : public CTCBase {
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x14 - 0x08];
     CPtrVector HitThingsList;                   // +0x14
@@ -89,7 +96,6 @@ struct CTCShotDefinitionBase {
     bool SubShotsTriggered;                     // +0x50
     unsigned char _pad51[0x64 - 0x51];
     bool PassedTarget;                          // +0x64
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
     bool HasPassedTarget();                     // 0x007BF3D0
     void OnCollisionProper(bool* collided);     // 0x007C1000
     void Update();
@@ -113,7 +119,7 @@ void CTCShotDefinitionBase::Update()
         if (collided)
             return;
     }
-    long frame = GetWorld()->GetWorldFrame();
+    long frame = GetWorld().GetWorldFrame();
     if (PShotDef->NumSubShots > 0 && !SubShotsTriggered
         && (float)(frame - StartFrame) / g_framesPerSecond >= PShotDef->SubShotDelay) {
         TriggerSubShots();

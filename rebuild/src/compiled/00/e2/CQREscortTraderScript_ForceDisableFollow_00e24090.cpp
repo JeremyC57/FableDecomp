@@ -90,11 +90,11 @@ class CGameScriptInterface { public:
 };
 extern CGameScriptInterface* g_pGameScriptInterface;       // 0x0143E8F8
 
-struct CQuestGlobals {
+class CScriptDef { public:
     unsigned char _pad[0x9a4];
     long          EscortTraderExpressionDetectPeriod;       // +0x9a4
 };
-extern CQuestGlobals* g_pQuestGlobals;                      // 0x0143E90C
+extern CScriptDef* pGlobalScriptDef;                      // 0x0143E90C
 
 class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
@@ -120,7 +120,7 @@ struct CQR_EscortTraderScript : CQuestScriptBase {
 void CQR_EscortTraderScript::ForceDisableFollow(const CScriptThing& trader)
 {
     ExpressionDetectedFollow = false;
-    g_pGameScriptInterface->SetTimer(TraderExpressionDetectTimer.Index, g_pQuestGlobals->EscortTraderExpressionDetectPeriod);
+    g_pGameScriptInterface->SetTimer(TraderExpressionDetectTimer.Index, pGlobalScriptDef->EscortTraderExpressionDetectPeriod);
     GSI->MiniMapRemoveMarker(trader);
     GSI->EntityStopFollowing(trader);
     GSI->EntitySetAsDisplayingEmoteIcon(trader, false);

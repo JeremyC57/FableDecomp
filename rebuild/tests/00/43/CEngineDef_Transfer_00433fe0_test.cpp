@@ -7,9 +7,10 @@
 // Local model: no engine/CEngineDef.h exists. Field names/types are the PDB's (fable_types.h), but the retail object
 // places them 4 bytes earlier than the Ego_r layout (floats 0x3C..0x5C, longs 0x60..0x7C), as the lea offsets show.
 class CPersistContext { public:
- void Transfer(float&); // 0x00431061
- void Transfer(long&);  // 0x00431102
+ template <class T> void Transfer(T& value); // 0x00431061
 };
+template <> void CPersistContext::Transfer<float>(float& value);
+template <> void CPersistContext::Transfer<long>(long& value);
 class CEngineDef { public:
  unsigned char _base[0x3c];
  float LODErrorTolerance, CharacterLODErrorTolerance, LODErrorFactor, SeaHeight;              // 0x3c..0x48
@@ -33,8 +34,8 @@ void CEngineDef::Transfer(CPersistContext& c) {
 #include <stdio.h>
 #include <string.h>
 static int g_n; static int g_off[32]; static char g_kind[32]; static unsigned char* g_base;
-void CPersistContext::Transfer(float& f) { g_off[g_n] = (int)((unsigned char*)&f - g_base); g_kind[g_n++] = 'f'; f += 1.0f; }
-void CPersistContext::Transfer(long& l) { g_off[g_n] = (int)((unsigned char*)&l - g_base); g_kind[g_n++] = 'l'; l += 1; }
+template <> void CPersistContext::Transfer<float>(float& f) { g_off[g_n] = (int)((unsigned char*)&f - g_base); g_kind[g_n++] = 'f'; f += 1.0f; }
+template <> void CPersistContext::Transfer<long>(long& l) { g_off[g_n] = (int)((unsigned char*)&l - g_base); g_kind[g_n++] = 'l'; l += 1; }
 int main() {
  static const int eo[17] = {0x3c,0x40,0x44,0x48,0x60,0x64,0x4c,0x50,0x54,0x58,0x68,0x6c,0x70,0x74,0x5c,0x78,0x7c};
  CEngineDef d; memset(&d, 0, sizeof d); CPersistContext c; g_base = (unsigned char*)&d;

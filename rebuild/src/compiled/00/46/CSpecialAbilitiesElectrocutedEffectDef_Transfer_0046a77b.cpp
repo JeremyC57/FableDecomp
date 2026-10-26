@@ -10,7 +10,7 @@
 // named by address). The last member's address is formed in place (`add esi,N`). Member types
 // are not recoverable beyond their 4-byte size. One of 9 bodies of this shape.
 class CPersistContext { public:
-    void Transfer_00431061(long* value);   // 0x00431061
+    template <class T> void Transfer(T& value);   // 0x00431061
     void Transfer_00466a47(long* value);   // 0x00466A47
 };
 
@@ -32,12 +32,12 @@ struct CPersistable_0046a77b {
 
 void CPersistable_0046a77b::Transfer(CPersistContext& context)
 {
-    context.Transfer_00431061(&m_3c);
-    context.Transfer_00431061(&m_40);
-    context.Transfer_00431061(&m_44);
+    context.Transfer(*(float*)(&m_3c));
+    context.Transfer(*(float*)(&m_40));
+    context.Transfer(*(float*)(&m_44));
     context.Transfer_00466a47(&m_48);
     context.Transfer_00466a47(&m_54);
-    context.Transfer_00431061(&m_60);
-    context.Transfer_00431061(&m_64);
-    context.Transfer_00431061(&m_68);
+    context.Transfer(*(float*)(&m_60));
+    context.Transfer(*(float*)(&m_64));
+    context.Transfer(*(float*)(&m_68));
 }

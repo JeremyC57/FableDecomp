@@ -25,7 +25,7 @@ public:
 class CPersistContext {
 public:
     template <class T> void TransferVectorBinary(std::vector<T>& v);   // 0x004331F9 for CCharString
-    void TransferLong(long& value);                      // 0x00431102
+    template <class T> void Transfer(T& value);                      // 0x00431102
 };
 class CFrontEndDef {
 public:
@@ -39,7 +39,7 @@ public:
 void CFrontEndDef::Transfer(CPersistContext& context)
 {
     context.TransferVectorBinary(vAttractModeMovie);
-    context.TransferLong(ErrorMessageBackgroundGraphic);
-    context.TransferLong(ButtonABigGraphic);
-    context.TransferLong(ButtonBBigGraphic);
+    context.Transfer(ErrorMessageBackgroundGraphic);
+    context.Transfer(ButtonABigGraphic);
+    context.Transfer(ButtonBBigGraphic);
 }

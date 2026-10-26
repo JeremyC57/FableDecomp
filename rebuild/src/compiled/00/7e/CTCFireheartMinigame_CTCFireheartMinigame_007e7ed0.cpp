@@ -32,8 +32,9 @@ template<class T> class CDefPointer { public:
     }
 };
 class CBaseObject { public:
-    virtual ~CBaseObject();                     // 0x0099A430
     void* IntelligentPointer;                   // +0x04
+protected:
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CScriptThingImp {                        // complete before the member pointer: single-inheritance 4-byte form
     void DestroySelf();

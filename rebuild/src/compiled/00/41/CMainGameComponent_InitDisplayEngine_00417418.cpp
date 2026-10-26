@@ -64,7 +64,10 @@ class CMainGameComponent { public:
  unsigned char LUAAndWorldState[0x1619c]; CGraphicDataBank* PMainGraphicBank; void* PMainGraphicBankInfo;
  void InitDisplayEngine();
 };
-CGameDefinitionManager* __fastcall GetDefinitionManager(); //0044c6b0
+class CGameDefinitionManager {
+public:
+    static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
+}; //0044c6b0
 namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&,float,bool,bool); } //009e9f40
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(sizeof(CDisplayEngine)==0x100);
@@ -79,7 +82,7 @@ void CMainGameComponent::InitDisplayEngine(){
  init.Height=g_DisplayDevice->BackSurface.GetHeight();
  init.Width=g_DisplayDevice->BackSurface.GetWidth();
  init.PixelFormat=g_DisplayDevice->BackSurface.GetPixelFormat();
- init.DefinitionManager=GetDefinitionManager();
+ init.DefinitionManager=(&CGameDefinitionManager::Get());
  init.PlayerManager=PPlayerManager;
  init.MainGraphicBank=PMainGraphicBank;
  init.Component=this;

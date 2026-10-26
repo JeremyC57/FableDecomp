@@ -68,7 +68,7 @@ class CTCCreatureModeManager { public:            // interface type 0x31
 class CCombatActionBase { public:                 // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x110];
-    ~CCombatActionBase();                  // 0x0062E900
+    virtual ~CCombatActionBase();                  // 0x0062E900
 };
 
 class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:   // vtable 0x01271BAC

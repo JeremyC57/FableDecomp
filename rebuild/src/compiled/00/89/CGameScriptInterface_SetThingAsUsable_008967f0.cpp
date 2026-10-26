@@ -59,7 +59,6 @@ class CThing { public:
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];       // +0x20 std::bitset of the interface types present
     CInterfaceMap_Retail m_interfaces;           // +0x44
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     __forceinline CTCBase* GetTC(long interfaceType)
     {
@@ -82,6 +81,8 @@ class CThing { public:
         }
         return false;
     }
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 
 class CScriptThing { public:

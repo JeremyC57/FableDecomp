@@ -1,6 +1,6 @@
 // C3DAnimFileMovementVectorChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- X, Y, Z then the sub-chunks
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAE130, length 64 bytes.
-// Callees: CDataOutputStream::WriteFLOAT @ 0x00993EE0 (x3), CChunkedFileSuperChunk::WriteToFile @ 0x00AA78C0.
+// Callees: CDataOutputStream::WriteFloat @ 0x00993EE0 (x3), CChunkedFileSuperChunk::WriteToFile @ 0x00AA78C0.
 // Layout: the PDB (Ego_r) CChunkedFileSuperChunk is 0x34 bytes with 16-byte CArrays; retail's is 0x2c with 12-byte
 // CArrays (begin/end/end-of-storage), which is why every derived member sits 8 bytes below the PDB offset and why
 // the generated engine headers for these chunk classes cannot model the bodies -- a local model is used instead.
@@ -19,9 +19,10 @@ class CDataOutputStream { public:
     virtual void WriteBytes(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteLONG(long value);                                    // 0x00993EB0
     void WriteULONG(unsigned long value);                          // 0x00993EA0
-    void WriteFLOAT(float value);                                  // 0x00993EE0
     void WriteBOOL(bool value);                                    // 0x00993E30
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
+public:
+    void WriteFloat(float);   // 0x00993EE0
 };
 
 template <class T>
@@ -99,8 +100,8 @@ class C3DAnimFileMovementVectorChunk : public CChunkedFileSuperChunk { public:  
 
 void C3DAnimFileMovementVectorChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
-    out.WriteFLOAT(Vector.X);
-    out.WriteFLOAT(Vector.Y);
-    out.WriteFLOAT(Vector.Z);
+    out.WriteFloat(Vector.X);
+    out.WriteFloat(Vector.Y);
+    out.WriteFloat(Vector.Z);
     CChunkedFileSuperChunk::WriteToFile(out, saver);
 }

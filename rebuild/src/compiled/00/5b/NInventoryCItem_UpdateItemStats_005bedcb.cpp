@@ -83,7 +83,8 @@ class CThing { public:
     }
 };
 class CQuestManager { public:
-    bool IsBetweenQuestStartAndFinishScreens();  // 0x004AF290
+public:
+    bool IsBetweenQuestStartAndFinishScreens() const;   // 0x004AF290
 };
 extern CQuestManager* g_pQuestManager;     // 0x013B89FC
 extern float g_lastFishWeight;             // 0x013BAE80

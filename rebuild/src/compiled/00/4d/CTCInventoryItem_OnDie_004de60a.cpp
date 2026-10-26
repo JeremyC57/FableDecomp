@@ -1,17 +1,20 @@
 #pragma optimize("s",on)
 // Leaf: OnDie
 // CTCInventoryItem::OnDie @ 004de60a
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 class CTCInventoryItem { public:
     char pad[0x10];
     void* PInventory;   // +0x10
 };
 
-extern "C" void __cdecl free_bfea14(void* p);         // 0xbfea14
-extern void __fastcall base_686830(CTCInventoryItem* self); // 0x686830
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* self)
 {
     if (self->PInventory)
-        free_bfea14(self->PInventory);
-    base_686830(self);
+        free(self->PInventory);
+    ((CTCBase*)(self))->CTCBase::~CTCBase();
 }

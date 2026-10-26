@@ -4,14 +4,16 @@
 extern "C" void __stdcall LogShadowScene(int tag);
 
 struct Local4 { int v; void Consume(void* obj24, int* param); };
-struct Callee28 { void Fire(int a); };
+class CDataOutputStream { public: public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 class CEngineLightingManager { public:
     char pad0[0x18];
     int mode;      // +0x18
     char pad1c[0x24 - 0x1c];
     void* obj24;   // +0x24
-    Callee28* obj28;   // +0x28
+    CDataOutputStream* obj28;   // +0x28
 };
 
 void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager* self, void* edx, int* param)
@@ -24,7 +26,7 @@ void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager*
         local.Consume(self->obj24, param);
         break;
     case 3:
-        self->obj28->Fire(*param);
+        self->obj28->WriteSLONG(*param);
         break;
     }
 }

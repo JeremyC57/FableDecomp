@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CMeleeCombatKnockdownEffects_Destruct(void* effects);
-extern void __cdecl OperatorDelete(void* object);
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 void* __fastcall CMeleeCombatKnockdownEffects_ScalarDeletingDestructor(void* effects, int, unsigned int flags)
 {
-    CMeleeCombatKnockdownEffects_Destruct(effects);
+    ((CParentDefClassBase*)(effects))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        OperatorDelete(effects);
+        operator delete(effects);
     return effects;
 }

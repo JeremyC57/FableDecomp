@@ -135,19 +135,22 @@ class CWorld { public:
     unsigned char             _pad00[0x34];
     CAIGameCameraBase_Retail* PCurrentGameCamera;   // +0x34 (engine/CWorld.h)
 };
-struct CPlayerControls_Retail {
+class CPlayer { public:
     CThing_Retail* GetControlledCreature();         // 0x00487DD0
 };
-struct CPlayerManagerEx_Retail {
-    CPlayerControls_Retail* GetMainPlayer();        // 0x00449970
+class CPlayerManager { public:
     void UnfreezePlayerControls(long player);       // 0x00449A50
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
-struct CPlayerGui_Retail {
-    void Close();                                   // 0x004374B0 (manifest "CPlayerGui::Open" is propagated)
+class CPlayerGui { public:
+public:
+    void Open();   // 0x004374B0
 };
-extern CPlayerGui_Retail* g_pPlayerGui;             // 0x013B8790
-struct CDisplayEngine_Retail {
-    void EndScreenFadeOut();                        // 0x00434C90
+extern CPlayerGui* g_pPlayerGui;             // 0x013B8790
+class CDisplayEngine { public:
+public:
+    void EndScreenFadeOut();   // 0x00434C90
 };
 class CGameScriptInterface { public:
     virtual void g000(); virtual void g001(); virtual void g002(); virtual void g003(); virtual void g004(); virtual void g005(); virtual void g006(); virtual void g007();
@@ -201,14 +204,14 @@ class CGameScriptInterface { public:
     virtual void EndLetterBox();   // slot 378 (+0x5e8)
     CWorld*                  World;                 // +0x04 (engine/CGameScriptInterface.h)
     void*                    Component;             // +0x08
-    CDisplayEngine_Retail*   DisplayEngine;         // +0x0c
+    CDisplayEngine*   DisplayEngine;         // +0x0c
     void*                    DefinitionManager;     // +0x10
-    CPlayerManagerEx_Retail* PlayerManager;         // +0x14
+    CPlayerManager* PlayerManager;         // +0x14
     void*                    ThingSearchTools;      // +0x18
     long                     CurrentPlayer;         // +0x1c
     void UnfreezeControls()                         // 0x006E73E0 (inlined at the qualified call)
     {
-        CThing_Retail* creature = PlayerManager->GetMainPlayer()->GetControlledCreature();
+        CThing_Retail* creature = PlayerManager->GetMainPlayer().GetControlledCreature();
         if (creature && !creature->m_dead)
             PlayerManager->UnfreezePlayerControls(CurrentPlayer);
     }
@@ -219,7 +222,7 @@ void CGameScriptInterface::CleanupActions()
 {
     World->PCurrentGameCamera->ScriptEnd();
     CGameScriptInterface::UnfreezeControls();
-    g_pPlayerGui->Close();
+    g_pPlayerGui->Open();
     World->PCurrentGameCamera->ScriptEnd();
     EndLetterBox();
     DisplayEngine->EndScreenFadeOut();

@@ -20,8 +20,9 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                       // 0x00449970
     void UnfreezePlayerControls(long player);       // 0x00449A50
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 
 struct CGameScriptInterface_Methods : CGameScriptInterface {
@@ -30,7 +31,7 @@ struct CGameScriptInterface_Methods : CGameScriptInterface {
 
 void CGameScriptInterface_Methods::UnfreezeControls()
 {
-    CThing* creature = PlayerManager->GetMainPlayer()->GetControlledCreature();
+    CThing* creature = PlayerManager->GetMainPlayer().GetControlledCreature();
     if (creature && !(creature->m_stateFlags & 1))
         PlayerManager->UnfreezePlayerControls(CurrentPlayer);
 }

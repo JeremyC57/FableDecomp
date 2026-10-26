@@ -15,7 +15,15 @@
 // Shape: `CGameEvent event(0x0B); event.AddUBYTE(on); input.AddGameEvent(event);` -- the constructor's stores (Player -1,
 //   EndPos 0, Valid true, Replacement 0) scheduled around the Copy arguments; AddUBYTE homes its by-value byte in the
 //   frame word below the event.
+#define CGameEvent CGameEventLayout
 #include "engine/CGameEvent.h"
+#undef CGameEvent
+
+class CGameEvent : public CGameEventLayout
+{
+public:
+    void AddData(long, const void*);   // 0x009F1760
+};
 
 struct CGameEventBuilder : CGameEvent {                     // CGameEvent's inline members
     CGameEventBuilder(long type)
@@ -26,8 +34,7 @@ struct CGameEventBuilder : CGameEvent {                     // CGameEvent's inli
         Valid = true;
         Replacement = false;
     }
-    void Copy(unsigned long length, const void* data);      // 0x009F1760 (CMemoryBuffer::Copy)
-    void AddUBYTE(unsigned char value) { Copy(1, &value); }
+    void AddUBYTE(unsigned char value) { AddData(1, &value); }
 };
 
 class CProcessedInput {

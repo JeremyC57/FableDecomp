@@ -21,8 +21,14 @@ class CWideString { public:
     void Format(const unsigned short* format, ...);            // 0x0099BA70
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
-CWideString __fastcall ConvertPathToFullPath(const CWideString& path);           // 0x00999110
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* dir, CWideString* name, CWideString* ext);   // 0x00997620
+class CAFile {
+public:
+    static CWideString __fastcall ConvertPathToFullPath(const CWideString&);   // 0x00999110
+
+public:
+    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+};           // 0x00999110
+   // 0x00997620
 class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
@@ -35,7 +41,8 @@ class CRegion { public:
 };
 class CWorldMap { public:
     long GetCurrentRegionIndex() const;            // 0x004FB150
-    CRegion& GetRegion(long index);                // 0x004FC180
+public:
+    const CRegion& GetRegion(long) const;   // 0x004FC180
 };
 
 inline CWideString ToString(long value)
@@ -52,8 +59,8 @@ class CMiniMapDisplay { public:
 CWideString CMiniMapDisplay::ConstructMinimapFilename(const CWideString& path, CWorldMap* map, long index)
 {
     CWideString filename;
-    CWideString fullPath = ConvertPathToFullPath(path);
-    SplitPath(fullPath, 0, 0, &filename, 0);
+    CWideString fullPath = CAFile::ConvertPathToFullPath(path);
+    CAFile::SplitPath(fullPath, 0, 0, &filename, 0);
     CCharString regionName(map->GetRegion(map->GetCurrentRegionIndex()).Name);
     filename += L"_";
     filename += regionName.ToWideString();

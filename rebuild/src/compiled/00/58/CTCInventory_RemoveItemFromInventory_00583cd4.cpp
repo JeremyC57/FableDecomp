@@ -64,14 +64,17 @@ struct CThingDef : CDefClassBase {
     bool GetSubDef(CDefPointer<CLightDef>* out);            // 0x0059346A
 };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingDef>* out);   // 0x0042AF3C
+    bool GetDef(long index, CDefPointer<CThingDef>* out) const;   // 0x0042AF3C
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 
 // Same-TU stand-ins (see the Shape note).
 CDefClassBase* LookUpDef(long index);
 CDefClassBase* LookUpSubDef(const CDefClassBase* def);
 #pragma auto_inline(off)
-bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out)
+bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out) const
 {
     CThingDef* def = (CThingDef*)LookUpDef(index);
     out->Object = def;
@@ -93,10 +96,15 @@ template <class T> struct CRetailVector {                   // STLport vector (1
     T& operator[](unsigned long n) const { return _M_start[n]; }
 };
 
-struct CTCInventoryBase {
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+struct CTCInventoryBase : public CTCBase {
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04 CTCBase
-    CDefinitionManager* GetDefinitions() const;             // 0x006869D0 (CTCBase)
     long GetNumberOfItemsOfTypeInInventory(long defIndex);  // 0x005BDF08
     void RemoveItemFromInventory(long defIndex, long count);   // 0x005BF3C6
 };
@@ -132,7 +140,7 @@ void CTCInventory::RemoveItemFromInventory(long defIndex, long count)
         }
     }
     CDefPointer<CThingDef> thingDef;
-    GetDefinitions()->GetDef(defIndex, &thingDef);
+    GetDefinitionManager().GetDef(defIndex, &thingDef);
     CDefPointer<CLightDef> lightDef;
     if (thingDef->GetSubDef(&lightDef)) {
         CTCLight* light;

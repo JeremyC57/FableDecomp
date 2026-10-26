@@ -8,7 +8,7 @@
 // (`mov al,1` / shared `xor al,al`); the pointer's address is formed once into esi.
 class CThing;
 
-struct CVillageTaskThing {
+class CBaseObject { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual bool IsEnabled();                   // slot 3 (+0x0c)
     virtual bool IsActive();                    // slot 4 (+0x10)
@@ -19,7 +19,8 @@ struct CVillageTaskThing {
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                              // +0x04
-    CVillageTaskThing* GetPItem();              // 0x00A01B50
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
 };
 
 class CAIBrain { public:

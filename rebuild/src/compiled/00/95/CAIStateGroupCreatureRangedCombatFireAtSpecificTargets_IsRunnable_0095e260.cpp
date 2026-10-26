@@ -123,7 +123,7 @@ struct CTCAttackTarget                              // interface type 8 componen
 struct CTCTargetHolder                              // interface type 8 component, its target link at +0x1d
 {
     unsigned char _pad00[0x1d];
-    CIntelligentPointer<CThing> PSpecificTarget;    // +0x1d
+    CIntelligentPointer<const CThing> PSpecificTarget;    // +0x1d
 };
 #pragma pack(pop)
 
@@ -145,7 +145,7 @@ bool CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable()
         CTCTargetHolder* holder = (CTCTargetHolder*)PBrain->Creature->FindEntry(8)->component;
         if (holder->PSpecificTarget.GetPItem())
         {
-            PTargetThing.SetPItem(CIntelligentPointer<CThing>(holder->PSpecificTarget.GetPItem()).GetPItem());
+            PTargetThing.SetPItem(CIntelligentPointer<const CThing>(holder->PSpecificTarget.GetPItem()).GetPItem());
             return true;
         }
     }

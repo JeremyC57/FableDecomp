@@ -11,9 +11,9 @@
 // +0x0d FROM THOSE registers: the vector and the flag are one sub-object whose inline operator=
 // is expanded here (a flat member list loads the byte from [edi+36h] instead).
 #pragma pack(push, 1)
-struct CBase_00431f10 {
+class CDefClassBase { public:
     unsigned char _body[0x25];
-    CBase_00431f10& operator=(const CBase_00431f10& other);   // 0x00431F10
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
 struct CRetailVector_long {                     // VC6-era Dinkumware vector: first / last / end
@@ -40,7 +40,7 @@ struct CSubObject_00471e44 {
     CSubObject_00471e44& operator=(const CSubObject_00471e44& other);   // 0x00471E44
 };
 
-class CCardDef : public CBase_00431f10 { public:
+class CCardDef : public CDefClassBase { public:
     long                m_id;                   // +0x25
     SAttitudeBlock      m_block;                // +0x29 (vector + flag)
     unsigned char       m_pad37[5];             // +0x37..+0x3b
@@ -51,7 +51,7 @@ class CCardDef : public CBase_00431f10 { public:
 
 CCardDef& CCardDef::operator=(const CCardDef& other)
 {
-    CBase_00431f10::operator=(other);
+    CDefClassBase::operator=(other);
     m_id = other.m_id;
     m_block = other.m_block;
     m_tail = other.m_tail;

@@ -2,7 +2,7 @@
 struct CMember { int x; };
 
 class CPersistContext { public:
-    void Persist(CMember* m);  // __fastcall: ecx=this, stack=m
+    template <class T> void Transfer(T& value);  // __fastcall: ecx=this, stack=m
 };
 
 class CGuildMasterDef { public:
@@ -13,6 +13,6 @@ class CGuildMasterDef { public:
 
 void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->Persist(&def->m28);
-    ctx->Persist(&def->m2c);
+    ctx->Transfer(*(float*)(&def->m28));
+    ctx->Transfer(*(float*)(&def->m2c));
 }

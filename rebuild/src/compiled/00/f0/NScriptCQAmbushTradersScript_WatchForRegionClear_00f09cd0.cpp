@@ -103,10 +103,12 @@ class CGameScriptInterface { public:                       // the quest's game s
 };
 bool __fastcall AreAllThingsInVectorDead(vector<CScriptThing>* things);   // 0x00CBED00
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
+namespace NScript {
 class CQ_AmbushTradersScript : public CScriptBase {
 public:
     CGameScriptInterface* Game;                         // +0x40

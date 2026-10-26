@@ -1,12 +1,14 @@
 #pragma optimize("s", on)
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 extern void __fastcall DestructMember_004b8940(void* member);
-extern void __fastcall CTCParticleAttachmentTracker_Destruct(void* tracker);
-extern void __cdecl OperatorDelete(void* object);
 void* __fastcall CTCParticleAttachmentTracker_CompositeScalarDeletingDestructor(void* tracker, int, unsigned int flags)
 {
     DestructMember_004b8940(static_cast<unsigned char*>(tracker) + 12);
-    CTCParticleAttachmentTracker_Destruct(tracker);
+    ((CTCBase*)(tracker))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(tracker);
+        operator delete(tracker);
     return tracker;
 }

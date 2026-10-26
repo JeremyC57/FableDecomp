@@ -8,7 +8,6 @@ class CBrainDef { public:
 // scalar destructor (the masked call target)
 extern "C" void __fastcall CBrainDef_dtor(CBrainDef *thisptr);
 // operator delete
-extern "C" void __cdecl sub_operator_delete(void *p);
 
 // vector deleting destructor, retail 0x00459aa2
 // __fastcall(this, unsigned int flags) modeled as __fastcall(this, edx, flags)
@@ -18,7 +17,7 @@ void * __fastcall CBrainDef_vector_deleting_dtor(
     CBrainDef *def = thisptr;
     CBrainDef_dtor(def);
     if (flags & 1) {
-        sub_operator_delete(def);
+        operator delete(def);
     }
     return def;
 }

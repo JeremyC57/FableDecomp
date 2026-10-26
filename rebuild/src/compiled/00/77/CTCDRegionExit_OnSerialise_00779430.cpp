@@ -10,11 +10,21 @@
 // ReversedOnMiniMap +0x28, HiddenOnMiniMap +0x29; CThing level short +0x8e; CPersistContext Mode +0x18 (saving: 1 or 3).
 // Shape: as the landed CTCActivationTrigger::OnSerialise (0x0077B0D0): the saving arm remaps into a zero-initialised local
 // that is transferred, the loading arm transfers the member and remaps it in place when non-zero.
+#define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
+#undef CTCBase
+class CThingManager;
+
+class CTCBase : public CTCBaseLayout
+{
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
+};
 class CThing { public:
     unsigned char _pad00[0x8e];
     short m_level;                              // +0x8e
-    bool IsLevelLess();                         // 0x004C7930
+public:
+    bool IsLevelLess() const;   // 0x004C7930
 };
 class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
@@ -39,7 +49,6 @@ public:
     unsigned __int64 EntranceConnectedToUID;    // +0x20
     bool  ReversedOnMiniMap;                    // +0x28
     bool  HiddenOnMiniMap;                      // +0x29
-    CThingManager* GetThingManager();           // 0x00686AE0 (CTCBase)
     void OnSerialise(CPersistContext& context, bool transfer);
 };
 
@@ -53,11 +62,11 @@ void CTCDRegionExit::OnSerialise(CPersistContext& context, bool transfer)
     if (context.IsSaving()) {
         unsigned __int64 uid = 0;
         if (EntranceConnectedToUID != 0)
-            uid = GetThingManager()->RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, EntranceConnectedToUID);
+            uid = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, EntranceConnectedToUID);
         context.Transfer("EntranceConnectedToUID", uid, 0);
     } else {
         context.Transfer("EntranceConnectedToUID", EntranceConnectedToUID, 0);
         if (EntranceConnectedToUID != 0)
-            EntranceConnectedToUID = GetThingManager()->RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, EntranceConnectedToUID);
+            EntranceConnectedToUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, EntranceConnectedToUID);
     }
 }

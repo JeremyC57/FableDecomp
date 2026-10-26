@@ -97,8 +97,9 @@ __declspec(noinline) bool CGameDefinitionManager_Retail::GetDef(long index, CDef
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager_Retail {
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+class CDefinitionManager { public:
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 struct CThing_Retail;
 struct CBase {
@@ -191,13 +192,13 @@ struct CPlayerManager_Retail {
     CPlayer_Retail* GetPlayer();                    // 0x00449970 (labelled "Catch@0040d959", propagated)
 };
 class CWorld;
-struct CDefinitionManager_Retail;
+class CDefinitionManager;
 class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                    World;               // +0x04 (engine/CGameScriptInterface.h)
     void*                      Component;           // +0x08
     void*                      DisplayEngine;       // +0x0c
-    CDefinitionManager_Retail* DefinitionManager;   // +0x10
+    CDefinitionManager* DefinitionManager;   // +0x10
     CPlayerManager_Retail*     PlayerManager;       // +0x14
     bool IsGiftRomantic(const CCharString& defName) const;
 };

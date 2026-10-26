@@ -132,9 +132,10 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     virtual ~CScriptThing();
 };
 class CBaseObject { public:                                    // CBaseIntelligentPointer root, vtable 0x0129A7D8
-    virtual ~CBaseObject();
     void* IntelligentPointer;                           // +0x04
-    CBaseObject();                                      // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // 16 bytes, vtable 0x0127094C
     CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08

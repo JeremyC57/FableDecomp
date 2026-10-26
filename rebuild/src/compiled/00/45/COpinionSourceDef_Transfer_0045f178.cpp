@@ -40,10 +40,8 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     void Transfer(COpinionMap& value);          // 0x0045F2EA
-    void Transfer(bool& value);                 // 0x0043314A
+    template <class T> void Transfer(T& value);                 // 0x0043314A
     void Transfer(CReactionMap& value);         // 0x0045DEE9
-    void Transfer(long& value);                 // 0x00431102
-    void Transfer(float& value);                // 0x00431061
 };
 class COpinionSet { public:
     float* Values;

@@ -1,13 +1,14 @@
-extern void __cdecl operator_delete_stub(void*);
-class CSurface { public: void* vftable; };
+class CSurface { public: void* vftable; 
+public:
+    void Uninitialise();   // 0x009F2E20
+};
 extern const void* CSurface_vftable;
-extern void __fastcall CSurface_dtor(CSurface* surface);
 void* __fastcall CSurface_scalar_deleting_destructor(CSurface* surface, int _edx, unsigned int flags)
 {
     surface->vftable = (void*)&CSurface_vftable;
-    CSurface_dtor(surface);
+    ((CSurface*)(surface))->Uninitialise();
     if (flags & 1) {
-        operator_delete_stub(surface);
+        operator delete(surface);
     }
     return surface;
 }

@@ -43,8 +43,9 @@ class C3DSkeletalMorphParameter { public:
 };
 class C3DSkeletalMorph { public:
     void ClearParameters();                             // 0x00A45410
-    void AddParameter(const CCountedPointer<C3DSkeletalMorphParameter>& parameter);   // 0x00A45470
     void ApplyParameters();                             // 0x00A45330
+public:
+    void AddMorphParameter(CCountedPointer<C3DSkeletalMorphParameter> const&);   // 0x00A45470
 };
 class CTCSkeletalMorph { public:
     virtual void v00();
@@ -62,7 +63,7 @@ void CTCSkeletalMorph::ForceSkeletalMorph(C3DSkeletalMorphTarget* target)
     Changed = false;
     PSkeletalMorph->ClearParameters();
     CCountedPointer<C3DSkeletalMorphParameter> parameter(new C3DSkeletalMorphParameter(target));
-    PSkeletalMorph->AddParameter(parameter);
+    PSkeletalMorph->AddMorphParameter(parameter);
     parameter->SetCurrentValue(1.0f);
     PSkeletalMorph->ApplyParameters();
 }

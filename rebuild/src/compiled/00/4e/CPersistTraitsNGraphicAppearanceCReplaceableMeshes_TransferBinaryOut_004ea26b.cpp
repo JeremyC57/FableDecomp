@@ -1,7 +1,7 @@
 // CPersistTraits<NGraphicAppearance::CReplaceableMeshes>::TransferBinaryOut(CDataOutputStream*, const CReplaceableMeshes*) -- write the mesh-graphic count, then the raw CEngineGraphic block (or the vector object itself when empty)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004EA26B, 67 bytes, `ret 8` (__fastcall on the traits; called from the
 //   replaceable-mesh transfer helper 0x004EA21E, which builds the 12-byte traits at [ebp-0Ch] and passes it in ecx).
-// Callees: CDataOutputStream::WriteLong @ 0x00993EB0, CDataOutputStream::Write(const void*, unsigned long) = virtual
+// Callees: CDataOutputStream::WriteSLONG @ 0x00993EB0, CDataOutputStream::Write(const void*, unsigned long) = virtual
 //   slot 4 (+0x10).
 // Layout: PDB NGraphicAppearance::CReplaceableMeshes = { CArray<CEngineGraphic> Vector } (retail STLport vector,
 //   12 bytes); CEngineGraphic is 0x0E bytes (BankIndex, AnimStep, RenderSizeX, AdditiveAlpha, Type), so the counts are
@@ -18,7 +18,8 @@ class CDataOutputStream { public:
     virtual void v02();
     virtual void v03();
     virtual void Write(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteLong(long value);                                 // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 #pragma pack(push, 1)              // PDB sizeof(CEngineGraphic) == 0x0E: the class is packed in retail
@@ -52,6 +53,6 @@ template<> struct CPersistTraits<NGraphicAppearance::CReplaceableMeshes> {
 
 void CPersistTraits<NGraphicAppearance::CReplaceableMeshes>::TransferBinaryOut(CDataOutputStream* stream, const NGraphicAppearance::CReplaceableMeshes* value)
 {
-    stream->WriteLong(value->Vector.size());
+    stream->WriteSLONG(value->Vector.size());
     stream->Write(value->Vector.data(), value->Vector.size() * sizeof(CEngineGraphic));
 }

@@ -18,9 +18,10 @@ class C3DVector { public:                                      // the engine vec
 enum EMessageEventType { EMessageEventType_Force32 = 0x7fffffff };
 enum EReactionSpeechType { EReactionSpeechType_Force32 = 0x7fffffff };
 class CBaseObject { public:
-    virtual ~CBaseObject();
     CBaseObjectPointer* IntelligentPointer;             // +0x04
-    CBaseObject(const CBaseObject& other);              // 0x0099A390
+protected:
+    CBaseObject(const CBaseObject& other);               // 0x0099A390
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();

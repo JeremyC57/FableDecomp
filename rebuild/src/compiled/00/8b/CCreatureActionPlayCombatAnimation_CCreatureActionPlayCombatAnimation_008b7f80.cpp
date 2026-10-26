@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B7F80, length 97 bytes (+ int3 padding). Vtable 0x0127A604.
 // Model: rebuild/include/engine/CCreatureAction_PlayCombatAnimation.h is the flattened PDB layout and sits high against the bytes (CCombatActionBase is 0x12c bytes in the PDB, 0x114 in retail: retail containers are 12 bytes), so `this` is a local model with the retail offsets.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) @ 0x00857F30,
-// CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0.
+// CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0.
 // Shape: the zeroed sound pair's two words are written with immediates after the pushes (no free zero register here); the three
 // bytes at +0x114..+0x116 are initialiser-list members stored after the vtable; the name reference is pushed before them.
 class CThingCreatureBase;
@@ -25,7 +25,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                  // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:   // vtable 0x0127A604
     bool m_flag;                            // +0x114 (descriptive: the fourth argument)
@@ -41,5 +42,5 @@ CCreatureAction_PlayCombatAnimation::CCreatureAction_PlayCombatAnimation(CThingC
     , m_firstFrame(true)
     , m_started(false)
 {
-    SetAnimationName(animationName);
+    SetCombatAnimation(animationName);
 }

@@ -72,8 +72,15 @@ class CThingCreatureBase { public:
 class CWorldMap { public:
     bool IsPosInMap(const C3DVector& pos) const;   // 0x004FC600
 };
-struct CTCCreatureFlyInCircles {
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorldMap& GetWorldMap();   // 0x00686D30
+};
+
+struct CTCCreatureFlyInCircles : public CTCBase {
     unsigned char _pad04[0x0c - 0x04];
     CThingCreatureBase* Creature;               // +0x0c
     C3DVector Centre;                           // +0x10
@@ -84,7 +91,6 @@ struct CTCCreatureFlyInCircles {
     float DeltaRadius;                          // +0x2c
     long  RadiusChangeTicks;                    // +0x30
     long  Mode;                                 // +0x34 EFlyMode
-    CWorldMap* GetWorldMap();                   // 0x00686D30 (CTCBase)
     void InitFlightCircle(const C3DVector& centre, float radius, float height);
 };
 
@@ -97,7 +103,7 @@ void CTCCreatureFlyInCircles::InitFlightCircle(const C3DVector& centre, float ra
     C3DVector start(centre.X + radius, centre.Y, centre.Z + height);
     if (Creature->HasTC(0x3a)) {
         CTCInterface3A* tc = Creature->GetTC<CTCInterface3A>(0x3a);
-        tc->m_onMap = GetWorldMap()->IsPosInMap(start);
+        tc->m_onMap = GetWorldMap().IsPosInMap(start);
     }
     Creature->PhysicsTC->ResetPosition(start);
     CTCPhysicsBase* physics = Creature->PhysicsTC;

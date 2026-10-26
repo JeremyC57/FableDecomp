@@ -16,7 +16,8 @@
 class CThingCreatureBase { public:
     unsigned char    _pad[0x18];
     unsigned __int64 UniqueID;                              // +0x18 (CThing)
-    bool IsCombatant();                                     // 0x00662430
+public:
+    bool IsInMeleeAsAttacked() const;   // 0x00662430
 };
 
 struct CAttackerMap {                                       // STLport map<unsigned __int64, CThingCreatureBase*>
@@ -49,7 +50,7 @@ class CCombatManager { public:
 
 long CCombatManager::GetNumberOfAttackers(CThingCreatureBase* creature)
 {
-    if (creature->IsCombatant()) {
+    if (creature->IsInMeleeAsAttacked()) {
         unsigned __int64 id = creature->UniqueID;
         return Combatants.FindNode(id)->Value.Attackers.Count;
     }

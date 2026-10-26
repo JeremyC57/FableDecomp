@@ -24,7 +24,10 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
@@ -60,7 +63,13 @@ class CStealthDef { public:
     float WalkingMultiplier;                    // +0x30
     float CreepingMultiplier;                   // +0x34
 };
-class CTCStealth { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCStealth : public CTCBase { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[4];
@@ -72,7 +81,6 @@ class CTCStealth { public:
     float DistanceCanBeHeardFrom;               // +0x14
     float MaxSneakingSpeed;                     // +0x18
     CStealthDef* PDef;                          // +0x1c CDefPointer<CStealthDef const>
-    CDefinitionManager* GetDefinitions() const; // 0x006869D0 (CTCBase)
     float GetHearabilityModifier();             // 0x007475C0
     void UpdateHearability();
 };
@@ -107,7 +115,7 @@ void CTCStealth::UpdateHearability()
         long defIndex;
         {
             CCharString noiseName("SIMPLE_NOISE");
-            defIndex = GetDefinitions()->GetDefGlobalIndexFromName(noiseName);
+            defIndex = GetDefinitionManager().GetDefGlobalIndexFromName(noiseName);
         }
         CThingNoise* noise = CThingNoise::Create(defIndex, ParentThing->GetPosition(), DistanceCanBeHeardFrom);
         if (noise && !(noise->m_flags91 & 1))

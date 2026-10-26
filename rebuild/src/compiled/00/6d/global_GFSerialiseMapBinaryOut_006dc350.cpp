@@ -13,14 +13,21 @@
 //   is a frame local whose implicit constructor (STLport map: allocate the header, colour red, root 0, leftmost =
 //   rightmost = header, count 0) runs first and whose destructor (clear() + header free) runs last; the long key traits
 //   is empty and inlines to WriteSLONG; `++it` inlines STLport's _M_increment.
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
 enum EDamageAttribute { EDamageAttribute_Force32 = 0x7fffffff };
 
 struct COutputStreamMethods : CDataOutputStream {
-    void WriteSLONG(long value);                            // 0x00993EB0
 };
 
 namespace std {

@@ -24,9 +24,10 @@ class CGameScriptInterface;
 class CTCBase;
 
 class CBaseObject { public:
-    virtual void v00();
     void* IntelligentPointer;                         // +0x04
-    CBaseObject();                                    // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 
 struct CInterfaceMap {                                // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -79,17 +80,22 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:
     CScriptGameResourceObjectScriptedThingBase() { }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CBaseIntelligentPointer();                        // 0x00A01B10
-    void SetPItem(CBaseObject* item);                 // 0x00A01B90
-    CBaseObject* GetPItem() const;                    // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CThing* GetPItem() const { return (CThing*)CBaseIntelligentPointer::GetPItem(); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_0 = 0 };
@@ -110,7 +116,7 @@ class CTCCreatureModeManager { public:                       // interface 0x31 c
 
 class CScriptGameResourceObjectScriptedThing : public CScriptGameResourceObjectScriptedThingBase { public:   // vtable 0x0128D86C
     CGameScriptInterface* ScriptInterface;            // +0x10
-    CIntelligentPointer   PThing;                     // +0x14
+    CIntelligentPointer<CThing>   PThing;                     // +0x14
     long                  ScriptID;                   // +0x1c
     bool                  NullResource;               // +0x20
     long                  ActionPriority;             // +0x24

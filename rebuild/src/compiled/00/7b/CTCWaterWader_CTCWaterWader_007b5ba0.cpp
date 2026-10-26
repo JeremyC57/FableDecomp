@@ -14,19 +14,27 @@ public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     void Kill(bool immediately);                // 0x004C9B80
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -43,8 +51,8 @@ class CTCBase { public:
     unsigned char _pad0a[2];
 };
 struct CTCWaterWader : CTCBase {                // vtable 0x0126D95C
-    CIntelligentPointerThing PParticle;         // +0x0c
-    CIntelligentPointerThing PWaterfallParticle;   // +0x14
+    CIntelligentPointer<CThing> PParticle;         // +0x0c
+    CIntelligentPointer<CThing> PWaterfallParticle;   // +0x14
     bool                     OldWade;           // +0x1c
     virtual ~CTCWaterWader();
 };
@@ -53,13 +61,13 @@ CTCWaterWader::~CTCWaterWader()
 {
     if (IS_THING_ALIVE(PParticle)) {
         PParticle.GetPItem()->Kill(true);
-        CIntelligentPointerThing cleared(0);
+        CIntelligentPointer<CThing> cleared(0);
         CThing* item = cleared.GetPItem();
         PParticle.SetPItem(item);
     }
     if (IS_THING_ALIVE(PWaterfallParticle)) {
         PWaterfallParticle.GetPItem()->Kill(true);
-        CIntelligentPointerThing cleared(0);
+        CIntelligentPointer<CThing> cleared(0);
         CThing* item = cleared.GetPItem();
         PWaterfallParticle.SetPItem(item);
     }

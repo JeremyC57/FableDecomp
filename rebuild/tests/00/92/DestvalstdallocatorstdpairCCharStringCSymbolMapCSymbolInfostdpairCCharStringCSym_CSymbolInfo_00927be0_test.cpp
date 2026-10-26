@@ -2,9 +2,7 @@
 
 struct SymPair;
 
-void __fastcall memb14_dtor(void* self);
 void __fastcall memb0c_dtor(void* self);
-void __fastcall pair_dtor(SymPair* self);
 
 void __fastcall _Dest_val(SymPair* p, void* al);
 
@@ -14,9 +12,13 @@ static int g_off14 = -1;
 static int g_off0c = -1;
 static int g_offpair = -1;
 static int g_order14, g_order0c, g_orderpair;
-
-void __fastcall memb14_dtor(void* self)
+class CBaseIntelligentPointer {
+public:
+    virtual ~CBaseIntelligentPointer();
+};
+CBaseIntelligentPointer::~CBaseIntelligentPointer()
 {
+    void* self = (void*)this; (void)self;
     g_off14 = (int)((char*)self - g_base);
     g_order14 = g_seq++;
 }
@@ -25,8 +27,13 @@ void __fastcall memb0c_dtor(void* self)
     g_off0c = (int)((char*)self - g_base);
     g_order0c = g_seq++;
 }
-void __fastcall pair_dtor(SymPair* self)
+class CBaseClass {
+public:
+    virtual ~CBaseClass();
+};
+CBaseClass::~CBaseClass()
 {
+    SymPair* self = (SymPair*)this; (void)self;
     g_offpair = (int)((char*)self - g_base);
     g_orderpair = g_seq++;
 }

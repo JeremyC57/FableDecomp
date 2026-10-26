@@ -24,7 +24,10 @@ class CPlayerGuiDef { public:
     unsigned char _pad[0x90c];
     long          TextCharactersPerFrame;               // +0x90c (retail)
 };
-extern CPlayerGuiDef* __fastcall PeekGuiDef();          // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};          // 0x00438570
 
 class CUserProfileManager {
 public:
@@ -61,5 +64,5 @@ void CSubtitleRenderer::Update(bool paused)
         } else if (MaxDisplayTime != 0.0f && TextTimer > MaxDisplayTime)
             Clear(false);
     }
-    TextCharactersShowing += PeekGuiDef()->TextCharactersPerFrame;
+    TextCharactersShowing += CPlayerGui::PeekGuiDef().TextCharactersPerFrame;
 }

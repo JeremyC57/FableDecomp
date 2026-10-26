@@ -26,7 +26,7 @@ class CSystemManager { public:
     unsigned char        _pad[0x6c];
     CGraphicBankManager* GraphicBankManager;             // +0x6c
 };
-CSystemManager* __cdecl GFGetSystemManager();            // 0x009A4EC0
+CSystemManager* __fastcall GFGetSystemManager();            // 0x009A4EC0
 class CEngineSurfaceCompositionManager {
 public:
     void ProcessLoading(bool flag, double until);        // 0x00B2AD90

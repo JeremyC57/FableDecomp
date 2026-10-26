@@ -2,7 +2,7 @@
 // Leaf: ??1CTCWife
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CF1D0, length 480 bytes (/GS cookie 0x0139C8A8); vtable 0x0125ED5C.
-// Callees: CTCBase::GetWorld() const 0x00686A80; CWorld::GetCurrentPlayer() 0x0049D9D0; CMemoryBuffer::Copy 0x009F1760;
+// Callees: CTCBase::PeekWorld() const 0x00686A80; CWorld::GetCurrentPlayer() 0x0049D9D0; CMemoryBuffer::Copy 0x009F1760;
 //   CMainGameComponent::AddGameEvent 0x0041649C on g_pMainGameComponent 0x013B86A0; CDisplayEngine::EndScreenFadeOut
 //   0x00434C90 (display engine at g_pMainGameComponent+0x28); CTCBase::RemoveFromGlobalTCs 0x00686DF0;
 //   _Rb_tree<set<long>>::_M_erase 0x004A9CB0, _Rb_tree<map<long,long>>::_M_erase 0x004DA2AC; free 0x00BFEA14;
@@ -51,9 +51,10 @@ class CTCBase { public:
     CThing* ParentThing;                           // +0x04
     bool ToBeRemoved;                              // +0x08
     bool IsInGlobalUpdateTCs;                      // +0x09
-    ~CTCBase();                                    // 0x00686830
-    const CWorld* GetWorld() const;                // 0x00686A80
+    virtual ~CTCBase();                                    // 0x00686830
     void RemoveFromGlobalTCs();                    // 0x00686DF0
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 struct SLongLongNode {                             // map<long, long> node
     unsigned char m_color;
@@ -148,7 +149,7 @@ class CTCWife : public CTCBase { public:                         // vtable 0x012
     __forceinline void SendUnpauseEvent()
     {
         CGameEvent gameEvent(9);
-        gameEvent.Player = GetWorld()->GetCurrentPlayer()->m_playerNumber;
+        gameEvent.Player = PeekWorld().GetCurrentPlayer()->m_playerNumber;
         gameEvent.AddBool(false);
         g_pMainGameComponent->AddGameEvent(gameEvent);
     }

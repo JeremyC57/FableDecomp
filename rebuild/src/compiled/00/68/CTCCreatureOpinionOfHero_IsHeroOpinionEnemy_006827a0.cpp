@@ -1,7 +1,7 @@
 // CTCCreatureOpinionOfHero::IsHeroOpinionEnemy() -- the hero is this creature's enemy: either flagged directly or, for a creature with interface 0xB4, when its village treats the hero as an enemy of the guards
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006827A0, length 99 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (inlined GetInterface for type 0x23 = CTCVillageMember,
-// `test byte ptr [eax+24h],8`), CTCVillageMember::GetVillage @ 0x007EE540, CTCVillage::GetIsHeroEnemyOfGuards @ 0x00658604.
+// `test byte ptr [eax+24h],8`), CTCVillageMember::GetPVillage @ 0x007EE540, CTCVillage::GetIsHeroEnemyOfGuards @ 0x00658604.
 // The interface-0xB4 presence test (word 5 bit 20, `test dword ptr [eax+34h],100000h`) is an inline HasTC without lookup that
 // returns the masked word (a `bool` HasTC compiles to `shr ecx,14h ; test cl,1`).
 // Shape: nested ifs with two `return true` (one shared `mov al,1`) and a single `xor al,al` exit.
@@ -41,7 +41,8 @@ class CTCVillage { public:
     bool GetIsHeroEnemyOfGuards();              // 0x00658604
 };
 class CTCVillageMember { public:                       // interface 0x23
-    CTCVillage* GetVillage();                   // 0x007EE540 (the manifest's "IS_THING_ALIVE<...>" is propagated)
+public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540
 };
 class CTCCreatureOpinionOfHero { public:
     virtual void v00();
@@ -59,7 +60,7 @@ bool CTCCreatureOpinionOfHero::IsHeroOpinionEnemy()
     if (thing->HasTC(0xb4)) {
         CTCVillageMember* member;
         if (thing->GetInterface(&member, 0x23)) {
-            CTCVillage* village = member->GetVillage();
+            CTCVillage* village = member->GetPVillage();
             if (village && village->GetIsHeroEnemyOfGuards())
                 return true;
         }

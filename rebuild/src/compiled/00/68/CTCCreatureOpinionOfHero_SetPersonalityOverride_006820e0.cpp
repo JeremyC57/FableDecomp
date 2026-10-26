@@ -3,7 +3,7 @@
 // Leaf: SetPersonalityOverride
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006820E0, length 94 bytes (+2 int3). Callers include CGameScriptInterface::
 // EntitySetPersonalityOverride (0x0089C466) and 0x00682374/0x006823A6.
-// Callees: the world accessor @ 0x00686A70, CGameDefinitionManager::GetDefGlobalIndexFromName(const CCharString&)
+// Callees: the world accessor @ 0x00686A70, CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&)
 // @ 0x009AD410, CBasicString<char>::operator==(const char*) @ 0x004115A0, SetPersonalityOverride(long, bool) @ 0x00681E60
 // (which tests the bool). Literal "" @ 0x0122D70E.
 // Shape: `defIndex != 0 || defName == ""` with the inline CCharString::operator==(const char*) of the landed 0x0099E960:
@@ -13,7 +13,7 @@
 
 // CCharString model (Ego_r.pdb layout, as the landed CCharString::operator!= 0x0099E960): a 4-byte handle on a 17-byte block.
 #pragma pack(push, 1)
-struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
+template <class T> class CBasicString { public:                   // CBasicString<char>, 13 bytes
     char*         PData;                    // +0x00
     unsigned long StringLength;             // +0x04
     unsigned long DataLength : 31;          // +0x08
@@ -21,7 +21,7 @@ struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
     bool operator==(const char* text) const;    // 0x004115A0
 };
 class CCharStringData { public:                    // 17 bytes
-    CBasicStringChar Data;                  // +0x00
+    CBasicString<char> Data;                  // +0x00
     long             NoRefs;                // +0x0d
 };
 #pragma pack(pop)
@@ -36,8 +36,13 @@ public:
     }
 };
 
-class CGameDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name) const;  // 0x009AD410
+class CDefinitionManager
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};
+
+class CGameDefinitionManager : public CDefinitionManager { public:
 };
 
 class CWorld { public:
@@ -87,7 +92,13 @@ class COpinionPersonalityDef { public:             // retail offsets (the def ro
 
 class CDefPointeeBase;
 
-class CTCCreatureOpinionOfHero { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCCreatureOpinionOfHero : public CTCBase { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08
@@ -110,14 +121,13 @@ class CTCCreatureOpinionOfHero { public:
     bool InFindAGuardAndYellForHelp;        // +0x343
     CBaseIntelligentPointer PUnknownThreatOpinionSource;   // +0x344
     long FrameLastUpdatedUnknownThreat;     // +0x34c
-    CWorld* GetWorld() const;               // 0x00686A70
     void SetPersonalityOverride(long defIndex, bool force);         // 0x00681E60
     void SetPersonalityOverride(const CCharString& defName, bool force);
 };
 
 void CTCCreatureOpinionOfHero::SetPersonalityOverride(const CCharString& defName, bool force)
 {
-    CGameDefinitionManager* definitions = GetWorld()->DefinitionManager;
+    CGameDefinitionManager* definitions = GetWorld().DefinitionManager;
     long defIndex = definitions->GetDefGlobalIndexFromName(defName);
     if (defIndex != 0)
         goto set;

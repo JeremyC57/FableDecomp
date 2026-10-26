@@ -113,9 +113,10 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
 };
 
 class CBaseObject { public:                                    // vtable 0x0129A7D8
-    CBaseObject();                                      // 0x0099A380
-    virtual ~CBaseObject();                             // 0x0099A430
     void* IntelligentPointer;                           // +0x04
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 
 struct CHandlePImp { void* Data; void* Info; CHandlePImp() : Data(0), Info(0) {} };
@@ -218,10 +219,12 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
 };
 
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
+namespace NScript {
 
 class CQ_SecretPassageScript : public CScriptBase {
 public:

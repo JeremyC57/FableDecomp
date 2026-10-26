@@ -44,7 +44,6 @@ public:
     unsigned long ThingTypeFlags;                       // +0x6c
     unsigned char _pad70[0x91 - 0x70];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long type)
     {
@@ -60,6 +59,8 @@ public:
         const CInterfaceMap::SEntry* it = map->LowerBound(&key);
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 class CThingCreatureBase : public CThing {};
 bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0

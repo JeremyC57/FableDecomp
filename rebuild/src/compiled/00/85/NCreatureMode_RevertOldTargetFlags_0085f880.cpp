@@ -132,10 +132,17 @@ public:
     long                 MovementState;                 // +0x200 (3 tested by the sprint check)
     bool IsPerformingAnyAction() const;                 // 0x006622A0
 };
+#define CTCTargeted CTCTargetedLayout
 #include "engine/CTCTargeted.h"
+#undef CTCTargeted
+
+class CTCTargeted : public CTCTargetedLayout
+{
+public:
+    void SetTargetingFlags(unsigned long);   // 0x007EA270
+};
 class CTCTargetedMethods : public CTCTargeted {         // interface 9 (the methods are declared on a derived name: the header is data-only)
 public:
-    void SetTargetingFlags(unsigned long flags);        // 0x007EA270 (`TargetingFlags = flags`)
 };
 namespace NCreatureMode {
 void __fastcall RevertOldTargetFlags(CThing& thing, ETargetingType type);

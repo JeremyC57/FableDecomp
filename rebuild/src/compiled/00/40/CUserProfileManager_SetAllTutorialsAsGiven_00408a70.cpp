@@ -16,6 +16,7 @@ class CWideString { public:
     void* PStringData;
     ~CWideString();                                         // 0x0099B510
 };
+class CCharString;
 class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
@@ -24,7 +25,6 @@ class CCharString { public:
     bool operator!=(const char* text) const;                // 0x0099E960
     CCharString& operator=(const CCharString& other);       // 0x0099EFB0
     CCharString& operator+=(const char* text);              // 0x0099F100
-    CCharString GetSubString(long start, long length) const;   // 0x0099EC70
     CWideString ToWideString() const;                       // 0x0099E480
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->PData; }   // "" = 0x0129AAF4
@@ -35,6 +35,8 @@ class CCharString { public:
             return strcmp(GetString() + start, suffix.GetString()) == 0;
         return false;
     }
+public:
+    CCharString GetSubString(unsigned long, unsigned long) const;   // 0x0099EC70
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
 template <class T> struct vector {                          // STLport vector: {_M_start, _M_finish, _M_end_of_storage}

@@ -12,7 +12,7 @@
 // Layout: CThing UsingComponents +0x20, component map +0x44, dead flags +0x91 bit 0 (landed CloseDoor 0x00895DE0 model).
 #include <string.h>
 #pragma pack(push, 1)
-struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
+template <class T> class CBasicString { public:                   // CBasicString<char>, 13 bytes
     char*         PData;                    // +0x00
     unsigned long StringLength;             // +0x04
     unsigned long DataLength : 31;          // +0x08
@@ -20,7 +20,7 @@ struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
     bool operator==(const char* text) const;    // 0x004115A0
 };
 class CCharStringData { public:                    // 17 bytes
-    CBasicStringChar Data;                  // +0x00
+    CBasicString<char> Data;                  // +0x00
     long             NoRefs;                // +0x0d
 };
 #pragma pack(pop)
@@ -42,7 +42,7 @@ struct CInterfaceMap_Retail {
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 class CScriptThing;
-struct CThing_Retail {
+class CThing { public:
     unsigned char         _pad00[0x20];
     unsigned long         m_presentBits[9];         // +0x20
     CInterfaceMap_Retail  m_interfaces;             // +0x44
@@ -75,10 +75,9 @@ struct CThing_Retail {
     CScriptThing GetScriptThing();                  // 0x004C7E50
 };
 class CScriptThing { public:
-    void* _vptr;
     void* PImp_Data;
     void* PImp_Info;
-    ~CScriptThing();                                // 0x004AA840
+    virtual ~CScriptThing();                                // 0x004AA840
 };
 struct CTCInventoryStore {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
@@ -87,19 +86,25 @@ struct CTCInventoryStore {
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31();
     virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39();
     virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46();
-    virtual CThing_Retail* FindItemOfType(long defIndex);   // slot 47 (+0xBC)
+    virtual CThing* FindItemOfType(long defIndex);   // slot 47 (+0xBC)
 };
-__forceinline CThing_Retail* FindItemInStore(CThing_Retail* thing, long interfaceType, long defIndex)
+__forceinline CThing* FindItemInStore(CThing* thing, long interfaceType, long defIndex)
 {
     CTCInventoryStore* store;                       // deliberately unset when absent (retail reads a dead slot)
     if (thing->HasInterface(interfaceType))
         store = (CTCInventoryStore*)thing->GetInterface(interfaceType);
     return store->FindItemOfType(defIndex);
 }
-class CTCCarrying { public: CThing_Retail* RemoveThingFromPrimarySlot(bool b); };   // 0x006A1E00
-class CPlayer { public: CThing_Retail* GetHeroThing(); };      // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
-struct CDefinitionManager_Retail { long GetDefGlobalIndexFromName(const CCharString& name); };   // 0x009AD410
+class CTCCarrying { public: public:
+    CThing* RemoveThingFromPrimarySlot(bool);   // 0x006A1E00
+};   // 0x006A1E00
+class CPlayer { public: CThing* GetHeroThing(); };      // 0x00487DC0
+class CPlayerManager { public: public:
+    CPlayer& GetMainPlayer();   // 0x00449970
+};    // 0x00449970
+class CDefinitionManager { public: public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};   // 0x009AD410
 
 #define VPAD1(a) virtual void a();
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
@@ -117,13 +122,13 @@ class CGameScriptInterface { public:
     void*                       World;              // +0x04 (engine/CGameScriptInterface.h)
     void*                       Component;          // +0x08
     void*                       DisplayEngine;      // +0x0c
-    CDefinitionManager_Retail*  DefinitionManager;  // +0x10
+    CDefinitionManager*  DefinitionManager;  // +0x10
     CPlayerManager*             PlayerManager;      // +0x14
 };
 
 void CGameScriptInterface::MakeHeroCarryItemInHand(const CCharString& itemDefName) const
 {
-    CThing_Retail* hero = PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
     if (!hero || hero->m_dead)
         return;
     // the inline CCharString::operator==("") with its two returns written as two tests that jump to the empty arm
@@ -140,7 +145,7 @@ void CGameScriptInterface::MakeHeroCarryItemInHand(const CCharString& itemDefNam
     CTCInventoryStore* inventory;                   // deliberately unset when absent (retail reads a dead slot)
     if (hero->HasInterface(0x11))
         inventory = (CTCInventoryStore*)hero->GetInterface(0x11);
-    CThing_Retail* item = inventory->FindItemOfType(index);
+    CThing* item = inventory->FindItemOfType(index);
     if (!item || item->m_dead) {
         CTCInventoryStore* store;
         if (hero->HasInterface(0x13))

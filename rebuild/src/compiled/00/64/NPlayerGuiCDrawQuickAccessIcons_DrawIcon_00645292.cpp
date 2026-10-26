@@ -45,7 +45,10 @@ class CPlayerGuiDef { public:
     unsigned char _pad000[0x6e0];
     long QuickAccessEmptyBackGraphic;               // +0x6e0
 };
-const CPlayerGuiDef* __fastcall PeekGuiDef();       // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};       // 0x00438570
 struct CGameUI {
     unsigned char _pad000[0x250];
     bool ForceOpaque;                               // +0x250
@@ -75,7 +78,7 @@ class CDrawQuickAccessIcons { public:
 void CDrawQuickAccessIcons::DrawIcon(const CEnginePrimitivePrepareInfo& info, const C2DVector& pos, float fade, long index,
                                      long backGraphic, long iconGraphic, bool selected)
 {
-    const CPlayerGuiDef* def = PeekGuiDef();
+    const CPlayerGuiDef* def = (&CPlayerGui::PeekGuiDef());
     CHandleVector& handles = selected ? IconHandles : Handles;
     unsigned char alpha = (unsigned char)(PGameUI->Alpha * 255.0f);
     if (PGameUI->ForceOpaque && alpha < 0xff)

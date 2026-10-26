@@ -2,13 +2,12 @@
 class CSpecialAbilitiesTurncoatSpellDef { public: void* vftable; };
 
 extern void __fastcall CSpecialAbilitiesTurncoatSpellDef_dtor(CSpecialAbilitiesTurncoatSpellDef* def);
-extern void __cdecl eng_operator_delete(void* p);
 
 void* __fastcall CSpecialAbilitiesTurncoatSpellDef_scalar_deleting_destructor(CSpecialAbilitiesTurncoatSpellDef* def, int edx, unsigned int flags) {
     (void)edx;
     CSpecialAbilitiesTurncoatSpellDef_dtor(def);
     if (flags & 1) {
-        eng_operator_delete(def);
+        operator delete(def);
     }
     return def;
 }

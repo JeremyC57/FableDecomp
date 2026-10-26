@@ -15,10 +15,11 @@ public:
     void* PStringData;
     CWideString();                                          // 0x0099AED0
     ~CWideString();                                         // 0x0099B510
-    unsigned long GetLength() const;                        // 0x0099B220
     operator const unsigned short*() const;                 // 0x0099AF10
     CWideString& operator+=(unsigned short c);              // 0x0099B9A0
     unsigned short operator[](unsigned long i) const { return ((const unsigned short*)*this)[i]; }   // inline: the character is a temporary before the register argument
+public:
+    long GetLength() const;   // 0x0099B220
 };
 unsigned long __fastcall GetCharWidthW(unsigned short c);   // 0x0054F4B0 (`mov si,cx`)
 namespace NUISystem {

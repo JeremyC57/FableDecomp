@@ -11,7 +11,6 @@ class CLandscapeBackgroundPatch;
 // scalar destructor (this in ecx) -- relocation-masked target
 extern "C" void __fastcall CSoundDef_dtor(CLandscapeBackgroundPatch* thisptr);
 // operator delete(void*) -- relocation-masked target
-extern "C" void __cdecl engine_operator_delete(void* p);
 
 // __fastcall(this, unsigned flag) modeled as __fastcall with an edx filler
 // so the flag argument lands on the stack (ret 4).
@@ -20,6 +19,6 @@ void* __fastcall LandscapeBackgroundPatch_vector_deleting_dtor(
 {
     CSoundDef_dtor(thisptr);
     if (flag & 1)
-        engine_operator_delete(thisptr);
+        operator delete(thisptr);
     return thisptr;
 }

@@ -37,7 +37,8 @@ class CTCTavernGame { public:                          // polymorphic root (vptr
 };
 struct CTCTavernGameCardBase : CTCTavernGame {
     unsigned char _pad_0x04[0x314];
-    void EndRound();                            // 0x008F1720 (vtable slot 33)
+public:
+    virtual void EndRound();   // 0x008F1720
 };
 
 struct CTCTavernGameCardBlackjack : CTCTavernGameCardBase {

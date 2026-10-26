@@ -8,14 +8,20 @@ class CTCInventoryItem
 };
 
 extern "C" void __cdecl free_field_54(void* p);
-extern void __fastcall base_OnDie_00430300(CTCInventoryItem* thisptr);
 void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* thisptr);
 
 static int g_freed = 0;
 static int g_based = 0;
 
 extern "C" void __cdecl free_field_54(void* p) { if (p) g_freed = 1; }
-void __fastcall base_OnDie_00430300(CTCInventoryItem* thisptr) { if (thisptr) g_based = 1; }
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();
+};
+CParentDefClassBase::~CParentDefClassBase()
+{
+    CTCInventoryItem* thisptr = (CTCInventoryItem*)this; (void)thisptr; if (thisptr) g_based = 1;
+}
 
 int main()
 {

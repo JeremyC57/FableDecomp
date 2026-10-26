@@ -12,7 +12,7 @@
 // Retry 10: the `== ""` test split by hand (strcmp on a null block / the block compare) with both "true" exits joined by
 // goto into one label, the attacker test in its own block, and the hit record read into a local before GetAttacker().
 #pragma pack(push, 1)
-struct CBasicStringChar {                          // CBasicString<char>
+template <class T> class CBasicString { public:                          // CBasicString<char>
     char*         PData;                           // +0x00
     unsigned long StringLength;                    // +0x04
     bool operator==(const char* text) const;       // 0x004115A0
@@ -21,7 +21,7 @@ struct CBasicStringChar {                          // CBasicString<char>
 long __fastcall CompareStrings(const char* a, const char* b);   // 0x00411570
 class CCharString {
 public:
-    CBasicStringChar* PStringData;                 // +0x00 (the shared block starts with its CBasicString)
+    CBasicString<char>* PStringData;                 // +0x00 (the shared block starts with its CBasicString)
     __forceinline bool operator==(const char* text) const
     {
         if (PStringData == 0)
@@ -30,8 +30,8 @@ public:
     }
     __forceinline bool operator==(const CCharString& other) const
     {
-        CBasicStringChar* a = PStringData;
-        CBasicStringChar* b = other.PStringData;
+        CBasicString<char>* a = PStringData;
+        CBasicString<char>* b = other.PStringData;
         if (a == b)
             return true;
         if (a && b && a->StringLength == b->StringLength)
@@ -46,13 +46,26 @@ class CThing { public:
     unsigned char Dead : 1;                        // +0x91 bit 0
     unsigned char _flags91 : 7;
 };
-struct CBaseIntelligentPointer {
-    CThing* GetPItem() const;                      // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CHitRecord {
     unsigned char           _pad00[0x50];
-    CBaseIntelligentPointer PAttacker;             // +0x50
-    CBaseIntelligentPointer* GetAttacker() { return &PAttacker; }
+    CIntelligentPointer<CThing> PAttacker;             // +0x50
+    CIntelligentPointer<CThing>* GetAttacker() { return &PAttacker; }
 };
 struct CHitEvent {
     unsigned char _pad00[8];

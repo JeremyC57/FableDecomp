@@ -1,6 +1,6 @@
 // CExpressionSet::TransferBinaryOut(CDataOutputStream& stream) -- write the element count, the raw 24-byte elements and the end marker
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081ACE0, 102 bytes (+ int3 padding).
-// Callees: CDataOutputStream::WriteLong @ 0x00993EB0 (x2; the manifest "WriteCBYTE" writes 4 bytes),
+// Callees: CDataOutputStream::WriteSLONG @ 0x00993EB0 (x2; the manifest "WriteCBYTE" writes 4 bytes),
 //          CDataOutputStream::Write(const void*, long) virtual slot 4 (`call [edx+10h]`).
 // Layout: `this` is a three-pointer vector (first +0, last +4); the elements are 44 bytes
 //   (the 0x2AAAAAAB / sar 2 reciprocal multiply is a signed divide by 24).
@@ -11,7 +11,8 @@
 class CDataOutputStream { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, long bytes);  // slot 4
-    void WriteLong(long value);                        // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 struct SRecord24 { long m_words[6]; };                // 24-byte element
@@ -24,10 +25,10 @@ template <class T> struct CRecordVector {
     const void* GetData(long count) const { return count ? (const void*)m_first : (const void*)this; }
     void TransferBinaryOut(CDataOutputStream& stream) const
     {
-        stream.WriteLong(size());
+        stream.WriteSLONG(size());
         long count = size();
         stream.Write(GetData(count), count * sizeof(T));
-        stream.WriteLong(0x01AB6CBB);
+        stream.WriteSLONG(0x01AB6CBB);
     }
 };
 

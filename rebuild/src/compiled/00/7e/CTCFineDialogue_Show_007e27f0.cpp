@@ -33,10 +33,13 @@ namespace NGameText {
     bool __fastcall ConstructString(CWideString& text, long value);   // 0x009C7B70
 }
 class CFontBank;
+namespace NGameText {
 class CDataBank {
 public:
-    CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 struct CGameTextManager {
     unsigned char _pad00[0x14];
     CDataBank* PDataBank;                               // +0x14

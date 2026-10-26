@@ -44,7 +44,7 @@ class CHeroStatsDef { public:
     CRetailVector<CAbilityTrackDef>  StatLevels;     // +0xFC (PDB +0x114)
 };
 
-class CDefinitionManager { public:
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC
     const CHeroStatsDef* GetHeroStatsDef() const { return PHeroStatsDef; }
@@ -56,12 +56,23 @@ struct SAbilityEntry {                               // pair<long, CDefPointer<c
     const CHeroAbilityDef* PDef;                     // +0x04
 };
 
-class CTCInventoryAbilities { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryAbilities : public NInventory::CTCInventoryBase { public:
     void*                        __vftable;          // +0x000
     unsigned char                _pad_0x004[0x15C];
     CRetailVector<SAbilityEntry> Abilities;          // +0x160 (PDB +0x180)
 
-    CDefinitionManager* GetDefinitionManager() const;    // 0x006869D0 (CTCBase)
     bool IsAbilityPotentiallyAvailable(EHeroAbility ability) const;
 };
 
@@ -70,7 +81,7 @@ bool CTCInventoryAbilities::IsAbilityPotentiallyAvailable(EHeroAbility ability) 
     if (ability != 0) {
         if (Abilities[ability].Level >= 0)
             return true;
-        const CHeroStatsDef* def = GetDefinitionManager()->GetHeroStatsDef();
+        const CHeroStatsDef* def = GetDefinitionManager().GetHeroStatsDef();
         for (unsigned long i = 0; i < def->StatLevels.size(); ++i) {
             for (unsigned long j = 0; j < def->StatLevels[i].Abilities.size(); ++j) {
                 if (def->StatLevels[i].Abilities[j].AbilityUnlocked == ability)

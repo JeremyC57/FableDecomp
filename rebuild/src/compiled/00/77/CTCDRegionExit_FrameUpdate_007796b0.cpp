@@ -38,15 +38,27 @@ public:
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    virtual void v00();
-    void* PData;
-    CThing* GetPItem() const;                                // 0x00A01B50
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
+};
 class CPlayer { public: CThing* GetHeroThing(); };                  // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };         // 0x00449970
+class CPlayerManager { public: public:
+    CPlayer& GetMainPlayer();   // 0x00449970
+};         // 0x00449970
 class CCharString { public: void* PStringData; };
 class CDisplayEngine { public:
     void StartLetterBoxMode(float a, float b, float aspect); // 0x00434BA0
@@ -71,17 +83,18 @@ class CTCRegionDisplay { public:
     void FinishShowingRegionName();                          // 0x00639930
 };
 extern const float g_epsilon_0129ba3c;                       // 0x0129BA3C (1e-4f)
-class CTCBaseModel {
+class CTCBase {
 public:
-    virtual ~CTCBaseModel();
+    virtual ~CTCBase();
     CThing* ParentThing;                                     // +0x04
     bool    ToBeRemoved;                                     // +0x08
     bool    IsInGlobalUpdateTCs;                             // +0x09
-    const CWorld* GetWorld() const;                          // 0x00686A80
-    CPlayerManager* GetPlayerManager();                      // 0x00686D40
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 #pragma pack(push, 1)
-class CTCDRegionExit : public CTCBaseModel {
+class CTCDRegionExit : public CTCBase {
 public:
     bool  Active;                                            // +0x0c
     bool  InLetterBoxMode;                                   // +0x0d
@@ -108,7 +121,7 @@ void CTCDRegionExit::FrameUpdate()
         return;
     if (!PEntranceConnectedTo.GetPItem())
         return;
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
     if (!hero || hero->Dead)
         return;
     bool moveHero = false;
@@ -126,7 +139,7 @@ void CTCDRegionExit::FrameUpdate()
         if (!WaitingForPlayerToLeaveMessageArea) {
             if (!InLetterBoxMode) {
                 g_pMainGameComponent->DisplayEngine->StartLetterBoxMode(0.5f, 0.5f, 1.7777778f);
-                if (GetWorld()->ShowRegionNames) {
+                if (PeekWorld().ShowRegionNames) {
                     CTCRegionDisplay* display;
                     if (hero->HasTC(0x8e))
                         display = hero->GetTC<CTCRegionDisplay>(0x8e);
@@ -137,7 +150,7 @@ void CTCDRegionExit::FrameUpdate()
         }
     } else if (InLetterBoxMode && !g_pPlayerGui->Busy) {
         g_pMainGameComponent->DisplayEngine->EndLetterBox();
-        if (GetWorld()->ShowRegionNames) {
+        if (PeekWorld().ShowRegionNames) {
             CTCRegionDisplay* display;
             if (hero->HasTC(0x8e))
                 display = hero->GetTC<CTCRegionDisplay>(0x8e);

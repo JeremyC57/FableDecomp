@@ -14,9 +14,10 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CPersistContext { public:
-    bool IsSaving();                                                         // 0x004AEF50
     void Transfer(const char* name, bool& value, const bool& defaultValue); // 0x004045C0
     void Transfer(const char* name, bool& value);                           // 0x004107C0
+public:
+    bool IsSaving() const;   // 0x004AEF50
 };
 struct CTCInventoryBase_Retail {
     void OnSerialise(CPersistContext& context, bool inGameSave);             // 0x005BFD5E

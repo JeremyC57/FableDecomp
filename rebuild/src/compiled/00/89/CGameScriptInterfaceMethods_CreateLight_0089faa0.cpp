@@ -105,14 +105,22 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Dat
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
 
 class CRGBColour{ public:unsigned char B,G,R,A;};
-class CGameDefinitionManager{ public:long GetDefGlobalIndexFromName(const CCharString&);}; //009AD410
+class CDefinitionManager
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};
+
+class CGameDefinitionManager: public CDefinitionManager { public:}; //009AD410
 CThingNative* __fastcall CreateMarker(long,const C3DVector&,const CCharString&); //0083D460
-struct LightMethods{void SetOverridden(bool);void SetColour(const CRGBColour&);void SetInnerRadius(float);void SetOuterRadius(float);void SetFlicker(float);void SetActive(bool);}; //00640DF0,00640BB0,00640C40,00640C70,00640CA0,006412B0; CLightInfo offsets0/4/8/C
+class CTCLight{ public:void SetOverridden(bool);void SetColour(const CRGBColour&);void SetInnerRadius(float);void SetOuterRadius(float);void SetFlicker(float);public:
+    void SetActive(bool);   // 0x006412B0
+}; //00640DF0,00640BB0,00640C40,00640C70,00640CA0,006412B0; CLightInfo offsets0/4/8/C
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateLight(const C3DVector&,const CRGBColour&,const CCharString&,float,float,bool)const;};
 ScriptMethods CGameScriptInterfaceMethods::CreateLight(const C3DVector& position,const CRGBColour& colour,const CCharString& name,float inner,float outer,bool flicker)const{
  long id;{CCharString markerName("MARKER_LIGHT",-1);id=DefinitionManager->GetDefGlobalIndexFromName(markerName);}
  if(id){CThingNative* marker=CreateMarker(id,position,name);if(marker){
- if(marker->UsingComponents[1]&0x80){ComponentMap* map=&marker->Components;ComponentEntry* it=map->LowerBound(39);ComponentEntry* end=map->Finish;LightMethods* light=static_cast<LightMethods*>((it==end||it->Type>39?end:it)->Component);if(light){light->SetOverridden(true);light->SetColour(colour);light->SetInnerRadius(inner);light->SetOuterRadius(outer);light->SetFlicker((float)(unsigned char)flicker);light->SetActive(true);}}
+ if(marker->UsingComponents[1]&0x80){ComponentMap* map=&marker->Components;ComponentEntry* it=map->LowerBound(39);ComponentEntry* end=map->Finish;CTCLight* light=static_cast<CTCLight*>((it==end||it->Type>39?end:it)->Component);if(light){light->SetOverridden(true);light->SetColour(colour);light->SetInnerRadius(inner);light->SetOuterRadius(outer);light->SetFlicker((float)(unsigned char)flicker);light->SetActive(true);}}
  return marker->GetScriptThing();}}
  return ScriptMethods();
 }

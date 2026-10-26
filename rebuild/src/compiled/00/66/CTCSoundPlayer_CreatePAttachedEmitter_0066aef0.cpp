@@ -60,7 +60,8 @@ class CTCBase { public:
     bool ToBeRemoved;                                   // +0x08
     bool IsInGlobalUpdateTCs;                           // +0x09
     unsigned char _pad0a[2];
-    CWorld* GetWorld();                                 // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CTCSoundPlayer : public CTCBase { public:
     CIntelligentPointer<CThingSoundEmitter> PAttachedEmitter;   // +0x0c
@@ -72,7 +73,7 @@ CThingSoundEmitter* CTCSoundPlayer::CreatePAttachedEmitter(bool unattached)
     const C3DVector& position = ParentThing->PhysicsTC->Position;
     CThing* current = PAttachedEmitter.CBaseIntelligentPointer::GetPItem();
     if (!current || (current->m_flags91 & 1)) {
-        if (GetWorld()->GetWorldMap()->IsPosInMap(position)) {
+        if (GetWorld().GetWorldMap()->IsPosInMap(position)) {
             CThingSoundEmitter* emitter = CThingSoundEmitter::Create(position, ParentThing, unattached);
             if (emitter)
                 PAttachedEmitter = CIntelligentPointer<CThingSoundEmitter>(emitter);

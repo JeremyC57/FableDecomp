@@ -53,10 +53,21 @@ struct CTCPlayerCharacterLinks {                       // TC type 0x7a
     void AddThing(CThing* thing);                      // 0x006AEDC0
 };
 
-struct CBaseIntelligentPointer {
-    void* Info;
-    void* Item;
-    CThing* GetPItem() const;                          // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CGameCameraManager { public:
@@ -89,8 +100,8 @@ struct CPlayerManager_Retail {
 };
 
 struct CPlayer_Methods : CPlayer {
-    CBaseIntelligentPointer& ControlledCreaturePtr() { return *(CBaseIntelligentPointer*)ControlledCreature; }
-    CBaseIntelligentPointer& PlayerCharacterPtr() { return *(CBaseIntelligentPointer*)PlayerCharacter; }
+    CIntelligentPointer<CThing>& ControlledCreaturePtr() { return *(CIntelligentPointer<CThing>*)ControlledCreature; }
+    CIntelligentPointer<CThing>& PlayerCharacterPtr() { return *(CIntelligentPointer<CThing>*)PlayerCharacter; }
     bool CreateCharacter(const CCharString& defName);  // 0x00489D40
     void SetControlledCreature(CThing* creature);      // 0x00487CF0
     void InitCharacterAs(const CCharString& defName);

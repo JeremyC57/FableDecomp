@@ -16,40 +16,56 @@ class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
 };
-struct CBaseIntelligentPointer {                // CIntelligentPointer<CThing>: 8 bytes
-    void* m_vfptr;
-    void* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CWorld;
 namespace NTargeting {
 C3DVector __fastcall GetTargetingPositionOnThing(const CWorld& world, const CThing& thing, float height);   // 0x007EA2F0
 }
 #pragma pack(push, 1)
-class CTCTargetingBase { public:
+class CTCBase
+{
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCTargetingBase : public CTCBase { public:
     void* __vfptr;                              // +0x00 (CTCBase)
     CThing* ParentThing;                        // +0x04
     unsigned char _base08[4];
     bool ScriptOverrideIgnoreEverything;        // +0x0c
-    CBaseIntelligentPointer PNearestInterestingThing;           // +0x0d
-    CBaseIntelligentPointer PScriptOverrideInterestingThing;    // +0x15
-    CBaseIntelligentPointer PScriptOverrideRangedTarget;        // +0x1d
-    CBaseIntelligentPointer PTargetedThing;                     // +0x25
-    const CWorld& GetWorld() const;             // 0x00686A80 (CTCBase)
+    CIntelligentPointer<CThing> PNearestInterestingThing;           // +0x0d
+    CIntelligentPointer<CThing> PScriptOverrideInterestingThing;    // +0x15
+    CIntelligentPointer<CThing> PScriptOverrideRangedTarget;        // +0x1d
+    CIntelligentPointer<CThing> PTargetedThing;                     // +0x25
     bool GetTargetedPos(C3DVector& pos, float radius) const;
 };
 #pragma pack(pop)
 
-static inline bool IsThingAlive(const CBaseIntelligentPointer& p)
+static inline bool IsThingAlive(const CIntelligentPointer<CThing>& p)
 {
     return p.GetPItem() && !(p.GetPItem()->m_flags91 & 1);
 }
 
 bool CTCTargetingBase::GetTargetedPos(C3DVector& pos, float radius) const
 {
-    const CBaseIntelligentPointer& target = PTargetedThing;
+    const CIntelligentPointer<CThing>& target = PTargetedThing;
     if (IsThingAlive(target)) {
-        pos = NTargeting::GetTargetingPositionOnThing(GetWorld(), *target.GetPItem(), radius);
+        pos = NTargeting::GetTargetingPositionOnThing(PeekWorld(), *target.GetPItem(), radius);
         return true;
     }
     return false;

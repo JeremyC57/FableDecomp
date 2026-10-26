@@ -15,13 +15,15 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 struct CDefStringTable {
-    CCharString GetString(long id);             // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
 extern unsigned long g_InvalidSoundHandle;      // 0x0129D25C
 class CTCBase;
-struct CTCSound {                               // the thing's interface-16 sound component
-    unsigned long PlaySound(const CCharString& name, bool positional, long a, long b, long c);   // 0x0066BD00 (catalog "CSoundInfo::PlaySound")
+class CTCSoundPlayer { public:                               // the thing's interface-16 sound component
+public:
+    unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -66,10 +68,10 @@ struct CModeThunderLightningStorm {
 void NCreatureMode::CModeThunderLightningStorm::ResumeForCutscene()
 {
     if (LoopingSound == g_InvalidSoundHandle) {
-        CTCSound* sound;
+        CTCSoundPlayer* sound;
         if (Owner->GetInterface(&sound, 16)) {
             CCharString name = g_DefStringTable.GetString(PLightningStormDef->LoopingSound);
-            LoopingSound = sound->PlaySound(name, false, 0, 0, -1);
+            LoopingSound = sound->PlayAttachedCriteria(name, false, 0, 0, -1);
         }
     }
 }

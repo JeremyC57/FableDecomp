@@ -7,10 +7,17 @@
 // propagated -- named IsAborted as in the landed CStatueMasterChest::Main 0x00ED4830). Called by 0x00EE0DE7 / 0x00EE0FFA /
 // 0x00EE10D7. Ego_r.pdb: ?IsNightTime@CTH_Trigger_Bowerstone@CV_TravellingHeroesScript@NScript@@AAE_NXZ.
 // Shape: the abort test runs in both time outcomes; in the daytime arm its result is discarded (`call ; xor al,al`),
-// in the night arm `if (!IsAborted()) return true;` jumps (`jne`) back into the shared `xor al,al` tail, else `mov al,1`.
-// Graded forms: a bool local `night` then `if (IsAborted()) return false; return night;` if-converts (`neg ; sbb ; not ;
-// and`); a result local cleared by the abort test parks it in bl (65v65); `if (IsAborted()) return false; return true;`
+// in the night arm `if (!IsActiveThreadTerminating()) return true;` jumps (`jne`) back into the shared `xor al,al` tail, else `mov al,1`.
+// Graded forms: a bool local `night` then `if (IsActiveThreadTerminating()) return false; return night;` if-converts (`neg ; sbb ; not ;
+// and`); a result local cleared by the abort test parks it in bl (65v65); `if (IsActiveThreadTerminating()) return false; return true;`
 // in the night arm becomes `neg ; sbb ; inc` (65v65); this form matches.
+namespace NScript { class CPredicateBase; }
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
 namespace NScript {
 
 struct CGameScriptInterface {                      // the quest's script interface (slots from ghidra_out/cgsi_slots_aligned.tsv)
@@ -99,21 +106,22 @@ struct CGameScriptInterface {                      // the quest's script interfa
 };
 
 class CV_TravellingHeroesScript { public:
-    struct CTH_Trigger_Bowerstone {
+    struct CTH_Trigger_Bowerstone : public CEntityScriptBase {
         void*                 __vftable;            // +0x00
         CGameScriptInterface* PQuest;               // +0x04
-        bool IsAborted();                           // 0x00F35B30
-        bool IsNightTime();
-    };
+    
+private:
+    bool IsNightTime();
+};
 };
 
 bool CV_TravellingHeroesScript::CTH_Trigger_Bowerstone::IsNightTime()
 {
     if (PQuest->GetTimeOfDay() > 1800 || PQuest->GetTimeOfDay() < 700) {
-        if (!IsAborted())
+        if (!IsActiveThreadTerminating())
             return true;
     } else {
-        IsAborted();
+        IsActiveThreadTerminating();
     }
     return false;
 }

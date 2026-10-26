@@ -19,7 +19,7 @@
 #include "engine/CWorld.h"
 
 #pragma pack(push, 1)
-struct CBasicStringChar {                               // CBasicString<char>, 13 bytes
+template <class T> class CBasicString { public:                               // CBasicString<char>, 13 bytes
     char*         PData;                                // +0x00
     unsigned long StringLength;                         // +0x04
     unsigned long DataLength : 31;                      // +0x08
@@ -27,7 +27,7 @@ struct CBasicStringChar {                               // CBasicString<char>, 1
     bool operator==(const char* text) const;            // 0x004115A0
 };
 class CCharStringData { public:                                // 17 bytes
-    CBasicStringChar Data;                              // +0x00
+    CBasicString<char> Data;                              // +0x00
     long             NoRefs;                            // +0x0d
 };
 #pragma pack(pop)

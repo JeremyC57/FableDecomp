@@ -39,7 +39,8 @@ struct CTCAbilityPermissions {                          // interface 0x29 (named
     bool          AbilitiesAllowed;                     // +0x0d
 };
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();                    // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 class CTCWeapon { public:
     bool IsUsableBy(const CThing& thing) const;         // 0x005DAB10

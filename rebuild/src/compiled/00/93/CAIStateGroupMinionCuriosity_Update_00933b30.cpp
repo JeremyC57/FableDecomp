@@ -54,6 +54,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+public:
+    void Terminate();   // 0x008FCF40
 };
 
 class CTCPerceiveThing { public:                       // interface type 0x34 component
@@ -63,7 +65,6 @@ class CTCPerceiveThing { public:                       // interface type 0x34 co
 struct CAIStateGroup_MinionCuriosity : CAIStateGroupBase {
     float CuriosityPos_X, CuriosityPos_Y, CuriosityPos_Z;   // +0x14 C3DVector
     bool MoveToCuriosityProximity(float radius);            // 0x00933A40
-    void Terminate();                                       // 0x008FCF40 (CAIStateGroupBase)
     virtual void Update();
 };
 

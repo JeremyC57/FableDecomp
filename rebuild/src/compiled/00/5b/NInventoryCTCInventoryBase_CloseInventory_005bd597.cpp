@@ -6,10 +6,11 @@
 // (vector<CCategory>, 0x2C-byte elements) at +0x20, InventoryOpen at +0x58 (PDB +0x60),
 // InventoryAnimThingDefIndex at +0x124 and RHSetInvItemDefIndex at +0x128 (PDB +0x138/+0x13C).
 // The category loop survives with an empty body: size() is re-read every iteration.
-struct CPlayerGuiCalls {
-    void Close();                                // 0x004374B0
+class CPlayerGui { public:
+public:
+    void Open();   // 0x004374B0
 };
-extern CPlayerGuiCalls* g_pPlayerGui;            // 0x013B8790
+extern CPlayerGui* g_pPlayerGui;            // 0x013B8790
 
 struct CCategory_Retail {
     unsigned char _body[0x2C];
@@ -38,7 +39,7 @@ struct CTCInventoryBase_Retail {
 void CTCInventoryBase_Retail::CloseInventory()
 {
     InventoryOpen = false;
-    g_pPlayerGui->Close();
+    g_pPlayerGui->Open();
     for (unsigned long i = 0; i < Categories.size(); ++i)
         Categories[i].CloseInventory();
     InventoryAnimThingDefIndex = 0;

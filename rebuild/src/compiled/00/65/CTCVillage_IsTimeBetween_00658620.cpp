@@ -1,7 +1,7 @@
 // CTCVillage::IsTimeBetween(const vector<long>& startTimes, long duration) const -- true when the game time of day lies inside any window that starts at one of the HHMM start times and lasts the HHMM duration (a window running past midnight wraps)
 // Leaf: IsTimeBetween
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00658620, 246 bytes (`ret 8`; Ego_r.pdb `?IsTimeBetween@CTCVillage@@QBE_NABV?$vector@J...@@J@Z`).
-// Callees: CTCBase::GetWorld() const 0x00686A80; __ftol2 0x00BFEA70 (the wrap's `(long)end`).
+// Callees: CTCBase::PeekWorld() const 0x00686A80; __ftol2 0x00BFEA70 (the wrap's `(long)end`).
 // Constants: 1/1440 (minutes to a day fraction) 0x0125A88C, 1.0f 0x0122DED8, 0.0f 0x0122DEDC.
 // Layout (retail): CWorld::PGameTimeManager +0x1c, CGameTimeManager::Time +0x08 (as the landed CTCTimeAppearanceFade
 //          FrameUpdate 0x007786F0).
@@ -28,15 +28,21 @@ struct CLongVector {                            // STLport vector<long> (12 byte
     const long* end() const { return _M_finish; }
 };
 
-class CTCVillage { public:
+class CTCBase
+{
+public:
     virtual void v00();
-    const CWorld* GetWorld() const;             // 0x00686A80 (CTCBase)
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCVillage : public CTCBase { public:
     bool IsTimeBetween(const CLongVector& startTimes, long duration) const;
 };
 
 bool CTCVillage::IsTimeBetween(const CLongVector& startTimes, long duration) const
 {
-    float time = GetWorld()->PGameTimeManager->Time;
+    float time = PeekWorld().PGameTimeManager->Time;
     duration = duration / 100 * 60 + duration % 100;
     float length = duration * (1.0f / 1440.0f);
     for (const long* it = startTimes.begin(); it != startTimes.end(); ++it) {

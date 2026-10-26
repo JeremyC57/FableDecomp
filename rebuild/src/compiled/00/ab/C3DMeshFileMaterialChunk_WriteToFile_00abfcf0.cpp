@@ -21,14 +21,15 @@ class CDataOutputStream { public:
     virtual void v02();
     virtual void v03();
     virtual void WriteBytes(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteLONG(long value);                                    // 0x00993EB0
     void WriteULONG(unsigned long value);                          // 0x00993EA0
-    void WriteFLOAT(float value);                                  // 0x00993EE0
-    void WriteBOOL(bool value);                                    // 0x00993E30
     void WriteUBYTE(unsigned char value);                          // 0x00993E50
     void WriteColour(const CRGBColour& colour);                    // 0x00993F30
     void WriteMatrix3x4(const CMatrix3x4& m);                      // 0x00994070
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteFloat(float);   // 0x00993EE0
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 template <class T>
@@ -109,13 +110,13 @@ class C3DMeshFileMaterialChunk : public CChunkedFileSuperChunk { public:
 void C3DMeshFileMaterialChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
     out.WriteNullTerminatedString(Name);
-    out.WriteLONG(MaterialIndex);
-    out.WriteBOOL(TwoSided);
+    out.WriteSLONG(MaterialIndex);
+    out.WriteEBOOL(TwoSided);
     out.WriteColour(Ambient);
     out.WriteColour(Diffuse);
     out.WriteColour(Specular);
-    out.WriteFLOAT(Shiny);
-    out.WriteFLOAT(ShinyStrength);
-    out.WriteFLOAT(Transparency);
+    out.WriteFloat(Shiny);
+    out.WriteFloat(ShinyStrength);
+    out.WriteFloat(Transparency);
     CChunkedFileSuperChunk::WriteToFile(out, saver);
 }

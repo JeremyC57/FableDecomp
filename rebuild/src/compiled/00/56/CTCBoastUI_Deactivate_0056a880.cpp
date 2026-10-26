@@ -25,10 +25,11 @@ struct CEngineCalls {                                       // the engine single
 };
 extern CEngineCalls* g_pEngine;                             // 0x013B86A0
 
-struct CPlayerGuiCalls {
-    void Close();                                           // 0x004374B0
+class CPlayerGui { public:
+public:
+    void Open();   // 0x004374B0
 };
-extern CPlayerGuiCalls* g_pPlayerGui;                       // 0x013B8790
+extern CPlayerGui* g_pPlayerGui;                       // 0x013B8790
 
 struct CTCBoastUI_Retail {
     void*         __vftable;                                // +0x00
@@ -48,7 +49,7 @@ void CTCBoastUI_Retail::Deactivate()
         if (Active) {
             g_pEngine->m_pWorld->m_pCameraManager->SetAutomaticCameraControl();
             Quitting = true;
-            g_pPlayerGui->Close();
+            g_pPlayerGui->Open();
         } else {
             ActivationRequested = false;
         }

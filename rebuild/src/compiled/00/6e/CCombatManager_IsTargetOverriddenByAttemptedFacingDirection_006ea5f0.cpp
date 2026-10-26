@@ -88,7 +88,8 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 class CTCCarrying { public:                        // interface type 0x46
-    CThing* GetThingInPrimarySlot();        // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 class CThing { public:
     unsigned char _pad0[0x20];

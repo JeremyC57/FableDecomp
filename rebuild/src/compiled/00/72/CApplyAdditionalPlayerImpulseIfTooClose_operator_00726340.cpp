@@ -12,8 +12,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const; // 0x004365B0 (the const copy)
 };
 class CThing;
-struct CTCCollisionFilter {                     // the interface-0x4D component
-    bool CanCollideWith(CThing* other);         // 0x00770DE0
+class CTCSolidToThing { public:                     // the interface-0x4D component
+public:
+    bool IsSolidToThing(const CThing*) const;   // 0x00770DE0
 };
 
 class C3DVector { public:
@@ -22,7 +23,8 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     __forceinline C3DVector& operator*=(float s) { X = s * X; Y = s * Y; Z = s * Z; return *this; }
     float GetXYLengthSquared() const { float s = X * X; s += Y * Y; return s; }
-    void RotateAboutZ(float turns);             // 0x00A14040
+public:
+    void RotateXY(float);   // 0x00A14040
 };
 
 class CTCPhysicsBase {
@@ -97,13 +99,16 @@ bool __fastcall IsPhysicsPushableByHero(const CThing& thing);   // 0x0085FD70
 
 class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
+
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 class CMainGameComponent { public:
     unsigned char _pad[0x24];
     CWorld* World;                              // +0x24
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-extern long __fastcall GFGetCurrentFrame();        // 0x0049D870
+        // 0x0049D870
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
 
@@ -127,7 +132,7 @@ void CApplyAdditionalPlayerImpulseIfTooClose::operator()(CThingCreatureBase* oth
             && other->PhysicsTC->IsPushableByHero() && NCreatureMode::IsPhysicsPushableByHero(*other)) {
             CThing* owner = Owner->ParentThing;
             if (owner->HasTC(0x4d)) {
-                if (!((CTCCollisionFilter*)owner->GetTC(0x4d))->CanCollideWith(other))
+                if (!((CTCSolidToThing*)owner->GetTC(0x4d))->IsSolidToThing(other))
                     return;
             }
             float penetration = 0.0f;
@@ -144,10 +149,10 @@ void CApplyAdditionalPlayerImpulseIfTooClose::operator()(CThingCreatureBase* oth
                 offset *= 0.1f;
             }
             CWorld* world = g_pMainGameComponent->World;
-            float sign = (GFGetCurrentFrame() % 2 == 0) ? -1.0f : 1.0f;
+            float sign = (CWorld::GetFrame() % 2 == 0) ? -1.0f : 1.0f;
             float angle = GFFloatRandom(45.0f, world->GetPRandomSeed()) * sign;
             float turns = angle * (1.0f / 360.0f);
-            offset.RotateAboutZ(turns * sign);
+            offset.RotateXY(turns * sign);
             other->PhysicsTC->AddAdditionalImpulse(offset);
             if (((CThingView*)other)->Type == 1 && (((CThingView*)Owner->ParentThing)->Flags6c & 8)) {
                 CThing* player = Owner->ParentThing;

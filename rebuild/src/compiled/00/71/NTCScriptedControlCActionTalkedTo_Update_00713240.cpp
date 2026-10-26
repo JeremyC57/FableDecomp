@@ -91,10 +91,15 @@ class CScriptThing { public:
     void* PImp_Info;                                    // +0x08
 };
 
-struct CIntelligentPointer {
-    virtual void v00();
-    CBaseObject* PItem;                                 // +0x04
-    CBaseObject* GetPItem();                            // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 struct CActionTalkedTo {
@@ -103,7 +108,7 @@ struct CActionTalkedTo {
     bool                m_active;                       // +0x08
     bool                m_finished;                     // +0x09
     unsigned char       _pad[0x2];
-    CIntelligentPointer m_target;                       // +0x0c
+    CBaseIntelligentPointer m_target;                       // +0x0c
     CScriptThing        m_talker;                       // +0x14
     void Update();
 };

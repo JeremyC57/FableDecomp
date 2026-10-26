@@ -18,7 +18,8 @@ public:
 };
 class CInputEvent {
 public:
-    C2DVector GetAnaloguePosition() const;      // 0x00A043A0
+public:
+    C2DVector GetJoystickPosition() const;   // 0x00A043A0
 };
 extern const float g_InputDeadZone;             // 0x0129BA3C (0.0001f)
 struct CInputTypeXboxPadRightStickEvent_Methods : CInputTypeXboxPadRightStickEvent {
@@ -26,7 +27,7 @@ struct CInputTypeXboxPadRightStickEvent_Methods : CInputTypeXboxPadRightStickEve
 };
 C2DVector CInputTypeXboxPadRightStickEvent_Methods::GetControlDirection(const CInputEvent& event) const
 {
-    C2DVector position = event.GetAnaloguePosition();
+    C2DVector position = event.GetJoystickPosition();
     double y = position.Y * -1.0f;
     double x = position.X;
     float length = (float)sqrt(x * x + y * y);

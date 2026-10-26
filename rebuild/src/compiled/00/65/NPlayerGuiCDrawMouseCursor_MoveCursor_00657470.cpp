@@ -37,12 +37,13 @@ class CPlayerGui { public:
     CGraphicBank* Bank;                            // +0x14
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
-struct CScreen {
-    C2DBoxF GetScreenArea() const;                 // 0x00434B50
+class CDisplayEngine { public:
+public:
+    C2DBoxF GetMainWindow() const;   // 0x00434B50
 };
 class CMainGameComponent { public:
     unsigned char _pad[0x28];
-    CScreen* Screen;                               // +0x28
+    CDisplayEngine* Screen;                               // +0x28
 };
 
 namespace NPlayerGui {
@@ -63,7 +64,7 @@ void CDrawMouseCursor::MoveCursor(const C2DVector& delta)
     float width = (float)g_pPlayerGui->Bank->GetGraphicWidth(def->MouseCursorGraphic);
     Pos.X += delta.X * def->MouseCursorScaleX;
     Pos.Y -= delta.Y * def->MouseCursorScaleY;
-    C2DBoxF area = Component->Screen->GetScreenArea();
+    C2DBoxF area = Component->Screen->GetMainWindow();
     float maxX = area.BottomRight.X - area.TopLeft.X - width;
     if (Pos.X < 0.0f)
         Pos.X = 0.0f;

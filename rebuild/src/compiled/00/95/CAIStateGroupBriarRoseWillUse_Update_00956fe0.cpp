@@ -52,11 +52,21 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(SDefOut* out)
 }
 #pragma auto_inline(on)
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CThing { public:
@@ -69,7 +79,7 @@ class CThing { public:
     const C3DVector& GetPosition();             // 0x004C73D0
 };
 
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -83,7 +93,7 @@ namespace N_0062e900 { struct CCreatureActionBase {
     ~CCreatureActionBase();                     // 0x0062E900
 }; } using N_0062e900::CCreatureActionBase;
 class CCreatureAction_BriarRoseForcePush : public CCreatureActionBase { public:
-    CBaseIntelligentPointer PTarget;            // +0x114
+    CIntelligentPointer<CThing> PTarget;            // +0x114
     CCreatureAction_BriarRoseForcePush(CThing* creature, CThing* target);   // 0x009572A0
 };
 class CCreatureAction_BriarRoseShotFarInto : public CCreatureActionBase { public:
@@ -103,7 +113,7 @@ extern long g_FramesPerSecond;                  // 0x01375550
 struct CAIStateGroupBriarRoseWillUseMethods : CAIStateGroup_BriarRoseWillUse {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThing* GetCreature() const { return Brain()->PCreature; }
-    CBaseIntelligentPointer& Enemy() { return *(CBaseIntelligentPointer*)PEnemy; }
+    CIntelligentPointer<CThing>& Enemy() { return *(CIntelligentPointer<CThing>*)PEnemy; }
     void Terminate();                           // 0x008FCF40
     CThingWorld* GetPWorld();                   // 0x008FCFC0
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced);   // 0x0097DB70

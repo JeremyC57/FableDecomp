@@ -13,12 +13,13 @@ extern "C" unsigned int __cdecl strlen(const char* text);
 class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size); // slot 4 (+0x10)
-    void WriteBool(bool value);                                // 0x00993E30
     void WriteUChar(unsigned char value);                      // 0x00993E50
     void WriteUShort(unsigned short value);                    // 0x00993E80
-    void WriteShort(short value);                              // 0x00993E90
-    void WriteULong(unsigned long value);                      // 0x00993EA0
     void WriteFloat(float value);                              // 0x00993EE0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteSWORD(short);   // 0x00993E90
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 class CQuaternion { public: float X, Y, Z, W; };
@@ -53,8 +54,8 @@ void C3DAnimationSequenceData::WriteCompressedToFile(CDataOutputStream& out) con
     out.WriteData(BoneName, strlen(BoneName) + 1);
     out.WriteUChar(BoneType);
     out.WriteFloat(SamplesPerSecond);
-    out.WriteULong(FrameCount);
-    out.WriteBool(AnimatedFlag);
+    out.WriteULONG(FrameCount);
+    out.WriteEBOOL(AnimatedFlag);
     out.WriteUChar(RotationTrackMode);
     out.WriteUChar(PositionTrackMode);
     out.WriteUChar(ScalingTrackMode);
@@ -74,9 +75,9 @@ void C3DAnimationSequenceData::WriteCompressedToFile(CDataOutputStream& out) con
     out.WriteUShort(PositionTrackSize);
     for (unsigned long k = 0; k < PositionTrackSize; ++k) {
         const C3DVectorWord& v = PositionTrack[k];
-        out.WriteShort(v.X);
-        out.WriteShort(v.Y);
-        out.WriteShort(v.Z);
+        out.WriteSWORD(v.X);
+        out.WriteSWORD(v.Y);
+        out.WriteSWORD(v.Z);
     }
     out.WriteUShort(PalettedPositionTrackSize);
     for (unsigned long m = 0; m < PalettedPositionTrackSize; ++m)

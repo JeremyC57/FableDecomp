@@ -20,7 +20,7 @@ void CInputProcessInventoryWeapons::destroy()
     this->marker = -1;
 }
 
-void operator_delete_impl(void* p)
+void __cdecl operator delete(void* p)
 {
     g_freed++;
     g_last_free = p;

@@ -32,7 +32,8 @@ class CPhysicsCollideResponse { public:
 };
 class CThingPhysicsMeshInfo;
 class CWorldMap { public:
-    float GetGroundSizeZAt(const C3DVector& pos);       // 0x0063A300
+public:
+    float GetGroundSizeZAt(const C3DVector&) const;   // 0x0063A300
 };
 class CTCPhysicsBase;
 class CThing {

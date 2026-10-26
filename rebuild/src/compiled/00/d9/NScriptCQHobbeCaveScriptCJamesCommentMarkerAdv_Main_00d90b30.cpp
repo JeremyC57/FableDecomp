@@ -1122,12 +1122,17 @@ struct CQ_HobbeCaveScript {
  bool HobbesCloseby;                                // +0x6B (PDB +0x7f)
  bool MakeBanditComment(const CCharString& line, const CScriptThing& bandit);   // 0x00D905C0
 };
-struct CJamesCommentMarkerAdv {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CJamesCommentMarkerAdv : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CQ_HobbeCaveScript* ParentClass;                   // +0x14
  void* PMasterData;                                 // +0x18
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CJamesCommentMarkerAdv::Main()

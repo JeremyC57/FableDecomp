@@ -31,7 +31,7 @@
 //   default CAnimInit and calls Set (the zero stores land after the pushes), so both share the SetMainAnim tail.
 #include <string.h>
 #pragma pack(push, 1)
-struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
+template <class T> class CBasicString { public:                       // CBasicString<char>, 13 bytes
     char*         PData;                        // +0x00
     unsigned long StringLength;                 // +0x04
     unsigned long DataLength : 31;              // +0x08
@@ -39,7 +39,7 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool operator==(const char* text) const;    // 0x004115A0
 };
 class CCharStringData { public:                        // 17 bytes
-    CBasicStringChar Data;                      // +0x00
+    CBasicString<char> Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
 #pragma pack(pop)
@@ -125,14 +125,25 @@ class CThingAICreature : public CThingCreatureBase { public:
     bool GetWaveWithInformation() const;                // 0x008300F0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CPlayer { public:
     unsigned char _pad00[0x34];
-    CBaseIntelligentPointer PCharacterThing;            // +0x34
+    CIntelligentPointer<CThing> PCharacterThing;            // +0x34
     CThing* GetPCharacterThing() const { return PCharacterThing.GetPItem(); }
 };
 class CPlayerManager { public:

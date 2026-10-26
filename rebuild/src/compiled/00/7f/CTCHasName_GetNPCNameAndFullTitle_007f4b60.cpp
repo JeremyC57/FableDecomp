@@ -52,12 +52,12 @@ template <class T> class CIVCountedPointer { public:
 };
 
 namespace NGameText {
-class CGroupEntry : public CIVCountedPointee { public:
+class CTextEntry : public CIVCountedPointee { public:
     CWideString GetText() const;                            // 0x009C7A40
 };
 class CDataBank { public:
     bool EntryExists(unsigned long index);                  // 0x009CC190
-    CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
 }
 
@@ -99,7 +99,7 @@ CWideString CTCHasName::GetNPCNameAndFullTitle()
     CWideString name = GetNPCShortName();
     NGameText::CDataBank* bank = g_pMainGameComponent->TextBank;
     if (bank->EntryExists(GetDef()->Occupation)) {
-        CWideString title = bank->GetPGroupEntry(GetDef()->Occupation, true)->GetText();
+        CWideString title = bank->GetPTextEntry(GetDef()->Occupation, true)->GetText();
         CWideString fullTitle = name + g_textSpacedDash + title;
         return fullTitle;
     }

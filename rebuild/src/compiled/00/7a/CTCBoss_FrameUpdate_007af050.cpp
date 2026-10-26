@@ -71,7 +71,8 @@ class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0 (CPlayer::GetHeroThing)
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 template <class T> class CDefPointer { public:
     T* Data;
@@ -105,7 +106,8 @@ public:
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CPlayerManager* GetPlayerManager();         // 0x00686D40 (catalog "CViewBase::GetDisplayEngine")
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
 };
 class CTCBoss : public CTCBase {                // vtable 0x0126D494
 public:
@@ -128,7 +130,7 @@ public:
 void CTCBoss::FrameUpdate()
 {
     if (StrikesSinceHit > 0) {
-        CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
         CTCEntityEvents* events;
         if (hero && !hero->IsDead() && hero->GetInterface(&events, 0x42)) {
             const NEntityEvents::CEventHitBy* hit;

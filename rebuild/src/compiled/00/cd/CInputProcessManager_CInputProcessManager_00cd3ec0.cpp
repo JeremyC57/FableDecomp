@@ -1,6 +1,9 @@
+class CDefinitionManager {
+public:
+    virtual ~CDefinitionManager();   // 0x009B02E0
+};
 extern "C" void __fastcall MemberDtor_686df0_00cbeeb0(void* self);
 // Leaf: ??1CInputProcessManager@
-extern "C" void __fastcall BaseDtor_686830_009b02e0(void* self);
 
 class CInputProcessManager { public:
     void** vtbl;
@@ -12,5 +15,5 @@ extern "C" void __fastcall DtorInputProcessManager(CInputProcessManager* self, i
 {
     self->vtbl = (void**)&g_vtbl_CInputProcessManager_012c2648;
     MemberDtor_686df0_00cbeeb0(self);
-    BaseDtor_686830_009b02e0(self);
+    ((CDefinitionManager*)(self))->CDefinitionManager::~CDefinitionManager();
 }

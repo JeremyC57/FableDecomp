@@ -20,7 +20,7 @@ struct CRetailVector {                          // STLport vector: _M_start / _M
 };
 
 class CPersistContext { public:
-    void Transfer(float& value);                // 0x00431061
+    template <class T> void Transfer(T& value);                // 0x00431061
     void Transfer(CRetailVector<float>& value); // 0x00464CBF
 };
 

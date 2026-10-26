@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BAB70, length 98 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020,
 //          CTCFireballSpell::GetReleaseAnimName() (CCharString by value, hidden result pointer) @ 0x007C86F0,
-//          CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0 (manifest label
+//          CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0 (manifest label
 //          "CTCInGameMenu::SetPDef" is propagated), CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the bool-returning out-parameter GetInterface template (landed AlertToPlayer 0x00849320 shape) in the `if`:
 //   bit 0x9d is tested in memory (`test dword ptr [eax+30h],20000000h`); the returned string temporary lands in the
@@ -41,10 +41,21 @@ class CThing { public:
     }
 };
 
-struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + item
-    void*   __vftable;                      // +0x00
-    CThing* m_pItem;                        // +0x04
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CTCFireballSpell { public:                   // interface type 0x9d component
@@ -54,9 +65,10 @@ class CTCFireballSpell { public:                   // interface type 0x9d compon
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_FinishFireballSpell : public CCombatActionBase { public:
@@ -67,5 +79,5 @@ void CCreatureAction_FinishFireballSpell::SetAnims()
 {
     CTCFireballSpell* fireball;
     if (PCreature.GetPItem()->GetInterface(&fireball, 0x9d))
-        SetAnimationName(fireball->GetReleaseAnimName());
+        SetCombatAnimation(fireball->GetReleaseAnimName());
 }

@@ -22,22 +22,23 @@ class CThing { public:
     const C3DVector& GetPosition();           // 0x004C73D0
 };
 
-struct CTCHeroOpinionDeedLog_Retail {
+class CTCHeroOpinionDeedLog { public:
     void*         __vftable;                  // +0x00
     CThing*       ParentThing;                // +0x04 CTCBase
     unsigned char _pad_0x08[0x20];            // +0x08 CTCBase flags, OpinionDeedMap, witnesses list, NextHandle
     long          WeaponOutDeedHandle;        // +0x28 (PDB +0x34)
     bool          WeaponOutCrimeEnabled;      // +0x2C (PDB +0x38)
 
-    void RemoveDeedStillSearchingForWitnesses(long handle);   // 0x006C5920
-    void RemoveDeed(long handle);                             // 0x006C59E0
     void RemoveCrimeFromVillage(long handle);                 // 0x006C5F80
     long PostDeed(long type, const C3DVector& position, CThing* target, CThingAICreature* victim,
                   long postType, bool a, bool b, CFaction* faction, bool c, long extra);   // 0x006C6990
     void PlayerTakenOutWeapon();
+public:
+    void RemoveDeed(long);   // 0x006C59E0
+    void RemoveDeedStillSearchingForWitnesses(long);   // 0x006C5920
 };
 
-void CTCHeroOpinionDeedLog_Retail::PlayerTakenOutWeapon()
+void CTCHeroOpinionDeedLog::PlayerTakenOutWeapon()
 {
     if (WeaponOutDeedHandle != -1) {
         RemoveDeedStillSearchingForWitnesses(WeaponOutDeedHandle);

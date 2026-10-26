@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
-    void TransferLong(int& value);                  // 0x00431102 Transfer(long&)
+    template <class T> void Transfer(T& value);                  // 0x00431102 Transfer(long&)
 };
 
 class CVillagerInteractionsDef { public:
@@ -12,7 +12,7 @@ class CVillagerInteractionsDef { public:
 
 void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def, void* /*edx*/, CPersistContext* ctx)
 {
-    ctx->TransferLong(def->fieldA);
-    ctx->TransferLong(def->fieldB);
-    ctx->TransferLong(def->fieldC);
+    ctx->Transfer(*(long*)&(def->fieldA));
+    ctx->Transfer(*(long*)&(def->fieldB));
+    ctx->Transfer(*(long*)&(def->fieldC));
 }

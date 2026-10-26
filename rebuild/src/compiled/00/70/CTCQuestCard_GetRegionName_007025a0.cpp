@@ -11,7 +11,7 @@
 //   the def name is a named local copied into the result (no NRVO) and then destroyed.
 #include <string.h>
 #pragma pack(push, 1)
-struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
+template <class T> class CBasicString { public:                       // CBasicString<char>, 13 bytes
     char*         PData;                        // +0x00
     unsigned long StringLength;                 // +0x04
     unsigned long DataLength : 31;              // +0x08
@@ -19,7 +19,7 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool operator==(const char* text) const;    // 0x004115A0
 };
 class CCharStringData { public:                        // 17 bytes
-    CBasicStringChar Data;                      // +0x00
+    CBasicString<char> Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
 #pragma pack(pop)
@@ -39,7 +39,8 @@ public:
     }
 };
 struct CDefStringTable {
-    CCharString GetString(long id);             // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
 class CDefPointeeBase { public: virtual void v00(); long m_refCount; };

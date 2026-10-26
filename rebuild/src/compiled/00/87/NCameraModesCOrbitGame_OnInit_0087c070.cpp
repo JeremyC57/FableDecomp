@@ -4,7 +4,7 @@
 // Leaf: ?OnInit@COrbitGame
 // Name: vtable 0x0125C6DC slot 21 (the CBase OnInit slot, as CSimplePointBase::OnInit 0x008734F0); FableWin.pdb
 //       ?OnInit@COrbitGame@NCameraModes@@UAEXXZ.
-// Callees: NCameraModes::CBase::GetWorld 0x0084D050, CWorld::GetMainPlayer 0x0049D9D0, CPlayer::GetHeroThing 0x00487DC0,
+// Callees: NCameraModes::CBase::GetWorld 0x0084D050, CWorld::PeekMyPlayer 0x0049D9D0, CPlayer::GetHeroThing 0x00487DC0,
 //          CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (the inlined out-parameter GetInterface for CTCGamePlayer,
 //          type 0xd0 = bit 16 of the bitset word +0x38), CTCGamePlayer::GetGame 0x005EDC90 (twice), CThing::GetPosition 0x004C73D0.
 //          The callee names and the GetInterface model are the landed COrbitGame::Update 0x0087C150's.
@@ -54,7 +54,8 @@ class CPlayer { public:
     CThing* GetHeroThing() const;                    // 0x00487DC0
 };
 class CWorld { public:
-    CPlayer* GetMainPlayer() const;                  // 0x0049D9D0
+public:
+    const CPlayer* PeekMyPlayer() const;   // 0x0049D9D0
 };
 namespace NCameraModes {
 class CBase;
@@ -89,7 +90,7 @@ struct COrbitGame : CBase {
 };
 void COrbitGame::OnInit()
 {
-    CThing* hero = GetWorld().GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetWorld().PeekMyPlayer()->GetHeroThing();
     CTCGamePlayer* player;
     hero->GetInterface(&player, 0xd0);
     if (player && player->GetGame()) {

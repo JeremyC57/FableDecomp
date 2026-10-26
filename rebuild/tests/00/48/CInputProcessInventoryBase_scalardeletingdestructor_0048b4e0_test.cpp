@@ -10,7 +10,8 @@ static int g_deleteCalls = 0;
 static void* g_lastDeleted = 0;
 
 void CInputProcessInventoryBase::ScalarDtor() { g_dtorCalls++; }
-void __cdecl EngineOperatorDelete(void* p) { g_deleteCalls++; g_lastDeleted = p; }
+void __cdecl operator delete(void* p)
+{ g_deleteCalls++; g_lastDeleted = p; }
 
 void* __fastcall CInputProcessInventoryBase_scalar_deleting_destructor(
     CInputProcessInventoryBase* process, int edx, unsigned int flags);

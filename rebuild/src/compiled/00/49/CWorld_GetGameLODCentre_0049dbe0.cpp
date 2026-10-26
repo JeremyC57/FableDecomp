@@ -38,7 +38,8 @@ class CPlayer { public:
     bool          UsingFreeCamera;                 // +0x220
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CMainGameComponent { public:
     long GetFrame();                               // 0x00416225
@@ -58,8 +59,8 @@ class CWorld { public:
 C3DVector CWorld::GetGameLODCentre() const
 {
     if (FrameCachedLODCentre == -1 || FrameCachedLODCentre != Component->GetFrame()) {
-        if (PlayerManager->GetMainPlayer()->UsingFreeCamera)
-            CachedLODCentre = PlayerManager->GetMainPlayer()->CurrentFreeCamera.WorldPosition;
+        if (PlayerManager->GetMainPlayer().UsingFreeCamera)
+            CachedLODCentre = PlayerManager->GetMainPlayer().CurrentFreeCamera.WorldPosition;
         else
             CachedLODCentre = PCurrentGameCamera->GetRenderCamera(0.0f).WorldPosition;
         FrameCachedLODCentre = Component->GetFrame();

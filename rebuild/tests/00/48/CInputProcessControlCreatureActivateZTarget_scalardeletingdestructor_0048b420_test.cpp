@@ -5,11 +5,18 @@ class CInputProcessControlCreatureActivateZTarget { public: int tag; };
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
 
-extern "C" void __fastcall LandscapeBackgroundPatch_dtor(CInputProcessControlCreatureActivateZTarget* process) {
+class CAInputProcess {
+public:
+    virtual ~CAInputProcess();
+};
+CAInputProcess::~CAInputProcess()
+{
+    CInputProcessControlCreatureActivateZTarget* process = (CInputProcessControlCreatureActivateZTarget*)this; (void)process;
     g_dtor_called++;
     process->tag = 0xDEAD;
 }
-extern "C" void operator_delete_impl(void* p) {
+void __cdecl operator delete(void* p)
+{
     g_delete_called++;
     (void)p;
 }

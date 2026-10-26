@@ -12,13 +12,23 @@
 // Shape: same as the landed CTCActivationTrigger::OnSerialise (0x0077B0D0): the save arm calls GetPItem once for the null
 //   test and once for the UID; the load arm tests the UID with `!= 0` (`or ecx,edx ; je`), and ebx (zero) also serves the
 //   `false` push and the Transfer default.
+#define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
+#undef CTCBase
+class CThingManager;
+
+class CTCBase : public CTCBaseLayout
+{
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
+};
 class CThing { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UID;                       // +0x18
     unsigned char _pad20[0x8e - 0x20];
     short m_level;                              // +0x8e
-    bool IsLevelLess();                         // 0x004C7930
+public:
+    bool IsLevelLess() const;   // 0x004C7930
 };
 class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
@@ -29,18 +39,28 @@ class CPersistContext { public:
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
 };
-struct CBaseIntelligentPointer {
-    void* m_pNode;
-    void* m_pNext;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CVillageMemberDef;
 class CTCVillageMember : public CTCBase {
 public:
     CVillageMemberDef*      PDef;               // +0x0c
-    CBaseIntelligentPointer PVillage;           // +0x10
+    CIntelligentPointer<CThing> PVillage;           // +0x10
     unsigned __int64        VillageUID;         // +0x18
-    CThingManager* GetThingManager();           // 0x00686AE0 (CTCBase)
     void OnSerialise(CPersistContext& context, bool);
 };
 
@@ -52,12 +72,12 @@ void CTCVillageMember::OnSerialise(CPersistContext& context, bool)
         } else {
             CThing* item = PVillage.GetPItem();
             VillageUID = item->UID;
-            VillageUID = GetThingManager()->RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, VillageUID);
+            VillageUID = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, VillageUID);
         }
         context.Transfer("VillageUID", VillageUID, 0);
     } else {
         context.Transfer("VillageUID", VillageUID, 0);
         if (VillageUID != 0)
-            VillageUID = GetThingManager()->RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, VillageUID);
+            VillageUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, VillageUID);
     }
 }

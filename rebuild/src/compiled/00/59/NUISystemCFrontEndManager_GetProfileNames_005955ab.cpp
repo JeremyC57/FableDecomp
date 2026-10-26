@@ -47,7 +47,10 @@ public:
     }
 };
 CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);       // 0x0099BF30
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name, CWideString* extension);   // 0x00997620
+class CAFile {
+public:
+    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+};   // 0x00997620
 bool __fastcall IsPathFile(const CWideString& path);   // 0x00999A30
 struct CFindFileData {
     unsigned short FileName[260];
@@ -96,7 +99,7 @@ void CFrontEndManager::GetProfileNames(std::vector<CWideString>& names)
         if (!dots && !IsPathFile(pattern)) {
             fileName += (const unsigned short*)L"\\";
             CWideString dir;
-            SplitPath(fileName, 0, &dir, 0, 0);
+            CAFile::SplitPath(fileName, 0, &dir, 0, 0);
             CWideString files = CWideString(fileName) + (const unsigned short*)L"*.bin";
             CFindFileHandle fileHandle;
             CFindFileData fileData;
@@ -105,7 +108,7 @@ void CFrontEndManager::GetProfileNames(std::vector<CWideString>& names)
                 CWideString name;
                 {
                     CWideString entry(data.FileName);
-                    SplitPath(entry, 0, 0, &name, 0);
+                    CAFile::SplitPath(entry, 0, 0, &name, 0);
                 }
                 names.push_back(name);
                 fileFound = FindNextFile(files, fileHandle, fileData);

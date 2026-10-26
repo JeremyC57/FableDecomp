@@ -12,6 +12,7 @@
 // +0x18 (CQ_SunnyvaleMasterData: PrisonKeyStolenByHero +0xee, PDB offset).
 // Shape: three rotated while loops (outer key test, the click-past wait); the used-by result survives the temporary's
 // destructor in bl.
+namespace NScript { class CPredicateBase; }
 class CCharString {
 public:
     void* PStringData;
@@ -108,14 +109,19 @@ struct CQ_SunnyvaleMasterData {
     bool PrisonKeyStolenByHero;                        // +0xee
 };
 
-class CPrisonKeyDoor {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CPrisonKeyDoor : public CEntityScriptBase {
 public:
     void*                   __vftable;                 // +0x00
     CGameScriptInterface*   Game;                      // +0x04
     CScriptThing            Me;                        // +0x08
     void*                   ParentClass;               // +0x14 (CQ_PrisonEscapeRescueMotherScript*)
     CQ_SunnyvaleMasterData* PMasterData;               // +0x18
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 

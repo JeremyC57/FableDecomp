@@ -2,7 +2,7 @@
 // Leaf: ?LoadGameState@CWorldMap@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005079C0, 612 bytes (+ int3 padding), `ret 4`. PDB ?LoadGameState@CWorldMap@@QAEXAAVCPersistContext@@@Z
 //   (the counterpart of the landed CWorldMap::SaveGameState 0x004FDE80).
-// Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteLong 0x00993EB0, CPersistTraits<unsigned
+// Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteSLONG 0x00993EB0, CPersistTraits<unsigned
 //   long>::TransferBinaryIn 0x0040F8A0, CRegion() 0x006BC410 / ~CRegion 0x0051A110, vector<CRegion>::resize(n, x)
 //   0x0051D350, CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / operator= 0x0099EFB0 / ~ 0x0099EAE0,
 //   CPersistContext::Transfer(CCharString&) 0x00431143, CRegion::TransferGameState 0x006BC290, CStringParser
@@ -31,7 +31,7 @@ public:
 class CBaseClass {
 public:
     virtual void v00();
-    ~CBaseClass();                                      // 0x0099A2E0
+    virtual ~CBaseClass();                                      // 0x0099A2E0
 };
 namespace std {
 struct _List_node_base {
@@ -94,7 +94,8 @@ public:
 
 class CDataOutputStream {
 public:
-    void WriteLong(long value);                         // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 class CMemoryDataInputStream;
 template <class T> struct CPersistTraits {
@@ -132,7 +133,7 @@ public:
     CPersistContext(CStringParser* parser, void (*errorCallback)(CCharString*), bool useDefaults,
                     CDefinitionManager* definitionManager, CSymbolMap* symbolMap, CCharString* stringToClean);   // 0x009BADD0
     void CheckCRC(const char* name);                    // 0x00404500
-    void Transfer(CCharString& value);                  // 0x00431143
+    template <class T> void Transfer(T& value);                  // 0x00431143
     bool IsBinary() const { return Mode == 2 || Mode == 3; }
     __forceinline void TransferBinary(unsigned long& value)
     {
@@ -140,7 +141,7 @@ public:
         CPersistTraits<unsigned long> traits;
         switch (Mode) {
         case 3:
-            PSaveStream->WriteLong(value);
+            PSaveStream->WriteSLONG(value);
             break;
         case 2:
             traits.TransferBinaryIn(PLoadStream, &value);

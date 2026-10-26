@@ -51,6 +51,16 @@ public:
     __forceinline ~CIVCountedPointer() { if (Data) { Data->Release(); Data = 0; } }
     T* operator->() const { return Data; }
 };
+class CBankFile
+{
+public:
+    unsigned long GetEntryDataType(unsigned long) const;   // 0x009CC210
+};
+class CBankFileAsync : public CBankFile
+{
+public:
+};
+
 namespace NGameText {
 class CGroupEntry : public CIVCountedPointeeBase { public:
     unsigned char _pad08[0x1c - 0x08];
@@ -59,10 +69,9 @@ class CGroupEntry : public CIVCountedPointeeBase { public:
 class CTextEntry : public CIVCountedPointeeBase { public:
     CWideString GetText() const;                        // 0x009C7A40
 };
-class CDataBank {
+class CDataBank : public CBankFileAsync {
 public:
     unsigned long LookupValue(unsigned long crc) const;                                  // 0x009CC410
-    unsigned long GetEntryDataType(unsigned long id) const;                              // 0x009CC210
     CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long id, bool load) const;   // 0x009C8890
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long id, bool load) const;     // 0x009C9070
 };

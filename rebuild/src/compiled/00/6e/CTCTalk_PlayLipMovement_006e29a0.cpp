@@ -27,7 +27,13 @@ public:
 };
 extern CSymbolMap* g_pSpeechBankMap;                        // 0x013B8394
 
-class CTCTalk {
+class CTCBase
+{
+protected:
+    const CASoundBank& PeekSampleBank() const;   // 0x00686D70
+};
+
+class CTCTalk : public CTCBase {
 public:
     void* m_pVtable;                                        // +0x00 CTCBase
     CThing* ParentThing;                                    // +0x04
@@ -41,13 +47,12 @@ public:
     float SampleLoadedTime;                                 // +0x20
     CASoundBank* PSpeechBank;                               // +0x24
 
-    CASoundBank* GetDefaultSpeechBank() const;              // 0x00686D70
 private:
     const CLipSyncDataBank* GetPLipSyncBank() const         // out of line @ 0x006E2860
     {
         const CLipSyncDataBank* lipSync = 0;
         if (g_pSpeechBankMap) {
-            CASoundBank* bank = PSpeechBank ? PSpeechBank : GetDefaultSpeechBank();
+            const CASoundBank* bank = PSpeechBank ? PSpeechBank : (&PeekSampleBank());
             lipSync = (const CLipSyncDataBank*)g_pSpeechBankMap->FindValueForSymbol((long)bank);
             if (!lipSync)
                 lipSync = (const CLipSyncDataBank*)g_pSpeechBankMap->FindFirstValue();

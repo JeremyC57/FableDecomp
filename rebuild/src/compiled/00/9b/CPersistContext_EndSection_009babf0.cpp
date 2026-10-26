@@ -1,7 +1,7 @@
 // CPersistContext::EndSection(CPersistContextWriteSection& section) -- close a section; binary save measures the bytes written since StartSection, seeks back to patch the length placeholder and returns to the end, text save appends "END_<name>\r\n\r\n"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BABF0, length 142 bytes.
 // Callees: the save stream's virtual GetPosition (slot 2, `call [eax+8]`) and Seek (slot 1, `call [edx+4]` / `[eax+4]`),
-// CDataOutputStream::WriteLong @ 0x00993EB0 (catalogued "WriteCBYTE"; writes a long), operator+(const char*, const CCharString&)
+// CDataOutputStream::WriteSLONG @ 0x00993EB0 (catalogued "WriteCBYTE"; writes a long), operator+(const char*, const CCharString&)
 // @ 0x0099F690 and operator+(const CCharString&, const char*) @ 0x0099F600 (both __fastcall: hidden result ecx, left edx,
 // right on the stack), CCharString::operator+=(const CCharString&) @ 0x0099F0A0, ~CCharString @ 0x0099EAE0 (x2).
 // Literals: "END_" @ 0x0129B324, "\r\n\r\n" @ 0x0129AA38.
@@ -22,7 +22,8 @@ class CDataOutputStream { public:
     virtual void v00();
     virtual void Seek(long position);                       // slot 1
     virtual long GetPosition();                             // slot 2
-    void WriteLong(long value);                             // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 class CMemoryDataInputStream;
 
@@ -55,7 +56,7 @@ void CPersistContext::EndSection(CPersistContextWriteSection& section)
         long end = PSaveStream->GetPosition();
         long length = end - section.StartPosition;
         PSaveStream->Seek(section.StartPosition - 4);
-        PSaveStream->WriteLong(length);
+        PSaveStream->WriteSLONG(length);
         PSaveStream->Seek(end);
     } else if (Mode == 1) {
         *PStringToSaveTo += "END_" + section.Name + "\r\n\r\n";

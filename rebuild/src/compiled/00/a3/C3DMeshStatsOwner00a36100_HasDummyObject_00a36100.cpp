@@ -12,7 +12,10 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 class C3DMeshStats { public:
     long HasDummyObject(unsigned long nameHash);   // 0x00A2EA20
@@ -30,5 +33,5 @@ long C3DMeshStatsOwner_00a36100::HasDummyObject(const CCharString& name)
     unsigned long length = name.GetLength();
     const char* chars = name.GetChars();
     C3DMeshStats* stats = m_pStats;
-    return stats->HasDummyObject(Calc_004014a0(0, chars, length));
+    return stats->HasDummyObject(CCRC::Calc(0, chars, length));
 }

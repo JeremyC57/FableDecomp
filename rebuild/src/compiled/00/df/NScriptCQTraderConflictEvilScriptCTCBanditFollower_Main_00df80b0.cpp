@@ -18,6 +18,7 @@
 // Shape: the CTC_BanditFighter row 0x00DF8970 (same TU) plus a local scripted-thing handle and a paused movie sequence
 //   (the CTH_ThunderBoy row 0x00EDF3A0 handle/movie model); each condition is a bool materialised over conditional
 //   CCharString temporaries.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -37,7 +38,7 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 class CRGBColour { public:                                    // D3DCOLOR byte order
     unsigned char B, G, R, A;
@@ -46,12 +47,13 @@ class CRGBColour { public:                                    // D3DCOLOR byte o
 typedef long EScriptAIPriority;
 typedef long ETextGroupSelectionMethod;
 typedef long EScriptEntityMoveType;
-struct CBaseIntelligentPointer {                       // vtable 0x0129A7D8
+class CBaseObject { public:                       // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                       // +0x04
-    CBaseIntelligentPointer();                         // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -189,22 +191,29 @@ struct GameCalls {                                     // CGameScriptInterface v
     virtual void g650(); virtual void g651(); virtual void g652(); virtual void g653(); virtual void g654();
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c)
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a predicate holding a script thing
+namespace NScript {
+class __declspec(novtable) CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a predicate holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-namespace NScript {
 struct CEntityScriptBase {                             // retail 0x14 bytes
     virtual void v00();
     GameCalls*   Game;                                 // +0x04
     CScriptThing Me;                                   // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
-    bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
+namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_TraderConflictEvilScript { public:
     unsigned char _pad[0x60];

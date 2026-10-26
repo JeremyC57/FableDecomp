@@ -7,10 +7,21 @@ class CThingCreatureBase { public:                 // only the flags byte at +0x
     unsigned char _pad[0x1c8];
     unsigned char m_flags1c8;               // +0x1c8 bit 6: pounding (set by PerformAction @ 0x008C63A0, landed)
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThingCreatureBase* m_pItem;            // +4
-    CThingCreatureBase* GetPItem() const;   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:                  // retail sizeof 0x114; slots 0..80 of the retail vtable precede the derived virtual
@@ -28,7 +39,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114; slots
     virtual void v72(); virtual void v73(); virtual void v74(); virtual void v75(); virtual void v76(); virtual void v77(); virtual void v78(); virtual void v79();
     virtual void v80();
     unsigned char _pad04[4];
-    CBaseIntelligentPointer PCreature;      // +8
+    CIntelligentPointer<CThingCreatureBase> PCreature;      // +8
     unsigned char _pad10[0x114 - 0x10];
 };
 

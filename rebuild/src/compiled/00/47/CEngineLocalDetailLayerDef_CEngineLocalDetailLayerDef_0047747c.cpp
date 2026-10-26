@@ -38,13 +38,13 @@ struct CFloatVector {                            // retail std::vector<float> (1
     ~CFloatVector() { if (_M_start) free(_M_start); }
 };
 
-struct CDefWithBuffer {                          // the 0x3C-byte def base (landed 0x00430300)
+class CParentDefClassBase { public:                          // the 0x3C-byte def base (landed 0x00430300)
     virtual void v00();
     unsigned char _body[0x38];                   // +0x04..+0x3c
-    ~CDefWithBuffer();                           // 0x00430300
+    virtual ~CParentDefClassBase();                           // 0x00430300
 };
 
-class __declspec(novtable) CEngineLocalDetailLayerDef : public CDefWithBuffer {
+class __declspec(novtable) CEngineLocalDetailLayerDef : public CParentDefClassBase {
 public:
     CFloatVector     SpacingFromLayer;           // +0x3c
     CObjectDefVector Objects;                    // +0x48

@@ -9,11 +9,18 @@
 //   `lea esp,[esp]`, no pragma): the stream in ebp, the vector in ebx, the count in esi, the index in edi, the element
 //   re-addressed through `begin()` each pass (`*(begin() + i)`).
 // Model: engine/CDataOutputStream.h + a methods-only writer adapter; the vector is STLport's three words.
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteUHUGE(unsigned __int64);   // 0x00993EC0
+};
 
 struct CDataOutputStreamWriter : CDataOutputStream {
     void WriteSLONG(long value);                             // 0x00993EB0
-    void WriteUINT64(unsigned __int64 value);                // 0x00993EC0
 };
 namespace std {
 template <class T> class vector {
@@ -28,7 +35,7 @@ public:
 }
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<unsigned __int64> {
-    void TransferBinaryOut(CDataOutputStreamWriter& stream, const unsigned __int64* value) const { stream.WriteUINT64(*value); }
+    void TransferBinaryOut(CDataOutputStreamWriter& stream, const unsigned __int64* value) const { stream.WriteUHUGE(*value); }
 };
 template <class T>
 void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std::vector<T>& value)

@@ -77,7 +77,7 @@ class CAIBrain { public:
 };
 
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0

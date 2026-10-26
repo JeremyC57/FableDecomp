@@ -15,8 +15,7 @@ struct CRecordSet_00cbd510 {                // catalog/landed name for the class
     ~CRecordSet_00cbd510();                 // 0x00CBD510
 };
 class CScriptGameResourceObjectScriptedThingBase { public:   // ctor 0x007E72A0 (landed rows)
-    void* _vptr;                            // (layout beyond the first word not modelled)
-    ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0 (releases the counted handle at +0xc)
+    virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0 (releases the counted handle at +0xc)
 };
 void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
 
@@ -32,8 +31,8 @@ struct CObject_00ed0e30 : CRecordSet_00cbd510 {
 void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
     CObject_00ed0e30* object = static_cast<CObject_00ed0e30*>(self);
-    object->Member58.~CScriptGameResourceObjectScriptedThingBase();
-    object->Member48.~CScriptGameResourceObjectScriptedThingBase();
+    object->Member58.CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase();
+    object->Member48.CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase();
     object->CRecordSet_00cbd510::~CRecordSet_00cbd510();
     if (flags & 1)
         operator delete(object);

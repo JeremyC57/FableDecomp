@@ -9,8 +9,9 @@
 // it is modelled locally with those names. The stream (argument) is kept in edi, `this` in esi; the
 // two floats are pushed as dwords (plain copies). Same shape as the landed sibling 0x00814C10.
 class CDataOutputStream { public:
-    void WriteLong(long value);            // 0x00993EB0
     void WriteFloat(float value);          // 0x00993EE0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 class CDefString { public:
@@ -26,7 +27,7 @@ struct CPhysicalPrimitiveCylinder {
 
 void CPhysicalPrimitiveCylinder::TransferBinaryOut(CDataOutputStream* stream)
 {
-    stream->WriteLong(BaseName.TablePos);
+    stream->WriteSLONG(BaseName.TablePos);
     stream->WriteFloat(Radius);
     stream->WriteFloat(Height);
 }

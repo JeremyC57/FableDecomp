@@ -44,7 +44,8 @@ struct CRigidBodyConfig {
 class CWorld { public:
     unsigned long* GetRandomSeed();                // 0x0049D810
 };
-class CTCPhysicsRigidBody {
+class CTCBase
+{
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -55,9 +56,18 @@ public:
     virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
     virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
     virtual bool IsAffectedByGravity();            // slot 48 (+0xc0)
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCPhysicsBase : public CTCBase
+{
+public:
+};
+
+class CTCPhysicsRigidBody : public CTCPhysicsBase {
+public:
     unsigned char _pad04[0xa0 - 0x04];
     float         OneOverMass;                     // +0xa0 (Body)
-    CWorld* GetWorld();                            // 0x00686A70 (CTCBase)
     void ComputeForces(CRigidBodyConfig& config);
 };
 
@@ -68,9 +78,9 @@ void CTCPhysicsRigidBody::ComputeForces(CRigidBodyConfig& config)
     CInputEvent event;
     if (g_pInputManager->m_enabled && g_pInputManager->IsKeyboardEventInQueue((EInputEventType)2, (EInputKey)0x2e, &event)) {
         config.CMForce.Z += 25.0f / OneOverMass;
-        config.Torque.X = GFFloatRandom(100.0f, GetWorld()->GetRandomSeed());
-        config.Torque.Y = GFFloatRandom(100.0f, GetWorld()->GetRandomSeed());
-        config.Torque.Z = GFFloatRandom(100.0f, GetWorld()->GetRandomSeed());
+        config.Torque.X = GFFloatRandom(100.0f, GetWorld().GetRandomSeed());
+        config.Torque.Y = GFFloatRandom(100.0f, GetWorld().GetRandomSeed());
+        config.Torque.Z = GFFloatRandom(100.0f, GetWorld().GetRandomSeed());
         config.Torque.AccurateNormalise();
     }
     if (IsAffectedByGravity()) {

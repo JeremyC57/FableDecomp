@@ -20,20 +20,23 @@ double __fastcall GFGetFastSubFrameTimer();         // 0x009E1C70
 enum LS_LOADING_STATUS { LS_NONE, LS_LOADED, LS_LOADING, LS_FAILED };
 class CDataInputStream;
 class CMemoryDataInputStream { public:
-    unsigned char _d[0x1c];
+    unsigned char _d[0x1c - 4];
     CMemoryDataInputStream(const char* data, long size);   // 0x00994930
-    ~CMemoryDataInputStream();                      // 0x00993B10
+    virtual ~CMemoryDataInputStream();                      // 0x00993B10
     operator CDataInputStream&() { return *reinterpret_cast<CDataInputStream*>(this); }
 };
 class CEngineStaticMapFileBlockManager { public:
-    void UnlockBlock(long pos);                     // 0x00BE0400
     void PrioritiseBlock(long pos);                 // 0x00BE0420
     bool IsBlockLoaded(long pos);                   // 0x00BE0480
     const char* GetBlockData(long pos);             // 0x00BE04C0
+public:
+    void ReleaseRequest(long);   // 0x00BE0400
 };
 class CMovableResource;
-struct CMovableResourcePool { void Free(void* p); };   // 0x00BD9B90
-struct CEngineGlobal { unsigned char _pad[0x6b0]; CMovableResourcePool* Pool; };   // +0x6B0
+class CEngineLandscapeMemoryManager { public: public:
+    void FreeVirtual(void*);   // 0x00BD9B90
+};   // 0x00BD9B90
+struct CEngineGlobal { unsigned char _pad[0x6b0]; CEngineLandscapeMemoryManager* Pool; };   // +0x6B0
 extern CEngineGlobal* g_pEngine;                    // 0x01436EA8
 class CEngineLandscapeMap;
 class CLandscapeBackgroundTreeNode;
@@ -103,8 +106,8 @@ LS_LOADING_STATUS CLandscapeBackgroundTreeNode::ProcessLoadTask(long lod, double
             if (task->LoadingTree)
                 delete task->LoadingTree;
             if (task->BlockLoading)
-                task->FileBlockManager->UnlockBlock(task->FileBlockPos);
-            g_pEngine->Pool->Free(task);
+                task->FileBlockManager->ReleaseRequest(task->FileBlockPos);
+            g_pEngine->Pool->FreeVirtual(task);
         }
         AsyncLoadTask = 0;
         return LS_LOADED;

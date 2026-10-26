@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCDestroyThingOnSpecialAbilityFinish_Destruct(void* finish);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCDestroyThingOnSpecialAbilityFinish_ScalarDeletingDestructor(void* finish, int, unsigned int flags)
 {
-    CTCDestroyThingOnSpecialAbilityFinish_Destruct(finish);
+    ((CTCBase*)(finish))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(finish);
+        operator delete(finish);
     return finish;
 }

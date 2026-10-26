@@ -21,9 +21,21 @@ class CThing { public:
 };
 class CThingCreatureBase : public CThing { public:
 };
-struct CIntelligentPointer_Creature {                       // CIntelligentPointer<CThingCreatureBase>: 8 bytes
-    void* Data[2];
-    CThingCreatureBase* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CListNode {
     CListNode* Next;
@@ -36,8 +48,8 @@ class CTCCreatureGenerator { public:
     CThing*                        ParentThing;            // +0x04
     unsigned char                  _pad08[0x10];           // +0x08
     CListNode*                     CreatedCreatures;       // +0x18 list<CIntelligentPointer<CThing> > node
-    CIntelligentPointer_Creature*  TriggerersStart;        // +0x1c vector<CIntelligentPointer<CThingCreatureBase> >
-    CIntelligentPointer_Creature*  TriggerersFinish;       // +0x20
+    CIntelligentPointer<CThingCreatureBase>*  TriggerersStart;        // +0x1c vector<CIntelligentPointer<CThingCreatureBase> >
+    CIntelligentPointer<CThingCreatureBase>*  TriggerersFinish;       // +0x20
     unsigned char                  _pad24[0x8];            // +0x24
     float                          SelfTriggerRadius;      // +0x2c GenParams
     unsigned char                  _pad30[0x4];            // +0x30
@@ -68,7 +80,7 @@ void CTCCreatureGenerator::UpdateCreatureTrigger(long frame)
         if (NumTriggersLeft == 0)
             return;
     }
-    for (CIntelligentPointer_Creature* it = TriggerersStart; it != TriggerersFinish; ++it) {
+    for (CIntelligentPointer<CThingCreatureBase>* it = TriggerersStart; it != TriggerersFinish; ++it) {
         CThingCreatureBase* creature = it->GetPItem();
         bool spaceTrigger = true;
         bool timeTrigger = true;

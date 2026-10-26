@@ -82,12 +82,13 @@ class CIsThingAlive : public CPredicateBase { public:                // vtable 0
 inline CIsThingAlive::~CIsThingAlive() { }
 #pragma inline_depth()
 }
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -136,15 +137,20 @@ class CGameScriptInterface { public:
     VPAD64(w0) VPAD16(w1) VPAD8(w2) VPAD4(w3) VPAD2(w4) VPAD1(w5)                    // slots 380..474
     virtual void EntitySetFacingAngleTowardsThing(const CScriptThing& thing, const CScriptThing& target, bool b) const;   // slot 475 (+0x76c)
 };
-struct CMinionFieldGenerator {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CMinionFieldGenerator : public CEntityScriptBase {
     void*                 __vftable;                    // +0x00
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
     void*                 ParentClass;                  // +0x14
     void*                 PMasterData;                  // +0x18
     bool                  ShownCutscene;                // +0x1c (descriptive)
-    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
     void Main();
 };
 

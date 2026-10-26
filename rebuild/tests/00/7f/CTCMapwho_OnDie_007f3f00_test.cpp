@@ -2,7 +2,9 @@
 class CTCMapwho { public: int x; };
 static int g_clean=0, g_rel=0;
 extern "C" void __fastcall Mapwho_Cleanup(CTCMapwho* self){ g_clean++; }
-extern "C" void __cdecl Mapwho_Release(CTCMapwho* self){ g_rel++; }
+void __cdecl operator delete(void* self)
+{
+    CTCMapwho* self_c = (CTCMapwho*)self; (void)self_c; g_rel++; }
 
 void __fastcall OnDie(CTCMapwho* self);
 

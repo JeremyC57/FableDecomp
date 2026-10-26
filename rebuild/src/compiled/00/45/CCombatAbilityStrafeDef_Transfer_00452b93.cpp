@@ -3,7 +3,7 @@ struct CFieldA { int a; };
 struct CFieldB { int b; };
 
 class CPersistContext { public:
-    void TransferA(CFieldA* p);
+    template <class T> void Transfer(T& value);
     void TransferB(CFieldB* p);
 };
 
@@ -16,6 +16,6 @@ class CCombatAbilityStrafeDef { public:
 
 void __fastcall CCombatAbilityStrafeDef_Transfer(CCombatAbilityStrafeDef* def, int, CPersistContext* ctx)
 {
-    ctx->TransferA(&def->f40);
+    ctx->Transfer(*(float*)(&def->f40));
     ctx->TransferB(&def->f28);
 }

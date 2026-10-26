@@ -9,10 +9,16 @@ class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;
     ~CCharString();                         // 0x0099EAE0 (release @ 0x0099E9B0, instance count 0x013BD800)
 };
-struct CBaseIntelligentPointer {            // vptr + data (8 bytes); vtable 0x0129C95C
-    void* _vptr;
-    void* PData;
-    ~CBaseIntelligentPointer();             // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
 
@@ -27,8 +33,8 @@ struct CObject_007811d0 : CCharString {
 void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
     CObject_007811d0* object = static_cast<CObject_007811d0*>(self);
-    object->Member24.~CBaseIntelligentPointer();
-    object->Member1c.~CBaseIntelligentPointer();
+    object->Member24.CBaseIntelligentPointer::~CBaseIntelligentPointer();
+    object->Member1c.CBaseIntelligentPointer::~CBaseIntelligentPointer();
     object->CCharString::~CCharString();
     if (flags & 1)
         operator delete(object);

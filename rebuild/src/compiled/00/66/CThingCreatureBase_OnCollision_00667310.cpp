@@ -80,16 +80,22 @@ class CCharString { public:
     void* PStringData;
     ~CCharString();                             // 0x0099EAE0
 };
-struct CBaseIntelligentPointer {
-    void* m_vtable;
-    CThing* m_pItem;
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 class CThingCreatureBase;
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0x114 - 4];
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase { public:
     CCharString             AnimName;           // +0x114

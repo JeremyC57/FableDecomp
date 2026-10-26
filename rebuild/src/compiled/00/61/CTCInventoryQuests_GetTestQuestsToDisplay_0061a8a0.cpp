@@ -1,6 +1,6 @@
 // CTCInventoryQuests::GetTestQuestsToDisplay(vector<CTestQuest>* quests) -- copies the world's test quest list sorted, and unless "show all" is set keeps only the quests the quest manager reports active
 // Retail 0x0061A8A0, 304 bytes (+ int3), `ret 4`, esp frame (speed TU).
-// Callees: CTCBase::GetWorld() const 0x00686A80, vector<CTestQuest>::operator= 0x00624A30 (manifest
+// Callees: CTCBase::PeekWorld() const 0x00686A80, vector<CTestQuest>::operator= 0x00624A30 (manifest
 // "vector_assign_questpair"), the std::sort instantiation 0x006257C0 (__fastcall first/last + the empty comparator by
 // value; manifest "introsort_and_heapify"), CQuestManager::IsQuestActive(const CCharString&) 0x004AF610 (global
 // 0x013B89FC), CTestQuest(const CTestQuest&) 0x004A89D0, vector<CTestQuest>::_M_insert_overflow(pos, const T&,
@@ -90,7 +90,8 @@ CTestQuestVector& CTestQuestVector::operator=(const CTestQuestVector& other)
 #pragma auto_inline(on)
 
 class CQuestManager { public:
-    bool IsQuestActive(const CCharString& name);   // 0x004AF610
+public:
+    bool IsQuestActive(const CCharString&) const;   // 0x004AF610
 };
 extern CQuestManager* g_pQuestManager;             // 0x013B89FC
 class CWorld { public:
@@ -98,16 +99,27 @@ class CWorld { public:
     CTestQuestVector TestQuests;                   // +0xc4
 };
 
-class CTCInventoryQuests { public:
+class CTCBase
+{
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryQuests : public NInventory::CTCInventoryBase { public:
     unsigned char _pad_0x000[0x160];
     bool TestQuestShowAll;                         // +0x160
-    const CWorld* GetWorld() const;                // 0x00686A80 (CTCBase)
     void GetTestQuestsToDisplay(CTestQuestVector* quests);
 };
 
 void CTCInventoryQuests::GetTestQuestsToDisplay(CTestQuestVector* quests)
 {
-    *quests = GetWorld()->TestQuests;
+    *quests = PeekWorld().TestQuests;
     SortTestQuests(quests->begin(), quests->end(), CTestQuestLess());
     if (TestQuestShowAll)
         return;

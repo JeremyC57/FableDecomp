@@ -1,13 +1,20 @@
 #include <stdio.h>
 
-class CDefClassBase { public: char pad[0x40]; };
+class CDefClassBase { public: char pad[0x40]; 
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);
+};
 
 static int g_basecalled = 0;
 
 struct CBuyHouseBase {
     void BaseCopy(CDefClassBase const* src);
 };
-void CBuyHouseBase::BaseCopy(CDefClassBase const* src) { g_basecalled = 1; (void)src; }
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+{
+    CDefClassBase const* src = (CDefClassBase const*)&other_; (void)src; g_basecalled = 1; (void)src;
+    return *this;
+}
 
 class CBuyHouseDef { public:
     char pad[0x25];

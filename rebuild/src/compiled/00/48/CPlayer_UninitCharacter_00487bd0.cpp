@@ -21,10 +21,21 @@ class CPlayerManager { public:
 class CThing { public:
     void Kill(bool silently);                      // 0x004C9B80
 };
-struct CIntelligentPointer_CThing {                // CIntelligentPointer<CThingPlayerCreature>, 8 bytes
-    void* m_pPointer;
-    void* m_pLink;
-    CThing* GetPItem() const;                      // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CPlayer_Methods : CPlayer {
@@ -44,7 +55,7 @@ void CPlayer_Methods::UninitCharacter()
         ResetModes();
     else
         AddMode(3, true);
-    CIntelligentPointer_CThing* character = reinterpret_cast<CIntelligentPointer_CThing*>(this->PlayerCharacter);
+    CIntelligentPointer<CThing>* character = reinterpret_cast<CIntelligentPointer<CThing>*>(this->PlayerCharacter);
     if (character->GetPItem())
         character->GetPItem()->Kill(false);
 }

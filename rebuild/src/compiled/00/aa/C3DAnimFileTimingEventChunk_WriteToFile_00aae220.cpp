@@ -1,6 +1,6 @@
 // C3DAnimFileTimingEventChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver&) const -- event name and time
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAE220, length 48 bytes.
-// Callees: CDataOutputStream::WriteNullTerminatedString @ 0x00995AE0, CDataOutputStream::WriteFLOAT @ 0x00993EE0.
+// Callees: CDataOutputStream::WriteNullTerminatedString @ 0x00995AE0, CDataOutputStream::WriteFloat @ 0x00993EE0.
 // Name (+0x10) by reference, Time (+0x14) as a dword. No super-chunk write (plain chunk base); the saver is unused.
 class CChunkedFileSaver;
 
@@ -17,9 +17,10 @@ class CDataOutputStream { public:
     virtual void WriteBytes(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteLONG(long value);                                    // 0x00993EB0
     void WriteULONG(unsigned long value);                          // 0x00993EA0
-    void WriteFLOAT(float value);                                  // 0x00993EE0
     void WriteBOOL(bool value);                                    // 0x00993E30
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
+public:
+    void WriteFloat(float);   // 0x00993EE0
 };
 
 template <class T>
@@ -95,5 +96,5 @@ class C3DAnimFileTimingEventChunk : public CChunkedFileChunk { public:   // size
 void C3DAnimFileTimingEventChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& /*saver*/) const
 {
     out.WriteNullTerminatedString(Name);
-    out.WriteFLOAT(Time);
+    out.WriteFloat(Time);
 }

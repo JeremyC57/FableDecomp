@@ -12,17 +12,23 @@
 class CThing;
 class CBaseObject;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-    void SetPItem(CBaseObject* item);                   // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer_CThing(const CIntelligentPointer_CThing& other) { SetPItem(other.GetPItem()); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
@@ -32,7 +38,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
 };
 
 class CCombatAction_GenericResponseToExplosion : public CCombatActionBase { public:   // vtable 0x0125AEDC
-    CIntelligentPointer_CThing PExplosion;  // +0x114
+    CIntelligentPointer<CThing> PExplosion;  // +0x114
     float PointOfHit_X;                     // +0x11c
     float PointOfHit_Y;                     // +0x120
     float PointOfHit_Z;                     // +0x124

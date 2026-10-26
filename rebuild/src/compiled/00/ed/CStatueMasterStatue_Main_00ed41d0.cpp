@@ -12,10 +12,11 @@
 // Shape: the altar handle and an unused CCharString are function-scope locals (their destructors are expanded at the
 //   loop exit and again at the in-loop `return`); the angle is a named float (stored, reloaded for `(double)` fmod);
 //   the position switch lays out case 1, case 3 and the default in retail's order with the `push -1` hoisted. The loop is
-//   `for (;;) { if (IsDone()) break; ... }` (a `while (!IsDone())` swaps eax/ecx in the two inlined ~CScriptThing
+//   `for (;;) { if (IsActiveThreadTerminating()) break; ... }` (a `while (!IsActiveThreadTerminating())` swaps eax/ecx in the two inlined ~CScriptThing
 //   delete pushes) and the previous position is read before the call and overwritten before the compare.
 #include <math.h>
 #pragma intrinsic(fmod)
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString();                                          // 0x0099E4B0
@@ -164,12 +165,17 @@ struct CV_StatueMasterScript {
     float GetStatueAngle();                                 // 0x00ED43D0
     long GetStatuePointingPosition();                       // 0x00ED4420
 };
-struct CStatueMasterStatue {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CStatueMasterStatue : public CEntityScriptBase {
     void*                  __vftable;                       // +0x00
     CGameScriptInterface*  Game;                            // +0x04
     CScriptThing           Me;                              // +0x08
     CV_StatueMasterScript* ParentClass;                     // +0x14
-    bool IsDone();                                          // 0x00F35B30
     void Main();
 };
 
@@ -180,7 +186,7 @@ void CStatueMasterStatue::Main()
     CCharString text;
     long lastPosition = 0;
     for (;;) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             break;
         float angle = ParentClass->GetStatueAngle() + 0.5f;
         Game->EntitySetFacingAngle(Me, (float)fmod((double)angle, 1.0), true);
@@ -188,7 +194,7 @@ void CStatueMasterStatue::Main()
         long position = ParentClass->GetStatuePointingPosition();
         lastPosition = position;
         if (position != previous) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             switch (position) {
             case 1:

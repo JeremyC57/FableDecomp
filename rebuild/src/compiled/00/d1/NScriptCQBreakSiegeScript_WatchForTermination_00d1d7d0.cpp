@@ -67,7 +67,7 @@ class CScriptThing { public:                                       // vtable 0x0
     virtual bool IsAlive() const;                           // slot 75 (+0x12c)
     void* PImpData;
     void* PImpInfo;
-    ~CScriptThing();                                        // 0x004AA840
+    virtual ~CScriptThing();                                        // 0x004AA840
 };
 struct CDefStringTable {
     CCharString GetString(long index);                      // 0x009D49B0
@@ -192,10 +192,12 @@ class CGameScriptInterface { public:                       // the quest's game s
     virtual void EnableDecals(bool enable) const;   // slot 688 (+0xac0) EnableDecals
 };
 namespace NScript {
-struct CScriptBase {                                        // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                        // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                       // 0x00CB7940
 };
+namespace NScript {
 class CQ_BreakSiegeScript : public CScriptBase {
 public:
     CGameScriptInterface*    Game;                          // +0x40

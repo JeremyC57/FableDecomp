@@ -9,8 +9,9 @@
 // entry index. Data types 7, 8 and 9 (low nibble) are the combination-animation kinds.
 #include "engine/C3DAnimationInfo.h"
 
-struct CBankFileCalls {
-    unsigned long GetEntryDataType(unsigned long entryIndex);   // 0x009CC210
+class CBankFile { public:
+public:
+    unsigned long GetEntryDataType(unsigned long) const;   // 0x009CC210
 };
 
 struct C3DAnimationInfo_Methods : C3DAnimationInfo {
@@ -19,7 +20,7 @@ struct C3DAnimationInfo_Methods : C3DAnimationInfo {
 
 bool C3DAnimationInfo_Methods::IsCombinationAnimation()
 {
-    CBankFileCalls* bank  = *(CBankFileCalls**)&this->_pad_0x04[0];   // +0x04 owning bank
+    CBankFile* bank  = *(CBankFile**)&this->_pad_0x04[0];   // +0x04 owning bank
     unsigned long   entry = *(unsigned long*)&this->_pad_0x08[0];     // +0x08 bank entry index
     unsigned long   type  = bank->GetEntryDataType(entry) & 0xF;
     if (type == 7 || type == 8 || type == 9)

@@ -17,7 +17,10 @@ extern "C" unsigned int __cdecl strlen(const char* text);
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int count);   // 0x00BFEAF8
 inline void* operator new(unsigned int, void* where) { return where; }
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 class CCharStringData { public: char* Text; long Length; };
 class CCharString { public:
@@ -149,12 +152,12 @@ class C3DMeshStats { public:
     bool AnimatedFlag;                     // +0x7A
     __forceinline long GetNoHelperPoints(const CCharString& name)
     {
-        unsigned long crc = Calc_004014a0(0, name.GetText(), name.GetLength());
+        unsigned long crc = CCRC::Calc(0, name.GetText(), name.GetLength());
         return HelperPoints.UpperBound(crc) - HelperPoints.LowerBound(crc);
     }
     __forceinline long GetNoDummyObjects(const CCharString& name)
     {
-        unsigned long crc = Calc_004014a0(0, name.GetText(), name.GetLength());
+        unsigned long crc = CCRC::Calc(0, name.GetText(), name.GetLength());
         return DummyObjects.UpperBound(crc) - DummyObjects.LowerBound(crc);
     }
     void UnpackNames(CCharStringVector& names, bool dummyObjects, const CCharString& prefix, bool once);

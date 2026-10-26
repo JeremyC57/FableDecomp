@@ -8,6 +8,7 @@
 // Layout (the CEntityScriptBase prefix of the landed entity scripts): vptr, Game +4, CScriptThing Me +8, the owning quest
 //   script +0x14 (its started counter +0x88, mood +0x184), the round counter +0x20.
 // Shape: every mood arm re-tests IsDone before appending; the callee-saved pushes for the conversation sit after the tests.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public: unsigned char _body[12]; };
 class CCharString { public:
     void* PStringData;
@@ -47,7 +48,13 @@ struct CQuestScript_Retail {
     long          Mood;                                 // +0x184
 };
 
-class CFH_Prisoner {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CFH_Prisoner : public CEntityScriptBase {
 public:
     void*                   __vftable;                  // +0x00
     CGameScriptInterface*   Game;                       // +0x04
@@ -55,7 +62,6 @@ public:
     CQuestScript_Retail*    Quest;                      // +0x14
     long                    _pad18[2];                  // +0x18
     long                    Round;                      // +0x20
-    bool IsDone();                                      // 0x00F35B30
     void MakeRoundStartComment();
 };
 
@@ -63,22 +69,22 @@ void CFH_Prisoner::MakeRoundStartComment()
 {
     CCharString comment = "TEXT_QST_B01_PROPHET" + GFIntToCharString(Round + 1) + "_START";
     if (Quest->RoundsStarted > 0) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         long mood = Quest->Mood;
         if (mood == 1) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             comment += "GOOD";
         } else if (mood == 2) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             comment += "DEFAULT";
         } else if (mood == 3) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             comment += "BAD";
-        } else if (IsDone())
+        } else if (IsActiveThreadTerminating())
             return;
     }
     long conversation = Game->AddNewConversation(Me, true, false);

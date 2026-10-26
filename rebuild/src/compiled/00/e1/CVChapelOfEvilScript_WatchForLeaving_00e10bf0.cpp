@@ -12,7 +12,8 @@
 // Layout: the entity-script base {vptr, Game +4, Me +8} as the landed CUndeadRisingZombieAttacker::Main 0x00E0CFF0;
 //          the handle model as there (16 bytes).
 // Shape: the woman is a const reference bound to the returned temporary (IsAlive dispatches through the vtable); the
-//        follow wait is `while (!IsDone())` with the not-alive exit inside (a plain `while (alive)` wait rotates).
+//        follow wait is `while (!IsActiveThreadTerminating())` with the not-alive exit inside (a plain `while (alive)` wait rotates).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
@@ -79,8 +80,14 @@ class CGameScriptInterface { public:   // retail vtable 0x01260F0C (ghidra_out/c
     virtual void v65(); virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71();
     virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;   // slot 72 (+0x120)
 };
-struct CIsThingAlive {                                   // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                   // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                                // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -92,8 +99,9 @@ struct CCountedPointerWords {                            // {Data, Info}
 };
 class CBaseObject { public:                                     // CBaseIntelligentPointer root (polymorphic: vptr +0)
     void* m_pIntelligentPointer;                         // +0x04
+protected:
     CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                           // +0x08 Data, +0x0c Info
@@ -103,14 +111,19 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     void Release();                                      // 0x00CD2770
     virtual void FollowThing(const CScriptThing& thing, float distance, bool run);   // 0x007E7320
 };
-struct CV_ChapelOfEvilScript {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CV_ChapelOfEvilScript : public CEntityScriptBase {
     void*                 __vftable;                     // +0x00
     CGameScriptInterface* Game;                          // +0x04
     CScriptThing          Me;                            // +0x08
     void*                 ParentClass;                   // +0x14
     void*                 PMasterData;                   // +0x18
-    void RegisterFilter(CIsThingAlive& filter);          // 0x00F35B10
-    bool IsDone();                                       // 0x00F35B30
     void WatchForLeaving();
 };
 
@@ -118,26 +131,26 @@ void CV_ChapelOfEvilScript::WatchForLeaving()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
     if (handle.IsScripting())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_4)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     const CScriptThing& woman = Game->GetThingWithScriptName("WaspChaseWoman");
     handle.FollowThing(woman, 1.0f, true);
-    while (!IsDone()) {
+    while (!IsActiveThreadTerminating()) {
         if (!woman.IsAlive()) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             if (handle.IsScripting())
                 handle.Release();

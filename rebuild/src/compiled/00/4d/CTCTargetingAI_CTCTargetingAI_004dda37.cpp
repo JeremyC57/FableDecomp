@@ -22,15 +22,24 @@ class CTCTargetingBase { public:
     CTCTargetingBase(CThing* thing);                        // 0x007F58E0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                                   // +4
-    CBaseIntelligentPointer();                              // 0x00A01B10
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CCreatureIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
-    virtual void v00();
-    CCreatureIntelligentPointer() : CBaseIntelligentPointer() { }
+class CThingCreatureBase;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
+public:
+    CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CRetailAllocator { CRetailAllocator() { } };
@@ -41,8 +50,8 @@ struct CRetailList_node0x10 {                               // retail std::list,
 };
 
 class CTCTargetingAI : public CTCTargetingBase { public:                  // vtable 0x012411FC
-    CCreatureIntelligentPointer PBestEnemyCreatureForAttack;    // +0x38
-    CCreatureIntelligentPointer PScriptTargetOverride;          // +0x40
+    CIntelligentPointer<CThingCreatureBase> PBestEnemyCreatureForAttack;    // +0x38
+    CIntelligentPointer<CThingCreatureBase> PScriptTargetOverride;          // +0x40
     CRetailList_node0x10        ThingsToNotAttack;              // +0x48
     virtual void v00();
     CTCTargetingAI(CThing* thing);

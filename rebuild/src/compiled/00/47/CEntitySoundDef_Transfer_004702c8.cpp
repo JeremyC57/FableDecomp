@@ -9,10 +9,9 @@
 // context (4 distinct helpers, one per member type; their labels are propagated so they are
 // named by address). The last member's address is formed in place (`add esi,N`). Member types
 // are not recoverable beyond their 4-byte size. One of 9 bodies of this shape.
+class CCharString;
 class CPersistContext { public:
-    void Transfer_00431061(long* value);   // 0x00431061
-    void Transfer_00431102(long* value);   // 0x00431102
-    void Transfer_00431143(long* value);   // 0x00431143
+    template <class T> void Transfer(T& value);   // 0x00431061
     void Transfer_00470301(long* value);   // 0x00470301
 };
 
@@ -30,7 +29,7 @@ struct CPersistable_004702c8 {
 void CPersistable_004702c8::Transfer(CPersistContext& context)
 {
     context.Transfer_00470301(&m_28);
-    context.Transfer_00431143(&m_48);
-    context.Transfer_00431061(&m_4c);
-    context.Transfer_00431102(&m_50);
+    context.Transfer(*(CCharString*)(&m_48));
+    context.Transfer(*(float*)(&m_4c));
+    context.Transfer(*(long*)(&m_50));
 }

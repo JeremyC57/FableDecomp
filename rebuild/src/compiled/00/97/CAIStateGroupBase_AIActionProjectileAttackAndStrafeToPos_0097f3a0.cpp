@@ -113,16 +113,26 @@ class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
+public:
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<const CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -134,10 +144,10 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:   // vtable 0x01285424
-    CIntelligentPointerConstThing PTarget;                  // +0xa8
+    CIntelligentPointer<const CThing> PTarget;                  // +0xa8
     float ShotAccuracyPercentage;                           // +0xb0
     float ShotDamageMultiplier;                             // +0xb4
     float ShotBuildupTime;                                  // +0xb8
@@ -163,12 +173,12 @@ class CAIStateGroupBase { public:
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& speed, EMovementType anim, bool strafe,
                                        bool extra, const CThing* target, bool b3, float f);   // 0x0097EC00
     EAIActionReturn AIAction_ProjectileAttackAndStrafeToPos(EAIActionRepeat repeat, C3DVector pos,
-                                                           CIntelligentPointerConstThing target, bool& speed,
+                                                           CIntelligentPointer<const CThing> target, bool& speed,
                                                            EMovementType anim, bool extra);
 };
 
 EAIActionReturn CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToPos(EAIActionRepeat repeat, C3DVector pos,
-                                                                          CIntelligentPointerConstThing target, bool& speed,
+                                                                          CIntelligentPointer<const CThing> target, bool& speed,
                                                                           EMovementType anim, bool extra)
 {
     bool useStrafe = false;

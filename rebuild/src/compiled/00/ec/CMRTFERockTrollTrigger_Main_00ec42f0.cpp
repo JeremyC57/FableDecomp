@@ -13,6 +13,7 @@
 //   IsDone exit jumps to one shared `done:` return at the end, which moves the destroy-spawnPos exit block below the inline GetPos
 //   ternary as in retail (a plain in-loop `return` keeps it inline after the post-loop IsDone test).
 //   built before the position argument; the CreateCreature result is a discarded temporary (it reuses the filter's slot).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -34,7 +35,7 @@ class CScriptThing { public:                              // vtable 0x01238C8C, 
     CScriptThing*   PImp_Data;                     // +0x04
     CCPPointerInfo* PImp_Info;                     // +0x08
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 class CGameScriptInterface { public:
@@ -59,8 +60,14 @@ class CGameScriptInterface { public:
     virtual void v100() const; virtual void v101() const; virtual void v102() const; virtual void v103() const; virtual void v104() const; virtual void v105() const; virtual void v106() const; virtual void v107() const;
     virtual void RemoveThing(const CScriptThing& thing, bool a, bool b) const;   // slot 108 (+0x1b0)
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
@@ -75,14 +82,19 @@ struct CQ_RTFEScript {
     bool          RockTrollSpawned;                // +0x4e (descriptive)
 };
 
-class CM_RTFERockTrollTrigger {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CM_RTFERockTrollTrigger : public CEntityScriptBase {
 public:
     void*                 __vftable;               // +0x00
     CGameScriptInterface* Game;                    // +0x04
     CScriptThing          Me;                      // +0x08
     CQ_RTFEScript*        ParentClass;             // +0x14
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -90,22 +102,22 @@ void CM_RTFERockTrollTrigger::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     if (ParentClass->RockTrollSpawned)
         return;
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptThing spawnPos = Game->GetThingWithScriptName("M_RTFERockTrollSpawnPos");
     while (!IsDistanceBetweenThingsUnder(Game->GetHero(), Me, pGlobalScriptDef->RockTrollTriggerDistance)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             goto done;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->CreateCreature("CREATURE_ROCK_TROLL_START_STANDING", spawnPos.GetPos(), "RTFE_RockTroll", false);
     ParentClass->RockTrollSpawned = true;

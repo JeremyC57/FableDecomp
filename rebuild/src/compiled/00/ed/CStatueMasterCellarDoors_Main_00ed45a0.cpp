@@ -11,6 +11,7 @@
 // Shape: the first test is a named bool over `pos == 1 && !GetThingWithScriptName("TraderToEscort").IsAlive()`: the
 //   string and the returned CScriptThing are flagged conditional temporaries (ebx bits 1/2) whose destructors run before
 //   the bool is tested; IsAlive stays a virtual call on the temporary.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
@@ -132,12 +133,17 @@ class CGameScriptInterface { public:
 struct CV_StatueMasterScript {
     long GetStatuePointingPosition();                       // 0x00ED4420
 };
-struct CStatueMasterCellarDoors {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CStatueMasterCellarDoors : public CEntityScriptBase {
     void*                  __vftable;                       // +0x00
     CGameScriptInterface*  Game;                            // +0x04
     CScriptThing           Me;                              // +0x08
     CV_StatueMasterScript* ParentClass;                     // +0x14
-    bool IsDone();                                          // 0x00F35B30
     void Main();
 };
 
@@ -146,31 +152,31 @@ void CStatueMasterCellarDoors::Main()
     bool unlocked = ParentClass->GetStatuePointingPosition() == 1
                  && !Game->GetThingWithScriptName("TraderToEscort").IsAlive();
     if (unlocked) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         Game->EntitySetAsLocked(Me, false);
         return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->EntitySetAsLocked(Me, true);
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     for (;;) {
         if (Me.MsgIsUsedBy("SCRIPT_NAME_HERO")) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             Game->DisplayGameInfo("TEXT_QST_061_CELLAR_LOCKED");
             while (!Game->MsgIsGameInfoClickedPast()) {
                 Game->NewScriptFrame();
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                     return;
             }
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
         }
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
 }

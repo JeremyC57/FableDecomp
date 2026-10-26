@@ -38,7 +38,6 @@ class CDataInputStream { public:
     long SourceChunkBytesRemaining;                     // +0x14
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5();
     virtual CCharString ReadString();                   // slot 6 (+0x18)
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
     __forceinline void Read(void* dst, long size) {
         __int64 np = (__int64)(StreamPos + size);
@@ -48,6 +47,8 @@ class CDataInputStream { public:
         } else ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
     __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 class CChunkedFileSuperChunk { public:
     char ChunkType[5];                                  // +0x04

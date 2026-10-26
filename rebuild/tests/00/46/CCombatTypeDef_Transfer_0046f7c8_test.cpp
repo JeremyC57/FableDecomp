@@ -195,14 +195,15 @@ struct NativeVector32 { unsigned int first, last, capacity; };
 struct NativeMap32 { unsigned int root, first, size; };
 class CPersistContext { public:
     void TransferLongVector(NativeVector32* value);   // 0x00466A47
-    void TransferLong(int* value);                   // 0x00431102
-    void TransferBool(bool* value);                  // 0x0043314A
+    template <class T> void Transfer(T& value);                     // 0x00431102
     void TransferStringVector(NativeVector32* value); // 0x004331F9
-    void TransferFloat(float* value);                // 0x00431061
     void TransferMap(NativeMap32* value);            // 0x0046FA22
     void TransferCombatType(int* value);             // 0x0046F8DA
     void TransferRecoil(int* value);                 // 0x0046F97E
 };
+template <> void CPersistContext::Transfer<long>(long& value);
+template <> void CPersistContext::Transfer<bool>(bool& value);
+template <> void CPersistContext::Transfer<float>(float& value);
 class CCombatTypeDef { public:
     unsigned char prefix[0x3c];
     NativeVector32 DefenderCombatRingOccupationNumbers; // +0x3c; PDB donor +0x40
@@ -236,26 +237,26 @@ typedef char NativeCombatTypeSize[(sizeof(CCombatTypeDef) == 0xac) ? 1 : -1];
 void CCombatTypeDef::Transfer(CPersistContext& context)
 {
     context.TransferLongVector(&DefenderCombatRingOccupationNumbers);
-    context.TransferLong(&DefenderWheelOuterRingStartIndex);
-    context.TransferBool(&DefenderWheelAllowAttackerStrafing);
+    context.Transfer(*(long*)(&DefenderWheelOuterRingStartIndex));
+    context.Transfer(*(bool*)(&DefenderWheelAllowAttackerStrafing));
     context.TransferStringVector(&CombatSequence);
     context.TransferLongVector(&CombatSequenceDef);
-    context.TransferBool(&PreferOuterRing);
-    context.TransferFloat(&FrontFarLimit);
-    context.TransferFloat(&FrontMiddleLimit);
-    context.TransferFloat(&FrontNearLimit);
-    context.TransferFloat(&SideLimit);
-    context.TransferFloat(&RearLimit);
-    context.TransferFloat(&PreferredCombatDistance);
+    context.Transfer(*(bool*)(&PreferOuterRing));
+    context.Transfer(*(float*)(&FrontFarLimit));
+    context.Transfer(*(float*)(&FrontMiddleLimit));
+    context.Transfer(*(float*)(&FrontNearLimit));
+    context.Transfer(*(float*)(&SideLimit));
+    context.Transfer(*(float*)(&RearLimit));
+    context.Transfer(*(float*)(&PreferredCombatDistance));
     context.TransferMap(&AttackPatterns);
     context.TransferCombatType(&CombatCreatureType);
-    context.TransferBool(&AlwaysAttackIfNearest);
-    context.TransferBool(&KnockdownCausesStun);
+    context.Transfer(*(bool*)(&AlwaysAttackIfNearest));
+    context.Transfer(*(bool*)(&KnockdownCausesStun));
     context.TransferRecoil(&RecoilStyle);
-    context.TransferBool(&CanBeKnockedDown);
-    context.TransferFloat(&ComboContinueSpeed);
-    context.TransferFloat(&CombatFOV);
-    context.TransferBool(&StartsAsReadyForMelee);
+    context.Transfer(*(bool*)(&CanBeKnockedDown));
+    context.Transfer(*(float*)(&ComboContinueSpeed));
+    context.Transfer(*(float*)(&CombatFOV));
+    context.Transfer(*(bool*)(&StartsAsReadyForMelee));
 }
 
 static void* seen[21];
@@ -269,10 +270,16 @@ static void Record(CPersistContext* self, void* field)
     ++count;
 }
 void CPersistContext::TransferLongVector(NativeVector32* value) { kinds[count]=1; Record(this, value); }
-void CPersistContext::TransferLong(int* value) { kinds[count]=2; Record(this, value); }
-void CPersistContext::TransferBool(bool* value) { kinds[count]=3; Record(this, value); }
+template <> void CPersistContext::Transfer<long>(long& value_)
+{
+    int* value = (int*)&value_; (void)value; kinds[count]=2; Record(this, value); }
+template <> void CPersistContext::Transfer<bool>(bool& value_)
+{
+    bool* value = (bool*)&value_; (void)value; kinds[count]=3; Record(this, value); }
 void CPersistContext::TransferStringVector(NativeVector32* value) { kinds[count]=4; Record(this, value); }
-void CPersistContext::TransferFloat(float* value) { kinds[count]=5; Record(this, value); }
+template <> void CPersistContext::Transfer<float>(float& value_)
+{
+    float* value = (float*)&value_; (void)value; kinds[count]=5; Record(this, value); }
 void CPersistContext::TransferMap(NativeMap32* value) { kinds[count]=6; Record(this, value); }
 void CPersistContext::TransferCombatType(int* value) { kinds[count]=7; Record(this, value); }
 void CPersistContext::TransferRecoil(int* value) { kinds[count]=8; Record(this, value); }

@@ -21,7 +21,10 @@ class CPlayerGuiDef { public:
     float         MiniMapWorldResolution;          // +0x980 (retail offset)
 };
 
-extern CPlayerGuiDef* __fastcall PeekGuiDef();     // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};     // 0x00438570
 
 class CMiniMapDisplay { public:                           // retail 0xc0 bytes
     unsigned char _body[0xc0];
@@ -81,7 +84,7 @@ CDrawMiniMap::CDrawMiniMap(CPlayerGui* gui, void* drawList)
     : CDrawBase(gui, drawList), MiniMap(), Enabled(true), Active(true), OldActive(true), RegionChange(false), Alpha(0xff),
       FadeInOut(), TextFadeInOut(), ScreenPosFadeInOut(), RegionExits()
 {
-    MiniMap.Initialise(PeekGuiDef()->MiniMapWorldResolution);
+    MiniMap.Initialise(CPlayerGui::PeekGuiDef().MiniMapWorldResolution);
     PrimitiveHandles.Resize(9);
 }
 

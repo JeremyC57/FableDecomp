@@ -16,7 +16,8 @@ public:
 };
 class CThing {
 public:
-    CPlayer* GetPlayer();                           // 0x004C7A30
+public:
+    CPlayer& GetPlayer();   // 0x004C7A30
 };
 class CThingCreatureBase;
 class CTCHeroRangedAttacks {
@@ -38,10 +39,10 @@ public:
 void CTCHeroRangedAttacks::ResetProjectileWeaponMode()
 {
     ProjectileWeaponFirstPersonZoomModeIndex = -1;
-    ParentThing->GetPlayer()->RemoveMode((EPlayerMode)0x19);
+    ParentThing->GetPlayer().RemoveMode((EPlayerMode)0x19);
     if (FireCycleInProgress) {
-        if (!ParentThing->GetPlayer()->HasMode((EPlayerMode)0x22) &&
-            !ParentThing->GetPlayer()->HasMode((EPlayerMode)0x2e))
-            ParentThing->GetPlayer()->AddMode((EPlayerMode)0x22, false);
+        if (!ParentThing->GetPlayer().HasMode((EPlayerMode)0x22) &&
+            !ParentThing->GetPlayer().HasMode((EPlayerMode)0x2e))
+            ParentThing->GetPlayer().AddMode((EPlayerMode)0x22, false);
     }
 }

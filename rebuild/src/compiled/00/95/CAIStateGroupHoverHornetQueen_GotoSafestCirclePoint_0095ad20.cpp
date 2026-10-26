@@ -31,10 +31,21 @@ class CThing { public:
 };
 class CThingCreatureBase : public CThing { public: };
 __forceinline C3DVector Direction(const CThing* to, const CThing* from) { return to->GetPosition() - from->GetPosition(); }
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 template <class T> struct CVec {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
@@ -54,11 +65,11 @@ class CAIStateGroupBase { public:
 };
 struct CAIStateGroup_HoverMovementBase : CAIStateGroupBase { };
 struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_HoverMovementBase {
-    CBaseIntelligentPointer PTarget;            // +0x14
+    CIntelligentPointer<CThing> PTarget;            // +0x14
     unsigned char _pad1c[0x40 - 0x1c];
-    CVec<CBaseIntelligentPointer> Things;       // +0x40
+    CVec<CIntelligentPointer<CThing> > Things;       // +0x40
     long CurrentCirclePoint;                    // +0x4c
-    CVec<CBaseIntelligentPointer> CircleMarkers;   // +0x50
+    CVec<CIntelligentPointer<CThing> > CircleMarkers;   // +0x50
     long GetNextCirclePoint() { long i = CurrentCirclePoint + 1; if (i == CircleMarkers.size()) i = 0; return i; }
     long GetPrevCirclePoint() { long i = CurrentCirclePoint - 1; if (i == -1) i = CircleMarkers.size() - 1; return i; }
     long GotoCirclePoint(long index, long movementType);   // 0x0095A6C0

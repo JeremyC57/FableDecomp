@@ -58,6 +58,7 @@ struct CIsThingConscious {                               // NScript predicate, v
 
 class CBaseObject { public:                                     // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
     void* IntelligentPointer;                            // +0x04
+protected:
     CBaseObject();                                       // 0x0099A380
     virtual ~CBaseObject();                              // 0x0099A430
 };

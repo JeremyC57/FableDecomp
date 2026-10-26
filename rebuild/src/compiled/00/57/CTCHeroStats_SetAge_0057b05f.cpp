@@ -2,12 +2,12 @@
 // Leaf: SetAge
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057B05F, 152 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`).
-// Callees: CTCBase::GetDefinitions() @ 0x006869D0 (twice; +0xDC the CHeroStatsDef pointer, def +0x68 / +0x6C the
+// Callees: CTCBase::GetDefinitionManager() @ 0x006869D0 (twice; +0xDC the CHeroStatsDef pointer, def +0x68 / +0x6C the
 //          minimum / maximum age), GFLimitReturn<float> @ 0x0057EF86 (__fastcall), std::bitset::test @ 0x00410DE0,
 //          CVectorMap::LowerBound @ 0x0040F020, CTCHeroMorph::SetAge(float) @ 0x0071BFA0.
 // Shape: the two bounds are named locals (min at [ebp-4] declared first, max at [ebp-8]) because they are used again
 // in `(Age - min) / (max - min)` after the clamp; the GetInterface key gets its own slot ([ebp-0xC]).
-// The def is read through an inline GetHeroStatsDef() accessor: reading GetDefinitions()->PHeroStatsDef in the body
+// The def is read through an inline GetHeroStatsDef() accessor: reading GetDefinitionManager()->PHeroStatsDef in the body
 // swaps the esi/edi roles of this and the parent thing.
 // Layout: retail Age +0x30 (PDB +0x38).
 #pragma optimize("y", off)
@@ -58,12 +58,18 @@ class CHeroStatsDef { public:
     float         MaxAge;                            // +0x6C
 };
 
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
 
-class CTCHeroStats { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCHeroStats : public CTCBase { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x28];
@@ -71,8 +77,7 @@ class CTCHeroStats { public:
     float         SunTan;                            // +0x34 (PDB +0x3C)
     float         Fatness;                           // +0x38 (PDB +0x40)
 
-    CDefinitionHolder* GetDefinitions() const;       // 0x006869D0
-    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitions()->PHeroStatsDef; }
+    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
     void SetAge(float age);
 };
 

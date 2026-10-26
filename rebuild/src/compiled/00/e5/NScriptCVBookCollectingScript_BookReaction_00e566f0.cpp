@@ -36,7 +36,7 @@ class CScriptThing : public CBaseClass { public:                       // 12 byt
         if (PImp_Info)
             ++PImp_Info->RefCount;
     }
-    ~CScriptThing();                                     // 0x004AA840
+    virtual ~CScriptThing();                                     // 0x004AA840
 };
 struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
  virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();

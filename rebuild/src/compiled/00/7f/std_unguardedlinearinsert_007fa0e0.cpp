@@ -28,7 +28,8 @@ class CVectorCompare_BestForTargeting { public:                        // Ego_r.
     float     OverrideShortDistanceFactor;                      // +0x20
     float     OverrideShortDistanceFalloff;                     // +0x24
     bool      CompareInXYPlane;                                 // +0x28
-    float GetCompareValueForPoint(const C3DVector& point);      // 0x007F9660
+public:
+    float GetCompareValueForPoint(const C3DVector&) const;   // 0x007F9660
 };
 
 class CThingCompare_BestForTargeting2 {                         // Ego_r.pdb, 52 bytes (a class: V in every PDB symbol)

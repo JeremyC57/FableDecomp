@@ -42,13 +42,21 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 class CCharString { public:
     void* m_pData;
@@ -64,7 +72,7 @@ class CTCTavernBar { public:                           // interface 0xb9
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x14];
@@ -94,10 +102,10 @@ class CAIStateGroupBase { public:
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
 };
 struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
-    CBaseIntelligentPointer PJug;               // +0x14 CIntelligentPointer<CThingObject>
-    CBaseIntelligentPointer PBar;               // +0x1c CIntelligentPointer<CThingObject>
-    CBaseIntelligentPointer PPub;               // +0x24 CIntelligentPointer<CThingBuilding>
-    CBaseIntelligentPointer PPayee;             // +0x2c CIntelligentPointer<CThingAICreature>
+    CIntelligentPointer<CThing> PJug;               // +0x14 CIntelligentPointer<CThingObject>
+    CIntelligentPointer<CThing> PBar;               // +0x1c CIntelligentPointer<CThingObject>
+    CIntelligentPointer<CThing> PPub;               // +0x24 CIntelligentPointer<CThingBuilding>
+    CIntelligentPointer<CThing> PPayee;             // +0x2c CIntelligentPointer<CThingAICreature>
     long JugActionPointIndex;                   // +0x34
     C3DVector JugPos;                           // +0x38
     CRightHandedSet JugRHSet;                   // +0x44

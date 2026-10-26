@@ -3,8 +3,8 @@
 // CCharString ctor/dtor 0099EBF0/0099EAE0; tree copy ctor 00514400; erase 004ABA70.
 // Canonical CWorldMap has data only; a derived view adds this data-independent virtual method.
 #include "engine/CWorldMap.h"
-extern "C" void* __cdecl AllocateSectionNode(unsigned int); // 0x00BFEA0E
-extern "C" void __cdecl FreeSectionNode(void*); // 0x00BFEA14
+extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (MSVCR71)
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 // No generated CCharString header is present; retail string storage is one counted-data pointer.
 struct CSectionName { void* PStringData; CSectionName(const char*, int); ~CSectionName(); };
 struct CSectionNode { unsigned char Color; CSectionNode* Parent; CSectionNode* Left; CSectionNode* Right; CSectionName Value; };
@@ -15,7 +15,7 @@ struct CSectionSet {
     unsigned long Compare; // empty comparator storage in the retail 12-byte tree
     CSectionSet() {
         Head = 0;
-        Head = (CSectionNode*)AllocateSectionNode(20);
+        Head = (CSectionNode*)malloc(20);
         Count = 0;
         Head->Color = 0;
         Head->Parent = 0;
@@ -33,7 +33,7 @@ struct CSectionSet {
             Head->Right = Head;
             Count = 0;
         }
-        if (Head) FreeSectionNode(Head);
+        if (Head) free(Head);
     }
 };
 struct CSectionManager { void BuildLoadSections(CSectionSet*); }; // 0x004B2CA0

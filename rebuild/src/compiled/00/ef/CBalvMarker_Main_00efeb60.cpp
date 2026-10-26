@@ -13,6 +13,7 @@
 // Shape: the inline-once destructor band (landed 0x00EDD060 idiom): retail expands both locals' destructors at the first-loop
 //   return only and calls the out-of-line copies (0x007E74D0, 0x004AA840) elsewhere, so the locals are destructor-less
 //   views and every exit destroys them by hand: __forceinline bodies at the first return, the out-of-line calls elsewhere.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -152,8 +153,14 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void v413(); virtual void v414(); virtual void v415(); virtual void v416(); virtual void v417(); virtual void v418(); virtual void v419(); virtual void v420();
     virtual bool IsCameraPosOnScreen(const C3DVector& pos) const;   // slot 421 (+0x694)
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void f00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                  // 0x00E241B0 (out of line in this module)
@@ -162,8 +169,9 @@ class CEntityScriptBase { public:                             // retail 0x14 byt
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CBalvMarker : CEntityScriptBase {
     void* ParentClass;                                 // +0x14 CBenTestScriptsScript*

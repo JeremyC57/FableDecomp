@@ -20,7 +20,7 @@ class CWideString { public: void* PStringData; };
 namespace NGameText {
 class CDataBank {
 public:
-    CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
 }
 class CEngine { public:

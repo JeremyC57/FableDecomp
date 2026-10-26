@@ -1067,11 +1067,16 @@ struct CV_SwordInTheStoneScript {
  CScriptThing CrowdMemberPullingCurrent;        // +0x64
  CScriptThing CrowdMemberPullingNull;           // +0x70
 };
-struct CSwordOfStrength {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CSwordOfStrength : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CV_SwordInTheStoneScript* ParentClass;             // +0x14
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CSwordOfStrength::Main()

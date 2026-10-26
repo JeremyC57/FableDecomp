@@ -7,7 +7,7 @@
 // first and is 2 bytes longer). Layout modelled locally (retail base sizeof 0x114).
 class CMeleeCombatAbilityDef;
 
-struct CThingCreatureBase_Retail {              // engine/CThingCreatureBase.h exists but is not used: only the flags dword at +0x30 is read (retail offset)
+class CBaseObject { public:              // engine/CThingCreatureBase.h exists but is not used: only the flags dword at +0x30 is read (retail offset)
     unsigned char _pad[0x30];
     unsigned long Flags30;                      // +0x30 (bit 0x10: cannot be blocked)
 };
@@ -15,7 +15,8 @@ struct CThingCreatureBase_Retail {              // engine/CThingCreatureBase.h e
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                              // +0x04
-    CThingCreatureBase_Retail* GetPItem() const;       // 0x00A01B50
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
 };
 
 class CCombatActionBase { public:

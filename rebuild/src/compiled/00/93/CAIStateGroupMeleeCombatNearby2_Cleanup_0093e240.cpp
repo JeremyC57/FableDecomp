@@ -3,7 +3,7 @@
 // Leaf: ?Cleanup@CAIStateGroup_MeleeCombatNearby2@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E240, length 141 bytes (+ int3 padding); byte-identical
 // shape to CAIStateGroup_JackOfBladesBase::Cleanup (0x00972110).
-// Callees: CThingCreatureBase::IsRegisteredCombatant @ 0x00662410 (landed name; manifest
+// Callees: CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410 (landed name; manifest
 // "C3DAnimationBlendState::AddCombinationBlend" is propagated), CAIStateGroupBase::GetPWorld @ 0x008FCFC0,
 // CCombatManager::DeregisterCombatant(CThingCreatureBase*) @ 0x006ED9C0 (world +0x4c), the creature's mode
 // flag query @ 0x006621A0 (bit 1 of the byte at [this+0E0h]+148h; manifest "AreDefaultValsApplied" is
@@ -32,7 +32,6 @@ class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    bool IsRegisteredCombatant();               // 0x00662410
     bool UsesCreatureModes();                   // 0x006621A0 (descriptive)
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -47,6 +46,8 @@ class CThingCreatureBase { public:
         }
         return false;
     }
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 
 class CTCCreatureModeManager { public:                 // interface type 0x31
@@ -83,7 +84,7 @@ struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase {
 
 void CAIStateGroup_MeleeCombatNearby2::Cleanup()
 {
-    if (PBrain->PCreature->IsRegisteredCombatant()) {
+    if (PBrain->PCreature->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = PBrain->PCreature;
         CWorld* world = GetPWorld();
         world->m_pCombatManager->DeregisterCombatant(creature);

@@ -1,12 +1,14 @@
 #pragma optimize("t", on)
+class CAInputProcess {
+public:
+    virtual ~CAInputProcess();   // 0x00A0D3D0
+};
 extern void __fastcall DestructMember_0048d520(void* member);
-extern void __fastcall CInputProcessCombat_Destruct(void* process);
-extern void __cdecl OperatorDelete(void* object);
 void* __fastcall CInputProcessCombat_CompositeScalarDeletingDestructor(void* process, int, unsigned int flags)
 {
     DestructMember_0048d520(static_cast<unsigned char*>(process) + 40);
-    CInputProcessCombat_Destruct(process);
+    ((CAInputProcess*)(process))->CAInputProcess::~CAInputProcess();
     if (flags & 1)
-        OperatorDelete(process);
+        operator delete(process);
     return process;
 }

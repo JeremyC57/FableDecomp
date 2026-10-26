@@ -12,15 +12,24 @@
 class CBaseObject;
 class C3DVector { public: float X, Y, Z; };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CBaseIntelligentPointer();                       // 0x00A01B10
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0x01237F1C
-    virtual void v00();
-    CIntelligentPointer_CThingConst() : CBaseIntelligentPointer() { }
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01237F1C
+public:
+    CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CScriptModuleBase {
@@ -32,7 +41,7 @@ struct CScriptModuleBase {
 namespace NCameraModes {
 
 struct CScriptModuleTransitionBetweenPoints : CScriptModuleBase {   // vtable 0x012759F4
-    CIntelligentPointer_CThingConst PThing;          // +0x4c
+    CIntelligentPointer<const CThing> PThing;          // +0x4c
     C3DVector Increment;                             // +0x54
     C3DVector LookAtIncrement;                       // +0x60
     C3DVector LookAtPos;                             // +0x6c

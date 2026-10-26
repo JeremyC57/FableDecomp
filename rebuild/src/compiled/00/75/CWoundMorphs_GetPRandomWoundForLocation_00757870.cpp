@@ -17,7 +17,7 @@
 //   (`lea ecx,[eax+4]`, the entry's second member) is formed BEFORE the index (the distance from the first entry).
 enum EBodyLocation { BODY_LOCATION_NONE = 0 };
 
-unsigned long __fastcall GFROR13(unsigned long value);       // 0x00497890 (rotate right by 13)
+long __fastcall GFROR13(unsigned long);       // 0x00497890 (rotate right by 13)
 
 __forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {

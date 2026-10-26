@@ -13,7 +13,7 @@
 #include "engine/CCrateStackDef.h"
 
 class CPersistContext { public:
-    void TransferEnum_00431102(long* value);                                          // 0x00431102
+    template <class T> void Transfer(T& value);                                          // 0x00431102
     void Transfer(const char* name, long& value, const long& defaultValue);           // Transfer<long> @ 0x00410BE0
 };
 
@@ -23,7 +23,7 @@ struct CCrateStackDef_Methods : CCrateStackDef {
 
 void CCrateStackDef_Methods::Transfer(CPersistContext& context)
 {
-    context.TransferEnum_00431102(&StackType);
+    context.Transfer(*(long*)(&StackType));
     long defaultPriority = 0;
     context.Transfer("Priority", Priority, defaultPriority);
 }

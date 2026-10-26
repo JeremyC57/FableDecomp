@@ -1,8 +1,8 @@
 #pragma optimize("s",on)
 struct Field { unsigned char b[4]; };
+class CCharString;
 class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
-    void TransferCharString(void* value);           // 0x00431143 Transfer(CCharString&)
-    void TransferULong(void* value);                // 0x00431020 Transfer(unsigned long&): PDB-typed ulong members
+    template <class T> void Transfer(T& value);           // 0x00431143 Transfer(CCharString&)
 };
 class CContextSensitiveItemDef { public:
     unsigned char _pad[0x28];
@@ -16,9 +16,9 @@ class CContextSensitiveItemDef { public:
 
 void CContextSensitiveItemDef::Transfer(CPersistContext& ctx)
 {
-    ctx.TransferCharString(&f0);
-    ctx.TransferCharString(&f1);
-    ctx.TransferULong(&f2);
-    ctx.TransferULong(&f3);
-    ctx.TransferULong(&f4);
+    ctx.Transfer(*(CCharString*)(&f0));
+    ctx.Transfer(*(CCharString*)(&f1));
+    ctx.Transfer(*(unsigned long*)(&f2));
+    ctx.Transfer(*(unsigned long*)(&f3));
+    ctx.Transfer(*(unsigned long*)(&f4));
 }

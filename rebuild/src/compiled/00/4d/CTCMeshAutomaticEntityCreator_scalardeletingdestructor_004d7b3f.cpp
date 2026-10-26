@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCMeshAutomaticEntityCreator_Destruct(void* creator);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCMeshAutomaticEntityCreator_ScalarDeletingDestructor(void* creator, int, unsigned int flags)
 {
-    CTCMeshAutomaticEntityCreator_Destruct(creator);
+    ((CTCBase*)(creator))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(creator);
+        operator delete(creator);
     return creator;
 }

@@ -7,19 +7,20 @@
 // Tiny-body shape `QueryTarget` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CTarget {
-    bool Query();                          // 0x009D54E0
+class CBankFileAsyncData { public:
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
 
 struct CClass_00a23fc0 {
     unsigned char _pad[0x30];
-    CTarget* m_pTarget;                    // +0x30
+    CBankFileAsyncData* m_pTarget;                    // +0x30
     bool vfunc_4();
 };
 
 bool CClass_00a23fc0::vfunc_4()
 {
     if (m_pTarget)
-        return m_pTarget->Query();
+        return m_pTarget->IsFinished();
     return true;
 }

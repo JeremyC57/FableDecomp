@@ -46,6 +46,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
+class CPlayerManager;
 class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;                       // +0x18
@@ -72,21 +73,24 @@ class CThing { public:
         }
         return false;
     }
-    CTCBase* AddTC(const CCharString& name, bool a2, CTCParamsBase* params);   // 0x004C9D60
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x004C7A00
 };
 class CPlayer { public:
     CThing* GetHeroThing() const;                    // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                        // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CThingAICreature : public CThing { public:
-    CPlayerManager* GetPlayerManager();              // 0x004C7A00
     void OnHeroPush(CThing* pusher, float distance, const C3DVector& direction);
 };
 void CThingAICreature::OnHeroPush(CThing* pusher, float distance, const C3DVector& direction)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
     if (hero && !hero->Dead && hero->UniqueID == pusher->UniqueID && pusher->HasTC(0x51)) {
         CTCOnHeroPush* push;
         if (!GetInterface(&push, 0xc4)) {

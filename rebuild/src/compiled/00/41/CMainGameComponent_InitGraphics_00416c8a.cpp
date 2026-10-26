@@ -19,7 +19,7 @@ class CCharString { public:
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 class CPixelFormat { public:
     long Format;
     void Initialise(long d3dFormat);               // 0x009E3830
@@ -85,7 +85,7 @@ bool CMainGameComponent::InitGraphics()
 {
     {
         CCharString text("Init Graphics", -1);
-        DisplayProgress(text, -1.0f, false, false);
+        NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
     }
     CGraphicDataBankInit init;
     if (g_pDisplayManager->IsSupportingCompressedTextures() && g_AllowCompressedTextures) {
@@ -107,7 +107,7 @@ bool CMainGameComponent::InitGraphics()
     init.AllowDither = g_AllowDither;
     {
         CCharString text("Opening Main Graphic Bank", -1);
-        DisplayProgress(text, -1.0f, false, false);
+        NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
     }
     {
         CCharString name("GBANK_MAIN", -1);
@@ -115,7 +115,7 @@ bool CMainGameComponent::InitGraphics()
     }
     {
         CCharString text("Setting Main Graphic Bank", -1);
-        DisplayProgress(text, -1.0f, false, false);
+        NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
     }
     NGraphicAppearance::CTCGraphicAppearance::SetGraphicBank(*PMainGraphicBank);
     return true;

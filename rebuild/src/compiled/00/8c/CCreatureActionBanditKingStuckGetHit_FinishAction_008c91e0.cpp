@@ -62,7 +62,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     CCreaturePointer PCreature;                 // +0x08
     unsigned char _pad10[0x114 - 0x10];         // +0x10
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
     void FinishAction();                        // 0x00859A20
 };
 

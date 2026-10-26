@@ -46,10 +46,21 @@ struct CTCBarPoints {                           // interface type 0xB9 component
     void FreeBarPoint(long pointIndex);         // 0x007BA4F0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CThing* GetPItem();                         // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CAIStateGroupBase { public:
@@ -65,7 +76,7 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     unsigned char _pad14[8];                    // +0x14 CIntelligentPointer (the pub building)
-    CBaseIntelligentPointer m_pBar;             // +0x1c CIntelligentPointer<CThing> (the bar object)
+    CIntelligentPointer<CThing> m_pBar;             // +0x1c CIntelligentPointer<CThing> (the bar object)
     unsigned char _pad24[0x50];                 // +0x24
     long m_barPointIndex;                       // +0x74 (-1 = none)
     void FreeBarPoint();

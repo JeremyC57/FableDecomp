@@ -7,8 +7,6 @@
 
 #pragma optimize("s", on)
 
-extern "C" void* __cdecl
-FableFrontEndManagerAllocate(unsigned long bytes);
 extern "C" void* __fastcall
 FableFrontEndManagerConstructInstance(void* storage);
 
@@ -20,7 +18,7 @@ CFrontEndManager_GetInstance_00595582()
     void* instance = FableFrontEndManagerSingleton;
     if (instance == 0)
     {
-        instance = FableFrontEndManagerAllocate(0xe0);
+        instance = ((void*)(operator new(0xe0)));
         if (instance != 0)
             instance = FableFrontEndManagerConstructInstance(instance);
         else

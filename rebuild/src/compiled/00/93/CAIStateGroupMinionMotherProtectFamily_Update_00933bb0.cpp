@@ -21,16 +21,27 @@ class CThing { public:
     unsigned char m_flags91;                // +0x91 bit 0: dead
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CThing* GetPItem();                     // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];              // +0x04..+0xa7
-    ~CCreatureActionBase();                 // 0x00693EF0
+    virtual ~CCreatureActionBase();                 // 0x00693EF0
 };
 
 namespace N_00933cc0 { struct CCreatureAction_AlertToPlayer : CCreatureActionBase {
@@ -51,7 +62,7 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_MinionMotherProtectFamily : CAIStateGroupBase {
-    CBaseIntelligentPointer PFamilyMember;  // +0x14 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PFamilyMember;  // +0x14 CIntelligentPointer<CThingCreatureBase>
     virtual void Update();
 };
 

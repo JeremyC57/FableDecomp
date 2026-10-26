@@ -18,8 +18,8 @@ struct CGameTime
     long          Day;                              // +0x14
 };
 
-struct CWorldSub
-{
+class CWorld
+{ public:
     unsigned char _pad_0x00[0x1c];
     CGameTime*    GameTime;                         // +0x1c
 };
@@ -31,8 +31,14 @@ class CBuyableHouseDef
 };
 
 #pragma pack(push, 1)
+class CTCBase
+{
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
 class CTCBuyableHouse
-{ public:
+: public CTCBase { public:
     void*         __vftable;                        // +0x00 (CTCBase)
     void*         ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];                   // +0x08 (CTCBase flags)
@@ -44,7 +50,6 @@ class CTCBuyableHouse
     long          DaySomeoneWillMoveIn;             // +0x14
     long          DayNextRentIsDue;                 // +0x18
 
-    CWorldSub* GetWorldSub() const;                 // 0x00686A80
     long GetRentsDue() const;
 };
 #pragma pack(pop)
@@ -53,9 +58,9 @@ long CTCBuyableHouse::GetRentsDue() const
 {
     if (PDef_Object != 0 && Rented)
     {
-        if (GetWorldSub()->GameTime->Day >= DayNextRentIsDue)
+        if (PeekWorld().GameTime->Day >= DayNextRentIsDue)
         {
-            long rents = (GetWorldSub()->GameTime->Day - DayNextRentIsDue) / PDef_Object->DaysBetweenRentPayments + 1;
+            long rents = (PeekWorld().GameTime->Day - DayNextRentIsDue) / PDef_Object->DaysBetweenRentPayments + 1;
             if (rents > 0)
                 return rents;
         }

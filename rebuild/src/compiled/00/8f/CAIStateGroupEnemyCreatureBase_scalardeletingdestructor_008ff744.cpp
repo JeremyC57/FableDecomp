@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CAIStateGroup_EnemyCreatureBase_Destruct(void* stateGroup);
-extern void __cdecl OperatorDelete(void* object);
+class CAIStateGroup_EnemyCreatureBase {
+public:
+    virtual ~CAIStateGroup_EnemyCreatureBase();   // 0x008FD769
+};
 void* __fastcall CAIStateGroup_EnemyCreatureBase_ScalarDeletingDestructor(void* stateGroup, int, unsigned int flags)
 {
-    CAIStateGroup_EnemyCreatureBase_Destruct(stateGroup);
+    ((CAIStateGroup_EnemyCreatureBase*)(stateGroup))->CAIStateGroup_EnemyCreatureBase::~CAIStateGroup_EnemyCreatureBase();
     if (flags & 1)
-        OperatorDelete(stateGroup);
+        operator delete(stateGroup);
     return stateGroup;
 }

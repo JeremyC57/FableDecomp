@@ -46,7 +46,7 @@ CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool 
 class CCombatActionBase { public:                             // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0x114 - 0x04];
-    ~CCombatActionBase();                              // 0x0062E900
+    virtual ~CCombatActionBase();                              // 0x0062E900
 };
 class CThingCreatureBase : public CThing {
 public:

@@ -26,11 +26,20 @@ class CWorld { public:
     CCameraManagerSource* GetCameraSource() { return m_pCameraSource; }
 };
 
-struct CTCTavernGameCoinBase {
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCTavernGame : public CTCBase
+{
+public:
+};
+
+struct CTCTavernGameCoinBase : public CTCTavernGame {
     unsigned char _pad[0x2c];
     float Score;                                    // +0x2c (CTCTavernGame)
     unsigned char _pad_0x30[0x118];
-    CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
     void EnterGame();                               // 0x008EF390
 };
 
@@ -50,7 +59,7 @@ void CTCTavernGameCoinGolf::EnterGame()
     XAngle = 0.1275f;
     ZAngle = 0.0f;
     CGameCameraManager* camera = 0;
-    if (GetWorld()->GetCameraSource()->GetCameraManager(&camera))
+    if (GetWorld().GetCameraSource()->GetCameraManager(&camera))
         camera->PushLookAround();
     EnableCourse(0);
 }

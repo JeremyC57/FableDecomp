@@ -11,6 +11,7 @@
 //   +0x18. CQ_BountyHuntScript retail = PDB - 0x14: BanditCutsceneDone +0x6f, BountyHuntIntroComplete +0x70,
 //   BanditGruntTextCounter +0x74. CScriptDef BountyHuntBanditGruntWanderDistance is PDB +0xbc8, retail +0xb20 (the
 //   retail def is smaller ahead of it; read straight off the bytes).
+namespace NScript { class CPredicateBase; }
 class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
@@ -74,11 +75,17 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
     CCountedPointer PImp;                              // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -86,8 +93,9 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a f
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 class CBaseObject { public:                                   // {vptr, intelligent-pointer link}
     void* IntelligentPointer;                          // +0x04
-    CBaseObject();                                     // 0x0099A380
-    virtual ~CBaseObject();                            // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     ~CScriptGameResourceObjectBase() { }
@@ -140,15 +148,20 @@ class CScriptDef { public:
 };
 extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 struct CQ_SunnyvaleMasterData;
-class CBH_GangGrunt {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CBH_GangGrunt : public CEntityScriptBase {
 public:
     void*                   __vftable;                 // +0x00
     CGameScriptInterface*   Game;                      // +0x04
     CScriptThing            Me;                        // +0x08
     CQ_BountyHuntScript*    ParentClass;               // +0x14
     CQ_SunnyvaleMasterData* PMasterData;               // +0x18
-    void RegisterFilter(CIsThingAlive& filter);        // 0x00F35B10
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 
@@ -162,7 +175,7 @@ void CBH_GangGrunt::Main()
     }
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

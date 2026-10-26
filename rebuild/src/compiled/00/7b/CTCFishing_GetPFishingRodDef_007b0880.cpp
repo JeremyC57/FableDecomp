@@ -1,7 +1,7 @@
 // CTCFishing::GetPFishingRodDef() const -- the fishing-rod def of the item the live hero carries in his primary slot, or null
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B0880, length 200 bytes (+ int3 padding). __fastcall, `ret`.
 //         Ego_r.pdb: `?GetPFishingRodDef@CTCFishing@@QBEPBVCFishingRodDef@@XZ`.
-// Callees: CTCBase::GetPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
+// Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
 //          CPlayer::GetHeroThing @ 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @ 0x004365B0
 //          (interface 0x46 CTCCarrying, word 2 bit 6; interface 0xEA CTCInventoryItem, word 7 bit 10),
 //          CTCCarrying::GetThingInPrimarySlot() const @ 0x006A1440, the def's virtual slot 1 (destroy at the last release).
@@ -102,17 +102,23 @@ public:
     const CPlayer& GetMainPlayer() const;           // 0x00449960
 };
 
-class CTCFishing {
+class CTCBase
+{
 public:
     virtual void v00();
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
+
+class CTCFishing : public CTCBase {
+public:
     CThing* ParentThing;                            // +0x04 (CTCBase)
-    const CPlayerManager& GetPlayerManager() const; // 0x00686D50 (CTCBase)
     const CFishingRodDef* GetPFishingRodDef() const;
 };
 
 const CFishingRodDef* CTCFishing::GetPFishingRodDef() const
 {
-    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
+    CThing* hero = PeekPlayerManager().GetMainPlayer().GetHeroThing();
     if (hero && !(hero->m_flags91 & 1)) {
         CTCCarrying* carrying = 0;
         if (hero->HasTC(0x46))

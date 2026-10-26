@@ -71,14 +71,14 @@ class CThing { public:
 };
 
 #pragma pack(push, 1)
-struct CBasicStringChar {                       // CBasicString<char>
+template <class T> class CBasicString { public:                       // CBasicString<char>
     char* PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
     bool UseFastExtend : 1;
     bool operator==(const char* text) const;    // 0x004115A0
 };
-class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicString<char> Data; long NoRefs; };
 #pragma pack(pop)
 
 class CCharString { public:

@@ -15,7 +15,6 @@ struct SubObj { char pad[4]; };
 extern void __fastcall SubObj_dtor(SubObj* self);   // 0x440c40
 
 // operator delete (cdecl)
-extern "C" void __cdecl eng_operator_delete(void* p); // 0xbfe9bc
 
 class CLandscapeBackgroundPatch
 { public:
@@ -30,6 +29,6 @@ void* __fastcall LBP_vector_deleting_destructor(CLandscapeBackgroundPatch* self,
     (void)edxDummy;
     SubObj_dtor(&self->sub);
     if (flags & 1)
-        eng_operator_delete(self);
+        operator delete(self);
     return self;
 }

@@ -46,7 +46,8 @@ class CScriptThing : public CBaseClass { public:                          // vta
     CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
     ~CScriptThing() {}                                      // out of line 0x004AA840
-    bool IsAlive() const;                                   // 0x004AB130
+public:
+    virtual bool IsAlive() const;   // 0x004AB130
 };
 class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();

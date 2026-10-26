@@ -1,15 +1,18 @@
 #pragma optimize("s", on)
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 class CTCCameraPointFixedDolly
 { public:
     void* vftable;
 };
 extern void* const g_CTCCameraPointFixedDolly_vftable;
-extern void __fastcall CTCCameraPointFixedDolly_Destruct(void* dolly);
 void operator delete(void*);
 void* __fastcall scalar_deleting_destructor(CTCCameraPointFixedDolly* dolly, int, unsigned int flags)
 {
     dolly->vftable = (void*)&g_CTCCameraPointFixedDolly_vftable;
-    CTCCameraPointFixedDolly_Destruct(dolly);
+    ((CTCBase*)(dolly))->CTCBase::~CTCBase();
     if (flags & 1)
         operator delete(dolly);
     return dolly;

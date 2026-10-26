@@ -8,7 +8,7 @@
 // Callees: the display's GetScreenArea @ 0x00434B50 (C2DBoxF by hidden pointer), CThing::GetPosition @ 0x004C73D0, the
 // camera's slot 13 (+0x34, world to screen), CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetPlayer @ 0x004498C0,
 // CPlayer::GetHeroCreature @ 0x00487DC0, CThingPlayerCreature::GetCurrentRelativeMovementAngleXY @ 0x006A9640,
-// C3DVector::RotateAboutZ @ 0x00A14040 / GetLength @ 0x00A14480, CTCPhysicsBase::ApplyAcceleration @ 0x006B0210, __ftol2
+// C3DVector::RotateXY @ 0x00A14040 / GetLength @ 0x00A14480, CTCPhysicsBase::ApplyAcceleration @ 0x006B0210, __ftol2
 // @ 0x00BFEA70, CCreatureAction_SpiritReturnToHero @ 0x00854660, CThingCreatureBase::SetCurrentAction @ 0x006644F0, the
 // action's base dtor @ 0x00693EF0.
 // Constants: 1.1f, 25.0f, 0.04f, -0.04f, 0.8f, 1e-4f, 3.0f; globals: the main game component @ 0x013B86A0, the frame rate
@@ -23,9 +23,10 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    void RotateAboutZ(float angle);                          // 0x00A14040
     float GetLength() const;                                 // 0x00A14480
     C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
+public:
+    void RotateXY(float);   // 0x00A14040
 };
 #define VF(n) virtual void v##n();
 class CCamera { public:
@@ -57,7 +58,7 @@ class CThing { public:
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa8 - 4];
-    ~CCreatureActionBase();                                  // 0x00693EF0
+    virtual ~CCreatureActionBase();                                  // 0x00693EF0
 };
 class CThingCreatureBase;
 class CCreatureAction_SpiritReturnToHero : public CCreatureActionBase { public:
@@ -68,12 +69,18 @@ class CThingCreatureBase : public CThing { public:
 };
 class CPlayer { public: CThing* GetHeroCreature(); };               // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetPlayer(long number); };  // 0x004498C0
-class CTCCoopSpirit { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCCoopSpirit : public CTCBase { public:
     CThingCreatureBase* ParentThing;                         // +0x04
     unsigned char _pad08[0x14 - 0x08];
     long          OffScreenFrames;                           // +0x14
-    CPlayerManager* GetPlayerManager();                      // 0x00686D40
     void UpdateScreenRestrictingForces();
 };
 
@@ -109,10 +116,10 @@ void CTCCoopSpirit::UpdateScreenRestrictingForces()
     }
     if ((float)fabs(forceX) > 0.0001f || (float)fabs(forceY) > 0.0001f) {
         long player = ParentThing->PlayerNumber;
-        CThing* hero = GetPlayerManager()->GetPlayer(player)->GetHeroCreature();
+        CThing* hero = GetPlayerManager().GetPlayer(player)->GetHeroCreature();
         float angle = hero->GetCurrentRelativeMovementAngleXY();
         C3DVector force(forceX, forceY, 0.0f);
-        force.RotateAboutZ(angle);
+        force.RotateXY(angle);
         force *= 0.8f;
         float length = force.GetLength();
         if (length > 0.0001f) {

@@ -15,6 +15,7 @@
 //   (CQ_PrisonWardenGameScript, retail = PDB - 0x14: SecretDiaryOpened +0x48, HeroHasSecretDiaryKey +0x49, BookOpened
 //   +0x4c, SThingBookOpened +0x50), PMasterData +0x18 (CQ_SunnyvaleMasterData: BooksPreviouslyOpened[3] +0xef), BookType
 //   +0x1c. CScriptThing / CCountedPointer models as the landed CBanditAttacker::Main 0x00D1F610.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
@@ -170,7 +171,8 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
 };
 struct CSecretBook : CEntityScriptBase {
     CQ_PrisonWardenGameScript* ParentClass;             // +0x14

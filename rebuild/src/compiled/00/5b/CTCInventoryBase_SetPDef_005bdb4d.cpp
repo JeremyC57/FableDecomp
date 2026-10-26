@@ -20,11 +20,16 @@ class CGameDefinitionManager { public:
     bool GetDef(long globalDefIndex, CInventoryDefPointer* pDef) const;      // 0x0048591C
 };
 
-struct CTCInventoryBase {
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+struct CTCInventoryBase : public CTCBase {
     unsigned char        _pad_0x00[0x68];
     CInventoryDefPointer PDef;                  // +0x68 (PDB +0x70)
     long                 GlobalDefIndex;        // +0x6c (PDB +0x74)
-    const CGameDefinitionManager& GetDefinitionManager() const;              // CTCBase, 0x006869D0
     void SetPDef(long globalDefIndex);
 };
 

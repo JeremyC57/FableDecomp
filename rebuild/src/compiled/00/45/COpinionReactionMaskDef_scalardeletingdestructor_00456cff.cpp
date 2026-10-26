@@ -1,4 +1,8 @@
 #pragma optimize("s",on)
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 struct Member { int pad[16]; };
 class COpinionReactionMaskDef { public:
     char pad[0x3c];
@@ -6,14 +10,12 @@ class COpinionReactionMaskDef { public:
 };
 
 extern "C" void __fastcall Member_dtor(Member* def);
-extern "C" void __fastcall Base_dtor_00430300(COpinionReactionMaskDef* def);
-extern "C" void __cdecl op_delete(void* p);
 
 void* __fastcall COpinionReactionMaskDef_scalar_deleting_destructor(COpinionReactionMaskDef* def, int, unsigned int flags)
 {
     Member_dtor(&def->m);
-    Base_dtor_00430300(def);
+    ((CParentDefClassBase*)(def))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        op_delete(def);
+        operator delete(def);
     return def;
 }

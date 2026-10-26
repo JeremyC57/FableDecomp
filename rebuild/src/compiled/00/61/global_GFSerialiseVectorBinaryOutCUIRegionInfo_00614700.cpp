@@ -11,10 +11,17 @@
 //   i.e. CPersistTraits<T> holds an uninitialised `T DefaultVal` (CUIRegionInfo is a POD); the loop is strength-reduced
 //   (byte offset in ebx, opened inside the count guard; count down in esi). Speed TU, no pragma.
 // Model: engine/CDataOutputStream.h + a methods-only writer adapter; CUIRegionInfo as the landed traits 0x005FA610.
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteSLONG(long value);                             // 0x00993EB0
 };
 class CTCInventoryMap { public:
     class CUIRegionInfo { public:                                  // 0x28 bytes (Ego_r.pdb)

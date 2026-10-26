@@ -5,9 +5,10 @@ class CUserProfileManager { public:
     char HUDTooltipEnabled;                   /* +0x19 */
     char pad2[0xd9 - 0x19 - 1];
     char HUDTooltipEnabledNewProfile;                   /* +0xd9 */
-    void Helper1();
     void Helper2();
     void SetHUDTooltipEnabled(char a, char b);
+protected:
+    void ApplyValues();   // 0x00407370
 };
 
 void CUserProfileManager_SetHUDTooltipEnabled(CUserProfileManager* manager, char a, char b);
@@ -17,7 +18,7 @@ void CUserProfileManager::SetHUDTooltipEnabled(char a, char b)
     if (this->UseNewProfileValues)
         this->HUDTooltipEnabledNewProfile = a;
     this->HUDTooltipEnabled = a;
-    this->Helper1();
+    ApplyValues();
     if (b)
         this->Helper2();
 }

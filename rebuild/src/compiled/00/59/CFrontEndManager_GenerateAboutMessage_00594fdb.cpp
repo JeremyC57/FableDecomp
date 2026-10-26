@@ -2,7 +2,7 @@
 // Leaf: GenerateAboutMessage
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00594FDB, length 0x247 bytes, `ret 4` (`this` unused; CWideString by hidden pointer).
 //   Frame-pointer size TU: `#pragma optimize("y", off)` + `("s", on)` (the landed CFrontEndManager rows).
-// Callees: CCharString(const char*, long) 0x0099EBF0 / dtor 0x0099EAE0 / GetCRC 0x00404310, NGameText::CDataBank::GetTagFromCRC
+// Callees: CCharString(const char*, long) 0x0099EBF0 / dtor 0x0099EAE0 / GetCRC 0x00404310, NGameText::CDataBank::LookupValue
 //   0x009CC410 / GetPGroup 0x009C8890 / GetPGroupEntry 0x009C9070, NGameText::CGroupEntry::GetText 0x009C7A40, CWideString()
 //   0x0099AED0 / (const wchar_t*) 0x0099B6B0 / copy 0x0099B720 / dtor 0x0099B510 / operator+=(const CWideString&) 0x0099B8D0 /
 //   operator+=(const wchar_t*) 0x0099B940 / GetLength 0x0099B220, CSystemRegistry(const CWideString&, long) 0x0099CF10 /
@@ -33,15 +33,15 @@ class CCharString { public:
 };
 struct CRefVirtual {
     virtual void v00();
-    virtual void Destroy();                                // slot 1
+    virtual void Destroy() const;                                // slot 1
 };
 struct CRefCounted {
-    long m_count;
-    __forceinline void DecRef() { --m_count; }
+    mutable long m_count;
+    __forceinline void DecRef() const { --m_count; }
     __forceinline long GetRefCount() const { return m_count; }
 };
 struct CRefBase : CRefVirtual, CRefCounted {
-    __forceinline void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
+    __forceinline void ReleaseTemporary() const { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 template <class T> class CIVCountedPointer { public:
     T* Data;
@@ -55,18 +55,27 @@ struct CTagArray {
     __forceinline long size() const { return Last - First; }
     __forceinline const unsigned long& operator[](unsigned long i) const { return First[i]; }
 };
-struct CGroup : CRefBase {                                 // NGameText group: its entry tags at +0x1c
+namespace NGameText {
+class CGroupEntry : public CRefBase { public:              // NGameText group: its entry tags at +0x1c
     unsigned char _pad08[0x1c - 8];
     CTagArray     Entries;                                 // +0x1c
 };
-struct CGroupEntry : CRefBase {
+}
+using NGameText::CGroupEntry;
+namespace NGameText {
+class CTextEntry : public CRefBase { public:
     CWideString GetText() const;                           // 0x009C7A40
 };
-struct CDataBank {                                         // NGameText::CDataBank
-    unsigned long GetTagFromCRC(unsigned long crc) const;  // 0x009CC410
-    CIVCountedPointer<CGroup> GetPGroup(unsigned long tag, bool load) const;            // 0x009C8890
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool load) const;  // 0x009C9070
+}
+using NGameText::CTextEntry;
+namespace NGameText {
+class CDataBank { public:                                         // NGameText::CDataBank
+    unsigned long LookupValue(unsigned long crc) const;  // 0x009CC410
+    CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long tag, bool load) const;   // 0x009C8890
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool load) const;  // 0x009C9070
 };
+}
+using NGameText::CDataBank;
 class CNewFrontendGameComponent { public:
     unsigned char _pad00[0x60];
     CDataBank*    TextBank;                                // +0x60
@@ -92,11 +101,11 @@ CWideString CFrontEndManager::GenerateAboutMessage()
 {
     CDataBank* bank = g_pNewFrontendGameComponent->TextBank;
     CWideString message;
-    long tag = bank->GetTagFromCRC(CCharString("TEXT_GUI_MENU_ABOUT_MESSAGE_PART_1").GetCRC());
+    long tag = bank->LookupValue(CCharString("TEXT_GUI_MENU_ABOUT_MESSAGE_PART_1").GetCRC());
     if (tag > 0) {
-        const CTagArray& entries = bank->GetPGroup(tag, true)->Entries;
+        const CTagArray& entries = bank->GetPGroupEntry(tag, true)->Entries;
         for (unsigned long i = 0; i < entries.size(); ++i) {
-            message += bank->GetPGroupEntry(entries[i], true)->GetText();
+            message += bank->GetPTextEntry(entries[i], true)->GetText();
             message += (const unsigned short*)L"\n";
         }
     }
@@ -106,11 +115,11 @@ CWideString CFrontEndManager::GenerateAboutMessage()
         message += value;
         message += (const unsigned short*)L"\n";
     }
-    tag = bank->GetTagFromCRC(CCharString("TEXT_GUI_MENU_ABOUT_MESSAGE_PART_2").GetCRC());
+    tag = bank->LookupValue(CCharString("TEXT_GUI_MENU_ABOUT_MESSAGE_PART_2").GetCRC());
     if (tag > 0) {
-        const CTagArray& entries = bank->GetPGroup(tag, true)->Entries;
+        const CTagArray& entries = bank->GetPGroupEntry(tag, true)->Entries;
         for (unsigned long i = 0; i < entries.size(); ++i) {
-            message += bank->GetPGroupEntry(entries[i], true)->GetText();
+            message += bank->GetPTextEntry(entries[i], true)->GetText();
             message += (const unsigned short*)L"\n";
         }
     }

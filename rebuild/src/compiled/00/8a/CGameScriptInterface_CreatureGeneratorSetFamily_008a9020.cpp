@@ -114,9 +114,17 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Dat
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
 
 #include "engine/CTCCreatureGenerator.h"
+#define CDefinitionManager CDefinitionManagerLayout
 #include "engine/CDefinitionManager.h"
+#undef CDefinitionManager
+
+class CDefinitionManager : public CDefinitionManagerLayout
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};
 #include <stdlib.h>
-struct DefinitionMethods:CDefinitionManager{long GetDefGlobalIndexFromName(const CCharString&)const;}; //009AD410
+struct DefinitionMethods:CDefinitionManager{}; //009AD410
 class CDefIndex{ public:long Index;CDefIndex(long index):Index(index){}};
 struct IndexVector{CDefIndex *Start,*Finish,*End;IndexVector():Start(0),Finish(0),End(0){}~IndexVector(){if(Start)free(Start);}void PushBack(const CDefIndex&);IndexVector& operator=(const IndexVector&);}; //007CA160,004E24BA
 __forceinline CTCCreatureGenerator* GetGenerator(CThingNative* thing){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(61);ComponentEntry* end=map->Finish;return static_cast<CTCCreatureGenerator*>((it==end||it->Type>61?end:it)->Component);}

@@ -1,6 +1,7 @@
-struct CShadowTarget28 {
+class CDataOutputStream { public:
 // Leaf: UpdateShadowScene
-    void Do(int v);
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 struct CLocalScene {
     int state;
@@ -12,7 +13,7 @@ class CEngineLightingManager { public:
     int mode;              // +0x18
     char pad1c[0x24-0x1c];
     void* obj24;           // +0x24
-    CShadowTarget28* obj28;// +0x28
+    CDataOutputStream* obj28;// +0x28
 };
 
 #pragma optimize("s", on)
@@ -30,7 +31,7 @@ void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager*
         local.Run(self->obj24, arg);
         break;
     case 3:
-        self->obj28->Do(*arg);
+        self->obj28->WriteSLONG(*arg);
         break;
     }
 }

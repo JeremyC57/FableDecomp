@@ -6,7 +6,7 @@
 // the owner's facing bearing, both in turns (atan2 / 2pi wrapped into [0, 1)), the difference wrapped into
 // [-0.5, 0.5).
 // Callees: CCombatActionBase::CCombatActionBase(owner, long, const CSoundPair&) 0x00858030,
-// CCombatActionBase::SetAnimationName 0x008574D0, the physics TC's slot 70 GetFacing (+0x118, hidden result),
+// CCombatActionBase::SetCombatAnimation 0x008574D0, the physics TC's slot 70 GetFacing (+0x118, hidden result),
 // CThing::GetPosition 0x004C73D0, CRT fmod 0x00BFEB28.
 // Vtable 0x01288544. Layout: retail CCombatActionBase is 0x114 bytes (PDB 0x12c), so FaceTarget +0x114 and
 // TurnRate +0x118 (PDB +0x12c/+0x130), as in the landed sibling ctor 0x008F4D00; CThing PhysicsTC +0x60.
@@ -41,7 +41,8 @@ class CCombatActionBase { public:                              // retail sizeof 
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);     // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 // Bearing of a direction in turns, wrapped into [0, 1).
 static __forceinline float GetBearingInTurns(float x, float y)
@@ -74,7 +75,7 @@ CCreatureAction_DragonFlight::CCreatureAction_DragonFlight(CThingCreatureBase* o
     : CCombatActionBase(owner, 50, CSoundPair())
     , FaceTarget(false)
 {
-    SetAnimationName(animName);
+    SetCombatAnimation(animName);
     C3DVector facing = owner->GetPhysics()->GetFacing();
     const C3DVector& position = owner->GetPosition();
     float targetBearing = GetBearingInTurns(target.X - position.X, target.Y - position.Y);

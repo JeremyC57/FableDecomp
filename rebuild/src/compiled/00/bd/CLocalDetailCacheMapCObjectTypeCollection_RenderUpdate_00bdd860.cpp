@@ -11,7 +11,8 @@
 //   `near` slot (`mov byte [esp+0Ch],1 ... mov byte [esp+0Ch],0`) and pushed as a dword in the loop.
 class CEngineCamera;
 class CLocalDetailObjectCollectionType { public:
-    float PeekFadeEnd();                                    // 0x00BE2740
+public:
+    float PeekFadeEnd() const;   // 0x00BE2740
 };
 class CLocalDetailPrimitiveBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

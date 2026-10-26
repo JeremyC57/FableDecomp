@@ -10,13 +10,20 @@
 // Callees: CDataOutputStream::WriteSLONG(long) @ 0x00993EB0, WriteFloat(float) @ 0x00993EE0.
 // Shape: the two floats by value first, then `WriteSLONG(map.size())` and the `for (it = begin(); it != end(); ++it)`
 // walk (end() re-read each pass, `_M_node = _M_increment(_M_node)` inlined).
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteFloat(float);   // 0x00993EE0
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 enum EDamageAttribute { EDamageAttribute_Force32 = 0x7fffffff };
 
 struct COutputStreamMethods : CDataOutputStream {
-    void WriteSLONG(long value);                            // 0x00993EB0
-    void WriteFloat(float value);                           // 0x00993EE0
 };
 
 namespace std {

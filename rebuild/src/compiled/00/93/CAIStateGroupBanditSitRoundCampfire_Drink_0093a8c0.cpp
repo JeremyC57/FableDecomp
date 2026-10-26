@@ -63,7 +63,10 @@ struct CTCDrunk {                               // interface 0xc3
     float Drunkenness;                          // +0x10
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};            // 0x0049D870
 extern float g_DrunkennessPerFrame;             // 0x013BAE70
 class CCharString
 { public:
@@ -108,7 +111,7 @@ long CAIStateGroup_BanditSitRoundCampfire::Drink()
 {
     PBrain->Creature->SheatheAllWeapons();
     float duration = GFFloatRandom(5.0f, GetPWorldSeed()) + 5.0f;
-    long startFrame = GFGetCurrentFrame();
+    long startFrame = CWorld::GetFrame();
     long result;
     {
         CCharString outAnim("ST_SITTING_THROW_BOTTLE_AWAY");
@@ -122,7 +125,7 @@ long CAIStateGroup_BanditSitRoundCampfire::Drink()
     DestroyItem("CARRY_SLOT_RIGHT_HAND");
     CTCDrunk* drunk;
     if (PBrain->Creature->GetInterface(&drunk, 0xc3)) {
-        drunk->Drunkenness += (float)(GFGetCurrentFrame() - startFrame) * g_DrunkennessPerFrame;
+        drunk->Drunkenness += (float)(CWorld::GetFrame() - startFrame) * g_DrunkennessPerFrame;
         if (drunk->Drunkenness > 2.5f)
             drunk->Drunkenness = 2.5f;
     }

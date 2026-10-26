@@ -33,8 +33,6 @@ extern "C" void FABLE_FASTCALL FableFacesCountedPointerReset_00413590(
     void *newObject);
 
 extern void FABLE_FASTCALL FableFacesObjectDelete_00413300(void *object);
-extern "C" void *FABLE_CDECL FableFacesControlAllocate_00413590(fable_u32 size);
-extern "C" void FABLE_CDECL FableFacesControlDelete_00413590(void *control);
 
 /* ---- masked-callee observation state ---- */
 static FableFacesControl_00413590 g_newControl;
@@ -64,7 +62,7 @@ void FABLE_FASTCALL FableFacesObjectDelete_00413300(void *object)
     g_deletedObject = object;
 }
 
-extern "C" void *FABLE_CDECL FableFacesControlAllocate_00413590(fable_u32 size)
+void* __cdecl operator new(unsigned int size)
 {
     ++g_allocateCalls;
     g_allocateSize = size;
@@ -73,7 +71,7 @@ extern "C" void *FABLE_CDECL FableFacesControlAllocate_00413590(fable_u32 size)
     return &g_newControl;
 }
 
-extern "C" void FABLE_CDECL FableFacesControlDelete_00413590(void *control)
+void __cdecl operator delete(void* control)
 {
     ++g_controlDeleteCalls;
     g_deletedControl = control;

@@ -9,8 +9,9 @@
 // `push ecx` frame word, the map pointer a named local, end-or-larger-key -> the end entry).
 class CCharString;
 
-struct CSoundComponent {
-    unsigned long PlaySound(const CCharString& name, bool positional, long a, long b, long c);   // 0x0066BD00
+class CTCSoundPlayer { public:
+public:
+    unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };
 
 class CTCBase;
@@ -52,8 +53,8 @@ class CTCTrophy { public:
 
 unsigned long CTCTrophy::PlaySoundW(const CCharString& name)
 {
-    CSoundComponent* sound;
+    CTCSoundPlayer* sound;
     if (Thing->HasTC(16) && Thing->GetInterface(&sound, 16))
-        return sound->PlaySound(name, true, 0, 0, -1);
+        return sound->PlayAttachedCriteria(name, true, 0, 0, -1);
     return g_InvalidSoundHandle;
 }

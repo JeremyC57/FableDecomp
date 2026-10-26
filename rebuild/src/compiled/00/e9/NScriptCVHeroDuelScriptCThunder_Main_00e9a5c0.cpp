@@ -30,7 +30,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:         // vtable 0x0
     void* PImpData;
     void* PImpInfo;
     CScriptGameResourceObjectScriptedThingBase();           // 0x007E72A0
-    ~CScriptGameResourceObjectScriptedThingBase();          // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();          // 0x007E74D0
     bool IsScripting();                                     // 0x00CD23B9
     void Release();                                         // 0x00CD2770
 };
@@ -120,14 +120,15 @@ struct CIsThingAlive : NScript::CPredicateBase {            // vtable 0x012C32F0
     ~CIsThingAlive();                                       // 0x00E241B0
     virtual bool IsTrue();
 };
-namespace NScript {
 struct CEntityScriptBase {                                  // {vptr, Game +4, Me +8}
     virtual void v00();
     GameCalls*    Game;                                     // +0x04
     CScriptThing  Me;                                       // +0x08
-    void SetPredicate(const CPredicateBase& predicate);     // 0x00F35B10
-    bool IsActiveThreadTerminating();                       // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
+namespace NScript {
 class CV_HeroDuelScript { public:
     unsigned char _pad00[0x4c];
     bool          DuelStarted;                              // +0x4c

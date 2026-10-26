@@ -3,7 +3,7 @@
 // nobody is "it".
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00934120, length 151 bytes (+ int3 padding). Vtable slot 2.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x31 = CTCCreatureModeManager, bit
-// 17 of the bitset dword at +0x24), CTCCreatureModeManager::HasMode @ 0x0073A8A0 and AddMode @ 0x0073AE10,
+// 17 of the bitset dword at +0x24), CTCCreatureModeManager::IsModeActive @ 0x0073A8A0 and AddMode @ 0x0073AE10,
 // the group-tag component's virtual slot 31 (+0x7c) with the creature, CTCCreatureGroupTag::GetTagger
 // @ 0x008138E0 and SetTagger @ 0x008137B0.
 // Shape: the mode manager is an uninitialised local filled by the inlined lookup (miss path reads the slot);
@@ -99,8 +99,9 @@ long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPr
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CTCCreatureModeManager { public:                 // interface type 0x31
-    bool HasMode(unsigned long mode);           // 0x0073A8A0
     bool AddMode(unsigned long mode);           // 0x0073AE10
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 
 class CTCCreatureGroupTag { public:
@@ -129,7 +130,7 @@ void CAIStateGroup_MinionKidGroupTag::OnActivate()
 {
     CTCCreatureModeManager* pModes;
     PBrain->PCreature->GetInterface(&pModes, 0x31);
-    if (!pModes->HasMode(1)) {
+    if (!pModes->IsModeActive(1)) {
         StandModeAddedToCreature = true;
         pModes->AddMode(1);
     } else {

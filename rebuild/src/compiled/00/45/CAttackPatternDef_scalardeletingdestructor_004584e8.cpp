@@ -14,7 +14,6 @@ class CLandscapeBackgroundPatch;
 // scalar destructor called first (relocation-masked target)
 extern void FABLE_FASTCALL CAttackPatternDef_dtor(CLandscapeBackgroundPatch* thisptr);
 // operator delete (relocation-masked target)
-extern void FABLE_CDECL fable_operator_delete(void* p);
 
 void* FABLE_FASTCALL CAttackPatternDef_vector_dtor(
     CLandscapeBackgroundPatch* thisptr, int edxDummy, fable_u32 flags)
@@ -22,6 +21,6 @@ void* FABLE_FASTCALL CAttackPatternDef_vector_dtor(
     (void)edxDummy;
     CAttackPatternDef_dtor(thisptr);
     if (flags & 1)
-        fable_operator_delete(thisptr);
+        operator delete(thisptr);
     return thisptr;
 }

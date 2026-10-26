@@ -40,10 +40,11 @@ struct IDirect3DTexture9 {                         // IUnknown + IDirect3DResour
 };
 
 // CPixelFormat with its D3DFORMAT constructor (engine/CPixelFormat.h holds only the layout).
-struct CPixelFormatFromD3D {
+class CPixelFormat { public:
     long FormatIndex;                              // +0x00 (PDB CPixelFormat::FormatIndex)
-    CPixelFormatFromD3D(unsigned long d3dFormat);  // 0x009E3830
-    unsigned long GetColourDepth() const;          // 0x009E3820 (bits per pixel)
+    CPixelFormat(unsigned long d3dFormat);  // 0x009E3830
+public:
+    unsigned long GetColourDepth() const;   // 0x009E3820
 };
 
 class CTexture {
@@ -52,11 +53,11 @@ public:
     unsigned long      ByteLength : 28;            // +0x04
     unsigned long      AllocationSource : 4;       // +0x04
 
-    CPixelFormatFromD3D GetPixelFormat() const
+    CPixelFormat GetPixelFormat() const
     {
         D3DSURFACE_DESC_Local desc;
         PD3DTexture->GetLevelDesc(0, &desc);
-        return CPixelFormatFromD3D(desc.Format);
+        return CPixelFormat(desc.Format);
     }
     unsigned long GetLevelByteLength(unsigned long level) const;
 };

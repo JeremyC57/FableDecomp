@@ -52,11 +52,11 @@ unsigned long __fastcall CRC32_Calc(unsigned long seed, const void* data, unsign
 
 struct CCounted {
     virtual void v00();
-    virtual void Destroy();
-    long RefCount;
-    void DecRef() { --RefCount; }
+    virtual void Destroy() const;
+    mutable long RefCount;
+    void DecRef() const { --RefCount; }
     long GetRefCount() const { return RefCount; }
-    void Release()
+    void Release() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -67,13 +67,17 @@ struct CULongVector {
     unsigned long* first; unsigned long* last; unsigned long* end;
     const unsigned long& front() const { return *first; }
 };
-struct CGroupEntry : CCounted {
+namespace NGameText {
+class CGroupEntry : public CCounted { public:
     unsigned char _pad08[0x1c - 0x08];
     CULongVector Entries;                                   // +0x1c
 };
-struct CTextEntry : CCounted {
+class CTextEntry : public CCounted { public:
     CWideString GetText() const;                            // 0x009C7A40
 };
+}
+using NGameText::CGroupEntry;
+using NGameText::CTextEntry;
 template <class T> class CIVCountedPointer { public:
     T* Data;
     __forceinline ~CIVCountedPointer()
@@ -85,12 +89,17 @@ template <class T> class CIVCountedPointer { public:
     }
     T* operator->() const { return Data; }
 };
-struct CDataBank {
-    unsigned long LookupValue(unsigned long crc);           // 0x009CC410
-    unsigned long GetEntryDataType(unsigned long id);       // 0x009CC210
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long id, bool flag);   // 0x009C8890
-    CIVCountedPointer<CTextEntry> GetPTextEntry(unsigned long id, bool flag) const;   // 0x009C9070
+class CBankFile { public:
+    unsigned long GetEntryDataType(unsigned long id) const; // 0x009CC210
 };
+namespace NGameText {
+class CDataBank : public CBankFile { public:
+    unsigned long LookupValue(unsigned long crc) const;     // 0x009CC410
+    CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long id, bool flag) const;   // 0x009C8890
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long id, bool flag) const;   // 0x009C9070
+};
+}
+using NGameText::CDataBank;
 struct CWorldGlobal {
     unsigned char _pad00[0x14];
     CDataBank* PDataBank;                                   // +0x14
@@ -107,7 +116,8 @@ class CTCBase { public:
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
     unsigned char _pad0a[2];
-    CWorld* GetWorld();                                     // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CTCRegionDisplay : public CTCBase { public:
     CWideString   CurrentAreaName;                          // +0x0c
@@ -143,7 +153,7 @@ void CTCRegionDisplay::SetCurrentAreaName(const CCharString& tag, float displayT
             return;
         CurrentAreaName = text;
         CurrentAreaNameExtra = L"";
-        FrameNameChanged = GetWorld()->GetWorldFrame();
+        FrameNameChanged = GetWorld().GetWorldFrame();
         LastAlpha = 0;
     } else {
         CurrentAreaName = L"";

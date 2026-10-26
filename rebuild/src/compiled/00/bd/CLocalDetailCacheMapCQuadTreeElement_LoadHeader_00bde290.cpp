@@ -20,7 +20,6 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;              // +0x0c
     unsigned long SourceChunkStreamPos;                 // +0x10
     long SourceChunkBytesRemaining;                     // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     __forceinline void Read(void* destination, long bytes)
     {
         __int64 next = (unsigned long)(StreamPos + bytes);
@@ -34,6 +33,8 @@ class CDataInputStream { public:
                 ReadWithSrcChunkOverflow((unsigned char*)destination, bytes);
         }
     }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 class CMemoryDataInputStream : public CDataInputStream { public:
     unsigned char* StreamSource;                        // +0x18

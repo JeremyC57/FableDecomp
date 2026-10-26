@@ -5,8 +5,7 @@
 // Local model: no engine/CEngineDef.h exists. Field names/types are the PDB's (fable_types.h), but the retail object
 // places them 4 bytes earlier than the Ego_r layout (floats 0x3C..0x5C, longs 0x60..0x7C), as the lea offsets show.
 class CPersistContext { public:
- void Transfer(float&); // 0x00431061
- void Transfer(long&);  // 0x00431102
+ template <class T> void Transfer(T& value); // 0x00431061
 };
 class CEngineDef { public:
  unsigned char _base[0x3c];

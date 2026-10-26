@@ -2,7 +2,7 @@
 // Leaf: ??0CCombatAction_FallStunned
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008EDA90, 176 bytes incl. padding (`ret 0Ch`). Own vtable 0x012880E4.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) @ 0x00857F30,
-//          CCombatActionBase::SetAnimName(const CCharString&) @ 0x008574D0 (manifest "CTCInGameMenu::SetPDef" is propagated),
+//          CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0 (manifest "CTCInGameMenu::SetPDef" is propagated),
 //          CBasicString<char>::operator==(const char*) @ 0x004115A0, CCharString(const char*, long) @ 0x0099EBF0 / dtor @ 0x0099EAE0.
 // Data: "" @ 0x0122D70E, the default animation name @ 0x0127717C.
 // Shape: the thing defaults to the owner (`thing ? thing : owner`); the empty test is the natural `if (animName == "")`
@@ -13,7 +13,7 @@
 // CCharString model (Ego_r.pdb layout, byte-exact with retail, as the landed CCharString::operator!= 0x0099E960): a 4-byte
 // handle on a 17-byte shared block {CBasicString<char> PData/StringLength/DataLength:31/UseFastExtend:1, NoRefs +0xd}.
 #pragma pack(push, 1)
-struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
+template <class T> class CBasicString { public:                       // CBasicString<char>, 13 bytes
     char*         PData;                        // +0x00
     unsigned long StringLength;                 // +0x04
     unsigned long DataLength : 31;              // +0x08
@@ -21,7 +21,7 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool operator==(const char* text) const;    // 0x004115A0
 };
 class CCharStringData { public:                        // 17 bytes
-    CBasicStringChar Data;                      // +0x00
+    CBasicString<char> Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
 #pragma pack(pop)
@@ -53,7 +53,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetAnimName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 extern const char g_DefaultFallStunnedAnim[];  // 0x0127717C
 
@@ -67,7 +68,7 @@ CCombatAction_FallStunned::CCombatAction_FallStunned(CThingCreatureBase* owner, 
 {
     if (animName == "") {
         CCharString name(g_DefaultFallStunnedAnim, -1);
-        SetAnimName(name);
+        SetCombatAnimation(name);
     } else
-        SetAnimName(animName);
+        SetCombatAnimation(animName);
 }

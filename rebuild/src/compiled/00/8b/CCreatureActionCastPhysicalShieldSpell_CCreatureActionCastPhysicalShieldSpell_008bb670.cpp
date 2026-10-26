@@ -1,7 +1,7 @@
 // CCreatureAction_CastPhysicalShieldSpell::CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase*) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), own vtable (0x0127BDCC), ImmediateCast / OneAnimCast cleared, LevelToCast -1, TimeLimit 0, then SetAnimationName("ST_RELEASE_PHYSICAL_SHIELD")
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BB670, length 120 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
-// CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0,
+// CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0,
 // CCharString::~CCharString @ 0x0099EAE0.
 // Shape: one zero register (ebx) zeroes the sound pair in the frame and later the two flag bytes and TimeLimit; base
 // arguments right to left (the pair, 0x96, the owner); the init-list stores (declaration order, the -1 as an immediate) sink
@@ -27,7 +27,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_CastPhysicalShieldSpell : public CCombatActionBase { public:   // vtable 0x0127BDCC
@@ -48,5 +49,5 @@ CCreatureAction_CastPhysicalShieldSpell::CCreatureAction_CastPhysicalShieldSpell
     , LevelToCast(-1)
     , TimeLimit(0)
 {
-    SetAnimationName("ST_RELEASE_PHYSICAL_SHIELD");
+    SetCombatAnimation("ST_RELEASE_PHYSICAL_SHIELD");
 }

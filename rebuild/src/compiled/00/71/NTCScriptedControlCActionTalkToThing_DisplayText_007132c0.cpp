@@ -8,7 +8,7 @@
 //   AskingHeroQuestion +0x91, DisplayOverScreenFade +0x92, QuestionButton1..3 +0x94/+0x98/+0x9c (PDB less 8).
 #include <string.h>
 #pragma pack(push, 1)
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     char*         PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
@@ -16,7 +16,7 @@ struct CBasicStringChar {
     bool operator==(const char* text) const;    // 0x004115A0
 };
 class CCharStringData { public:
-    CBasicStringChar Data;
+    CBasicString<char> Data;
     long             NoRefs;
 };
 #pragma pack(pop)

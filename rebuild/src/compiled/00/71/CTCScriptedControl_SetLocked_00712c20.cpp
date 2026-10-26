@@ -13,8 +13,9 @@ struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;                  // +4
     CBaseIntelligentPointer();             // 0x00A01B10
     ~CBaseIntelligentPointer();            // 0x00A01C10
-    CBaseObject* GetPItem();               // 0x00A01B50
     void SetPItem(CBaseObject* item);      // 0x00A01B90
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
 };
 
 struct CIntelligentPointer : CBaseIntelligentPointer {

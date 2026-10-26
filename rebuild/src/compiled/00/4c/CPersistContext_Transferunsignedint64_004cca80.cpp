@@ -7,12 +7,13 @@
 // `??$Transfer@_K@CPersistContext@@QAEXPBDAA_K@Z` (const char*, unsigned __int64&), so the row is modelled as that
 // Transfer forwarding to an inlined TransferBinary(value); the forwarding body is inferred (probable, not proven).
 // The catalog "CPersistTraits_uint64_TransferBinary_WithArg" is behavioural.
-// Callees: CPersistContext::CheckCRC @ 0x00404500 (the pooled empty key 0x0122D70E), CDataOutputStream::WriteUInt64
+// Callees: CPersistContext::CheckCRC @ 0x00404500 (the pooled empty key 0x0122D70E), CDataOutputStream::WriteUHUGE
 // @ 0x00993EC0, CPersistTraits<unsigned __int64>::TransferBinaryIn @ 0x0044B890 (landed names).
 // Shape: as 0x004CC520 -- cases 3 and 2 only (`sub eax,2 ; je ; dec eax ; jne`), case 3 first; the load arm's traits
 // object a block-scoped named local in its own 8-byte frame.
 class CDataOutputStream { public:
-    void WriteUInt64(unsigned __int64 value);    // 0x00993EC0
+public:
+    void WriteUHUGE(unsigned __int64);   // 0x00993EC0
 };
 class CMemoryDataInputStream;
 
@@ -39,7 +40,7 @@ void CPersistContext::TransferBinary(T& value)
     CheckCRC("");
     switch (Mode) {
     case 3:
-        PSaveStream->WriteUInt64(value);
+        PSaveStream->WriteUHUGE(value);
         break;
     case 2: {
         CPersistTraits<T> traits;

@@ -37,9 +37,10 @@ class CPlayer { public:
     CThing* GetHeroCreature();                           // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                            // 0x00449970
     void InitPlayerCharacter(bool loadedGame);           // 0x00449D90
     long GetMainPlayerID();                              // 0x00449700
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CEnvironmentSpellEffectInterpolator { public:
     void RefreshScreenEffects();                         // 0x006B8410
@@ -80,7 +81,7 @@ class CWorld : public CWorld_PDB { public:
 void CWorld::ActivateWorld(bool loadedGame)
 {
     LoadingStage("Init Characters", 0);
-    CThing* hero = PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = PlayerManager->GetMainPlayer().GetHeroCreature();
     if (!hero || hero->Dead)
         PlayerManager->InitPlayerCharacter(loadedGame);
     PEnvironment_ptr->SpellEffectInterpolator->RefreshScreenEffects();

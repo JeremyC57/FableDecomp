@@ -23,8 +23,9 @@ class CMainGameComponent { public:
     unsigned char   _pad00[0x24];
     CTextureOwnerB* PWorld;                         // +0x24
     CTextureOwnerA* PDisplayEngine;                         // +0x28
-    bool InitGraphics();                           // 0x00416C8A
     void ChangeMaxTextureSize(long size);
+protected:
+    bool InitGraphics();   // 0x00416C8A
 };
 void CMainGameComponent::ChangeMaxTextureSize(long size)
 {

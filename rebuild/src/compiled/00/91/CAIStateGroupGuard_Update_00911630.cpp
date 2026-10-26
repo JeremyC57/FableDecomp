@@ -100,6 +100,8 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
+    void Terminate();   // 0x008FCF40
 };
 
 
@@ -177,7 +179,6 @@ struct CAIStateGroupBaseA : CAIStateGroupBase {
     EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointerConstThing target, long frames, float speed);   // 0x0097D6F0
     EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointerConstThing target, float proximity,
         bool* pArrived, EMovementType movement, bool a, bool b, bool c, bool d, float e);    // 0x0097E380
-    void Terminate();                           // 0x008FCF40
 };
 
 struct CAIStateGroup_Guard : CAIStateGroupBaseA {

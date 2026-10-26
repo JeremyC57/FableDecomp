@@ -3,7 +3,7 @@
 // Leaf: Transfer
 // One of two byte-identical instantiations in different modules (0x00580371 and 0x005CC1E8; only the callees and the
 // wrapper vtable differ); this one is called from 0x005CC312.
-// Callees: CPersistContext::CheckCRC @ 0x00404500, CDataOutputStream::WriteLong @ 0x00993EB0 (catalogued "WriteCBYTE"; it
+// Callees: CPersistContext::CheckCRC @ 0x00404500, CDataOutputStream::WriteSLONG @ 0x00993EB0 (catalogued "WriteCBYTE"; it
 // writes a long), CPersistTraits<CDefIndex>::TransferBinaryIn @ 0x00452335, TransferObjectSaveText @ 0x009BAD60,
 // TransferObjectLoadText @ 0x009BBA40; wrapper vtable 0x01253F18 (CPersistContext_TransferableComponent<CDefIndex>).
 // Layout: CPersistContext (Ego_r.pdb, 0x2c bytes): use-defaults flag +0x14, mode +0x18, load stream +0x24, save stream +0x28;
@@ -18,7 +18,8 @@ class CDefIndex { public: long Index; };
 class CDataInputStream;
 class CDataOutputStream {
 public:
-    void WriteLong(long value);                    // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 template <class T>
@@ -77,7 +78,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
         break;
     }
     case 3:
-        SaveStream->WriteLong(value.Index);
+        SaveStream->WriteSLONG(value.Index);
         break;
     default:
         value = defaultValue;

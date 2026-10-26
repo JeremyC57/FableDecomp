@@ -23,7 +23,13 @@ class COpinionPersonalityDef { public:
     unsigned char _pad00[0x50];
     float ToleranceToBeingHit;                     // +0x50
 };
-class CTCCreatureOpinionOfHero { public:
+class CTCBase
+{
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCCreatureOpinionOfHero : public CTCBase { public:
     void*   __vftable;                             // +0x00 (CTCBase)
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
@@ -34,13 +40,12 @@ class CTCCreatureOpinionOfHero { public:
     long    FrameToDecayNumberOfTimesHit;          // +0x18
     void*   PDef;                                  // +0x1c CDefPointer<COpinionOfHeroDef const>
     COpinionPersonalityDef* PPersonalityDef;       // +0x20 CDefPointer<COpinionPersonalityDef const>
-    CWorld* GetWorld_00686a80() const;                      // 0x00686A80
     float GetToleranceToBeingHitRemaining() const  // 0x00681940 (landed; inline here)
     {
         if (ToleranceToBeingHitOverride >= 0.0f)
             return ToleranceToBeingHitOverride;
         CThing* thing = ParentThing;
-        COpinionReactionManager* manager = GetWorld_00686a80()->POpinionReactionManager;
+        COpinionReactionManager* manager = PeekWorld().POpinionReactionManager;
         float tolerance = manager->GetToleranceToBeingHit(thing);
         if (PPersonalityDef)
             tolerance += PPersonalityDef->ToleranceToBeingHit;

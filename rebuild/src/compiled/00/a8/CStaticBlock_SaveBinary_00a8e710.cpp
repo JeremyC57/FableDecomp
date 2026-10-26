@@ -10,10 +10,11 @@
 // extended into a fresh register (`xor reg,reg ; mov reg8,[esi+n]`); the writes follow the source order.
 class CDataOutputStream {
 public:
-    void WriteULong(unsigned long value);       // 0x00993EA0
-    void WriteBool(bool value);                 // 0x00993E30
     void WriteUChar(unsigned char value);       // 0x00993E50
-    void WriteLong(long value);                 // 0x00993EB0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteSLONG(long);   // 0x00993EB0
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 class CTexture;
@@ -34,10 +35,10 @@ struct CStaticBlock {
 
 void CStaticBlock::SaveBinary(CDataOutputStream* stream) const
 {
-    stream->WriteULong(m_firstIndex);
-    stream->WriteULong(m_count);
-    stream->WriteBool(m_flagA);
+    stream->WriteULONG(m_firstIndex);
+    stream->WriteULONG(m_count);
+    stream->WriteEBOOL(m_flagA);
     stream->WriteUChar(m_type);
-    stream->WriteBool(m_flagB);
-    stream->WriteLong(MaterialIndex);
+    stream->WriteEBOOL(m_flagB);
+    stream->WriteSLONG(MaterialIndex);
 }

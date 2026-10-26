@@ -10,11 +10,12 @@
 // CScriptGameResourceObjectScriptedThingBase 0x0127094C.
 // Layout (the CEntityScriptBase prefix of the landed entity scripts): vptr, Game +4, CScriptThing Me +8.
 // Shape: the landed CSickChildFishingSpot/CHHUndead::Main prelude (block-scoped filter); the handle is a function-scope
-// local after an early `if (IsDone()) return;` (a block-scoped handle shares the filter's frame words, retail keeps
+// local after an early `if (IsActiveThreadTerminating()) return;` (a block-scoped handle shares the filter's frame words, retail keeps
 // a 0x20-byte frame); a scripted-thing handle local (never used) built after
-// the done test, so its out-of-line dtor runs after the `do { NewScriptFrame(); } while (!IsDone());` loop;
+// the done test, so its out-of-line dtor runs after the `do { NewScriptFrame(); } while (!IsActiveThreadTerminating());` loop;
 // `Game->GiveThingBestEnemyTarget(Me, Game->GetHero())` fetches the outer vtable before the inner call.
 
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
@@ -82,16 +83,23 @@ class CGameScriptInterface { public:                      // vtable 0x01260F0C
     virtual void v447() const; virtual void v448() const; virtual void v449() const; virtual void v450() const;
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;   // slot 451 (+0x70c)
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
 };
 class CBaseObject { public:                               // CBaseIntelligentPointer root
-    virtual void v00();
     void* m_pIntelligentPointer;                   // +0x04
-    CBaseObject();                                 // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CCountedPointerWords {
     void* Data;
@@ -102,16 +110,21 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual void v00();
-    ~CScriptGameResourceObjectScriptedThingBase(); // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase(); // 0x007E74D0
 };
 
-class CFishermanWasp {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CFishermanWasp : public CEntityScriptBase {
 public:
     void*                   __vftable;             // +0x00
     CGameScriptInterface*   Game;                  // +0x04
     CScriptThing            Me;                    // +0x08
-    void RegisterFilter(const CIsThingAlive& filter);   // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -119,14 +132,14 @@ void CFishermanWasp::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase seh;
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     do {
         Game->NewScriptFrame();
-    } while (!IsDone());
+    } while (!IsActiveThreadTerminating());
 }

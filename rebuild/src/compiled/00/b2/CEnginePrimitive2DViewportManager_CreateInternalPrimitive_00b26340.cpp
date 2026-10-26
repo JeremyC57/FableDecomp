@@ -4,7 +4,6 @@
 
 class CEngineInternalPrimitiveBase;
 
-void* operator_new_stub(unsigned int size);
 #pragma comment(linker, "/alternatename:?operator_new_stub@@YAPAXI@Z=??2@YAPAXI@Z")
 
 class CEngineInternalPrimitiveBase
@@ -21,7 +20,7 @@ CEngineInternalPrimitiveBase*
 CEnginePrimitive2DViewportManager::CreateInternalPrimitive()
 {
     CEngineInternalPrimitiveBase* p =
-        (CEngineInternalPrimitiveBase*)operator_new_stub(0x178);
+        (CEngineInternalPrimitiveBase*)operator new(0x178);
     if (p)
         return p->Construct();
     return 0;

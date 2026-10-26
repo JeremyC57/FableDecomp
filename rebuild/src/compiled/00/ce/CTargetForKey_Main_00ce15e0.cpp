@@ -15,6 +15,7 @@
 // Layout: Ego_r.pdb CTargetForKey (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14,
 //   PMasterData +0x18, TargetForKeyDone +0x1c. Handle / map / movie classes as the landed CMK_GHC_HERO3::Main 0x00D29DB0
 //   and CRockTrollTrigger::Main 0x00E0AD40.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -36,8 +37,14 @@ class CScriptThing { public:                                  // vtable 0x01238C
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     void SetClickText(const CCharString& text) { if (PImp_Data) PImp_Data->SetClickText(text); }
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -64,7 +71,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CHandlePImp PImp;                                   // +0x08 Data, +0x0c Info
     __forceinline CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void h001();
-    ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {
         CBaseObject::operator=(other);
@@ -179,8 +186,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void RegisterFilter(CIsThingAlive& filter);        // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CTargetForKey : CEntityScriptBase {
     void* ParentClass;                                 // +0x14 CPersonalScript_GlobalThingsScript*
@@ -193,7 +201,7 @@ void CTargetForKey::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

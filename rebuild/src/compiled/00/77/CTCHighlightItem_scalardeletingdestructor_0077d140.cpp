@@ -20,15 +20,23 @@ class CTCBase { public:
     void RemoveFromGlobalTCs();                          // 0x00686DF0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* PItem;                                         // +0x04
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
     CBaseIntelligentPointer();                           // 0x00A01B10
-    ~CBaseIntelligentPointer();                          // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>: generated destructor
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {  // CIntelligentPointer<CThing>: generated destructor
+public:
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class C3DVector { public: float X, Y, Z; };
@@ -38,7 +46,7 @@ struct CTCHighlightItem : CTCBase {
     bool                Running;                         // +0x0d
     long                LifeTimer;                       // +0x10
     C3DVector           StartPos;                        // +0x14
-    CIntelligentPointer PParticleEmitter;                // +0x20
+    CIntelligentPointer<CThing> PParticleEmitter;                // +0x20
     void DoStopRunning();                                // 0x0077CCA0
     virtual ~CTCHighlightItem() { DoStopRunning(); }
 };

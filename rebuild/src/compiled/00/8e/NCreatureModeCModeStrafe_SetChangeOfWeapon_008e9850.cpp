@@ -30,7 +30,10 @@ class CCharString { public:
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0 CCRC::Calc
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0 CCRC::Calc
 
 class CAnimFilterOfGroup { public:                    // vtable 0x01267568
     virtual void v00();
@@ -39,7 +42,7 @@ class CAnimFilterOfGroup { public:                    // vtable 0x01267568
     void SetGroup(const CCharString& group)    // 0x0073DFF0
     {
         Group = group;
-        GroupCRC = Calc_004014a0(0, group.GetPString(), group.GetLength());
+        GroupCRC = CCRC::Calc(0, group.GetPString(), group.GetLength());
     }
 };
 
@@ -76,17 +79,18 @@ class CTCWeapon { public:                             // interface type 0x48
     const CCharString& GetAnimationGroupName() const;   // 0x005DABE0
 };
 
-struct CAnimBankRecord {
+class C3DAnimationInfo { public:
     unsigned char _pad00[0x10];
     float         Seconds;                     // +0x10
 };
-struct CAnimBank {
-    CAnimBankRecord* GetRecord(long index);    // 0x00A242C0
+class CMeshDataBank { public:
+public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
 struct CGlobalComponents {
     unsigned char _pad00[0x3c];
-    CAnimBank*    AnimBank;                    // +0x3c
-    CAnimBank* GetAnimBank() const { return AnimBank; }
+    CMeshDataBank*    AnimBank;                    // +0x3c
+    CMeshDataBank* GetAnimBank() const { return AnimBank; }
 };
 
 namespace NAnimationEntryBodge {
@@ -143,7 +147,7 @@ void CModeStrafe::SetChangeOfWeapon(CThing* weapon)
     AimingNumFrames = 0;
     if (aim) {
         CGlobalComponents* components = GetGlobalComponents();
-        AimingNumFrames = (long)(g_framesPerSecond * components->GetAnimBank()->GetRecord(aim->AnimIndex)->Seconds);
+        AimingNumFrames = (long)(g_framesPerSecond * components->GetAnimBank()->PeekAnimation(aim->AnimIndex)->Seconds);
     }
     AimingCenterFrame = AimingNumFrames / 2;
     ClearStrafingCombinationAnims(false);

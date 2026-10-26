@@ -71,15 +71,16 @@ class CThingManager { public:
     CThing* GetThingWithUID(unsigned __int64 uid);   // 0x0051ED80
 };
 struct CTCInventoryBase;
-struct CTCBase_Item {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void OnInitialActivate();              // slot 6 @ 0x00686870
     CThing*       ParentThing;                     // +0x04
     long          field8;                          // +0x08
-    CThingManager* GetThingManager();              // 0x00686AE0
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
 };
 #pragma pack(push, 4)
-class CTCInventoryItem : public CTCBase_Item { public:
+class CTCInventoryItem : public CTCBase { public:
     CDefPointer<CInventoryItemDef> PDef;           // +0x0c
     CTCInventoryBase* PInventory;                  // +0x10
     long              call;                        // +0x14
@@ -95,7 +96,7 @@ void CTCInventoryItem::OnInitialActivate()
     CThing* owner;
     long inventoryType;
     if (PInventory == 0 && InventoryUIDToAttachTo > 0) {
-        owner = GetThingManager()->GetThingWithUID(InventoryUIDToAttachTo);
+        owner = GetThingManager().GetThingWithUID(InventoryUIDToAttachTo);
         if (owner && !owner->Dead) {
             inventoryType = GetPDef()->InventoryType;
             CTCInventoryBase* inventory;
@@ -103,5 +104,5 @@ void CTCInventoryItem::OnInitialActivate()
                 AddToInventory(inventory, false, true, 0, true, false);
         }
     }
-    CTCBase_Item::OnInitialActivate();
+    CTCBase::OnInitialActivate();
 }

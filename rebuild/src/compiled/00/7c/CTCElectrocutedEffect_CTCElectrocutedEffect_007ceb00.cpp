@@ -26,24 +26,30 @@ class CCharString { public:
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                    // +0x04
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    void SetPItem(CBaseObject* item);                   // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CThingPointer : CBaseIntelligentPointer {        // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CThingPointer(CThing* item = 0) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {        // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item = 0) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 template <class P> struct CAllocProxy {                // STLport _STLP_alloc_proxy: the end-of-storage pointer with its own ctor
     P _M_data;
     CAllocProxy(P v) : _M_data(v) { }
 };
 struct CThingPointerVector {                            // STLport vector<CIntelligentPointer<CThing> > (12 bytes)
-    CThingPointer* _M_start;
-    CThingPointer* _M_finish;
-    CAllocProxy<CThingPointer*> _M_end_of_storage;
+    CIntelligentPointer<CThing>* _M_start;
+    CIntelligentPointer<CThing>* _M_finish;
+    CAllocProxy<CIntelligentPointer<CThing>*> _M_end_of_storage;
     CThingPointerVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     void reserve(unsigned long n);                      // 0x0077E580
 };
@@ -174,7 +180,7 @@ public:
     long FadeInTime;                                    // +0x14
     long FadeOutTimeStart;                              // +0x18
     long FadeOutTime;                                   // +0x1c
-    CThingPointer PEffect;                              // +0x20
+    CIntelligentPointer<CThing> PEffect;                              // +0x20
     CThingPointerVector TintList;                       // +0x28
     virtual void v00();
     void Reset();                                       // 0x007CE7A0

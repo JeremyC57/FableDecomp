@@ -16,6 +16,10 @@
 // The +0x3c member destructor is __fastcall (ecx = this+0x3c); modeled as a
 // free __fastcall(objptr). The main destructor takes ecx = this.
 
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 struct CEngineSubPrimitiveText;
 struct COpinionDeedReactionDef_Member;
 
@@ -24,10 +28,7 @@ extern void FABLE_FASTCALL COpinionDeedReactionDef_Member_dtor(
         COpinionDeedReactionDef_Member* thisptr);
 
 // this object's own (non-deleting) destructor (thiscall)
-extern void FABLE_FASTCALL COpinionDeedReactionDef_dtor(
-        CEngineSubPrimitiveText* thisptr);
 
-extern void FABLE_CDECL fable_operator_delete(void* p);
 
 void* FABLE_FASTCALL COpinionDeedReactionDef_scalar_deleting_dtor(
         CEngineSubPrimitiveText* thisptr,
@@ -36,8 +37,8 @@ void* FABLE_FASTCALL COpinionDeedReactionDef_scalar_deleting_dtor(
 {
     COpinionDeedReactionDef_Member_dtor(
         (COpinionDeedReactionDef_Member*)((fable_u8*)thisptr + 0x3c));
-    COpinionDeedReactionDef_dtor(thisptr);
+    ((CParentDefClassBase*)(thisptr))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        fable_operator_delete(thisptr);
+        operator delete(thisptr);
     return thisptr;
 }

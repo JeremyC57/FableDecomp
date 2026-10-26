@@ -28,13 +28,16 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
 };
 struct CWideStringVector_Retail;              // std::vector<CWideString>
-struct CDataBank_Retail {
-    CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0 (CDataBank::GetTextBySymbol, by value through the hidden result pointer)
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0 (CDataBank::GetTextBySymbol, by value through the hidden result pointer)
     void* LookupText(unsigned long hash);        // 0x009CC410 (labelled CVectorMap::LookupValue)
 };
+}
+using NGameText::CDataBank;
 struct CEngineGlobals_Retail {
     unsigned char    _pad[0x14];
-    CDataBank_Retail* m_pTextBank;               // +0x14
+    CDataBank* m_pTextBank;               // +0x14
 };
 extern CEngineGlobals_Retail* g_pEngineGlobals_013b86a0;   // 0x013B86A0
 bool __fastcall ConstructString(CWideString* text, CWideStringVector_Retail* args);   // 0x009C7C20

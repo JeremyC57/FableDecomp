@@ -26,7 +26,7 @@ private:
     void* m_pData;
 };
 
-long __fastcall GetLanguage();                    // 0x00415070
+namespace NLocalisation { unsigned long __fastcall GetLanguage(); }   // 0x00415070                    // 0x00415070
 
 enum {
     LANG_CHINESE  = 0x04,
@@ -40,7 +40,7 @@ enum {
 
 CCharString __fastcall GetFontBankName()
 {
-    switch (GetLanguage())
+    switch (NLocalisation::GetLanguage())
     {
     case LANG_FRENCH:
         return CCharString("TEXT_FRENCH_MAIN", -1);

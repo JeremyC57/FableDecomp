@@ -15,23 +15,32 @@ class CThing { public:
     bool IsDead() const { return (m_flags & 1) != 0; }
 };
 
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer();
-    CBaseObject* m_pItem;                   // +0x04
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {         // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {         // vtable 0x01238C6C
+public:
     virtual ~CIntelligentPointer();
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct SThingListNode {
     SThingListNode*     next;               // +0x00
     SThingListNode*     prev;               // +0x04
-    CIntelligentPointer value;              // +0x08
+    CIntelligentPointer<CThing> value;              // +0x08
 };
 
-extern "C" void __cdecl FreeNode(void* p);   // free 0x00BFEA14
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CThingComponent {
     virtual void v00();
@@ -44,7 +53,7 @@ class CTCThingOwner : public CThingComponent { public:
     void ClearDeadEntries();
 };
 
-static inline bool IsEntryDead(const CIntelligentPointer& p)
+static inline bool IsEntryDead(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!p.GetPItem()->IsDead())
@@ -63,7 +72,7 @@ void CTCThingOwner::ClearDeadEntries()
             prev->next = next;
             next->prev = prev;
             n->value.~CIntelligentPointer();
-            FreeNode(n);
+            free(n);
             n = next;
         } else {
             n = n->next;

@@ -36,7 +36,8 @@ class CDisplayManager { public:
     bool            Rendering;                         // +0x214
     void BeginRender();                                // 0x009BEF20
     void EndRender();                                  // 0x009BEF50
-    void SwapScreens();                                // 0x009BEEB0
+public:
+    bool SwapScreens();   // 0x009BEEB0
 };
 class CSystemManager { public:
     unsigned char    _pad00[0x60];

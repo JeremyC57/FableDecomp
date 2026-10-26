@@ -4,7 +4,7 @@
 //   0x012417E4 slot 9 (the TC FrameUpdate slot; the catalog's "vfunc_9").
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inlined lookup of CTCAnimationComplex, type
 //   0x5A), CTCAnimationComplex::GetAnimation 0x0070B460, CTCAnimatingObject::PlayAnimation(const CAnimInit&, long)
-//   0x007F8DC0, free 0x00BFEA14, CTCBase::GetWorld() const 0x00686A80 (twice), CThing::IsAffectedByBulletTime
+//   0x007F8DC0, free 0x00BFEA14, CTCBase::PeekWorld() const 0x00686A80 (twice), CThing::IsAffectedByBulletTime
 //   0x004C9920, CBulletTime::GetTimeScale 0x004C5FA0, CAnimateThing::UpdateFrameLogic(const CAnimFrameTime&) 0x0070E8B0.
 //   Globals g_framesPerSecond 0x01375550, 1.0f 0x0122DED8.
 // Layout = Ego_r.pdb CTCAnimatingObject: Animating +0x0C, CurrentAnimationPriority +0x10, QueuedAnims +0x14 (STLport
@@ -103,9 +103,16 @@ class CWorld { public:
     CBulletTime*  m_pBulletTime;                // +0x68
 };
 
-class CTCAnimatingObject {
+class CTCBase
+{
 public:
     virtual void v00();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCAnimatingObject : public CTCBase {
+public:
     CThing*                ParentThing;         // +0x04
     bool                   ToBeRemoved;         // +0x08
     bool                   IsInGlobalUpdateTCs; // +0x09
@@ -113,7 +120,6 @@ public:
     bool                   Animating;           // +0x0c
     long                   CurrentAnimationPriority;   // +0x10
     CRetailList<CAnimInit> QueuedAnims;         // +0x14
-    CWorld* GetWorld() const;                   // 0x00686A80 (CTCBase)
     void PlayAnimation(const CAnimInit& init, long priority);   // 0x007F8DC0
     __forceinline CTCAnimationComplex* GetAnimationComplex() const
     {
@@ -139,7 +145,7 @@ void CTCAnimatingObject::FrameUpdate()
         }
     }
     float seconds = 1.0f / g_framesPerSecond;
-    CAnimFrameTime time((GetWorld()->m_pBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime())
-                            ? seconds / GetWorld()->m_pBulletTime->GetTimeScale() : seconds);
+    CAnimFrameTime time((PeekWorld().m_pBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime())
+                            ? seconds / PeekWorld().m_pBulletTime->GetTimeScale() : seconds);
     animate.UpdateFrameLogic(time);
 }

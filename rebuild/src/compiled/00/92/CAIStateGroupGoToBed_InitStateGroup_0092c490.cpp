@@ -11,7 +11,7 @@
 class CWorld;
 class CThingAICreature;
 
-extern unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 // One step of the world random generator on a shared seed; returns the new seed.
 inline unsigned long WorldRandomStep(unsigned long& seed)

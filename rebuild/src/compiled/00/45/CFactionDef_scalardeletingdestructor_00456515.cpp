@@ -6,11 +6,10 @@ class CFactionDef { public:
     void CFactionDef_dtor();
     void* CFactionDef_scalar_deleting_destructor(unsigned int flags);
 };
-extern void __cdecl op_delete(void* p);
 void* CFactionDef::CFactionDef_scalar_deleting_destructor(unsigned int flags)
 {
     this->CFactionDef_dtor();
     if (flags & 1)
-        op_delete(this);
+        operator delete(this);
     return this;
 }

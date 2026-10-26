@@ -20,8 +20,9 @@ class CInputEvent { public:
     long           GetDeviceNumber() const;                    // 0x00A03B60
     long           GetKey() const;                             // 0x00A03B70
     unsigned short GetChar() const;                     // 0x00A03B80 (wchar_t; VC7.1 without /Zc:wchar_t)
-    long           GetButton() const;                          // 0x00A03B90
     void           Clear();                                    // 0x00A03BE0
+public:
+    long GetJoystickButton() const;   // 0x00A03B90
 };
 
 template <class T>
@@ -49,7 +50,7 @@ void CInputManager::RemoveEventFromQueue(const CInputEvent& event)
             switch (event.GetDeviceType()) {
             case 1:
                 if (event.GetType() == 0x13 || event.GetType() == 0x14 || event.GetType() == 0x15) {
-                    if (event.GetButton() == EventStore[i].GetButton())
+                    if (event.GetJoystickButton() == EventStore[i].GetJoystickButton())
                         goto found;
                 } else
                     goto found;

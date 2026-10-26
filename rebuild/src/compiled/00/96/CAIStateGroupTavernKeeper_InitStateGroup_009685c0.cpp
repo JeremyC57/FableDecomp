@@ -161,7 +161,8 @@ class CTCShop { public:
 };
 
 class CTCShopKeeper { public:                          // interface type 0x90 component
-    CTCShop* GetShopTC();                       // 0x00798F50
+public:
+    CTCShop* GetShopTC() const;   // 0x00798F50
 };
 
 class CWorld;

@@ -18,7 +18,8 @@ struct SCountBlock {
 };
 
 class CBankFileAsyncData { public:
-    bool IsFinished();                     // 0x009D54E0
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
 
 struct CCountedPointer_BankFileAsyncData {
@@ -39,17 +40,29 @@ struct CCountedPointer_BankFileAsyncData {
 };
 
 class CGraphicFrameData { public:
-    long Sizeof();                         // 0x009FCBF0
+public:
+    unsigned long Sizeof() const;   // 0x009FCBF0
 };
 class CManagedTexture { public:
     long  m_0;
     void* m_pData;                         // +0x04
     bool HasData() const { return m_pData != 0; }
-    long Sizeof();                         // 0x00A69E60
     void ClearHandle();                    // 0x00A69AD0
+public:
+    unsigned long Sizeof() const;   // 0x00A69E60
 };
 
-struct CFrameData {
+class CResource
+{
+public:
+    void SetResourceSize(unsigned long);   // 0x009FBF20
+};
+class CManagedTextureOwner : public CResource
+{
+public:
+};
+
+struct CFrameData : public CManagedTextureOwner {
     unsigned char                     _pad[0x1c];
     CGraphicFrameData*                m_pGraphic;              // +0x1c
     unsigned char                     _pad20[8];
@@ -62,7 +75,6 @@ struct CFrameData {
             size += LoadingManagedTexture.Sizeof();
         return size;
     }
-    void SetResourceSize(unsigned long size);                 // 0x009FBF20 (CResource)
     bool StopLoading();
 };
 

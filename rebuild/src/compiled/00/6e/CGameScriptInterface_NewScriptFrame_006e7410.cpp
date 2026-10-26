@@ -30,7 +30,10 @@ struct Big {
 extern Guard* g_guard;   // ds:0x13d2838
 extern Big* g_big;       // ds:0x13b89fc
 
-extern int __cdecl SomeCall(void);
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};   // 0x0049D870
 
 void CGameScriptInterface_NewScriptFrame()
 {
@@ -42,7 +45,7 @@ void CGameScriptInterface_NewScriptFrame()
     if (g->flag) return;
 
     Inner* esi = g_big->p88->p8->p2c;
-    int eax = SomeCall();
+    int eax = CWorld::GetFrame();
     esi->f18 = esi->f1c;
     esi->f1c = eax;
 }

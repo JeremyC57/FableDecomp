@@ -122,7 +122,8 @@ public:
 };
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CWorldPlayers {                           // g_pWorld viewed for its player manager (+0x1C)
 public:
@@ -149,7 +150,7 @@ bool CombatDialogueManager::IsSpeechAllowed(const CThingCreatureBase& creature) 
 {
     if (PCurrentTalker.Get() && !PCurrentTalker->Dead)
         return false;
-    CThingCreatureBase* hero = ((CWorldPlayers*)g_pWorld)->PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThingCreatureBase* hero = ((CWorldPlayers*)g_pWorld)->PlayerManager->GetMainPlayer().GetHeroThing();
     if (hero == 0 || hero->Dead)
         return false;
     CTCCombatSpeechTargets* targets;

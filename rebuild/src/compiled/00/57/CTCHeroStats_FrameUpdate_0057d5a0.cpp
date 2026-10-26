@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057D5A0, 798 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`, as the landed SetAge 0x0057B05F).
 // Callees: CTCBase::GetWorldMap() @ 0x00686D30, CWorldMap::GetCurrentRegionNumber() @ 0x004FB150,
-//          CTCHeroStats::UpdateAppearanceStats(bool) @ 0x0057D23B (descriptive name), CTCBase::GetDefinitions() @ 0x006869D0,
+//          CTCHeroStats::UpdateAppearanceStats(bool) @ 0x0057D23B (descriptive name), CTCBase::GetDefinitionManager() @ 0x006869D0,
 //          CTCHeroStats::SetFatness(float) @ 0x0057B169, CTCHeroStats::GetFatnessReducingFrequencyInFrames() @ 0x0057A60A,
 //          std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020 / const @ 0x004365B0,
 //          GFGetCurrentFrame() @ 0x0049D870, _ftol @ 0x00BFEA70, CThing virtual slot 59 (+0xEC, ModifyHealth(float, bool)),
@@ -92,18 +92,30 @@ bool __fastcall IS_THING_ALIVE_00436380(CThing* const& thing)
 }
 #pragma auto_inline(on)
 
-struct CIntelligentPointer {
-    unsigned char _body[8];
-    CThing* GetPItem() const;                        // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 #pragma pack(push, 1)
 class CTCInventoryWeapons { public:                         // interface 0x13
     unsigned char       _pad_0x00[0x134];
-    CIntelligentPointer PActiveMeleeWeapon;          // +0x134
+    CIntelligentPointer<CThing> PActiveMeleeWeapon;          // +0x134
     long                ActiveMeleeWeaponDefIndex;   // +0x13C
     bool                MeleeWeaponCarriedOnLoad;    // +0x140
-    CIntelligentPointer PActiveRangedWeapon;         // +0x141
+    CIntelligentPointer<CThing> PActiveRangedWeapon;         // +0x141
 };
 #pragma pack(pop)
 
@@ -143,15 +155,25 @@ class CHeroStatsDef { public:
     float         FatnessReduction;                  // +0x84
 };
 
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
 
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                 // 0x0049D870
 extern long g_framesPerSecond;                       // 0x01375550
 
-class CTCHeroStats { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    CWorldMap& GetWorldMap();   // 0x00686D30
+};
+
+class CTCHeroStats : public CTCBase { public:
     void*         __vftable;                         // +0x000
     CThing*       ParentThing;                       // +0x004 CTCBase
     unsigned char _pad_0x008[0x30];
@@ -168,9 +190,7 @@ class CTCHeroStats { public:
     unsigned char _pad_0x098[0x8C];
     CLongVector   RegionTime;                        // +0x124 (PDB +0x130)
 
-    CWorldMap* GetWorldMap();                        // 0x00686D30
-    CDefinitionHolder* GetDefinitions() const;       // 0x006869D0
-    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitions()->PHeroStatsDef; }
+    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
     void UpdateAppearanceStats(bool force);          // 0x0057D23B
     void SetFatness(float fatness);                  // 0x0057B169
     long GetFatnessReducingFrequencyInFrames() const;   // 0x0057A60A
@@ -180,7 +200,7 @@ class CTCHeroStats { public:
 
 void CTCHeroStats::FrameUpdate()
 {
-    long region = GetWorldMap()->GetCurrentRegionNumber();
+    long region = GetWorldMap().GetCurrentRegionNumber();
     if (region >= 0 && region < RegionTime.size())
         ++RegionTime[region];
     UpdateAppearanceStats(false);
@@ -195,7 +215,7 @@ void CTCHeroStats::FrameUpdate()
             --FramesUntilStaminaRefills;
             if (FramesUntilStaminaRefills <= 0) {
                 long fps = g_framesPerSecond;
-                if (GFGetCurrentFrame() % fps == 0)
+                if (CWorld::GetFrame() % fps == 0)
                     Stamina += GetHeroStatsDef()->StaminaRefillAmount;
                 if (Stamina < 0)
                     Stamina = 0;

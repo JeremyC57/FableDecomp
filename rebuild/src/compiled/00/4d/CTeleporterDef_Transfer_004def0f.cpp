@@ -1,8 +1,6 @@
 #pragma optimize("s",on)
 class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
-    void TransferFloat(int* value);                 // 0x00431061 Transfer(float&)
-    void TransferLong(int* value);                  // 0x00431102 Transfer(long&)
-    void TransferBool(int* value);                  // 0x0043314A Transfer(bool&)
+    template <class T> void Transfer(T& value);                 // 0x00431061 Transfer(float&)
 };
 
 class CTCNoiseDef { public:
@@ -14,7 +12,7 @@ class CTCNoiseDef { public:
 
 void __fastcall CTCNoiseDef_Transfer(CTCNoiseDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->TransferFloat(&def->a);
-    ctx->TransferLong(&def->b);
-    ctx->TransferBool(&def->c);
+    ctx->Transfer(*(float*)(&def->a));
+    ctx->Transfer(*(long*)(&def->b));
+    ctx->Transfer(*(bool*)(&def->c));
 }

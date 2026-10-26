@@ -24,9 +24,12 @@ class CWideString { public:
     void* PStringData;
     ~CWideString();                                     // 0x0099B510
 };
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);       // 0x009C95E0
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;       // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank* GameTextBank;                            // +0x14

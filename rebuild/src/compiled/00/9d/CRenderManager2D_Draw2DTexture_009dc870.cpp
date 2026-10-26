@@ -21,7 +21,8 @@ class CPixelFormat { public: long FormatIndex; };
 class C2DExtentsI { public: unsigned long Width, Height; };
 class CTexture { public:
     CPixelFormat GetPixelFormat() const;               // 0x009F9D80
-    C2DExtentsI GetDimensions(unsigned long level);    // 0x009F9DB0
+public:
+    C2DExtentsI GetDimensions(unsigned long) const;   // 0x009F9DB0
 };
 struct SPixelFormatInfo {                              // 36-byte rows
     bool          IsCompressed;

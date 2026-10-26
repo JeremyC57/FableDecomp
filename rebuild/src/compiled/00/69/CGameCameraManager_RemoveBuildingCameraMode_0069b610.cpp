@@ -10,7 +10,8 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                       // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 
 class CEngine { public:
@@ -120,7 +121,7 @@ class CGameCameraManager { public:
 
 void CGameCameraManager::RemoveBuildingCameraMode()
 {
-    if (!g_pEngine->m_pPlayerManager->GetMainPlayer()->HasMode(0x2f)) {
+    if (!g_pEngine->m_pPlayerManager->GetMainPlayer().HasMode(0x2f)) {
         SetUpMainCameraManagerSetDef();
         if (IsObservedThingInMelee())
             AddMeleeCameraMode();

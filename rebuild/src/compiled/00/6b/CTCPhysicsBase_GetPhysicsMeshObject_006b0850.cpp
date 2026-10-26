@@ -51,7 +51,9 @@ class CThingPhysicsMeshInfo { public:
     unsigned short BankIndex;                   // +0x00
     float          RenderSizeX;                 // +0x04
 };
-class CTCPhysicsBase { public:
+class CTCBase
+{
+public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -70,17 +72,21 @@ class CTCPhysicsBase { public:
     virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088(); virtual void v089(); virtual void v090();
     virtual void v091(); virtual void v092();
     virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo();   // slot 93 (+0x174)
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCPhysicsBase : public CTCBase { public:
     void*     ParentThing;                      // +0x04
     unsigned char _pad08[0x4];
     C3DVector Position;                         // +0x0c
-    CWorld* GetWorld_00686a80();                         // 0x00686A80 (CTCBase)
     CPhysicsMeshObject GetPhysicsMeshObject();
 };
 
 CPhysicsMeshObject CTCPhysicsBase::GetPhysicsMeshObject()
 {
     const CThingPhysicsMeshInfo* info = GetPhysicsMeshInfo();
-    CMeshBank* bank = GetWorld_00686a80()->PMeshBank;
+    CMeshBank* bank = PeekWorld().PMeshBank;
     CPhysicsMeshInfo* meshInfo = bank->GetPhysicsMeshInfo(info->BankIndex);
     return CPhysicsMeshObject(meshInfo->GetMesh(), Position, GetRightHandedSet(), info->RenderSizeX * 0.01f);
 }

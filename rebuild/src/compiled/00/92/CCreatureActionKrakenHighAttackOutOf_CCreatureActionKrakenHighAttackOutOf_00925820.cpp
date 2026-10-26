@@ -22,7 +22,8 @@ class CSoundPair { public:
 class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 struct CCreatureAction_KrakenHighAttackOutOf : CCombatActionBase {
@@ -35,6 +36,6 @@ CCreatureAction_KrakenHighAttackOutOf::CCreatureAction_KrakenHighAttackOutOf(CTh
 {
     {
         CCharString name("OUT_OF_ATTACK_HIGH", -1);       // scoped named local (a bare temporary would reuse eax, GOTCHAS)
-        SetAnimationName(name);            // 0x008574D0
+        SetCombatAnimation(name);            // 0x008574D0
     }
 }

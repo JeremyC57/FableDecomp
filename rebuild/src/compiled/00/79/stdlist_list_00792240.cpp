@@ -20,7 +20,7 @@ struct TreeList
     TreeNode* head;   // +0x0
 };
 
-void __cdecl free(void*);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void FABLE_FASTCALL SortTreeRecursively_00436900(TreeList* thisptr)
 {

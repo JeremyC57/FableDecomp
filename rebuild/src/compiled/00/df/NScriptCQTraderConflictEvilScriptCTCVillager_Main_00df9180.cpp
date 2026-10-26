@@ -17,6 +17,7 @@
 // Shape: the landed CMuteGuardOutsideWoods::Main 0x00D86150 family: each hit test owns conditional CCharString temporaries
 //   (flag word in ebx, destroyed in reverse) and is materialised as a bool before its branch; the timer is read through the
 //   inline CTimer::GetTime (`add eax,6Ch ; mov eax,[eax]`) and written through CTimer::SetTime.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -36,7 +37,7 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 struct GameCalls {                                     // CGameScriptInterface vtable 0x01260F0C (ghidra_out/fable_cgsi_slots.h)
     virtual void g000(); virtual void g001(); virtual void g002(); virtual void g003(); virtual void g004(); virtual void g005(); virtual void g006();
@@ -138,8 +139,14 @@ class CTimer { public:                                        // a script timer:
     __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
     __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a predicate holding a script thing
+namespace NScript {
+class __declspec(novtable) CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a predicate holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -147,14 +154,15 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a p
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 extern "C" int __cdecl rand();                         // 0x00BFEB16
 
-namespace NScript {
 struct CEntityScriptBase {                             // retail 0x14 bytes
     virtual void v00();
     GameCalls*   Game;                                 // +0x04
     CScriptThing Me;                                   // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
-    bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
+namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_TraderConflictEvilScript { public:
     unsigned char _pad[0x60];

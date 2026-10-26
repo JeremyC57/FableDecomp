@@ -5,6 +5,7 @@
 // Shape: CMKGHCHERO3 0x00D29DB0 model; the chief handle ctor is plain inline (the per-function inline budget expands it here
 //   but calls 0x007E72A0 for the later hero handles); hut position via a __forceinline null-test accessor; Me / the hero
 //   reached through reference helpers so MsgIsTalkedToBy / IsAlive stay virtual; the two cut-scene blocks share a tail.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -90,7 +91,7 @@ struct CHandlePImp {
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CHandlePImp PImp;                                   // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }    // out of line 0x007E72A0
-    ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     __forceinline CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other)
     {
         CBaseObject::operator=(other);
@@ -217,8 +218,14 @@ class CGameScriptInterface { public:
     virtual void v518(); virtual void v519(); virtual void v520(); virtual void v521(); virtual void v522(); virtual void v523(); virtual void v524(); virtual void v525();
     virtual void EntitySetAsToAddToComboMultiplierWhenHit(const CScriptThing&, bool) const;   // slot 526 (+0x838) 0x0088ebc0
 };
-struct CIsThingAlive {                                  // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -228,7 +235,8 @@ class CEntityScriptBase { public:                              // retail 0x14 by
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CQBreakSiegeScript {
     unsigned char _pad[0x48];
@@ -253,7 +261,7 @@ void CKG_ChiefBreakSiege::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

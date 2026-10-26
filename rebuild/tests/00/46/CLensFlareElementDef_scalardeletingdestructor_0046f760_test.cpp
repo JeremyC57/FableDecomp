@@ -3,7 +3,14 @@
 
 class CLandscapeBackgroundPatch;
 
-extern "C" void __fastcall CLensFlareElementDef_dtor(CLandscapeBackgroundPatch* thisptr) { (void)thisptr; }
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();
+};
+CParentDefClassBase::~CParentDefClassBase()
+{
+    CLandscapeBackgroundPatch* thisptr = (CLandscapeBackgroundPatch*)this; (void)thisptr; (void)thisptr;
+}
 extern "C" void __cdecl operator_delete_thunk(void* p) { (void)p; }
 
 void* __fastcall CLensFlareElementDef_vector_deleting_dtor(

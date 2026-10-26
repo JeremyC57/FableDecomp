@@ -40,15 +40,26 @@ class CTCCarryable { public:
     void UpdateCarriedPosition(bool force);                      // 0x00705B60
 };
 
-struct CBaseIntelligentPointer {                    // 8 bytes: vptr, item block
-    void* m_vtable;
-    void* m_pBlock;
-    CThing* GetPItem() const;                       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct SCarrySlotEntry {                            // pair<long, CIntelligentPointer<CThing>>, 12 bytes
     long                    first;
-    CBaseIntelligentPointer second;
+    CIntelligentPointer<CThing> second;
 };
 
 struct CCarrySlotMap {                              // retail CVectorMap<long,CIntelligentPointer<CThing>>

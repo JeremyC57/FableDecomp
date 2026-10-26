@@ -18,16 +18,27 @@ class CThing { public:
     unsigned char m_removeFlags;            // +0x91 bit 0 = scheduled for removal
 };
 
-struct CIntelligentPointer {                // CIntelligentPointer<CThing> (8 bytes)
-    void* m_header;
-    void* m_pBlock;
-    CThing* GetPItem() const;               // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct SParticleNode {
     SParticleNode*      m_next;             // +0x00
     SParticleNode*      m_prev;             // +0x04
-    CIntelligentPointer m_value;            // +0x08
+    CIntelligentPointer<CThing> m_value;            // +0x08
 };
 
 struct CParticleList {                      // STLport list<CIntelligentPointer<CThing> >
@@ -48,7 +59,7 @@ class CTCParticleAttachmentTracker { public:
 void CTCParticleAttachmentTracker::SetAsDrawable(bool drawable)
 {
     for (SParticleNode* it = AttachedParticles.begin(); it != AttachedParticles.end(); it = it->m_next) {
-        CIntelligentPointer& particle = it->m_value;
+        CIntelligentPointer<CThing>& particle = it->m_value;
         if (particle.GetPItem() && !(particle.GetPItem()->m_removeFlags & 1))
             particle.GetPItem()->SetAsDrawable(drawable);
     }

@@ -8,8 +8,10 @@
 // The scalar destructor (retail 0x00a0d3d0) and operator delete
 // (retail 0x00bfe9bc) are external calls resolved by relocation.
 
-extern "C" void __fastcall CInputProcessHeroInformationScreens_dtor(void* process);
-extern "C" void __cdecl operator_delete_LBP(void* p);
+class CAInputProcess {
+public:
+    virtual ~CAInputProcess();   // 0x00A0D3D0
+};
 
 // vector deleting destructor: __fastcall (this in ecx, flags on stack).
 // Modelled as __fastcall with a dummy edx slot so 'flags' is passed on the
@@ -17,8 +19,8 @@ extern "C" void __cdecl operator_delete_LBP(void* p);
 void* __fastcall CInputProcessHeroInformationScreens_scalar_deleting_destructor(void* process, int edx, unsigned int flags)
 {
     (void)edx;
-    CInputProcessHeroInformationScreens_dtor(process);
+    ((CAInputProcess*)(process))->CAInputProcess::~CAInputProcess();
     if (flags & 1)
-        operator_delete_LBP(process);
+        operator delete(process);
     return process;
 }

@@ -1,7 +1,7 @@
 // CTCPreCalculatedNavigationRoute::SaveRoute(CPersistContext* context) -- when the target thing exists and is alive, recompute the owner->target route and save its step count, then each step's local position and nav layer; otherwise save a step count of 0
 // Retail: Fable.exe @ 0x008006D0, 480 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPosition 0x004C73D0, CalculateRouteFromTo 0x00800540,
-//   CPersistContext::Transfer<long> 0x00410BE0 / <C2DVector> 0x00800B90 / <unsigned char> 0x00405A60, CTCBase::GetWorldMap
+//   CPersistContext::Transfer<long> 0x00410BE0 / <C2DVector> 0x00800B90 / <unsigned char> 0x00405A60, CTCBase::PeekWorldMap
 //   0x00686D20, CWorldMap::ConvertWorldMapCoordsToLocalCoords 0x004FC330, GFIntToCharString 0x0099F830,
 //   operator+(const char*, const CCharString&) 0x0099F690, CCharString::ToConstChar 0x0099E4C0, ~CCharString 0x0099EAE0, free 0x00BFEA14.
 // Layout: Ego_r.pdb CTCPreCalculatedNavigationRoute: PThingToCalculateRouteTo +0x0c, Route +0x20 (12-byte STLport vector of
@@ -23,12 +23,24 @@ class CThing { public:
     unsigned char  Dead : 1;                        // +0x91 bit 0
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
-struct CBaseIntelligentPointer {
-    unsigned char _pad[0xc];
-    CThing* GetPItem() const;                       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CWorldMap { public:
-    C2DVector ConvertWorldMapCoordsToLocalCoords(long region, const C2DVector& pos);   // 0x004FC330
+    C2DVector ConvertWorldMapCoordsToLocalCoords(long region, const C2DVector& pos) const;   // 0x004FC330
 };
 class CPersistContext { public:
     void Transfer(const char* name, long& value, const long& defaultValue);                          // 0x00410BE0
@@ -50,10 +62,11 @@ class CTCBase { public:
     void*   vtable;
     CThing* Owner;                                  // +0x04
     unsigned char _pad08[4];
-    CWorldMap* GetWorldMap();                       // 0x00686D20
+protected:
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20
 };
 class CTCPreCalculatedNavigationRoute : public CTCBase { public:
-    CBaseIntelligentPointer PThingToCalculateRouteTo;   // +0x0c
+    CIntelligentPointer<CThing> PThingToCalculateRouteTo;   // +0x0c
     unsigned __int64        ThingToCalculateRouteToUID; // +0x18
     CNavStepVector          Route;                      // +0x20
     void CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, CNavStepVector& route);   // 0x00800540
@@ -83,7 +96,7 @@ void CTCPreCalculatedNavigationRoute::SaveRoute(CPersistContext* context)
         unsigned char defaultLayer = 0;
         do
         {
-            C2DVector pos = GetWorldMap()->ConvertWorldMapCoordsToLocalCoords(region, route._M_start[i].Pos);
+            C2DVector pos = PeekWorldMap().ConvertWorldMapCoordsToLocalCoords(region, route._M_start[i].Pos);
             SaveValue(context, ("NavPosition" + GFIntToCharString(i)).ToConstChar(), pos, defaultPos);
             unsigned char layer = route._M_start[i].Layer;
             SaveValue(context, ("NavLayer" + GFIntToCharString(i)).ToConstChar(), layer, defaultLayer);

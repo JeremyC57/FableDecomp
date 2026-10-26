@@ -58,10 +58,19 @@ class CStaticMapBankStateBlock : public CBankStateBlock { public:    // vtable 0
     virtual ~CStaticMapBankStateBlock();
 };
 
-class CStaticMapBankFile { public:
+class CBankFile
+{
+public:
+    unsigned long FindIndexBySymbol(const CCharString&) const;   // 0x009CCDC0
+};
+class CBankFileAsync : public CBankFile
+{
+public:
+};
+
+class CStaticMapBankFile : public CBankFileAsync { public:
     void AddEntry(const CCharString& symbol, unsigned long type, const CCharString& filename,
                   CCountedPointer<CBankStateBlock> state);                 // 0x009CD620
-    unsigned long FindEntry(const CCharString& symbol);                   // 0x009CCDC0
 };
 
 class CEngineWorldMap { public:
@@ -74,5 +83,5 @@ unsigned long CEngineWorldMap::CreateNewBankMap(const CCharString& name)
 {
     CCountedPointer<CBankStateBlock> state(new CStaticMapBankStateBlock, DeleteStaticMapBankStateBlock);
     StaticMapFile.AddEntry(name, 0, name, state);
-    return StaticMapFile.FindEntry(name);
+    return StaticMapFile.FindIndexBySymbol(name);
 }

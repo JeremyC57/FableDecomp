@@ -43,16 +43,27 @@ class CQuestManager { public:
 };
 extern CQuestManager* g_pQuestManager;          // 0x013B89FC
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCCreatureGroupBoastingCrowd { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x24 - 0x08];          // CTCBase tail + CTCCreatureGroup members
-    CBaseIntelligentPointer PHero;              // +0x24 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PHero;              // +0x24 CIntelligentPointer<CThing>
     long CrowdState;                            // +0x2c
     long CurrentEncouragementState;             // +0x30
     bool HeroBoasted;                           // +0x34

@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9F660, length 52 bytes.
 // Callees: IsDone @ 0x00F35B30 (on `this`; a bool in al, whose zero is reused for the byte store), virtual slot 510 (+0x7f8) of the thing. Shape: the phase is re-read
 // into edx before the stores, the handle address formed with `add esi,8` for the push.
+namespace NScript { class CPredicateBase; }
 struct CThingVtable_00d9f660 {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -70,7 +71,13 @@ struct CThingVtable_00d9f660 {
     virtual void StartEffect(void* handle, long phase, long flag);   // slot 510 (+0x7f8)
 };
 
-struct CFadeinSummoner {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CFadeinSummoner : public CEntityScriptBase {
     long                   m_0;
     CThingVtable_00d9f660* m_pThing;               // +0x04
     unsigned char          m_handle[4];            // +0x08
@@ -78,14 +85,13 @@ struct CFadeinSummoner {
     long                   m_phase;                // +0x1c
     float                  m_rate;                 // +0x20
     bool                   m_finished;             // +0x24
-    bool IsDone();                                 // 0x00F35B30
     void Init_00d9f660();
 };
 
 void CFadeinSummoner::Init_00d9f660()
 {
     m_phase = 0;
-    if (!IsDone()) {
+    if (!IsActiveThreadTerminating()) {
         m_rate = -0.00138888880610466f;
         m_finished = false;
         m_pThing->StartEffect(m_handle, m_phase, 1);

@@ -19,7 +19,7 @@ class CTCBase { public:
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
     bool    IsInGlobalUpdateTCs;                   // +0x09
-    ~CTCBase();                                    // 0x00686830
+    virtual ~CTCBase();                                    // 0x00686830
 };
 
 class CBaseObject;

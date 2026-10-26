@@ -4,7 +4,7 @@
 // slot 9 (catalog "CTCLifeTimer::vfunc_9"); FableWin.pdb ?FrameUpdate@CTCLifeTimer@@UAEXXZ.
 // Callees: the component-map LowerBound @ 0x0040F020 / its const twin @ 0x004365B0, CCharString(const char*, long) @
 // 0x0099EBF0 ("CTCFadeOutAndIn" @ 0x01238FE4) / ~CCharString @ 0x0099EAE0, CThing::AddTC @ 0x004C9D60,
-// CTCFadeOutAndIn::Fade(float, bool) @ 0x006C3B70 (2.0f, false), CThing::Kill(bool) @ 0x004C9B80.
+// CTCFadeOutAndIn::FadeOut(float, bool) @ 0x006C3B70 (2.0f, false), CThing::Kill(bool) @ 0x004C9B80.
 // Shape: the landed EntityFadeOut (0x008A0720) component-map model: HasTC(0xf9) is bit 25 of UsingComponents[7] (+0x3c);
 // the fade-out arm picks the component (AddTC with a block-scoped name and a named `CThing* thing = ParentThing` taken after
 // the name: retail reloads the parent into the dead `this` register before the pushes) and each arm of the
@@ -12,10 +12,10 @@
 // lookup with 0 (`xor eax,eax`), then tests the two fade-state bytes +0x0d / +0x0c.
 // Layout: PDB CTCLifeTimer (0x14, as the landed ctor 0x007E5970): ParentThing +0x04, FramesLeft +0x0c, FadeOutBeforeKill
 // +0x10, PerformOnDie +0x11. No engine header.
-struct CTCBase_Retail;
+class CTCBase;
 struct STCEntry_Retail {                           // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long            m_kind;
-    CTCBase_Retail* m_pTC;
+    CTCBase* m_pTC;
 };
 struct CTCMap_Retail {                             // the thing's component map at +0x44: a sorted vector of pairs
     STCEntry_Retail* m_pFirst;
@@ -23,12 +23,12 @@ struct CTCMap_Retail {                             // the thing's component map 
     STCEntry_Retail* m_pEnd;
     STCEntry_Retail* LowerBound(const unsigned long& kind);         // 0x0040F020
     STCEntry_Retail* LowerBound(const unsigned long& kind) const;   // 0x004365B0 (the const instantiation)
-    __forceinline CTCBase_Retail* Find(long kind)
+    __forceinline CTCBase* Find(long kind)
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
-    __forceinline CTCBase_Retail* Find(long kind) const
+    __forceinline CTCBase* Find(long kind) const
     {
         STCEntry_Retail* it = LowerBound((unsigned long)kind);
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
@@ -46,14 +46,16 @@ class CThing { public:
     unsigned char  _pad40[4];
     CTCMap_Retail  m_tcs;                          // +0x44
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    CTCBase_Retail* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     void Kill(bool performOnDie);                  // 0x004C9B80
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 class CTCFadeOutAndIn { public:
     unsigned char _pad00[0x0c];
     bool FadingIn;                                 // +0x0c
     bool FadingOut;                                // +0x0d
-    void Fade(float time, bool fadeIn);            // 0x006C3B70
+public:
+    void FadeOut(float, bool);   // 0x006C3B70
 };
 
 class CTCLifeTimer { public:
@@ -79,7 +81,7 @@ void CTCLifeTimer::FrameUpdate()
                     CThing* thing = ParentThing;
                     fade = (CTCFadeOutAndIn*)thing->AddTC(name, false, 0);
                 }
-                fade->Fade(2.0f, false);
+                fade->FadeOut(2.0f, false);
                 return;
             }
             ParentThing->Kill(PerformOnDie);

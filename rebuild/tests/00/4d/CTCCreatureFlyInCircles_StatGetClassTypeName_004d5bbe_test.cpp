@@ -1,39 +1,33 @@
-#include "rebuild_abi.h"
 #include <cstdio>
 
-// Behaviour fixture for CActionDoCreatureAction::GetActionName @ 0x004d5bbe.
-// The tested function forwards a relocated string constant plus the -1 length
-// sentinel to the CCharString builder member and returns the result pointer
-// (this) unchanged. We supply a stand-in builder that records the arguments,
-// proving the forwarded sentinel and the returned identity.
-struct FableCharStringResult_004d5bbe
+class CCharString
 {
-    const char* seen_text;
-    int seen_len;
-    void* build(const char* text, int length);
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-// Out-of-line so the definition is emitted as a real symbol that resolves the
-// builder reference inside the tested function's object.
-void* FableCharStringResult_004d5bbe::build(const char* text, int length)
-{
-    seen_text = text;
-    seen_len = length;
-    return this;
-}
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
 
-extern "C" FableCharStringResult_004d5bbe* FABLE_FASTCALL
-FableStatGetClassTypeName_004d5bbe(FableCharStringResult_004d5bbe* result, void*);
+class CTCCreatureFlyInCircles
+{
+public:
+    static CCharString __fastcall StatGetClassTypeName();
+};
 
 int main()
 {
-    FableCharStringResult_004d5bbe r;
-    r.seen_text = 0;
-    r.seen_len = 0;
-    FableCharStringResult_004d5bbe* got = FableStatGetClassTypeName_004d5bbe(&r, 0);
-    if (got != &r) { std::printf("BAD_IDENTITY\n"); return 1; }
-    if (r.seen_len != -1) { std::printf("BAD_LEN\n"); return 1; }
-    if (r.seen_text == 0) { std::printf("BAD_TEXT\n"); return 1; }
+    {
+        CCharString name = CTCCreatureFlyInCircles::StatGetClassTypeName();
+        if (g_ctorCount != 1 || name.PStringData != &name) { std::printf("BAD_IDENTITY\n"); return 1; }
+        if (g_seenLength != -1) { std::printf("BAD_LEN\n"); return 1; }
+        if (g_seenText != (const char*)0x0123D70C) { std::printf("BAD_TEXT\n"); return 1; }
+    }
     std::printf("GETACTIONNAME_004d5bbe_OK\n");
     return 0;
 }

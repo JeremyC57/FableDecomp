@@ -16,7 +16,8 @@ class C3DVector { public:
 };
 
 class CThingCreatureBase { public:
-    bool IsPerformingAnyAction();               // 0x006622A0
+public:
+    bool IsPerformingAnyAction() const;   // 0x006622A0
 };
 
 class CAIBrain { public:
@@ -34,7 +35,8 @@ class CAIStateGroupBase { public:
     long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
                                      bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890
-    void FinishUpdate();                        // 0x008FCF40
+public:
+    void Terminate();   // 0x008FCF40
 };
 
 struct CAIStateGroup_MinionReactToNoise : CAIStateGroupBase {
@@ -49,7 +51,7 @@ void CAIStateGroup_MinionReactToNoise::Update()
 {
     while (PBrain->PCreature->IsPerformingAnyAction()) {
         if (IsStopping()) {
-            FinishUpdate();
+            Terminate();
             return;
         }
         PBrain->Yield();
@@ -65,5 +67,5 @@ void CAIStateGroup_MinionReactToNoise::Update()
             FoundNoiseMaker = false;
         }
     }
-    FinishUpdate();
+    Terminate();
 }

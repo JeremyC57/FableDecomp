@@ -3,7 +3,7 @@
 class CTCInventoryItem;
 
 // cdecl helper @ 0xbfea14  (add esp,4 after call => __cdecl, one ptr arg)
-void __cdecl SomeHelper(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 // base OnDie member @ 0x5eda50 (this-call, void)
 void __fastcall CTCInventoryItem_BaseOnDie(CTCInventoryItem* self);
@@ -18,6 +18,6 @@ void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* self)
 {
     void* p = self->m_ptr;
     if (p != 0)
-        SomeHelper(p);
+        free(p);
     CTCInventoryItem_BaseOnDie(self);
 }

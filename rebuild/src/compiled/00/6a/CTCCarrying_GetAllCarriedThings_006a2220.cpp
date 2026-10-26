@@ -14,13 +14,23 @@
 //   _M_start loads in ecx/edx, 22 lines).
 #include <new>
 class CThing;
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    void* m_pItem;
-    void* m_pInfo;
-    CThing* GetPItem() const;                      // 0x00A01B50
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
+};
 struct SScalarTag { SScalarTag() { } };            // user constructor: no zero-initialisation of the 1-byte temporary
 template <class T> class CArray { public:                 // retail CArray (STLport vector) {first, last, end}
     T* first;

@@ -20,11 +20,14 @@
 
 // Engine global frame-count getter; call rel32 is relocation-masked in parity.
 #include "engine/CTCPerceiveThing.h"  // retyped onto the PDB layout; byte parity re-verified
-extern int __cdecl GetFrameCount(void);
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};   // 0x0049D870
 
 
 // __fastcall places 'this' in ecx, byte-identical to __fastcall for a this-only accessor.
 bool __fastcall CTCPerceiveThing_IsUpdatingThisFrame(CTCPerceiveThing *thing)
 {
-    return (GetFrameCount() % 4) == thing->UpdateOffset;
+    return (CWorld::GetFrame() % 4) == thing->UpdateOffset;
 }

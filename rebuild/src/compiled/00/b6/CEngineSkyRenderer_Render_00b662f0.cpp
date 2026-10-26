@@ -71,7 +71,13 @@ struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
     unsigned long        m_priorValue;             // +0x04
 };
-struct CRenderManagerCoreView {                    // the render manager core @ 0x01436E18 / 0x013CB508
+class CRenderStateManager
+{
+public:
+    void RestoreCaptureBlock();   // 0x00A05840
+};
+
+struct CRenderManagerCoreView : public CRenderStateManager {                    // the render manager core @ 0x01436E18 / 0x013CB508
     unsigned char        _pad0000[0x8];
     SCapturedRenderState m_captured[0x400];        // +0x0008
     CTrackedRenderState* m_dirty[0x200];           // +0x2008
@@ -108,7 +114,6 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
         m_captured[m_capturedCount++].m_pState = (CTrackedRenderState*)m_captureBlockMarker;
         m_captureMask <<= 1;
     }
-    void RestoreCaptureBlock();                    // 0x00A05840
     void DrawCurrentBuffersIndexed(unsigned long baseVertex, unsigned long vertexCount,
                                    unsigned long startIndex, unsigned long primitiveCount);   // 0x00A0AD40
 };

@@ -5,7 +5,15 @@
 //   WriteFloat 0x00993EE0.
 // Model: engine/CDataOutputStream.h + writer adapter; local CUIMiniMapMarker (no engine header).
 // Shape: speed TU; the marker traits' TransferBinaryOut is inline: Region, the name length, the name, Position.X/Y, GraphicIndex, Angle.
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteFloat(float);   // 0x00993EE0
+};
 class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
@@ -13,7 +21,6 @@ class CCharString { public:
 };
 struct CDataOutputStreamWriter : CDataOutputStream {
     void WriteLong(long value);                             // 0x00993EB0
-    void WriteFloat(float value);                           // 0x00993EE0
     void WriteString(const CCharString& text);              // 0x009959F0
 };
 class C2DVector { public:

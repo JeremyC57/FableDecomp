@@ -20,7 +20,7 @@ class CTCBase { public:                               // engine/CTCBase.h layout
     bool    ToBeRemoved;                       // +0x08
     bool    IsInGlobalUpdateTCs;               // +0x09
     CTCBase(CThing& owner);                    // 0x00686800
-    ~CTCBase();                                // 0x00686830
+    virtual ~CTCBase();                                // 0x00686830
 };
 
 struct CDefPointee {                           // counted def: count at +4, slot 1 destroys
@@ -44,28 +44,35 @@ struct CDefPointer {                           // CDefPointer<T const>
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                      // +0x04
-    CBaseIntelligentPointer();                 // 0x00A01B10
-    ~CBaseIntelligentPointer();                // 0x00A01C10
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(pop)
 
 class CTCSummonSpell : public CTCBase { public:   // vtable 0x0126C2B4
     CDefPointer         PDef;                  // +0x0c CDefPointer<CSpecialAbilitiesSummonSpellDef const>
     bool                JustReleased;          // +0x10
-    CIntelligentPointer Minion;                // +0x11 CIntelligentPointer<CThingAICreature> (unaligned)
+    CIntelligentPointer<CThing> Minion;                // +0x11 CIntelligentPointer<CThingAICreature> (unaligned)
     long                FadeInTimer;           // +0x1c
     long                CurFadeInTimer;        // +0x20
     long                SpellLevel;            // +0x24
     long                CurTimer;              // +0x28
-    CIntelligentPointer PItemRemoved;          // +0x2c CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PItemRemoved;          // +0x2c CIntelligentPointer<CThing>
     bool                CutSceneCancelled;     // +0x34
     CTCSummonSpell(CThing& owner) : CTCBase(owner) { }   // model constructor: pulls the vtable into the TU
     __forceinline virtual ~CTCSummonSpell() { }

@@ -2,7 +2,7 @@
 // Leaf: SetMorality
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057C2E6, 523 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`, as the landed SetAge 0x0057B05F).
-// Callees: CTCBase::GetDefinitions() @ 0x006869D0 (+0xDC the CHeroStatsDef; def +0xD0 / +0xD4 the adult / child
+// Callees: CTCBase::GetDefinitionManager() @ 0x006869D0 (+0xDC the CHeroStatsDef; def +0xD0 / +0xD4 the adult / child
 //          morality limits), std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020,
 //          CTCHero::GiveTutorialForCategory(ETutorialCategory, bool) @ 0x006C9FA0, CPlayerGui::AddMoralityChange(long)
 //          @ 0x00437930 (g_pPlayerGui 0x013B8790), CThingCreatureBase::IsChild() @ 0x00661F70, operator new @ 0x00BFEA1A,
@@ -129,7 +129,7 @@ class CHeroStatsDef { public:
     long          MaxChildMorality;                  // +0xD4
 };
 
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
@@ -141,15 +141,20 @@ template <class T> inline const T& LimitRef(const T& v, const T& lo, const T& hi
     return v;
 }
 
-class CTCHeroStats { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCHeroStats : public CTCBase { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x20];
     long          Morality;                          // +0x28 (PDB +0x30)
     bool          MoralityChangingEnabled;           // +0x2C (PDB +0x34)
 
-    CDefinitionHolder* GetDefinitions() const;       // 0x006869D0
-    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitions()->PHeroStatsDef; }
+    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
     void CheckForNewExpressions();                   // 0x0057BE71
     float GetMoralityPercentage();                   // 0x0057A690
     void SetMorality(long morality);

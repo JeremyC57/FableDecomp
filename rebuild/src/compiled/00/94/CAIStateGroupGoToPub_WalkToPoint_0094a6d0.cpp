@@ -22,17 +22,28 @@ class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -49,8 +60,8 @@ enum EAIActionRepeat { AI_ACTION_REPEAT_2 = 2 };
 enum EMovementType { MOVEMENT_3 = 3 };
 
 struct CAIStateGroupGoToPubMethods : CAIStateGroupBase {
-    CBaseIntelligentPointer PPub;               // +0x14
-    CBaseIntelligentPointer PBar;               // +0x1c
+    CIntelligentPointer<CThing> PPub;               // +0x14
+    CIntelligentPointer<CThing> PBar;               // +0x1c
     CThing* GetCreature() const { return PBrain->PCreature; }
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool* reached, EMovementType movement,
         bool a, bool b, CThing* avoid, bool c, float speed);   // 0x0097EC00

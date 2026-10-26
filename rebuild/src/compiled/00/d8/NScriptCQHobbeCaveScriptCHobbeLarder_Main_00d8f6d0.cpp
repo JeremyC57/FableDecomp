@@ -26,7 +26,7 @@ class CScriptThing { public:                                   // 12 bytes, vtab
  CScriptThingImpl* PImp_Data;
  void* PImp_Info;
  CScriptThing(const CScriptThing& other);   // 0x004ABE90
- ~CScriptThing();                           // 0x004AA840
+ virtual ~CScriptThing();                           // 0x004AA840
  bool IsAlive() const;                      // slot 75, inlined below
 };
 struct CScriptThingImpl {
@@ -1015,8 +1015,9 @@ class CCharString { public:
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 class CBaseObject { public:
  void* m_pIntelligentPointer;
- CBaseObject();                                     // 0x0099A380
- virtual ~CBaseObject();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
  CCountedPointerWords PImp;
@@ -1045,12 +1046,17 @@ struct CQ_HobbeCaveScript {
  unsigned char _pad61[0x6b - 0x61];
  bool HobbesCloseby;                                // +0x6B (PDB +0x7f)
 };
-struct CHobbeLarder {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CHobbeLarder : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CQ_HobbeCaveScript* ParentClass;                   // +0x14
  void* PMasterData;                                 // +0x18
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CHobbeLarder::Main()

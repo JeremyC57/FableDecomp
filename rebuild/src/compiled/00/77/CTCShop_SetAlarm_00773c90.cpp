@@ -19,7 +19,8 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 class CASoundBank { public:
-    long GetSoundIndexFromSymbol(const CCharString& symbol);   // 0x00A01920
+public:
+    long GetSoundIndexFromSymbol(const CCharString&) const;   // 0x00A01920
 };
 class CMainGameComponent { public:
     unsigned char _pad00[0x10];
@@ -44,9 +45,10 @@ class CSoundInit { public:                                     // 0x20 bytes (ct
     CSoundInit();                                       // 0x0041C930
 };
 class CTCSoundPlayer { public:
-    unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool attach, long a, long b);   // 0x0066B280
     void StopSample_0066ad90(unsigned long sample);              // 0x0066AD90
     void StopAllAttachedSounds();                       // 0x0066AEB0
+public:
+    unsigned long PlayAttachedSample(const CSoundPair&, const CSoundInit&, bool, bool, bool);   // 0x0066B280
 };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };

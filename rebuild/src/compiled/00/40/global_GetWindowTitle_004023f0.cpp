@@ -5,7 +5,7 @@
 // (/Gr link-time __fastcall).  Replaces the landed asm_bake bootstrap with compiler-emitted C++.
 // Callees: CWideString(const wchar_t*) 0x0099B6B0, CCharString(const char*, long) 0x0099EBF0, operator new 0x00BFEA1A (0x214),
 // NGameText::CDataBank::CDataBank 0x009C85A0, vtable slot 1 OpenReadOnly 0x009D56C0 (as the landed InitialiseText 0x00416832),
-// NLocalisation::GetFontBankName 0x00415260, ~CCharString 0x0099EAE0, CCRC::Calc 0x004014A0, CDataBank::LookupValue 0x009CC410,
+// NLocalisation::GetFontBankName 0x00415260, ~CCharString 0x0099EAE0, CCRC::Calc 0x004014A0, NGameText::CDataBank::LookupValue 0x009CC410,
 // CDataBank::GetPGroupEntry 0x009C9070, CGroupEntry::GetText 0x009C7A40, CWideString::operator= 0x0099B7D0, ~CWideString
 // 0x0099B510, operator+(const CWideString&, const wchar_t*) 0x0099BF30 (L" " @ 0x0122D820), slot 0 deleting destructor.
 // Shape: the bank is owned by an auto_ptr (Ego PDB has auto_ptr<NGameText::CDataBank>) declared between the title and the tag
@@ -41,12 +41,12 @@ public:
     static unsigned long CalcFromString(const CCharString& s) { return Calc(0, s.GetString(), s.Length()); }
 };
 class CIVCountedPointeeBase { public:
-    virtual void Destroy(int flags);                    // slot 0
-    virtual void Delete();                              // slot 1
-    unsigned long IVRefCount;                           // +0x04
-    void DecRef() { --IVRefCount; }
+    virtual void Destroy(int flags) const;                    // slot 0
+    virtual void Delete() const;                              // slot 1
+    mutable unsigned long IVRefCount;                           // +0x04
+    void DecRef() const { --IVRefCount; }
     unsigned long GetRefCount() const { return IVRefCount; }
-    void Release()
+    void Release() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -63,7 +63,7 @@ template <class T> class CIVCountedPointer { public:           // 4 bytes
     }
 };
 namespace NGameText {
-class CGroupEntry : public CIVCountedPointeeBase { public:
+class CTextEntry : public CIVCountedPointeeBase { public:
     CWideString GetText() const;                        // 0x009C7A40
 };
 class CDataBank {
@@ -71,10 +71,11 @@ public:
     virtual ~CDataBank();                               // slot 0 (0x009CB840)
     virtual bool OpenReadOnly(const CCharString& name, unsigned long flags);   // slot 1 (0x009D56C0)
     CDataBank();                                        // 0x009C85A0
-    unsigned long LookupValue(unsigned long key);       // 0x009CC410
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
 private:
     unsigned char BankFileAndResourceBank[0x210];
+public:
+    unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
 namespace std {
@@ -104,7 +105,7 @@ CWideString GetWindowTitle()
     bank->OpenReadOnly(NLocalisation::GetFontBankName(), 0x100);
     unsigned long index = bank->LookupValue(CCRC::CalcFromString(tag));
     if (index > 0) {
-        CIVCountedPointer<NGameText::CGroupEntry> entry = bank->GetPGroupEntry(index, true);
+        CIVCountedPointer<const NGameText::CTextEntry> entry = bank->GetPTextEntry(index, true);
         if (entry.Object)
             title = entry->GetText();
     }

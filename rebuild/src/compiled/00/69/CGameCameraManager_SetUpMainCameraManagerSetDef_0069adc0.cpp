@@ -80,7 +80,8 @@ class CRegion { public:
 };
 class CWorldMap { public:
     long GetCurrentRegionNumber();                  // 0x004FB150
-    CRegion& GetRegion(long region);                // 0x004FC180
+public:
+    const CRegion& GetRegion(long) const;   // 0x004FC180
 };
 class CWorld { public:
     virtual void w000(); virtual void w001(); virtual void w002(); virtual void w003(); virtual void w004(); virtual void w005();

@@ -35,14 +35,14 @@ struct CWorld_Methods : CWorld
     void LoadWorldFromFile(CAFile* file, long value);
 };
 
-extern float CWorldLoadTimer();
+double __fastcall GFGetTime();   // 0x009E1BC0
 
 void CWorld_Methods::LoadWorldFromFile(CAFile* file, long value)
 {
-    (void)CWorldLoadTimer();
+    (void)GFGetTime();
     long result = file->Read();
     this->PWorldMap_ptr->Load(file, value);
     file->Finish(result);
     ((CWorldVtbl*)this->__vftable)->FinishLoad(this);
-    (void)CWorldLoadTimer();
+    (void)GFGetTime();
 }

@@ -1,7 +1,7 @@
 // CPersistContext::Transfer<EStageNumber>(const char* name, EStageNumber& value, const EStageNumber& defaultValue) -- persist one enum member ("StageNumber"): CRC-check the key, then by mode text load (seeding the default first when asked), text save, binary load, binary save as a long, or reset to the default
 // Leaf: Transfer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E75840, `ret 0Ch`. Called from the quest-script persist function at 0x00E75790 with the key "StageNumber".
-// Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteLong 0x00993EB0 (catalogued "WriteCBYTE"),
+// Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteSLONG 0x00993EB0 (catalogued "WriteCBYTE"),
 //   CPersistTraits<T>::TransferBinaryIn 0x00E75920, CPersistContext::TransferObjectSaveText 0x009BAD60 and TransferObjectLoadText
 //   0x009BBA40 (both take the CPersistContext_TransferableComponent<T> wrapper, vtable 0x012E9764).
 // Shape: the speed-optimised sibling of the landed size-TU CDefIndex instantiation 0x005CC1E8. The persist mode
@@ -10,7 +10,8 @@
 //   order and retail has them 4,3,2,1,0. this module's traits carries a `T DefaultVal` member; declared at function scope it is built (zeroed) once before the jump, in the dead key-argument slot, and the binary-load arm passes its address. The 8-byte frame is the {vtable, value*} wrapper of the text arms.
 //   The enum's name is descriptive (from the key); it is a 4-byte enum written with WriteLong.
 class CDataOutputStream { public:
-    void WriteLong(long value);                   // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 class CMemoryDataInputStream;
 enum EStageNumber { EStageNumber_Default };
@@ -54,7 +55,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
         value = defaultValue;
         break;
     case 3:
-        PSaveStream->WriteLong(value);
+        PSaveStream->WriteSLONG(value);
         break;
     case 2:
         traits.TransferBinaryIn(PLoadStream, &value);

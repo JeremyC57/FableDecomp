@@ -18,13 +18,23 @@ class CThingCreatureBase { public:
     CCombatManager* GetCombatManager();     // 0x00661ED0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                          // +4
-    CThingCreatureBase* GetPItem() const;   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CAIBrain { public:
@@ -39,7 +49,7 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase {
-    CIntelligentPointer PTargetThing;       // +0x14
+    CIntelligentPointer<CThingCreatureBase> PTargetThing;       // +0x14
 };
 
 struct CAIStateGroup_CreatureRangedCombat2 : CAIStateGroup_EnemyCreatureBase {

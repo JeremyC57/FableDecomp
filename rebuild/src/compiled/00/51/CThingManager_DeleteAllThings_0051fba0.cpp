@@ -51,7 +51,8 @@ class CPlayer { public:
     CThing* GetHeroThing() const;               // 0x00487DC0 (CIntelligentPointer at +0x2c)
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();             // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 struct SThingListNode {                         // STLport list<CThing*> node
     SThingListNode* _M_next;
@@ -86,7 +87,7 @@ class CThingManager { public:
 
 void CThingManager::DeleteAllThings()
 {
-    CThing* hero = PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
     if (hero && !hero->m_dead)
         hero->Kill(false);
     for (SThingListNode* node = Things->_M_next; node != Things; node = node->_M_next) {

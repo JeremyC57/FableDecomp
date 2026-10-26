@@ -44,10 +44,11 @@ struct CThing_Retail {
 };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }          // free inline: the pointer comes back in eax
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-struct CTCFlammable_Retail {                           // the component (no vtable modelled: the bytes before the first used member are padding)
+class CTCFlammable { public:                           // the component (no vtable modelled: the bytes before the first used member are padding)
     void SetOnFire();                              // 0x00780410 (labelled "CMusicManager::ResetMusicEntriesOffsets", propagated)
-    void ExtinguishFire();                         // 0x00780C80
     bool IsOnFire();                               // 0x00780400
+public:
+    void ExtinguishFire();   // 0x00780C80
 };
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -80,7 +81,9 @@ class CGameScriptInterface { public:
     CPlayerManager_Retail*  PlayerManager;                   // +0x14
     unsigned char           _pad18[4];
     bool                    m_handLampLit;                   // +0x1c (read when the hero has no hand-lamp component)
-    void ExtinguishFiresOnThing(const CScriptThing& thing) const;
+
+public:
+    virtual void ExtinguishFiresOnThing(const CScriptThing& thing) const;
 };
 
 void CGameScriptInterface::ExtinguishFiresOnThing(const CScriptThing& thing) const
@@ -88,7 +91,7 @@ void CGameScriptInterface::ExtinguishFiresOnThing(const CScriptThing& thing) con
     if (thing.IsValid()) {
         CThing_Retail* t = thing.GetThing();
         if (t->HasTC(0x6d)) {
-            CTCFlammable_Retail* tc = (CTCFlammable_Retail*)GetTC(t, 0x6d);
+            CTCFlammable* tc = (CTCFlammable*)GetTC(t, 0x6d);
             tc->ExtinguishFire();
         }
     }

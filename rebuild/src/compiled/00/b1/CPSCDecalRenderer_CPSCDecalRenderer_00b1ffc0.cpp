@@ -31,7 +31,7 @@ public:
 class CBaseClass {                                 // vtable 0x01231710
 public:
     virtual void v000();
-    ~CBaseClass();                                 // 0x0099A2E0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
 };
 class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598, 8 bytes
 public:

@@ -31,7 +31,6 @@ class CDataInputStream { public:
     const unsigned char* CurrentSourcePtr;                             // +0x0c
     unsigned long SourceChunkStreamPos;                                // +0x10
     long SourceChunkBytesRemaining;                                    // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     C3DVector Read3DVector();                                          // 0x009950F0
     static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
     __forceinline void Read(void* dst, long size)
@@ -49,6 +48,8 @@ class CDataInputStream { public:
     }
     __forceinline unsigned char ReadUByte() { unsigned char value; Read(&value, 1); return value; }
     __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 namespace NParticleEngine {
 class CPSCBase {

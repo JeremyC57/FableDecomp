@@ -9,10 +9,16 @@
 #include <stdlib.h>
 #include "fable_string.h"
 
-struct CBaseIntelligentPointer_0085b090 {          // 8 bytes: vptr + the shared link block
-    virtual void v00();
-    void* m_pLink;
-    ~CBaseIntelligentPointer_0085b090();           // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 struct CNamedBufferOwner_0085b090 {
@@ -21,7 +27,7 @@ struct CNamedBufferOwner_0085b090 {
     long                             m_8;          // +0x08
     long                             m_c;          // +0x0c
     long                             m_10;         // +0x10
-    CBaseIntelligentPointer_0085b090 m_pTarget;    // +0x14
+    CBaseIntelligentPointer m_pTarget;    // +0x14
     void*                            m_pBuffer;    // +0x1c
     ~CNamedBufferOwner_0085b090() { if (m_pBuffer) free(m_pBuffer); }
 };

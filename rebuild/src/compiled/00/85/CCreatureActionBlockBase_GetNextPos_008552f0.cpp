@@ -22,16 +22,26 @@ class CThing { public:
     const C3DVector& GetPosition() const;   // 0x004C73D0
 };
 
-struct CBaseIntelligentPointer {            // 8 bytes: vptr + item
-    virtual void v00();
-    CBaseObject* PItem;
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCreatureAction_BlockBase { public:
     virtual void v00();
     long _pad04;
-    CBaseIntelligentPointer Owner;          // +0x08 (the owning creature)
+    CIntelligentPointer<CThing> Owner;          // +0x08 (the owning creature)
     long TotalFrames;                       // +0x10
     long _pad14[2];
     long CurrentFrame;                      // +0x1c

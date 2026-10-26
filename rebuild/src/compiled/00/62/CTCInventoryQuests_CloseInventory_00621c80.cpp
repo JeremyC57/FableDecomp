@@ -190,7 +190,19 @@ class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
-class CTCInventoryQuests { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryQuests : public NInventory::CTCInventoryBase { public:
     void*            __vftable;                      // +0x00
     void*            ParentThing;                    // +0x04
     unsigned char    _pad08[0x0c - 0x08];
@@ -205,7 +217,6 @@ class CTCInventoryQuests { public:
     unsigned char    _pad14e[0x168 - 0x14e];
     long             PreviousScreen;                 // +0x168
     void BaseCloseInventory();                       // 0x005BD597 (CTCInventoryBase::CloseInventory)
-    CWorld* GetWorld();                              // 0x00686A70 (CTCBase)
     void CloseInventory();
 };
 void CTCInventoryQuests::CloseInventory()
@@ -220,7 +231,7 @@ void CTCInventoryQuests::CloseInventory()
         CFrontEndManager* b = CFrontEndManager::GetInstance();
         b->Slot40(&a->Slot42().Data->SomeState, true);
         g_pMainGameComponent->World->Hud->SetEnabled(true);
-        CWorld* world = GetWorld();
+        CWorld* world = (&GetWorld());
         world->InventoryClosedFrame = GetWorldFrame();
         g_pPlayerGui->GetPHeroInfoScreensManager()->SetScreen(PreviousScreen);
         for (unsigned long i = 0; i < Components.size(); ++i)

@@ -21,7 +21,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 
 __forceinline bool DecRefToZero(long& count) { return --count == 0; }
 struct CDefObject {
@@ -70,7 +70,21 @@ extern const char g_strConstructFromParams2[];                 // 0x0125D15C
 extern const char g_emptyString_0122d70e[];                    // 0x0122D70E ("")
 extern const char g_strCTCPhysicsControlled[];                 // 0x01239F4C
 
-class CThingCreatureBase {
+class CThing
+{
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
+};
+class CThingPhysical : public CThing
+{
+public:
+};
+class CThingGameObject : public CThingPhysical
+{
+public:
+};
+
+class CThingCreatureBase : public CThingGameObject {
 public:
     unsigned char      _pad00[0x70];
     CDefClassBase*     PBaseDef;                               // +0x70
@@ -79,7 +93,6 @@ public:
     float              Health;                                 // +0xb4
     unsigned char      _pad_b8[0xe0 - 0xb8];
     CThingCreatureDef* PDef;                                   // +0xe0
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, CThingPhysical* originalThing,
                              CThingPhysical* previousThing, const CCharString& scriptName, bool placeAtEnd);   // 0x00662880
 };
@@ -90,10 +103,10 @@ public:
 
 bool CThingPlayerCreature::ConstructFromParams(long defIndex, const C3DVector* pos, long a3, const CThingPlayerCreatureInit* init)
 {
-    DisplayProgress(g_strConstructFromParams1, -1.0f, false, false);
+    NProgressDisplay::DisplayProgress(g_strConstructFromParams1, -1.0f, false, false);
     if (CThingCreatureBase::ConstructFromParams(defIndex, pos, a3, init->OriginalThing, init->PreviousThing,
                                                 g_emptyString_0122d70e, init->PlaceAtEndOfList)) {
-        DisplayProgress(g_strConstructFromParams2, -1.0f, false, false);
+        NProgressDisplay::DisplayProgress(g_strConstructFromParams2, -1.0f, false, false);
         MaxHealth = Health = PDef->Health;
         CDefPointer<CPlayerCreatureSubDef> subDef;
         PBaseDef->GetSubDef(&subDef);

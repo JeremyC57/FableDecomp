@@ -10,12 +10,12 @@
 // declaration order and `this` is returned. Member types are not recoverable beyond their sizes
 // (`long` / `unsigned char`). The manifest label (`CThingBuildingDef::operator=`) is propagated;
 // the class is named by its base. One of 14 bodies of this shape.
-struct CBase_00431f10 {
+class CDefClassBase { public:
     unsigned char _body[0x25];
-    CBase_00431f10& operator=(const CBase_00431f10& other);   // 0x00431F10
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
-struct CBase_00431f10_Derived_004e189c : CBase_00431f10 {
+struct CBase_00431f10_Derived_004e189c : CDefClassBase {
     unsigned char m_25;                 // +0x25
     unsigned char m_26;                 // +0x26
     unsigned char _gap2[0x1];
@@ -26,7 +26,7 @@ struct CBase_00431f10_Derived_004e189c : CBase_00431f10 {
 
 CBase_00431f10_Derived_004e189c& CBase_00431f10_Derived_004e189c::operator=(const CBase_00431f10_Derived_004e189c& other)
 {
-    CBase_00431f10::operator=(other);
+    CDefClassBase::operator=(other);
     m_25 = other.m_25;
     m_26 = other.m_26;
     m_28 = other.m_28;

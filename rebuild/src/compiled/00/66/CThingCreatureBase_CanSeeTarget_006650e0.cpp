@@ -62,8 +62,9 @@ public:
 
 class CThingCreatureBase : public CThing {
 public:
-    C3DVector GetHeadPos(bool exact);           // 0x00661B40
     bool CanSeeTarget(const C3DVector& position, float fieldOfView, bool checkRange, bool checkObstruction);
+public:
+    C3DVector GetHeadPos(bool) const;   // 0x00661B40
 };
 
 bool CThingCreatureBase::CanSeeTarget(const C3DVector& position, float fieldOfView, bool checkRange, bool checkObstruction)

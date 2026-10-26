@@ -1,7 +1,7 @@
 // CTCGold::GetGold() const -- the gold amount: the component's own value when set, else the amount in the owner thing def's CGoldDef sub-def
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CBDC0, length 166 bytes (+ int3 padding). __fastcall, `ret`.
 //         Ego_r.pdb: `?GetGold@CTCGold@@QBEJXZ`.
-// Callees: CTCBase::GetDefinitions() const @ 0x006869D0, CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*) const
+// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0, CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*) const
 //          @ 0x0042AF3C (the thing's def; T taken as CThingBaseDef, the instantiation shared by 119 callers including CThing),
 //          CDefClassBase::GetSubDef<CGoldDef>(CDefPointer<const T>*) const @ 0x006AE320, the defs' virtual slot 1.
 // Shape: the two out slots are block-scoped and share the one push-ecx word, each zeroed after its address is pushed and
@@ -74,7 +74,7 @@ template<class T> __declspec(noinline) bool CDefinitionManager::GetDef(long p0, 
     return true;
 }
 #pragma auto_inline(on)
-class CDefinitionHolder : public CDefinitionManager { };
+class CGameDefinitionManager : public CDefinitionManager { };
 
 class CThing {
 public:
@@ -82,13 +82,19 @@ public:
     unsigned short DefGlobalIndex;                  // +0x8C
 };
 
-class CTCGold {
+class CTCBase
+{
 public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCGold : public CTCBase {
+public:
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[4];
     long Gold;                                      // +0x0C
-    const CDefinitionHolder* GetDefinitions() const;   // 0x006869D0 (CTCBase)
     long GetGold() const;
 };
 
@@ -100,7 +106,7 @@ long CTCGold::GetGold() const
         {
             CThing* parent = ParentThing;
             CDefPointer<const CThingBaseDef> out;
-            found = GetDefinitions()->GetDef(parent->DefGlobalIndex, &out);
+            found = GetDefinitionManager().GetDef(parent->DefGlobalIndex, &out);
             thingDef = out.Object;
         }
         if (found) {

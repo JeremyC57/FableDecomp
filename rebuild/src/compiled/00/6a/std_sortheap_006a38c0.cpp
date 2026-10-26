@@ -14,24 +14,30 @@
 // `SetPItem(other.GetPItem())`). Pointer model as in the landed CThingSoundEmitter sources.
 class CThing;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                                       // +0x04
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
     CBaseIntelligentPointer();                           // 0x00A01B10
-    ~CBaseIntelligentPointer();                          // 0x00A01C10
-    CThing* GetPItem() const;                            // 0x00A01B50
-    void SetPItem(CThing* item);                         // 0x00A01B90
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct SThingPointerPair {                  // std::pair<long, CIntelligentPointer<CThing>> (12 bytes)
     long                     first;         // +0x00
-    CIntelligentPointerThing second;        // +0x04
+    CIntelligentPointer<CThing> second;        // +0x04
 };
 struct CKeyPairCompareLess {                // empty, passed by value
     bool operator()(const SThingPointerPair& a, const SThingPointerPair& b) const { return a.first < b.first; }

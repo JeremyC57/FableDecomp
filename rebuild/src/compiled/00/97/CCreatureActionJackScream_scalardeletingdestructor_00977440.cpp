@@ -33,13 +33,13 @@ struct CCountedPointer {
     }
 };
 
-struct CMember_0062e900 {
-    unsigned char _body[0x114];
-    ~CMember_0062e900();                             // 0x0062E900
+class CCombatActionBase { public:
+    unsigned char _body[0x114 - 4];
+    virtual ~CCombatActionBase();                             // 0x0062E900
 };
 
 struct SPairCMember_0062e900CountedPointer_00977440 {
-    CMember_0062e900 first;                          // +0
+    CCombatActionBase first;                          // +0
     CCountedPointer second;                // +0x114
 };
 

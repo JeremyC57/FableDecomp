@@ -1,12 +1,11 @@
 #pragma optimize("t", on)
 extern void __fastcall DestructMember_0099eae0(void* member);
 extern void __fastcall CActionPlayCombatAnimation_Destruct(void* action);
-extern void __cdecl OperatorDelete(void* object);
 void* __fastcall CActionPlayCombatAnimation_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
 {
     DestructMember_0099eae0(static_cast<unsigned char*>(action) + 16);
     CActionPlayCombatAnimation_Destruct(action);
     if (flags & 1)
-        OperatorDelete(action);
+        operator delete(action);
     return action;
 }

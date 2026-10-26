@@ -58,12 +58,14 @@ class CInputProcessManager { public:
 };
 class CMainGameComponent;
 class CPlayerManager;
-struct CDefinitionManager_Retail { unsigned char _pad[0xd0]; struct CControlsSettings { unsigned char _p[0x3c]; long Scheme; }* Settings; };
-struct CMainGameComponent_Retail { const CDefinitionManager_Retail& PeekDefinitionManager() const; };   // 0x00415FBC
+class CGameDefinitionManager { public: unsigned char _pad[0xd0]; struct CControlsSettings { unsigned char _p[0x3c]; long Scheme; }* Settings; };
+class CMainGameComponent { public: public:
+    const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
+};   // 0x00415FBC
 extern bool g_bCompileFrontendDefinitions;              // 0x013B8648
 
 class CGamePlayerInterface : public CInputProcessManager { public:
-    CMainGameComponent_Retail*   Component;             // +0x6F8
+    CMainGameComponent*   Component;             // +0x6F8
     CPlayerManager*              PlayerManager;         // +0x6FC
     bool                         PacketSave;            // +0x700
     bool                         PacketLoad;            // +0x701
@@ -83,11 +85,11 @@ class CGamePlayerInterface : public CInputProcessManager { public:
     CProcessedInput              CurrentProcessedInput; // +0x7E0
     long                         CurrentEventInProcessedInput;   // +0x890
     bool                         Unknown894;            // +0x894
-    CGamePlayerInterface(CMainGameComponent_Retail* component, CPlayerManager* playerManager);
+    CGamePlayerInterface(CMainGameComponent* component, CPlayerManager* playerManager);
     void SetControlScheme(long scheme);                 // 0x00446EF0
 };
 
-CGamePlayerInterface::CGamePlayerInterface(CMainGameComponent_Retail* component, CPlayerManager* playerManager)
+CGamePlayerInterface::CGamePlayerInterface(CMainGameComponent* component, CPlayerManager* playerManager)
     : Component(component), PlayerManager(playerManager), PControlsDef(0)
 {
     CurrentQueuedProcessedInputNo = 0;

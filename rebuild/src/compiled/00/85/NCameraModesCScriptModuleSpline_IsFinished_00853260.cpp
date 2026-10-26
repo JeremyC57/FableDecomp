@@ -15,22 +15,32 @@ class CGameCameraManager;
 class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
-struct CThing_Retail {
+class CThing_Retail { public:
     unsigned char  _pad00[0x91];
     unsigned char  m_dead : 1;                       // +0x91 bit 0
     unsigned char  m_91_1 : 7;
 };
 
-struct CIntelligentPointer_CThingConst {             // CIntelligentPointer<const CThing>: vptr + link
-    virtual void v00();
-    void* m_pItem;
-    CThing_Retail* GetPItem() const;                 // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CScriptModuleBase {                           // NCameraModes::CScriptModuleBase, 0x4c bytes (PDB)
     virtual void v00();
-    CIntelligentPointer_CThingConst PCamPoint;       // +0x04
-    CIntelligentPointer_CThingConst PThingOrigin;    // +0x0c
+    CIntelligentPointer<CThing_Retail> PCamPoint;       // +0x04
+    CIntelligentPointer<CThing_Retail> PThingOrigin;    // +0x0c
     C3DVector           CoordOrigin;                 // +0x14
     CRightHandedSet     CoordAxis;                   // +0x20
     CBase*              POwner;                      // +0x38

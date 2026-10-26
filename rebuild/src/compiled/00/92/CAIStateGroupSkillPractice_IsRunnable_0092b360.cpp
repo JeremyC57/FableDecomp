@@ -8,7 +8,10 @@
 // The fps global is read into a local BEFORE the second frame-count call (retail loads esi first),
 // so the source names it. Bool result (`mov al,1` / shared `xor al,al`).
 extern long g_framesPerSecond;                  // 0x01375550
-long __fastcall GFGetFrameCount();              // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};              // 0x0049D870
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -23,11 +26,11 @@ struct CAIStateGroup_SkillPractice : CAIStateGroupBase {
 
 bool CAIStateGroup_SkillPractice::IsRunnable()
 {
-    if (FrameToCheckForDummy < GFGetFrameCount()) {
+    if (FrameToCheckForDummy < CWorld::GetFrame()) {
         if (GetDummy())
             return true;
         long fps = g_framesPerSecond;
-        FrameToCheckForDummy = GFGetFrameCount() + fps * 60;
+        FrameToCheckForDummy = CWorld::GetFrame() + fps * 60;
     }
     return false;
 }

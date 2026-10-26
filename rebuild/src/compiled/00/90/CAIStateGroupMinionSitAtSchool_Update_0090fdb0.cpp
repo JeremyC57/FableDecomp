@@ -80,15 +80,26 @@ struct CThingWorld {
     unsigned char _pad[0x1c];
     CTimeOfDay* PTimeOfDay;                     // +0x1c
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];                  // +0xa8..+0xb3
@@ -125,7 +136,7 @@ class CAIStateGroupBase { public:
     }
 };
 struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
-    CBaseIntelligentPointer PSeat;              // +0x14
+    CIntelligentPointer<CThing> PSeat;              // +0x14
     bool MoveToSeat(long movementType);         // 0x009385F0
     bool SitInSeat();                           // 0x00938380
     void GetUpFromSeat();                       // 0x00938A10

@@ -1,10 +1,9 @@
 #pragma optimize("s", on)
 extern void __fastcall CAIStateGroup_MazeDefensiveMeleeCombat_Destruct(void* stateGroup);
-extern void __cdecl OperatorDelete(void* object);
 void* __fastcall CAIStateGroup_MazeDefensiveMeleeCombat_ScalarDeletingDestructor(void* stateGroup, int, unsigned int flags)
 {
     CAIStateGroup_MazeDefensiveMeleeCombat_Destruct(stateGroup);
     if (flags & 1)
-        OperatorDelete(stateGroup);
+        operator delete(stateGroup);
     return stateGroup;
 }

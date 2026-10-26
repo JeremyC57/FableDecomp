@@ -80,7 +80,7 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
 };
 class CScriptDataBase;
 class CEntityScriptBase;
-struct __declspec(novtable) CEntityScriptBindingBase {
+class __declspec(novtable) CEntityScriptBindingBase { public:
     virtual const CCharString& GetEntityScriptName() const = 0;
 };
 template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
@@ -205,14 +205,17 @@ class CTimer { public:                                         // 4 bytes: an in
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
 };
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                                                 // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
     void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
     void PostAddScriptedEntities();                                                   // 0x00CB8930
     __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
+public:
+    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
+    bool IsActiveThreadTerminating();   // 0x00CB7940
 };
+namespace NScript {
 class CQ_WaspBossScript : public CScriptBase {
 public:
 #define ALLOC(Name) struct Name { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_WaspBossScript& parent, CScriptDataBase* data, const CScriptThing& thing); };

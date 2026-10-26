@@ -9,7 +9,6 @@
 // register), filled by `Reset(new X(this, points))` inside a two-case `switch` (`sub eax,esi ; je ; dec eax ; jne`;
 // the default arm jumps straight to the return with esi = 0), and returned by value through the hidden pointer
 // (`ret 0Ch`): the copy constructor's add-ref and the local's release share one null test and keep both count stores.
-extern "C" void __cdecl operator_delete_00bfe9bc(void* block);   // 0x00BFE9BC
 
 namespace NShape {
 
@@ -51,7 +50,7 @@ struct CShapePointer {                             // CCountedPointer<CShape>
         if (block) {
             if (--block->m_count == 0) {
                 block->m_pfnDestroy(block->m_pObject);
-                operator_delete_00bfe9bc(block);
+                operator delete(block);
             }
         }
     }

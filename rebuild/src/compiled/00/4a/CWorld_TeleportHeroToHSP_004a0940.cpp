@@ -67,7 +67,8 @@ public:
 };
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CMainGameComponent {
 public:
@@ -702,7 +703,7 @@ bool CWorld::TeleportHeroToHSP(const CCharString& name)
     if (found != sites.end()) {
         CGameScriptInterface* gsi = PGameScriptInterface_ptr;
         CPlayerManager* players = g_pMainGameComponent->PlayerManager;
-        gsi->EntityTeleportToThing(players->GetMainPlayer()->GetPlayerCharacter()->GetScriptThing(),
+        gsi->EntityTeleportToThing(players->GetMainPlayer().GetPlayerCharacter()->GetScriptThing(),
                                    (*found)->GetScriptThing(), false);
         return true;
     }

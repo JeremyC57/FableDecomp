@@ -34,7 +34,6 @@ class CDataInputStream : public CDataStream { public:
     void* CurrentSourcePtr;                  // +0x0c
     unsigned long SourceChunkStreamPos;      // +0x10
     long SourceChunkBytesRemaining;          // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
     __forceinline void Read(void* dest, long n)
     {
@@ -49,6 +48,8 @@ class CDataInputStream : public CDataStream { public:
     }
     __forceinline char ReadChar() { char value; Read(&value, 1); return value; }
     CCharString ReadUntilCharacter(char terminator, bool* found);   // 0x00994DC0
+private:
+    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 
 class CBankFileManager {

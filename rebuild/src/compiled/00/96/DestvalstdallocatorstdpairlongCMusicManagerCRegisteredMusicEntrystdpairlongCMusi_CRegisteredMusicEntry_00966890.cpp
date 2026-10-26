@@ -11,8 +11,8 @@
 #undef CCreatureActionBase
 
 class CCreatureActionBase { public:                    // retail 0xa8 bytes
-    unsigned char _base[0xa8];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    unsigned char _base[0xa8 - 4];
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 struct CBaseIntelligentPointer {                // vptr + item (8 bytes)
     void* _vptr;

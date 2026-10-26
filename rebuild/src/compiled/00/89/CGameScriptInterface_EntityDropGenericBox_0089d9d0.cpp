@@ -29,7 +29,7 @@ struct CTCMap_Retail {                             // the thing's component map 
         return it->m_pTC;
     }
 };
-struct CThing_Retail {
+class CThing { public:
     unsigned char  _pad00[0x10];
     unsigned char  m_type;                         // +0x10 (1 = a creature)
     unsigned char  _pad11[0xf];
@@ -41,12 +41,12 @@ struct CThing_Retail {
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
 };
-__forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-__forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+__forceinline CTCBase_Retail* GetTC(CThing* thing, long kind) { return thing->m_tcs.Find(kind); }
+__forceinline CTCBase_Retail* GetTCConst(const CThing* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing_Retail* GetThing() const;       // slot 11 (+0x2c)
+    virtual CThing* GetThing() const;       // slot 11 (+0x2c)
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027();
     virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
@@ -59,8 +59,8 @@ class CScriptThing { public:
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
 struct CPlayer_Retail {
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0
-    CThing_Retail* GetControlledCreature();        // 0x00487DD0
+    CThing* GetHeroCreature();              // 0x00487DC0
+    CThing* GetControlledCreature();        // 0x00487DD0
 };
 struct CPlayerManager_Retail {
     CPlayer_Retail* GetMainPlayer();               // 0x00449970
@@ -70,21 +70,21 @@ struct CDefinitionManager_Retail {
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 class CWorld; class CMainGameComponent; class CDisplayEngine; class CThingSearchTools;
-__forceinline CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
+__forceinline CTCBase_Retail* GetTCIfPresent(CThing* thing, long kind)
 {
     CTCBase_Retail* tc;                            // deliberately unset when the component is absent (retail reads a dead slot)
     if (thing->HasTC(kind))
         tc = GetTC(thing, kind);
     return tc;
 }
-__forceinline CTCBase_Retail* GetTCIfPresentConst(const CThing_Retail* thing, long kind)
+__forceinline CTCBase_Retail* GetTCIfPresentConst(const CThing* thing, long kind)
 {
     CTCBase_Retail* tc;
     if (thing->HasTC(kind))
         tc = GetTCConst(thing, kind);
     return tc;
 }
-template <class T> __forceinline bool GetTCOut(CThing_Retail* thing, long kind, T** out)   // the out-parameter lookup: the component stays in eax
+template <class T> __forceinline bool GetTCOut(CThing* thing, long kind, T** out)   // the out-parameter lookup: the component stays in eax
 {
     if (thing->HasTC(kind)) {
         *out = (T*)GetTC(thing, kind);
@@ -100,11 +100,15 @@ class CCharString { public:                               // fable_string.h layo
 };
 __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists and is not dead
 {
-    CThing_Retail* t = thing.GetThing();
+    CThing* t = thing.GetThing();
     return t && !t->m_dead;
 }
-struct CTCCarrying_Retail { CThing_Retail* RemoveThingFromPrimarySlot(bool b); };   // 0x006A1E00
-struct CTCCreatureModeManager_Retail { void RemoveMode(unsigned long mode); };      // 0x0073ABA0
+class CTCCarrying { public: public:
+    CThing* RemoveThingFromPrimarySlot(bool);   // 0x006A1E00
+};   // 0x006A1E00
+class CTCCreatureModeManager { public: public:
+    void RemoveMode(unsigned long);   // 0x0073ABA0
+};      // 0x0073ABA0
 class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
@@ -119,11 +123,11 @@ class CGameScriptInterface { public:
 void CGameScriptInterface::EntityDropGenericBox(const CScriptThing& thing) const
 {
     if (thing.IsValid()) {
-        CThing_Retail* t = thing.GetThing();
-        CTCCarrying_Retail* carrying;
+        CThing* t = thing.GetThing();
+        CTCCarrying* carrying;
         if (GetTCOut(t, 0x46, &carrying)) {
             carrying->RemoveThingFromPrimarySlot(false);
-            CTCCreatureModeManager_Retail* modes;
+            CTCCreatureModeManager* modes;
             if (GetTCOut(t, 0x31, &modes))
                 modes->RemoveMode(0x22);
         }

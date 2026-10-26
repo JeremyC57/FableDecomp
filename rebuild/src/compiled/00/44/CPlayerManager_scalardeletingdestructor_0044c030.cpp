@@ -1,4 +1,3 @@
-extern void __cdecl engine_operator_delete(void* p);
 
 class CPlayerManager { public:
     void* vftable;
@@ -10,6 +9,6 @@ void* CPlayerManager::CPlayerManager_scalar_deleting_destructor(unsigned int fla
 {
     this->RealDtor();
     if (flags & 1)
-        engine_operator_delete(this);
+        operator delete(this);
     return this;
 }

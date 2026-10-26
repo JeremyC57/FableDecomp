@@ -18,9 +18,10 @@ class CTCBase;
 class CTCParamsBase;
 
 class CThing { public:
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     bool IsGameStatePersisted() const;                      // 0x004C8280
     void SetAsGameStatePersisted(bool persisted);           // 0x004C7880
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 
 enum EWallMountEffects { WALL_MOUNT_EFFECT_NONE = 0, WALL_MOUNT_EFFECT_TELEPORT = 1 };

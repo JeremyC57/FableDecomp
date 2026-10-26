@@ -23,7 +23,10 @@ class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};            // 0x0049D870
 
 struct __true_type { __true_type() { } };
 struct CLongVector {                            // STLport vector<long> (12 bytes)
@@ -102,12 +105,22 @@ public:
     unsigned char m_flags;                      // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
 };
-struct CBaseIntelligentPointer {
-    void*        __vftable;                     // +0x00
-    CBaseObject* m_pItem;                       // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!p.GetPItem()->IsDead())
@@ -130,7 +143,7 @@ struct CTCUserActionPointBase {
     CLongVector   BlockedActionPointIndexes;    // +0x18
     long          NumberOfActionPoints;         // +0x24
     long          FrameOfNextCheck;             // +0x28
-    CBaseIntelligentPointer PThing;             // +0x2c
+    CIntelligentPointer<CThing> PThing;             // +0x2c
     void UpdateBlockedActionPoints();
 };
 
@@ -138,7 +151,7 @@ void CTCUserActionPointBase::UpdateBlockedActionPoints()
 {
     if (BlockedActionPointIndexes.empty())
         return;
-    if (GFGetCurrentFrame() <= FrameOfNextCheck)
+    if (CWorld::GetFrame() <= FrameOfNextCheck)
         return;
     CLongVector stillBlocked;
     C3DVector position;
@@ -155,5 +168,5 @@ void CTCUserActionPointBase::UpdateBlockedActionPoints()
         FreeActionPointIndexes.push_back(index);
     }
     BlockedActionPointIndexes = stillBlocked;
-    FrameOfNextCheck = GFGetCurrentFrame() + 10;
+    FrameOfNextCheck = CWorld::GetFrame() + 10;
 }

@@ -68,7 +68,7 @@ class CScriptThing { public:                              // 12 bytes, vtable 0x
     virtual void v017();
     virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48)
     CScriptThingPImp PImp;                         // +0x04
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
     __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 };
 bool __fastcall IsDistanceFromThingToPositionUnder(const CScriptThing& thing, const C3DVector& position, float distance);   // 0x00CBE4B7

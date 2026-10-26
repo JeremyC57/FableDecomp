@@ -82,15 +82,26 @@ class CThing { public:
     }
     void Kill(bool immediately);                        // 0x004C9B80
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                      // +0x04
-    CThing* GetPItem() const;                           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CObjectNode {                                    // STLport list node of CIntelligentPointer<CThing>
     CObjectNode* _M_next;
     CObjectNode* _M_prev;
-    CBaseIntelligentPointer _M_data;                    // +0x08
+    CIntelligentPointer<CThing> _M_data;                    // +0x08
 };
 class CTCThingOwner { public:
     virtual void v00();
@@ -113,7 +124,7 @@ void CTCShop::RemoveStockItemsFromShop()
     if (shop->HasTC(0x21)) {
         CTCThingOwner* owner = (CTCThingOwner*)shop->GetTC(0x21);
         for (CObjectNode* node = owner->ObjectList->_M_next; node != owner->ObjectList; node = node->_M_next) {
-            CBaseIntelligentPointer& object = node->_M_data;
+            CIntelligentPointer<CThing>& object = node->_M_data;
             CDefPointer<CStockItemDef> stockDef;
             if (object.GetPItem() && !(object.GetPItem()->m_flags91 & 1)) {
                 CDefClassBase* def = object.GetPItem()->PDef;

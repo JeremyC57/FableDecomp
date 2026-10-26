@@ -39,9 +39,11 @@ template <class T> class CCountedPointer { public:
 class CMap;
 class CDataOutputStream { public:
     void WritePresizedString(const CCharString& s);   // 0x00995A80
-    void WriteBool(bool value);                       // 0x00993E30
-    void WriteLong(long value);                       // 0x00993EB0
-    void WriteUInt64(unsigned __int64 value);         // 0x00993EC0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteUHUGE(unsigned __int64);   // 0x00993EC0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 class CMapInfo { public:                                  // PDB CMapInfo, 0x48, no vtable
     C2DBoxI                Area;                   // +0x00
@@ -67,13 +69,13 @@ void CMapInfo::SaveBinary(CDataOutputStream* s)
 {
     s->WritePresizedString(LevelName);
     s->WritePresizedString(LevelScriptName);
-    s->WriteBool(Used);
-    s->WriteBool(LoadedOnPlayerProximity);
-    s->WriteBool(IsSea);
-    s->WriteLong(Area.TLX);
-    s->WriteLong(Area.BRX);
-    s->WriteLong(Area.TLY);
-    s->WriteLong(Area.BRY);
-    s->WriteBool(Placed);
-    s->WriteUInt64(MapUID);
+    s->WriteEBOOL(Used);
+    s->WriteEBOOL(LoadedOnPlayerProximity);
+    s->WriteEBOOL(IsSea);
+    s->WriteSLONG(Area.TLX);
+    s->WriteSLONG(Area.BRX);
+    s->WriteSLONG(Area.TLY);
+    s->WriteSLONG(Area.BRY);
+    s->WriteEBOOL(Placed);
+    s->WriteUHUGE(MapUID);
 }

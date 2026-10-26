@@ -24,19 +24,24 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 class CThingManager { public:
     CThing* GetThingByUID(unsigned __int64 uid);   // 0x0051ED80
 };
-class CTCPreCalculatedNavigationRoute { public:
+class CTCBase
+{
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
+};
+
+class CTCPreCalculatedNavigationRoute : public CTCBase { public:
     void*   __vftable;                          // +0x00 (CTCBase)
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
     CIntelligentPointer<const CThing> PThingToCalculateRouteTo;   // +0x0c
     unsigned __int64 ThingToCalculateRouteToUID;// +0x18
-    CThingManager* GetThingManager();           // 0x00686AE0 (CTCBase)
     void OnInitialActivate();
 };
 
 void CTCPreCalculatedNavigationRoute::OnInitialActivate()
 {
     if (ThingToCalculateRouteToUID)
-        PThingToCalculateRouteTo = CIntelligentPointer<const CThing>(GetThingManager()->GetThingByUID(ThingToCalculateRouteToUID));
+        PThingToCalculateRouteTo = CIntelligentPointer<const CThing>(GetThingManager().GetThingByUID(ThingToCalculateRouteToUID));
 }

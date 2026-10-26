@@ -85,8 +85,9 @@ public:
     unsigned char DeathPersistent : 1;
     unsigned char KillOnLevelUnload : 1;                       // bit 2
     void SetInLimbo(bool inLimbo);                             // 0x004C8CF0
-    bool IsGameStatePersisted();                               // 0x004C8280
-    bool IsLevelPersistent();                                  // 0x004C82A0
+public:
+    bool IsGameStatePersisted() const;   // 0x004C8280
+    bool IsLevelPersistent() const;   // 0x004C82A0
 };
 
 class CQuestManager {

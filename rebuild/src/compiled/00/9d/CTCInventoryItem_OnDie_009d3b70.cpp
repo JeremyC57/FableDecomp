@@ -1,5 +1,5 @@
 // CTCInventoryItem::OnDie  @ 009d3b70  __fastcall void(CTCInventoryItem*)
-extern "C" void __cdecl freemem_009d3b70(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CTCInventoryItemBase
 {
@@ -17,6 +17,6 @@ void CTCInventoryItem::OnDie()
 {
     void* p = this->thing;
     if (p != 0)
-        freemem_009d3b70(p);
+        free(p);
     this->OnDieBase();
 }

@@ -28,8 +28,8 @@ ManagerMethods* __fastcall GetUIManager(); //41E5F2 CManager::GetInstance
 extern const unsigned char EditBoxVTable[],EditBoxObserverVTable[],EditBoxSecondaryVTable[];
 struct EditBoxBaseNative {void*VTable;ObserverNative Observer;void*SecondaryVTable;unsigned char Unrecovered1C[0x15c-0x1c];void InitializeChangingStateComponent(long);EditBoxBaseNative(long def){InitializeChangingStateComponent(def);VTable=(void*)EditBoxVTable;Observer.VTable=(void*)EditBoxObserverVTable;SecondaryVTable=(void*)EditBoxSecondaryVTable;}};
 struct ActionNode {ActionNode*Next,*Previous;void*Action;void*CountInfo;};
-void* __cdecl AllocateActionListNode(size_t); // genuine CRT malloc BFEA0E, descriptive ABI alias
-struct ActionList {ActionNode*Head;ActionList():Head(0){ActionNode*p=static_cast<ActionNode*>(AllocateActionListNode(sizeof(ActionNode)));p->Next=p;p->Previous=p;Head=p;}};
+extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (MSVCR71)
+struct ActionList {ActionNode*Head;ActionList():Head(0){ActionNode*p=static_cast<ActionNode*>(malloc(sizeof(ActionNode)));p->Next=p;p->Previous=p;Head=p;}};
 #pragma pack(push,1)
 struct UIDefNative:CIVCountedPointeeBase {unsigned char Unrecovered08[0x1cd-8];bool PasswordBox;unsigned char Alignment[2];long EditBoxCharLimit;bool EditBoxUsesIME,DisallowSpaceAsFirstChar;
  typedef void(UIDefNative::*DeleteMethod)()const;void DecRef()const{--const_cast<UIDefNative*>(this)->IVRefCount;}long GetRefCount()const{return IVRefCount;}

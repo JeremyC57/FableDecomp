@@ -1,10 +1,12 @@
 #include <cstdio>
 
+class CDefString;
 class CPersistContext { public:
     int calls;
-    void PersistA_0045228f(int& r);
-    void PersistB(int& r);
+    template <class T> void Transfer(T& value);
 };
+template <> void CPersistContext::Transfer<CDefString>(CDefString& value);
+template <> void CPersistContext::Transfer<float>(float& value);
 
 class CVillagerInteractionsDef { public:
     char pad[0x3c];
@@ -16,14 +18,18 @@ class CVillagerInteractionsDef { public:
 static int g_seq[4];
 static int g_n;
 
-void CPersistContext::PersistA_0045228f(int& r) { calls++; g_seq[g_n++] = 1; }
-void CPersistContext::PersistB(int& r) { calls++; g_seq[g_n++] = 2; }
+template <> void CPersistContext::Transfer<CDefString>(CDefString& value_)
+{
+    int& r = *(int*)&value_; (void)&r; calls++; g_seq[g_n++] = 1; }
+template <> void CPersistContext::Transfer<float>(float& value_)
+{
+    int& r = *(int*)&value_; (void)&r; calls++; g_seq[g_n++] = 2; }
 
 void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->PersistA_0045228f(def->fieldA);
-    ctx->PersistA_0045228f(def->fieldB);
-    ctx->PersistB(def->fieldC);
+    ctx->Transfer(*(CDefString*)&(def->fieldA));
+    ctx->Transfer(*(CDefString*)&(def->fieldB));
+    ctx->Transfer(*(float*)&(def->fieldC));
 }
 
 int main() {

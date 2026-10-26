@@ -137,9 +137,17 @@ typedef void (CLocalDetailPrimitiveRepeatedMesh::*LocalDetailAddPMF)();
 FABLE_STATIC_ASSERT(sizeof(LocalDetailAddPMF)==4);
 #endif
 
+#define CEngineLandscapeMemoryManager CEngineLandscapeMemoryManagerLayout
 #include "engine/CEngineLandscapeMemoryManager.h"
+#undef CEngineLandscapeMemoryManager
+
+class CEngineLandscapeMemoryManager : public CEngineLandscapeMemoryManagerLayout
+{
+public:
+    void FreeVirtual(void*);   // 0x00BD9B90
+};
 // Methods projection inherits the complete actual layout; no additional data.
-struct LandscapeMemoryMethods : CEngineLandscapeMemoryManager { void FreeVirtual(void*); void FreeAlignedVirtual(void*); }; // 0x00BD9B90
+struct LandscapeMemoryMethods : CEngineLandscapeMemoryManager { void FreeAlignedVirtual(void*); }; // 0x00BD9B90
 // Actual complete donor header audited before grade. Native renderer projection follows
 // the retail manager access: 6B0, versus donor F58 after its larger MeshBuilder.
 #include "engine/CEngineLandscapeRenderer.h"

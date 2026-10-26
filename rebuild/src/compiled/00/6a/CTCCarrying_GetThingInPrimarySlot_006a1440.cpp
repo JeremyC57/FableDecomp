@@ -14,16 +14,27 @@ class CThing { public:
     unsigned char m_flags91;                        // +0x91
 };
 
-struct CBaseIntelligentPointer {                    // 8 bytes: vptr, item block
-    void* m_vtable;
-    void* m_pBlock;
-    CThing* GetPItem() const;                       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct SThingListNode {                             // STLport list node
     SThingListNode*         _M_next;
     SThingListNode*         _M_prev;
-    CBaseIntelligentPointer _M_data;                // +0x08
+    CIntelligentPointer<CThing> _M_data;                // +0x08
 };
 
 struct CThingList {                                 // STLport list<CIntelligentPointer<CThing>>: the sentinel node pointer

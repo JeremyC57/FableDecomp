@@ -37,7 +37,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  struct InlineCopy { };                                 // tag: the inline copy retail expands at by-value call sites
  CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
  CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
- ~CScriptThing();                                       // 0x004AA840
+ virtual ~CScriptThing();                                       // 0x004AA840
 };
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
@@ -946,8 +946,9 @@ class CCharString { public:
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 class CBaseObject { public:
  void* m_pIntelligentPointer;
- CBaseObject();                                     // 0x0099A380
- virtual ~CBaseObject();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
  CCountedPointerWords PImp;
@@ -955,18 +956,24 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
  bool IsScripting();                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
- void PlayAnimation(const CCharString& anim, bool waitForFinish, bool stayOnLastFrame, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 18, 0x007E73D0
  void PlayLoopingAnimation(const CCharString& anim, long loops, bool waitForFinish, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 20, 0x007E73F0
+public:
+    virtual void PlayAnimation(const CCharString&, bool, bool, bool, bool, bool, bool, bool);   // 0x007E73D0
 };
 extern bool g_bScriptAnimationFlag;                 // 0x01375748 (a global bool the script headers pass as an animation default)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CDyingVillager {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CDyingVillager : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  void* ParentClass;                                 // +0x14 CQ_HeroSoulsArenaScript*
  void* PMasterData;                                 // +0x18
  bool PlayedOnce;                                         // +0x1c
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CDyingVillager::Main()

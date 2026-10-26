@@ -11,18 +11,25 @@
 // Layout: the entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14 (CQ_SecretPassageScript*), PMasterData +0x18.
 // Shape: the landed CUndeadRisingZombieAttacker::Main (0x00E0CFF0) prelude and scripted-thing handle; the handle is
 //   released again before its destructor at the end; the line text is passed straight to the `const CCharString&`.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 class CScriptThing { public:                                    // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    ~CScriptThing();                                     // 0x004AA840
+    virtual ~CScriptThing();                                     // 0x004AA840
 };
-struct CIsThingAlive {                                   // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                   // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                                // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -34,8 +41,9 @@ struct CCountedPointerWords {                            // {Data, Info}
 };
 class CBaseObject { public:                                     // CBaseIntelligentPointer root (polymorphic: vptr +0)
     void* m_pIntelligentPointer;                         // +0x04
+protected:
     CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                           // +0x08 Data, +0x0c Info
@@ -138,15 +146,20 @@ class CGameScriptInterface { public:
     virtual bool CanThingBe_Heard_ByOtherThing(const CScriptThing& thing, const CScriptThing& other) const;   // slot 635 (+0x9ec)
 };
 struct CQ_SecretPassageScript;
-class CSP_AmbushGuard {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CSP_AmbushGuard : public CEntityScriptBase {
 public:
     void*                   __vftable;                   // +0x00
     CGameScriptInterface*   Game;                        // +0x04
     CScriptThing            Me;                          // +0x08
     CQ_SecretPassageScript* ParentClass;                 // +0x14
     void*                   PMasterData;                 // +0x18
-    void RegisterFilter(CIsThingAlive& filter);          // 0x00F35B10
-    bool IsDone();                                       // 0x00F35B30
     void Main();
 };
 
@@ -154,27 +167,27 @@ void CSP_AmbushGuard::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
     if (handle.IsScripting())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_4)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     while (!(Game->CanThingBe_Seen_ByOtherThing(Game->GetHero(), Me) || Game->CanThingBe_Heard_ByOtherThing(Game->GetHero(), Me))) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     long conversation = Game->AddNewConversation(Me, false, false);
     Game->AddLineToConversation(conversation, "TEXT_QST_055_GUARD_SURPRISED_BY_HERO", false, Me, Game->GetHero());

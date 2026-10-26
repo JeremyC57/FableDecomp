@@ -38,17 +38,22 @@ public:
     const C3DVector& GetPosition() const;               // 0x004C73D0
     float GetAngleXY() const { return PhysicsTC->GetAngleXY(); }
 };
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
-    virtual void v00();
-    void* PData;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
-    virtual void v00();
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CPlayer { public:
@@ -83,8 +88,9 @@ public:
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    CWorld* GetWorld();                                 // 0x00686A70
-    CPlayerManager* GetPlayerManager();                 // 0x00686D40
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 #pragma pack(push, 1)
 class CTCDRegionExit : public CTCBase {
@@ -108,9 +114,9 @@ public:
 
 void CTCDRegionExit::MoveHeroThroughExit()
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer()->GetHeroThing();
     if (hero && !hero->Dead) {
-        GetWorld()->HeroMovingThroughRegionExit = true;
+        GetWorld().HeroMovingThroughRegionExit = true;
         CGameEvent event(0x2c);
         event.AddFLOAT(PEntranceConnectedTo.GetPItem()->GetPosition().X);
         event.AddFLOAT(PEntranceConnectedTo.GetPItem()->GetPosition().Y);
@@ -120,6 +126,6 @@ void CTCDRegionExit::MoveHeroThroughExit()
         event.AddBOOL(false);
         event.AddBOOL(false);
         event.Player = hero->Player;
-        GetWorld()->HandleMoveHeroToRegionGameEvent(event);
+        GetWorld().HandleMoveHeroToRegionGameEvent(event);
     }
 }

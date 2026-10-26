@@ -37,15 +37,27 @@ struct CRetailThingView {
         return false;
     }
 };
-struct CIntelligentPointerView {
-    void* __vftable;
-    CThingAICreature* Object;
-    CThingAICreature* GetPItem() const; // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+class CThingAICreature;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CVillagePersonNode {
     CVillagePersonNode* Next;
     CVillagePersonNode* Previous;
-    CIntelligentPointerView Value;
+    CIntelligentPointer<CThingAICreature> Value;
 };
 // The engine village header retains donor 12-byte lists (+0x34 VillagePeople).
 // Retail lists are one head pointer, so VillagePeople is +0x2c; no header is redefined.
@@ -70,7 +82,7 @@ struct CTCWalkToMarkerView {
  unsigned char _before7b[0x12]; bool Flag7b;
 };
 struct CTCAvoidRegionExitView {
- unsigned char _base[0xc]; CIntelligentPointerView EntranceMarker;
+ unsigned char _base[0xc]; CIntelligentPointer<CThingAICreature> EntranceMarker;
  C3DVector GetPosition(); // 0092BD80
 };
 struct CAvoidStateView : CAIStateGroupBase { C3DVector Position; bool IsRunnable(); };

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00789E60, 363 bytes (+ int3 padding), `ret` (thiscall, no arguments).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0 (the inlined interface lookups,
 //   types 0xA7 = word 5 bit 7 (`test al,al ; jns` on +0x34), 0x46 CTCCarrying = word 2 bit 6, 0x48 CTCWeapon = word 2
-//   bit 8, 0x31 = word 1 bit 17), CThing::GetPlayer @ 0x004C7A10, CTCCarrying::GetThingInPrimarySlot @ 0x006A1440,
+//   bit 8, 0x31 = word 1 bit 17), CThing::PeekPlayer @ 0x004C7A10, CTCCarrying::GetThingInPrimarySlot @ 0x006A1440,
 //   CTCWeapon::IsProjectileWeapon @ 0x005DAA40, the interface-49 component's current-mode getter @ 0x0073A6E0
 //   (manifest "CPixelShader::CountReferences" is propagated), the mode's virtual slot 1 (its type id).
 // Shape: the first lookup and GetPlayer share the owner thing in edi (a block-scoped local); every later test re-reads
@@ -36,7 +36,6 @@ class CThing { public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    CPlayer* GetPlayer();                           // 0x004C7A10
     __forceinline bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -64,6 +63,8 @@ class CThing { public:
         }
         return false;
     }
+public:
+    const CPlayer& PeekPlayer() const;   // 0x004C7A10
 };
 
 class CCreatureActionBase { public:
@@ -83,11 +84,13 @@ struct CTCRangedBlocker {                           // interface 0xA7
 };
 
 class CTCCarrying { public:                                // interface 0x46
-    CThing* GetThingInPrimarySlot();                // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 
 class CTCWeapon { public:                                  // interface 0x48
-    bool IsProjectileWeapon();                      // 0x005DAA40
+public:
+    bool IsProjectileWeapon() const;   // 0x005DAA40
 };
 
 struct CMode {
@@ -111,7 +114,7 @@ bool CTCHeroRangedAttacksMethods::IsAbleToUseRangedWeapon()
         CTCRangedBlocker* blocker;
         if (thing->GetInterface(&blocker, 0xa7) && blocker->m_blocking)
             return false;
-        if (thing->GetPlayer()->m_controlsLocked)
+        if (thing->PeekPlayer().m_controlsLocked)
             return false;
     }
     CCreatureActionBase* action = ((CThingCreatureBase*)PParentCreature)->PCurrentAction;

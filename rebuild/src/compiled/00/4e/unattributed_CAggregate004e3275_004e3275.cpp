@@ -19,13 +19,12 @@ struct CMember_004dd56c {
     ~CMember_004dd56c();                            // 0x004DD56C
 };
 
-struct CMember_00686830 {
-    unsigned char _body[0x4];
-    ~CMember_00686830();                            // 0x00686830
+class CTCBase { public:
+    virtual ~CTCBase();                            // 0x00686830
 };
 
 struct CAggregate_004e3275 {
-    CMember_00686830 m_first;            // +0 (its destructor is the tail call)
+    CTCBase m_first;            // +0 (its destructor is the tail call)
     unsigned char _gap0[0x8];
     CMember_004dd56c m_0c;            // +0xc
     CMember_004dd52b m_18;            // +0x18

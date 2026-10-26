@@ -28,22 +28,34 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CTCSpellComponent_0069f800 {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+class CTCDivineWrath { public:
     unsigned char _pad[0x18];
     unsigned char m_triggered;              // +0x18
-    void Trigger();                         // 0x0078F820
+public:
+    void CancelMove();   // 0x0078F820
 };
 
 class CCreatureAction_SheatheItemToInventory { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4: 0x0069F670
     unsigned char _pad04[4];
-    CBaseIntelligentPointer PCreature;      // +0x08
+    CIntelligentPointer<CThing> PCreature;      // +0x08
 };
 class CCreatureAction_SheatheItemToInventory_ForDivineWrath : public CCreatureAction_SheatheItemToInventory { public:
     virtual void FinishAction();
@@ -52,9 +64,9 @@ class CCreatureAction_SheatheItemToInventory_ForDivineWrath : public CCreatureAc
 void CCreatureAction_SheatheItemToInventory_ForDivineWrath::FinishAction()
 {
     CCreatureAction_SheatheItemToInventory::FinishAction();
-    CTCSpellComponent_0069f800* pSpell;
+    CTCDivineWrath* pSpell;
     if (PCreature.GetPItem()->GetInterface(&pSpell, 0x85)) {
         if (!pSpell->m_triggered)
-            pSpell->Trigger();
+            pSpell->CancelMove();
     }
 }

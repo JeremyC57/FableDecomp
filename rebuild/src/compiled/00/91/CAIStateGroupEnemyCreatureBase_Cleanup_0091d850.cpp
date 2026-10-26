@@ -11,8 +11,13 @@
 // Model: local (engine/CAIStateGroup_EnemyCreatureBase.h flattens the base).
 class CThingCreatureBase;
 
-class CThingAICreature { public:
-    bool IsRegisteredCombatant();                   // 0x00662410
+class CThingCreatureBase
+{
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
+};
+
+class CThingAICreature : public CThingCreatureBase { public:
 };
 
 class CCombatManager { public:
@@ -24,19 +29,25 @@ class CWorld { public:
     CCombatManager* CombatManager;                  // +0x4c
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                  // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThingCreatureBase* GetPItem() const;           // 0x00A01B50
-    void SetPItem(CThingCreatureBase* item);        // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
-    virtual void v00();
-    CIntelligentPointerCreature(CThingCreatureBase* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CAIBrain { public:
@@ -62,17 +73,17 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase {
-    CIntelligentPointerCreature PEnemy;             // +0x14
+    CIntelligentPointer<CThingCreatureBase> PEnemy;             // +0x14
     virtual void Cleanup();
 };
 
 void CAIStateGroup_EnemyCreatureBase::Cleanup()
 {
-    if (PBrain->Creature->IsRegisteredCombatant()) {
+    if (PBrain->Creature->IsInMeleeAsAttacker()) {
         CThingAICreature* creature = PBrain->Creature;
         CWorld* world = GetPWorld();
         world->CombatManager->DeregisterCombatant((CThingCreatureBase*)creature);
     }
     OnCleanup();
-    PEnemy = CIntelligentPointerCreature(0);
+    PEnemy = CIntelligentPointer<CThingCreatureBase>(0);
 }

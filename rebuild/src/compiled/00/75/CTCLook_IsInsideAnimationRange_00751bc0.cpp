@@ -88,20 +88,25 @@ class CLookDef { public:
 };
 template <class T> class CDefPointer { public: T* Object; T* operator->() const { return Object; } };
 
-class CTCLook { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCLook : public CTCBase { public:
     unsigned char _pad00[0x04];
     CThing*       ParentThing;                       // +0x04
     unsigned char _pad08[0x0c];
     CDefPointer<CLookDef> PDef;                      // +0x14
-    CWorld* GetWorld();                              // 0x00686A70 (CTCBase)
     bool IsInsideAnimationRange();
 };
 bool CTCLook::IsInsideAnimationRange()
 {
     C3DVector position = ParentThing->GetPosition();
-    C3DVector view = GetWorld()->GetViewPosition();
+    C3DVector view = GetWorld().GetViewPosition();
     CLookDef* def = PDef.Object;
     if (Distance2D(C2DVector(position), C2DVector(view)) <= def->CutOffNoLooking)
-        return ParentThing->PTCGraphicAppearance->WasRenderedLastFrame() || GetWorld()->GetGameScriptInterface()->IsInMovieSequence();
+        return ParentThing->PTCGraphicAppearance->WasRenderedLastFrame() || GetWorld().GetGameScriptInterface()->IsInMovieSequence();
     return false;
 }

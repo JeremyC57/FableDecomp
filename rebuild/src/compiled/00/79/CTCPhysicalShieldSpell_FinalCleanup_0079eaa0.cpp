@@ -7,7 +7,7 @@
 //   The catalog's "CThing_OnDestroy" is descriptive.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (inline GetInterface: 0x5B = CTCGraphicAppearance,
 //   bitset word +0x28 bit 27; 0x10 = the sound player, word +0x20 bit 16), CTCGraphicAppearance::ClearMeshEffect(void* key)
-//   0x004BFFC0 (key = this, as CTCMultiArrow::RemoveEffectOnWeapon), CTCSoundPlayer::StopSample(unsigned long) 0x0066ADD0.
+//   0x004BFFC0 (key = this, as CTCMultiArrow::RemoveEffectOnWeapon), CTCSoundPlayer::StopAttachedSound(unsigned long) 0x0066ADD0.
 // Layout: Ego_r.pdb = retail: LoopingSound +0x40, Pausable +0x44.
 // Shape: the appearance through the out-parameter GetInterface; `Pausable = false` then the inline StopSound(LoopingSound)
 //   (the sound id is read into ebx before the flag store, the lookup re-reads the caster); the out-of-line StopSound at
@@ -66,7 +66,8 @@ public:
 
 class CTCSoundPlayer {                                   // interface 0x10
 public:
-    void StopSample(unsigned long sampleID);             // 0x0066ADD0
+public:
+    void StopAttachedSound(unsigned long);   // 0x0066ADD0
 };
 
 class CTCPhysicalShieldSpell {
@@ -83,7 +84,7 @@ public:
     {
         CTCSoundPlayer* player;
         if (ParentThing->GetInterface(&player, 0x10))
-            player->StopSample(sound);
+            player->StopAttachedSound(sound);
     }
 protected:
     void FinalCleanup();

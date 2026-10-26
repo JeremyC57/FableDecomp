@@ -59,7 +59,7 @@ class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { 
 };
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _pad0a8[0x114 - 0xa8];
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCreatureAction_BattleChargeImpact : public CCombatActionBase { public:
     CIntelligentPointer<CThing> PLeftFeetEffect;    // +0x114

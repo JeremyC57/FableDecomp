@@ -15,7 +15,7 @@ class CPatchTesselationEdgeStrip { public:
     CSub60 sub60; // +0x60
 };
 
-void __cdecl free(void*);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self)
 {

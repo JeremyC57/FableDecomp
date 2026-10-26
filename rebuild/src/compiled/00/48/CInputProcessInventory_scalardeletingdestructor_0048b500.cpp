@@ -8,12 +8,11 @@ class CInputProcessInventory
     void dtor();  // real scalar destructor @ 0xa0d3d0 (declaration only -> real call)
 };
 
-void operator_delete_stub(void* p); // operator delete @ 0xbfe9bc (declaration only)
 
 void* __fastcall scalar_deleting_destructor(CInputProcessInventory* process, int edx, unsigned int flags)
 {
     process->dtor();
     if (flags & 1)
-        operator_delete_stub(process);
+        operator delete(process);
     return process;
 }

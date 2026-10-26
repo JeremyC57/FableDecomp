@@ -4,7 +4,7 @@
 // Leaf: GetCurrentCollectableRentValue
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C0160, 271 bytes (+1 int3 padding), `ret`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const 0x004365B0 (both lookups), CCharString(const char*,
-//   long) 0x0099EBF0, ~CCharString 0x0099EAE0, CTCBase::GetDefinitions() const 0x006869D0, CDefinitionManager::
+//   long) 0x0099EBF0, ~CCharString 0x0099EAE0, CTCBase::GetDefinitionManager() const 0x006869D0, CDefinitionManager::
 //   GetDefGlobalIndexFromName(const CCharString&) 0x009AD410, CBaseIntelligentPointer::GetPItem 0x00A01B50,
 //   CTCGold::GetGold 0x007CBDC0. Literal 0x0125D760.
 // Layout: engine/CTCBuyableHouse.h is the PDB view of the class (only ParentThing +4 is read here, so `this` is the
@@ -101,14 +101,22 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 
-class CTCBuyableHouse {
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCBuyableHouse : public CTCBase {
 public:
     void*         __vftable;                    // +0x00 (CTCBase)
     const CThing* ParentThing;                  // +0x04
-    CDefinitionManager* GetDefinitions() const; // 0x006869D0 (CTCBase)
     long GetCurrentCollectableRentValue() const;
 };
 
@@ -121,7 +129,7 @@ long CTCBuyableHouse::GetCurrentCollectableRentValue() const
             long goldIndex;
             {
                 CCharString name("OBJECT_GOLDBAG_SMALL_WITH_COINS", -1);
-                goldIndex = GetDefinitions()->GetDefGlobalIndexFromName(name);
+                goldIndex = GetDefinitionManager().GetDefGlobalIndexFromName(name);
             }
             for (SThingListNode* node = contents->ThingsHead->next; node != contents->ThingsHead; node = node->next) {
                 const CThing* thing = node->value.GetPItem();

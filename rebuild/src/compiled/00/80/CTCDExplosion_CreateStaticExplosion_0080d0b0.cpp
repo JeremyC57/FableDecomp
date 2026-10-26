@@ -29,23 +29,29 @@ class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                                 // +0x91 bit 0: dead
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                         // +0x04
-    CBaseIntelligentPointer();                               // 0x00A01B10
-    ~CBaseIntelligentPointer();                              // 0x00A01C10
-    CThing* GetPItem() const;                                // 0x00A01B50
-    void SetPItem(CThing* item);                             // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {      // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {      // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct SEmitter {                                            // pair<CIntelligentPointer<CThing>, long>
-    CIntelligentPointer first;
+    CIntelligentPointer<CThing> first;
     long                second;
-    SEmitter(const CIntelligentPointer& a, const long& b) : first(a), second(b) { }
+    SEmitter(const CIntelligentPointer<CThing>& a, const long& b) : first(a), second(b) { }
 };
 struct CEmitterVector {
     SEmitter* _M_start;
@@ -70,8 +76,19 @@ struct CParticleEmitterManager {
 void __fastcall CreateCameraShake(const C3DVector* position, long strength, long duration, long flags);   // 0x007F1B70
 extern const float g_epsilon_0129ba3c;                       // 0x0129BA3C (1e-4f)
 class CWorld { public: static long __fastcall GetWorldFrame(); };   // 0x0049D870
-class CTCDExplosion { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCDriverBase : public CTCBase
+{
+public:
+};
+
+class CTCDExplosion : public CTCDriverBase { public:
     CThing* ParentThing;                                     // +0x04
     unsigned char _pad08[0x0c - 0x08];
     float DamageRadius;                                      // +0x0c
@@ -85,7 +102,6 @@ class CTCDExplosion { public:
     bool  CreatedEmitter;                                    // +0x3c
     bool  NeedToTriggerExplosion;                            // +0x3d
     CEmitterVector Emitters;                                 // +0x40
-    CWorld* GetWorld();                                      // 0x00686A70
     void CreateStaticExplosion();
 };
 
@@ -103,8 +119,8 @@ void CTCDExplosion::CreateStaticExplosion()
             C3DVector pos = StartPos + direction * (float)i * radius;
             CThing* emitter = manager->CreateEmitter(PExplosionDef->EmitterDefIndex, PExplosionDef->EmitterParam, spacing, pos, 0);
             if (emitter && !(emitter->m_flags91 & 1)) {
-                long frame = GetWorld()->GetWorldFrame();
-                Emitters.push_back(SEmitter(CIntelligentPointer(emitter), frame));
+                long frame = GetWorld().GetWorldFrame();
+                Emitters.push_back(SEmitter(CIntelligentPointer<CThing>(emitter), frame));
             }
         }
         CreatedEmitter = true;

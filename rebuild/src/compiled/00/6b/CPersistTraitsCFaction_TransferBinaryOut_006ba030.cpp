@@ -37,9 +37,10 @@ class CCharString { public:
         return PStringData->Data.PData;
     }
 };
-struct CDataOutputStream_Methods {
-    void WriteULong(unsigned long value);             // 0x00993EA0
+class CDataOutputStream { public:
     void WriteData(const void* data, unsigned long size);   // 0x00996610
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 class CPersistContext { public:
     unsigned char _body[0x2C];
@@ -68,7 +69,7 @@ void CPersistTraits<CFaction>::TransferBinaryOut(CDataOutputStream* stream, cons
     CCharString text;
     CPersistContext context(text);
     TransferOut(&context, &text, value);
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)stream;
-    out->WriteULong(text.GetLength());
+    CDataOutputStream* out = (CDataOutputStream*)stream;
+    out->WriteULONG(text.GetLength());
     out->WriteData(text.GetString(), text.GetLength());
 }

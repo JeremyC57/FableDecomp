@@ -1,6 +1,6 @@
 // CTCShapeManager::DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo*) -- when the world has a current game camera, fetches the camera position and draws the shapes for it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00761B10, length 52 bytes (+12 int3 padding); vtable CTCShapeManager 0x0126A2A4 slot 11.
-// Callees: CTCBase::GetWorld() const @ 0x00686A80 (the manifest label "CViewBase::GetDisplayEngine" is propagated), the
+// Callees: CTCBase::PeekWorld() const @ 0x00686A80 (the manifest label "CViewBase::GetDisplayEngine" is propagated), the
 // camera's virtual slot 11 (+0x2c, a C3DVector returned through the hidden pointer), CTCShapeManager::DrawShapes
 // (CEnginePrimitivePrepareInfo*, const C3DVector*) @ 0x00761980.
 // Layout: engine/CWorld.h PCurrentGameCamera at +0x34.
@@ -27,15 +27,20 @@ class CWorld { public:
 
 class CEnginePrimitivePrepareInfo;
 
-class CTCShapeManager { public:
-    const CWorld* GetWorld() const;                 // 0x00686A80 (CTCBase)
+class CTCBase
+{
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCShapeManager : public CTCBase { public:
     void DrawShapes(CEnginePrimitivePrepareInfo* info, const C3DVector* position);   // 0x00761980
     void DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info);
 };
 
 void CTCShapeManager::DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info)
 {
-    const CWorld* world = GetWorld();
+    const CWorld* world = (&PeekWorld());
     if (world->PCurrentGameCamera) {
         C3DVector position = world->PCurrentGameCamera->GetPosition();
         DrawShapes(info, &position);

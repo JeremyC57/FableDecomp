@@ -11,6 +11,7 @@
 // Shape: the four hero-name strings are implicit-conversion temporaries of one `||`/`&&` chain (VC's construction
 // flags in ebx, `or ebx,N` per temporary, destroyed in reverse after the chain lands in a frame bool); a plain `while`
 // after the first IsDone return gives retail's rotated loop (test duplicated at entry and bottom).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -99,8 +100,14 @@ class CGameScriptInterface { public:                     // vtable 0x01260F0C
     virtual void v504(); virtual void v505(); virtual void v506(); virtual void v507(); virtual void v508(); virtual void v509(); virtual void v510();
     virtual void EntitySetAsDrawable(const CScriptThing& thing, bool drawable) const;   // slot 511 (+0x7fc)
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual bool operator()(const CScriptThing& thing) const;
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
@@ -109,15 +116,20 @@ extern const char g_scriptNameHero[];              // 0x0125D1C8 "SCRIPT_NAME_HE
 class CPersonalScript_alextestScript;
 class CalextestData;
 
-class CStopDrawing {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CStopDrawing : public CEntityScriptBase {
 public:
     void*                  __vftable;              // +0x00
     CGameScriptInterface*  Game;                   // +0x04
     CScriptThing           Me;                     // +0x08
     CPersonalScript_alextestScript* ParentClass;   // +0x14
     CalextestData*         PMasterData;            // +0x18
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -125,17 +137,17 @@ void CStopDrawing::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
-    while (!IsDone()) {
+    while (!IsActiveThreadTerminating()) {
         bool touched = Me.MsgIsTalkedToBy(g_scriptNameHero) || Me.MsgIsHitBy(g_scriptNameHero)
                     || (Me.MsgIsHitByAnySpecialAbilityFrom(g_scriptNameHero)
                         && !Me.MsgIsHitBySpecialAbilityFrom(0xe, g_scriptNameHero));
         if (touched) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             Game->EntitySetAsDrawable(Me, false);
         }

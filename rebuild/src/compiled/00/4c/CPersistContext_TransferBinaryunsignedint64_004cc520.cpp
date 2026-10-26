@@ -2,14 +2,15 @@
 // Leaf: TransferBinary
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004CC520, length 78 bytes, `ret 4`. Unreferenced
 // out-of-line instance (no callers), the 64-bit sibling of the landed TransferBinary<signed char> 0x004CC4D0.
-// Callees: CPersistContext::CheckCRC @ 0x00404500 (the pooled empty key 0x0122D70E), CDataOutputStream::WriteUInt64
+// Callees: CPersistContext::CheckCRC @ 0x00404500 (the pooled empty key 0x0122D70E), CDataOutputStream::WriteUHUGE
 // @ 0x00993EC0, CPersistTraits<unsigned __int64>::TransferBinaryIn @ 0x0044B890 (landed names).
 // Shape: a switch with only cases 3 and 2 (`sub eax,2 ; je ; dec eax ; jne`), case 3 laid out first; the binary-load
 // arm's traits object (CPersistTraits<T> = { T DefaultVal; }, user ctor, nothing stored) is a block-scoped named local
 // that needs its own 8-byte frame here (`sub esp,8`; the signed-char sibling homes its 1-byte traits in the dead
 // argument slot).
 class CDataOutputStream { public:
-    void WriteUInt64(unsigned __int64 value);    // 0x00993EC0
+public:
+    void WriteUHUGE(unsigned __int64);   // 0x00993EC0
 };
 class CMemoryDataInputStream;
 
@@ -35,7 +36,7 @@ void CPersistContext::TransferBinary(T& value)
     CheckCRC("");
     switch (Mode) {
     case 3:
-        PSaveStream->WriteUInt64(value);
+        PSaveStream->WriteUHUGE(value);
         break;
     case 2: {
         CPersistTraits<T> traits;

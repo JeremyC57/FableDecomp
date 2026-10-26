@@ -42,7 +42,8 @@ public:
 };
 class CTCVillageMember {
 public:
-    CTCVillage* GetVillage();                               // 0x007EE540
+public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540
 };
 class CTCBase {
 public:
@@ -57,7 +58,7 @@ public:
 
 bool CTCGuard::PlayerIsCriminalAndCanApologise()
 {
-    CTCVillage* village = ParentThing->GetTC<CTCVillageMember>(0x23)->GetVillage();
+    CTCVillage* village = ParentThing->GetTC<CTCVillageMember>(0x23)->GetPVillage();
     if (village) {
         if (village->IsHeroCriminal()) {
             long timeAgo = GetTimeAgoThatCrimesCanBeApologisedFor();

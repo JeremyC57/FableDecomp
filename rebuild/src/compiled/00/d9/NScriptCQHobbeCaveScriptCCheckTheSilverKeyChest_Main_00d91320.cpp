@@ -8,6 +8,7 @@
 // Layout: local models (no engine/ header for the nested script classes): Game +0x04, Me +0x08, ParentClass +0x14.
 #include <string.h>
 #pragma auto_inline(off)
+namespace NScript { class CPredicateBase; }
 long __fastcall Compare(const char* a, const char* b)       // 0x00411570 (the landed body, stand-in)
 {
     for (;;) {
@@ -211,17 +212,24 @@ class CGameScriptInterface { public:                   // retail vtable 0x01260F
     virtual void v071();
     virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;   // slot 72 (+0x120)
 };
+class CEntityScriptBase
+{
+public:
+        virtual void Main();
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_HobbeCaveScript { public:
     bool MakeBanditComment(const CCharString& text, const CScriptThing& bandit);   // 0x00D905C0
-    class CCheckTheSilverKeyChest {
+    class CCheckTheSilverKeyChest : public CEntityScriptBase {
     public:
         CGameScriptInterface*   Game;           // +0x04
         CScriptThing            Me;             // +0x08
         CQ_HobbeCaveScript*     ParentClass;    // +0x14
         CQ_SunnyvaleMasterData* PMasterData;    // +0x18
-        bool IsActiveThreadTerminating();       // 0x00F35B30
     private:
         virtual void Main();
     };

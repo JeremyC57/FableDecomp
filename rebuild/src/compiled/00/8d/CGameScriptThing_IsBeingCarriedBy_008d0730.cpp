@@ -18,7 +18,7 @@
 
 class CBaseObject;
 #pragma pack(push, 1)
-struct CBasicStringChar {                          // CBasicString<char>, 13 bytes
+template <class T> class CBasicString { public:                          // CBasicString<char>, 13 bytes
     char*         PData;                           // +0x00
     unsigned long StringLength;                    // +0x04
     unsigned long DataLength : 31;                 // +0x08
@@ -28,7 +28,7 @@ struct CBasicStringChar {                          // CBasicString<char>, 13 byt
 #pragma pack(pop)
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 class CCharStringData { public:
-    CBasicStringChar Data;                         // +0x00 (text, length)
+    CBasicString<char> Data;                         // +0x00 (text, length)
 };
 class CCharString {
 public:

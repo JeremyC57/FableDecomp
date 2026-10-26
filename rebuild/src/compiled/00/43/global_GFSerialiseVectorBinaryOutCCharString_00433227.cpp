@@ -19,8 +19,9 @@ public:
 };
 class CDataOutputStream {
 public:
-    void WriteLong(long value);                          // 0x00993EB0
     void WriteNullTerminatedString(const CCharString& s);   // 0x00995AE0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 namespace std {
 template <class T> class vector {
@@ -42,7 +43,7 @@ template <class T> void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream&
 {
     CPersistTraits<T> traits;
     const long count = v.size();
-    stream.WriteLong(count);
+    stream.WriteSLONG(count);
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, v[i]);
 }

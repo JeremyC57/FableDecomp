@@ -11,7 +11,18 @@
 //   so it is held in edi across the GetWorld call; the search tools are a named reference; the first positions.size() is
 //   written twice (no named count) so the inlined random range keeps its zero test as retail.
 #include <stdlib.h>
+#define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
+#undef CTCBase
+class CWorld;
+class CWorldMap;
+
+class CTCBase : public CTCBaseLayout
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+    CWorldMap& GetWorldMap();   // 0x00686D30
+};
 
 class CCharStringData;
 class CCharString { public:
@@ -250,9 +261,7 @@ class CNymphDef { public:
     float FadeOutTime;                                      // +0x4c
 };
 struct CTCBaseFrame : CTCBase {
-    class CWorld* GetWorld();                              // 0x00686A70 (CTCBase)
     void FrameUpdate();                                     // 0x006868A0 (CTCBase)
-    CWorldMap& GetWorldMap();                               // 0x00686D30 (CTCBase)
 };
 class CTCNymph : public CTCBaseFrame { public:
     const CNymphDef* PDef;                                  // +0x0c
@@ -287,7 +296,7 @@ void CTCNymph::PickNewTargetPos()
     CPositionVector positions;
     C3DVector targetPos = PTarget.IsAlive() ? PTarget.GetPItem()->GetPosition() : PointToFlyAround;
     const CNymphDef* def = PDef;
-    const CThingSearchTools& search = *GetWorld()->PThingSearchTools;
+    const CThingSearchTools& search = *GetWorld().PThingSearchTools;
     GetValidPositions(positions, GetWorldMap(), search, targetPos, def->CircleRange, false, 0);
     C3DVector point = HasSpline ? FlightSpline.ControlPoints[3] : effectPos;
     FlightSpline.ControlPoints[0] = point;
@@ -296,12 +305,12 @@ void CTCNymph::PickNewTargetPos()
     point.Z = GetWorldMap().GetHeightZBelowPos(point) + GetRandomFlightHeight();
     FlightSpline.ControlPoints[2] = point;
     if (positions.size() != 0) {
-        point = positions[WorldRandomRange(*GetWorld()->GetPRandomSeed(), positions.size())];
+        point = positions[WorldRandomRange(*GetWorld().GetPRandomSeed(), positions.size())];
         if (targetPos.Z > point.Z)
             point.Z = targetPos.Z;
         point.Z = GetWorldMap().GetHeightZBelowPos(point) + GetRandomFlightHeight();
         FlightSpline.ControlPoints[3] = point;
-        point = positions[WorldRandomRange(*GetWorld()->GetPRandomSeed(), positions.size())];
+        point = positions[WorldRandomRange(*GetWorld().GetPRandomSeed(), positions.size())];
         if (targetPos.Z > point.Z)
             point.Z = targetPos.Z;
         point.Z = GetWorldMap().GetHeightZBelowPos(point) + GetRandomFlightHeight();
@@ -310,6 +319,6 @@ void CTCNymph::PickNewTargetPos()
         FlightSpline.ControlPoints[3] = point;
         FlightSpline.ControlPoints[4] = point;
     }
-    LastTargetTick = GetWorld()->GetWorldFrame();
+    LastTargetTick = GetWorld().GetWorldFrame();
     HasSpline = true;
 }

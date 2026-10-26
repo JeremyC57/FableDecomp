@@ -35,11 +35,21 @@ public:
 };
 }
 
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    virtual void v00();
-    void* PItem;                                            // +0x04
-    NParticleEngine::CParticleEmitter* GetPItem() const;    // 0x00A01B50
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CInterfaceMap {
@@ -79,7 +89,7 @@ public:
     unsigned char _base04[0x0c - 0x04];
     CCharString EmitterName;                                // +0x0C
     long ParticleTypeID;                                    // +0x10
-    CBaseIntelligentPointer PEmitter;                       // +0x14
+    CIntelligentPointer<NParticleEngine::CParticleEmitter> PEmitter;                       // +0x14
 private:
     static void __fastcall SendCreationCriteriaSound(CThing& thing);
 };

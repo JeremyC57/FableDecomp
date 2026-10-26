@@ -93,7 +93,21 @@ class CDefinitionManager { public:
 
 extern long g_HeroCreationState;                        // 0x0137F940
 
-class CThingCreatureBase { public:
+class CThing
+{
+public:
+    void SetAsGameStatePersisted(bool);   // 0x004C7880
+};
+class CThingPhysical : public CThing
+{
+public:
+};
+class CThingGameObject : public CThingPhysical
+{
+public:
+};
+
+class CThingCreatureBase : public CThingGameObject { public:
     void* __vftable;
     unsigned char _pad04[0x74 - 0x04];
     CCharString ScriptName;                             // +0x74
@@ -108,7 +122,6 @@ class CThingCreatureBase { public:
     unsigned char _padf4[0x124 - 0xf4];
     long IdleCounter;                                   // +0x124
     unsigned char _pad128[0x16c - 0x128];
-    void SetAsGameStatePersisted(bool persisted);       // 0x004C7880 (CThing)
     CDefinitionManager* GetDefinitionManager();         // 0x004C7990 (CThing)
     bool ValidateInitialisation();                      // 0x006A4D60 (CThingPhysical)
     const C3DVector& GetPosition() const;               // 0x006A4D00

@@ -10,8 +10,16 @@ struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComp
 struct PlayerMethods:CPlayer{CThingNative* GetHeroThing();}; //00487DC0
 struct PlayerManagerMethods:CPlayerManager{PlayerMethods* GetMainPlayer();}; //00449970
 
+#define CTCBoastUI CTCBoastUILayout
 #include "engine/CTCBoastUI.h"
-struct BoastMethods:CTCBoastUI{void AllowUIToOpen(bool);}; //0056A930
+#undef CTCBoastUI
+
+class CTCBoastUI : public CTCBoastUILayout
+{
+public:
+    void AllowUIToOpen(bool);   // 0x0056A930
+};
+struct BoastMethods:CTCBoastUI{}; //0056A930
 __forceinline BoastMethods* GetBoast(CThingNative* hero){BoastMethods* result;if(hero->UsingComponents[7]&0x100){ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound(232);ComponentEntry* end=map->Finish;result=static_cast<BoastMethods*>((it==end||it->Type>232?end:it)->Component);}return result;}
 struct MovieTransitionState{unsigned char Prefix[0xf4];bool Busy;};extern MovieTransitionState* g_MovieTransitionState; //013B8790
 extern long g_MovieCameraID; //01380C34

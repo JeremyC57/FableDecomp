@@ -17,16 +17,16 @@ class CWideString { public:
 };
 extern CWideString g_emptyWideString;              // 0x013BCA24
 struct CIVRefCounted {                             // the count sits at +4 behind the vptr
-    unsigned long IVRefCount;
-    void DecRef() { --IVRefCount; }
+    mutable unsigned long IVRefCount;
+    void DecRef() const { --IVRefCount; }
     unsigned long GetRefCount() const { return IVRefCount; }
 };
 struct CIVVirtual {
-    virtual void Destroy(int flags);               // slot 0
-    virtual void Delete();                         // slot 1
+    virtual void Destroy(int flags) const;               // slot 0
+    virtual void Delete() const;                         // slot 1
 };
 class CIVCountedPointeeBase : public CIVVirtual, public CIVRefCounted { public:
-    void ReleaseTemporary()                        // inlined into ~CIVCountedPointer: the decrement, then the re-read test
+    void ReleaseTemporary() const                      // inlined into ~CIVCountedPointer: the decrement, then the re-read test
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -41,14 +41,20 @@ template <class T> class CIVCountedPointer { public:      // 4 bytes
             Object->ReleaseTemporary();
     }
 };
-struct CDataBankEntry;
-struct CGroupEntry : CIVCountedPointeeBase {       // NGameText::CGroupEntry
+namespace NGameText {
+class CTextEntry : public CIVCountedPointeeBase { public:       // NGameText::CGroupEntry
     CWideString GetText() const;                   // 0x009C7A40
 };
-struct CDataBank {                                 // NGameText::CDataBank
-    CDataBankEntry* GetTextInfo(unsigned long index) const;                                // 0x009C7D00
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
+}
+using NGameText::CTextEntry;
+namespace NGameText {
+class CDataBankTextEntry;
+class CDataBank { public:                                 // NGameText::CDataBank
+    const CDataBankTextEntry* GetTextInfo(unsigned long index) const;                                // 0x009C7D00
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                        // +0x14
@@ -63,9 +69,9 @@ CWideString CTCInventoryBase::GetInventoryText(long textIndex)
 {
     if (textIndex > 0) {
         CDataBank* bank = g_pMainGameComponent->TextBank;
-        bool found = bank->GetTextInfo(textIndex) != 0 && bank->GetPGroupEntry(textIndex, true).Object != 0;
+        bool found = bank->GetTextInfo(textIndex) != 0 && bank->GetPTextEntry(textIndex, true).Object != 0;
         if (found)
-            return bank->GetPGroupEntry(textIndex, true).Object->GetText();
+            return bank->GetPTextEntry(textIndex, true).Object->GetText();
     }
     return g_emptyWideString;
 }

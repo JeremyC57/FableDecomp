@@ -37,13 +37,22 @@ class CThing { public:
         return it->component;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                    // +0x04
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer { };   // CIntelligentPointer<CThing>
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public: 
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};   // CIntelligentPointer<CThing>
 class COpinionReactionManager { public:
     void ClearOpinionSource(CThing* thing, bool flag);  // 0x007008C0
 };
@@ -59,7 +68,8 @@ class CTCBase { public:
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    CWorld* GetWorld();                                 // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CTCCreatureGroup : public CTCBase { public:                     // retail 0x24 bytes
     unsigned long MemberCount;                          // +0x0c
@@ -69,7 +79,7 @@ class CTCCreatureGroup : public CTCBase { public:                     // retail 
     virtual ~CTCCreatureGroup();                        // 0x004E5C71
 };
 class CTCCreatureGroupBoastingCrowd : public CTCCreatureGroup { public:   // vtable 0x0126B5DC
-    CIntelligentPointer PHero;                          // +0x24 (PDB +0x28)
+    CIntelligentPointer<CThing> PHero;                          // +0x24 (PDB +0x28)
     long CrowdState;                                    // +0x2c
     long CurrentEncouragementState;                     // +0x30
     bool HeroBoasted;                                   // +0x34
@@ -87,7 +97,7 @@ CTCCreatureGroupBoastingCrowd::~CTCCreatureGroupBoastingCrowd()
     if (PHero.GetPItem() && !PHero.GetPItem()->IsDead()) {
         EnterCrowdState(0);
         while (HeroOpinionSourcesPushed > 0) {
-            COpinionReactionManager* manager = GetWorld()->OpinionReactionManager;
+            COpinionReactionManager* manager = GetWorld().OpinionReactionManager;
             manager->ClearOpinionSource(PHero.GetPItem(), true);
             --HeroOpinionSourcesPushed;
         }

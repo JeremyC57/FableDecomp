@@ -26,7 +26,8 @@ public:
 };
 class CASoundBank {
 public:
-    long GetSoundIndexFromSymbol(const CCharString& symbol);   // 0x00A01920
+public:
+    long GetSoundIndexFromSymbol(const CCharString&) const;   // 0x00A01920
 };
 class CSoundInit { public:                                      // 0x20 bytes
     float         Volume;                                // +0x00

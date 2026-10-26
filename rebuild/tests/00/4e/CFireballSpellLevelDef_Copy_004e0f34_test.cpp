@@ -1,7 +1,10 @@
 #include "engine/CFireballSpellLevelDef.h"
 #include <cstdio>
 
-class CDefClassBase;
+class CDefClassBase {
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);
+};
 struct CFireballSpellLevelDef_Methods : CFireballSpellLevelDef {
     void InheritFrom(CDefClassBase const* src);
     void Copy(CDefClassBase const* src);
@@ -9,10 +12,12 @@ struct CFireballSpellLevelDef_Methods : CFireballSpellLevelDef {
 
 static void* g_self = 0;
 static const void* g_src = 0;
-void CFireballSpellLevelDef_Methods::InheritFrom(CDefClassBase const* src)
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
 {
-    g_self = this;
+    CDefClassBase const* src = (CDefClassBase const*)&other_; (void)src;
+    g_self = ((CFireballSpellLevelDef_Methods*)this);
     g_src = src;
+    return *this;
 }
 
 int main()

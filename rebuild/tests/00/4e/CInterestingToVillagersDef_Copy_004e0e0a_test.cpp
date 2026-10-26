@@ -3,6 +3,9 @@
 class CDefClassBase { public:
     char pad[0x28];
     unsigned long field28;
+
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);
 };
 
 struct BaseDef {
@@ -15,7 +18,11 @@ class CInterestingToVillagersDef : public BaseDef { public:
 };
 
 static bool g_cloned = false;
-void BaseDef::Clone(CDefClassBase const* src) { g_cloned = true; }
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+{
+    CDefClassBase const* src = (CDefClassBase const*)&other_; (void)src; g_cloned = true;
+    return *this;
+}
 
 void __fastcall CInterestingToVillagersDef__Copy(CInterestingToVillagersDef* self, void* /*edx*/, CDefClassBase const* src);
 

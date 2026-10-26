@@ -14,9 +14,7 @@ public:
 };
 class CPersistContext {
 public:
-    void Transfer(long& value);                                  // 0x00431102
-    void Transfer(float& value);                                 // 0x00431061
-    void Transfer(CDefString& value);                            // 0x0045228F
+    template <class T> void Transfer(T& value);                                  // 0x00431102
 };
 class CSpecialAbilitiesThunderLightningStormDef {
 public:

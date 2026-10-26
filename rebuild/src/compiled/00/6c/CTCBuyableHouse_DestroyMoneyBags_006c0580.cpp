@@ -108,17 +108,24 @@ class CPlayer { public:
     CThing* GetHeroThing();                             // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 inline bool IsThingAlive(const CIntelligentPointer<CThing>& p)
 {
     return p.Get() && !(p.Get()->m_stateFlags & 1);
 }
-class CTCBuyableHouse {
+class CTCBase
+{
 public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCBuyableHouse : public CTCBase {
+public:
     CThing*       ParentThing;                          // +0x04
-    CPlayerManager* GetPlayerManager();                 // 0x00686D40
     void DestroyMoneyBags(bool giveToHero);
 };
 
@@ -129,7 +136,7 @@ void CTCBuyableHouse::DestroyMoneyBags(bool giveToHero)
         for (SThingNode* node = list->m_head->next; node != list->m_head; node = node->next) {
             CTCGold* gold;
             if (IsThingAlive(node->thing) && node->thing.Get()->GetInterface(&gold, 0xcc)) {
-                CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+                CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
                 if (hero && !(hero->m_stateFlags & 1) && giveToHero && hero->HasInterface(4))
                     hero->GetTC<CTCHeroStats>(4)->AddMoney(gold->GetGold(), true);
                 node->thing.Get()->Kill(true);

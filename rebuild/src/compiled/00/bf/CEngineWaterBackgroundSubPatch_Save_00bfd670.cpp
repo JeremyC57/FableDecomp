@@ -20,7 +20,8 @@ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, long size);    // slot 4 (+0x10)
     void WriteUShort(unsigned short value);              // 0x00993E80
-    void WriteLong(long value);                          // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 template <class T> class CArray { public:
@@ -43,8 +44,9 @@ class CVertexBufferWin32 { public:
     void Unlock();                                       // 0x00AC20B0
 };
 class CIndexBuffer { public:
-    void* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC1FB0
     void Unlock();                                       // 0x00AC1F00
+public:
+    unsigned char* Lock(unsigned long, unsigned long, unsigned long);   // 0x00AC1FB0
 };
 
 struct CEngineWaterBackgroundSubPatch_Methods : CEngineWaterBackgroundSubPatch {
@@ -56,7 +58,7 @@ void CEngineWaterBackgroundSubPatch_Methods::Save(CDataOutputStream& stream, uns
 {
     stream.WriteUShort(VertexCount);
     stream.WriteUShort(PolyCount);
-    stream.WriteLong(GetWaterType());
+    stream.WriteSLONG(GetWaterType());
     long stride;
     switch (GetWaterType()) {
     case 1:
@@ -77,14 +79,14 @@ void CEngineWaterBackgroundSubPatch_Methods::Save(CDataOutputStream& stream, uns
     CArray<unsigned char> buffer;
     void* vertices = VertexBuffer->Lock(0, 0, 0);
     long size = compressor.Compress(vertices, VertexCount, stride, &buffer);
-    stream.WriteLong(stride);
-    stream.WriteLong(size);
+    stream.WriteSLONG(stride);
+    stream.WriteSLONG(size);
     stream.Write(buffer.GetData(), size);
     VertexBuffer->Unlock();
     if (PolyCount != 0) {
         void* indices = IndexBuffer->Lock(0, 0, 0);
         size = compressor.Compress(indices, PolyCount * 3, 2, &buffer);
-        stream.WriteLong(size);
+        stream.WriteSLONG(size);
         stream.Write(buffer.GetData(), size);
         IndexBuffer->Unlock();
     }

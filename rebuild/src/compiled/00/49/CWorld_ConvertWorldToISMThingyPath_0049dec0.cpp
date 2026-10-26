@@ -25,8 +25,10 @@ class CWideString { public:
 };
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& left, const wchar16* right);       // 0x0099BF30
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name,
-                          CWideString* extension);  // 0x00997620
+class CAFile {
+public:
+    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+};  // 0x00997620
 CWideString __fastcall GetLevelsDirectory_0041a410();       // 0x0041A410 (L"Data\\Levels\\", hidden result in ecx)
 
 extern bool g_bRuntimeLevelFiles;                  // 0x013B8616
@@ -39,7 +41,7 @@ struct CWorld_Methods : CWorld {
 CWideString CWorld_Methods::ConvertWorldToISMThingyPath(const CWideString& world, bool xbox, bool runtime) const
 {
     CWideString name;
-    SplitPath(world, 0, 0, &name, 0);
+    CAFile::SplitPath(world, 0, 0, &name, 0);
     if (runtime) {
         if (xbox)
             name = GetLevelsDirectory_0041a410() + name + (const wchar16*)L"_RT_XB.ism";

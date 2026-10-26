@@ -32,7 +32,10 @@ class CKrakenTentacleDef { public:
 };
 
 extern long g_framesPerSecond;                      // 0x01375550
-long GetCurrentFrame();                             // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                             // 0x0049D870
 
 class CTCKrakenTentacle { public:
     unsigned char               _pad_0x00[0x0c];
@@ -49,6 +52,6 @@ void CTCKrakenTentacle::QueueStrikeDamage()
         CThing* kraken = PKraken.Get();
         long framesPerSecond = g_framesPerSecond;
         const CKrakenTentacleDef* def = PTentacleDef;
-        QueuedStrikeTick = GetCurrentFrame() + (long)(framesPerSecond * def->StrikeDelaySeconds);
+        QueuedStrikeTick = CWorld::GetFrame() + (long)(framesPerSecond * def->StrikeDelaySeconds);
     }
 }

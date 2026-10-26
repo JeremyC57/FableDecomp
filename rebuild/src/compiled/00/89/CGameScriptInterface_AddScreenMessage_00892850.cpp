@@ -30,16 +30,16 @@ class CCharString { public:
 };
 struct CCRC { static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CRefVirtual {
     virtual void v00();
-    virtual void Destroy();                             // slot 1
+    virtual void Destroy() const;                       // slot 1
 };
 struct CRefCountedEntry : CRefVirtual, CRefCounted {
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -51,24 +51,35 @@ template<class T> class CIVCountedPointer { public:
     ~CIVCountedPointer() { if (Data) { Data->ReleaseTemporary(); Data = 0; } }
     T* operator->() const { return Data; }
 };
-struct CTextEntry : CRefCountedEntry { CWideString GetText() const; };          // 0x009C7A40
+namespace NGameText {
+class CTextEntry : public CRefCountedEntry { public: CWideString GetText() const; };          // 0x009C7A40
+}
+using NGameText::CTextEntry;
 template<class T> struct CRetailVector {
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
     unsigned long size() const { return _M_finish - _M_start; }
 };
-struct CGroupEntry : CRefCountedEntry {
+namespace NGameText {
+class CGroupEntry : public CRefCountedEntry { public:
     unsigned char _pad08[0x14];
     CRetailVector<long> Entries;                        // +0x1C
 };
-struct CTextDataBank {
-    long LookupValue(unsigned long crc) const;          // 0x009CC410
-    unsigned long GetEntryDataType(long entry) const;   // 0x009CC210
-    CIVCountedPointer<CTextEntry> GetPTextEntry(long entry, bool b) const;     // 0x009C9070
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(long entry, bool b) const;   // 0x009C8890
+}
+using NGameText::CGroupEntry;
+class CBankFile { public:
+    unsigned long GetEntryDataType(unsigned long entry) const;   // 0x009CC210
 };
-struct CEngine_Retail { unsigned char _pad[0x14]; CTextDataBank* TextBank; };
+namespace NGameText {
+class CDataBank : public CBankFile { public:
+    unsigned long LookupValue(unsigned long crc) const; // 0x009CC410
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long entry, bool b) const;     // 0x009C9070
+    CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long entry, bool b) const;   // 0x009C8890
+};
+}
+using NGameText::CDataBank;
+struct CEngine_Retail { unsigned char _pad[0x14]; CDataBank* TextBank; };
 extern CEngine_Retail* g_pEngine;                       // 0x013B86A0
 class CPlayerGui { public: void AddScreenMessage(const CWideString& text); };   // 0x00438AA0
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
@@ -83,7 +94,7 @@ class CGameScriptInterface { public:
 void CGameScriptInterface::AddScreenMessage(const CCharString& textTag, ETextGroupSelectionMethod method) const
 {
     CWideString text;
-    CTextDataBank* bank = g_pEngine->TextBank;
+    CDataBank* bank = g_pEngine->TextBank;
     long entry = bank->LookupValue(CCRC::Calc(0, textTag.GetData(), textTag.Length()));
     if (entry) {
         if (bank->GetEntryDataType(entry) == 0) {

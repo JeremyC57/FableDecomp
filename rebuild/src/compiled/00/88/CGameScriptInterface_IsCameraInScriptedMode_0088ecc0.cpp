@@ -1,6 +1,9 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+class CGameCameraManager {
+public:
+    bool IsUsingScriptedCameraMode() const;   // 0x00697AE0
+};
 struct CCamObj;
-extern bool __fastcall GetCameraScriptedMode(CCamObj* self);
 
 struct CCamMgr {
     virtual void v0();
@@ -24,5 +27,5 @@ bool __fastcall CGameScriptInterface_IsCameraInScriptedMode(CGameScriptInterface
     CWorld* world = self->World;
     CCamMgr* b = *(CCamMgr**)((char*)world + 0x34);
     b->GetObj(&local);
-    return GetCameraScriptedMode(local);
+    return ((CGameCameraManager*)(local))->IsUsingScriptedCameraMode();
 }

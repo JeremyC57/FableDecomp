@@ -37,11 +37,21 @@ public:
     void SetAsFrameUpdated();                       // 0x004C7C40
     void RemoveTC(long type);                       // 0x004C9840
 };
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    void* _vfptr;
-    void* PData;
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 template<class T> struct vector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
@@ -67,8 +77,8 @@ public:
     long FadeInTime;                                // +0x14
     long FadeOutTimeStart;                          // +0x18
     long FadeOutTime;                               // +0x1C
-    CBaseIntelligentPointer PEffect;                // +0x20
-    vector<CBaseIntelligentPointer> TintList;       // +0x28
+    CIntelligentPointer<CThing> PEffect;                // +0x20
+    vector<CIntelligentPointer<CThing> > TintList;       // +0x28
     static __forceinline unsigned char Channel(long colour, float t, long white)
     {
         return (unsigned char)(colour * t + white);
@@ -88,8 +98,8 @@ public:
             appearance->SetTintColour(tint, this);
             appearance->SetAsHighlighted(width, 0.0f, highlight, false, false, NGraphicAppearance::PRIORITY_2, this);
         }
-        CBaseIntelligentPointer* end = TintList._M_finish;
-        for (CBaseIntelligentPointer* it = TintList._M_start; it != end; ++it) {
+        CIntelligentPointer<CThing>* end = TintList._M_finish;
+        for (CIntelligentPointer<CThing>* it = TintList._M_start; it != end; ++it) {
             CThing* other = it->GetPItem();
             if (other && !(other->Flags91 & 1)) {
                 NGraphicAppearance::CTCGraphicAppearance* otherAppearance = other->PGraphicAppearance;

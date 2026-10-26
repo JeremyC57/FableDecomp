@@ -99,8 +99,8 @@ public:
 
 class CCompressorZlib {                             // retail 0x58 bytes
 public:
-    unsigned char _data[0x58];
-    ~CCompressorZlib();                             // 0x00A3ACC0
+    unsigned char _data[0x58 - 4];
+    virtual ~CCompressorZlib();                             // 0x00A3ACC0
 };
 
 class CFileInstaller {

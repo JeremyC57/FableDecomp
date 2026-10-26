@@ -9,7 +9,15 @@
 // The generated CAIStateGroupBase is a flattened data layout with its existing +0 vptr word; this view adds
 // no virtuals (and therefore no additional vptr). CBaseIntelligentPointer's real virtual destructor models
 // its native two-word typed pointer and its converting temporaries.
+#define CAIStateGroupBase CAIStateGroupBaseLayout
 #include "engine/CAIStateGroupBase.h"
+#undef CAIStateGroupBase
+
+class CAIStateGroupBase : public CAIStateGroupBaseLayout
+{
+public:
+    void Terminate();   // 0x008FCF40
+};
 #include "engine/_quarantine/CThing.h"
 #include "engine/CBaseObject.h"
 
@@ -53,7 +61,6 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
 struct CAIStateGroup_NonVillageGuardPatrol : CAIStateGroupBase {
     CIntelligentPointer<const CThingTrackNode> CurrentGuardpostThing; // +0x14 CIntelligentPointer<const CThingTrackNode>
     long AIAction_MoveToPos(long, C3DVector, bool&, long, bool, bool, const CThing*, bool, float);
-    void Terminate();
     void Update();
 };
 

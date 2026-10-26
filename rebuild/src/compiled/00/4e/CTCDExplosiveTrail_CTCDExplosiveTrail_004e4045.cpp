@@ -20,7 +20,7 @@ class CTCBase { public:
     CThing* ParentThing;                     // +0x04
     bool    ToBeRemoved;                     // +0x08
     bool    IsInGlobalUpdateTCs;             // +0x09
-    ~CTCBase();                              // 0x00686830
+    virtual ~CTCBase();                              // 0x00686830
 };
 
 struct CDefPointee {                         // counted def: count at +4, slot 1 destroys
@@ -42,13 +42,22 @@ struct CDefPointer {                         // CDefPointer<const CExplosiveTrai
     }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                    // +0x04
-    ~CBaseIntelligentPointer();              // 0x00A01C10
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
+public:
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CComponentTrapList {                  // retail list<pair<CIntelligentPointer<CThing>,long> >: sentinel pointer
@@ -64,7 +73,7 @@ struct CThingPointerVector {                 // retail vector<CIntelligentPointe
 };
 
 struct __declspec(novtable) CTCDExplosiveTrail : CTCBase {
-    CIntelligentPointer PTarget;             // +0x0c
+    CIntelligentPointer<const CThing> PTarget;             // +0x0c
     long                Timer;               // +0x14
     bool                Terminated;          // +0x18
     CComponentTrapList  ComponentTraps;      // +0x1c

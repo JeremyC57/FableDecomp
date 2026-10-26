@@ -25,7 +25,7 @@ struct CThingPointerVector {                // 12-byte retail vector
 
 struct CAIStateGroup_EnemyCreatureBase {
     virtual void v00();
-    ~CAIStateGroup_EnemyCreatureBase();     // 0x008FD769
+    virtual ~CAIStateGroup_EnemyCreatureBase();     // 0x008FD769
     unsigned char _pad[0x18];               // +0x4..+0x1b (brain, priority, name, flags, PTargetThing)
 };
 

@@ -3,7 +3,7 @@
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EE418, 130 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`).
-// Callees: CTCBase::GetWorld() @ 0x00686A80 (+0xA4 Paused), std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound
+// Callees: CTCBase::PeekWorld() @ 0x00686A80 (+0xA4 Paused), std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound
 //          @ 0x0040F020, CTCHero::GiveTutorialForCategory(long, bool) @ 0x006C9FA0 (result dropped).
 // Globals: the player GUI @ 0x013B8790 (+0xFD, an unidentified blocking flag).
 // Shape: four nested early-outs (pending flag, InventoryOpen, the GUI flag, the world's Paused byte); the parent's
@@ -59,7 +59,19 @@ class CPlayerGui { public:
 
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
-class CTCInventoryAbilities { public:
+class CTCBase
+{
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryAbilities : public NInventory::CTCInventoryBase { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x50];
@@ -67,13 +79,12 @@ class CTCInventoryAbilities { public:
     unsigned char _pad_0x59[0xE7];
     bool          WaitingToGiveTutorial;             // +0x140
 
-    CWorld* GetWorld() const;                        // 0x00686A80 (CTCBase)
     void FrameUpdate();
 };
 
 void CTCInventoryAbilities::FrameUpdate()
 {
-    if (WaitingToGiveTutorial && !InventoryOpen && !g_pPlayerGui->BlockingTutorials && !GetWorld()->Paused) {
+    if (WaitingToGiveTutorial && !InventoryOpen && !g_pPlayerGui->BlockingTutorials && !PeekWorld().Paused) {
         CThing* thing = ParentThing;
         if (thing->HasTC(0x29)) {
             CTCHero* hero = thing->GetTCUnchecked<CTCHero>(0x29);

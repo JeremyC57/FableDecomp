@@ -24,7 +24,8 @@ public:
     CCharString();                                 // 0x0099E4B0
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
-    void Format(const char* format, ...);          // 0x0099F1F0
+public:
+    void __cdecl Sprintf(const char*, ...);   // 0x0099F1F0
 };
 class CWideString { public:
     void* PStringData;
@@ -199,7 +200,7 @@ bool CPlayer::LocateCharacterStartHolySite(CThing** site)
             return true;
         }
         CCharString message;
-        message.Format("*** WARNING : failed to find a holy site with ScriptName %S", (const unsigned short*)g_CWideString_013b866c);
+        message.Sprintf("*** WARNING : failed to find a holy site with ScriptName %S", (const unsigned short*)g_CWideString_013b866c);
         RespawnPos = C3DVector(0.0f, 0.0f, 0.0f);
     }
     CThing* best = 0;

@@ -7,8 +7,9 @@
 // Layout = Ego_r.pdb CRaceMarker (28 bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass
 // +0x14 (CQ_GuildTrainingScript; retail quest scripts sit 0x14 below the PDB, so +0x4d is ReachedPlatform, PDB
 // +0x61), PMasterData +0x18. Interface model from the landed CHTG_AmbushPoint::Main 0x00D73610.
-// Shape: `while (!IsDone())` rotated into a bottom test after an entry test; the inner IsDone check after the
+// Shape: `while (!IsActiveThreadTerminating())` rotated into a bottom test after an entry test; the inner IsDone check after the
 // distance test leaves the loop.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     void* __vftable;
     unsigned char _body[8];
@@ -73,22 +74,27 @@ struct CQ_GuildTrainingScript {
 };
 struct CQ_SunnyvaleMasterData;
 
-class CRaceMarker {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CRaceMarker : public CEntityScriptBase {
 public:
     void*                   __vftable;             // +0x00
     CGameScriptInterface*   Game;                  // +0x04
     CScriptThing            Me;                    // +0x08
     CQ_GuildTrainingScript* ParentClass;           // +0x14
     CQ_SunnyvaleMasterData* PMasterData;           // +0x18
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
 void CRaceMarker::Main()
 {
-    while (!IsDone()) {
+    while (!IsActiveThreadTerminating()) {
         if (IsDistanceBetweenThingsUnder(Game->GetHero(), Me, 3.0f)) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 break;
             ParentClass->ReachedPlatform = true;
             Game->MiniMapRemoveMarker(Me);

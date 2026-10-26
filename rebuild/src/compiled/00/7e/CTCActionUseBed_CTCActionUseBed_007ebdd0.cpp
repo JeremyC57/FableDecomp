@@ -15,12 +15,13 @@
 // held in ecx) -- and the root destructor as a tail jump.
 class CThing;
 
-struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
+class CTCBase { public:                                      // engine/CTCBase.h layout (0xc bytes)
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
-    virtual ~CTCBase_Calls();                               // 0x00686830
-    void RemoveFromGlobalTCs();                             // 0x00686DF0
+    virtual ~CTCBase();                               // 0x00686830
+public:
+    void RemoveFromGlobalTCs();   // 0x00686DF0
 };
 
 class CDefPointeeBase { public:                                    // counted definition object
@@ -43,16 +44,22 @@ class CDefPointer { public:
     }
 };
 
-class CTCActionUseBase : public CTCBase_Calls { public:                   // 0x14 bytes
+class CTCActionUseBase : public CTCBase { public:                   // 0x14 bytes
     CDefPointer<CDefPointeeBase> PActionUseDef;             // +0x0c
     bool                         Usable;                    // +0x10
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {                            // vtable + item
-    void* m_pItem;
-    virtual void v00();
-    ~CBaseIntelligentPointer();                             // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 class CTCActionUseBed : public CTCActionUseBase { public:                 // vtable 0x0123F784

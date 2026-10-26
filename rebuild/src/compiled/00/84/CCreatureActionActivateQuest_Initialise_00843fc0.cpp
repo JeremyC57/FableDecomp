@@ -33,24 +33,30 @@ class CThing { public:
     CDefString GetDefName();                    // 0x004C7CC0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +4
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CQuestManager { public:
     unsigned char _pad00[0xa8];
-    CIntelligentPointer LastObjectUsed;         // +0xa8
+    CIntelligentPointer<CThing> LastObjectUsed;         // +0xa8
     CCharString LastObjectUsedName;             // +0xb0
     bool ActivateQuest(const CCharString& name, bool a2, bool loadResources);   // 0x004B4A10
 };
@@ -64,7 +70,7 @@ class CCreatureAction_ActivateQuest { public:
     unsigned char _pad64[0xa8 - 0x64];
     CCharString ScriptName;                     // +0xa8
     bool LoadResources;                         // +0xac
-    CIntelligentPointer PObjectToUse;           // +0xad
+    CIntelligentPointer<CThing> PObjectToUse;           // +0xad
     void Initialise();
 };
 #pragma pack(pop)
@@ -72,7 +78,7 @@ class CCreatureAction_ActivateQuest { public:
 void CCreatureAction_ActivateQuest::Initialise()
 {
     CQuestManager* questManager = g_pQuestManager;
-    questManager->LastObjectUsed = CIntelligentPointer(PObjectToUse.GetPItem());
+    questManager->LastObjectUsed = CIntelligentPointer<CThing>(PObjectToUse.GetPItem());
     if (PObjectToUse.GetPItem()) {
         CThing* object = PObjectToUse.GetPItem();
         CCharString name = g_DefStringTable.GetString(object->GetDefName());

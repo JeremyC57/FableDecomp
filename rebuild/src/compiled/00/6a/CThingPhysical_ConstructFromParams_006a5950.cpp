@@ -41,24 +41,30 @@ class CThingBaseDef { public:
 };
 
 class CThingPhysical;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                             // +0x04
-    CBaseIntelligentPointer();                                 // 0x00A01B10
-    ~CBaseIntelligentPointer();                                // 0x00A01C10
-    CThingPhysical* GetPItem() const;                          // 0x00A01B50
-    void SetPItem(CThingPhysical* item);                       // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerPhysical : CBaseIntelligentPointer { // CIntelligentPointer<CThingPhysical>, vtable 0x01244DCC
-    virtual void v01();
-    CIntelligentPointerPhysical() { }
-    CIntelligentPointerPhysical(CThingPhysical* item) { SetPItem(item); }
-    CIntelligentPointerPhysical& operator=(const CIntelligentPointerPhysical& other)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { // CIntelligentPointer<CThingPhysical>, vtable 0x01244DCC
+public:
+    CIntelligentPointer() { }
+    CIntelligentPointer(T* item) { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThingPhysical* item = other.GetPItem();
+        T* item = other.GetPItem();
         SetPItem(item);
         return *this;
     }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CThing {
@@ -78,8 +84,8 @@ class CThingPhysical : public CThing {
 public:
     void*                       HealthOverTimeEffects;         // +0x98 (STLport list head)
     float                       Scale;                         // +0x9c
-    CIntelligentPointerPhysical PLastCreator;                  // +0xa0
-    CIntelligentPointerPhysical POriginalCreator;              // +0xa8
+    CIntelligentPointer<CThingPhysical> PLastCreator;                  // +0xa0
+    CIntelligentPointer<CThingPhysical> POriginalCreator;              // +0xa8
     float                       MaxHealth;                     // +0xb0
     float                       Health;                        // +0xb4
     long                        CanComeBetweenCameraAndObservedThing;   // +0xb8
@@ -101,8 +107,8 @@ bool CThingPhysical::ConstructFromParams(long defIndex, const C3DVector* pos, lo
         Scale = 1.0f;
         Health = MaxHealth = PBaseDef->Health;
         CanComeBetweenCameraAndObservedThing = -1;
-        PLastCreator = CIntelligentPointerPhysical(lastCreator);
-        POriginalCreator = CIntelligentPointerPhysical(originalCreator);
+        PLastCreator = CIntelligentPointer<CThingPhysical>(lastCreator);
+        POriginalCreator = CIntelligentPointer<CThingPhysical>(originalCreator);
         Drawable = true;
         EvadeAllHits = false;
         NegateAllHits = false;

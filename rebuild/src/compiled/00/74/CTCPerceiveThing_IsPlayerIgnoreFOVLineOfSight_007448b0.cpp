@@ -12,8 +12,21 @@ class CThing { public:
     unsigned char Type;                     // +0x10 (2 = player)
 };
 
-struct CBaseIntelligentPointer {
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CTCPerceiveThing_Methods : CTCPerceiveThing {
@@ -22,7 +35,7 @@ struct CTCPerceiveThing_Methods : CTCPerceiveThing {
 
 long CTCPerceiveThing_Methods::IsPlayerIgnoreFOVLineOfSight() const
 {
-    const CBaseIntelligentPointer* perceived = reinterpret_cast<const CBaseIntelligentPointer*>(PerceivedThing);
+    const CIntelligentPointer<CThing>* perceived = reinterpret_cast<const CIntelligentPointer<CThing>*>(PerceivedThing);
     if (perceived->GetPItem()) {
         if (perceived->GetPItem()->Type == 2) {
             if (IgnoreFOVLineOfSight)

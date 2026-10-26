@@ -3,10 +3,10 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00706EC0, length 46 bytes. Vtable 0x01264F0C slot 12 (manifest
 // "CTCHeroAttachableAppearanceModifiers::vfunc_12"); Ego_r.pdb ?Copy@CTCHeroAttachableAppearanceModifiers@@UAEXABVCTCBase@@@Z.
 // Callees: std::vector<std::vector<CModifierEntry> >::operator= @ 0x00709660 (manifest "CFeatDef_VectorReassign"),
-// CTCBase::GetWorld @ 0x00686A80, the world frame getter @ 0x0049D870. NOTE: no CTCBase::Copy chain-call (unlike CTCHero::Copy).
+// CTCBase::PeekWorld @ 0x00686A80, the world frame getter @ 0x0049D870. NOTE: no CTCBase::Copy chain-call (unlike CTCHero::Copy).
 // Shape: `add eax,30h ; push eax ; lea ecx,[esi+30h]` = static_cast<const T&>(other).AppearanceModifiers assigned to ours.
 // SetAsChanged() is inline: `Changed = true` (`mov al,[esi+14h] ; or al,1 ; mov [esi+14h],al`), then FrameLastChanged =
-// GetWorld().GetFrame() -- GetWorld @ 0x00686A80 (manifest "CViewBase::GetDisplayEngine" is propagated) is called for its object
+// PeekWorld().GetFrame() -- GetWorld @ 0x00686A80 (manifest "CViewBase::GetDisplayEngine" is propagated) is called for its object
 // expression and its result discarded, because the frame getter @ 0x0049D870 is a static (`call` with nothing in ecx).
 // Model: CTCBase (vptr, ParentThing +4, two bools) then a secondary vptr at +0xc, FrameLastChanged +0x10, the bool:1 bitfield
 // group Changed / RecreatePrimitives / AppearanceModifiersLoaded at +0x14, PrimHandles +0x18 (vector), HiddenMaterialNames +0x24
@@ -14,7 +14,7 @@
 // order with VC7.1 release containers of 0xc bytes. engine/CTCHeroAttachableAppearanceModifiers.h carries the PDB debug-STL
 // layout (0x10-byte containers: AppearanceModifiers at +0x38), which disagrees with the retail offsets, so the class is modelled
 // locally; engine/CTCBase.h is a flattened POD (vptr as a data member), so the polymorphic CTCBase is local too.
-// CWorld_Calls: engine/CWorld.h holds the PDB data layout of CWorld; only its member call(s) are needed here, so the
+// CWorld: engine/CWorld.h holds the PDB data layout of CWorld; only its member call(s) are needed here, so the
 // callee is declared on a separate call-only struct.
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public:
@@ -25,7 +25,7 @@ class CThing { public:
     unsigned char _pad00[0x64];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
 };
-struct CWorld_Calls {
+class CWorld { public:
     static long __fastcall GetFrame();          // 0x0049D870
 };
 
@@ -73,9 +73,10 @@ class CTCBase { public:
     CThing* ParentThing;
     bool ToBeRemoved;
     bool IsInGlobalUpdateTCs;
-    CWorld_Calls& GetWorld() const;                    // 0x00686A80
     virtual void FrameUpdate();
     virtual void Copy(const CTCBase& other);
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 
 typedef long EHeroAttachableAppearanceModifierType;
@@ -94,7 +95,7 @@ class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void SetAsChanged()
     {
         Changed = true;
-        FrameLastChanged = GetWorld().GetFrame();
+        FrameLastChanged = PeekWorld().GetFrame();
     }
     bool IsWearingAppearanceModifier(long defIndex, EHeroAttachableAppearanceModifierType type) const;
     void RemoveAllAppearanceModifiers(EHeroAttachableAppearanceModifierType type);

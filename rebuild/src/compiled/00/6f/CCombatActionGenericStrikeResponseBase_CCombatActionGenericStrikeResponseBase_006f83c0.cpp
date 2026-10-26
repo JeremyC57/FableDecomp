@@ -14,17 +14,24 @@ class C3DVector { public:
     C3DVector() { }                          // leaves the words unset
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy (fixed-offset moves)
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +0x04
-    CBaseIntelligentPointer();              // 0x00A01B10
-    CThing* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CThing* item);            // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {         // CIntelligentPointer<const CThing>, vtable 0x01237F1C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {         // CIntelligentPointer<const CThing>, vtable 0x01237F1C
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
@@ -32,7 +39,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     CCombatActionBase(const CCombatActionBase& other);                                                    // 0x0062F3B0
 };
 class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:   // vtable 0x01264734; retail sizeof 0x148
-    CIntelligentPointer PThingThatHit;      // +0x114
+    CIntelligentPointer<const CThing> PThingThatHit;      // +0x114
     C3DVector PointOfHit;                   // +0x11c
     C3DVector DirectionOfHit;               // +0x128
     bool MoveOnHitOverride;                 // +0x134

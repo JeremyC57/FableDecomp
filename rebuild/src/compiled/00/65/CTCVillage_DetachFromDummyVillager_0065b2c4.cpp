@@ -44,21 +44,31 @@ public:
 class CThing : public CBaseObject {};
 bool __fastcall IS_THING_ALIVE(CBaseObject* const& thing);   // 0x0040DCE0
 
-struct CBaseIntelligentPointer {
-    void* _vfptr;
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCDummyVillager { public:                       // the dummy's interface-214 component (class name unknown)
     unsigned char _pad_0x00[0x30];
-    CBaseIntelligentPointer PVillager;          // +0x30
+    CIntelligentPointer<CThing> PVillager;          // +0x30
     void Detach();                              // 0x0065F01D
 };
 
 struct SThingNode {                             // STLport list node
     SThingNode* _M_next;
     SThingNode* _M_prev;
-    CBaseIntelligentPointer _M_data;
+    CIntelligentPointer<CThing> _M_data;
 };
 
 class CTCVillage { public:

@@ -54,6 +54,9 @@ template<class T> class CDefPointer { public:
 class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<CCreatureFamilyDef>* out) const;   // 0x0074D220
 };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};
 void* Find_CDefinitionManager_GetDef(const void* owner);   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
@@ -67,12 +70,18 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPoint
     return true;
 }
 #pragma auto_inline(on)
-class CTCCreatureGenerator { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCCreatureGenerator : public CTCBase { public:
     void* ParentThing;                          // +0x04 (CTCBase)
     unsigned char _base08[4];
     CRetailVector<long> CreatureFamilies;       // +0x0c CArray<CDefIndex>
-    const CDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
     long GetNumGeneratedCreatures() const;
 };
 

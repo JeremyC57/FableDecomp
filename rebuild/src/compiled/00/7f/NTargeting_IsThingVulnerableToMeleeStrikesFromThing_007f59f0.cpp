@@ -2,7 +2,7 @@
 // Leaf: ?IsThingVulnerableToMeleeStrikesFromThing@NTargeting@@YI_NABVCThing@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F59F0, 125 bytes (+ int3 padding), `__fastcall` (thing in ecx, fromThing in edx).
 //   FableWin.pdb `?IsThingVulnerableToMeleeStrikesFromThing@NTargeting@@YI_NABVCThing@@0@Z`; 9 call sites.
-// Callees: CThing::GetPlayer @ 0x004C7A10, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0 (interface
+// Callees: CThing::PeekPlayer @ 0x004C7A10, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0 (interface
 //   8 = CTCTargetingAI, presence word 0 bit 8), CTCTargetingAI slot 36 (+0x90, GetPBestEnemyCreatureForAttack() const),
 //   CTCEnemy::AreThingsEnemies(const CThing&, const CThing&) @ 0x0076D2F0 (__fastcall).
 // Data: a bool switch @ 0x0137574E (read only here; name unknown), CThing ThingTypeFlags +0x6c (retail), CPlayer +0x21b
@@ -41,7 +41,6 @@ public:
     CTCMap         m_tcs;                       // +0x44
     unsigned char  _pad50[0x6c - 0x50];
     unsigned long  ThingTypeFlags;              // +0x6c
-    CPlayer* GetPlayer() const;                                 // 0x004C7A10
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     template <class T> __forceinline bool PeekTC(const T** out) const
     {
@@ -53,6 +52,8 @@ public:
         }
         return false;
     }
+public:
+    const CPlayer& PeekPlayer() const;   // 0x004C7A10
 };
 
 class CThingCreatureBase : public CThing {
@@ -80,7 +81,7 @@ bool __fastcall IsThingVulnerableToMeleeStrikesFromThing(const CThing& thing, co
 
 bool __fastcall NTargeting::IsThingVulnerableToMeleeStrikesFromThing(const CThing& thing, const CThing& fromThing)
 {
-    if ((thing.ThingTypeFlags & 8) && fromThing.GetPlayer()->KillEverythingMode)
+    if ((thing.ThingTypeFlags & 8) && fromThing.PeekPlayer().KillEverythingMode)
         return true;
     if (g_bMeleeHitsBestAttackTarget) {
         const CTCTargetingAI* ai;

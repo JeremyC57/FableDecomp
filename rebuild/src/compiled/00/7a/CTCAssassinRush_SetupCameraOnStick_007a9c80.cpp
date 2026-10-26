@@ -44,14 +44,20 @@ class CWorld { public:
     CGameCameraManager* PCameraManager;         // +0x34
     CGameCameraManager* GetCameraManager() const { return PCameraManager; }
 };
-class CTCAssassinRush {
+class CTCBase
+{
 public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCAssassinRush : public CTCBase {
+public:
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x74 - 0x08];
     C3DVector LocalRelativeVectorForCamera;     // +0x74
     C3DVector RelativeVectorForCamera;          // +0x80
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
     void SetupCameraFromStick_007a9b10();                // 0x007A9B10 (descriptive)
     void SetupCameraOnStick();
 };
@@ -66,6 +72,6 @@ void CTCAssassinRush::SetupCameraOnStick()
         return;
     C3DVector heroPosition = ParentThing->GetPosition();
     LocalRelativeVectorForCamera = stick - heroPosition;
-    RelativeVectorForCamera = GetWorld()->GetCameraManager()->PeekCurrentPos() - stick;
+    RelativeVectorForCamera = GetWorld().GetCameraManager()->PeekCurrentPos() - stick;
     SetupCameraFromStick_007a9b10();
 }

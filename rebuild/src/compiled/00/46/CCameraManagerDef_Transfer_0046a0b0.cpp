@@ -29,8 +29,7 @@ public:
 class CPersistContext {
 public:
     void Transfer(std::vector<long >& value);                    // 0x00466A47
-    void Transfer(long& value);                                  // 0x00431102
-    void Transfer(float& value);                                 // 0x00431061
+    template <class T> void Transfer(T& value);                                  // 0x00431102
 };
 class CCameraManagerDef {
 public:

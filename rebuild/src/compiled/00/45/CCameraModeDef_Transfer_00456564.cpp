@@ -8,9 +8,7 @@
 //   engine header exists for this class; the fields are modelled locally with their PDB names.
 #pragma optimize("s", on)
 class CPersistContext { public:
-    void TransferLong(long* value);                    // 0x00431102
-    void TransferFloat(float* value);                  // 0x00431061
-    void TransferBool(bool* value);                    // 0x0043314A
+    template <class T> void Transfer(T& value);                    // 0x00431102
 };
 class CCameraModeDef { public:
     unsigned char prefix[0x38];                        // CDefBase body after the vptr (retail)
@@ -62,45 +60,45 @@ class CCameraModeDef { public:
 };
 void CCameraModeDef::Transfer(CPersistContext& context)
 {
-    context.TransferLong(&CameraMode);
-    context.TransferFloat(&StringLengthXY);
-    context.TransferFloat(&CageRadius);
-    context.TransferFloat(&HeightOffsetZ);
-    context.TransferFloat(&LookOffsetZ);
-    context.TransferFloat(&FOV);
-    context.TransferFloat(&RollAngle);
-    context.TransferLong(&TransitionInFrames);
-    context.TransferFloat(&LazyLookAtPosWeight);
-    context.TransferBool(&RaiseUpWhenClose);
-    context.TransferBool(&StretchAroundHero);
-    context.TransferFloat(&ZTargetBaseOffset);
-    context.TransferFloat(&ZTargetLookAtTargetOffset);
-    context.TransferFloat(&ZTargetStringLengthToObservedThing);
-    context.TransferFloat(&ZTargetStringLengthPerpendicularToObservedThing);
-    context.TransferBool(&PerformExtendedOcclusionTests);
-    context.TransferFloat(&XAxisDisplacementCoupling);
-    context.TransferFloat(&XAxisVelocityDamping);
-    context.TransferFloat(&XAxisAttractorCoupling);
-    context.TransferFloat(&XAxisAttractorFallOff);
-    context.TransferFloat(&YAxisDisplacementCoupling);
-    context.TransferFloat(&YAxisVelocityDamping);
-    context.TransferFloat(&YAxisAttractorCoupling);
-    context.TransferFloat(&YAxisAttractorFallOff);
-    context.TransferBool(&ProjectileCameraFOVZoom);
-    context.TransferBool(&ProjectileCameraZoomToggle);
-    context.TransferFloat(&ProjectileCameraDefaultTranslationalZoomOffset);
-    context.TransferFloat(&ProjectileCameraInitialPhiOffsetForCamera);
-    context.TransferFloat(&ProjectileCameraInitialHeightParamForCamera);
-    context.TransferFloat(&PhiRotationCouple);
-    context.TransferFloat(&ThetaRotationCouple);
-    context.TransferFloat(&DollyLength);
-    context.TransferLong(&NumberOfFramesToAverageInputsOver);
-    context.TransferFloat(&DollyLengthBlendResistance);
-    context.TransferFloat(&ThetaAngleLimitUp);
-    context.TransferFloat(&ThetaAngleLimitDown);
-    context.TransferFloat(&SecondsToReset);
-    context.TransferFloat(&ViewHeroXYRotationMaxVelocity);
-    context.TransferFloat(&ViewHeroHeightParamMaxVelocity);
-    context.TransferFloat(&ViewHeroXYOffsetMultiplier);
-    context.TransferFloat(&ViewHeroGroundHeightOffset);
+    context.Transfer(*(long*)(&CameraMode));
+    context.Transfer(*(float*)(&StringLengthXY));
+    context.Transfer(*(float*)(&CageRadius));
+    context.Transfer(*(float*)(&HeightOffsetZ));
+    context.Transfer(*(float*)(&LookOffsetZ));
+    context.Transfer(*(float*)(&FOV));
+    context.Transfer(*(float*)(&RollAngle));
+    context.Transfer(*(long*)(&TransitionInFrames));
+    context.Transfer(*(float*)(&LazyLookAtPosWeight));
+    context.Transfer(*(bool*)(&RaiseUpWhenClose));
+    context.Transfer(*(bool*)(&StretchAroundHero));
+    context.Transfer(*(float*)(&ZTargetBaseOffset));
+    context.Transfer(*(float*)(&ZTargetLookAtTargetOffset));
+    context.Transfer(*(float*)(&ZTargetStringLengthToObservedThing));
+    context.Transfer(*(float*)(&ZTargetStringLengthPerpendicularToObservedThing));
+    context.Transfer(*(bool*)(&PerformExtendedOcclusionTests));
+    context.Transfer(*(float*)(&XAxisDisplacementCoupling));
+    context.Transfer(*(float*)(&XAxisVelocityDamping));
+    context.Transfer(*(float*)(&XAxisAttractorCoupling));
+    context.Transfer(*(float*)(&XAxisAttractorFallOff));
+    context.Transfer(*(float*)(&YAxisDisplacementCoupling));
+    context.Transfer(*(float*)(&YAxisVelocityDamping));
+    context.Transfer(*(float*)(&YAxisAttractorCoupling));
+    context.Transfer(*(float*)(&YAxisAttractorFallOff));
+    context.Transfer(*(bool*)(&ProjectileCameraFOVZoom));
+    context.Transfer(*(bool*)(&ProjectileCameraZoomToggle));
+    context.Transfer(*(float*)(&ProjectileCameraDefaultTranslationalZoomOffset));
+    context.Transfer(*(float*)(&ProjectileCameraInitialPhiOffsetForCamera));
+    context.Transfer(*(float*)(&ProjectileCameraInitialHeightParamForCamera));
+    context.Transfer(*(float*)(&PhiRotationCouple));
+    context.Transfer(*(float*)(&ThetaRotationCouple));
+    context.Transfer(*(float*)(&DollyLength));
+    context.Transfer(*(long*)(&NumberOfFramesToAverageInputsOver));
+    context.Transfer(*(float*)(&DollyLengthBlendResistance));
+    context.Transfer(*(float*)(&ThetaAngleLimitUp));
+    context.Transfer(*(float*)(&ThetaAngleLimitDown));
+    context.Transfer(*(float*)(&SecondsToReset));
+    context.Transfer(*(float*)(&ViewHeroXYRotationMaxVelocity));
+    context.Transfer(*(float*)(&ViewHeroHeightParamMaxVelocity));
+    context.Transfer(*(float*)(&ViewHeroXYOffsetMultiplier));
+    context.Transfer(*(float*)(&ViewHeroGroundHeightOffset));
 }

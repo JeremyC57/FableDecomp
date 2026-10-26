@@ -8,7 +8,7 @@
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem
 // 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10, CTCOwnedEntity::SetPOwner @ 0x007E8590.
 // Layout: retail CThing interface bitset +0x20 / map +0x44, the bitfield byte +0x91 and graphic +0x60; the
-// interface-0x32 component keeps its owner CIntelligentPointer<CThing> at +0x0c; the interface-0x5b component its flag
+// interface-0x32 component keeps its owner CIntelligentPointer<const CThing> at +0x0c; the interface-0x5b component its flag
 // byte at +0x59.
 // Shape: each lookup is the `T* p; GetInterface(type, &p);` out-parameter form whose miss path reads the never-written
 // local (it shares the dead defIndex argument slot with the key and the string temporaries).
@@ -97,7 +97,7 @@ class CThingObject : public CThing { public: };
 
 struct CTCOwnedEntityA {                                // interface 0x32
     unsigned char _pad00[0x0c];
-    CIntelligentPointer<CThing> POwner;                 // +0x0c
+    CIntelligentPointer<const CThing> POwner;                 // +0x0c
 };
 class CTCOwnedEntity { public:                                 // interface 0x33
     void SetPOwner(CThing* owner);                      // 0x007E8590
@@ -130,7 +130,7 @@ CThingObject* CTCTavernGame::CreateGamePiece(long defIndex)
     piece->AddTC("TCOwnedEntityA", false, 0);
     CTCOwnedEntityA* owned;
     piece->GetInterface(0x32, &owned);
-    owned->POwner = CIntelligentPointer<CThing>(ParentThing);
+    owned->POwner = CIntelligentPointer<const CThing>(ParentThing);
     piece->AddTC("TCOwnedEntity", false, 0);
     CTCOwnedEntity* entity;
     piece->GetInterface(0x33, &entity);

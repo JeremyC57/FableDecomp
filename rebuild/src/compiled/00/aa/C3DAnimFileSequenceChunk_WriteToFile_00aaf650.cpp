@@ -1,5 +1,5 @@
 // C3DAnimFileSequenceChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- bone indices, name, frame rate, the matrices, the bone type, then the sub-chunks
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00AAF650, 148 bytes. Callees: CDataOutputStream::WriteLONG 0x00993EB0,
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00AAF650, 148 bytes. Callees: CDataOutputStream::WriteSLONG 0x00993EB0,
 // WriteNullTerminatedString 0x00995AE0, WriteFLOAT 0x00993EE0, WriteMatrix3x4 0x00994070, WriteUBYTE 0x00993E50,
 // CChunkedFileSuperChunk::WriteToFile 0x00AA78C0.
 // Chunk model reused from the landed C3DAnimFile*/C3DMeshFile* WriteToFile family (retail super-chunk base
@@ -21,13 +21,15 @@ class CDataOutputStream { public:
     virtual void v02();
     virtual void v03();
     virtual void WriteBytes(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteLONG(long value);                                    // 0x00993EB0
     void WriteULONG(unsigned long value);                          // 0x00993EA0
-    void WriteFLOAT(float value);                                  // 0x00993EE0
     void WriteBOOL(bool value);                                    // 0x00993E30
     void WriteUBYTE(unsigned char value);                          // 0x00993E50
     void WriteMatrix3x4(const CMatrix3x4& m);                      // 0x00994070
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+public:
+    void WriteFloat(float);   // 0x00993EE0
 };
 
 template <class T>
@@ -104,12 +106,12 @@ class C3DAnimFileSequenceChunk : public CChunkedFileSuperChunk { public:
 
 void C3DAnimFileSequenceChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
-    out.WriteLONG(BoneIndex);
-    out.WriteLONG(ParentIndex);
+    out.WriteSLONG(BoneIndex);
+    out.WriteSLONG(ParentIndex);
     out.WriteNullTerminatedString(BoneName);
-    out.WriteFLOAT(SamplesPerSecond);
+    out.WriteFloat(SamplesPerSecond);
     unsigned long count = Matrices.Size();
-    out.WriteLONG(count);
+    out.WriteSLONG(count);
     for (unsigned long i = 0; i < count; ++i)
         out.WriteMatrix3x4(Matrices[i]);
     out.WriteUBYTE(BoneType);

@@ -1,12 +1,14 @@
 #pragma optimize("s", on)
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 extern void __fastcall DestructMember_004e1bbb(void* member);
-extern void __fastcall CTCEntityEvents_Destruct(void* events);
-extern void __cdecl OperatorDelete(void* object);
 void* __fastcall CTCEntityEvents_CompositeScalarDeletingDestructor(void* events, int, unsigned int flags)
 {
     DestructMember_004e1bbb(static_cast<unsigned char*>(events) + 12);
-    CTCEntityEvents_Destruct(events);
+    ((CTCBase*)(events))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(events);
+        operator delete(events);
     return events;
 }

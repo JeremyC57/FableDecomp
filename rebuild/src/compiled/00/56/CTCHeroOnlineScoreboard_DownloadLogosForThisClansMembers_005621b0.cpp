@@ -109,7 +109,8 @@ class CDiskFileWin32 : public CBase { public:                     // vtable 0x01
     CWideString Pathname;                           // +0x18
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
     ~CDiskFileWin32() { Close(); }
-    void Write(const void* data, long size, CASuspendableProcess* process);   // 0x0099AA90
+public:
+    virtual void Write(const void*, long, CASuspendableProcess*);   // 0x0099AA90
 };
 static inline CWideString IntToWideString(long value)
 {

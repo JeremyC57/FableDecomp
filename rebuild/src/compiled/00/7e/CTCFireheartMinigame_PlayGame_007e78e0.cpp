@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E78E0, length 221 bytes (+ int3 padding). __fastcall, `ret`.
 //         Ego_r.pdb: `?PlayGame@CTCFireheartMinigame@@QAEXXZ`.
 // Callees: CCharString(const CCharString&) @ 0x0099EC30 / ~CCharString @ 0x0099EAE0 (the filter's name),
-//          CTCBase::GetThingSearchTools() const @ 0x00686D90,
+//          CTCBase::PeekThingSearchTools() const @ 0x00686D90,
 //          CThingSearchTools::GetPFirstThing<CThingFilter_HasScriptName, CThing>(const F&, CThing**) const @ 0x0056D050,
 //          CThing::GetPosition @ 0x004C73D0, the physics component's SetPosition(const C3DVector&) (slot 30, +0x78),
 //          CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970,
@@ -80,8 +80,9 @@ public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     unsigned char _pad08[0x4];
-    CThingSearchTools* GetThingSearchTools() const; // 0x00686D90
-    CPlayerManager* GetPlayerManager_00686d40();             // 0x00686D40
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90
 };
 
 class CTCFireheartMinigame : public CTCBase {
@@ -106,7 +107,7 @@ void CTCFireheartMinigame::PlayGame()
     if (!Initialised) {
         for (long row = 0; row < 4; ++row)
             for (long column = 0; column < 4; ++column)
-                GetThingSearchTools()->GetPFirstThing(CThingFilter_HasScriptName(g_FireheartMarkerNames[row][column]),
+                PeekThingSearchTools().GetPFirstThing(CThingFilter_HasScriptName(g_FireheartMarkerNames[row][column]),
                                                       &Markers[row][column]);
     }
     InSession = true;
@@ -115,7 +116,7 @@ void CTCFireheartMinigame::PlayGame()
     YPos = 3;
     CTCPhysicsBase* physics = ParentThing->PhysicsTC;
     physics->SetPosition(Markers[0][3]->GetPosition());
-    CPlayer* player = GetPlayerManager_00686d40()->GetMainPlayer();
+    CPlayer* player = GetPlayerManager().GetMainPlayer();
     if (player->GetCurrentMode() != 0x2a)
         player->AddMode(0x2a, false);
     g_pPlayerGui->DisplayBottomHalfGUI = false;

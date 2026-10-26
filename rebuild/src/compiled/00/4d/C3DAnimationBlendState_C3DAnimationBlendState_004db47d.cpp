@@ -3,6 +3,10 @@
 // Byte-exact reconstruction of C3DAnimationBlendState::~C3DAnimationBlendState @ 0x004db47d
 
 // Refcounted control block: vtable at +0, refcount at +4.
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 struct RefBlock {
     void** vtbl;
     int refcount;
@@ -20,7 +24,6 @@ class C3DAnimationBlendState { public:
 };
 
 // Base destructor at 0x686830 (external). __fastcall so this ptr is in ecx.
-extern "C" void __fastcall C3DAnimationBlendStateBase_dtor(C3DAnimationBlendState* self);
 
 void __fastcall dtor_C3DAnimationBlendState(C3DAnimationBlendState* self)
 {
@@ -32,5 +35,5 @@ void __fastcall dtor_C3DAnimationBlendState(C3DAnimationBlendState* self)
         }
         self->ptr = 0;
     }
-    C3DAnimationBlendStateBase_dtor(self);
+    ((CTCBase*)(self))->CTCBase::~CTCBase();
 }

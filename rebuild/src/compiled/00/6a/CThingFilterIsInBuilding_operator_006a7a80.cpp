@@ -14,7 +14,8 @@ class CThing { public:
 };
 
 class CThingBuilding { public:
-    bool IsPointInside(const C3DVector& pos);       // 0x0082D000
+public:
+    bool IsPointInside(const C3DVector&) const;   // 0x0082D000
 };
 
 struct CThingFilter_IsInBuilding {

@@ -99,11 +99,14 @@ class CPlayerGuiDef { public:
     C2DVector     ControllerClickGraphicTextOffset;    // +0x6A4
     C2DVector     ControllerTriggerGraphicTextOffset;  // +0x6AC
 };
-CPlayerGuiDef* __fastcall PeekGuiDef();                 // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};                 // 0x00438570
 
 const C2DVector& CSubtitleRenderer::GetTextOffsetFromEmbeddedTagGraphic(long graphic) const
 {
-    const CPlayerGuiDef* def = PeekGuiDef();
+    const CPlayerGuiDef* def = (&CPlayerGui::PeekGuiDef());
     if (graphic == def->ControllerThumbLeftGraphic || graphic == def->ControllerThumbRightGraphic)
         return def->ControllerGraphicTextOffset;
     if (graphic == def->ControllerThumbClickLeftGraphic)

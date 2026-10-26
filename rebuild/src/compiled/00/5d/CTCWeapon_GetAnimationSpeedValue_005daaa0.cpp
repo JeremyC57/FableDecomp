@@ -49,7 +49,8 @@ template <class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 class CTCObjectAugmentations { public:
-    float GetSpeedMultiplier() const;            // 0x00766140
+public:
+    float GetDamageMultiplier() const;   // 0x00766140
 };
 class CTCWeapon { public:
     virtual void v00();
@@ -64,6 +65,6 @@ float CTCWeapon::GetAnimationSpeedValue() const
     float speed = GetWeaponDef()->AnimationSpeed;
     CTCObjectAugmentations* augmentations;
     if (ParentThing->GetInterface(&augmentations, 0xbf))
-        return speed * augmentations->GetSpeedMultiplier();
+        return speed * augmentations->GetDamageMultiplier();
     return speed;
 }

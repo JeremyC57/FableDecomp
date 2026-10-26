@@ -12,6 +12,7 @@
 //   called (GetPos inlined and devirtualised on the by-value local, as the landed CScriptThing::GetPos 0x004AA980).
 // Shape: the marker name is an implicit CCharString conversion temporary built before the other arguments; the
 //   marker's position is taken before its data string for SpawnEnemies.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -33,7 +34,7 @@ class CScriptThing { public:                              // vtable 0x01238C8C, 
     }
     CScriptThing*   PImp_Data;                     // +0x04
     CCPPointerInfo* PImp_Info;                     // +0x08
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 class CGameScriptInterface { public:
@@ -103,14 +104,19 @@ struct CQ_HangingTreeGoodScript {
 };
 struct CQ_SunnyvaleMasterData;
 
-class CHTG_AmbushPointCond {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CHTG_AmbushPointCond : public CEntityScriptBase {
 public:
     void*                     __vftable;           // +0x00
     CGameScriptInterface*     Game;                // +0x04
     CScriptThing              Me;                  // +0x08
     CQ_HangingTreeGoodScript* ParentClass;         // +0x14
     CQ_SunnyvaleMasterData*   PMasterData;         // +0x18
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -118,18 +124,18 @@ void CHTG_AmbushPointCond::Main()
 {
     while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), 6.0f)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptThing marker = Game->GetNearestWithScriptName(Me, "HTG_AmbushPointCond");
     while (Game->IsCameraPosOnScreen(marker.GetPos())) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->Pause(1.0f);
     ParentClass->SpawnEnemies(marker.GetPos(), marker.GetDataString(), 4);

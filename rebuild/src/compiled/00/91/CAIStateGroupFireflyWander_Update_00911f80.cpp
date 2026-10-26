@@ -50,7 +50,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     return it;
 }
 #pragma auto_inline(on)
-unsigned long __fastcall GFROR13(unsigned long value);    // 0x00497890
+long __fastcall GFROR13(unsigned long);    // 0x00497890
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -110,7 +110,9 @@ class CTCLight { public:
 };
 class CPlayer { public: CThing* GetHeroCreature();     // 0x00487DC0
 };
-class CPlayerManager { public: CPlayer* GetMainPlayer();   // 0x00449970
+class CPlayerManager { public: // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CEnvironment { public: bool IsDaytime();         // 0x006BB2C0
 };
@@ -157,7 +159,7 @@ void CAIStateGroup_FireflyWander::Update()
 {
     if (!GetPWorld_008fcfa0()->PEnvironment->IsDaytime()) {
         C3DVector target = StartPos;
-        CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetHeroCreature();
+        CThing* hero = GetPPlayerManager()->GetMainPlayer().GetHeroCreature();
         if (hero && !(hero->m_flags91 & 1)) {
             CThingAICreature* me = GetCreature();
             C3DVector toHero = me->InitialPos - hero->GetPosition();

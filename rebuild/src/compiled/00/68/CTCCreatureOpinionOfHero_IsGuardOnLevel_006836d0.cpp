@@ -1,7 +1,7 @@
 // CTCCreatureOpinionOfHero::IsGuardOnLevel() -- true when the creature's village has a living guard member (a thing holding interface 0xB4)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006836D0, length 152 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (inlined GetInterface for type 0x23 = CTCVillageMember),
-// CTCVillageMember::GetVillage @ 0x007EE540 (twice: the null test, then the list), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3).
+// CTCVillageMember::GetPVillage @ 0x007EE540 (twice: the null test, then the list), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3).
 // Layout: the retail CTCVillage keeps a single-pointer STLport list<CIntelligentPointer<CThing>> at +0x2C (its members; node
 // {next, prev, pointer}); interface 0xB4 is word 5 bit 20 of the presence bitset.
 // Shape: the list is a reference local (`add ebp,2Ch`, the end re-read through it each pass); inline IS_THING_ALIVE then a
@@ -40,14 +40,26 @@ class CThing { public:
 };
 class CTCVillage;
 class CTCVillageMember { public:                       // interface 0x23
-    CTCVillage* GetVillage();                   // 0x007EE540 (the manifest's "IS_THING_ALIVE<...>" is propagated)
+public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!p.GetPItem()->IsDead())
@@ -55,7 +67,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct SThingPtrNode { SThingPtrNode* next; SThingPtrNode* prev; CBaseIntelligentPointer value; };
+struct SThingPtrNode { SThingPtrNode* next; SThingPtrNode* prev; CIntelligentPointer<CThing> value; };
 struct CThingPtrList {                          // list<CIntelligentPointer<CThing> > (retail: one sentinel pointer)
     SThingPtrNode* head;
 };
@@ -74,8 +86,8 @@ bool CTCCreatureOpinionOfHero::IsGuardOnLevel()
 {
     CTCVillageMember* member;
     if (ParentThing->GetInterface(&member, 0x23)) {
-        if (member->GetVillage()) {
-            CThingPtrList& members = member->GetVillage()->Members;
+        if (member->GetPVillage()) {
+            CThingPtrList& members = member->GetPVillage()->Members;
             for (SThingPtrNode* node = members.head->next; node != members.head; node = node->next) {
                 if (IS_THING_ALIVE(node->value) && node->value.GetPItem()->HasTC(0xb4))
                     return true;

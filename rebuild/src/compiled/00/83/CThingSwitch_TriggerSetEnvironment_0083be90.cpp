@@ -34,12 +34,16 @@ public:
 };
 class CDefinitionManager {
 public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector     Position;                                    // +0x0c
 };
+class CPlayerManager;
 class CThing {
 public:
     unsigned char   _pad00[0x60];
@@ -47,6 +51,10 @@ public:
     unsigned char   _pad64[0x91 - 0x64];
     unsigned char   Dead : 1;                                  // +0x91 bit 0
     const C3DVector& GetPhysicsPosition() const { return PhysicsTC->Position; }
+public:
+    const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x004C7990
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x004C7A00
 };
 class CPlayer {
 public:
@@ -54,7 +62,8 @@ public:
 };
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer();                                  // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CThingSwitch : public CThing {
 public:
@@ -63,8 +72,6 @@ public:
     CCharString   EnvironmentDef;                              // +0xd4
     float         TimeToChangeEnvironmentDef;                  // +0xd8
     const C3DVector& GetPosition() const;                      // 0x006A4D00
-    CPlayerManager* GetPlayerManager();                        // 0x004C7A00
-    CDefinitionManager* GetDefinitionManager();                // 0x004C7990
     CWorld* PeekWorld();                                       // 0x004C7AA0
     void TriggerSetEnvironment();
 };
@@ -76,9 +83,9 @@ void CThingSwitch::TriggerSetEnvironment()
     area.TLY = GetPosition().Y - TriggerRadius;
     area.BRX = GetPosition().X + TriggerRadius;
     area.BRY = GetPosition().Y + TriggerRadius;
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroCreature();
     if (hero && !hero->Dead && area.ContainsPoint(C2DVector(hero->GetPhysicsPosition()))) {
-        long theme = GetDefinitionManager()->GetDefGlobalIndexFromName(EnvironmentDef);
+        long theme = PeekDefinitionManager().GetDefGlobalIndexFromName(EnvironmentDef);
         if (theme) {
             CWorld* world = PeekWorld();
             world->PEnvironment->TransitionToTheme(theme, TimeToChangeEnvironmentDef);

@@ -96,7 +96,7 @@ struct CAtmosCopyList {
     }
 };
 
-double GFGetTime();                                // 0x009E1BC0
+double __fastcall GFGetTime();                                // 0x009E1BC0
 
 class CWorld : public CBaseClassNonCopyable, public CIDrawWorld { public:
     CMainGameComponent* Component;                 // +0x08

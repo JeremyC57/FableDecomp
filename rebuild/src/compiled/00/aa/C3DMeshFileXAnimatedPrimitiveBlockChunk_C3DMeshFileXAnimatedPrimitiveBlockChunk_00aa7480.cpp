@@ -25,7 +25,7 @@ class CArray { public:                                    // retail CArray<T>: f
 class CChunkedFileSuperChunk { public:                    // vtable 0x0129E4F0, retail 0x2c bytes
     virtual void v00();
     unsigned char _body[0x28];                     // +0x04 chunk header, SubChunks, RegisteredSubChunkTypes, CurrentChunkIndex
-    ~CChunkedFileSuperChunk();                     // 0x00AA8490
+    virtual ~CChunkedFileSuperChunk();                     // 0x00AA8490
 };
 
 class CVertexGroupBlock { public:                         // retail 0x18 bytes

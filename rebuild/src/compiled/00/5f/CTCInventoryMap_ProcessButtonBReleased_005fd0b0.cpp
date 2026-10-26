@@ -31,15 +31,16 @@ struct CTCInventoryBase_Retail {
 class CTCInventoryMap : public CTCInventoryBase_Retail { public:
     unsigned char _pad_0x130[0x234 - 0x130];
     bool m_closing;                           // +0x234 (name from use)
-    void ClearMapScreenPrimitives();          // 0x005FC510
     void ProcessButtonBReleased();
+public:
+    void ResetPrimitiveHandles();   // 0x005FC510
 };
 
 void CTCInventoryMap::ProcessButtonBReleased()
 {
     if (InventorySelectionState == 0 && !m_closing) {
         m_closing = true;
-        ClearMapScreenPrimitives();
+        ResetPrimitiveHandles();
         Close(true);
         return;
     }

@@ -1,6 +1,6 @@
 // C3DMeshFileXUVTangentChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const -- version 1, the tangent count, then the U and V tangent arrays as raw blocks
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA57F0, length 208 bytes (virtual, slot 8).
-// Callees: CDataOutputStream::WriteULong @ 0x00993EA0, CDataOutputStream::WriteData (vtable slot 4, +0x10).
+// Callees: CDataOutputStream::WriteULONG @ 0x00993EA0, CDataOutputStream::WriteData (vtable slot 4, +0x10).
 // Shape: as the landed XVertexData WriteToFile 0x00AA58C0: GetData() hands back the array's own address when it
 // is empty; sizes are signed pointer differences divided by 12 (the 0x2AAAAAAB multiply), byte counts Size()*12.
 // Layout: UTangents +0x10, VTangents +0x1c (retail CArray is 12 bytes; PDB header has +0x10/+0x20).
@@ -38,12 +38,13 @@ class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteUShort(unsigned short value);             // 0x00993E80
-    void WriteULong(unsigned long value);               // 0x00993EA0
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
     void WriteBool(bool value);                         // 0x00993E30
     void WriteMatrix3x4(const CMatrix3x4& m);           // 0x00994070
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 class CDataInputStream { public:
     virtual void v0(); virtual void v1();
@@ -96,8 +97,8 @@ class C3DMeshFileXUVTangentChunk : public CChunkedFileChunk { public:
 
 void C3DMeshFileXUVTangentChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
-    out.WriteULong(1);
-    out.WriteULong(UTangents.Size());
+    out.WriteULONG(1);
+    out.WriteULONG(UTangents.Size());
     out.WriteData(UTangents.GetData(), UTangents.Size() * sizeof(C3DVector));
     out.WriteData(VTangents.GetData(), VTangents.Size() * sizeof(C3DVector));
 }

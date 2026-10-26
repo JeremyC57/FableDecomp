@@ -37,8 +37,9 @@ public:
 };
 class CWorldMap {
 public:
-    CRegion& GetRegion(long index);                      // 0x004FC180
     long GetLoadedRegion() const;                        // 0x004FB150
+public:
+    const CRegion& GetRegion(long) const;   // 0x004FC180
 };
 class CWorld {
 public:

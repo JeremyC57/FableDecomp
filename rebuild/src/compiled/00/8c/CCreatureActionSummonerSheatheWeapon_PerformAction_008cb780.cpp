@@ -58,8 +58,9 @@ template<class T> class CDefPointer { public:
     operator T*() const { return Object; }
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
     void GetDef(long index, CDefPointer<CAttackStyleDef>* out);   // 0x00669640
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -85,15 +86,27 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
     void RemoveThing(CThing* thing);            // 0x006A19B0
     void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);   // 0x006A1F80
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 class CTCCombat { public:
     void SetAttackStyleDef(const CDefPointer<CAttackStyleDef>* def);   // 0x007355F0
@@ -101,7 +114,7 @@ class CTCCombat { public:
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;          // +0x08
+    CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];
     CDefinitionManager* GetDefinitionManager(); // 0x00692910
 };

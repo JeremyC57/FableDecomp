@@ -23,27 +23,34 @@ class CSoundPair { public:                             // two sound ids, zeroed 
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
-    virtual void v00();
-    CThing* PItem;                              // +4
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0xa8 - 4];
-    CIntelligentPointerThing PTarget;           // +0xa8 (the combat action's target)
+    CIntelligentPointer<CThing> PTarget;           // +0xa8 (the combat action's target)
     unsigned char _padb0[0x114 - 0xb0];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_CastWillHealLifeSpell : public CCombatActionBase { public:   // vtable 0x0127CA4C
@@ -57,9 +64,9 @@ CCreatureAction_CastWillHealLifeSpell::CCreatureAction_CastWillHealLifeSpell(CTh
     : CCombatActionBase(owner, 150, CSoundPair())
     , Level(level)
 {
-    PTarget = CIntelligentPointerThing(target);
+    PTarget = CIntelligentPointer<CThing>(target);
     {
         CCharString name(target == 0 ? "ST_CAST_HEAL_SELF" : "ST_CAST_HEAL");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
 }

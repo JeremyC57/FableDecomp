@@ -46,7 +46,8 @@ class CTCBoss { public:                                // interface 0xad
     long GetBossPhase();                        // 0x007AED10
     void IncrementBossPhase();                  // 0x007AED20
     void SetNextBossPhase(long phase, bool immediate);   // 0x007AEDA0
-    bool IsReadyForPhaseChange();               // 0x007AEE90
+public:
+    bool IsReadyForPhaseChange() const;   // 0x007AEE90
 };
 class CCombatManager { public:
     void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
@@ -56,10 +57,21 @@ class CWorld { public:
     unsigned char _pad0[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -74,7 +86,7 @@ class CAIStateGroupBase { public:
     void Terminate();                           // 0x008FCF40
 };
 struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
-    CBaseIntelligentPointer PTarget;            // +0x14
+    CIntelligentPointer<CThing> PTarget;            // +0x14
     C3DVector StartPos;                         // +0x1c
     C3DVector ArenaCentrePos;                   // +0x28
     bool IsStillRunnable();                     // 0x0095A420

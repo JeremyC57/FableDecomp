@@ -2,7 +2,7 @@
 // kraken component (interface 0xe3) has a rise frame set that the current frame has passed.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00924420, length 170 bytes (+ int3 padding). Vtable slot 11.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0x31 = CTCCreatureModeManager, bit 17 of +0x24;
-// 0xe3 = bit 3 of +0x3c), CTCCreatureModeManager::HasMode @ 0x0073A8A0 (manifest class CPlayer is propagated),
+// 0xe3 = bit 3 of +0x3c), CTCCreatureModeManager::IsModeActive @ 0x0073A8A0 (manifest class CPlayer is propagated),
 // GFGetCurrentFrame @ 0x0049D870.
 // Shape: two early `return false` tests (shared `xor al,al` at the end), then the rise test returned as one
 // `&&` expression through the full register (`mov eax,1` / `xor eax,eax`); the second lookup result kept in esi.
@@ -136,16 +136,20 @@ class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
+
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
     CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
+            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 
 class CTCCreatureModeManager { public:                 // interface 0x31
-    bool HasMode(long mode);                    // 0x0073A8A0
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 
 class CTCKrakenTentacle { public:                      // interface 0xe3
@@ -160,10 +164,10 @@ struct CAIStateGroup_KrakenTentacleRise : CAIStateGroupBase {
 bool CAIStateGroup_KrakenTentacleRise::IsRunnable()
 {
     CTCCreatureModeManager* modes;
-    if (!PBrain->PCreature->GetInterface(&modes, 0x31) || !modes->HasMode(0x54))
+    if (!PBrain->PCreature->GetInterface(&modes, 0x31) || !modes->IsModeActive(0x54))
         return false;
     CTCKrakenTentacle* tentacle;
     if (!PBrain->PCreature->GetInterface(&tentacle, 0xe3))
         return false;
-    return tentacle->m_riseFrame != 0 && GFGetCurrentFrame() > tentacle->m_riseFrame;
+    return tentacle->m_riseFrame != 0 && CWorld::GetFrame() > tentacle->m_riseFrame;
 }

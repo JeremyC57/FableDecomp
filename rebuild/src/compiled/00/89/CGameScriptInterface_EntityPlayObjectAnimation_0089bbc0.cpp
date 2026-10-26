@@ -101,14 +101,15 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
     CThing_Retail* t = thing.GetThing();
     return t && !t->m_dead;
 }
-struct CTCAnimatingObject_Retail {
+class CTCAnimatingObject { public:
     unsigned char _pad[0xc];
     bool m_hasId;                                  // +0x0c
     unsigned char _pad0d[3];
     long m_id;                                     // +0x10
     __forceinline long GetId() const { return m_hasId ? m_id : -1; }
-    void PlayAnimation(const CCharString& anim, long id, bool loop);   // 0x007F90B0
     __forceinline void PlayNextAnimation(const CCharString& anim, bool loop) { PlayAnimation(anim, GetId() + 1, loop); }
+public:
+    void PlayAnimation(const CCharString&, long, bool);   // 0x007F90B0
 };
 class CGameScriptInterface { public:
     virtual void v000();
@@ -126,7 +127,7 @@ void CGameScriptInterface::EntityPlayObjectAnimation(const CScriptThing& thing, 
     if (thing.IsValid()) {
         CThing_Retail* t = thing.GetThing();
         if (t->HasTC(0x83)) {
-            ((CTCAnimatingObject_Retail*)GetTC(t, 0x83))->PlayNextAnimation(anim, loop);
+            ((CTCAnimatingObject*)GetTC(t, 0x83))->PlayNextAnimation(anim, loop);
         }
     }
 }

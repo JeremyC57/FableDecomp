@@ -7,6 +7,10 @@
 // this+0x50: a heap pointer; if non-null it is freed (push eax; call free; pop ecx)
 // tail-jmp to base-class FinishMove with ecx=this.
 
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CTCAssassinRush { public:
     char _pad[0x68];
     // at 0x68: sub-object (opaque)
@@ -19,7 +23,6 @@ extern "C" void __fastcall AssassinRush_Sub0x68_Method(void* thisptr);
 extern "C" void __cdecl AssassinRush_Free(void* p);
 
 // base-class FinishMove (tail-called with ecx=this)
-extern "C" void __fastcall AssassinRush_BaseFinishMove(void* thisptr);
 
 void __fastcall CTCAssassinRush_FinishMove(CTCAssassinRush* thisptr)
 {
@@ -32,5 +35,5 @@ void __fastcall CTCAssassinRush_FinishMove(CTCAssassinRush* thisptr)
         AssassinRush_Free(p);
     }
 
-    AssassinRush_BaseFinishMove(thisptr);
+    ((CParentDefClassBase*)(thisptr))->CParentDefClassBase::~CParentDefClassBase();
 }

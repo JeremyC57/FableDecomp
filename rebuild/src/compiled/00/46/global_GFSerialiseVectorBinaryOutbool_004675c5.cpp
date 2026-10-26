@@ -14,11 +14,18 @@
 //   `traits.TransferBinaryOut(stream, &value[i])` for i < count; CPersistTraits<bool>'s transfer is inline
 //   (`stream.WriteBool(*value)`) and the uninitialised traits folds away.
 #pragma optimize("s", on)
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteLong(long value);                             // 0x00993EB0
-    void WriteBool(bool value);                             // 0x00993E30
 };
 
 namespace std {
@@ -37,7 +44,7 @@ public:
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<bool> {
     bool DefaultVal;
-    void TransferBinaryOut(CDataOutputStreamWriter& stream, const bool* value) const { stream.WriteBool(*value); }
+    void TransferBinaryOut(CDataOutputStreamWriter& stream, const bool* value) const { stream.WriteEBOOL(*value); }
 };
 
 template <class T>
@@ -45,7 +52,7 @@ void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std:
 {
     CPersistTraits<T> traits;
     long count = value.size();
-    stream.WriteLong(count);
+    stream.WriteSLONG(count);
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, &value[i]);
 }

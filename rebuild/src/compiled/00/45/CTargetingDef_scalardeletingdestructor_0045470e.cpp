@@ -2,6 +2,10 @@
 // treepass 2026-10-26: the member at +0x74 is CTargetingDef::TargetingRanges, the real STLport 4.6
 //   std::map<ETargetingType, float>; its inlined ~map calls _Rb_tree::~_Rb_tree @ 0x00451940 (was a local
 //   CMember / CMember_dtor_00451940 stand-in). Under /Os the compiler keeps ~_Rb_tree out of line, as retail did.
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
@@ -411,17 +415,15 @@ class CTargetingDef { public:
     void* CTargetingDef_scalar_deleting_destructor(unsigned char flags);
 };
 
-extern void __fastcall CTargetingDef_base_dtor(CTargetingDef* def);
 extern void* g_CLandscapeBackgroundPatch_vftable;
-extern void __cdecl operator_delete(void* p);
 
 void* CTargetingDef::CTargetingDef_scalar_deleting_destructor(unsigned char flags)
 {
     this->member.~map();                                    // ~map inlined: _Rb_tree::~_Rb_tree @ 0x00451940
     this->vtbl = &g_CLandscapeBackgroundPatch_vftable;
-    CTargetingDef_base_dtor(this);
+    ((CResource*)(this))->CResource::~CResource();
     if (flags & 1) {
-        operator_delete(this);
+        operator delete(this);
     }
     return this;
 }

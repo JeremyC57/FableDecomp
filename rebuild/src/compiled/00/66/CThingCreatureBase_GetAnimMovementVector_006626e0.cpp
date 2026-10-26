@@ -30,7 +30,8 @@ class C3DAnimationInfo { public:
     C3DVector MovementVector;                  // +0x18
 };
 class CMeshDataBank { public:
-    C3DAnimationInfo* GetAnimation(long index);   // 0x00A242C0
+public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
 class CWorld { public:
     unsigned char _pad[0x3c];
@@ -51,7 +52,7 @@ class CThingCreatureBase : public CThing { public:
 C3DVector CThingCreatureBase::GetAnimMovementVector(long animIndex)
 {
     CMeshDataBank* bank = PeekWorld().PMainMeshBank;
-    C3DVector movement = bank->GetAnimation(animIndex)->MovementVector;
+    C3DVector movement = bank->PeekAnimation(animIndex)->MovementVector;
     PTCGraphicAppearance->GetPositionMatrix(1.0f).RotateInPlace(movement);
     return movement;
 }

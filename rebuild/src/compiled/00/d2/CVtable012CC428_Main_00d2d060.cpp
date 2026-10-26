@@ -6,7 +6,15 @@
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 #include "engine/CBaseObject.h"
+#define CScriptGameResourceObjectScriptedThingBase CScriptGameResourceObjectScriptedThingBaseLayout
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#undef CScriptGameResourceObjectScriptedThingBase
+
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectScriptedThingBaseLayout
+{
+public:
+    void Release();   // 0x00CD2770
+};
 class CCPPointerInfo { public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;};
 extern const unsigned char ResourceBaseVTable[]; //0126008C genuine CScriptGameResourceObjectBase
 extern const unsigned char ResourceVTable[]; //0127094C
@@ -22,7 +30,6 @@ struct ScriptResource:CScriptGameResourceObjectScriptedThingBase {
   PImp_Data=0;PImp_Info=0;__vftable=(void*)ResourceBaseVTable;DestroyCBaseObject();
  }
  bool IsScripting(); //00CD23B9
- void Release(); //00CD2770
 };
 struct GameCalls;
 #pragma pointers_to_members(full_generality,single_inheritance)

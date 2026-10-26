@@ -22,7 +22,8 @@ class CSoundPair { public:
 class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_WhisperJumpIntoSky : public CCombatActionBase { public:
@@ -35,6 +36,6 @@ CCreatureAction_WhisperJumpIntoSky::CCreatureAction_WhisperJumpIntoSky(CThingCre
 {
     {
         CCharString name("JUMP_INTO_SKY", -1);       // scoped named local (a bare temporary would reuse eax, GOTCHAS)
-        SetName(name);                     // 0x008574D0
+        SetCombatAnimation(name);                     // 0x008574D0
     }
 }

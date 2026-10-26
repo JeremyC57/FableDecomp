@@ -63,7 +63,7 @@ template <class T> class CCountedPointer { public:
 class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C
     virtual void t000();
     CCountedPointer<void> PImp;                         // +0x04 Data, +0x08 Info
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
     __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 };
 class CSpawnedFuncBase { public:                               // retail 0x34 bytes
@@ -84,7 +84,7 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
 };
 class CScriptDataBase;
 class CEntityScriptBase;
-struct __declspec(novtable) CEntityScriptBindingBase {
+class __declspec(novtable) CEntityScriptBindingBase { public:
     virtual const CCharString& GetEntityScriptName() const = 0;
 };
 template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
@@ -154,7 +154,8 @@ struct CCrateTeamManager {                              // 0x40 bytes
     CCrateTeamManager* EnemyTeam;                       // +0x3c
 };
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                                                 // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
@@ -162,6 +163,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     void PostAddScriptedEntities();                                                   // 0x00CB8930
     __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
+namespace NScript {
 class CQ_OrchardFarmRaidScript : public CScriptBase {
 public:
 #define ALLOC(Name, Addr) struct Name { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_OrchardFarmRaidScript& parent, CScriptDataBase* data, const CScriptThing& thing); };

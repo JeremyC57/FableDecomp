@@ -31,12 +31,13 @@ class CCharString { public:
 };
 
 struct CDefStringTable {
-    CCharString GetString(unsigned long id);            // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;                 // 0x013CA828
 
 CWideString __fastcall GetSoundDataDirectory();         // 0x0041A3F0 (L"Data\\Sound\\")
-CWideString __fastcall GetSoundDataDirectory2();        // 0x0041A3D0 (byte-identical twin)
+namespace NResourceDirectoryNames { CWideString __fastcall GetHDMusicDir(); }   // 0x0041A3D0        // 0x0041A3D0 (byte-identical twin)
 
 class CMusicEntry { public:
     unsigned long ID;
@@ -129,7 +130,7 @@ void CMusicManager::RegisterMusic()
     for (unsigned long i = 0; i < PSoundDef->MusicEntries.size(); ++i) {
         const CMusicEntry& entry = PSoundDef->MusicEntries[i];
         CWideString src = GetSoundDataDirectory() + GetWideText(entry.Filename);
-        CWideString dst = GetSoundDataDirectory2() + GetWideText(entry.Filename);
+        CWideString dst = NResourceDirectoryNames::GetHDMusicDir() + GetWideText(entry.Filename);
         src.ReplaceSubstring(L".wma", L".ogg");
         dst.ReplaceSubstring(L".wma", L".ogg");
         RegisteredMusic.Add(entry.ID, CRegisteredMusicEntry(src, dst, entry.Gain, entry.CacheToHD));

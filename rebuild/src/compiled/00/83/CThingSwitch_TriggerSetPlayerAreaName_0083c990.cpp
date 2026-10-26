@@ -35,6 +35,7 @@ class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector     Position;                                    // +0x0c
 };
+class CPlayerManager;
 class CThing {
 public:
     unsigned char   _pad00[0x20];
@@ -60,6 +61,8 @@ public:
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return ((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x004C7A00
 };
 class CPlayer {
 public:
@@ -67,7 +70,8 @@ public:
 };
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer();                                  // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CThingSwitch : public CThing {
 public:
@@ -77,7 +81,6 @@ public:
     float         TimeToChangeEnvironmentDef;                  // +0xd8
     bool          AreaNameShown;                               // +0xdc
     const C3DVector& GetPosition() const;                      // 0x006A4D00
-    CPlayerManager* GetPlayerManager();                        // 0x004C7A00
     void TriggerSetPlayerAreaName();
 };
 
@@ -90,7 +93,7 @@ void CThingSwitch::TriggerSetPlayerAreaName()
     area.TLY = GetPosition().Y - TriggerRadius;
     area.BRX = GetPosition().X + TriggerRadius;
     area.BRY = GetPosition().Y + TriggerRadius;
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroCreature();
     if (hero && !hero->Dead) {
         const C3DVector& pos = hero->GetPhysicsPosition();
         if (area.ContainsPoint(C2DVector(pos)) && hero->HasTC(0x8e)) {

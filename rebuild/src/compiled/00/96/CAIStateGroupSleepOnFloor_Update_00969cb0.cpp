@@ -92,7 +92,7 @@ class CCreatureActionBase { public:
     virtual void v10();
     virtual void* Clone() const;                    // slot 11 (+0x2c)
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                         // 0x00693EF0
+    virtual ~CCreatureActionBase();                         // 0x00693EF0
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
@@ -142,6 +142,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
+public:
+    void Terminate();   // 0x008FCF40
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing> (vtable 0x01237F1C)
     virtual void v00();
@@ -157,7 +159,6 @@ struct CAIStateGroup_SleepOnFloor : CAIStateGroupBase {
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
     long AIAction_DoNothing();                  // 0x0097E200
     bool IsStopping();                          // 0x008FD010
-    void Terminate();                           // 0x008FCF40
     virtual void Update();
 };
 

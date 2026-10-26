@@ -43,7 +43,10 @@ class CWideString { public:
     }
 };
 CWideString __fastcall operator+(const CWideString& left, const wchar_t* right);   // 0x0099BF30
-bool __fastcall PathExists(const CWideString& path);   // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};   // 0x00999230
 
 class CUserProfileManager { public:
     static CUserProfileManager& __fastcall Get();       // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
@@ -71,7 +74,7 @@ bool CWorld::LoadHeroStateInternal(const CWideString& name)
 {
     CWideString file = name + L".hs";
     CWideString path = CUserProfileManager::Get().GetPathNameFromFileName(file, false);
-    if (PathExists(path))
+    if (CAFile::PathExists(path))
     {
         SerialisingHeroState = true;
         bool loaded = LoadGameStateInternal(path, false);

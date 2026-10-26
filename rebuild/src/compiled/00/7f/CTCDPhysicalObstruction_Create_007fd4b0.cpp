@@ -27,7 +27,8 @@ public:
 
 class CDefinitionManager {
 public:
-    long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 
 class CGameDefinitionManager : public CDefinitionManager {

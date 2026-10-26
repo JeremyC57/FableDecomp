@@ -1,3 +1,14 @@
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
 struct CSub {
 	unsigned char pad[0x10];
 	unsigned char kind; // +0x10
@@ -9,13 +20,12 @@ class CTCPerceiveThing { public:
 	unsigned char flag; // +0x2e
 };
 
-extern CSub* __fastcall Sub_Get(void* self);
 
 int __fastcall CTCPerceiveThing_IsPlayerExtendedLineOfSight(CTCPerceiveThing* self)
 {
 	void* sub = (char*)self + 0xc;
-	if (Sub_Get(sub) != 0) {
-		if (Sub_Get(sub)->kind == 2) {
+	if (((CSub*)(((CBaseIntelligentPointer*)(sub))->GetPItem())) != 0) {
+		if (((CSub*)(((CBaseIntelligentPointer*)(sub))->GetPItem()))->kind == 2) {
 			if (self->flag != 0) {
 				return 1;
 			}

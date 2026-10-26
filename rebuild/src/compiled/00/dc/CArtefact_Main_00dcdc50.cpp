@@ -10,6 +10,7 @@
 // Literals: "BanditTeamCrateDrop" 0x012DB214, "SCRIPT_NAME_HERO" 0x0125D1C8.
 // Layout: Ego_r.pdb CArtefact (28 bytes): entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14
 //   (CQ_OrchardFarmRaidScript: master data +0x44 with a flag at +0x109, a remaining-artefact count at +0x48).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -78,9 +79,15 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void RemoveThing(const CScriptThing& thing, bool b1, bool b2) const;   // slot 108 (+0x1b0)
 };
 
-#pragma inline_depth(0)
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class __declspec(novtable) CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+#pragma inline_depth(0)
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -98,8 +105,9 @@ class CEntityScriptBase { public:                             // retail 0x14 byt
     virtual void v00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 
 struct CArtefact : CEntityScriptBase {

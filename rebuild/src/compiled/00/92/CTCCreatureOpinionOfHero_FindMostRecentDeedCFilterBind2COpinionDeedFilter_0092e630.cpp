@@ -1,7 +1,7 @@
 // CTCCreatureOpinionOfHero::FindMostRecentDeed<CFilter_Bind2<COpinionDeedFilter_IsStillHappening,COpinionDeedFilter_TargetIs> >(EOpinionDeedType, const filter&, long* outHandle, bool includePending) const -- the first of the hero's deeds of the type that is still happening and targets the filter's thing (pending deeds first when asked, then the known deeds of that type); its handle is written out
 // Leaf: FindMostRecentDeed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092E630, 283 bytes (+ padding), `ret 10h`.
-// Callees: CTCBase::GetPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
+// Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
 // CPlayer::GetControlledCreature @ 0x00487DD0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0,
 // CTCHeroOpinionDeedLog::GetDeedFromHandle(long) @ 0x006C58F0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the deed's target).
 // Layout: as the landed IsStillHappening instantiation 0x0093A3C0: PendingDeeds (list<long>) +0x54, KnownDeeds (list<long>[92])
@@ -48,16 +48,27 @@ class CPlayer { public:
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
 };
-struct CBaseIntelligentPointer {
-    void* __vftable;                                    // +0x00
-    void* m_pItem;                                      // +0x04
-    CThing* GetPItem() const;                           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class COpinionDeed { public:
     long          DeedType;                             // +0x00 EOpinionDeedType
     long          DeedHandle;                           // +0x04
     unsigned char _pad08[0x18 - 0x08];
-    CBaseIntelligentPointer PTarget;                    // +0x18
+    CIntelligentPointer<CThing> PTarget;                    // +0x18
     unsigned char _pad20;
     bool          IsStillHappening;                     // +0x21
 };
@@ -89,13 +100,19 @@ struct SHandleNode {                                    // STLport list<long> no
 struct CHandleList {                                    // retail list: the sentinel node pointer
     SHandleNode* head;
 };
-class CTCCreatureOpinionOfHero { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
+
+class CTCCreatureOpinionOfHero : public CTCBase { public:
     unsigned char _pad04[0x54 - 0x04];
     CHandleList PendingDeeds;                           // +0x54 (PDB +0x70)
     long        LastFrameAppliedDeedEffect[92];         // +0x58
     CHandleList KnownDeeds[92];                         // +0x1c8 (PDB +0x1ec)
-    const CPlayerManager* GetPlayerManager() const;     // 0x00686D50 (CTCBase)
     template <class TFilter>
     const COpinionDeed* FindMostRecentDeed(long deedType, const TFilter& filter, long* outHandle, bool includePending) const;
 };
@@ -103,7 +120,7 @@ class CTCCreatureOpinionOfHero { public:
 template <class TFilter>
 const COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed(long deedType, const TFilter& filter, long* outHandle, bool includePending) const
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetControlledCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetControlledCreature();
     if (hero) {
         const CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);

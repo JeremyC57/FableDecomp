@@ -31,8 +31,9 @@ class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                  // +0x18
     unsigned __int64 GetUID() const { return UniqueID; }
-    bool IsCombatEligible() const;              // 0x00662410
     CCombatTypeDef* GetCombatTypeDef() const;   // 0x00666D10
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 
 struct CCombatRing {                            // 28 bytes in retail
@@ -123,7 +124,7 @@ class CCombatManager { public:
 
 void CCombatManager::SetAttackerRingAsRotating(const CThingCreatureBase& attacker, float degreesPerSecond)
 {
-    if (!attacker.IsCombatEligible())
+    if (!attacker.IsInMeleeAsAttacker())
         return;
     CCombatantInfo& info = GetCombatantInfo(attacker);
     const CThingCreatureBase* victim = info.AttackerInfo.Attacked;

@@ -8,13 +8,19 @@
 #include "engine/_quarantine/CCombatActionBase.h"
 #undef CCombatActionBase
 class CCombatActionBase { public:                  // retail 0x114 bytes (PDB 0x12c, GOTCHAS wave 25); derives from CCreatureActionBase
-    unsigned char _base[0x114];
-    ~CCombatActionBase();                   // 0x0062E900 (tail-jumps ~CCreatureActionBase 0x00693EF0)
+    unsigned char _base[0x114 - 4];
+    virtual ~CCombatActionBase();                   // 0x0062E900 (tail-jumps ~CCreatureActionBase 0x00693EF0)
 };
-struct CBaseIntelligentPointer {            // vptr + data (8 bytes); vtable 0x0129C95C
-    void* _vptr;
-    void* PData;
-    ~CBaseIntelligentPointer();             // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 #pragma pack(push, 1)
 struct CObject_0066a510 : CCombatActionBase {
@@ -25,6 +31,6 @@ struct CObject_0066a510 : CCombatActionBase {
 
 void CObject_0066a510::DestroyMembers()
 {
-    Second.~CBaseIntelligentPointer();
+    Second.CBaseIntelligentPointer::~CBaseIntelligentPointer();
     this->CCombatActionBase::~CCombatActionBase();
 }

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CEF20, 192 bytes. __fastcall, `ret`, /GS cookie 0x0139C8A8.
 // Callees: CPlayerGui::GetPHeroInfoScreensManager() const 0x00437CD0 (manifest "CWorld::DrawGetEnvironment", propagated);
 //          CSubtitleRenderer::SetText(CFontBank*, const CCharString&, unsigned long, float, bool, bool) 0x00492ED1 on the
-//          renderer embedded at CPlayerGui+0x18; CTCBase::AddToGlobalUpdateTCs() 0x00686ED0; CTCBase::GetWorld() const
+//          renderer embedded at CPlayerGui+0x18; CTCBase::AddToGlobalTCs() 0x00686ED0; CTCBase::PeekWorld() const
 //          0x00686A80; CWorld::GetCurrentPlayer() 0x0049D9D0 (player number byte +0x28); CMemoryBuffer::Copy 0x009F1760;
 //          CMainGameComponent::AddGameEvent(const CGameEvent&) 0x0041649C; __security_check_cookie 0x00BFE9F9.
 //          Globals: g_pPlayerGui 0x013B8790, g_pMainGameComponent 0x013B86A0 (font bank at +0x1614c).
@@ -61,15 +61,22 @@ class CHeroMarriageDef { public:
     unsigned char _pad00[0xa4];
     unsigned char TextGuiWifeDivorceOccurred[4];   // +0xa4 CCharString
 };
-class CTCWife { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+public:
+    void AddToGlobalTCs();   // 0x00686ED0
+};
+
+class CTCWife : public CTCBase { public:
     void*             ParentThing;                 // +0x04
     unsigned char     _pad_0x08[4];
     CHeroMarriageDef* PHeroMarriageDef;            // +0x0c CDefPointer<CHeroMarriageDef const>::Object
     unsigned char     _pad_0x10[0x29 - 0x10];
     bool              WaitingForDivorce;           // +0x29
-    void AddToGlobalUpdateTCs();                   // 0x00686ED0 (CTCBase)
-    const CWorld* GetWorld() const;                // 0x00686A80 (CTCBase)
     void InitiateDivorce();
 };
 void CTCWife::InitiateDivorce()
@@ -79,9 +86,9 @@ void CTCWife::InitiateDivorce()
     g_pPlayerGui->m_subtitleRenderer.SetText(g_pMainGameComponent->m_pFontBank,
         *(const CCharString*)PHeroMarriageDef->TextGuiWifeDivorceOccurred, 0x22, 0.0f, true, true);
     WaitingForDivorce = true;
-    AddToGlobalUpdateTCs();
+    AddToGlobalTCs();
     CGameEvent gameEvent(9);                       // SendPauseEvent(true) written out: the constant flag folds to one store
-    gameEvent.Player = GetWorld()->GetCurrentPlayer()->m_playerNumber;
+    gameEvent.Player = PeekWorld().GetCurrentPlayer()->m_playerNumber;
     gameEvent.AddBool(true);
     g_pMainGameComponent->AddGameEvent(gameEvent);
 }

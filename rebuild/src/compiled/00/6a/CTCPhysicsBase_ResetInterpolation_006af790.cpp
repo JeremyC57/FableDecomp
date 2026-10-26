@@ -7,7 +7,19 @@
 // Shape: `GetWorld()->GetFrame()` -- a STATIC member called through an object expression: the world call is made and its result
 //   dropped; the bit copy is the shl/xor/and/xor insert through ONE reference to the flag byte (two view calls re-read it).
 // Leaf: ResetInterpolation
+#define CTCPhysicsBase CTCPhysicsBaseLayout
 #include "engine/CTCPhysicsBase.h"
+#undef CTCPhysicsBase
+class CWorld;
+
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCPhysicsBase : public CTCBase, public CTCPhysicsBaseLayout
+{
+};
 
 class C3DVector { public:
     float X, Y, Z;
@@ -23,7 +35,6 @@ class CWorld { public:
 };
 
 struct CTCPhysicsBase_Methods : CTCPhysicsBase {
-    CWorld* GetWorld();                     // 0x00686A70
     C3DVector& PositionVector()    { return *reinterpret_cast<C3DVector*>(&Position_X); }
     C3DVector& OldPositionVector() { return *reinterpret_cast<C3DVector*>(&OldPosition_X); }
     SPhysicsBaseFlags& Flags()     { return *reinterpret_cast<SPhysicsBaseFlags*>(OldMoving); }
@@ -33,7 +44,7 @@ struct CTCPhysicsBase_Methods : CTCPhysicsBase {
 void CTCPhysicsBase_Methods::ResetInterpolation()
 {
     OldPositionVector() = PositionVector();
-    OldPositionLastFrameSet = GetWorld()->GetFrame();
+    OldPositionLastFrameSet = GetWorld().GetFrame();
     SPhysicsBaseFlags& flags = Flags();
     flags.OldMoving = flags.Moving;
 }

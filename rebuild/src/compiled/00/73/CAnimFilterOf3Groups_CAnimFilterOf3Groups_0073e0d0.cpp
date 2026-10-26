@@ -27,7 +27,10 @@ public:
     const char* GetPString() const { return PStringData == 0 ? "" : PStringData->PData; }   // "" = the shared empty literal 0x0129AAF4
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC-32 kernel
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC-32 kernel
 
 class CAnimationEntry;
 
@@ -57,7 +60,7 @@ CAnimFilterOf3Groups::CAnimFilterOf3Groups(const CCharString& group1, const CCha
     , Group2(group2)
     , Group3(group3)
 {
-    Group1CRC = Calc_004014a0(0, group1.GetPString(), group1.GetLength());
-    Group2CRC = Calc_004014a0(0, group2.GetPString(), group2.GetLength());
-    Group3CRC = Calc_004014a0(0, group3.GetPString(), group3.GetLength());
+    Group1CRC = CCRC::Calc(0, group1.GetPString(), group1.GetLength());
+    Group2CRC = CCRC::Calc(0, group2.GetPString(), group2.GetLength());
+    Group3CRC = CCRC::Calc(0, group3.GetPString(), group3.GetLength());
 }

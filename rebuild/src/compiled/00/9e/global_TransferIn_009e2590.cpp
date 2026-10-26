@@ -18,7 +18,15 @@
 //   pointer lives in edi), and the matching branch reads the block-scoped right-hand side into that same slot.
 //   CStringParser uses engine/CStringParser.h; CPersistContext / CSymbolMap (no engine header) follow the landed
 //   0x0040F7E0 model.
+#define CStringParser CStringParserLayout
 #include "engine/CStringParser.h"
+#undef CStringParser
+
+class CStringParser : public CStringParserLayout
+{
+public:
+    long ReadAsInteger();   // 0x009BA540
+};
 
 class CCharString { public:
     CCharStringData* PStringData;
@@ -31,7 +39,6 @@ extern const char g_msgUnableToFindSymbol_0122dfe8[];          // 0x0122DFE8 "Un
 struct CStringParserMethods : CStringParser {
     long PeekNextItemType();                                   // 0x009BA900 (EParsedItemType)
     CCharString ReadAsString();                                // 0x009BA6F0
-    long ReadAsInteger();                                      // 0x009BA540
     bool SkipPastNextItemIfIs(const CCharString& item);        // 0x009B9E00
 };
 

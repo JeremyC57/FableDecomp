@@ -54,10 +54,15 @@ __declspec(noinline) CRestockMap::iterator CRestockMap::find(const long& key)
 }
 #pragma auto_inline(on)
 
-class CTCShop { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCShop : public CTCBase { public:
     unsigned char _pad[0x34];
     CRestockMap   m_restock;                 // +0x34
-    CWorld* GetWorld();                      // 0x00686A70 (CTCBase)
     long GetDaysTillRestock(long key);
 };
 
@@ -66,7 +71,7 @@ long CTCShop::GetDaysTillRestock(long key)
     CRestockMap::iterator it = m_restock.find(key);
     SRestockNode* node = it.m_pNode;
     if (node != m_restock.m_pHead && node->m_restockInterval != 0) {
-        long day = GetWorld()->m_pGameTimeManager->m_day;
+        long day = GetWorld().m_pGameTimeManager->m_day;
         return node->m_restockInterval - day % node->m_restockInterval;
     }
     return 0;

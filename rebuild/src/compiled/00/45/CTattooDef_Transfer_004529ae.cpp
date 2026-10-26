@@ -16,11 +16,8 @@ public:
 enum ECompositeBlendType { };                               // enumerators not needed
 class CPersistContext {
 public:
-    void Transfer(CCharString& value);                           // 0x00431143
-    void Transfer(long& value);                                  // 0x00431102
+    template <class T> void Transfer(T& value);                           // 0x00431143
     void Transfer(ECompositeBlendType& value);                   // 0x00452A60
-    void Transfer(bool& value);                                  // 0x0043314A
-    void Transfer(float& value);                                 // 0x00431061
 };
 class CTattooDef {
 public:

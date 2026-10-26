@@ -41,7 +41,8 @@ public:
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CMainGameComponent* GetMainGameComponent() const;   // 0x00686D60
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60
 };
 
 class CTCActionUseScriptedHook : public CTCBase {
@@ -63,11 +64,11 @@ void CTCActionUseScriptedHook::OnActionUse(CThing&)
         if (ForceConfirmation) {
             PerformAction = false;
             WaitingForConfirmation = true;
-            CFontBank* font = GetMainGameComponent()->GetFontBank();
+            CFontBank* font = PeekComponent().GetFontBank();
             CGameUI* ui = g_pGameUI;
             ui->Subtitles.SetText(font, text, 4, 0.0f, false, true);
         } else {
-            g_pGameUI->Subtitles.SetText(GetMainGameComponent()->GetFontBank(), text, 0x322, 0.0f, false, true);
+            g_pGameUI->Subtitles.SetText(PeekComponent().GetFontBank(), text, 0x322, 0.0f, false, true);
         }
     }
 }

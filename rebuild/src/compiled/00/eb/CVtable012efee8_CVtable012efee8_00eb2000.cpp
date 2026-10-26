@@ -32,9 +32,10 @@ struct CVtable_012c3224 {                          // vtable 0x012C3224
 };
 
 class CBaseObject { public:                               // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
-    virtual void v00();
     void* m_pIntelligentPointer;                   // +0x04
-    CBaseObject();                                 // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 
 struct CCountedPointerWords {                     // {Data, Info}: a member object so its zero stores follow the owner's vtable store

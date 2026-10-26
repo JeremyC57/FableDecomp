@@ -14,7 +14,8 @@ class C3DVector { public:
 };
 
 class CThingCreatureBase { public:
-    C3DVector GetHeadPos(bool exact);              // 0x00661B40
+public:
+    C3DVector GetHeadPos(bool) const;   // 0x00661B40
 };
 
 extern bool g_bQueryCreatureHeadPos;             // 0x013BAE1B

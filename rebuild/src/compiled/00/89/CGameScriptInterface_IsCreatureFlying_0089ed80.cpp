@@ -103,7 +103,9 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
     CThing_Retail* t = thing.GetThing();
     return t && !t->m_dead;
 }
-struct CTCCreatureModeManager_Retail { bool HasMode(long mode); };   // 0x0073A8A0
+class CTCCreatureModeManager { public: public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
+};   // 0x0073A8A0
 class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
@@ -120,8 +122,8 @@ bool CGameScriptInterface::IsCreatureFlying(const CScriptThing& creature) const
     if (creature.IsValid()) {
         CThing_Retail* t = creature.GetThing();
         if (t->HasTC(0x31)) {
-            CTCCreatureModeManager_Retail* modes = (CTCCreatureModeManager_Retail*)GetTC(t, 0x31);
-            if (modes->HasMode(0x50) || modes->HasMode(0x4d))
+            CTCCreatureModeManager* modes = (CTCCreatureModeManager*)GetTC(t, 0x31);
+            if (modes->IsModeActive(0x50) || modes->IsModeActive(0x4d))
                 return true;
         }
     }

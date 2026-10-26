@@ -7,7 +7,18 @@
 // this body draws D3DPT_TRIANGLEFAN (6), so it is named for what it does. The first argument is not read (ret 8 keeps it).
 // Callees: CRenderStateManager::RealiseRenderState @ 0x00A058C0; IDirect3DDevice9::DrawPrimitive (COM slot 81, +0x144)
 // on PD3DDevice (+0x3CF0), start vertex 0, primitive count = the second argument.
+#define CRenderManagerCore CRenderManagerCoreLayout
 #include "engine/CRenderManagerCore.h"
+#undef CRenderManagerCore
+
+class CRenderStateManager
+{
+public:
+    void RealiseRenderState();   // 0x00A058C0
+};
+class CRenderManagerCore : public CRenderStateManager, public CRenderManagerCoreLayout
+{
+};
 
 // d3d9.h is not on the verifier include path, so the IDirect3DDevice9 vtable is declared locally:
 // COM methods are __stdcall with `this` pushed. Slots used here: 81 (+0x144) DrawPrimitive,
@@ -44,7 +55,6 @@ struct IDirect3DDevice9 {
 };
 
 struct CRenderManagerCore_Methods : CRenderManagerCore {
-    void RealiseRenderState();      // 0x00A058C0 (CRenderStateManager, the primary base at +0)
     long DrawCurrentBuffersAsTriFan(unsigned long vertexCount, unsigned long triangleCount);
 };
 

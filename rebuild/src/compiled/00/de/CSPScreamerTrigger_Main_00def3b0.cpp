@@ -12,6 +12,7 @@
 // Layout: Ego_r.pdb CSP_ScreamerTrigger: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18.
 // Shape: the landed CHTG_AmbushPointBackup::Main 0x00D73C70 (CScriptThing with the inline CCountedPointer copy-assign and
 // inline GetPos); the loop counter starts at 0 and doubles as the zero source of the two default constructions.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
 class CCharString { public:
@@ -99,13 +100,18 @@ class CGameScriptInterface { public:
     VPAD256(ta) VPAD64(tb) VPAD32(tc) VPAD4(td) VPAD2(te)                           // slots 93..450
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;   // slot 451 (+0x70c)
 };
-struct CSP_ScreamerTrigger {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CSP_ScreamerTrigger : public CEntityScriptBase {
     void* VTable;                                   // +0x00
     CGameScriptInterface* Game;                     // +0x04
     CScriptThing Me;                                // +0x08
     void* ParentClass;                              // +0x14 CQ_SecretPassageScript*
     void* PMasterData;                              // +0x18
-    bool IsActiveThreadTerminating();               // 0x00F35B30
     void Main();
 };
 

@@ -10,7 +10,7 @@
 // Layout: Ego_r.pdb CParticleDataBank ParticleEmitters / GraphicSymbols / MeshSymbols (+596/+612/+656) sit at retail
 // +0x1E0/+0x1EC/+0x210 (retail CBankFile 0x164 bytes, 12-byte array, 36-byte symbol maps).
 // Leaf: ??1CParticleDataBank
-void __cdecl FreeStorage(void* p);                             // 0x00BFEA14
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct __false_type { __false_type() {} };
 namespace NParticleEngine {
@@ -26,7 +26,7 @@ template<class T> class CArray { public:                              // retail 
     {
         DestroyRange(_M_start, _M_finish, __false_type());
         if (_M_start)
-            FreeStorage(_M_start);
+            free(_M_start);
     }
 };
 class CSymbolMap { public:                                            // retail 36 bytes

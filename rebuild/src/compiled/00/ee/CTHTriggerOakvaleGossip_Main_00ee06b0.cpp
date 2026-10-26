@@ -14,8 +14,9 @@
 // Layout = Ego_r.pdb CTH_Trigger_Oakvale(_Gossip) (28 bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8},
 //   ParentClass +0x14 (CV_TravellingHeroesScript*; WhisperCutscenePlayed at retail +0x7C = PDB +0x90 - 0x14), PMasterData
 //   +0x18 (CQ_* master data: a frame clock at +4 and a done flag at +0x74, unnamed).
-// Shape: the landed CHHUndead::Main 0x00E95E80 opening; every step re-tests IsDone() with a plain return; the three
+// Shape: the landed CHHUndead::Main 0x00E95E80 opening; every step re-tests IsActiveThreadTerminating() with a plain return; the three
 //   RemoveThing tails are written per branch (VC7.1 merges the first and last, the middle keeps its own copy).
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
@@ -86,8 +87,14 @@ class CGameScriptInterface { public:                     // vtable 0x01260F0C (r
     virtual void v469(); virtual void v470(); virtual void v471(); virtual void v472(); virtual void v473(); virtual void v474(); virtual void v475(); virtual void v476();
     virtual void SetThingPersistent(const CScriptThing& thing, bool persistent) const;   // slot 477 (+0x774)
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
@@ -111,15 +118,20 @@ public:
     void GossipSetup(CCharString name, CCharString text, CCharString region, CCharString faction);   // 0x00EE07E0
 };
 
-class CTH_Trigger_Oakvale_Gossip {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CTH_Trigger_Oakvale_Gossip : public CEntityScriptBase {
 public:
     void*                  __vftable;              // +0x00
     CGameScriptInterface*  Game;                   // +0x04
     CScriptThing           Me;                     // +0x08
     CV_TravellingHeroesScript* ParentClass;        // +0x14
     CTravellingHeroesMasterData* PMasterData;      // +0x18
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -127,25 +139,25 @@ void CTH_Trigger_Oakvale_Gossip::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->SetThingPersistent(Me, true);
     if (PMasterData->Clock > 900 && PMasterData->Clock < 2300) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         if (PMasterData->WhisperHandled) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             Game->RemoveThing(Me, false, true);
         } else if (ParentClass->WhisperCutscenePlayed) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             Game->RemoveThing(Me, false, true);
         } else {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             ParentClass->GossipSetup("TravHero Whisper", "TEXT_AI_GOSSIP_WHISPER_OAKVALE", "VILLAGE_GUILD_COMPLEX_INSIDE",
                                      "FACTION_GUILD");

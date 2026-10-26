@@ -84,7 +84,6 @@ public:
     unsigned char _pad11[0x20 - 0x11];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
-    CPlayer* GetPlayer() const;                     // 0x004C7A30
     void FinishCurrentAction();                     // 0x00662650 (CThingCreatureBase)
     __forceinline bool HasTC(long type) const
     {
@@ -108,6 +107,8 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->type ? end : it)->component;
     }
+public:
+    CPlayer& GetPlayer();   // 0x004C7A30
 };
 
 struct CTCSpellCastState {                          // interface type 0xA7 (class not pinned)
@@ -201,7 +202,7 @@ CTCAssassinRush::CTCAssassinRush(CThing* parent)
             state->Active = true;
             state->Mode = 0xd;
         }
-        ParentThing->GetPlayer()->StopChargeMode();
+        ParentThing->GetPlayer().StopChargeMode();
     }
     const CThing* parentThing = ParentThing;
     if (parentThing->HasTC(0x6f))

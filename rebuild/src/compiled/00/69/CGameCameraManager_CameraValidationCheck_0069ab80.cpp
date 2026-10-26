@@ -10,8 +10,9 @@ class CCamera { public: C3DVector WorldPosition; CRightHandedSet RHSet; bool Hei
 extern "C" int _isnan(double); // 00BFEC26 import thunk
 class CGameCameraManager { public:
  void* VTable; CCamera Camera,OldCamera;
- void Reset(); //0069A990
  void CameraValidationCheck();
+public:
+    void ResetCamera();   // 0x0069A990
 };
 void CGameCameraManager::CameraValidationCheck(){
  CCamera* camera=&Camera;
@@ -19,5 +20,5 @@ void CGameCameraManager::CameraValidationCheck(){
  int x=_isnan(Camera.WorldPosition.X),y=_isnan(Camera.WorldPosition.Y),z=_isnan(Camera.WorldPosition.Z);
  if(x||y||z)bad=true;
  x=_isnan(Camera.RHSet.Forward.X);y=_isnan(Camera.RHSet.Forward.Y);z=_isnan(Camera.RHSet.Forward.Z);
- if(x||y||z||bad){Reset();*camera=OldCamera;}
+ if(x||y||z||bad){ResetCamera();*camera=OldCamera;}
 }

@@ -1,5 +1,6 @@
 // CFleeingWoman::Main() -- fleeing-woman entity script
 // Leaf: ?Main@CFleeingWoman@@
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
 class CCharString { public:
@@ -16,20 +17,22 @@ class CScriptThing { public:
     CScriptThingImp* PImpData;
     void* PImpInfo;
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum EScriptEntityMoveType { SCRIPT_MOVE_DEFAULT };
 class CBaseObject { public:
     virtual void b000();
     void* IntelligentPointer;
-    CBaseObject();                                     // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     void* PImpData;
     void* PImpInfo;
     CScriptGameResourceObjectScriptedThingBase() { PImpData = 0; PImpInfo = 0; }
-    ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
     virtual void s001();
     bool IsScripting();                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
@@ -67,8 +70,14 @@ class CScriptDef { public:
     float WomanFadeTime;                               // +0xe4c
 };
 extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CIsThingAlive {                                 // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void f00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0
     CScriptThing m_thing;
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -77,8 +86,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;
     CScriptThing          Me;
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CFleeingWoman : CEntityScriptBase {
     unsigned char _pad14[8];

@@ -11,8 +11,9 @@ struct CreatureUID { unsigned long Low,High; };
 class CThingCreatureBase { public:
     unsigned char _beforeUID[0x18];CreatureUID UID;unsigned char _beforeCurrentAction[0xe0];
     CCreatureActionBase* PCurrentAction_Data;
-    bool IsCombatant() const; // 0x00662410: delegates via world combat manager to0x006E92C0
     bool IsPerformingAnyAction() const; //0x006622A0
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 class CCombatSequenceBase { public:
     virtual ~CCombatSequenceBase();
@@ -42,7 +43,7 @@ class CCombatManager { public:
     CCombatActionBase* GetNextActionForCreature(CThingCreatureBase& creature);
 };
 CCombatActionBase* CCombatManager::GetNextActionForCreature(CThingCreatureBase& creature){
-    if(!creature.IsCombatant())return 0;
+    if(!creature.IsInMeleeAsAttacker())return 0;
     CreatureUID key=creature.UID;
     CCombatantInfo& info=Combatants.FindLE(key)->Value;
     bool canAct=true;
@@ -57,7 +58,7 @@ CCombatActionBase* CCombatManager::GetNextActionForCreature(CThingCreatureBase& 
         PerformSequenceReset(creature);
     }
     SetupNextSequenceForAttacker(info);
-    if(creature.IsCombatant() && info.AttackerInfo.CurrentSequence>=0)
+    if(creature.IsInMeleeAsAttacker() && info.AttackerInfo.CurrentSequence>=0)
         return info.AttackerInfo.Begin[info.AttackerInfo.CurrentSequence].Data->GetNextActionInSequence();
     return 0;
 }

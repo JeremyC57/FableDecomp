@@ -24,7 +24,7 @@ class CMemoryDataOutputStream : public CDataOutputStream {
 public:
     unsigned char _body04[0x14];
     CMemoryDataOutputStream();                                         // 0x00996AF0
-    ~CMemoryDataOutputStream();                                        // 0x00996B30
+    virtual ~CMemoryDataOutputStream();                                        // 0x00996B30
     virtual void Write(const void* data, long length);                 // 0x00996CC0
     void Reset();                                                      // 0x00996B60
     long GetSize();                                                    // 0x00994B40
@@ -58,7 +58,7 @@ class CDataInputStream { public:
 class CMemoryDataInputStream : public CDataInputStream { public:
     unsigned long m_source;                                            // +0x18
     CMemoryDataInputStream(const CMemoryDataOutputStream& source);     // 0x00995EE0
-    ~CMemoryDataInputStream();                                         // 0x00993B10
+    virtual ~CMemoryDataInputStream();                                         // 0x00993B10
 };
 
 class CParticleProgram {

@@ -1,7 +1,7 @@
 // CAIStateGroup_Guildmaster::OnDeactivate() -- drop the Guildmaster's combat creature mode (0x3B) when the group ends.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00977A30, length 88 bytes.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (the inlined interface lookup, type 0x31 = bit 17 of the bitset
-// dword at +0x24), CTCCreatureModeManager::HasMode(ulong) @ 0x0073A8A0 (manifest "CPlayer::HasMode" is
+// dword at +0x24), CTCCreatureModeManager::IsModeActive(ulong) @ 0x0073A8A0 (manifest "CPlayer::HasMode" is
 // propagated) and RemoveMode(ulong) @ 0x0073ABA0.
 //
 // Shape: the brain's creature (PBrain->PCreature at +0x18) is asked for its mode-manager component through the
@@ -43,8 +43,9 @@ class CThing { public:
 };
 
 class CTCCreatureModeManager { public:                 // interface type 0x31 component
-    bool HasMode(unsigned long mode);           // 0x0073A8A0
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 
 class CAIBrain { public:
@@ -74,6 +75,6 @@ void CAIStateGroup_Guildmaster::OnDeactivate()
 {
     CTCCreatureModeManager* pModes;
     PBrain->PCreature->GetInterface(&pModes, 0x31);
-    if (pModes->HasMode(CREATURE_MODE_GUILDMASTER_COMBAT))
+    if (pModes->IsModeActive(CREATURE_MODE_GUILDMASTER_COMBAT))
         pModes->RemoveMode(CREATURE_MODE_GUILDMASTER_COMBAT);
 }

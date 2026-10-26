@@ -11,7 +11,10 @@
 //   out-parameter store (the other order swaps eax/ecx in the second unrolled pass).
 typedef long EWifeAppearanceCategories;
 
-long __fastcall GFGetCurrentFrame();                        // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                        // 0x0049D870
 extern long g_FramesPerSecond;                              // 0x01375550
 extern const long g_AppearanceCategoryPriority[16];         // 0x0125ED00
 
@@ -32,7 +35,7 @@ class CTCWife { public:
 
 bool CTCWife::GetAppearanceChangedNoticed(EWifeAppearanceCategories* category)
 {
-    long now = GFGetCurrentFrame();
+    long now = CWorld::GetFrame();
     long best = 0;
     bool found = false;
     for (long i = 0; i < 16; ++i) {

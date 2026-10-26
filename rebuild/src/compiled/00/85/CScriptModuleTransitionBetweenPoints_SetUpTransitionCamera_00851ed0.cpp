@@ -8,7 +8,10 @@
 // multiplies by `1.0f / d` (VC CSEs the reciprocal across both calls; a hand-written `scale` local spills early).
 // With no frames both increments are zeroed by a chained assignment from a C3DVector(0,0,0) temporary and the
 // move is flagged self-terminating; the flag store follows the second increment.
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};            // 0x0049D870
 
 class C3DVector { public:
     float X, Y, Z;
@@ -48,6 +51,6 @@ void CScriptModuleTransitionBetweenPoints::SetUpTransitionCamera(const C3DVector
         LookAtIncrement = (lookAtEnd - lookAtStart) / (float)frames;
         PreventSelfTermination = false;
     }
-    EndFrame = GFGetCurrentFrame() + frames;
+    EndFrame = CWorld::GetFrame() + frames;
     FOV = fov;
 }

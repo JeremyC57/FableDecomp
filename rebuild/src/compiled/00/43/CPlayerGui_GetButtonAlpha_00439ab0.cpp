@@ -46,7 +46,8 @@ class CPlayer { public:
     CThing* GetPlayerCharacter();                      // 0x00487B70
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                          // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 
 template <class T> struct vector {                     // STLport vector (12 bytes)
@@ -79,7 +80,7 @@ float CPlayerGui::GetButtonAlpha(long button, bool applyButtonAlpha, bool specia
         if (!special)
             alpha = 1.0f - alpha;
     } else if (contextSensitive && !applyButtonAlpha) {
-        CThing* character = PlayerManager->GetMainPlayer()->GetPlayerCharacter();
+        CThing* character = PlayerManager->GetMainPlayer().GetPlayerCharacter();
         if (character && !character->Dead && character->HasTC(0x11))
             return ((CTCInventory*)character->GetTC(0x11))->GetContextSensitiveFadeAlpha(button);
         goto done;

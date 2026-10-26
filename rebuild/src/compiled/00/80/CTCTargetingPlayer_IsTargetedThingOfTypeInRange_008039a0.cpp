@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008039A0, 371 bytes (`ret 4`); CTCTargetingPlayer vtable 0x0124280C slot 38
 //          (catalog "vfunc_38"; the name used here is descriptive, the source keeps the catalog leaf).
 // Callees: virtual GetPTargetedThing (slot 33, +0x84; three calls); CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const
-//          0x004365B0 (CTCTargeted 9, CTCCarrying 0x46); CTCBase::GetWorld() const 0x00686A80; CWorld accessor 0x0049D9D0 (its
+//          0x004365B0 (CTCTargeted 9, CTCCarrying 0x46); CTCBase::PeekWorld() const 0x00686A80; CWorld accessor 0x0049D9D0 (its
 //          bool +0x20a; names descriptive); CDefClassBase::GetSubDef<CTargetingDef> 0x007EA960 (manifest twin label
 //          "<CAICreatureWillPowerIndicatorDef>"); CTCCarrying::GetThingInPrimarySlot 0x006A1440;
 //          GetTargetingRangeForTargetType(unsigned long, const CTargetingDef*, CThing*, CThing*) 0x008028D0 (__fastcall);
@@ -88,17 +88,21 @@ class CTCTargeted { public:
     unsigned long TargetingFlags;               // +0x0c
 };
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 float __fastcall GetTargetingRangeForTargetType(unsigned long type, const CTargetingDef* def, CThing* owner, CThing* weapon);   // 0x008028D0
-struct CGameSettings {                          // descriptive
+class CPlayer { public:                          // descriptive
     unsigned char _pad00[0x20a];
     bool FreeTargeting;                         // +0x20a
 };
 class CWorld { public:
-    CGameSettings* GetSettings() const;         // 0x0049D9D0
+public:
+    const CPlayer* PeekMyPlayer() const;   // 0x0049D9D0
 };
-class CTCTargetingPlayer { public:
+class CTCBase
+{
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -106,8 +110,16 @@ class CTCTargetingPlayer { public:
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
     virtual void v30(); virtual void v31(); virtual void v32();
     virtual CThing* GetPTargetedThing() const;  // slot 33 (+0x84)
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+class CTCTargetingBase : public CTCBase
+{
+public:
+};
+
+class CTCTargetingPlayer : public CTCTargetingBase { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
-    const CWorld* GetWorld() const;             // 0x00686A80 (CTCBase)
     bool vfunc_38(unsigned long typeMask);
 };
 
@@ -119,7 +131,7 @@ bool CTCTargetingPlayer::vfunc_38(unsigned long typeMask)
     GetPTargetedThing()->GetInterface(&targeted, 9);
     if (!(targeted->TargetingFlags & typeMask))
         return false;
-    if (typeMask != 2 && GetWorld()->GetSettings()->FreeTargeting)
+    if (typeMask != 2 && PeekWorld().PeekMyPlayer()->FreeTargeting)
         return true;
     CTCCarrying* carrying;
     CDefPointer<CTargetingDef> def;

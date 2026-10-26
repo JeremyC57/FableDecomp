@@ -38,21 +38,30 @@ class CThing { public:
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                                   // +4
-    CBaseIntelligentPointer();                              // 0x00A01B10
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {      // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
-    virtual void v00();
+class CThingCreatureBase;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {      // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CTCSummonableCreature : public CTCBase { public:
     CDefPointerSummonable PDef;                             // +0x0c
     bool                  HasBeenSummoned;                  // +0x10
-    CIntelligentPointer   Summoner;                         // +0x11
+    CIntelligentPointer<CThingCreatureBase>   Summoner;                         // +0x11
     virtual void v00();                                     // own vtable 0x0126C41C
     CTCSummonableCreature(CThing* parent);
 };

@@ -13,7 +13,7 @@
 // path -> the lookup result in eax; miss path -> the never-written local, homed in the argument's own
 // stack slot (`mov eax,[esp+8]` beside the argument load). The bool argument is forwarded as its whole
 // stack dword (`mov ecx,[esp+..] ; push ecx`). Frame: one `push ecx` (the key temporary).
-// Header note: engine/CTCDoor.h holds the layout only; the callee is modelled as CTCDoor_Calls.
+// Header note: engine/CTCDoor.h holds the layout only; the callee is modelled as CTCDoor.
 class CTCBase;
 
 struct CInterfaceMap {
@@ -42,8 +42,9 @@ class CThing { public:
     }
 };
 
-struct CTCDoor_Calls {                                // interface type 0x26 component
-    void ScriptTriggerOpen(bool open);          // 0x007305D0
+class CTCDoor { public:                                // interface type 0x26 component
+public:
+    void ScriptTriggerOpen(bool);   // 0x007305D0
 };
 
 struct CTCActivationReceptorDoor {
@@ -54,7 +55,7 @@ struct CTCActivationReceptorDoor {
 
 void CTCActivationReceptorDoor::SetDoorOpen(bool open)
 {
-    CTCDoor_Calls* door;
+    CTCDoor* door;
     ParentThing->GetInterface(&door, 0x26);
     door->ScriptTriggerOpen(open);
 }

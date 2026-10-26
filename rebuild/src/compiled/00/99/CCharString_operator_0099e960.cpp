@@ -8,18 +8,18 @@
 // block. CBasicString<char> is {PData +0, StringLength +4, DataLength:31 +8, UseFastExtend:1 +0xc}
 // (13 bytes, packed) and CCharStringData appends the reference count NoRefs at +0xd.
 #pragma pack(push, 1)
-struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
+template <class T> class CBasicString { public:                       // CBasicString<char>, 13 bytes
     char*         PData;                        // +0x00
     unsigned long StringLength;                 // +0x04
     unsigned long DataLength : 31;              // +0x08 (the top bit is never touched)
     bool          UseFastExtend : 1;            // +0x0c
-    CBasicStringChar(const char* text);         // 0x009A0590 (manifest: CCharString_InitFromCStr)
+    CBasicString(const char* text);         // 0x009A0590 (manifest: CCharString_InitFromCStr)
     void Truncate(unsigned long length);        // 0x009A0080
     void Insert(long position, const char* text); // 0x009A06B0
     bool operator==(const char* text) const;    // 0x004115A0
 };
 class CCharStringData { public:                        // 17 bytes
-    CBasicStringChar Data;                      // +0x00
+    CBasicString<char> Data;                      // +0x00
     long             NoRefs;                    // +0x0d
     CCharStringData(const char* text) : Data(text), NoRefs(1) { }
 };

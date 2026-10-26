@@ -10,7 +10,7 @@
 // conversion, i.e. it is a named local the quotient reads.
 #include "engine/CRenderManagerCore.h"
 
-double GFGetTime();     // 0x009E1BC0
+double __fastcall GFGetTime();     // 0x009E1BC0
 
 struct CRenderManagerCore_Methods : CRenderManagerCore {
     void EndRender();

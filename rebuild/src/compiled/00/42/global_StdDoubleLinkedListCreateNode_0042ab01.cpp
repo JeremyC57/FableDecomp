@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 
 void* __cdecl memmove(void* destination, const void* source, unsigned int count);
-void* __cdecl malloc(unsigned int size);
+extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (MSVCR71)
 
 void* __fastcall Copy_MemoryStepped(
     void* begin, void* end, void* destination, void* unused)

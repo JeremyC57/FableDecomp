@@ -28,7 +28,8 @@ class C3DAnimationInfo { public:
 };
 class CMeshDataBank { public:
  // NativeA242C0 returns an indexed pointer from table+380; original inline getter spelling and full bank layout remain unestablished.
- const C3DAnimationInfo* GetAnimationInfo(unsigned long)const; //00A242C0
+public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
 extern float g_MinEmbeddedAnimationDuration; //0129BA3C exactfloat0.0001
 namespace NAnimationEvents {class CManager { public:
@@ -36,7 +37,7 @@ namespace NAnimationEvents {class CManager { public:
  float GetEmbeddedEventTime(unsigned long,const CCharString&)const;
 };}
 float NAnimationEvents::CManager::GetEmbeddedEventTime(unsigned long animation,const CCharString& event)const{
- CCountedPointer<const C3DAnimationStats> stats=MeshDataBank->GetAnimationInfo(animation)->GetAnimationStats();
+ CCountedPointer<const C3DAnimationStats> stats=MeshDataBank->PeekAnimation(animation)->GetAnimationStats();
  if(stats.Data->Duration>g_MinEmbeddedAnimationDuration){
   float duration=stats.Data->Duration;
   return stats.Data->GetEventTime(event)/duration;

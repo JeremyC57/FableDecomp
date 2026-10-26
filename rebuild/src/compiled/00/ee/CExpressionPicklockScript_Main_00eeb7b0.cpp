@@ -61,8 +61,9 @@ struct CIsThingConscious {                                 // vtable 0x012C2FE8
 
 class CBaseObject { public:
     void* IntelligentPointer;                              // +0x04
-    CBaseObject();                                         // 0x0099A380
-    virtual ~CBaseObject();                                // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 
 class CScriptGameResourceObjectBase : public CBaseObject { public:       // vtable 0x0126008C

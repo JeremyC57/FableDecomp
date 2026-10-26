@@ -15,16 +15,23 @@
 //   constructor takes its address); the byte offset and the down-counter live in [ebp-4] / [ebp-8].
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteLong(long value);                             // 0x00993EB0
 };
 
 class CDefString {
 public:
     long TablePos;                                          // +0x00
-    __forceinline void TransferBinaryOut(CDataOutputStreamWriter& stream) const { stream.WriteLong(TablePos); }
+    __forceinline void TransferBinaryOut(CDataOutputStreamWriter& stream) const { stream.WriteSLONG(TablePos); }
 };
 
 class CBrainBehaviour {                                    // 12 bytes
@@ -54,8 +61,8 @@ template <> struct CPersistTraits<CBrainBehaviour> {
     __forceinline void TransferBinaryOut(CDataOutputStreamWriter& stream, const CBrainBehaviour* value) const
     {
         value->Name.TransferBinaryOut(stream);
-        stream.WriteLong(value->Priority);
-        stream.WriteLong(value->ScriptAIPriority);
+        stream.WriteSLONG(value->Priority);
+        stream.WriteSLONG(value->ScriptAIPriority);
     }
 };
 
@@ -64,7 +71,7 @@ void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std:
 {
     CPersistTraits<T> traits;
     long count = value.size();
-    stream.WriteLong(count);
+    stream.WriteSLONG(count);
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, &value[i]);
 }

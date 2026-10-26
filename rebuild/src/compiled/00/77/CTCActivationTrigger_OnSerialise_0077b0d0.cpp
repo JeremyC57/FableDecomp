@@ -11,13 +11,23 @@
 // Shape: the save and load arms each have their own Transfer (the default is a `0` literal bound to the const reference,
 // zeroed after the pushes); the zero register ebx serves the null UID, the default and the load-arm `> 0` test (unsigned
 // 64-bit: `ja`/`jbe`); the UID is assigned from the receptor first, then remapped in place.
+#define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
+#undef CTCBase
+class CThingManager;
+
+class CTCBase : public CTCBaseLayout
+{
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
+};
 class CThing { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UID;                       // +0x18
     unsigned char _pad20[0x8e - 0x20];
     short m_level;                              // +0x8e
-    bool IsLevelLess();                         // 0x004C7930
+public:
+    bool IsLevelLess() const;   // 0x004C7930
 };
 class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
@@ -38,7 +48,6 @@ public:
     CTCActivationReceptorBase* PTCReceptor;     // +0x0c
     unsigned __int64 ReceptorUID;               // +0x10
     bool    Activated;                          // +0x18
-    CThingManager* GetThingManager();           // 0x00686AE0 (CTCBase)
     void OnSerialise(CPersistContext& context, bool);
 };
 
@@ -49,12 +58,12 @@ void CTCActivationTrigger::OnSerialise(CPersistContext& context, bool)
             ReceptorUID = 0;
         } else {
             ReceptorUID = PTCReceptor->ParentThing->UID;
-            ReceptorUID = GetThingManager()->RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, ReceptorUID);
+            ReceptorUID = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, ReceptorUID);
         }
         context.Transfer("ReceptorUID", ReceptorUID, 0);
     } else {
         context.Transfer("ReceptorUID", ReceptorUID, 0);
         if (ReceptorUID > 0)
-            ReceptorUID = GetThingManager()->RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, ReceptorUID);
+            ReceptorUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, ReceptorUID);
     }
 }

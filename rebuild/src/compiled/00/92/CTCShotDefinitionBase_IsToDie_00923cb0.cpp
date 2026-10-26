@@ -4,13 +4,16 @@ struct CTCShotDefinitionBase {
     int m_dieTime; // +0x34
 };
 
-extern int __cdecl GetCurrentValue_49d870(void);
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};   // 0x0049D870
 
 int __fastcall IsToDie(CTCShotDefinitionBase* self)
 {
     int t = self->m_dieTime;
     if (t != 0) {
-        if (GetCurrentValue_49d870() > self->m_dieTime)
+        if (CWorld::GetFrame() > self->m_dieTime)
             return 1;
     }
     return 0;

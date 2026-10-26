@@ -85,8 +85,9 @@ public:
     CCountedPointer<CChunkedFileChunk> GroupChunkType;            // +0x58
     CCountedPointer<CChunkedFileChunk> PrimitiveClothChunkType;   // +0x60
     CCountedPointer<CChunkedFileChunk> SubMeshClothChunkType;     // +0x68
-    CCountedPointer<CChunkedFileChunk> AddChunkType(const CChunkedFileChunk& chunkType, CChunkedFileSuperChunk* parent);
     void RegisterClothSubChunkType(const CChunkedFileChunk& chunkType);
+private:
+    CCountedPointer<CChunkedFileChunk> AddChunkType(const CChunkedFileChunk&, CChunkedFileSuperChunk*);   // 0x00A9AD00
 };
 
 // Same-TU body of AddChunkType 0x00A9AD00 (retail compiled it in this TU; this is its matched source): with a declaration

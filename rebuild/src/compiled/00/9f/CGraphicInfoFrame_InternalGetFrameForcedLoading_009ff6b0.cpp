@@ -4,15 +4,26 @@
 // propagated), CFrameData::UploadFrame @ 0x009FF220 (1), CResource::SetAsUnloadable @ 0x009FBF50. Shape: the frame data re-read from +8 for every call, the flag byte tested
 // in the argument slot, `mov al,1` / `xor al,al`, `ret 4`.
 class CBankFileAsyncData { public:
-    bool IsFinished();                             // 0x009D54E0
-    void WaitUntilFinished();                      // 0x009D5B60
+public:
+    bool WaitUntilFinished();   // 0x009D5B60
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
-struct CFrameData_009ff6b0 {
+class CResource
+{
+public:
+    void SetAsUnloadable();   // 0x009FBF50
+};
+class CManagedTextureOwner : public CResource
+{
+public:
+};
+
+struct CFrameData_009ff6b0 : public CManagedTextureOwner {
     unsigned char       _pad[0x30];
     CBankFileAsyncData* m_pAsyncRead;              // +0x30
     void CompleteLoad();                           // 0x009FC440
     bool UploadFrame(long flags);                  // 0x009FF220
-    void SetAsUnloadable();                        // 0x009FBF50
 };
 
 class CGraphicInfoFrame { public:

@@ -85,8 +85,8 @@ public:
 
 class CCreatureActionBase {
 public:
-    unsigned char _pad[0xb4];                       // retail CCreatureAction_PlayAnimation is 0xb4 bytes
-    ~CCreatureActionBase();                         // 0x00693EF0
+    unsigned char _pad[0xb4 - 4];                       // retail CCreatureAction_PlayAnimation is 0xb4 bytes
+    virtual ~CCreatureActionBase();                         // 0x00693EF0
 };
 
 class CThingCreatureBase : public CThing {

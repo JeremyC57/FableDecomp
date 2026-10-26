@@ -25,7 +25,8 @@ class CThing { public:
     float GetPhysicsRadius();
 };
 class CThingCreatureBase : public CThing { public:
-    float GetCombatRadius();                       // 0x00661F90
+public:
+    float GetCombatRadius() const;   // 0x00661F90
 };
 inline float CThing::GetPhysicsRadius()
 {

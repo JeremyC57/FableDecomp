@@ -4,7 +4,7 @@
 // manager). Ego_r.pdb `?GetHighlightedItemText@CCategory@NInventory@@QBE?AVCWideString@@ABVCGameDefinitionManager@@@Z`.
 // Callees: NInventory::CItem::GetItemDescription() const @ 0x005BD8A0 (hidden result), wcscmp @ 0x00BFE94C (import),
 // the STLport `operator==(const wstring&, const wchar_t*)` @ 0x00404280 (cdecl bool), CCharString(const char*, long)
-// @ 0x0099EBF0, CCharString::GetCRC() const's out-of-line copy @ 0x00404310, NGameText::CDataBank::GetTagFromCRC(unsigned
+// @ 0x0099EBF0, CCharString::GetCRC() const's out-of-line copy @ 0x00404310, NGameText::NGameText::CDataBank::LookupValue(unsigned
 // long) const @ 0x009CC410 on g_pMainGameComponent (0x013B86A0)->TextBank (+0x14), ~CCharString @ 0x0099EAE0,
 // CTCInventoryBase::GetInventoryText(long) @ 0x005BD273 on PInventory (+0x18, straight into the result),
 // CWideString(const CWideString&) @ 0x0099B720, ~CWideString @ 0x0099B510. Literals: L"" 0x0122D70C,
@@ -54,7 +54,8 @@ public:
 namespace NGameText {
 class CDataBank {
 public:
-    unsigned long GetTagFromCRC(unsigned long crc) const;   // 0x009CC410
+public:
+    unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
 class CMainGameComponent { public:
@@ -99,7 +100,7 @@ CWideString CCategory::GetHighlightedItemText(const CGameDefinitionManager& defi
 empty:
     {
         NGameText::CDataBank* bank = g_pMainGameComponent->TextBank;
-        long textId = bank->GetTagFromCRC(CCharString("TXT_OBJT_EMPTY").GetCRC());
+        long textId = bank->LookupValue(CCharString("TXT_OBJT_EMPTY").GetCRC());
         if (textId > 0)
             return PInventory->GetInventoryText(textId);
     }

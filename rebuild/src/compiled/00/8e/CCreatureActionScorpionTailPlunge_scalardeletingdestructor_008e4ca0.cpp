@@ -1,13 +1,16 @@
+class CCombatActionBase {
+public:
+    virtual ~CCombatActionBase();   // 0x0062E900
+};
 class CCreatureAction_ScorpionTailPlunge { public:
     void* vftable;
 };
 
-void __fastcall CCreatureAction_ScorpionTailPlunge_dtor(CCreatureAction_ScorpionTailPlunge* action);
 void operator delete(void*);
 
 void* __fastcall CCreatureAction_ScorpionTailPlunge_scalar_deleting_destructor(CCreatureAction_ScorpionTailPlunge* action, int edx_unused, unsigned int flags)
 {
-    CCreatureAction_ScorpionTailPlunge_dtor(action);
+    ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
     if (flags & 1)
         operator delete(action);
     return action;

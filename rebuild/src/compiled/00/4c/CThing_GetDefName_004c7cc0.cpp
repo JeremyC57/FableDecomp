@@ -11,7 +11,8 @@ class CDefString { public:
 };
 
 class CDefinitionManager { public:
-    CDefString GetDefNameFromGlobalIndex(long globalIndex); // 0x009ACCC0
+public:
+    CDefString GetDefNameFromGlobalIndex(long) const;   // 0x009ACCC0
 };
 
 class CThingManager { public:

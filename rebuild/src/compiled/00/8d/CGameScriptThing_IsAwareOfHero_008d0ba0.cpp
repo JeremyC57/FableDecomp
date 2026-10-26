@@ -41,7 +41,8 @@ class CTCPerceiveThing { public:
     float DistanceFromPerceivedThingSquared;            // +0x14
     float AwarenessTimer;                               // +0x18
     CThing* GetPerceivedThing() const;                  // 0x007446A0
-    bool IsPlayerExtendedLineOfSight();                 // 0x00744830
+public:
+    bool IsPlayerExtendedLineOfSight() const;   // 0x00744830
 };
 class CGameScriptThing { public:
     unsigned char _base00[0x0c];

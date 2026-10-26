@@ -31,8 +31,9 @@ public:
 class CThingCreatureBase { public:
     unsigned char _pad[0x91];
     unsigned char Dead : 1;                        // +0x91 bit 0
-    bool IsBlocking();                             // 0x00664D00
     void UseAbility(long ability, float charge);   // 0x00665510
+public:
+    bool IsBlocking() const;   // 0x00664D00
 };
 enum EPlayerMode { PLAYER_MODE_0x2F = 0x2f };
 class CPlayer { public:
@@ -43,7 +44,8 @@ class CPlayerManager { public:
     long GetMainPlayerNumber();                    // 0x00449700
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CPlayerGui { public:
     void OnEventAttack();                          // 0x004379B0

@@ -24,21 +24,22 @@
 // 30-byte body and lands RELOCATION_MATCH with relocations at 0x4;0x11 (the two
 // call rel32s). This is the same spelling.
 
-class CMemoryDataInputStream;
+class CMemoryDataInputStream {
+public:
+    virtual ~CMemoryDataInputStream();   // 0x00993B10
+};
 
 // __fastcall scalar destructor: `this` arrives in ecx, so declare it __fastcall
 // with the object as the leading (ecx) argument -> `call` with no push.
-extern "C" void __fastcall CMemoryDataInputStream_dtor(CMemoryDataInputStream* stream);
 
 // engine operator delete: __cdecl -> `push esi; call; add esp,4`.
-extern "C" void operator_delete_stub(void* p);
 
 void* __fastcall CMemoryDataInputStream_scalar_deleting_destructor(
         CMemoryDataInputStream* stream, int /*edx_pad*/, unsigned int flags)
 {
-    CMemoryDataInputStream_dtor(stream);
+    ((CMemoryDataInputStream*)(stream))->CMemoryDataInputStream::~CMemoryDataInputStream();
     if (flags & 1) {
-        operator_delete_stub((void*)stream);
+        operator delete((void*)stream);
     }
     return (void*)stream;
 }

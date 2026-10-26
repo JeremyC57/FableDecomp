@@ -23,11 +23,14 @@ class CQ_SunnyvaleMasterData { public:
     bool          BountyHuntTimeLimitExceeded;          // +0xda
 };
 
-struct CScriptBase {                                    // retail 0x40 bytes (PDB 0x54: debug containers)
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                          // +0x04 .. +0x40 (PActiveThread at +0x2c)
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
+public:
+    bool IsActiveThreadTerminating();   // 0x00CB7940
 };
+namespace NScript {
 
 class CQ_BountyHuntScript : public CScriptBase { public:
     CGameScriptInterface*   GSI;                        // +0x40

@@ -21,7 +21,9 @@ class CThing;
 class CTCParamsBase;
 class CTCSolidToThing { public:void AddThingNotSolidTo(CThing*);}; //00770FA0
 class CPlayer { public:CThing* GetPlayerThing() const;}; //00487DD0, native intelligent pointer+2c
-class CPlayerManager { public:CPlayer* GetLocalPlayer();}; //00449970 selects player ID at+1c
+class CPlayerManager { public:public:
+    CPlayer& GetMainPlayer();   // 0x00449970
+}; //00449970 selects player ID at+1c
 class CGame { public:unsigned char _nativeBeforePlayerManager[0x1c];CPlayerManager* PPlayerManager;};
 extern CGame* g_Game; //013B86A0
 struct CInterfaceMap {
@@ -73,5 +75,5 @@ void CCreatureAction_DragonHoverOutOf::Initialise()
   CCharString name("CTCSolidToThing",-1);
   solid=PCreature.GetPItem()->AddTC(name,false,0);
  }
- if(solid)solid->AddThingNotSolidTo(g_Game->PPlayerManager->GetLocalPlayer()->GetPlayerThing());
+ if(solid)solid->AddThingNotSolidTo(g_Game->PPlayerManager->GetMainPlayer().GetPlayerThing());
 }

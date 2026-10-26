@@ -18,7 +18,7 @@
 // set is 0xC (PDB 0x10) and the two lists after it are 4 bytes each, so everything from
 // Initialised (PDB +0x104) on is 0x8C bytes earlier than engine/CTCVillage.h says.
 struct CVillageTaskListNode;
-struct CTCVillage_Retail {
+class CTCVillage { public:
     unsigned char          _pad_0x00[0x60];
     CVillageTaskListNode*  CrateTasks_Head;              // +0x60 list<CCountedPointer<CVillageTaskCarryCrate>> (PDB +0xD0)
     unsigned char          _pad_0x64[0x3C];
@@ -28,13 +28,14 @@ struct CTCVillage_Retail {
     unsigned char          _pad_0xD8[0x0C];
     bool                   CurrentIsHeroCriminal;        // +0xE4 (PDB +0x170)
     long GetFineAmountForCurrentCrimes();     // 0x0065A41C
-    void OnAllFinesPaid();                    // 0x0065C2D0
     void PayFines(long amount);
+public:
+    void ClearCrimes();   // 0x0065C2D0
 };
 
-void CTCVillage_Retail::PayFines(long amount)
+void CTCVillage::PayFines(long amount)
 {
     this->AmountOfFineAlreadyPaid += amount;
     if (GetFineAmountForCurrentCrimes() <= 0)
-        OnAllFinesPaid();
+        ClearCrimes();
 }

@@ -53,8 +53,9 @@ extern SPixelFormatInfo g_PixelFormatTable[];   // 0x0129BA40
 class CPixelFormat { public:
     long FormatIndex;
     void Initialise(unsigned long format);         // 0x009E3830
-    unsigned long GetColourDepth();                // 0x009E3820
     unsigned long GetD3DFormat() const { return g_PixelFormatTable[FormatIndex].m_d3dFormat; }
+public:
+    unsigned long GetColourDepth() const;   // 0x009E3820
 };
 
 struct CPixelFormatArray {                         // STLport vector<CPixelFormat>

@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CAreaOfEffectAttackDef_Destruct(void* def);
-extern void __cdecl OperatorDelete(void* object);
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 void* __fastcall CAreaOfEffectAttackDef_ScalarDeletingDestructor(void* def, int, unsigned int flags)
 {
-    CAreaOfEffectAttackDef_Destruct(def);
+    ((CParentDefClassBase*)(def))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        OperatorDelete(def);
+        operator delete(def);
     return def;
 }

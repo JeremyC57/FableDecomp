@@ -33,7 +33,7 @@ class CAnimFilterOfGroup : public CAnimFilterBase { public:   // 12 bytes
 
 struct CModeStandBase {
     virtual void v00();
-    ~CModeStandBase();                      // 0x0073D860
+    virtual ~CModeStandBase();                      // 0x0073D860
     unsigned char _pad[0x64];               // +0x4..+0x67
 };
 

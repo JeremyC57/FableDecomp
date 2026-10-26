@@ -62,23 +62,32 @@ class CTCPerceiveThing { public:                       // interface 0x34
     unsigned char _pad[0x1c];
     long FramesSinceSeen;                       // +0x1c (descriptive)
     CThing* GetPerceivedThing();                // 0x007446A0
-    bool IsAwareOfThing();                      // 0x00643B3B
+public:
+    bool IsAwareOfThing() const;   // 0x00643B3B
 };
 bool __fastcall IsWillingToAttackTarget(CThing* creature, CThing* target);           // 0x008648A0
 bool __fastcall CanCreatureSeeThing(CThing* creature, CThing* target, bool flag);    // 0x008645E0
 extern long FramesPerSecond;                    // 0x01375550
 
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    CThing* m_pItem;                            // +0x04
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {
-    CIntelligentPointerThing(CThing* item);     // 0x004A96F0
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other);   // 0x004A9760
-    __forceinline void AssignInline(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    CIntelligentPointer(T* item);     // 0x004A96F0
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
+    __forceinline void AssignInline(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -88,7 +97,7 @@ class CAIBrain { public:
 struct CAIStateGroupSeekEnemyMethods : CAIStateGroup_SeekEnemy {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThing* GetCreature() const { return Brain()->PCreature; }
-    CIntelligentPointerThing& Enemy() { return *(CIntelligentPointerThing*)PEnemy; }
+    CIntelligentPointer<CThing>& Enemy() { return *(CIntelligentPointer<CThing>*)PEnemy; }
     bool IsRunnable();
 };
 

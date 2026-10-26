@@ -38,18 +38,18 @@ public:
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
 struct CRefCounted {
-    long m_count;
-    void DecRef() { --m_count; }
+    mutable long m_count;
+    void DecRef() const { --m_count; }
     long GetRefCount() const { return m_count; }
 };
 struct CRefVirtual {
     virtual void v00();
-    virtual void Destroy();                             // slot 1
+    virtual void Destroy() const;                             // slot 1
 };
 namespace NGameText {
-class CGroupEntry : public CRefVirtual, public CRefCounted { public:
+class CTextEntry : public CRefVirtual, public CRefCounted { public:
     CWideString GetText() const;                        // 0x009C7A40
-    void ReleaseTemporary()
+    void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -65,8 +65,9 @@ template <class T> class CIVCountedPointer { public:
 namespace NGameText {
 class CDataBank {
 public:
-    unsigned long GetTagFromCRC(unsigned long crc) const;                             // 0x009CC410
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool b) const;   // 0x009C9070
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool b) const;   // 0x009C9070
+public:
+    unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
 class CEngine { public:
@@ -141,13 +142,13 @@ void CQuestManager::AddBoast(const CCharString& scriptName, const CCharString& t
     CWideString text;
     CWideString title;
     NGameText::CDataBank* bank = g_pEngine->PGameTextDataBank;
-    if (unsigned long tag = bank->GetTagFromCRC(textTag.GetCRC()))
-        text = bank->GetPGroupEntry(tag, true)->GetText();
+    if (unsigned long tag = bank->LookupValue(textTag.GetCRC()))
+        text = bank->GetPTextEntry(tag, true)->GetText();
     else
         text = textTag.ToWideString();
     CCharString titleTag = textTag + "_TITLE";
-    if (unsigned long tag = bank->GetTagFromCRC(titleTag.GetCRC()))
-        title = bank->GetPGroupEntry(tag, true)->GetText();
+    if (unsigned long tag = bank->LookupValue(titleTag.GetCRC()))
+        title = bank->GetPTextEntry(tag, true)->GetText();
     else
         title = textTag.ToWideString();
     Boasts.push_back(CBoast(id, cost, reward, scriptName, text, title, evil, groupIndex));

@@ -23,12 +23,14 @@ class CEngineGraphic { public:
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                                      // +0x18
-    void Transfer(long& value);                                              // 0x00431102
-    void Transfer(unsigned long& value);                                     // 0x00431020
-    void Transfer(float& value);                                             // 0x00431061
-    void Transfer(CEngineGraphic& value);                                    // 0x00451E11
+    template <class T> void Transfer(T& value);                                              // 0x00431102
     void Transfer(const char* name, bool& value, const bool& defaultValue);  // 0x004045C0
 };
+template <> void CPersistContext::Transfer<long>(long& value);
+template <> void CPersistContext::Transfer<unsigned long>(unsigned long& value);
+template <> void CPersistContext::Transfer<float>(float& value);
+template <> void CPersistContext::Transfer<CEngineGraphic>(CEngineGraphic& value);
+
 
 class CThingBaseDef { public:
     virtual void Transfer(CPersistContext& context);                         // 0x00676BE0
@@ -89,10 +91,10 @@ static int g_base = 0, g_graphic = 0, g_float = 0, g_long = 0, g_ulong = 0, g_bo
 static bool g_incoming[8];
 static const char* g_names[8];
 void CThingBaseDef::Transfer(CPersistContext&) { ++g_base; }
-void CPersistContext::Transfer(long& v) { ++g_long; v += 1; }
-void CPersistContext::Transfer(unsigned long& v) { ++g_ulong; v += 2; }
-void CPersistContext::Transfer(float& v) { ++g_float; v *= 2.0f; }
-void CPersistContext::Transfer(CEngineGraphic& g) { ++g_graphic; g._body[0] = 9; }
+template <> void CPersistContext::Transfer<long>(long& v) { ++g_long; v += 1; }
+template <> void CPersistContext::Transfer<unsigned long>(unsigned long& v) { ++g_ulong; v += 2; }
+template <> void CPersistContext::Transfer<float>(float& v) { ++g_float; v *= 2.0f; }
+template <> void CPersistContext::Transfer<CEngineGraphic>(CEngineGraphic& g) { ++g_graphic; g._body[0] = 9; }
 void CPersistContext::Transfer(const char* name, bool& value, const bool& def)
 {
     g_incoming[g_bool] = value; g_names[g_bool] = name;

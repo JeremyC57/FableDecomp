@@ -5,9 +5,10 @@ class CUserProfileManager { public:
     char CameraYZInverted;   /* +0x10 */
     char pad_11[0xbf];/* +0x11..0xcf */
     char CameraYZInvertedNewProfile;   /* +0xd0 */
-    void Notify();
     void Apply();
     void SetCameraYZInverted(char value, char doApply);
+protected:
+    void ApplyValues();   // 0x00407370
 };
 
 void CUserProfileManager::SetCameraYZInverted(char value, char doApply)
@@ -15,7 +16,7 @@ void CUserProfileManager::SetCameraYZInverted(char value, char doApply)
     if (this->m_flag != 0)
         this->CameraYZInvertedNewProfile = value;
     this->CameraYZInverted = value;
-    this->Notify();
+    ApplyValues();
     if (doApply != 0)
         this->Apply();
 }

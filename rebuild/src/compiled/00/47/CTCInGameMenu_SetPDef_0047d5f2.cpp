@@ -9,14 +9,25 @@
 // GetDefinitionManager call that yields GetDef's `this`; the index store is scheduled between the
 // pushes and the call; GetDef's bool result is dropped (`call ; ret 4`, no tail jump because the
 // argument counts differ).
+#define CTCInGameMenu CTCInGameMenuLayout
 #include "engine/CTCInGameMenu.h"
+#undef CTCInGameMenu
+class CGameDefinitionManager;
+
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+class CTCInGameMenu : public CTCBase, public CTCInGameMenuLayout
+{
+};
 
 class CGameDefinitionManager { public:
     bool GetDef(long globalDefIndex, CDefPointeeBase** pDefObject) const;   // 0x0048591C (CDefPointer<T>* = its Object word)
 };
 
 struct CTCInGameMenu_Methods : CTCInGameMenu {
-    const CGameDefinitionManager& GetDefinitionManager() const;              // CTCBase, 0x006869D0
     void SetPDef(long globalDefIndex);
 };
 

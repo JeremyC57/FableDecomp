@@ -28,10 +28,11 @@ class CDataOutputStream { public:
     void WriteLONG(long value);                                    // 0x00993EB0
     void WriteULONG(unsigned long value);                          // 0x00993EA0
     void WriteFLOAT(float value);                                  // 0x00993EE0
-    void WriteBOOL(bool value);                                    // 0x00993E30
     void WriteUBYTE(unsigned char value);                          // 0x00993E50
     void WriteMatrix3x4(const CMatrix3x4& m);                      // 0x00994070
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
 };
 
 template <class T>
@@ -119,7 +120,7 @@ void C3DMeshFileClothChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSave
     out.WriteULONG(MaterialIndex);
     out.WriteNullTerminatedString(ParticleCode);
     bool hasCode = !CompiledCode.empty();
-    out.WriteBOOL(hasCode);
+    out.WriteEBOOL(hasCode);
     if (hasCode) {
         out.WriteULONG(CompiledCode.Size());
         out.WriteBytes(GetData(CompiledCode), CompiledCode.Size());

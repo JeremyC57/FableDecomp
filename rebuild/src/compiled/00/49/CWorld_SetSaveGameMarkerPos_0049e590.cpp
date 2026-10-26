@@ -34,7 +34,9 @@ class CThing { public:
 };
 
 class CPlayer { public: CThing* GetHeroThing(); };             // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
+class CPlayerManager { public: public:
+    CPlayer& GetMainPlayer();   // 0x00449970
+};    // 0x00449970
 
 #pragma pack(push, 1)
 class CWorld {
@@ -52,7 +54,7 @@ public:
 void CWorld::SetSaveGameMarkerPos(const C3DVector& pos)
 {
     SaveGameMarkerPos = pos;
-    CThing* hero = PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
     if (hero && !hero->Dead)
         SaveGameMarkerAngleXY = hero->PhysicsTC->GetAngleXY();
 }

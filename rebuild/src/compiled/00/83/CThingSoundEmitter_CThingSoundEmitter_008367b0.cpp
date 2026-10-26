@@ -1,6 +1,6 @@
 // CThingSoundEmitter::CThingSoundEmitter() -- CThing(type 6) base, zeroed sound object / attach flags, the attached-thing intelligent pointer; kill-on-level-unload cleared when the engine's slot-9 query says false
 // Leaf: ??0CThingSoundEmitter
-// Retail: Fable.exe 0x008367B0, 89 bytes. Vtables: CThingSoundEmitter 0x01272C24, CIntelligentPointer<CThing>
+// Retail: Fable.exe 0x008367B0, 89 bytes. Vtables: CThingSoundEmitter 0x01272C24, CIntelligentPointer<const CThing>
 // 0x01237F1C.
 // Callees: CThing::CThing(unsigned long) 0x004C9030, CBaseIntelligentPointer::CBaseIntelligentPointer
 // 0x00A01B10, slot 9 (+0x24) of the engine singleton 0x013B86A0, CThing::SetToKillOnLevelUnload(bool)
@@ -44,7 +44,7 @@ class C3DVector { public: float x, y, z; };
 class CThingSoundEmitter : public CThing { public:
     CSoundPlayer*               m_pSoundPlayer;          // +0x98
     bool                        AttachedToThing;         // +0x9c
-    CIntelligentPointer<CThing> PAttachedThing;          // +0x9d
+    CIntelligentPointer<const CThing> PAttachedThing;          // +0x9d
     bool                        ContinuePlayingAfterAttachedThingDeath;   // +0xa5
     C3DVector                   Pos;                     // +0xa6
     CThingSoundEmitter();

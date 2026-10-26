@@ -37,8 +37,9 @@ public:
 enum EOpinionDeedType { OPINION_DEED_TYPE_NONE };
 class CTCCreatureOpinionOfHero {
 public:
-    bool KnowsOfDeed(long crime, EOpinionDeedType deedType, bool b);   // 0x00681AE0
     void InformOfDeed(long crime, bool b);                              // 0x00683590
+public:
+    bool KnowsOfDeed(long, EOpinionDeedType, bool) const;   // 0x00681AE0
 };
 class CTCBase {
 public:

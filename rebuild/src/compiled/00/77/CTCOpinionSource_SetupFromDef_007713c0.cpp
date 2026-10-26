@@ -1,6 +1,6 @@
 // CTCOpinionSource::SetupFromDef(long defIndex) -- load the opinion-source def for the index and copy its reaction switches, faction restriction (fetched as a faction def when set), produced opinion set and the 79 reaction flags; false when the def does not exist
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007713C0, 219 bytes (`ret 4`; PDB ?SetupFromDef@CTCOpinionSource@@AAE_NJ@Z).
-// Callees: CTCBase::GetWorld() const @ 0x00686A80 -> CWorld::DefinitionManager (+0x10), CGameDefinitionManager::GetDef<COpinionSourceDef>
+// Callees: CTCBase::PeekWorld() const @ 0x00686A80 -> CWorld::DefinitionManager (+0x10), CGameDefinitionManager::GetDef<COpinionSourceDef>
 //   @ 0x007719C0 and GetDef<CFactionDef> @ 0x006B9D90 (both labelled GetDef<CThingPhysicalSwitchDef>), COpinionSet::operator=
 //   @ 0x0045EF2D (11 landed callers name it CFloatVector::operator=; the PDB type here is COpinionSet), CMainGameComponent::
 //   PeekDefinitionManager() const @ 0x00415FBC (a `jmp CDefinitionManager::Get`; manifest "GFGetPreMainMemoryUsed").
@@ -108,8 +108,15 @@ extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 template <class T> class CCountedPointer { public: T* Object; void* Info; };
 class CThing;
-class CTCOpinionSource { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCOpinionSource : public CTCBase { public:
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08
     bool          IsInGlobalUpdateTCs;                  // +0x09
@@ -128,7 +135,6 @@ class CTCOpinionSource { public:
     bool          UnknownThreatSource;                  // +0x76
     bool          ReactNonstopFlag;                     // +0x77
     CCountedPointer<COpinionSet> POpinionProduced;      // +0x78
-    const CWorld* GetWorld() const;                     // 0x00686A80 (CTCBase)
     __forceinline void CopyFromDef(const COpinionSourceDef* def)
     {
         *POpinionProduced.Object = def->OpinionProduced;
@@ -154,7 +160,7 @@ class CTCOpinionSource { public:
 bool CTCOpinionSource::SetupFromDef(long defIndex)
 {
     CDefSlot<const COpinionSourceDef> fetched;
-    const CGameDefinitionManager* manager = GetWorld()->DefinitionManager;
+    const CGameDefinitionManager* manager = PeekWorld().DefinitionManager;
     if (manager->GetDef(defIndex, fetched)) {
         CDefHolder<const COpinionSourceDef> def = { fetched.Object };
         CopyFromDef(def.Object);

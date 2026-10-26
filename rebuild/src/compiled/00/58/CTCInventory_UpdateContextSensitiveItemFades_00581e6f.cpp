@@ -9,10 +9,17 @@
 // is modelled locally. The float read is info.Interpolate.Current.GTPredictedTimeSinceLastRenderFrame (+0).
 // Shape: loop bound is the ITEM count (re-evaluated), the fade index strength-reduced to a byte offset
 // (`add ebx,1Ch`) added to the reloaded fade base; the float is copied through x87 (`fld ; push ecx ; fstp`).
+#define CFadeInFadeOutBase CFadeInFadeOutBaseLayout
 #include "engine/CFadeInFadeOutBase.h"
+#undef CFadeInFadeOutBase
+
+class CFadeInFadeOutBase : public CFadeInFadeOutBaseLayout
+{
+public:
+    void Update(float);   // 0x00434870
+};
 
 struct CFadeInFadeOutBase_Calls : CFadeInFadeOutBase {
-    void Update(float elapsed);                      // 0x00434870
 };
 
 struct CInterpolationInfoSet {

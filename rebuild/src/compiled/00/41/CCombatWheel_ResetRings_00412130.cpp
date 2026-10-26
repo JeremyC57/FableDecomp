@@ -1,7 +1,7 @@
 struct Ring { int x; };
 // Leaf: ResetRings
 extern "C" void __fastcall Ring_dtor(Ring* r);
-extern "C" void engine_free(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CCombatWheel {
     Ring* begin;
@@ -20,6 +20,6 @@ void __fastcall CCombatWheel_ResetRings(CCombatWheel* self)
     }
     Ring* b = self->begin;
     if (b) {
-        engine_free(b);
+        free(b);
     }
 }

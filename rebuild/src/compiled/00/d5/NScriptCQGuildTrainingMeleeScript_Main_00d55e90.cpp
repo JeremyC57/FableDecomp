@@ -73,9 +73,10 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     void SetFriendsWithEverythingFlag(bool on) { if (PImp.Data) PImp.Data->SetFriendsWithEverythingFlag(on); }
 };
 class CBaseObject { public:                                    // vtable 0x0129A7D8
-    CBaseObject();                                      // 0x0099A380
-    virtual ~CBaseObject();                             // 0x0099A430
     void* IntelligentPointer;                           // +0x04
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
@@ -208,7 +209,7 @@ class CGameScriptInterface { public:                       // the quest's game s
 };
 class CScriptDataBase;
 class CEntityScriptBase;
-struct __declspec(novtable) CEntityScriptBindingBase {
+class __declspec(novtable) CEntityScriptBindingBase { public:
     virtual const CCharString& GetEntityScriptName() const = 0;
 };
 template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
@@ -224,12 +225,14 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
     virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
 };
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                                                 // 0x00CB7940
     void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
     void PostAddScriptedEntities();                                                   // 0x00CB8930
 };
+namespace NScript {
 class CQ_GuildTrainingMeleeScript : public CScriptBase {
 public:
     struct CTheRealGuildmaster { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_GuildTrainingMeleeScript& parent, CScriptDataBase* data, const CScriptThing& thing); };   // 0x00D565C0

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00946690, length 157 bytes (+ int3 padding). Vtable slot 15 of
 // CAIStateGroup_LightHomeCandle (0x0128BDBC).
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (the const instantiation of the inlined interface lookup, type
-// 0x23 = CTCVillager, `test byte ptr [eax+24h],8`), CTCVillager::GetPVillage @ 0x007EE540 (landed name; manifest
+// 0x23 = CTCVillageMember, `test byte ptr [eax+24h],8`), CTCVillageMember::GetPVillage @ 0x007EE540 (landed name; manifest
 // "IS_THING_ALIVE<..>" is propagated) x2, CAIStateGroupBase::GetPThingWorld @ 0x008FCFA0, the time-of-day test
 // Game_IsTimeOfDayInRange @ 0x006BB390 on the world's +0x1c object, the village def's virtual slot 1 (destroy).
 //
@@ -54,8 +54,9 @@ class CTCVillage { public:
     CVillageDef* PDef;                          // +0x94
 };
 
-struct CTCVillager {                            // interface type 0x23
-    CTCVillage* GetPVillage() const;            // 0x007EE540
+class CTCVillageMember { public:                            // interface type 0x23
+public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540
 };
 
 class CGameTimeManager { public:
@@ -87,7 +88,7 @@ class CAIStateGroup_LightHomeCandle : public CAIStateGroupBase { public:
 
 bool CAIStateGroup_LightHomeCandle::ShouldBeLit()
 {
-    CTCVillager* villager;
+    CTCVillageMember* villager;
     PBrain->PCreature->GetInterface(&villager, 0x23);
     if (villager && villager->GetPVillage()) {
         CVillageDef* def = villager->GetPVillage()->PDef;

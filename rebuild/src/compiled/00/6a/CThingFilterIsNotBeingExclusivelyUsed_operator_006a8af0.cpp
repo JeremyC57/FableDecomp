@@ -49,11 +49,16 @@ public:
     }
 };
 
-class CBaseIntelligentPointer {                    // 8 bytes: vptr, item block
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    void* m_vtable;
-    void* m_pBlock;
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 class CTCExclusiveUse {

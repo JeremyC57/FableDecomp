@@ -11,7 +11,10 @@
 class CWorld;
 class CThingAICreature;
 
-long __fastcall GFGetCurrentFrame();        // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};        // 0x0049D870
 extern long g_framesPerSecond;              // 0x01375550
 
 class CAIStateGroupBase { public:
@@ -32,7 +35,7 @@ struct CAIStateGroup_KidWatchHopscotch : CAIStateGroupBase {
 
 void CAIStateGroup_KidWatchHopscotch::InitStateGroup(const CWorld& world, CThingAICreature& creature)
 {
-    m_frameStarted = GFGetCurrentFrame();
+    m_frameStarted = CWorld::GetFrame();
     m_framesToWatch = g_framesPerSecond * 60;
     m_gamesWatched = 0;
     m_lastGameFrame = 0;

@@ -9,7 +9,7 @@
 // Shape: speed TU; the context (the argument) is held in edi and reloaded into ecx before every call, the member
 // addresses rotate through eax/ecx/edx, and the last member uses `this` itself (`add esi,0B8h`) since it is dead after.
 class CPersistContext { public:
-    void Transfer(unsigned long& value);                  // 0x00431020
+    template <class T> void Transfer(T& value);                  // 0x00431020
 };
 
 class CDefClassBase { public:

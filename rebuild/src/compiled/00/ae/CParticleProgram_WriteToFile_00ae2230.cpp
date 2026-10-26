@@ -1,7 +1,7 @@
 // CParticleProgram::WriteToFile(CDataOutputStream& stream) -- save a particle program: version 333, the raw constraint byte stream, the initial simulation, the render triangle/quad/vertex arrays, the non-simulated positions, the texture coordinates and index arrays, the patch size and bezier flag, the exported particle names, then the simulated and non-simulated groups
 // Leaf: WriteToFile
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE2230, length 736 bytes (`ret 4`).
-// Callees: CDataOutputStream::WriteULong @ 0x00993EA0, WriteFloat @ 0x00993EE0, WriteEBOOL @ 0x00993E30,
+// Callees: CDataOutputStream::WriteULONG @ 0x00993EA0, WriteFloat @ 0x00993EE0, WriteEBOOL @ 0x00993E30,
 //   WriteNullTerminatedString @ 0x00995AE0, the stream's virtual Write(const void*, long) (slot 4),
 //   CMemoryDataOutputStream::GetSize @ 0x00994B40 (label "GetFramesRemaining" propagated) and PeekData @ 0x00995E70,
 //   CParticleSimulation::WriteToFile @ 0x00AE2050, the C4DVector array writer @ 0x00AE18C0 (__fastcall),
@@ -33,9 +33,10 @@ public:
     virtual void v03();
     virtual void Write(const void* data, long length);                 // slot 4 (+0x10)
     void WriteEBOOL(bool value);                                       // 0x00993E30
-    void WriteULong(unsigned long value);                              // 0x00993EA0
     void WriteFloat(float value);                                      // 0x00993EE0
     void WriteNullTerminatedString(const CCharString& text);           // 0x00995AE0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 class CMemoryDataOutputStream : public CDataOutputStream {
 public:
@@ -89,43 +90,43 @@ public:
 
 void CParticleProgram::WriteToFile(CDataOutputStream& stream)
 {
-    stream.WriteULong(0x14d);
-    stream.WriteULong(Constraints.GetSize());
+    stream.WriteULONG(0x14d);
+    stream.WriteULONG(Constraints.GetSize());
     stream.Write(Constraints.PeekData(), Constraints.GetSize());
     InitialSimulation.WriteToFile(stream);
-    stream.WriteULong(RenderTris.size());
+    stream.WriteULONG(RenderTris.size());
     {
         const void* data = RenderTris.GetData();
         const CArray<C3DTriangle2>* const& array = &RenderTris;
         stream.Write(data, array->size() * sizeof(C3DTriangle2));
     }
-    stream.WriteULong(RenderQuads.size());
+    stream.WriteULONG(RenderQuads.size());
     {
         const void* data = RenderQuads.GetData();
         const CArray<C3DQuad2>* const& array = &RenderQuads;
         stream.Write(data, array->size() * sizeof(C3DQuad2));
     }
-    stream.WriteULong(RenderVertices.size());
+    stream.WriteULONG(RenderVertices.size());
     {
         const void* data = RenderVertices.GetData();
         const CArray<C3DClothRenderVertex>* const& array = &RenderVertices;
         stream.Write(data, array->size() * sizeof(C3DClothRenderVertex));
     }
-    stream.WriteULong(NonSimCount);
+    stream.WriteULONG(NonSimCount);
     WriteVectors_00ae18c0(NonSimPositions, NonSimCount, stream);
-    stream.WriteULong(IndexedTextureCoords.size());
+    stream.WriteULONG(IndexedTextureCoords.size());
     {
         const void* data = IndexedTextureCoords.GetData();
         const CArray<C2DVector>* const& array = &IndexedTextureCoords;
         stream.Write(data, array->size() * sizeof(C2DVector));
     }
-    stream.WriteULong(ParticleIndices.size());
+    stream.WriteULONG(ParticleIndices.size());
     {
         const void* data = ParticleIndices.GetData();
         const CArray<long>* const& array = &ParticleIndices;
         stream.Write(data, array->size() * sizeof(long));
     }
-    stream.WriteULong(VertexIndices.size());
+    stream.WriteULONG(VertexIndices.size());
     {
         const void* data = VertexIndices.GetData();
         const CArray<long>* const& array = &VertexIndices;
@@ -133,10 +134,10 @@ void CParticleProgram::WriteToFile(CDataOutputStream& stream)
     }
     stream.WriteFloat(AveragePatchSize);
     stream.WriteEBOOL(BezierEnable);
-    stream.WriteULong(ExportParticles.size());
+    stream.WriteULONG(ExportParticles.size());
     for (unsigned long i = 0; i < ExportParticles.size(); ++i) {
         stream.WriteNullTerminatedString(ExportParticles.m_first[i].first);
-        stream.WriteULong(ExportParticles.m_first[i].second);
+        stream.WriteULONG(ExportParticles.m_first[i].second);
     }
     WriteGroups(stream, &SimGroups);
     WriteGroups(stream, &NonSimGroups);

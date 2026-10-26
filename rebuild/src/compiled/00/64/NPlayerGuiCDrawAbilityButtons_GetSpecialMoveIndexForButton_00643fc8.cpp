@@ -17,8 +17,10 @@ enum EXboxControllerButton { XBOX_BUTTON_NONE };
 class CGamePlayerInterface { public:
     long GetAssignableSpecialMoveIndexForButton(EXboxControllerButton button);   // 0x00445EE0
 };
+class CPlayer;
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CAbilityButtonGuiDef { public:
     unsigned char         _def00[0x40];            // CGameDefinition base + gui def members
@@ -38,7 +40,7 @@ class CDrawAbilityButtons { public:
 
 long CDrawAbilityButtons::GetSpecialMoveIndexForButton(const CAbilityButtonGuiDef& def)
 {
-    CGamePlayerInterface* playerInterface = PlayerManager->GetMainPlayer()->PlayerInterface;
+    CGamePlayerInterface* playerInterface = PlayerManager->GetMainPlayer().PlayerInterface;
     return playerInterface->GetAssignableSpecialMoveIndexForButton(def.ControllerButton);
 }
 }

@@ -19,8 +19,7 @@ enum EWaterType { WATER_TYPE_NONE };
 enum EMinimapThemeType { MINIMAP_THEME_NONE };
 
 class CPersistContext { public:
-    void Transfer(long& value);                                              // 0x00431102
-    void Transfer(float& value);                                             // 0x00431061
+    template <class T> void Transfer(T& value);                                              // 0x00431102
     void Transfer(EMinimapThemeType& value);                                 // 0x0045990B
     void Transfer(EWaterType& value);                                        // 0x004599AF
     void Transfer(const char* name, bool& value, const bool& defaultValue);  // 0x004045C0

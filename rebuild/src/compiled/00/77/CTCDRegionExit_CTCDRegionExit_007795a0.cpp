@@ -1,7 +1,7 @@
 // CTCDRegionExit::~CTCDRegionExit() -- a region exit dying while it holds the screen in letterbox mode (and the world still shows it) ends the letterbox and tells the living hero's region display to finish showing the region name; then the entrance pointer and the CTCBase go
 // Leaf: ??1CTCDRegionExit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007795A0, 167 bytes (plain `ret`). Vtable 0x0126AB54.
-// Callees: CTCBase::GetWorld() const @ 0x00686A80, CDisplayEngine::EndLetterBox @ 0x004349D0 on the main game component's +0x28 (the landed
+// Callees: CTCBase::PeekWorld() const @ 0x00686A80, CDisplayEngine::EndLetterBox @ 0x004349D0 on the main game component's +0x28 (the landed
 // body 0x004349D0 clears its +0x7c/+0x7d flags; Ego_r.pdb puts PDisplayEngine at +0x28), CTCBase::GetPlayerManager() @ 0x00686D40,
 // CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::
 // LowerBound @ 0x0040F020, CTCRegionDisplay::FinishShowingRegionName @ 0x00639930, ~CBaseIntelligentPointer @ 0x00A01C10,
@@ -46,7 +46,8 @@ class CPlayer { public:
     CThing* GetHeroCreature();                          // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CWorld { public:
     unsigned char _pad00[0xdf];
@@ -61,20 +62,31 @@ class CMainGameComponent { public:
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                    // +0x04
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer { };   // CIntelligentPointer<CThing>
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public: 
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};   // CIntelligentPointer<CThing>
 #pragma pack(pop)
 class CTCBase { public:
     virtual ~CTCBase();                                 // 0x00686830
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    const CWorld* GetWorld() const;                     // 0x00686A80
-    CPlayerManager* GetPlayerManager();                 // 0x00686D40
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 class CTCDRegionExit : public CTCBase { public:                       // vtable 0x0126AB54
     bool Active;                                        // +0x0c
@@ -87,15 +99,15 @@ class CTCDRegionExit : public CTCBase { public:                       // vtable 
     unsigned __int64 EntranceConnectedToUID;            // +0x20
     bool ReversedOnMiniMap;                             // +0x28
     bool HiddenOnMiniMap;                               // +0x29
-    CIntelligentPointer PEntranceConnectedTo;           // +0x2a
+    CIntelligentPointer<CThing> PEntranceConnectedTo;           // +0x2a
     virtual ~CTCDRegionExit();
 };
 
 CTCDRegionExit::~CTCDRegionExit()
 {
-    if (InLetterBoxMode && GetWorld()->LetterBoxShown) {
+    if (InLetterBoxMode && PeekWorld().LetterBoxShown) {
         g_pMainGameComponent->PDisplayEngine->EndLetterBox();
-        CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroCreature();
         if (IsThingAlive(hero)) {
             CTCRegionDisplay* display;
             hero->GetInterface(&display, 0x8e);

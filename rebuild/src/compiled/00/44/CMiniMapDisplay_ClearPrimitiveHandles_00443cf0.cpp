@@ -27,7 +27,7 @@ class CMiniMapDisplay { public:
 // element dtor 0x99eae0 (thiscall)
 extern "C" void __fastcall ElemA_dtor(int self);
 // operator delete 0xbfea14 (cdecl)
-void __cdecl free(void*);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 // subobject clear 0x442610 (thiscall)
 extern "C" void __fastcall Sub28_clear(SubObj28* self);
 

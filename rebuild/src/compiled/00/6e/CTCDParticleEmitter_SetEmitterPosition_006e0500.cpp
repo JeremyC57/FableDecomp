@@ -68,10 +68,21 @@ class CThing { public:
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CBaseIntelligentPointer {                // sizeof 8: vptr + PData
-    virtual void v00();
-    void* PData;                                // +0x04
-    NParticleEngine::CParticleEmitter* GetPItem() const;   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCDParticleEmitter { public:
     virtual void v00();
@@ -79,8 +90,8 @@ class CTCDParticleEmitter { public:
     unsigned char           _base08[0x4];
     void*                   EmitterName;        // +0x0c CCharString
     long                    ParticleTypeID;     // +0x10
-    CBaseIntelligentPointer PEmitter;           // +0x14
-    CBaseIntelligentPointer PAttachedToThing;   // +0x1c
+    CIntelligentPointer<NParticleEngine::CParticleEmitter> PEmitter;           // +0x14
+    CIntelligentPointer<NParticleEngine::CParticleEmitter> PAttachedToThing;   // +0x1c
     unsigned long           AttachmentFlags;    // +0x24
     void*                   AttachmentPosName;  // +0x28 CCharString
     long                    AttachmentPosIndex; // +0x2c

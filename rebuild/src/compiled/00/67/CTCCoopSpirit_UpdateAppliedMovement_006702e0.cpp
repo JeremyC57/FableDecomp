@@ -2,7 +2,7 @@
 // Leaf: UpdateAppliedMovement
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006702E0, 400 bytes (`ret`).
 // Callees: CThingCreatureBase::IsPerformingAnyAction() @ 0x006622A0, CThingPlayerCreature::GetCurrentRelativeMovementAngleXY()
-// @ 0x006A9640, C3DVector::RotateAboutZ(float) @ 0x00A14040, C3DVector::AccurateNormalise @ 0x00A14440, CVectorMap<ETCInterfaceType,
+// @ 0x006A9640, C3DVector::RotateXY(float) @ 0x00A14040, C3DVector::AccurateNormalise @ 0x00A14440, CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound @ 0x0040F020 (interface 2, the physics component), CTCPhysicsBase::ApplyAcceleration @ 0x006B0210.
 // Globals: 1e-4f @ 0x0129BA3C, the reciprocal-square-root mantissa table 0x013CE558, 3.0f @ 0x0122DED4, 0.5f @ 0x0122F59C.
 // Layout: as the landed UpdateAttractionToMaster 0x006701A0 (NoMovementTimer +0x0c, MovementVector +0x18); the physics
@@ -37,8 +37,9 @@ class C3DVector { public:
         Z *= r;
     }
     C3DVector& operator*=(float f) { X *= f; Y *= f; Z *= f; return *this; }
-    void RotateAboutZ(float angle);                         // 0x00A14040
     C3DVector& AccurateNormalise();                                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
+public:
+    void RotateXY(float);   // 0x00A14040
 };
 class CTCBase;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -93,7 +94,7 @@ void CTCCoopSpirit::UpdateAppliedMovement()
     C3DVector movement = MovementVector;
     MovementVector.Zero();
     float angle = creature->GetCurrentRelativeMovementAngleXY();
-    movement.RotateAboutZ(angle);
+    movement.RotateXY(angle);
     movement.AccurateNormalise();
     CTCPhysicsBase* physics = (CTCPhysicsBase*)ParentThing->GetTCIfPresent(2);
     float length = movement.GetLength();

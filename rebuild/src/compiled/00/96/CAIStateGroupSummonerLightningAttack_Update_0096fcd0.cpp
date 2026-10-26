@@ -91,7 +91,7 @@ class CCreatureActionBase { public:
 };
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCreatureAction_SummonerSheatheWeapon : public CCombatActionBase { public:
     unsigned char Flag;                         // +0x114

@@ -25,7 +25,10 @@ public:
     const char* GetPString() const { return PStringData == 0 ? "" : PStringData->PData; }   // "" = the shared empty literal 0x0129AAF4
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC-32 kernel
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC-32 kernel
 
 class CAnimationEntry;
 
@@ -47,5 +50,5 @@ public:
 void CAnimFilterOfGroup::SetCurrentGroupName(const CCharString& name)
 {
     Group = name;
-    GroupCRC = Calc_004014a0(0, name.GetPString(), name.GetLength());
+    GroupCRC = CCRC::Calc(0, name.GetPString(), name.GetLength());
 }

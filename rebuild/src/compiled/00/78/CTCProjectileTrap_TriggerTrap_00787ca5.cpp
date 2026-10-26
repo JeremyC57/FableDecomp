@@ -20,8 +20,13 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CGameDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+class CDefinitionManager
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};
+
+class CGameDefinitionManager : public CDefinitionManager { public:
 };
 struct CRefCounted {                                   // second base of the def: the count at +4
     long m_count;
@@ -59,8 +64,15 @@ class CTrapDef { public:
     unsigned char _pad00[0x60];
     float SecondsBetweenShots;                         // +0x60 (PDB +0x64)
 };
-class CTCTrapBase { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCTrapBase : public CTCBase { public:
     CThing*       ParentThing;                         // +0x04 (CTCBase)
     unsigned char _pad08[0x54 - 0x08];
     const CTrapDef* PTrapDef;                          // +0x54 CDefPointer (PDB +0x60)
@@ -68,7 +80,6 @@ class CTCTrapBase { public:
     bool          Triggered;                           // +0x59
     bool          LastTriggerOnProximity;              // +0x5a
     long          TrapType;                            // +0x5c ETrapType
-    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
     void SetTransitionParams(float a, float b);        // 0x00787C35
 };
 struct CTCProjectileTrap : CTCTrapBase {

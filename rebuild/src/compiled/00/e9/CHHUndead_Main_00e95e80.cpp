@@ -8,6 +8,7 @@
 // (CV_HauntedHouseScript*, the tested byte at +0x50 is unnamed in the PDB), PMasterData +0x18, RaiseUndeadBarAmount +0x1c.
 // Shape: as the landed CHTE_Prisoner::Main 0x00D69F50; the early exits are plain returns (the second IsDone test
 // jumps straight to the epilogue), the wait loop a `do/while`.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
@@ -32,8 +33,14 @@ class CGameScriptInterface { public:                     // vtable 0x01260F0C (r
     virtual void v103(); virtual void v104(); virtual void v105(); virtual void v106(); virtual void v107();
     virtual void RemoveThing(const CScriptThing& thing, bool a, bool b) const;   // slot 108 (+0x1b0)
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
@@ -44,7 +51,14 @@ struct CV_HauntedHouseScript {
 };
 struct CQ_SunnyvaleMasterData;
 
-class CHHUndead {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CHHUndead : public CEntityScriptBase {
 public:
     void*                  __vftable;              // +0x00
     CGameScriptInterface*  Game;                   // +0x04
@@ -52,8 +66,6 @@ public:
     CV_HauntedHouseScript* ParentClass;            // +0x14
     CQ_SunnyvaleMasterData* PMasterData;           // +0x18
     float                  RaiseUndeadBarAmount;   // +0x1c
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -61,17 +73,17 @@ void CHHUndead::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     if (ParentClass->m_raiseUndead) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         Game->RemoveThing(Me, true, true);
     }
     do {
         Game->NewScriptFrame();
-    } while (!IsDone());
+    } while (!IsActiveThreadTerminating());
 }

@@ -13,8 +13,7 @@ struct CLongVector {                            // retail STLport vector<long>: 
     long* _M_end_of_storage;
 };
 class CPersistContext { public:
-    void Transfer(float& value);                // 0x00431061
-    void Transfer(long& value);                 // 0x00431102
+    template <class T> void Transfer(T& value);                // 0x00431061
     void Transfer(CLongVector& value);          // 0x00466A47
 };
 class CKrakenDef { public:

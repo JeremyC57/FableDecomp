@@ -1,3 +1,8 @@
-struct S; extern S* __fastcall od1(S* self); extern void __fastcall od2(S* p);
+class CTCShop;
+class CTCShopKeeper {
+public:
+    CTCShop* GetShopTC() const;   // 0x00798F50
+};
+struct S;  extern void __fastcall od2(S* p);
 struct S { int x; void M(); };
-void S::M(){ S* p=od1(this); if(p) od2(p); }
+void S::M(){ S* p=((S*)(((CTCShopKeeper*)(this))->GetShopTC())); if(p) od2(p); }

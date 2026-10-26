@@ -8,7 +8,8 @@ static CLandscapeBackgroundPatch* g_obj;
 extern "C" void __fastcall CSoundDef_dtor(CLandscapeBackgroundPatch* thisptr) {
     thisptr->destroyed = 1;
 }
-extern "C" void __cdecl engine_operator_delete(void* p) {
+void __cdecl operator delete(void* p)
+{
     ((CLandscapeBackgroundPatch*)p)->freed = 1;
 }
 

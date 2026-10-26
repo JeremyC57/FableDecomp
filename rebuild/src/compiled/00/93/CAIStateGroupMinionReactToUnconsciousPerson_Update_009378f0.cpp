@@ -103,7 +103,7 @@ class CDefinitionManager { public:
 class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                 // 0x00693EF0
+    virtual ~CCreatureActionBase();                 // 0x00693EF0
 };
 class CCreatureAction_AlertToPlayer : public CCreatureActionBase { public:
     CCreatureAction_AlertToPlayer(CThingCreatureBase* creature);  // 0x009110F0

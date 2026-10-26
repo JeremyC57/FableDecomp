@@ -2,7 +2,7 @@
 // CTCVillage::BuildingContainsPlayer(CThing* building) -- true when the live hero's building-location component (interface 117) says the hero is inside this building
 // Leaf: BuildingContainsPlayer
 // Retail: Fable.exe @ 0x0065AC0E, 117 bytes (`ret 4`); size TU (unaligned entry): `optimize("s",on)`.
-// Callees: CTCBase::GetPlayerManager() 0x00686D40; CPlayerManager::GetCurrentPlayer() 0x00449970; CPlayer::
+// Callees: CTCBase::GetPlayerManager() 0x00686D40; CPlayerManager::GetMainPlayer() 0x00449970; CPlayer::
 //          GetCharacterThing() 0x00487DC0; IS_THING_ALIVE<CThing*>(CThing* const&) 0x0043DBD0 (__fastcall); std::bitset<>::
 //          test(size_t) const 0x00410DE0 (interface 117); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020
 //          (inlined GetTC, key in the hero's frame slot); CBaseIntelligentPointer::GetPItem 0x00A01B50.
@@ -42,14 +42,25 @@ public:
 };
 bool __fastcall IS_THING_ALIVE_0043dbd0(CThing* const& thing);   // 0x0043DBD0
 
-struct CBaseIntelligentPointer {
-    void* _vfptr;
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CTCBuildingLocation {                    // the hero's interface-117 component (class name unknown)
     unsigned char _pad_0x00[0xc];
-    CBaseIntelligentPointer PBuilding;          // +0x0c
+    CIntelligentPointer<CThing> PBuilding;          // +0x0c
 };
 
 class CThingCreatureBase : public CThing {};
@@ -57,18 +68,25 @@ class CPlayer { public:
     CThingCreatureBase* GetCharacterThing();    // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetCurrentPlayer();                // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 
-class CTCVillage { public:
+class CTCBase
+{
+public:
     virtual void v00();
-    CPlayerManager* GetPlayerManager();         // 0x00686D40 (CTCBase)
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCVillage : public CTCBase { public:
     bool BuildingContainsPlayer(CThing* building);
 };
 
 bool CTCVillage::BuildingContainsPlayer(CThing* building)
 {
-    CThingCreatureBase* hero = GetPlayerManager()->GetCurrentPlayer()->GetCharacterThing();
+    CThingCreatureBase* hero = GetPlayerManager().GetMainPlayer().GetCharacterThing();
     if (IS_THING_ALIVE_0043dbd0(hero) && hero->HasTC(117)) {
         if (((CTCBuildingLocation*)hero->GetTC(117))->PBuilding.GetPItem() == building)
             return true;

@@ -9,6 +9,7 @@
 //   +0x48, Conversation +0x4c, FishingRodsInGame +0x50, FishTypesInGame +0x54, FishingPrizes +0x58, RodDef +0x60, FishDef +0x6c;
 //   the script def 0x0143E90C holds the fish types +0x5a0, rods +0x5a4, prizes +0x5a8, rod defs +0x5b8, fish defs +0x5c4.
 
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString();                                       // 0x0099E4B0
@@ -164,7 +165,13 @@ class CScriptDef { public:
 };
 extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
-class CFishCompOrganiser {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CFishCompOrganiser : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     CGameScriptInterface* Game;               // +0x04
@@ -178,7 +185,6 @@ public:
     CCharString           CompetitionEntry;   // +0x5c
     vector<CCharString>   RodDef;             // +0x60
     vector<CCharString>   FishDef;            // +0x6c
-    bool IsDone();                            // 0x00F35B30
     void Initialize();
 };
 
@@ -192,18 +198,18 @@ void CFishCompOrganiser::Initialize()
     RodDef.resize(FishingRodsInGame);
     FishDef.resize(FishTypesInGame);
     for (long i = 0; i < FishingRodsInGame; ++i) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         RodDef[i] = pGlobalScriptDef->RodDefs[i];
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     for (long j = 0; j < FishTypesInGame; ++j) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         FishDef[j] = pGlobalScriptDef->FishDefs[j];
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->SetThingHasInformation(Me, false, true, false);
     Game->SetThingPersistent(Me, true);

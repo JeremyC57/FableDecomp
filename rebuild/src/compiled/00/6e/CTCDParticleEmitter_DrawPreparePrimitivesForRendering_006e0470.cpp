@@ -7,17 +7,19 @@
 // Tiny-body shape `GetItemOfMember` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
+class CBaseObject;
 struct CBaseIntelligentPointer {
-    void* GetPItem();                      // 0x00A01B50
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
 };
 
 class CTCDParticleEmitter { public:
     unsigned char _pad[0x1c];
     CBaseIntelligentPointer m_pointer;     // +0x1c
-    void* DrawPreparePrimitivesForRendering(long unused);
+    CBaseObject* DrawPreparePrimitivesForRendering(long unused);
 };
 
-void* CTCDParticleEmitter::DrawPreparePrimitivesForRendering(long unused)
+CBaseObject* CTCDParticleEmitter::DrawPreparePrimitivesForRendering(long unused)
 {
     return m_pointer.GetPItem();
 }

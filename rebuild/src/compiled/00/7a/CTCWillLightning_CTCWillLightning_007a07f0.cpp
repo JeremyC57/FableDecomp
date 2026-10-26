@@ -50,11 +50,21 @@ class CTCDParticleEmitter { public:
     void EnterTimelineEnd();                    // 0x006E05F0
 };
 
-struct CBaseIntelligentPointer {
-    void* _vfptr;
-    void* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14 (CRT import thunk)
@@ -84,7 +94,7 @@ struct CLongVector {                            // STLport vector of a trivial e
 
 struct CWillButtonHelperTimer {                 // retail 0x34 bytes
     unsigned char _pad00[0x08];
-    CBaseIntelligentPointer m_pThing;           // +0x08
+    CIntelligentPointer<CThing> m_pThing;           // +0x08
     unsigned char _pad10[0x08];
     CLongVector m_values;                       // +0x18
     unsigned char _pad24[0x10];
@@ -122,7 +132,7 @@ public:
 class CTCWillLightning : public CTCBase { public:             // vtable 0x0126C724
     long  WeaponState;                          // +0x0c
     bool  LeftHandAnim;                         // +0x10
-    CBaseIntelligentPointer PItemRemoved;       // +0x11
+    CIntelligentPointer<CThing> PItemRemoved;       // +0x11
     unsigned char _pad_0x19[0x3];
     long  AIHoldingDownTimer;                   // +0x1c
     long  PrimaryHandEffect;                    // +0x20
@@ -133,10 +143,10 @@ class CTCWillLightning : public CTCBase { public:             // vtable 0x0126C7
     float m_fTimeBase;                          // +0x64
     CBeamList m_lbBeams;                        // +0x68
     long  m_lsState;                            // +0x6c
-    CBaseIntelligentPointer m_cbpPlayer;        // +0x70
-    CBaseIntelligentPointer m_tpLeftHandEffect; // +0x78
-    CBaseIntelligentPointer m_tpRightHandEffect;// +0x80
-    CBaseIntelligentPointer PTargetOverride;    // +0x88
+    CIntelligentPointer<CThing> m_cbpPlayer;        // +0x70
+    CIntelligentPointer<CThing> m_tpLeftHandEffect; // +0x78
+    CIntelligentPointer<CThing> m_tpRightHandEffect;// +0x80
+    CIntelligentPointer<CThing> PTargetOverride;    // +0x88
     virtual ~CTCWillLightning();
 };
 #pragma pack(pop)

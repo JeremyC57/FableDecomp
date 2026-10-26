@@ -1,57 +1,38 @@
 #include <cstdio>
-
-struct CXfer;
-
-static int g_base_called = 0;
-static int g_field_called = 0;
-static void* g_field_obj = 0;
-static void* g_saved_self = 0;
-static void* g_saved_xfer = 0;
-
-struct CBaseDef {
-    void Transfer(CXfer* xfer);
+// Behaviour test for 0x00454F15: the reconstructed body (pragmas stripped) driven through recording stubs;
+// checks the transfer order, the helper chosen per member (kind) and the member address.
+static const void* g_p[32]; static int g_k[32]; static int g_n = 0;
+static void Rec(int k, const void* p) { if (g_n < 32) { g_k[g_n] = k; g_p[g_n] = p; } ++g_n; }
+enum ESwitchTriggerType { };
+class CPersistContext { public:
+    template <class T> void Transfer(T& value);       // one-argument transfer helpers (namepass TR2)
 };
-
-struct CXfer {
-    void Transfer(void* obj);
+class CThingBaseDef { public:
+    virtual void Transfer(CPersistContext& context);   // 0x00676BE0
+    unsigned char _body04[0x70 - 4];                   // retail def base (Ego_r.pdb CThingBaseDef 0x74 less 4)
 };
-
-class CThingSwitchDef : public CBaseDef { public:
-    char pad[0x70];
-    CXfer sub;
-    void Transfer(CXfer* xfer);
+class CThingSwitchDef : public CThingBaseDef { public:
+    ESwitchTriggerType TriggerType; // +0x70
+    virtual void Transfer(CPersistContext& context);
 };
+template <> void CPersistContext::Transfer<ESwitchTriggerType>(ESwitchTriggerType& value);
 
-void CBaseDef::Transfer(CXfer* xfer)
+void CThingSwitchDef::Transfer(CPersistContext& context)
 {
-    g_base_called = 1;
-    g_saved_self = this;
-    g_saved_xfer = xfer;
+    CThingBaseDef::Transfer(context);
+    context.Transfer(TriggerType);
 }
-
-void CXfer::Transfer(void* obj)
-{
-    g_field_called = 1;
-    g_field_obj = obj;
-}
-
-void CThingSwitchDef::Transfer(CXfer* xfer)
-{
-    CBaseDef::Transfer(xfer);
-    xfer->Transfer(&this->sub);
-}
-
+template <> void CPersistContext::Transfer<ESwitchTriggerType>(ESwitchTriggerType& v) { Rec(10, &v); }
+void CThingBaseDef::Transfer(CPersistContext& context) { Rec(1, this); }
+static CThingSwitchDef d;
 int main()
 {
-    CThingSwitchDef def;
-    CXfer x;
-    def.Transfer(&x);
-    if (g_base_called && g_field_called &&
-        g_saved_self == (void*)&def && g_saved_xfer == (void*)&x &&
-        g_field_obj == (void*)((char*)&def + 0x70)) {
-        std::printf("CThingSwitchDef_00454f15_TEST PASS\n");
-        return 0;
-    }
-    std::printf("FAIL base=%d field=%d\n", g_base_called, g_field_called);
+    CPersistContext c;
+    d.Transfer(c);
+    bool ok = g_n == 2;
+    ok = ok && g_k[0] == 1 && g_p[0] == (const void*)&d;
+    ok = ok && g_k[1] == 10 && g_p[1] == (const void*)&d.TriggerType;
+    if (ok) { std::printf("CThingSwitchDef_00454f15_TEST PASS\n"); return 0; }
+    std::printf("FAIL %d\n", g_n);
     return 1;
 }

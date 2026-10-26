@@ -209,6 +209,8 @@ class CAIStateGroupBase { public:
         *seed = rotated;
         return rotated % range;
     }
+public:
+    void Terminate();   // 0x008FCF40
 };
 
 // vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
@@ -247,7 +249,6 @@ struct CAIStateGroup_MinionHasInformation : CAIStateGroupBase {
     long AIAction_MinionIdle();                 // 0x0097FA00
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float distance, bool* reached, long movement,
         bool a, bool b, bool c, CThing* avoid, bool d, float speed);        // 0x0097E890
-    void Terminate();                           // 0x008FCF40
     bool Wander();
 };
 

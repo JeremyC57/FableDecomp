@@ -56,10 +56,21 @@ class CTCTargetingPlayer { public:
     void SetAsPickUpNewLockTarget();            // 0x008023A0
 };
 
-struct CBaseIntelligentPointer {
-    void* _vfptr;
-    void* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 void operator delete(void* p);                  // 0x00BFE9BC
@@ -119,9 +130,9 @@ typedef CRetailList<CCountedPointer<CLightningBeam> > CBeamList;
 
 struct CLightningBeam {
     long State;                                 // +0x00
-    CBaseIntelligentPointer ParticleHandle;     // +0x04
-    CBaseIntelligentPointer Home;               // +0x0c
-    CBaseIntelligentPointer Target;             // +0x14
+    CIntelligentPointer<CThing> ParticleHandle;     // +0x04
+    CIntelligentPointer<CThing> Home;               // +0x0c
+    CIntelligentPointer<CThing> Target;             // +0x14
     float Start[3], End[3], Destination[3];     // +0x1c
     float DamagePerHit, Time, TimeBase;         // +0x40
     CBeamList Children;                         // +0x4c

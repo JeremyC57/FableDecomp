@@ -11,7 +11,8 @@
 // `xor eax,eax` / `mov eax,1` pair instead; here the null test jumps to the shared `mov al,1`, a finished read jumps there
 // too, and the unfinished case returns the call's own zero al (`ret` straight after the `jne`).
 class CBankFileAsyncData { public:
-    bool IsFinished();                     // 0x009D54E0
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
 
 struct CCountedPointer_BankFileAsyncData {

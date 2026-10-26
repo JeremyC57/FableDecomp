@@ -3,8 +3,11 @@
 // push esi; mov esi,ecx; mov eax,[esi+0x3c]; test eax,eax; jz L;
 // push eax; call free (0xbfea14); pop ecx; L: mov ecx,esi; pop esi; jmp base::OnDie (0x430300)
 
-void __cdecl my_free(void* p);                // -> 0xbfea14
-void __fastcall base_OnDie(void* self);       // -> 0x430300
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 class CTCInventoryItem { public:
     char pad[0x3c];
@@ -15,6 +18,6 @@ class CTCInventoryItem { public:
 void CTCInventoryItem::OnDie()
 {
     if (this->f3c)
-        my_free(this->f3c);
-    base_OnDie(this);
+        free(this->f3c);
+    ((CParentDefClassBase*)(this))->CParentDefClassBase::~CParentDefClassBase();
 }

@@ -19,7 +19,6 @@ class CLandscapeBackgroundPatch { public:
 };
 
 // operator delete @ 0xbfe9bc
-extern "C" void __cdecl eng_operator_delete(void* p);
 
 // Sub::destroy @ 0x440c40 : __fastcall member, model as __fastcall(self)
 void __fastcall Sub_destroy(Sub* self);
@@ -30,6 +29,6 @@ void* __fastcall vector_deleting_destructor(CLandscapeBackgroundPatch* self, int
 {
     Sub_destroy(&self->sub);
     if (flags & 1)
-        eng_operator_delete(self);
+        operator delete(self);
     return self;
 }

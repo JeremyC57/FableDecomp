@@ -13,7 +13,7 @@
 #include <string.h>
 #pragma intrinsic(strcmp)
 #pragma pack(push, 1)
-struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
+template <class T> class CBasicString { public:                       // CBasicString<char>, 13 bytes
     char*         PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
@@ -21,7 +21,7 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool operator==(const char* text) const;    // 0x004115A0
 };
 class CCharStringData { public:                        // 17 bytes
-    CBasicStringChar Data;
+    CBasicString<char> Data;
     long             NoRefs;
 };
 #pragma pack(pop)

@@ -43,7 +43,10 @@ struct CScriptTimerMap {                                    // STLport map<long,
     iterator end() { return iterator(_M_header); }
 };
 
-long GFGetCurrentFrame();                                   // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                                   // 0x0049D870
 extern long g_framesPerSecond;                              // 0x01375550
 
 #define V1(n) virtual void v##n();
@@ -69,7 +72,7 @@ void CGameScriptInterface::WorldUpdate(bool active)
 {
     if (active && !IsInMovieSequence() && !IsInCutscene()) {
         long fps = g_framesPerSecond;
-        if (GFGetCurrentFrame() % fps == 0) {
+        if (CWorld::GetFrame() % fps == 0) {
             for (CScriptTimerMap::iterator it = ScriptTimers.begin(); it != ScriptTimers.end(); ++it)
                 if (it->second > 0)
                     --it->second;

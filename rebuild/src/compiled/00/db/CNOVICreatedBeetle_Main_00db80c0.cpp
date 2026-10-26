@@ -1,5 +1,5 @@
 // CNOVI_CreatedBeetle::Main() -- the beetle spawned in Oakvale's intro: register an is-alive functor over Me, run a frame, then give it five seconds on a script timer and remove it (with effects) unless the script finished first
-// Grade: RELOCATION_MATCH -- the closing test is written `if (IsDone()) return; Game->RemoveThing(...)`: an early return there keeps a second CTimer-dtor + epilogue copy like retail, where `if (!IsDone()) RemoveThing` let VC cross-jump the loop exit into the final DeregisterTimer
+// Grade: RELOCATION_MATCH -- the closing test is written `if (IsActiveThreadTerminating()) return; Game->RemoveThing(...)`: an early return there keeps a second CTimer-dtor + epilogue copy like retail, where `if (!IsActiveThreadTerminating()) RemoveThing` let VC cross-jump the loop exit into the final DeregisterTimer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DB80C0, 232 bytes (+ int3 padding). __fastcall, `ret`.
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (the functor's member; the functor's inline dtor re-stores its
 //   vtable 0x012C2FE8 first), the entity script's functor registration 0x00F35B10 and IsDone 0x00F35B30 (on `this`; manifest
@@ -11,13 +11,20 @@
 //   PMasterData +0x18.
 // Shape: the functor is a scoped 0x10-byte frame object; the timer index stays in edi; the early exit inside the wait loop
 //   deregisters the timer itself (its own copy of the epilogue), the normal path falls through to the same call.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                                  // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
-struct CScriptThingFunctor_00ef7ab0 {                  // vtable 0x012C2FE8: an is-alive functor holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CScriptThingFunctor_00ef7ab0 : public NScript::CPredicateBase {                  // vtable 0x012C2FE8: an is-alive functor holding a script thing
     CScriptThing m_thing;                              // +0x04
     CScriptThingFunctor_00ef7ab0(const CScriptThing& thing) : m_thing(thing) { }
     ~CScriptThingFunctor_00ef7ab0() { }
@@ -53,14 +60,19 @@ class CTimer { public:                                        // 4 bytes: an ind
 };
 struct CQ_NewOakValeIntroScript;
 struct CQ_SunnyvaleMasterData;
-struct CNOVI_CreatedBeetle {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CNOVI_CreatedBeetle : public CEntityScriptBase {
     void*                     __vftable;               // +0x00
     CGameScriptInterface*     Game;                    // +0x04
     CScriptThing              Me;                      // +0x08
     CQ_NewOakValeIntroScript* ParentClass;             // +0x14
     CQ_SunnyvaleMasterData*   PMasterData;             // +0x18
-    void RegisterFunctor(CScriptThingFunctor_00ef7ab0& functor);   // 0x00F35B10
-    bool IsDone();                                     // 0x00F35B30
     void Main();
 };
 
@@ -68,18 +80,18 @@ void CNOVI_CreatedBeetle::Main()
 {
     {
         CScriptThingFunctor_00ef7ab0 functor(Me);
-        RegisterFunctor(functor);
+        SetPredicate(functor);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CTimer timer(5);
     while (timer.GetTime() != 0) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->RemoveThing(Me, true, true);
 }

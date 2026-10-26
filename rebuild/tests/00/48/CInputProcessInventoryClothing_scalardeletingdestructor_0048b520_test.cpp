@@ -7,9 +7,13 @@ static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 
 // definition of the extern scalar destructor the source calls
-extern void __fastcall CInputProcessInventoryClothing_scalar_destructor(CInputProcessInventoryClothing* process);
-void __fastcall CInputProcessInventoryClothing_scalar_destructor(CInputProcessInventoryClothing* process)
+class CAInputProcess {
+public:
+    virtual ~CAInputProcess();
+};
+CAInputProcess::~CAInputProcess()
 {
+    CInputProcessInventoryClothing* process = (CInputProcessInventoryClothing*)this; (void)process;
     (void)process;
     ++g_dtor_calls;
 }

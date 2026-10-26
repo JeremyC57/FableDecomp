@@ -1,7 +1,7 @@
 // CPersistContext::Transfer<ENumAcceptedBoasts>(const char* name, ENumAcceptedBoasts& value, const ENumAcceptedBoasts& defaultValue) -- persist one enum member ("NumAcceptedBoasts"): CRC-check the key, then by mode text load (seeding the default first when asked), text save, binary load, binary save as a long, or reset to the default
 // Leaf: Transfer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004B8D70, `ret 0Ch`. Called from CQuestManager::TransferBoasts (0x004B05C0) with the key "NumAcceptedBoasts".
-// Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteLong 0x00993EB0 (catalogued "WriteCBYTE"),
+// Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteSLONG 0x00993EB0 (catalogued "WriteCBYTE"),
 //   CPersistTraits<T>::TransferBinaryIn 0x004B85D0, CPersistContext::TransferObjectSaveText 0x009BAD60 and TransferObjectLoadText
 //   0x009BBA40 (both take the CPersistContext_TransferableComponent<T> wrapper, vtable 0x01239378).
 // Shape: the speed-optimised sibling of the landed size-TU CDefIndex instantiation 0x005CC1E8. The persist mode
@@ -10,7 +10,8 @@
 //   order and retail has them 4,3,2,1,0. the traits object of the binary-load arm is empty and lives in the dead value-argument slot (`lea ecx,[esp+20h]` once the value is in eax). The 8-byte frame is the {vtable, value*} wrapper of the text arms.
 //   The enum's name is descriptive (from the key); it is a 4-byte enum written with WriteLong.
 class CDataOutputStream { public:
-    void WriteLong(long value);                   // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 class CMemoryDataInputStream;
 enum ENumAcceptedBoasts { ENumAcceptedBoasts_Default };
@@ -52,7 +53,7 @@ void CPersistContext::Transfer(const char* name, T& value, const T& defaultValue
         value = defaultValue;
         break;
     case 3:
-        PSaveStream->WriteLong(value);
+        PSaveStream->WriteSLONG(value);
         break;
     case 2:
         CPersistTraits<T>().TransferBinaryIn(PLoadStream, &value);

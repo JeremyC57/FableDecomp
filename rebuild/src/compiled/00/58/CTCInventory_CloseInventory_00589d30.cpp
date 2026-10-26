@@ -193,7 +193,19 @@ struct CTextInput {
     unsigned char _pad[0x0c];
 };
 // Layout: retail CTCInventory Components +0x0C, handle vectors +0x178 / +0x184, flag +0x1CD, text inputs +0x1FC / +0x208.
-class CTCInventory { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventory : public NInventory::CTCInventoryBase { public:
     void*            __vftable;                         // +0x000
     CThing*          ParentThing;                       // +0x004
     unsigned char    _pad08[0x0c - 0x08];
@@ -209,7 +221,6 @@ class CTCInventory { public:
     void ClearQuestPersistentFlags();                   // 0x005BD597
     void SetEditBoxesActive(bool active);               // 0x00581A14
     void CloseMenus();                                  // 0x0058771C
-    CWorld* GetWorld() const;                           // 0x00686A70
     void CloseInventory();
 };
 
@@ -255,7 +266,7 @@ void CTCInventory::CloseInventory()
     InputA.Clear();
     InputB.Clear();
     g_pEngine->PDisplayEngine->PRenderer->SetEnabled(true);
-    CWorld* world = GetWorld();
+    CWorld* world = (&GetWorld());
     world->LastInventoryCloseFrame = GetFrameCount();
     if (g_pSoundSystem) {
         g_pSoundSystem->SetGroupVolume(0x10, CUserProfileManager::Get().GetMusicVolume(), 0.0f);

@@ -32,20 +32,21 @@ typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_CanBeSee
 struct CMessageEventManager_Retail {
     CMessageEvent_Retail* FindMostRecentMessage(const CSeenOrHeardFilter& filter);   // 0x008ABED0
 };
-struct CWorldMap_Retail;
+class CWorldMap;
 struct CDefinitionManager_Retail;
 struct CPlayerManager_Retail;
-struct CRegion_Retail {
+class CRegion { public:
     unsigned char _pad[0x18];
     CCharString   m_name;                           // +0x18
 };
-struct CWorldMap_Retail {
-    CRegion_Retail& GetRegion(long index);          // 0x004FC180
+class CWorldMap { public:
+public:
+    const CRegion& GetRegion(long) const;   // 0x004FC180
 };
 class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012();
-    virtual CWorldMap_Retail* PeekWorldMap();       // slot 13 (+0x34)
+    virtual CWorldMap* PeekWorldMap();       // slot 13 (+0x34)
     unsigned char                _pad04[0x5c];
     CMessageEventManager_Retail* PMessageEventManager_Data;   // +0x60 (engine/CWorld.h)
 };

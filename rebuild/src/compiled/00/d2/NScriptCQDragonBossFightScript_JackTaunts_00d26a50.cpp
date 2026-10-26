@@ -19,7 +19,7 @@ class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                     // 0x0099EAE0
 };
-CCharString __fastcall IntToCharString(long value);       // 0x0099F830
+CCharString __fastcall GFIntToCharString(long);       // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 
 class CGameScriptInterface { public:                          // vtable 0x01260F0C
@@ -90,10 +90,12 @@ class CTimer { public:                                         // a script timer
 };
 
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
+namespace NScript {
 class CQ_DragonBossFightScript : public CScriptBase {
 public:
     CGameScriptInterface* GSI;                          // +0x40
@@ -113,7 +115,7 @@ void CQ_DragonBossFightScript::JackTaunts()
             if (IsActiveThreadTerminating())
                 return;
             long conversation = GSI->AddNewConversation(GSI->GetHero(), false, false);
-            GSI->AddLineToConversation(conversation, "TEXT_QST_B05_JACK_TAUNT_" + IntToCharString(taunt), false,
+            GSI->AddLineToConversation(conversation, "TEXT_QST_B05_JACK_TAUNT_" + GFIntToCharString(taunt), false,
                                        GSI->GetHero(), GSI->GetHero());
             timer.SetTime(20);
             taunt += 10;

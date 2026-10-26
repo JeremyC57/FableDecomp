@@ -16,7 +16,9 @@ class CGraphicFrame { public: CGraphicFrameData* FrameData; };
 #endif
 extern "C" void free(void*); // 0x00BFEA14
 void operator delete(void*) throw(); // 0x00BFE9BC
-class CGraphicFrameData { public: unsigned long Sizeof(); }; // 0x009FCBF0
+class CGraphicFrameData { public: public:
+    unsigned long Sizeof() const;   // 0x009FCBF0
+}; // 0x009FCBF0
 struct CGraphicFrameMethods : CGraphicFrame {
  unsigned long Sizeof() {return FrameData ? FrameData->Sizeof()+sizeof(CGraphicFrame) : sizeof(CGraphicFrame);}
 };

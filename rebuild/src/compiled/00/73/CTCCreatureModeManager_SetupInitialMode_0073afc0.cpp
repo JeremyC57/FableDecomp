@@ -79,7 +79,8 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureModeDef>
 }
 #pragma auto_inline(on)
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 class CThing { public:
     unsigned char  _pad00[0x20];
@@ -113,12 +114,18 @@ struct SModeNode {                              // list node: next, prev, CCount
     CModeBase* m_pMode;
     void*      m_pModeInfo;
 };
-class CTCCreatureModeManager { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCCreatureModeManager : public CTCBase { public:
     CThing*    ParentThing;                     // +0x04 (CTCBase)
     unsigned char _pad08[4];
     SModeNode* PModes;                          // +0x0c list head (the sentinel)
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
     bool AddMode(unsigned long mode);           // 0x0073AE10
     CModeBase* FrontMode() const { return PModes->m_pNext->m_pMode; }
@@ -140,7 +147,7 @@ void CTCCreatureModeManager::SetupInitialMode()
             if (FrontMode()->CanBeReplacedByIdleMode() && def->AvailableIdleModes_first != def->AvailableIdleModes_last) {
                 RemoveMode(FrontMode()->GetType());
                 unsigned long count = def->AvailableIdleModes_last - def->AvailableIdleModes_first;
-                AddMode(def->AvailableIdleModes_first[GFRandom(count, GetWorld()->GetPRandomSeed())]);
+                AddMode(def->AvailableIdleModes_first[GFRandom(count, GetWorld().GetPRandomSeed())]);
             }
             if (def->InitialCreatureMode)
                 AddMode(def->InitialCreatureMode);

@@ -23,7 +23,10 @@ class CCharString { public:
     CCharString& operator+=(const CCharString& other);   // 0x0099F0A0
     operator const char*() const { return PStringData == 0 ? "" : PStringData->PData; }
 };
-void __fastcall SplitPath(const CCharString& path, CCharString* drive, CCharString* directory, CCharString* filename, CCharString* extension);   // 0x009976D0
+class CAFile {
+public:
+    static void __fastcall SplitPath(const CCharString&, CCharString*, CCharString*, CCharString*, CCharString*);   // 0x009976D0
+};   // 0x009976D0
 
 template <class T> struct allocator { allocator() { } };
 template <class T> struct _STLP_alloc_proxy : allocator<T> { T* _M_data; };
@@ -66,7 +69,7 @@ unsigned long CBankFile::FindIndexByPathname(const CCharString& pathname, long) 
 {
     CCharString filename;
     CCharString extension;
-    SplitPath(pathname, 0, 0, &filename, &extension);
+    CAFile::SplitPath(pathname, 0, 0, &filename, &extension);
     filename += extension;
     CArray<unsigned long> indices = FindIndicesByFilename(filename, -1, false);
     unsigned long count = indices.size();

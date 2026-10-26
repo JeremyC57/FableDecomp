@@ -7,13 +7,14 @@ template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_stora
 
 class CPersistContext {
 public:
-    void Transfer(unsigned long& value);          // 0x00431020
-    void Transfer(CDefString& v);                 // 0x0045228F
-    void Transfer(long& value);                   // 0x00431102
-    void Transfer(float& value);                  // 0x00431061
-    void Transfer(bool& value);                   // 0x0043314A
+    template <class T> void Transfer(T& value);          // 0x00431020
     template <class T> void TransferVectorOfSubComponents(vector<T>& value);   // <CPrizeScoreDef> 0x004ED953
 };
+template <> void CPersistContext::Transfer<unsigned long>(unsigned long& value);
+template <> void CPersistContext::Transfer<CDefString>(CDefString& value);
+template <> void CPersistContext::Transfer<long>(long& value);
+template <> void CPersistContext::Transfer<float>(float& value);
+template <> void CPersistContext::Transfer<bool>(bool& value);
 
 class CTavernGameDef {
 public:
@@ -214,11 +215,11 @@ void CTavernGameDef::Transfer(CPersistContext& context)
 }
 
 static const void* g_seen[256]; static int g_count = 0; static int g_kind[256];
-void CPersistContext::Transfer(unsigned long& v) { g_kind[g_count] = 0; g_seen[g_count++] = &v; }
-void CPersistContext::Transfer(CDefString& v) { g_kind[g_count] = 1; g_seen[g_count++] = &v; }
-void CPersistContext::Transfer(long& v) { g_kind[g_count] = 2; g_seen[g_count++] = &v; }
-void CPersistContext::Transfer(float& v) { g_kind[g_count] = 3; g_seen[g_count++] = &v; }
-void CPersistContext::Transfer(bool& v) { g_kind[g_count] = 4; g_seen[g_count++] = &v; }
+template <> void CPersistContext::Transfer<unsigned long>(unsigned long& v) { g_kind[g_count] = 0; g_seen[g_count++] = &v; }
+template <> void CPersistContext::Transfer<CDefString>(CDefString& v) { g_kind[g_count] = 1; g_seen[g_count++] = &v; }
+template <> void CPersistContext::Transfer<long>(long& v) { g_kind[g_count] = 2; g_seen[g_count++] = &v; }
+template <> void CPersistContext::Transfer<float>(float& v) { g_kind[g_count] = 3; g_seen[g_count++] = &v; }
+template <> void CPersistContext::Transfer<bool>(bool& v) { g_kind[g_count] = 4; g_seen[g_count++] = &v; }
 template <class T> void CPersistContext::TransferVectorOfSubComponents(vector<T>& v) { g_kind[g_count] = 5; g_seen[g_count++] = &v; }
 int main()
 {

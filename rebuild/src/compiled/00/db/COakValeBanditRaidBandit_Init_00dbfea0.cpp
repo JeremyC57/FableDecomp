@@ -19,7 +19,7 @@ class CCharString { public:
 };
 class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
-    ~CBaseClass();                                 // 0x0099A2E0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
 };
 struct SCountBlock {
     long  m_references;                            // +0

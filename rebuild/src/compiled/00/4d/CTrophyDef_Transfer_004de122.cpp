@@ -10,11 +10,7 @@
 class CDefString { public: long TablePos; };
 class CCharString { public: void* PStringData; };
 class CPersistContext { public:
-    void Transfer(float&);                              // 0x00431061
-    void Transfer(long&);                               // 0x00431102
-    void Transfer(bool&);                               // 0x0043314A
-    void Transfer(CDefString&);                         // 0x0045228F
-    void Transfer(CCharString&);                        // 0x00431143
+    template <class T> void Transfer(T& value);                              // 0x00431061
 };
 class CTrophyDef { public:
     virtual void Transfer(CPersistContext&);            // vtable slot 18 in retail

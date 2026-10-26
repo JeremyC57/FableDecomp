@@ -10,7 +10,7 @@ struct CGuiControlTreePane {
     Node* head; // +0x0 pointer to sentinel head node
 };
 extern "C" void __fastcall NodeSub_Dtor(int* self); // 0x55ad60, thiscall on node+0x18
-extern "C" void FreeNode(Node* n);                 // 0x7be264, cdecl
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CGuiControlTreePane_SortTreeRecursively(CGuiControlTreePane* self)
 {
@@ -21,7 +21,7 @@ void __fastcall CGuiControlTreePane_SortTreeRecursively(CGuiControlTreePane* sel
             Node* node = cur;
             cur = cur->next;
             NodeSub_Dtor(&node->sub);
-            FreeNode(node);
+            free(node);
         } while (cur != self->head);
     }
     head = self->head;

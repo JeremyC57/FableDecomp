@@ -5,12 +5,17 @@
 // 0x008FCFC0 (manifest "CPlayer::GetCurrentMode", propagated), CCombatManager::DeregisterCombatant @ 0x006ED9C0
 // on the world's combat manager at CWorld+0x4c.
 //
-// Shape: `if (creature->IsRegisteredCombatant()) { CThingAICreature* c = PBrain->PCreature; CWorld* w =
+// Shape: `if (creature->IsInMeleeAsAttacker()) { CThingAICreature* c = PBrain->PCreature; CWorld* w =
 // GetPWorld(); w->m_pCombatManager->DeregisterCombatant(c); }` -- the creature is re-read into a local (edi)
 // before the GetPWorld call so it survives it, and the world must be a named local too: with the chained
 // expression VC pushes the creature BEFORE the GetPWorld call (42 bytes), with the local it pushes edi after. The engine header keeps PBrain as a pad, so the base layout is local.
-class CThingAICreature { public:
-    bool IsRegisteredCombatant();               // 0x00662410
+class CThingCreatureBase
+{
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
+};
+
+class CThingAICreature : public CThingCreatureBase { public:
 };
 
 class CCombatManager { public:
@@ -46,7 +51,7 @@ struct CAIStateGroup_Guildmaster : CAIStateGroupBase {
 
 void CAIStateGroup_Guildmaster::Cleanup()
 {
-    if (PBrain->PCreature->IsRegisteredCombatant()) {
+    if (PBrain->PCreature->IsInMeleeAsAttacker()) {
         CThingAICreature* pCreature = PBrain->PCreature;
         CWorld* pWorld = GetPWorld();
         pWorld->m_pCombatManager->DeregisterCombatant(pCreature);

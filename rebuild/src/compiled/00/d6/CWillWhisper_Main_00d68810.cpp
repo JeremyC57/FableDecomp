@@ -13,6 +13,7 @@
 //   CMuteGuardOutsideWoods::Main 0x00D86150), PMasterData +0x18. Filter CIsThingConscious (vtable 0x012C2FE8).
 // Shape: the sibling's model; the hit test owns three conditional CCharString temporaries (flag word in ebx) and is
 //   materialised as a bool; the loop exit's terminate test has no use, so its result is dropped.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -39,12 +40,14 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 class CBaseObject { public:                                   // CBaseIntelligentPointer root
     virtual void b00();
     void* m_pIntelligentPointer;                       // +0x04
-    CBaseObject();                                     // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CCountedPointerWords {
     void* Data;
@@ -54,10 +57,11 @@ struct CCountedPointerWords {
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
     bool IsScripting();                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
-    void PlayAnimation(const CCharString& anim, bool waitForFinish, bool stayOnLastFrame, bool b3, bool b4, bool b5, bool b6, bool b7);   // 0x007E73D0
+public:
+    virtual void PlayAnimation(const CCharString&, bool, bool, bool, bool, bool, bool, bool);   // 0x007E73D0
 };
 class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -144,8 +148,14 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void v599(); virtual void v600();
     virtual void EntitySetInFaction(const CScriptThing& thing, const CCharString& faction) const;   // slot 601 (+0x964)
 };
-struct CIsThingConscious {                                 // vtable 0x012C2FE8: a predicate holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingConscious : public NScript::CPredicateBase {                                 // vtable 0x012C2FE8: a predicate holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingConscious(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingConscious() { }
@@ -154,8 +164,9 @@ class CEntityScriptBase { public:                             // retail 0x14 byt
     virtual void v00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void SetPredicate(CIsThingConscious& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 extern bool g_bScriptAnimationFlag;                   // 0x01375748
 struct CQ_GuildTrainingWoodsWillScript {

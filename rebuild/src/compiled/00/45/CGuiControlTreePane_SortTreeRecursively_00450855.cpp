@@ -8,7 +8,7 @@ struct Tree {
     Node* sentinel;  // +0x0 : pointer to the list sentinel node
 };
 
-extern void __cdecl FreeNode(Node* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CGuiControlTreePane_SortTreeRecursively(Tree* self)
 {
@@ -18,7 +18,7 @@ void __fastcall CGuiControlTreePane_SortTreeRecursively(Tree* self)
         do {
             Node* cur = n;
             n = n->next;
-            FreeNode(cur);
+            free(cur);
         } while (n != self->sentinel);
     }
     self->sentinel->next = self->sentinel;

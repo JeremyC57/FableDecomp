@@ -5,13 +5,13 @@
 // The head re-reads are faithful: the free helper may alias, so the loop test reloads it.
 struct Node { Node* next; Node* prev; };
 struct List { Node* head; void Clear(); };
-extern "C" void __cdecl Free2(void* p);   // 0x00bfea14
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 void List::Clear() {
     Node* n = this->head->next;
     while (n != this->head) {
         Node* cur = n;
         n = n->next;
-        Free2(cur);
+        free(cur);
     }
     this->head->next = this->head;
     this->head->prev = this->head;

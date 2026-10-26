@@ -52,7 +52,8 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 
 struct CTCSound {                                  // the thing's interface 0x10
@@ -75,7 +76,7 @@ class CDrawQuickAccessIcons { public:
 void CDrawQuickAccessIcons::ClearSoundEffects()
 {
     if (ChargingSoundID > 0) {
-        CThingCreatureBase* hero = PlayerManager->GetMainPlayer()->GetCharacterThing();
+        CThingCreatureBase* hero = PlayerManager->GetMainPlayer().GetCharacterThing();
         if (IS_THING_ALIVE_0043dbd0<CThing*>(hero)) {
             if (hero->HasInterface(TC_SOUND)) {
                 hero->GetInterfaceUnchecked<CTCSound>(TC_SOUND)->StopSound(ChargingSoundID);

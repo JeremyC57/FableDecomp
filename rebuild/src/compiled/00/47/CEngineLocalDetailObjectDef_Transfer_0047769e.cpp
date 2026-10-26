@@ -13,8 +13,7 @@
 //   context-argument slot ([ebp+0Bh]) with a one-byte default temporary at [ebp-1]; the bit is merged back with
 //   xor/and/xor (the top bit with and 7Fh / or). Only ReceiveShadows defaults to true.
 class CPersistContext { public:
-    void Transfer(long& value);                                              // 0x00431102
-    void Transfer(float& value);                                             // 0x00431061
+    template <class T> void Transfer(T& value);                                              // 0x00431102
     void Transfer(const char* name, bool& value, const bool& defaultValue);  // 0x004045C0
 };
 

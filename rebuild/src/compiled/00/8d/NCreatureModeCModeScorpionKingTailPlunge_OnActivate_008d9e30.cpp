@@ -142,18 +142,24 @@ inline bool IS_THING_ALIVE(const CThing* thing)
 class CThingCreatureBase : public CThing { public: };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector& position, bool flag);   // 0x006E0880
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                  // +4
-    CBaseIntelligentPointer();                        // 0x00A01B10
-    ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
-    void SetPItem(CThing* item);                      // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { T* item = other.GetPItem(); SetPItem(item); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 extern long g_framesPerSecond;             // 0x01375550
@@ -177,9 +183,9 @@ class CModeScorpionKingTailPlunge : public CModeBase { public:
     bool                bRecovering;            // +0x88
     C3DVector           TargetPos;              // +0x89
     C3DVector           TailPos;                // +0x95
-    CIntelligentPointerThing PTarget;           // +0xa1
-    CIntelligentPointerThing PTailEmitter;      // +0xa9
-    CIntelligentPointerThing PDustTrailEmitter; // +0xb1
+    CIntelligentPointer<CThing> PTarget;           // +0xa1
+    CIntelligentPointer<CThing> PTailEmitter;      // +0xa9
+    CIntelligentPointer<CThing> PDustTrailEmitter; // +0xb1
     void OnActivate();
 };
 #pragma pack(pop)
@@ -206,7 +212,7 @@ void CModeScorpionKingTailPlunge::OnActivate()
         if (found) {
             CThing* fx = CreateEffectThing(effectType, pos, false);
             if (IS_THING_ALIVE(fx))
-                PTailEmitter = CIntelligentPointerThing(fx);
+                PTailEmitter = CIntelligentPointer<CThing>(fx);
         }
         found = effects->GetEffectFromString("TAIL_STRIKE_TRAVEL", effectType);
         if (found) {
@@ -216,7 +222,7 @@ void CModeScorpionKingTailPlunge::OnActivate()
                     CTCDParticleEmitter* emitter = fx->GetTC<CTCDParticleEmitter>(0x4b);
                     emitter->AttachToThing(fx, 10, "", 0, 0.0f);
                 }
-                PDustTrailEmitter = CIntelligentPointerThing(fx);
+                PDustTrailEmitter = CIntelligentPointer<CThing>(fx);
             }
         }
         if (--effects->m_refCount == 0)

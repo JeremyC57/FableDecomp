@@ -52,12 +52,23 @@ class CTCCreatureNavigation { public:                  // interface 7
     bool IsAbleToNavigateFromPosToPos(const C3DVector* from, const C3DVector* to, float tolerance);   // 0x006CB620
     bool GetNearbyWanderPosition(const C3DVector* centre, float radius, C3DVector* result, bool flag); // 0x006CB6E0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -73,7 +84,7 @@ class CAIBrain { public:
 struct CAIStateGroupCreatureUseCoverBaseMethods : CAIStateGroup_CreatureUseCoverBase {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThing* GetCreature() const { return Brain()->PCreature; }
-    CBaseIntelligentPointer& Enemy() { return *(CBaseIntelligentPointer*)_pad_0x14; }
+    CIntelligentPointer<CThing>& Enemy() { return *(CIntelligentPointer<CThing>*)_pad_0x14; }
     bool GetHiddenCoverPos(C3DVector& result, CThing* cover);
 };
 

@@ -35,7 +35,7 @@ class CSystemManager { public:
     bool IsApplicationActive();                    // 0x009A57B0
     bool HasInputFocus();                          // 0x009A4FB0
 };
-CSystemManager* __cdecl GFGetSystemManager();      // 0x009A4EC0
+CSystemManager* __fastcall GFGetSystemManager();      // 0x009A4EC0
 struct CMaintainedEventList {                      // STLport list<CMaintainedEvent>
     void* m_pNode;
     void clear();                                  // 0x009E4710

@@ -13,9 +13,7 @@
 template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
 class CPersistContext { public:
-    void Transfer(bool& v);                 // 0x0043314A
-    void Transfer(float& v);                // 0x00431061
-    void Transfer(long& v);                 // 0x00431102
+    template <class T> void Transfer(T& value);                 // 0x0043314A
     void Transfer(CStlVector<long>& v);     // 0x00466A47
 };
 

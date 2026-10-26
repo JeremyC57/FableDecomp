@@ -139,7 +139,7 @@ public:
     T& operator[](unsigned int n) { return _M_start[n]; }
 };
 }
-CCharString __fastcall IntToCharString(long value);                              // 0x0099F830
+CCharString __fastcall GFIntToCharString(long);                              // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 class CDefString { public:
     long Index;
@@ -286,7 +286,7 @@ void NScript::CQ_WaspBossScript::DoMission()
     for (long i = 1; i < 6; ++i) {
         if (IsActiveThreadTerminating())
             return;
-        hornet = Game->CreateCreature(pGlobalScriptDef->CREATURE_HORNET_DRONE, Game->GetThingWithScriptName("QueenDepositPos" + IntToCharString(i)).GetPos(), "HornetDrone", false);
+        hornet = Game->CreateCreature(pGlobalScriptDef->CREATURE_HORNET_DRONE, Game->GetThingWithScriptName("QueenDepositPos" + GFIntToCharString(i)).GetPos(), "HornetDrone", false);
     }
     if (IsActiveThreadTerminating())
         return;

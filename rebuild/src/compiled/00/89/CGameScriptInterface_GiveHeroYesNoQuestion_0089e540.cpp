@@ -7,16 +7,17 @@
 //   CBasicString<char>::operator==(const char*) 0x004115A0, CSubtitleRenderer::SetText 0x00493049 / 0x00492FB4 (thunks).
 // Layout: the player GUI 0x013B8790 holds the subtitle renderer at +0x18; the main game component (+8) its font at +0x1614c.
 //   The generated CGameScriptInterface header flattens the vptr, so `this` is a local projection.
+class CThingPlayerCreature;
 #include <string.h>
 #pragma pack(push, 1)
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     char*         PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;            // 0x004115A0
 };
-class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicString<char> Data; long NoRefs; };
 #pragma pack(pop)
 class CCharString { public:
     CCharStringData* PStringData;
@@ -65,7 +66,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item);                         // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01231C4C
-    CIntelligentPointer(T* item) { SetPItem(item); }
+    CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
 
 };
 class CPlayer { public: CThing* GetHeroThing(); };              // 0x00487DC0
@@ -130,7 +131,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::GiveHeroYesNoQuestion(const CCharString& question, const CCharString& yesText, const CCharString& noText, const CCharString& extraText, bool pauseGame) const
 {
-    CIntelligentPointer<CThing> hero(PlayerManager->GetMainPlayer()->GetHeroThing());
+    CIntelligentPointer<CThingPlayerCreature> hero((CThingPlayerCreature*)PlayerManager->GetMainPlayer()->GetHeroThing());
     CTCBoastUI* boastUI = 0;
     if (hero.GetPItem() && !(hero.GetPItem()->LifeFlags & 1)) {
         CThing* thing = hero.GetPItem();

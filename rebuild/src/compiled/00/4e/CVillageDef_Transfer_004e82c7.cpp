@@ -20,12 +20,9 @@ struct CLongVector { long* _M_start; long* _M_finish; long* _M_end_of_storage; }
 
 class CPersistContext { public:
     void Transfer(CTaskVector& value);            // 0x004E85AE
-    void Transfer(CDefString& value);             // 0x0045228F
+    template <class T> void Transfer(T& value);             // 0x0045228F
     void Transfer(EVillageStanceToHero& value);   // 0x004E850A
-    void Transfer(long& value);                   // 0x00431102
     void Transfer(CLongVector& value);            // 0x00466A47
-    void Transfer(bool& value);                   // 0x0043314A
-    void Transfer(CCharString& value);            // 0x00431143
 };
 
 class CDefClassBase { public:

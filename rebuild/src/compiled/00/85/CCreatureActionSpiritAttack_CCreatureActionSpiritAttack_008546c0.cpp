@@ -11,14 +11,24 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CBaseIntelligentPointer {        // 8 bytes: vtable + item pointer
-    virtual void v00();
-    void* m_pItem;                          // +4
-    CBaseIntelligentPointer();              // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C; 8 bytes
-    virtual void v00();
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C; 8 bytes
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
@@ -27,8 +37,8 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
 };
 
 class CCreatureAction_SpiritAttack : public CCreatureActionBase { public:   // vtable 0x01275D74
-    CIntelligentPointer PTarget;            // +0xa8
-    CIntelligentPointer PSpirit;            // +0xb0
+    CIntelligentPointer<CThing> PTarget;            // +0xa8
+    CIntelligentPointer<CThing> PSpirit;            // +0xb0
     virtual void v00();
     CCreatureAction_SpiritAttack(CThingCreatureBase* owner);
 };

@@ -33,12 +33,12 @@ struct CRetailMapPrerequisites {                            // std::map<EQuestCa
     ~CRetailMapPrerequisites();                             // 0x004DD118
 };
 
-struct CResource_Calls {                                    // engine/CResource.h: the root of every def
+class CResource { public:                                    // engine/CResource.h: the root of every def
     virtual void v00();
-    ~CResource_Calls();                                     // 0x009FC550
+    virtual ~CResource();                                     // 0x009FC550
 };
 
-class CDefPointeeBase : public CResource_Calls { public:                  // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:                  // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }                                  // inline, empty: inlined into every derived destructor
 };

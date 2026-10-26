@@ -16,7 +16,7 @@
 // therefore sit earlier than the generated engine header says: 4 bytes per vector/map/set/CArray
 // and 8 bytes per list that precede them.
 
-struct CTCHeroStats_Retail {
+class CTCHeroStats { public:
     unsigned char _pad_0x00[0x3C];
     long          Money;                  // +0x3C (PDB +0x44)
     unsigned char _pad_0x40[4];
@@ -25,12 +25,13 @@ struct CTCHeroStats_Retail {
     long          RenownLevel;            // +0x70 (PDB +0x78)
     long          RenownMaxLevel;         // +0x74 (PDB +0x7C)
     long          RenownPointsInLevel;    // +0x78 (PDB +0x80)
-    void SetMoney(long amount, bool silent);     // 0x0057A774
-    void AddMoney(long amount, bool silent);     // 0x0057B327
     void SetMoneyAsConfiscated(bool confiscated);
+public:
+    void AddMoney(long, bool);   // 0x0057B327
+    void SetMoney(long, bool);   // 0x0057A774
 };
 
-void CTCHeroStats_Retail::SetMoneyAsConfiscated(bool confiscated)
+void CTCHeroStats::SetMoneyAsConfiscated(bool confiscated)
 {
     if (confiscated) {
         this->ConfiscatedMoney += this->Money;

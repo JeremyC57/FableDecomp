@@ -15,7 +15,10 @@
 //          the short `dec [esi+4] ; jne` release and the bool lives in a mid-function `push ebx`; the creature is a named
 //          local before SetAttackedByCreature. Two same-TU stand-in bodies (const LowerBound 0x004365B0 and GetEvent
 //          0x008AF0A0, both seen by retail's LTCG) tell VC7.1 the key and the hit pointer do not escape.
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};            // 0x0049D870
 class CTCBase;
 
 struct CInterfaceMap {
@@ -71,10 +74,21 @@ class C2DVector { public:
 };
 
 class CThing;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CThing { public:
@@ -82,7 +96,7 @@ class CThing { public:
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0xf4 - 0x4c];
-    CBaseIntelligentPointer LastAttacker;       // +0xf4 (CThingCreatureBase)
+    CIntelligentPointer<CThing> LastAttacker;       // +0xf4 (CThingCreatureBase)
     long FrameLastAttacked;                     // +0xfc
     void SetAttackedByCreature(CThing* attacker);   // 0x006624F0
     unsigned long HasTC(long interfaceType) const
@@ -142,7 +156,7 @@ class CAIStateGroupBase { public:
 };
 
 struct CThingWorld {
-    static long GetCurrentFrame() { return GFGetCurrentFrame(); }
+    static long GetCurrentFrame() { return CWorld::GetFrame(); }
 };
 extern long g_ChickenPanicMemory;               // 0x01375550
 
@@ -167,7 +181,7 @@ struct CHitDefPointer {
 namespace NEntityEvents {
     class CEventHitBy { public:
         unsigned char _00[8];
-        CBaseIntelligentPointer Attacker;       // +0x08
+        CIntelligentPointer<CThing> Attacker;       // +0x08
         CHitDef* Def;                           // +0x10
     };
     class CEventFilter_None { public: CEventFilter_None() { } };

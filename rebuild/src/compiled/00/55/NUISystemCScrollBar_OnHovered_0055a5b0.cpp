@@ -1,10 +1,10 @@
 // NUISystem::CScrollBar::OnHovered() -- the clickable hover handling, then turn the front end's mouse cursor into the hand
 // Leaf: OnHovered
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055A5B0, 29 bytes (tail `jmp` into the cursor's vtable).
-// Callees: NUISystem::CClickable::OnHovered @ 0x0055AEB0 (CClickable vtable 0x0124BD2C slot 143; it runs the hoverable
+// Callees: NUISystem::NUISystem::CClickable::OnHovered @ 0x0055AEB0 (CClickable vtable 0x0124BD2C slot 143; it runs the hoverable
 // handling and observes the click events), CFrontEndManager::GetInstance @ 0x0041E5F2 (static `__fastcall`), the cursor's
 // virtual slot 149 (+0x254, TurnToHand, 0x0055C810).
-// Label: CScrollBar vtable 0x0124B7E4 slot 143, overriding CClickable::OnHovered (Ego_r.pdb ?OnHovered@CClickable@NUISystem@@MAEXXZ;
+// Label: CScrollBar vtable 0x0124B7E4 slot 143, overriding NUISystem::CClickable::OnHovered (Ego_r.pdb ?OnHovered@CClickable@NUISystem@@MAEXXZ;
 // this retail override has no Ego_r symbol). Its slot-144 twin OnUnhovered (0x0055A740) turns the cursor back to the pointer.
 // Layout: the front-end manager keeps the mouse cursor component at +0xb8 (descriptive name).
 // Shape: `this` is dead after the base call (ecx passes through untouched); the cursor comes through an inline accessor
@@ -43,7 +43,8 @@ public:
 };
 class CClickable {
 public:
-    void OnHovered();                              // 0x0055AEB0 (virtual slot 143 in the real class)
+protected:
+    virtual void OnHovered();   // 0x0055AEB0
 };
 class CScrollBar : public CClickable {
 public:

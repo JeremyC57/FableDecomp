@@ -40,12 +40,23 @@ class CThing { public:
     unsigned char    _pad64[0x91 - 0x64];
     unsigned char    m_flags91;                    // +0x91 bit 0: dead
 };
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;
-    CThing* GetPItem() const;                      // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -55,11 +66,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 struct CModeJackOfBladesScream {
     unsigned char           _pad00[0x74];
-    CBaseIntelligentPointer PSword;                // +0x74
+    CIntelligentPointer<CThing> PSword;                // +0x74
     CRightHandedSet         InitialSwordRHS;       // +0x7c
     bool                    SwordFalling;          // +0x94
     long                    SwordFallTimer;        // +0x98
-    CBaseIntelligentPointer PEmitter;              // +0x9c
+    CIntelligentPointer<CThing> PEmitter;              // +0x9c
     C3DVector               SwordFallPos;          // +0xa4
     C3DVector               InitialSwordPos;       // +0xb0
     void FrameUpdate();

@@ -1,6 +1,6 @@
 // CTCHeroStats::Drink(float) -- pours a drink into the beer reservoir (scaled by the current drink multiplier), counts it, and makes the next drink count for less
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057A82A, 74 bytes.
-// Callee: CTCBase::GetDefinitions() @ 0x006869D0 (ParentThing's definition holder; +0xDC its CDefPointer<CHeroStatsDef>).
+// Callee: CTCBase::GetDefinitionManager() @ 0x006869D0 (ParentThing's definition holder; +0xDC its CDefPointer<CHeroStatsDef>).
 // Globals: 1.0f @ 0x0122DED8.
 //
 // Shape: `fld amount ; fmul [DrinkAffectMultiplier]` = `DrinkAffectMultiplier * amount` (the right operand is loaded
@@ -21,12 +21,18 @@ class CHeroStatsDef { public:
     float         DrinkAffectMultiplierMultiplier;     // +0x88 (PDB +0x90)
 };
 
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;              // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
 
-struct CTCHeroStats_Retail {
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+struct CTCHeroStats_Retail : public CTCBase {
     void*         __vftable;                   // +0x00
     void*         ParentThing;                 // +0x04 CTCBase
     unsigned char _pad_0x08[0xE8];
@@ -35,14 +41,13 @@ struct CTCHeroStats_Retail {
     float         BeerReservoir;               // +0x1A0 (PDB +0x1B8)
     float         DrinkAffectMultiplier;       // +0x1A4 (PDB +0x1BC)
 
-    CDefinitionHolder* GetDefinitions() const; // 0x006869D0
     void Drink(float amount);
 };
 
 void CTCHeroStats_Retail::Drink(float amount)
 {
     BeerReservoir += DrinkAffectMultiplier * amount;
-    float sobering = 1.0f - GetDefinitions()->PHeroStatsDef->DrinkAffectMultiplierMultiplier;
+    float sobering = 1.0f - GetDefinitionManager().PHeroStatsDef->DrinkAffectMultiplierMultiplier;
     ++NumberOfDrinks;
     DrinkAffectMultiplier *= 1.0f - sobering * amount;
 }

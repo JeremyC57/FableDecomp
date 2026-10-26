@@ -21,7 +21,6 @@ class CThing { public:
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    CPlayer* GetPlayer();                             // 0x004C7A10
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0 (CThingCreatureBase)
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -36,6 +35,8 @@ class CThing { public:
         }
         return false;
     }
+public:
+    const CPlayer& PeekPlayer() const;   // 0x004C7A10
 };
 struct CTCA7 {                                        // interface 0xA7
     unsigned char _pad[0xc];
@@ -55,12 +56,23 @@ struct CTCAnimation {                                 // interface 0x5A
 class CTCCreatureModeManager { public:                       // interface 0x31
     void RemoveMode(unsigned long mode);              // 0x0073ABA0
 };
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    CThing* m_pItem;
-    CThing* GetPItem() const;                         // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -76,9 +88,9 @@ class CCharString { public:
 class CCreatureActionBase { public:                          // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];
-    CBaseIntelligentPointer PCreature;                // +0x08
+    CIntelligentPointer<CThing> PCreature;                // +0x08
     unsigned char _pad10[0x2c - 0x10];
-    CBaseIntelligentPointer PItemRemoved;             // +0x2c
+    CIntelligentPointer<CThing> PItemRemoved;             // +0x2c
     unsigned char _pad34[0xa8 - 0x34];
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
@@ -113,7 +125,7 @@ void CCreatureAction_FinishFireballSpell::FinishAction()
         anim->RemoveCombinationAnimsOfType(1);
         anim->RemoveCombinationAnimsOfType(0x23);
     }
-    if (!PCreature.GetPItem()->GetPlayer()->m_autoFaceTarget) {
+    if (!PCreature.GetPItem()->PeekPlayer().m_autoFaceTarget) {
         CTCCreatureModeManager* modes;
         if (PCreature.GetPItem()->GetInterface(&modes, 0x31))
             modes->RemoveMode(0x19);

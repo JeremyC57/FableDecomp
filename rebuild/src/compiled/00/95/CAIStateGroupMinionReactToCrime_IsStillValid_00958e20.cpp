@@ -110,7 +110,8 @@ class CTCCreatureOpinionOfHero { public:
 
 struct CTCVillager;
 class CTCVillage { public:
-    bool IsCrimeHandled(long crimeHandle);      // 0x0065914B
+public:
+    bool HasCrimeBeenReported(long);   // 0x0065914B
 };
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
@@ -138,7 +139,7 @@ bool CAIStateGroup_MinionReactToCrime::IsStillValid()
                     crime = deed->CrimeHandle;
                 else
                     crime = handle;
-                if (IsGuardOnLevel() && !village->IsCrimeHandled(crime))
+                if (IsGuardOnLevel() && !village->HasCrimeBeenReported(crime))
                     return true;
             }
         }

@@ -38,7 +38,10 @@ class CWideString { public:
     }
 };
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);       // 0x0099BF30
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name, CWideString* extension);   // 0x00997620
+class CAFile {
+public:
+    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+};   // 0x00997620
 struct CFindFileData {
     wchar_t       FileName[260];
     unsigned long Attributes;
@@ -119,7 +122,7 @@ void CUserProfileManager::LoadFileList(std::CWideStringVector& names, std::CDate
     while (more) {
         CWideString name;
         CWideString extension;
-        SplitPath(data.FileName, 0, 0, &name, &extension);
+        CAFile::SplitPath(data.FileName, 0, 0, &name, &extension);
         if (extension.IsEmpty() && name != ProfileName) {
             names.push_back(name);
             CWideString path(data.FileName);

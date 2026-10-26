@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCDRegionEntrance_Destruct(void* entrance);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCDRegionEntrance_ScalarDeletingDestructor(void* entrance, int, unsigned int flags)
 {
-    CTCDRegionEntrance_Destruct(entrance);
+    ((CTCBase*)(entrance))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(entrance);
+        operator delete(entrance);
     return entrance;
 }

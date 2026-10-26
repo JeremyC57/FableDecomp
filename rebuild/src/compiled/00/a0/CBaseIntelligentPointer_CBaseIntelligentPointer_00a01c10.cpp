@@ -1,35 +1,28 @@
-// CBaseIntelligentPointer::~CBaseIntelligentPointer() -- the plain destructor: own vtable, then ClearData
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A01C10, oracle length 52 bytes.
-// Callees: operator delete @ 0x00BFE9BC (__cdecl, `add esp,4`), through the inlined ClearData (0x00A01B20).
-//
-// Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+4] ; test eax,eax ; mov dword ptr [esi],offset vftable ;
-//                je E ; dec dword ptr [eax+4] ; mov eax,[esi+4] ; mov ecx,[eax+4] ; test ecx,ecx ; jne N ;
-//                cmp dword ptr [eax],0 ; jne N ; push eax ; call operator delete ; add esp,4 ;
-//                N: mov dword ptr [esi+4],0 ; E: pop esi ; ret
-// The vtable (0x0129C95C, rtti-vtables.tsv: CBaseIntelligentPointer) is re-installed as every
-// destructor does and ClearData is inlined.  The class is polymorphic through a plain virtual
-// function here so only the `??1` body is emitted (a virtual destructor would make the lander grade
-// the deleting `??_G`, which is 0x00A01C50).
+// CBaseIntelligentPointer::~CBaseIntelligentPointer() -- set the vtable (0x0129C95C) and drop this pointer's share of the record
+// Leaf: ??1CBaseIntelligentPointer@@UAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A01C10.
+// Identity: Ego_r.pdb + FableWin.pdb ??1CBaseIntelligentPointer@@UAE@XZ (virtual; slot 0 of 0x0129C95C is its
+//   scalar deleting destructor 0x00A01C50). Callees: operator delete @ 0x00BFE9BC through the inlined ClearData 0x00A01B20.
 class CBaseObject;
-
-struct CBaseObjectPointer {
-    CBaseObject* PItem;        // +0x00
-    long         RefCount;     // +0x04
+class CBaseObjectPointer {                             // Ego_r.pdb, 8 bytes
+public:
+    CBaseObject*  object;                              // +0x00 the observed object, 0 once it died
+    unsigned long refcount;                            // +0x04 intelligent pointers sharing this record
 };
-
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObjectPointer* m_pData;   // +0x04
-    void ClearData()               // 0x00A01B20, inlined here
+class CBaseIntelligentPointer {                        // vtable 0x0129C95C
+public:
+    virtual ~CBaseIntelligentPointer();                // 0x00A01C10
+private:
+    void ClearData() const                             // 0x00A01B20 (private const in Ego_r), inlined here
     {
-        if (m_pData != 0) {
-            m_pData->RefCount--;
-            if (m_pData->RefCount == 0 && m_pData->PItem == 0)
-                delete m_pData;
-            m_pData = 0;
+        if (PData != 0) {
+            PData->refcount--;
+            if (PData->refcount == 0 && PData->object == 0)
+                delete PData;
+            PData = 0;
         }
     }
-    ~CBaseIntelligentPointer();    // 0x00A01C10
+    mutable CBaseObjectPointer* PData;                 // +0x04
 };
 
 CBaseIntelligentPointer::~CBaseIntelligentPointer()

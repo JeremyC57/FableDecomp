@@ -2,6 +2,10 @@
 // Leaf: ??1C3DAnimationBlendState@
 // Byte-exact reconstruction of C3DAnimationBlendState::~C3DAnimationBlendState @ 0x004dc916
 
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 struct RefCounted {
     void** vtable;   // +0
     int    refCount; // +4
@@ -9,7 +13,6 @@ struct RefCounted {
 
 struct BaseBlendState;
 // base destructor tail-called at 0x686830
-extern "C" void __fastcall Base_dtor_00686830(BaseBlendState* self);
 
 class C3DAnimationBlendState { public:
     char        pad0[0xc];   // +0
@@ -27,5 +30,5 @@ void __fastcall dtor(C3DAnimationBlendState* self)
         }
         self->handle = 0;
     }
-    Base_dtor_00686830((BaseBlendState*)self);
+    ((CTCBase*)((BaseBlendState*)self))->CTCBase::~CTCBase();
 }

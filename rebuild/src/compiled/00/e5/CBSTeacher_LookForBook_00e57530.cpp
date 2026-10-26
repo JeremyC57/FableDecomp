@@ -12,6 +12,7 @@
 //   MoralityReward +0x30, seh_me +0x34. CV_BookCollectingScript is retail = PDB - 0x18 here (0x14 for the base, 4 for
 //   the 12-byte retail STLport vectors): LastBookRequested +0x8c, BooksInGame +0x90, BookDef +0x94, BookDonated +0xa0,
 //   BookOwned +0xac (the bool vectors are read as plain byte arrays).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -21,9 +22,8 @@ class CCharString { public:
 CCharString __fastcall GFIntToCharString(long value);                          // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 class CScriptThing { public:
-    void* vptr;
     void* PImp[2];
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_0 };
 #define VPAD1(a) virtual void a() const;
@@ -63,7 +63,13 @@ struct CV_BookCollectingScript {
     bool*        BookOwned;                            // +0xac
 };
 struct CQ_SunnyvaleMasterData;
-class CBS_Teacher {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CBS_Teacher : public CEntityScriptBase {
 public:
     void*                    __vftable;                // +0x00
     CGameScriptInterface*    Game;                     // +0x04
@@ -77,7 +83,6 @@ public:
     long BooksComment;                                 // +0x2c
     long MoralityReward;                               // +0x30
     CScriptGameResourceObjectScriptedThingBase seh_me; // +0x34
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     bool AskForBook(long book, CCharString refusal);   // 0x00E55CE0
     void LookForBook();
 };

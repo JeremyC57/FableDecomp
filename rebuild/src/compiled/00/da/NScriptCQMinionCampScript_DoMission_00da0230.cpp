@@ -49,14 +49,14 @@ class CScriptGameResourceObjectScriptedThingBase { public:     // vtable 0x01270
     virtual void h000();
     unsigned char _body[0xc];
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0
-    ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
 class CScriptGameResourceObjectMovieBase { public:             // vtable 0x01260EF4, 0x10 bytes
     virtual void m000();
     unsigned char _body[0xc];
     CScriptGameResourceObjectMovieBase();               // 0x006E7B60
-    ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
+    virtual ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
 };
 struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase>
     void* _body[3];
@@ -171,12 +171,14 @@ class CGameScriptInterface { public:                       // the quest's game s
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c) GetActiveQuestName
 };
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
     void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
 };
+namespace NScript {
 class CQ_MinionCampScript : public CScriptBase {
 public:
     CGameScriptInterface* Game;                         // +0x40

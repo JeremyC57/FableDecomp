@@ -4,7 +4,7 @@
 // CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580 on the thing's definition (+0x70), CCharString(const char*,
 // long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString(const CCharString&, long&) 0x00669D30
 // (landed as CCRC::CalcAndLookup), CThing::GetPosition 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool)
-// 0x006E0880, CThingAnimatable::SetSuspendAnimation(bool, long) 0x00833A10, CCombatActionBase::Initialise 0x00857520 (direct
+// 0x006E0880, CThingAICreature::SetSuspendAnimation(bool, long) 0x00833A10, CCombatActionBase::Initialise 0x00857520 (direct
 // base call, after the effect).
 // Shape: the TeleportIn/TeleportOut lookup (0x008B9F20) without the CreateEffects gate: the def from the plain out-slot is
 // copied into a named pointer (ebp) and released by hand at the very end; the creature is a named local; the `found && ...`
@@ -42,11 +42,12 @@ class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 
-struct CThingAnimatable {
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
+class CThingAICreature { public:
+public:
+    void SuspendAI(bool, void*);   // 0x00833A10
 };
 
-class CThing : public CThingAnimatable { public:
+class CThing : public CThingAICreature { public:
     unsigned char  _pad0[0x70];
     CDefClassBase* m_pDef;                      // +0x70
     const C3DVector& GetPosition() const;       // 0x004C73D0
@@ -54,17 +55,28 @@ class CThing : public CThingAnimatable { public:
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();                  // 0x00857520
     unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;          // +0x08
+    CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];
 };
 
@@ -83,7 +95,7 @@ void CCreatureAction_UndeadReturnToEarth::Initialise()
     if (found && effects->GetEffectFromString("SINK", effectType))
         CreateEffectThing(effectType, &PCreature.GetPItem()->GetPosition(), false);
     CThing* sinking = PCreature.GetPItem();
-    sinking->SetSuspendAnimation(true, 0);
+    sinking->SuspendAI(true, 0);
     CCombatActionBase::Initialise();
     ReleaseDef(effects);
 }

@@ -31,7 +31,8 @@ class CThingAICreature { public:
     unsigned __int64 UpdateOffset;                      // +0x18
     unsigned char _pad20[0x1c8 - 0x20];
     unsigned char CreatureFlags;                        // +0x1c8
-    bool IsReadyForBrain() const;                       // 0x00833710
+public:
+    bool RequiresAutoPlacement();   // 0x00833710
 };
 class CBrainUpdateZone { public:
     long Unknown;
@@ -54,7 +55,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                             // +0x11
     void Terminate();                                   // 0x008FCF40
     void Reset();                                       // 0x008FCF50
-    void Stop();                                        // 0x008FD050
+public:
+    void CleanupMain();   // 0x008FD050
 };
 class CAIBrain { public:
     virtual void v00();
@@ -99,7 +101,7 @@ bool CAIBrain::Update(long distance, CBrainOutput& output)
         updatePeriod = PCurrentUpdateZone->UpdatePeriod;
         priorityPeriod = PCurrentUpdateZone->PriorityCheckPeriod;
     }
-    if (!InitialisedCreaturePosition && Creature->IsReadyForBrain()) {
+    if (!InitialisedCreaturePosition && Creature->RequiresAutoPlacement()) {
         InitCreaturePosition();
         InitialisedCreaturePosition = true;
     }
@@ -128,7 +130,7 @@ bool CAIBrain::Update(long distance, CBrainOutput& output)
                 PActiveStateGroup->Terminate();
         } else {
             if (PActiveStateGroup) {
-                PActiveStateGroup->Stop();
+                PActiveStateGroup->CleanupMain();
                 if (OutputValid) {
                     outputCopied = OutputValid;
                     output = Output;
@@ -156,7 +158,7 @@ bool CAIBrain::Update(long distance, CBrainOutput& output)
     }
     if (!UpdatingStateGroup && PActiveStateGroup->Terminated) {
         bool copied = false;
-        PActiveStateGroup->Stop();
+        PActiveStateGroup->CleanupMain();
         if (OutputValid) {
             copied = OutputValid;
             output = Output;

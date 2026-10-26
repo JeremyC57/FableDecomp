@@ -124,12 +124,17 @@ class CWorld { public:
     static long __fastcall GetFrame();                     // 0x0049D870
 };
 
-class CTCHeroExperience { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCHeroExperience : public CTCBase { public:
     void*         __vftable;                               // +0x00
     unsigned char _pad_0x04[0x4C];                         // +0x04 CTCBase fields, experience counters, vectors, Pickups
     std::list<std::pair<EDamageAttribute, long> > AttackHistory;   // +0x50 (PDB +0x64)
 
-    CWorld* GetWorld();                                    // 0x00686A70 (CTCBase)
 private:
     void AddAttackOfTypeToAttackHistory(EDamageAttribute type);   // private in Ego_r.pdb (AAE)
 };
@@ -137,5 +142,5 @@ private:
 void CTCHeroExperience::AddAttackOfTypeToAttackHistory(EDamageAttribute type)
 {
     AttackHistory.pop_front();
-    AttackHistory.push_back(std::pair<EDamageAttribute, long>(type, GetWorld()->GetFrame()));
+    AttackHistory.push_back(std::pair<EDamageAttribute, long>(type, GetWorld().GetFrame()));
 }

@@ -58,7 +58,7 @@ class CThingCreatureBase { public:
     ECombatAnimationHandedness PreviousActionHandedness;   // +0x138 (retail)
 };
 
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 class CWorld {
 public:
     unsigned long* GetPRandomSeed();                    // 0x0049D810

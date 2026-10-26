@@ -10,11 +10,14 @@ struct SGuiMarkerIcons_0082a230 {
     long m_iconD;                                  // +0x24
     long m_iconE;                                  // +0x28
 };
-struct CGuiDef_0082a230 {
+class CPlayerGuiDef { public:
     unsigned char           _pad00[0x958];
     SGuiMarkerIcons_0082a230* m_pMarkerIcons;      // +0x958
 };
-CGuiDef_0082a230* __fastcall PeekGuiDef_00438570();   // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};   // 0x00438570
 
 struct CMarkerInfo {
     unsigned char _pad00[8];
@@ -24,7 +27,7 @@ struct CMarkerInfo {
 
 bool CMarkerInfo::IsRotatedOnMap()
 {
-    SGuiMarkerIcons_0082a230* icons = PeekGuiDef_00438570()->m_pMarkerIcons;
+    SGuiMarkerIcons_0082a230* icons = CPlayerGui::PeekGuiDef().m_pMarkerIcons;
     if (m_icon == icons->m_iconE || m_icon == icons->m_iconA || m_icon == icons->m_iconB || m_icon == icons->m_iconC || m_icon == icons->m_iconD)
         return false;
     return true;

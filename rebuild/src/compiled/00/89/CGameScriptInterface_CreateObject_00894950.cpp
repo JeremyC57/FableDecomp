@@ -68,8 +68,13 @@ struct CDefPointerThingObjectDef {
     CDefPointerThingObjectDef() : Object(0) {}
     ~CDefPointerThingObjectDef() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
 };
-class CGameDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);                     // 0x009AD410
+class CDefinitionManager
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};
+
+class CGameDefinitionManager : public CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointerThingObjectDef* out);               // 0x0042B040
 };
 void* FindDef_CGameDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below

@@ -89,7 +89,10 @@ class CTCInventoryItem { public:
 };
 class CPlayer { public: CThing* GetHeroCreature(); };          // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
-struct CDataBank { CWideString GetTextBySymbol(const CCharString& symbol); };   // 0x009C95E0
+namespace NGameText {
+class CDataBank { public: const CWideString GetTextBySymbol(const CCharString& symbol) const; };
+}
+using NGameText::CDataBank;   // 0x009C95E0
 class CFontBank;
 class CGame { public:
     unsigned char _pad[0x14];

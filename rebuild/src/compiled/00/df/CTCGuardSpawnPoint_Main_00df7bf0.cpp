@@ -35,7 +35,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  struct InlineCopy { };                                 // tag: the inline copy retail expands at by-value call sites
  CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
  CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
- ~CScriptThing();                                       // 0x004AA840
+ virtual ~CScriptThing();                                       // 0x004AA840
  CScriptThing& operator=(const CScriptThing& other);    // 0x008AB980
 };
 #include "engine/CGameScriptInterface.h"
@@ -993,11 +993,16 @@ struct CQ_TraderConflictEvilScript {
  long NextTimeToSpawnGuards;                         // +0x64
 };
 inline long NumLeftToSpawn(const CQ_TraderConflictEvilScript* p) { return 25 - p->InitialNumberInRegion - p->NumberSpawned; }
-struct CTC_GuardSpawnPoint {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CTC_GuardSpawnPoint : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CQ_TraderConflictEvilScript* ParentClass;           // +0x14
  void* PMasterData;                                  // +0x18
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CTC_GuardSpawnPoint::Main()

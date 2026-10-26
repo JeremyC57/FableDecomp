@@ -75,7 +75,8 @@ class CPlayer { public:
     CThing* GetHeroThing();                             // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CGameCameraManager { public:
     void SetEarthquakeAt(const C3DVector& position, float strength, float length, bool global);   // 0x00699560
@@ -123,8 +124,9 @@ public:
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    CWorld* GetWorld();                                 // 0x00686A70
-    CPlayerManager* GetPlayerManager();                 // 0x00686D40
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CTCDRumble : public CTCBase {
 public:
@@ -142,13 +144,13 @@ void CTCDRumble::OnInitialActivate()
     ParentThing->PDef->GetSubDef(&def);
     PDef = def;
     CGameCameraManager* cameraManager;
-    if (GetWorld()->GetGameCameraManager(&cameraManager)) {
+    if (GetWorld().GetGameCameraManager(&cameraManager)) {
         CThing* thing = ParentThing;
         cameraManager->SetEarthquakeAt(thing->GetPosition(), Strength, Length, GlobalRumble);
     }
     float decayTime = Length * 0.8f;
     float attackTime = Length * 0.2f;
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
     if (hero && !hero->Dead) {
         float scale = 1.0f;
         if (!GlobalRumble) {

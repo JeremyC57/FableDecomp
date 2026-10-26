@@ -22,8 +22,17 @@ class CCharString { public:
     ~CCharString();                        // 0x0099EAE0
 };
 
-class CMeshDataBank { public:
-    unsigned long GetObjectIndex(const CCharString& name);   // 0x009CCDC0
+class CBankFile
+{
+public:
+    unsigned long FindIndexBySymbol(const CCharString&) const;   // 0x009CCDC0
+};
+class CBankFileAsync : public CBankFile
+{
+public:
+};
+
+class CMeshDataBank : public CBankFileAsync { public:
 };
 
 class C3DGeneratorObject { public:
@@ -67,7 +76,7 @@ void C3DMeshStats::InitialiseMeshGenerators(CMeshDataBank* bank, const CCharStri
     C3DGeneratorObject* it = MeshGenerators.Begin();
     while (it != MeshGenerators.End()) {
         C3DGeneratorObject* next = it + 1;
-        it->BankIndex = bank->GetObjectIndex(it->ObjectName);
+        it->BankIndex = bank->FindIndexBySymbol(it->ObjectName);
         if (!it->BankIndex)
             next = MeshGenerators.Erase(it);
         it = next;

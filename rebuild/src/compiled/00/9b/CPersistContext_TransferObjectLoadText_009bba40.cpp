@@ -12,7 +12,7 @@
 // local of the else block; the cleaning loop's end is a local read before the PStringToClean test.
 #include <string.h>
 #pragma pack(push, 1)
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     char*         PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
@@ -20,7 +20,7 @@ struct CBasicStringChar {
     bool operator==(const char* text) const;    // 0x004115A0
 };
 class CCharStringData { public:
-    CBasicStringChar Data;
+    CBasicString<char> Data;
     long             NoRefs;
 };
 #pragma pack(pop)

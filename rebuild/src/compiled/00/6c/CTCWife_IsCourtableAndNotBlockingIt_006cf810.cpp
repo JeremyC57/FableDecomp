@@ -1,6 +1,6 @@
 // CTCWife::IsCourtableAndNotBlockingIt() const -- true when courting is not blocked, the wife's attitude allows it, and the living hero is free
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CF810, 124 bytes (+4 int3). __fastcall, returns bool in al.
-// Callees: CTCBase::GetPlayerManager() const 0x00686D50 (catalog "CViewBase::GetDisplayEngine" twin of 0x00686D40);
+// Callees: CTCBase::PeekPlayerManager() const 0x00686D50 (catalog "CViewBase::GetDisplayEngine" twin of 0x00686D40);
 //          CPlayerManager::GetMainPlayer() const 0x00449960; CPlayer::GetHeroThing() 0x00487DC0;
 //          CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x004365B0.
 // Shape: early-out tests on CourtingBlocked (+0x15), OpinionAttitude (+0x10) == 4 and bit 3 of the parent thing's +0x1C9
@@ -51,20 +51,26 @@ struct CHeroInterface4 {                         // interface 4 = CTCHeroStats (
     unsigned char _pad_0x00[0x114];
     void* BlockingCourtship;                     // +0x114 (descriptive)
 };
-class CTCWife { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
+
+class CTCWife : public CTCBase { public:
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[8];
     long OpinionAttitude;                        // +0x10 EOpinionAttitudeType
     unsigned char AttitudeUpdateCounter;         // +0x14
     bool CourtingBlocked;                        // +0x15
-    const CPlayerManager* GetPlayerManager() const;   // 0x00686D50
     bool IsCourtableAndNotBlockingIt() const;
 };
 bool CTCWife::IsCourtableAndNotBlockingIt() const
 {
     if (!CourtingBlocked && OpinionAttitude != 4 && (ParentThing->Flags1C9 & 8)) {
-        CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+        CThing* hero = PeekPlayerManager().GetMainPlayer()->GetHeroThing();
         if (hero && !(hero->Flags91 & 1)) {
             CHeroInterface4* component;
             if (hero->GetInterface(&component, 4)) {

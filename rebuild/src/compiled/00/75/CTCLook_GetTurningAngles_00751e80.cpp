@@ -51,7 +51,8 @@ class CThingCreatureBase { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char _pad92[0x100 - 0x92];
     CCreatureActionBase* CurrentAction;         // +0x100 (CCountedPointer<CCreatureActionBase> data)
-    bool IsPerformingAnyAction();               // 0x006622A0
+public:
+    bool IsPerformingAnyAction() const;   // 0x006622A0
 };
 template<class T> inline bool IS_THING_ALIVE(T* const& p)
 {

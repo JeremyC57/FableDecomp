@@ -10,8 +10,7 @@
 #include "engine/CTCBase.h"
 #undef CTCBase
 class CTCBase { public:                            // vtable 0x0125BE0C (.?AVCTCBase@@)
-    void* _vptr;
-    ~CTCBase();                             // 0x00686830 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
+    virtual ~CTCBase();                             // 0x00686830 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
 };
 struct CBaseIntelligentPointer {            // vptr + data (8 bytes); vtable 0x0129C95C
     void* _vptr;

@@ -19,8 +19,13 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-class CGameDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
+class CDefinitionManager
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};
+
+class CGameDefinitionManager : public CDefinitionManager { public:
 };
 
 class CMainGameComponent;

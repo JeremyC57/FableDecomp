@@ -81,7 +81,7 @@ class CScriptThing : public CBaseClass { public:                          // vta
     }
 };
 namespace NScript {
-struct __declspec(novtable) CPredicateBase {               // vtable 0x012C2FF4 (never stored: novtable)
+class __declspec(novtable) CPredicateBase { public:               // vtable 0x012C2FF4 (never stored: novtable)
     virtual bool IsTrue() = 0;
 };
 }

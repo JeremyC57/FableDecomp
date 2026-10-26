@@ -135,18 +135,24 @@ class CTCStealth { public:                                // interface 0x36
     void SetAsInDanger(CThing* source, EDangerStatus status);   // 0x00747B80
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                               // +0x04
-    CBaseIntelligentPointer();                     // 0x00A01B10
-    ~CBaseIntelligentPointer();                    // 0x00A01C10
-    CThing* GetPItem() const;                      // 0x00A01B50
-    void SetPItem(CThing* item);                   // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { T* item = other.GetPItem(); SetPItem(item); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatSequenceBase { public:
@@ -208,7 +214,7 @@ class CDefendingCombatantInfo { public:                   // retail 0x3c bytes
     unsigned char CombatWheel[0x0c];               // +0x0c
     float         LastVictimWheelUpdatePos[3];     // +0x18
     long          LastWheelUpdateWorldFrame;       // +0x24
-    CIntelligentPointerThing PLastAttacker;        // +0x28
+    CIntelligentPointer<CThing> PLastAttacker;        // +0x28
     void*         PAttackPattern;                  // +0x30
     long          AttackPatternIndex;              // +0x34
     long          FrameForNextInstruction;         // +0x38

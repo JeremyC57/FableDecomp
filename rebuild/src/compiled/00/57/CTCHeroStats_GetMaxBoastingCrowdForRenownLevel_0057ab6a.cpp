@@ -1,7 +1,7 @@
 // CTCHeroStats::GetMaxBoastingCrowdForRenownLevel(long) const -- the largest boasting crowd allowed at the hero's renown level (the table's last entry past its end, 0 for an empty table)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057AB6A, 86 bytes. The stack argument is not read (`ret 4`); the level
 // used is the RenownLevel member.
-// Callee: CTCBase::GetDefinitions() @ 0x006869D0 (ParentThing's definition holder; +0xDC its CDefPointer<CHeroStatsDef>).
+// Callee: CTCBase::GetDefinitionManager() @ 0x006869D0 (ParentThing's definition holder; +0xDC its CDefPointer<CHeroStatsDef>).
 //
 // Shape: three separate size() evaluations of CHeroStatsDef::RenownLevelMaxBoastingCrowd (`sub ; sar 2` each): the
 // guard (`sar ; je` to a trailing `xor eax,eax`), the unsigned clamp test (`cmp ; jb`), and `size() - 1` (`dec ecx`) in
@@ -25,24 +25,29 @@ class CHeroStatsDef { public:
     CLongVector   RenownLevelMaxBoastingCrowd; // +0xC4 (PDB +0xD4)
 };
 
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;              // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
 
-struct CTCHeroStats_Retail {
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+struct CTCHeroStats_Retail : public CTCBase {
     void*         __vftable;                   // +0x00
     void*         ParentThing;                 // +0x04 CTCBase
     unsigned char _pad_0x08[0x68];
     long          RenownLevel;                 // +0x70 (PDB +0x78)
 
-    CDefinitionHolder* GetDefinitions() const; // 0x006869D0
     long GetMaxBoastingCrowdForRenownLevel(long unused) const;
 };
 
 long CTCHeroStats_Retail::GetMaxBoastingCrowdForRenownLevel(long unused) const
 {
-    const CHeroStatsDef* def = GetDefinitions()->PHeroStatsDef;
+    const CHeroStatsDef* def = GetDefinitionManager().PHeroStatsDef;
     if (def->RenownLevelMaxBoastingCrowd.size() > 0) {
         unsigned long level = (unsigned long)RenownLevel < def->RenownLevelMaxBoastingCrowd.size()
             ? RenownLevel : def->RenownLevelMaxBoastingCrowd.size() - 1;

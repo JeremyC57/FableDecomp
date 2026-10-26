@@ -167,26 +167,37 @@ class CWorld { public:
     long FindAllMessages(const CBetweenFilter& filter, list<CMessageEvent*>& found) { return PMessageEventManager_Data->FindAllMessages(filter, &found); }
 };
 
-class CTCInventoryMap { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
     void*             __vftable;                        // +0x00
     unsigned char     _pad04[0x24c - 0x04];
     list<CRegionPair> RegionCorrespondances;            // +0x24C
-    CWorld* GetWorld();                                 // 0x00686A70 (CTCBase)
     void UpdateRegionsCorrespondances(long startFrame, long endFrame);
 };
 void CTCInventoryMap::UpdateRegionsCorrespondances(long startFrame, long endFrame)
 {
     list<CMessageEvent*> lefts;
     list<CMessageEvent*> entereds;
-    GetWorld()->FindAllMessages(CMessageEventFilter_IsOfType(0x26) && CMessageEventFilter_OccuredBetween(startFrame, endFrame), lefts);
-    GetWorld()->FindAllMessages(CMessageEventFilter_IsOfType(0x27) && CMessageEventFilter_OccuredBetween(startFrame, endFrame), entereds);
+    GetWorld().FindAllMessages(CMessageEventFilter_IsOfType(0x26) && CMessageEventFilter_OccuredBetween(startFrame, endFrame), lefts);
+    GetWorld().FindAllMessages(CMessageEventFilter_IsOfType(0x27) && CMessageEventFilter_OccuredBetween(startFrame, endFrame), entereds);
     list<CMessageEvent*>::riterator left = lefts.rbegin();
     list<CMessageEvent*>::riterator entered = entereds.rbegin();
     for (; entered != entereds.rend(); ++left, ++entered) {
         CMessageEvent* from = *left;
         CMessageEvent* to = *entered;
-        CRegion* a = &GetWorld()->GetWorldMap()->GetRegion(from->MapNumber);
-        CRegion* b = &GetWorld()->GetWorldMap()->GetRegion(to->MapNumber);
+        CRegion* a = &GetWorld().GetWorldMap()->GetRegion(from->MapNumber);
+        CRegion* b = &GetWorld().GetWorldMap()->GetRegion(to->MapNumber);
         bool absent = true;
         list<CRegionPair>::iterator it = find(RegionCorrespondances.begin(), RegionCorrespondances.end(), CRegionPair(a, b));
         list<CRegionPair>::iterator last = RegionCorrespondances.end();

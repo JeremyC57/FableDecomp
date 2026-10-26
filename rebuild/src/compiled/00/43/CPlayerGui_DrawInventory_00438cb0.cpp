@@ -35,7 +35,8 @@ class CPlayer { public:
     CThing* GetControlledCreature_00487dc0();                       // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                              // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CPlayerGui { public:
     unsigned char   _pad000[8];
@@ -47,7 +48,7 @@ class CPlayerGui { public:
 
 void CPlayerGui::DrawInventory(void* world)
 {
-    CThing* hero = PlayerManager->GetMainPlayer()->GetControlledCreature_00487dc0();
+    CThing* hero = PlayerManager->GetMainPlayer().GetControlledCreature_00487dc0();
     if (!hero || (hero->m_statusFlags & 1))
         return;
     DRAW_TC(0x11);

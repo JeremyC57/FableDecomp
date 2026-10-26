@@ -110,6 +110,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+public:
+    void Terminate();   // 0x008FCF40
 };
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
@@ -132,7 +134,8 @@ class CTCCreatureOpinionOfHero { public:
     bool ReactionHandled;                       // +0x340
 };
 class CTCTalk { public:
-    bool IsTalking();                           // 0x006E28A0
+public:
+    bool IsTalking() const;   // 0x006E28A0
 };
 
 struct CAIBrainV {
@@ -155,7 +158,6 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     bool ReactingToPlayer;                      // +0x89
     bool AllowSpeechOnNonPureAISpeaker;         // +0x8a
     bool IsStopping();                          // 0x008FD010 (CAIStateGroupBase)
-    void FinishUpdate();                        // 0x008FCF40 (CAIStateGroupBase)
     virtual void Update();
 };
 #pragma pack(pop)
@@ -163,12 +165,12 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
 void CAIStateGroup_OpinionReactionRoot::Update()
 {
     if (!IsStillValid()) {
-        FinishUpdate();
+        Terminate();
         return;
     }
     if (CurrentUpdateFunc != 0) {
         if (!(this->*CurrentUpdateFunc)()) {
-            FinishUpdate();
+            Terminate();
             return;
         }
         CTCCreatureOpinionOfHero* opinion;
@@ -182,5 +184,5 @@ void CAIStateGroup_OpinionReactionRoot::Update()
             break;
         ((CAIBrainV*)PBrain)->Yield();
     }
-    FinishUpdate();
+    Terminate();
 }

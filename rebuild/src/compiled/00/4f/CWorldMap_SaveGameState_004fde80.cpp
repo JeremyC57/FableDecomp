@@ -2,7 +2,7 @@
 // Leaf: SaveGameState
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FDE80, 429 bytes (+ int3 padding), `ret 4`. PDB ?SaveGameState@CWorldMap@@QAEXAAVCPersistContext@@@Z.
 // Callees: CPersistContext::CheckCRC 0x00404500, CPersistTraits<unsigned long>::TransferBinaryIn 0x0040F8A0 (label
-//   <float> is a byte twin), CDataOutputStream::WriteLong 0x00993EB0, CCharString copy ctor 0x0099EC30,
+//   <float> is a byte twin), CDataOutputStream::WriteSLONG 0x00993EB0, CCharString copy ctor 0x0099EC30,
 //   CPersistContext::Transfer(CCharString&) 0x00431143, CRegion game-state transfer 0x006BC290, CCharString(const
 //   char*, long) 0x0099EBF0, DisplayProgress 0x009E9F40 (`__fastcall`), ~CCharString 0x0099EAE0, operator+(const
 //   char*, const CCharString&) 0x0099F690 and operator+(const CCharString&, const char*) 0x0099F600 (`__fastcall`),
@@ -19,10 +19,11 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 
 class CDataOutputStream { public:
-    void WriteLong(long value);                          // 0x00993EB0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 class CMemoryDataInputStream;
 template <class T> struct CPersistTraits {
@@ -47,7 +48,7 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;                 // +0x24
     CDataOutputStream*      PSaveStream;                 // +0x28
     void CheckCRC(const char* name);                     // 0x00404500
-    void Transfer(CCharString& value);                   // 0x00431143
+    template <class T> void Transfer(T& value);                   // 0x00431143
     void WriteText(const CCharString& text);             // 0x009BAB50
     bool IsBinary() const { return Mode == 2 || Mode == 3; }
     __forceinline void TransferBinary(unsigned long& value)
@@ -56,7 +57,7 @@ class CPersistContext { public:
         CPersistTraits<unsigned long> traits;
         switch (Mode) {
         case 3:
-            PSaveStream->WriteLong(value);
+            PSaveStream->WriteSLONG(value);
             break;
         case 2:
             traits.TransferBinaryIn(PLoadStream, &value);
@@ -97,7 +98,7 @@ void CWorldMap::SaveGameState(CPersistContext& context)
             Regions[i].TransferGameState(context);
             {
                 CCharString text("");
-                DisplayProgress(text, -1.0f, false, false);
+                NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
             }
         }
     } else {
@@ -110,7 +111,7 @@ void CWorldMap::SaveGameState(CPersistContext& context)
             }
             {
                 CCharString text("");
-                DisplayProgress(text, -1.0f, false, false);
+                NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
             }
         }
     }

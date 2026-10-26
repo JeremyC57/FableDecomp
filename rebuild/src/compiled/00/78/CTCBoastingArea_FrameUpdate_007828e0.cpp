@@ -48,7 +48,8 @@ class CPlayer { public:
     CThing* GetHeroCreature();                      // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                       // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 CPlayerManager* GetPlayerManager();                 // 0x00686D40
 class CTCBoastingCrowdControl { public:
@@ -71,7 +72,7 @@ struct CTCBoastingArea {
 
 void CTCBoastingArea::FrameUpdate()
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPlayerManager()->GetMainPlayer().GetHeroCreature();
     if (!hero || hero->Dead) {
         HeroWithinRadiusState = HERO_OUTSIDE;
         return;

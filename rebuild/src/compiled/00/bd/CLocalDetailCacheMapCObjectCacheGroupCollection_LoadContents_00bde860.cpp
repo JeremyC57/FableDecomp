@@ -62,7 +62,7 @@ class CMemoryDataInputStream : public CDataInputStream {
 public:
     const unsigned char* StreamSource;                       // +0x18
     CMemoryDataInputStream(const unsigned char* data, long size);   // 0x00994930
-    ~CMemoryDataInputStream();                               // 0x00993B10
+    virtual ~CMemoryDataInputStream();                               // 0x00993B10
     __forceinline const unsigned char* GetDataAndSkip(long bytes)
     {
         if (bytes <= 0)

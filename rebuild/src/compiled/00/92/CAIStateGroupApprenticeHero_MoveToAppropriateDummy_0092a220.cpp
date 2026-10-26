@@ -9,7 +9,18 @@
 // Shape: C3DVector with a user copy ctor keeps the position in the frame (not ebx/ebp); a named CCharString in its own
 //          block (address re-taken, destroyed before the null test); do/while(result == 4) keeps the loop unrotated; a
 //          named `action` copy read before the dead lookup puts Action in ebx and result in ebp (proximity reloaded).
+#define CAIStateGroup_ApprenticeHero CAIStateGroup_ApprenticeHeroLayout
 #include "engine/CAIStateGroup_ApprenticeHero.h"
+#undef CAIStateGroup_ApprenticeHero
+
+class CAIStateGroupBase
+{
+public:
+    void Terminate();   // 0x008FCF40
+};
+class CAIStateGroup_ApprenticeHero : public CAIStateGroupBase, public CAIStateGroup_ApprenticeHeroLayout
+{
+};
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
@@ -71,7 +82,6 @@ struct CAIStateGroupApprenticeHeroMethods : CAIStateGroup_ApprenticeHero {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
     bool IsStopping();                          // 0x008FD010
-    void Terminate();                           // 0x008FCF40
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float proximity, bool* reached, long movement,
         bool a, bool b, bool c, CThing* target, bool d, float e);   // 0x0097E890
     static bool IsDummyTypeLegal(long dummyType)

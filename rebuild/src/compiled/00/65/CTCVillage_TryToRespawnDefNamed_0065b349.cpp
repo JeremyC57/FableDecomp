@@ -90,23 +90,34 @@ __declspec(noinline) bool __fastcall IS_THING_DEAD(CThing* const& thing)
 #pragma auto_inline(on)
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);  // 0x009AD410
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
 };
 
-struct CBaseIntelligentPointer {
-    void* _vfptr;
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCVillage;
 class CTCDummyVillager { public:                       // interface 0xD6
     unsigned char _pad_0x00[0x0c];
     long          VillagerDefIndex;             // +0x0c
     unsigned char _pad_0x10[0x20];
-    CBaseIntelligentPointer PVillager;          // +0x30
+    CIntelligentPointer<CThing> PVillager;          // +0x30
     CThingAICreature* CreateVillager(CTCVillage* village, const C3DVector& position, bool flag);   // 0x0072F750
 };
 CThingAICreature* CreateVillagerSink_s7(CTCDummyVillager* dummy, CTCVillage* village, float x, float y, float z, bool flag);
@@ -120,7 +131,7 @@ __declspec(noinline) CThingAICreature* CTCDummyVillager::CreateVillager(CTCVilla
 struct SThingNode {                             // STLport list node
     SThingNode* _M_next;
     SThingNode* _M_prev;
-    CBaseIntelligentPointer _M_data;            // +0x08
+    CIntelligentPointer<CThing> _M_data;            // +0x08
 };
 
 class CTCVillage { public:

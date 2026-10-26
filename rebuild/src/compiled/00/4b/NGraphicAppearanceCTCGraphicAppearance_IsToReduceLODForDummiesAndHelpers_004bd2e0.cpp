@@ -2,7 +2,7 @@
 // Leaf: IsToReduceLODForDummiesAndHelpers
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BD2E0, length 175 bytes. __fastcall, `ret`.
 //         Ego_r.pdb: `?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@IBE_NXZ`.
-// Callees: CTCBase::GetWorld() const @ 0x00686A80, the file-static `__fastcall` GetRenderPositionForThing(const CThing&,
+// Callees: CTCBase::PeekWorld() const @ 0x00686A80, the file-static `__fastcall` GetRenderPositionForThing(const CThing&,
 //          float) @ 0x004BBF00, the world's virtual slot 8 (+0x20, a C3DVector by hidden pointer), WasRenderedLastFrame()
 //          const @ 0x004BD200. Globals: the fade-distance override flag (byte) @ 0x013B86CA and value (long) @ 0x01375710,
 //          g_primitiveDrawDistanceScale @ 0x013B8774; float pool 0x0122DED8 = 1.0f.
@@ -56,13 +56,18 @@ extern unsigned char g_fadeDistanceOverridden_013b86ca;     // 0x013B86CA
 extern long g_fadeDistanceOverride_01375710;                // 0x01375710
 extern float g_primitiveDrawDistanceScale;                  // 0x013B8774
 
+class CTCBase
+{
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
 namespace NGraphicAppearance {
 
-class CTCGraphicAppearance {
+class CTCGraphicAppearance : public CTCBase {
 public:
     void*         __vfptr;                          // +0x00
     CThing*       ParentThing;                      // +0x04 (CTCBase)
-    CWorld* GetWorld() const;                       // 0x00686A80 (CTCBase)
     bool WasRenderedLastFrame() const;              // 0x004BD200
     bool IsToReduceLODForDummiesAndHelpers() const;
 };
@@ -72,7 +77,7 @@ bool CTCGraphicAppearance::IsToReduceLODForDummiesAndHelpers() const
     float fadeDistance = (g_fadeDistanceOverridden_013b86ca ? (float)g_fadeDistanceOverride_01375710
                                                            : ParentThing->PBaseDef->RenderFadeDistance)
                          * (g_primitiveDrawDistanceScale + 1.0f);
-    const CWorld* world = GetWorld();
+    const CWorld* world = (&PeekWorld());
     if (GetDistanceSquared(world->GetViewPosition(), GetRenderPositionForThing(*ParentThing, 1.0f)) > fadeDistance * fadeDistance)
         return true;
     return !WasRenderedLastFrame();

@@ -19,7 +19,7 @@ class CSystemManager { public:
     unsigned char _pad00[0x94];
     HWND__*       m_hWnd;                           // +0x94
 };
-CSystemManager* __cdecl GFGetSystemManager();       // 0x009A4EC0
+CSystemManager* __fastcall GFGetSystemManager();       // 0x009A4EC0
 
 class C2DVector { public:
     float x;

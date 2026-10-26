@@ -1,5 +1,5 @@
 // C3DMeshFilePrimitiveChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- one material index as a plain long, otherwise the count tagged with the top bit followed by every index; then the sub-chunks
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00ABC390, 144 bytes. Callees: CDataOutputStream::WriteLONG 0x00993EB0,
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00ABC390, 144 bytes. Callees: CDataOutputStream::WriteSLONG 0x00993EB0,
 // CChunkedFileSuperChunk::WriteToFile 0x00AA78C0.
 // The PDB header (engine/C3DMeshFilePrimitiveChunk.h) sits 8 bytes high; retail MaterialIndices CArray<long> +0x2C
 // (as the CreateNewInstance 0x00ABD0D0 of this chunk). `size() == 1` folds to `((end - begin) & ~3) == 4`; the
@@ -21,13 +21,14 @@ class CDataOutputStream { public:
     virtual void v02();
     virtual void v03();
     virtual void WriteBytes(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteLONG(long value);                                    // 0x00993EB0
     void WriteULONG(unsigned long value);                          // 0x00993EA0
     void WriteFLOAT(float value);                                  // 0x00993EE0
     void WriteBOOL(bool value);                                    // 0x00993E30
     void WriteUBYTE(unsigned char value);                          // 0x00993E50
     void WriteMatrix3x4(const CMatrix3x4& m);                      // 0x00994070
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 template <class T>
@@ -111,12 +112,12 @@ class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk { public:
 void C3DMeshFilePrimitiveChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
     if (MaterialIndices.size() == 1)
-        out.WriteLONG(MaterialIndices[0]);
+        out.WriteSLONG(MaterialIndices[0]);
     else {
         long count = (long)MaterialIndices.size();
-        out.WriteLONG(count | 0x80000000);
+        out.WriteSLONG(count | 0x80000000);
         for (long i = 0; i < count; ++i)
-            out.WriteLONG(MaterialIndices[i]);
+            out.WriteSLONG(MaterialIndices[i]);
     }
     CChunkedFileSuperChunk::WriteToFile(out, saver);
 }

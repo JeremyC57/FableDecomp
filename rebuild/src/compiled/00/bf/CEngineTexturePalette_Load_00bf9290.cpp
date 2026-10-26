@@ -29,7 +29,6 @@ public:
     const unsigned char* m_pData;                   // +0xC
     long SourceChunkStreamPos;
     long m_remaining;                               // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {
@@ -47,11 +46,14 @@ public:
     }
     __forceinline char ReadChar() { char v; Read(&v, sizeof(v)); return v; }
     __forceinline long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 
 class CBankFile {
 public:
-    unsigned long FindEntry(const CCharString& name);   // 0x009CCDC0
+public:
+    unsigned long FindIndexBySymbol(const CCharString&) const;   // 0x009CCDC0
 };
 class CGraphicDataBank : public CBankFile {};
 
@@ -90,7 +92,7 @@ void CEngineTexturePalette::Load(CDataInputStream& stream)
     Palette[0].Index = 0;
     for (long i = 1; i < count; ++i) {
         Palette[i].Name = stream.ReadString();
-        unsigned long index = Bank->FindEntry(Palette[i].Name);
+        unsigned long index = Bank->FindIndexBySymbol(Palette[i].Name);
         if (index > 0)
             Palette[i].Index = index;
         else

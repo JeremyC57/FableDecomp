@@ -13,12 +13,24 @@
 //   address is formed from the accessor's returned pointer plus the scaled index as retail; `first[n]` folds the index into the
 //   load and recolours the registers (the GOTCHAS wave-25 rule, confirmed on the RTM compiler).
 class CThing;
-struct CBaseIntelligentPointer {
-    void* m_a; void* m_b;
-    CThing* GetPItem() const;                    // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CCategory_Retail {
-    CBaseIntelligentPointer PAssociatedThing;    // +0x00
+    CIntelligentPointer<CThing> PAssociatedThing;    // +0x00
     unsigned char _body[0x24];
 };
 struct CCategoryVector {

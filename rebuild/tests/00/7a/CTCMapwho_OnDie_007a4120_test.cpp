@@ -7,7 +7,9 @@ static int g_helper = 0;
 static CTCMapwho* g_last = 0;
 
 extern "C" void __fastcall Mapwho_Member(CTCMapwho* self){ g_member++; g_last = self; }
-extern "C" int  __cdecl    Mapwho_Helper(CTCMapwho* self){ g_helper++; g_last = self; return 0; }
+void __cdecl operator delete(void* self)
+{
+    CTCMapwho* self_c = (CTCMapwho*)self; (void)self_c; g_helper++; g_last = self_c; return; }
 
 void __fastcall OnDie(CTCMapwho* self);
 

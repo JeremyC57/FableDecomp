@@ -33,13 +33,25 @@ class CThing { public:
         return 0;
     }
 };
-struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatureBase>: vptr + item
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CTCActionQueue {                     // the interface-70 component
-    bool HasPendingActions();               // 0x006A1270
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+class CTCCarrying { public:                     // the interface-70 component
+public:
+    bool IsPrimarySlotFree() const;   // 0x006A1270
 };
 
 class CCreatureActionBase { public:                // retail sizeof 0xa8
@@ -51,7 +63,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
     virtual bool IsPlayingPrecedingAnimation();   // slot 36 (+0x90)
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
     bool HasPrecedingAction();
 };
@@ -59,8 +71,8 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
 bool CCreatureActionBase::HasPrecedingAction()
 {
     if (IsPlayingPrecedingAnimation()) {
-        CTCActionQueue* pQueue;
-        return PCreature.GetPItem()->GetInterface(&pQueue, 70) && !pQueue->HasPendingActions();
+        CTCCarrying* pQueue;
+        return PCreature.GetPItem()->GetInterface(&pQueue, 70) && !pQueue->IsPrimarySlotFree();
     }
     return false;
 }

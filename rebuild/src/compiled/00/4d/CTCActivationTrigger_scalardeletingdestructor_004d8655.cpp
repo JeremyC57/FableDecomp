@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCActivationTrigger_Destruct(void* trigger);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCActivationTrigger_ScalarDeletingDestructor(void* trigger, int, unsigned int flags)
 {
-    CTCActivationTrigger_Destruct(trigger);
+    ((CTCBase*)(trigger))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(trigger);
+        operator delete(trigger);
     return trigger;
 }

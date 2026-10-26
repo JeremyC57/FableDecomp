@@ -13,10 +13,16 @@
 // Layout: CBrainOutput from the landed 0x00835620 / 0x006D60C0 / 0x0093DDE0 models; retail CThing interface bitset +0x20,
 // CVectorMap +0x44; CThingAICreature movement component +0x60, Brain +0x1a8, flag byte +0x1c8 (descriptive).
 class CThing;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 class CCreatureActionBase;
 struct SCountBlock {
@@ -79,7 +85,8 @@ class CTCScriptedControl { public:
     void Update();                              // 0x00713910
 };
 class CTCLook { public:
-    void TrackNearestInterestingThing(bool now);   // 0x00753840
+public:
+    bool TrackNearestInterestingThing(bool);   // 0x00753840
 };
 class CAIBrain { public:
     bool IsReadyToRunStateGroupWithHigherScriptPriorityThan(long priority, long zone);   // 0x0088BAC0

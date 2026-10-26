@@ -55,7 +55,7 @@ public:
     float Scale;                                // +0x38
     float OO_Scale;                             // +0x3c
     virtual void v00();
-    ~CPhysicsMeshObject();                      // 0x00A127D0
+    virtual ~CPhysicsMeshObject();                      // 0x00A127D0
 };
 
 class CTCPhysicsBase {

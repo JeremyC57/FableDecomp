@@ -1,8 +1,8 @@
 #pragma optimize("s",on)
 struct Field { unsigned char b[4]; };
+class CDefString;
 class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
-    void TransferDefString(void* value);            // 0x0045228F Transfer(CDefString&): dword write / CDefString read 0x0044FC00
-    void TransferBool(void* value);                 // 0x0043314A Transfer(bool&)
+    template <class T> void Transfer(T& value);            // 0x0045228F Transfer(CDefString&): dword write / CDefString read 0x0044FC00
 };
 class CContextSensitiveItemDef { public:
     unsigned char _pad[0x28];
@@ -16,9 +16,9 @@ class CContextSensitiveItemDef { public:
 
 void CContextSensitiveItemDef::Transfer(CPersistContext& ctx)
 {
-    ctx.TransferDefString(&f0);
-    ctx.TransferDefString(&f1);
-    ctx.TransferDefString(&f2);
-    ctx.TransferDefString(&f3);
-    ctx.TransferBool(&f4);
+    ctx.Transfer(*(CDefString*)(&f0));
+    ctx.Transfer(*(CDefString*)(&f1));
+    ctx.Transfer(*(CDefString*)(&f2));
+    ctx.Transfer(*(CDefString*)(&f3));
+    ctx.Transfer(*(bool*)(&f4));
 }

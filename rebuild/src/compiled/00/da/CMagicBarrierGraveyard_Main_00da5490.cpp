@@ -14,6 +14,7 @@
 //   stays virtual); the in-loop return and the two re-creation temporaries sit under inline_depth(0) (0x004AA840), the
 //   function end expands both destructors inline; `for (;;) { if (Term()) return; ... }` (a `while` sends the first
 //   early return to the wrong epilogue copy).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
@@ -84,9 +85,15 @@ class CGameScriptInterface { public:
     virtual void v096() const; virtual void v097() const; virtual void v098() const; virtual void v099() const;
     virtual CScriptThing CreateEffect(const CCharString& effect, const C3DVector& position, const CCharString& bone, float angle, bool b, bool c) const;   // slot 100 (+0x190)
 };
-#pragma inline_depth(0)
-struct CIsThingAlive {                                    // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class __declspec(novtable) CPredicateBase
+{
+public:
     virtual void f00();
+};
+}
+#pragma inline_depth(0)
+struct CIsThingAlive : public NScript::CPredicateBase {                                    // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                                 // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -96,8 +103,9 @@ class CEntityScriptBase { public:                                // retail 0x14 
     virtual void e00();
     CGameScriptInterface* Game;                           // +0x04
     CScriptThing          Me;                             // +0x08
-    void SetPredicate(const CIsThingAlive& predicate);    // 0x00F35B10
     bool IsActiveThreadTerminating() const;               // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CMagicBarrierGraveyard : CEntityScriptBase {
     void* ParentClass;                                    // +0x14

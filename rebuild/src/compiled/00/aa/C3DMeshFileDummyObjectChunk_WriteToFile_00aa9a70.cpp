@@ -23,12 +23,13 @@ class C3DVector  { public: float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f
 
 class CChunkedFileSaver;
 class CDataOutputStream { public:
-    void WriteULong(unsigned long value);               // 0x00993EA0
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
-    void WriteBool(bool value);                         // 0x00993E30
     void WriteMatrix3x4(const CMatrix3x4& m);           // 0x00994070
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 // CChunkedFileChunk (0x10) -> CChunkedFileSuperChunk -> C3DMeshFileChunk (0x2c in retail).
@@ -78,11 +79,11 @@ class C3DMeshFileDummyObjectChunk : public C3DMeshFileHelperPointChunk { public:
 
 void C3DMeshFileDummyObjectChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
-    out.WriteULong(3);
+    out.WriteULONG(3);
     out.WriteFloat(Direction.X);
     out.WriteFloat(Direction.Y);
     out.WriteFloat(Direction.Z);
     out.WriteMatrix3x4(Transform);
-    out.WriteBool(UseLocalOrigin);
+    out.WriteEBOOL(UseLocalOrigin);
     C3DMeshFileHelperPointChunk::WriteToFile(out, saver);
 }

@@ -5,7 +5,7 @@ struct Node {
     Node* child;  /* +0xc */
 };
 
-extern void __cdecl ProcessNode(Node* n);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CFoo {
     void BuildTreeArray(Node* node);
@@ -17,7 +17,7 @@ void CFoo::BuildTreeArray(Node* node)
     {
         BuildTreeArray(node->child);
         Node* nxt = node->next;
-        ProcessNode(node);
+        free(node);
         node = nxt;
     }
 }

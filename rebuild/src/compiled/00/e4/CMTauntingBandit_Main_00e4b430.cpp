@@ -11,6 +11,7 @@
 //   STLport vector<CScriptThing> {start, finish, end_of_storage} with 12-byte elements.
 // Shape: the local vector's destructor is expanded inline at the function end and called out of line at the early
 //   IsDone exit; its element walk is a by-value `_Destroy(first, last)` over the virtual destructor.
+namespace NScript { class CPredicateBase; }
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 class CCharString { public:
     void* m_pData;
@@ -125,12 +126,17 @@ class CScriptDef { public:
 };
 extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
-class CM_TauntingBandit {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CM_TauntingBandit : public CEntityScriptBase {
 public:
     void*                 __vftable;               // +0x00
     CGameScriptInterface* Game;                    // +0x04
     CScriptThing          Me;                      // +0x08
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -139,7 +145,7 @@ void CM_TauntingBandit::Main()
     std::vector<CScriptThing> bandits;
     Game->GetAllThingsWithScriptName("TauntingBandit", bandits);
     if (bandits.size() < pGlobalScriptDef->MaxTauntingBandits) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         CScriptThing bandit = Game->CreateCreature(Me.GetDataString(), Me.GetPos(), "TauntingBandit", false);
         Game->EntityAttachToVillage(bandit, Game->GetThingWithScriptName("BanditTollVillage"));

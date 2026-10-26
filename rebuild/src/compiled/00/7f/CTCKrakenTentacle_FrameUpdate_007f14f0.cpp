@@ -57,12 +57,23 @@ struct CTCCreatureFlags9 {                           // the interface-9 componen
     unsigned char _pad[0x10];
     unsigned char m_canBeTargeted;                   // +0x10
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;
-    CThing* GetPItem() const;                        // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)   // the pointer is set and the thing's dead bit is clear (inlined)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)   // the pointer is set and the thing's dead bit is clear (inlined)
 {
     if (p.GetPItem() != 0) {
         if (!p.GetPItem()->Dead)
@@ -81,7 +92,7 @@ class CTCKrakenTentacle { public:
     virtual void FrameUpdate();                      // slot 9
     CThing*       ParentThing;                       // +0x04
     unsigned char _pad08[0x08];
-    CBaseIntelligentPointer PKraken;                 // +0x10
+    CIntelligentPointer<CThing> PKraken;                 // +0x10
     unsigned char _pad18[0x28 - 0x18];
     bool          CanStrike;                         // +0x28
     bool          Tracking;                          // +0x29

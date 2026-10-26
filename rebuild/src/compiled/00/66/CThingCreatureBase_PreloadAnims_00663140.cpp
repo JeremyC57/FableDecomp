@@ -13,14 +13,15 @@
 //   local (ebp); the loop re-reads the vector end each pass.
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 class C3DAnimationInfo { public:
-    void TouchAnimation();                      // 0x00A26A50
+    void TouchAnimation() const;                      // 0x00A26A50
 };
-struct CMeshBank {
-    C3DAnimationInfo* GetAnimation(long index); // 0x00A242C0
+class CMeshDataBank { public:
+public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
 class CWorld { public:
     unsigned char _pad[0x3c];
-    CMeshBank* PMainMeshBank;                   // +0x3c
+    CMeshDataBank* PMainMeshBank;                   // +0x3c
 };
 class CAnimationEntry { public:                        // 16 bytes
     long AnimIndex;                             // +0x00
@@ -90,10 +91,10 @@ void CThingCreatureBase::PreloadAnims()
     bool found = PBaseDef->GetSubDef(&out);
     CDefHolder<const CAppearanceDef> def(out.Object);
     if (found) {
-        CMeshBank* bank = GetWorld()->PMainMeshBank;
+        CMeshDataBank* bank = GetWorld()->PMainMeshBank;
         for (CAnimationPair* it = def->AnimsFirst; it != def->AnimsLast; ++it) {
             if (it->Entry.GetFlags() & 4)
-                bank->GetAnimation(it->Entry.AnimIndex)->TouchAnimation();
+                bank->PeekAnimation(it->Entry.AnimIndex)->TouchAnimation();
         }
     }
 }

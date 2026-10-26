@@ -65,9 +65,9 @@ template<class T> struct CRetailVector {
 };
 struct CRefCounted {
     virtual void v00();
-    virtual void Destroy();                             // slot 1 (+0x04)
-    long m_count;                                       // +0x04
-    __forceinline void DecRef() { --m_count; if (m_count == 0) Destroy(); }
+    virtual void Destroy() const;                       // slot 1 (+0x04)
+    mutable long m_count;                               // +0x04
+    __forceinline void DecRef() const { --m_count; if (m_count == 0) Destroy(); }
 };
 template<class T> struct CDefPtr {                      // the getters' by-value result
     T* m_p;
@@ -75,30 +75,37 @@ template<class T> struct CDefPtr {                      // the getters' by-value
     __forceinline ~CDefPtr() { if (m_p) m_p->DecRef(); }
     T* operator->() const { return m_p; }
 };
-template<class T> struct CTempPtr {                     // released and cleared
+template<class T> class CIVCountedPointer { public:     // NGameText::CDataBank's by-value results (FableWin), released and cleared
     T* m_p;
-    CTempPtr(const CTempPtr& other);
-    __forceinline ~CTempPtr() { if (m_p) { m_p->DecRef(); m_p = 0; } }
+    CIVCountedPointer(const CIVCountedPointer& other);
+    __forceinline ~CIVCountedPointer() { if (m_p) { m_p->DecRef(); m_p = 0; } }
     T* operator->() const { return m_p; }
 };
 struct CUIDef : CRefCounted {
     long _pad08[(0x3c - 0x08) / 4];
     CWideString DateTimeSeparator;                      // +0x3C
 };
-struct CTextGroup : CRefCounted {
+namespace NGameText {
+class CGroupEntry : public CRefCounted { public:
     long _pad08[(0x1c - 0x08) / 4];
     CRetailVector<unsigned long> Ids;                   // +0x1C
 };
-struct CTextEntry : CRefCounted {
-    CWideString GetBankHandle() const;                  // 0x009C7A40
+class CTextEntry : public CRefCounted { public:
+    CWideString GetText() const;                        // 0x009C7A40
 };
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);           // 0x009C95E0
-    unsigned long LookupValue(unsigned long crc);                     // 0x009CC410
-    long GetEntryDataType(unsigned long entry);                       // 0x009CC210
-    CTempPtr<CTextGroup> GetGroup(unsigned long entry, bool load);    // 0x009C8890
-    CDefPtr<CTextEntry> GetEntry(unsigned long entry, bool load);     // 0x009C9070
+}
+class CBankFile { public:
+    unsigned long GetEntryDataType(unsigned long entry) const;        // 0x009CC210
 };
+namespace NGameText {
+class CDataBank : public CBankFile { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
+    unsigned long LookupValue(unsigned long crc) const;               // 0x009CC410
+    CIVCountedPointer<const CGroupEntry> GetPGroupEntry(unsigned long entry, bool load) const;   // 0x009C8890
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long entry, bool load) const;     // 0x009C9070
+};
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     long       _pad00[0x14 / 4];
     CDataBank* TextBank;                                // +0x14
@@ -183,10 +190,10 @@ void CTCInGameMenu::ConstructSaveGameFileDescription(CWideString& description, l
         unsigned long entry = bank->LookupValue(FileRegionNames[index].ComputeCRC32());
         if (entry > 0) {
             if (bank->GetEntryDataType(entry)) {
-                CRetailVector<unsigned long> const& ids = bank->GetGroup(entry, true)->Ids;
-                region = bank->GetEntry(ids[0], true)->GetBankHandle();
+                CRetailVector<unsigned long> const& ids = bank->GetPGroupEntry(entry, true)->Ids;
+                region = bank->GetPTextEntry(ids[0], true)->GetText();
             } else
-                region = bank->GetEntry(entry, true)->GetBankHandle();
+                region = bank->GetPTextEntry(entry, true)->GetText();
         } else
             region = FileRegionNames[index].ToWideString();
         description += region;

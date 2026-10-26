@@ -28,7 +28,7 @@ class CInitBaseClass { public:                              // vptr + one word
     virtual void v00();
     bool IsInitialised();                            // 0x0099A330
     void Uninitialise_00a6c120();                             // 0x00A6C120
-    ~CInitBaseClass();                               // 0x0099A410
+    virtual ~CInitBaseClass();                               // 0x0099A410
     void* m_pInitData;                               // +0x04
 };
 

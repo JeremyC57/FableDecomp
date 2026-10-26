@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 // Leaf: ??1CSystemRegistry@
-extern "C" void __cdecl free_block(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CSystemRegistry {
     void* hRoot;
@@ -13,7 +13,7 @@ struct CSystemRegistry {
 void __fastcall CSystemRegistry_dtor(CSystemRegistry* self)
 {
     if (self->field10)
-        free_block(self->field10);
+        free(self->field10);
     if (self->hRoot)
-        free_block(self->hRoot);
+        free(self->hRoot);
 }

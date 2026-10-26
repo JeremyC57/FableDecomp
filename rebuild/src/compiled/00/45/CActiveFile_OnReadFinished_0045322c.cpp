@@ -8,12 +8,12 @@ struct CActiveFile {
 // first callee: __fastcall(ecx, edx, stack &byte)
 extern void __fastcall Consume(void* a, void* b, char* out);
 // second callee: __cdecl free-style, caller pops 1 arg
-extern void __cdecl Release(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     char status;
     Consume(self->p, self->q, &status);
     if (self->p)
-        Release(self->p);
+        free(self->p);
 }

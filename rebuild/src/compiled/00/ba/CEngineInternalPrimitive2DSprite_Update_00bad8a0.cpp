@@ -28,7 +28,8 @@ class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 class CRGBColour { public: unsigned char B, G, R, A; };
 class C2DExtentsI { public: long X, Y; };
 class CTexture { public:
-    C2DExtentsI GetDimensions(unsigned long level);   // 0x009F9DB0
+public:
+    C2DExtentsI GetDimensions(unsigned long) const;   // 0x009F9DB0
 };
 class CEnginePrimitive {
 public:

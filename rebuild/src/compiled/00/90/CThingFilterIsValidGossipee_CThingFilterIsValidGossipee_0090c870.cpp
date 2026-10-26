@@ -58,7 +58,8 @@ struct CTCFactionMember {                       // component kind 0x49
     CFaction*     PFaction;                     // +0x18
 };
 class CTCVillageMember { public:                       // component kind 0x23
-    CTCVillage* GetPTCVillage() const;          // 0x007EE540
+public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540
 };
 class CThingFilter_IsValidGossipee { public:
     CThingAICreature* Thing;                    // +0x00
@@ -75,5 +76,5 @@ CThingFilter_IsValidGossipee::CThingFilter_IsValidGossipee(CThingAICreature* thi
         PFaction = faction->PFaction;
     CTCVillageMember* member;
     if (thing->GetInterface(&member, 0x23))
-        PTCVillage = member->GetPTCVillage();
+        PTCVillage = member->GetPVillage();
 }

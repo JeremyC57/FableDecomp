@@ -12,7 +12,10 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 struct CVectorMap_006e3ab0 {
     void* LookupValue(unsigned long key);          // 0x009CC410
@@ -33,6 +36,6 @@ struct CMemoryDataInputStream_006e3ab0 {
 void CMemoryDataInputStream_006e3ab0::OpenStringSource(const CCharString& name, long a, long b, long c)
 {
     CVectorMap_006e3ab0* map = g_pWorldText_013b86a0->m_pTextMap;
-    void* entry = map->LookupValue(Calc_004014a0(0, name.GetChars(), name.GetLength()));
+    void* entry = map->LookupValue(CCRC::Calc(0, name.GetChars(), name.GetLength()));
     Play(entry, m_record, a, b, c);
 }

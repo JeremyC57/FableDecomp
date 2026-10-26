@@ -8,12 +8,13 @@
 // Layout = Ego_r.pdb CSummonerMinion (32 bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14,
 // PMasterData +0x18, WaveID +0x1C; CQ_SummoningTheShipScript retail = PDB - 0x14 (SummonersAlive +0x48,
 // CurrentAttackWave +0x4C, SummonerAttacksStarted +0x51).
-// Shape: as the landed CHeroSoulsEnemy::Main 0x00D7F110: every wait is `while (!cond) { NewScriptFrame(); if (IsDone()) return; }`
-// followed by an `if (IsDone()) return;`; the target call is the nested GiveThingBestEnemyTarget(Me, Game->GetHero()).
+// Shape: as the landed CHeroSoulsEnemy::Main 0x00D7F110: every wait is `while (!cond) { NewScriptFrame(); if (IsActiveThreadTerminating()) return; }`
+// followed by an `if (IsActiveThreadTerminating()) return;`; the target call is the nested GiveThingBestEnemyTarget(Me, Game->GetHero()).
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                                   // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
 };
 void __fastcall FadeInThing(const CScriptThing& thing, float time);   // 0x00CBE7AA
 class CGameScriptInterface { public:
@@ -91,8 +92,14 @@ class CGameScriptInterface { public:
     virtual void v502(); virtual void v503(); virtual void v504(); virtual void v505(); virtual void v506(); virtual void v507(); virtual void v508(); virtual void v509();
     virtual void EntitySetAlpha(const CScriptThing& thing, float alpha, bool b) const;   // slot 510 (+0x7f8)
 };
-struct CIsThingAlive {                                  // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -106,7 +113,14 @@ struct CQ_SummoningTheShipScript {
 };
 struct CQ_SunnyvaleMasterData;
 
-class CSummonerMinion {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CSummonerMinion : public CEntityScriptBase {
 public:
     void*                      __vftable;               // +0x00
     CGameScriptInterface*      Game;                    // +0x04
@@ -114,8 +128,6 @@ public:
     CQ_SummoningTheShipScript* ParentClass;             // +0x14
     CQ_SunnyvaleMasterData*    PMasterData;             // +0x18
     long                       WaveID;                  // +0x1c
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
-    bool IsDone();                                      // 0x00F35B30
     void Main();
 };
 
@@ -123,22 +135,22 @@ void CSummonerMinion::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->EntitySetAlpha(Me, 0.0f, true);
     Game->EntitySetInLimbo(Me, true, true);
     while (!(ParentClass->SummonerAttacksStarted && ParentClass->CurrentAttackWave == WaveID)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     if (WaveID == 1) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     }
@@ -146,14 +158,14 @@ void CSummonerMinion::Main()
     FadeInThing(Me, 2.0f);
     while (ParentClass->SummonersAlive) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->Pause(1.0f);
     Game->RemoveThing(Me, true, true);
     do {
         Game->NewScriptFrame();
-    } while (!IsDone());
+    } while (!IsActiveThreadTerminating());
 }

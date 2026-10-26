@@ -6,12 +6,19 @@
 //   4-byte def-string indices), DVD +0x10. No engine header exists; local model with the PDB member names.
 // Size-optimised TU: #pragma optimize("s", on) (the `push dword ptr [esi+N]` argument form).
 #pragma optimize("s", on)
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteSLONG(long);   // 0x00993EB0
+    void WriteULONG(unsigned long);   // 0x00993EA0
+};
 
 struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteEBOOL(bool value);                    // 0x00993E30
-    void WriteULong(unsigned long value);           // 0x00993EA0
-    void WriteLong(long value);                     // 0x00993EB0
 };
 
 class CSoundBankEntry { public:
@@ -30,9 +37,9 @@ template<> struct CPersistTraits<CSoundBankEntry> {
 void CPersistTraits<CSoundBankEntry>::TransferBinaryOut(CDataOutputStream* stream, const CSoundBankEntry* value)
 {
     CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)stream;
-    out->WriteULong(value->ID);
-    out->WriteLong(value->Filename);
-    out->WriteLong(value->SymbolFilename);
-    out->WriteLong(value->LipSyncBankHandle);
+    out->WriteULONG(value->ID);
+    out->WriteSLONG(value->Filename);
+    out->WriteSLONG(value->SymbolFilename);
+    out->WriteSLONG(value->LipSyncBankHandle);
     out->WriteEBOOL(value->DVD);
 }

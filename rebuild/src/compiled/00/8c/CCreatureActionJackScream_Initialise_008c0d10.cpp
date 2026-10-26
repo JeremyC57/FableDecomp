@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C0D10, length 393 bytes (+ int3 padding).
 // Callees: CCombatActionBase::Initialise @ 0x00857520, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020
 // (inlined GetInterface 0x31 = CTCCreatureModeManager, bit 17 of +0x24; 0x46 = CTCCarrying, bit 6 of +0x28; both untested),
-// CTCCreatureModeManager::HasMode(long) @ 0x0073A8A0 and RemoveMode(long) @ 0x0073ABA0, operator new @ 0x00BFEA1A (0xbc-byte mode,
+// CTCCreatureModeManager::IsModeActive(long) @ 0x0073A8A0 and RemoveMode(long) @ 0x0073ABA0, operator new @ 0x00BFEA1A (0xbc-byte mode,
 // 12-byte count block) / operator delete @ 0x00BFE9BC, NCreatureMode::CModeJackOfBladesScream(CThing*) @ 0x00740450,
 // CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, CModeJackOfBladesScream::SetSwordObject(CThing*) @ 0x008D7370,
 // CTCCreatureModeManager::AddMode(CCountedPointer<CModeBase>) @ 0x0073ACC0; the count block's destroy fn for this mode type 0x008C2D60.
@@ -34,10 +34,21 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct SCountBlock {
     long m_references;                          // +0
@@ -102,18 +113,20 @@ struct CModeJackOfBladesScream : CModeBase {    // retail sizeof 0xbc
     void SetSwordObject(CThing* sword);         // 0x008D7370
 };
 class CTCCreatureModeManager { public:
-    bool HasMode(long mode);                    // 0x0073A8A0
-    void RemoveMode(long mode);                 // 0x0073ABA0
     bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
+    void RemoveMode(unsigned long);   // 0x0073ABA0
 };
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();                  // 0x00857520
     unsigned char _pad04[4];
-    CBaseIntelligentPointer PCreature;          // +0x08
+    CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char _pad10[0x114 - 0x10];
 };
 class CCreatureAction_JackScream : public CCombatActionBase { public:
@@ -126,7 +139,7 @@ void CCreatureAction_JackScream::Initialise()
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
     PCreature.GetPItem()->GetInterface(&modeManager, 0x31);
-    if (modeManager->HasMode(0x31))
+    if (modeManager->IsModeActive(0x31))
         modeManager->RemoveMode(0x31);
     PMode = CCountedPointer<CModeJackOfBladesScream>(new CModeJackOfBladesScream(PCreature.GetPItem()));
     CTCCarrying* carrying;

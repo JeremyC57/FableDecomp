@@ -8,6 +8,7 @@
 //   PMasterData +0x18, DoorOpen +0x1c. CQ_UndeadRisingScript is retail = Ego_r.pdb - 0x14: HeroReachedCentre +0x50.
 // Shape: a CTimer local (RegisterTimer in the ctor, DeregisterTimer in the dtor); the line index is a frame word and the
 //   three lines are a switch (case 0, case 1, default).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
@@ -93,14 +94,19 @@ struct CQ_UndeadRisingScript {
     unsigned char _pad[0x50];
     bool          HeroReachedCentre;                     // +0x50
 };
-struct CUndeadRisingCentre {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CUndeadRisingCentre : public CEntityScriptBase {
     void*                  VTable;
     GameCalls*             Game;                         // +0x04
     CScriptThing           Me;                           // +0x08
     CQ_UndeadRisingScript* ParentClass;                  // +0x14
     void*                  PMasterData;                  // +0x18
     bool                   DoorOpen;                     // +0x1c
-    bool IsActiveThreadTerminating();                    // 0x00F35B30
     void Main();
 };
 

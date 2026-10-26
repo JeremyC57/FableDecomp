@@ -15,6 +15,7 @@
 //   quest is modelled locally.
 // Shape: the two strings are default-constructed and assigned per case (the suffix assignment is tail-merged across the
 //   cases); the switch's default exits through the strings' destructors.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     CCharString();                                      // 0x0099E4B0
@@ -37,7 +38,7 @@ class CScriptThing { public:                              // vtable 0x01238C8C, 
     virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
     CScriptThing*   PImp_Data;                     // +0x04
     CCPPointerInfo* PImp_Info;                     // +0x08
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -68,14 +69,19 @@ struct CV_BodyGuardScript {
 };
 struct CQ_SunnyvaleMasterData;
 
-class CM_BodyGuardRespawn {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CM_BodyGuardRespawn : public CEntityScriptBase {
 public:
     void*                   __vftable;             // +0x00
     CGameScriptInterface*   Game;                  // +0x04
     CScriptThing            Me;                    // +0x08
     CV_BodyGuardScript*     ParentClass;           // +0x14
     CQ_SunnyvaleMasterData* PMasterData;           // +0x18
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -86,7 +92,7 @@ void CM_BodyGuardRespawn::Main()
         return;
     if (ParentClass->HenchmanDeadRespawnTimer[index].GetTime() != 0)
         return;
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CCharString def;
     CCharString suffix;

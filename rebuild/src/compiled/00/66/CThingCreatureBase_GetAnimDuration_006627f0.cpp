@@ -14,7 +14,8 @@ class C3DAnimationInfo { public:
 };
 
 class CMeshDataBank { public:
-    C3DAnimationInfo* GetAnimation(long index);   // 0x00A242C0
+public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
 
 class CWorld { public:
@@ -34,7 +35,7 @@ float CThingCreatureBase::GetAnimDuration(long animIndex) const
 {
     if (animIndex) {
         CMeshDataBank* bank = PeekWorld().PMainMeshBank;
-        return bank->GetAnimation(animIndex)->Duration;
+        return bank->PeekAnimation(animIndex)->Duration;
     }
     return 0.0f;
 }

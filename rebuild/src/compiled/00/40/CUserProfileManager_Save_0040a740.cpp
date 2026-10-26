@@ -50,16 +50,17 @@ class CUserProfileManager { public:
     unsigned char _pad04[4];
     CWideString ProfileName;                                // +0x08
     bool        UseNewProfileValues;                        // +0x0c
-    CWideString GetProfilePathname(const CWideString& name, bool forSaving);   // 0x004082D0 (descriptive)
     void SaveGameState(CAFile* file);                       // 0x00409FD0
     void Save();
+public:
+    CWideString GetProfileDir(const CWideString&, bool);   // 0x004082D0
 };
 
 void CUserProfileManager::Save()
 {
     if (UseNewProfileValues)
         return;
-    CWideString path = GetProfilePathname(ProfileName, true);
+    CWideString path = GetProfileDir(ProfileName, true);
     if (path != (const wchar16*)L"") {
         CMemoryFile file(path, FILE_ACCESS_WRITE, 2);
         if (file.Opened) {

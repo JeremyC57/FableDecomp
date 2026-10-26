@@ -53,9 +53,10 @@ class CThing { public:
 class CTCQuestCard { public:                                  // TC type 0x6c (Ego_r.pdb)
     unsigned char _pad00[0x1c];
     CCharString   ObjectiveName;                       // +0x1c
-    CCharString GetRegionName();                       // 0x007025A0
     void SetRegionName(const CCharString& region);     // 0x00702560
     void SetTeleporterRegionName(const CCharString& region);   // 0x007021E0
+public:
+    CCharString GetRegionName() const;   // 0x007025A0
 };
 
 class CQuestManager { public:

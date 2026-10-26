@@ -10,7 +10,10 @@
 // Shape: FrameNameChanged is read into edi before the products; the products are float locals.
 extern long g_framesPerSecond;                              // 0x01375550
 extern const float g_regionNameFadeTime;                    // 0x0125A0E4
-long __fastcall GFGetCurrentFrame();                        // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                        // 0x0049D870
 
 class CWideString { public: void* m_pData; };
 class CTCRegionDisplay { public:
@@ -35,8 +38,8 @@ void CTCRegionDisplay::FinishShowingRegionName()
     long changed = FrameNameChanged;
     float displayFrames = g_framesPerSecond * DisplayTime;
     float fadeFrames = g_framesPerSecond * g_regionNameFadeTime;
-    long elapsed = GFGetCurrentFrame() - changed;
+    long elapsed = CWorld::GetFrame() - changed;
     if (!TimeOut || elapsed < displayFrames - fadeFrames)
-        FrameNameChanged = (long)(GFGetCurrentFrame() - (displayFrames - fadeFrames));
+        FrameNameChanged = (long)(CWorld::GetFrame() - (displayFrames - fadeFrames));
     TimeOut = true;
 }

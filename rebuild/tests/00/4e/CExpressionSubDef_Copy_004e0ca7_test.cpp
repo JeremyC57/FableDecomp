@@ -1,6 +1,9 @@
 #include <cstdio>
 
-class CDefClassBase { public: int base[10]; int f28; };
+class CDefClassBase { public: int base[10]; int f28; 
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);
+};
 
 class CExpressionSubDef { public:
     int base[10];
@@ -12,11 +15,13 @@ static int g_base_called = 0;
 static void* g_base_self = 0;
 static const void* g_base_src = 0;
 
-void CExpressionSubDef::BaseClone(const CDefClassBase* src)
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
 {
+    const CDefClassBase* src = (const CDefClassBase*)&other_; (void)src;
     g_base_called = 1;
-    g_base_self = this;
+    g_base_self = ((CExpressionSubDef*)this);
     g_base_src = src;
+    return *this;
 }
 
 void __fastcall CExpressionSubDef_Copy(CExpressionSubDef* self, int /*edx*/, const CDefClassBase* src);

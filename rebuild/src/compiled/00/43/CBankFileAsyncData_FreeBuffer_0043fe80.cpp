@@ -10,10 +10,10 @@ struct T {
     void FreeBuffer();
     void Release_0043f560(void* a, void* b);
 };
-extern "C" void __cdecl Free2(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 void T::FreeBuffer() {
     if (this->m20) {
         this->Release_0043f560(this->mC, this->m1C + 4);
-        if (this->m20) Free2(this->m20);
+        if (this->m20) free(this->m20);
     }
 }

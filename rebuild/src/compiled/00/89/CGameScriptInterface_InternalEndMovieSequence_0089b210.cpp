@@ -60,12 +60,13 @@ class CScriptThing { public:
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
-struct CPlayer_Retail {
+class CPlayer { public:
     CThing_Retail* GetHeroCreature();              // 0x00487DC0
     CThing_Retail* GetControlledCreature();        // 0x00487DD0
 };
-struct CPlayerManager_Retail {
-    CPlayer_Retail* GetMainPlayer();               // 0x00449970
+class CPlayerManager { public:
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CCharString;
 struct CDefinitionManager_Retail {
@@ -114,7 +115,9 @@ struct CWorld_Retail {
     unsigned char _pad[0x34];
     CAIGameCameraBase_Retail* PCurrentGameCamera;  // +0x34 (engine/CWorld.h)
 };
-struct CTCBoastUI_Retail { void AllowUIToOpen(bool allow); };   // 0x0056A930
+class CTCBoastUI { public: public:
+    void AllowUIToOpen(bool);   // 0x0056A930
+};   // 0x0056A930
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -178,7 +181,7 @@ class CGameScriptInterface { public:
     CMainGameComponent*         Component;         // +0x08
     CDisplayEngine*             DisplayEngine;     // +0x0c
     CDefinitionManager_Retail*  DefinitionManager; // +0x10
-    CPlayerManager_Retail*      PlayerManager;     // +0x14
+    CPlayerManager*      PlayerManager;     // +0x14
     CThingSearchTools*          ThingSearchTools;  // +0x18
     long CurrentPlayer;                            // +0x1c
     long CurrentLevelID;                           // +0x20
@@ -196,8 +199,8 @@ void CGameScriptInterface::InternalEndMovieSequence()
     ResumeAbilitiesForCutscene();
     CameraResetToViewBehindHero(false);
     CameraDefault();
-    CThing_Retail* hero = PlayerManager->GetMainPlayer()->GetHeroCreature();
-    CTCBoastUI_Retail* boast;
+    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetHeroCreature();
+    CTCBoastUI* boast;
     if (hero && !hero->m_dead && GetTCOut(hero, 0xe8, &boast))
         boast->AllowUIToOpen(true);
 }

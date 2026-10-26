@@ -5,9 +5,16 @@
 // Callees: CEngineLandscapeMemoryManager::FreeVirtual(void*) 0x00BD9B90 (a tail jump: the adjusted pointer overwrites the argument slot).
 // Layout: engine/CEngineLandscapeMemoryManager.h; this method touches no member (this passes through in ecx).
 // Shape: AllocVirtualAligned 0x00BD9C40 over-allocates and stores (aligned - raw) at aligned[-1]; a null block is ignored.
+#define CEngineLandscapeMemoryManager CEngineLandscapeMemoryManagerLayout
 #include "engine/CEngineLandscapeMemoryManager.h"
+#undef CEngineLandscapeMemoryManager
+
+class CEngineLandscapeMemoryManager : public CEngineLandscapeMemoryManagerLayout
+{
+public:
+    void FreeVirtual(void*);   // 0x00BD9B90
+};
 struct CEngineLandscapeMemoryManagerMethods : CEngineLandscapeMemoryManager {   // method projection over the engine layout
-    void FreeVirtual(void* data);                // 0x00BD9B90
     void FreeVirtualAligned(void* data);
 };
 void CEngineLandscapeMemoryManagerMethods::FreeVirtualAligned(void* data)

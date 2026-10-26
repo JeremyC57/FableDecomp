@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DF4BE0, length 531 bytes. Entity-script slot 1 (Main) of the vtable
 //   0x012DE5AC built by the landed factory 0x00DF4730 (sizeof 0x1c = Ego_r.pdb CTheKraken); the manifest label
 //   "CQ_GuildTrainingScript::RunSaveXPCutscene2" is propagated.
-// Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (CIsThingAlive filter, vtable 0x012C2FE8), filter
+// Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (NScript::CIsThingConscious filter, vtable 0x012C2FE8), filter
 //   registration 0x00F35B10 / IsDone 0x00F35B30, CBaseObject ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle
 //   dtor 0x007E74D0 / operator= 0x008ABD10, cast map ctor 0x00CDBF70 / dtor 0x00CDBFB0 / operator[] 0x00CD3D2E, movie
 //   PImp dtor 0x006E7AB0, RunCutsceneMacro 0x00CBFB7D (__fastcall), CCharString 0x0099EBF0 / 0x0099EAE0; the game
@@ -12,10 +12,11 @@
 // Layout: entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18 (Ego_r.pdb CTheKraken).
 // Shape: the landed CKrakenMinion::Main 0x00DF4610 filter / handle model and the CMK_GHC_HERO3::Main 0x00D29DB0
 //   cast-map / destructor-less movie model; a first handle is constructed (never used) before the health wait.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    ~CScriptThing();                          // 0x004AA840
+    virtual ~CScriptThing();                          // 0x004AA840
 };
 class CCharString { public:
     void* PStringData;
@@ -44,7 +45,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                 // +0x08 Data, +0x0c Info
     virtual void v00();
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
 struct CMovieImpPointer {
@@ -129,42 +130,53 @@ class CGameScriptInterface { public:                       // the quest's game s
     virtual void v371(); virtual void v372(); virtual void v373(); virtual void v374(); virtual void v375(); virtual void v376(); virtual void v377(); virtual void v378();
     virtual void PauseAllNonScriptedEntities(bool pause);   // slot 379 (+0x5ec) PauseAllNonScriptedEntities
 };
-struct CIsThingAlive {                         // vtable 0x012C2FE8: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
-    CScriptThing m_thing;                     // +0x04
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive() { }
 };
+class CIsThingConscious : public CPredicateBase { public:                         // vtable 0x012C2FE8 (operator(): IsAlive() && !IsUnconscious(), CScriptThing slots 75/61)
+    CScriptThing m_thing;                     // +0x04
+    CIsThingConscious(const CScriptThing& thing) : m_thing(thing) { }
+    ~CIsThingConscious() { }
+};
+}
 struct CQ_TentacleKrakenBossFightScript;
 struct CQ_SunnyvaleMasterData;
-class CTheKraken {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CTheKraken : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     CGameScriptInterface* Game;               // +0x04
     CScriptThing          Me;                 // +0x08
     CQ_TentacleKrakenBossFightScript* ParentClass;   // +0x14
     CQ_SunnyvaleMasterData*           PMasterData;   // +0x18
-    void RegisterFilter(CIsThingAlive& filter);   // 0x00F35B10
-    bool IsDone();                            // 0x00F35B30
     void Main();
 };
 
 void CTheKraken::Main()
 {
     {
-        CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        NScript::CIsThingConscious filter(Me);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase kraken;
     while (!(Game->GetHealth(Me) <= 0.0f)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     {
         CScriptGameResourceObjectScriptedThingBase hero;
@@ -181,7 +193,7 @@ void CTheKraken::Main()
     }
     for (;;) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
 }

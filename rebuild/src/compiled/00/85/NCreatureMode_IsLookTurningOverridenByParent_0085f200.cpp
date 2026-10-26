@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F200, length 175 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsLookTurningOverridenByParent@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: CThingCreatureBase::IsPerformingAnyAction 0x006622A0, the current action's slot 50 (+0xC8, IsPreventingLookTurning),
-//   CThing::GetPlayer 0x004C7A10, the thing's slot 77 (+0x134, IsPlayer), CPlayer::IsMainPlayer 0x00487520,
+//   CThing::PeekPlayer 0x004C7A10, the thing's slot 77 (+0x134, IsPlayer), CPlayer::IsMainPlayer 0x00487520,
 //   CPlayer::IsFirstPersonTargeting 0x004874D0, CVectorMap LowerBound 0x004365B0 (const), GetCurrentMode 0x0073A6E0.
 // Layout: CPlayer ZTargeting +0x20A from engine/CPlayer.h (the methods are declared on a derived name: the header is data-only).
 // Shape: the player is fetched into a named local (edi) BEFORE the virtual IsPlayer test, as retail calls GetPlayer first.
@@ -110,7 +110,6 @@ public:
         }
         return false;
     }
-    CPlayer& GetPlayer();                               // 0x004C7A10
     template<class T> __forceinline bool GetInterface(T** ppOut, long type)
     {
         if (HasTC(type)) {
@@ -124,6 +123,8 @@ public:
     }
     __forceinline const CTCCreatureModeManager* GetModeManager() const { return (const CTCCreatureModeManager*)GetTC(0x31); }
     __forceinline CTCCreatureModeManager* GetModeManager() { return (CTCCreatureModeManager*)GetTC(0x31); }
+public:
+    const CPlayer& PeekPlayer() const;   // 0x004C7A10
 };
 class CThingCreatureBase : public CThing {
 public:
@@ -133,11 +134,18 @@ public:
     long                 MovementState;                 // +0x200 (3 tested by the sprint check)
     bool IsPerformingAnyAction() const;                 // 0x006622A0
 };
+#define CPlayer CPlayerLayout
 #include "engine/CPlayer.h"
+#undef CPlayer
+
+class CPlayer : public CPlayerLayout
+{
+public:
+    bool IsFirstPersonTargeting() const;   // 0x004874D0
+    bool IsMainPlayer() const;   // 0x00487520
+};
 class CPlayerMethods : public CPlayer {
 public:
-    bool IsMainPlayer() const;                          // 0x00487520
-    bool IsFirstPersonTargeting() const;                // 0x004874D0
 };
 namespace NCreatureMode {
 bool __fastcall IsLookTurningOverridenByParent(const CThing& thing);
@@ -149,7 +157,7 @@ bool __fastcall NCreatureMode::IsLookTurningOverridenByParent(const CThing& thin
         const CThingCreatureBase& creature = (const CThingCreatureBase&)thing;
         if (creature.IsPerformingAnyAction() && creature.PCurrentAction->IsPreventingLookTurning())
             return true;
-        CPlayerMethods& player = (CPlayerMethods&)const_cast<CThing&>(thing).GetPlayer();
+        CPlayerMethods& player = (CPlayerMethods&)const_cast<CThing&>(thing).PeekPlayer();
         if (thing.IsPlayer() && player.IsMainPlayer()) {
             if (player.IsFirstPersonTargeting() || player.ZTargeting)
                 return true;

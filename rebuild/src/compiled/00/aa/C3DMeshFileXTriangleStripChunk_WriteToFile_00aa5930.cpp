@@ -36,12 +36,13 @@ class CChunkedFileLoader;
 class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteULong(unsigned long value);               // 0x00993EA0
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
     void WriteBool(bool value);                         // 0x00993E30
     void WriteMatrix3x4(const CMatrix3x4& m);           // 0x00994070
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 class CDataInputStream { public:
     virtual void v0(); virtual void v1();
@@ -91,6 +92,6 @@ class C3DMeshFileXTriangleStripChunk : public CChunkedFileChunk { public:
 };
 void C3DMeshFileXTriangleStripChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
-    out.WriteULong(StripVertices.Size());
+    out.WriteULONG(StripVertices.Size());
     out.WriteData(StripVertices.GetList(), StripVertices.Size() * sizeof(unsigned short));
 }

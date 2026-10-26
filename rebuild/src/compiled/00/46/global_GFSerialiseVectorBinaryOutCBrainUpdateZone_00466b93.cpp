@@ -13,10 +13,17 @@
 //   (three WriteLongs in member order); the zero-initialised traits is never read and folds away; the loop index becomes a
 //   byte offset (ebp) and a down-counter. The size TU keeps the three-call traits transfer out of line unless __forceinline.
 #pragma optimize("s", on)
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteLong(long value);                             // 0x00993EB0
 };
 
 class CBrainUpdateZone {
@@ -45,9 +52,9 @@ template <> struct CPersistTraits<CBrainUpdateZone> {
     CBrainUpdateZone DefaultVal;
     __forceinline void TransferBinaryOut(CDataOutputStreamWriter& stream, const CBrainUpdateZone* value) const
     {
-        stream.WriteLong(value->Distance);
-        stream.WriteLong(value->UpdateFrequency);
-        stream.WriteLong(value->InterruptionFrequency);
+        stream.WriteSLONG(value->Distance);
+        stream.WriteSLONG(value->UpdateFrequency);
+        stream.WriteSLONG(value->InterruptionFrequency);
     }
 };
 
@@ -56,7 +63,7 @@ void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std:
 {
     CPersistTraits<T> traits;
     long count = value.size();
-    stream.WriteLong(count);
+    stream.WriteSLONG(count);
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, &value[i]);
 }

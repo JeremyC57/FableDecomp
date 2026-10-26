@@ -69,9 +69,10 @@ struct CCountedPointerWords {                     // {Data, Info}: a member obje
     CCountedPointerWords() : Data(0), Info(0) { }
 };
 class CBaseObject { public:                               // CBaseIntelligentPointer root (+4 nulled by its ctor)
-    virtual void v00();
     void* m_pIntelligentPointer;                   // +0x04
-    CBaseObject();                                 // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info

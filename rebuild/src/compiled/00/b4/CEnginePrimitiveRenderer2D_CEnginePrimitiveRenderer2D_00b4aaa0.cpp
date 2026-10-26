@@ -28,8 +28,7 @@ class CCPPointerInfo { public:
     void* Data;
 };
 
-extern void FABLE_CDECL FableOperatorDelete(void* pointer); // 0x00BFE9BC
-extern void FABLE_CDECL FableFree(void* pointer);           // 0x00BFEA14
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 template<class T> class CCountedPointer { public:
     T* Data;
@@ -41,7 +40,7 @@ template<class T> class CCountedPointer { public:
             --Info->RefCount;
             if (Info->RefCount == 0) {
                 Info->DeleteFunc(Info->Data);
-                FableOperatorDelete(Info);
+                operator delete(Info);
             }
         }
         Data = 0;
@@ -67,7 +66,7 @@ struct CManagerPointerArray {
         EmptyRangeTag tag;
         DestroyManagerRange(Start, Finish, &tag);
         if (Start != 0)
-            FableFree(Start);
+            free(Start);
     }
 };
 

@@ -6,14 +6,25 @@
 // Shape: the creature is fetched into a named local (edi) BEFORE the virtual call (the argument of the member call is
 // evaluated after the object expression only when the object is already a local), then `return !result` on a bool:
 // `neg al ; sbb eax,eax ; inc eax`.
-struct CThingCreatureBase_Calls {         // engine/CThingCreatureBase.h exists but is not used: only this call is modelled
+class CThingCreatureBase_Calls { public:         // engine/CThingCreatureBase.h exists but is not used: only this call is modelled
     bool IsAnimCombinationAnim(long animationIndex);   // 0x00662820
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThingCreatureBase_Calls* m_pItem;      // +0x04
-    CThingCreatureBase_Calls* GetPItem() const;   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 // engine/CCreatureActionBase.h exists but is not used: it is the PDB build's flat pack(1) layout (0xb4 bytes, three
@@ -22,7 +33,7 @@ class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual long GetAnimationIndex() const; // slot 7 (+0x1c)
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThingCreatureBase_Calls> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     bool IsPreventingNormalMovement() const;
 };
 

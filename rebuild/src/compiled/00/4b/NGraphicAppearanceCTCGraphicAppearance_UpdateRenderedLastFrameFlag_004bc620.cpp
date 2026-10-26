@@ -65,7 +65,10 @@ struct CComponentList {                                 // STLport list<CAGraphi
     CComponentListNode* m_head;
 };
 
-long __fastcall GetCurrentWorldFrame();                 // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                 // 0x0049D870
 
 #pragma pack(push, 2)
 class CEngineGraphic { public:                                 // 14 bytes (PDB size 14)
@@ -111,7 +114,7 @@ class CTCGraphicAppearance { public:
 
 void CTCGraphicAppearance::UpdateRenderedLastFrameFlag()
 {
-    FrameUpdatedWasRenderedFlag = GetCurrentWorldFrame();
+    FrameUpdatedWasRenderedFlag = CWorld::GetFrame();
     if (PrimitivesDrawn) {
         for (CPrimitiveListNode* node = Primitives.m_head->m_next; node != Primitives.m_head; node = node->m_next) {
             CEnginePersistentPrimitiveBase* data = node->m_value.PrimitiveHandle.Data;

@@ -62,16 +62,20 @@ class C3DAnimationStats { public:
     float         Duration;                        // +0x0c
     float GetDuration() const { return Duration; }
     void GetTimingEventNames(vector<CCharString>& names) const;   // 0x00A4EF90
-    float GetTimingEventTime(const CCharString& name) const;      // 0x00A4EAE0
+public:
+    float GetEventTime(const CCharString&) const;   // 0x00A4EAE0
 };
 class C3DAnimationInfo { public:
-    CCountedPointer<const C3DAnimationStats> GetAnimationStats();  // 0x00A269C0
+public:
+    CCountedPointer<C3DAnimationStats const> GetAnimationStats() const;   // 0x00A269C0
 };
-struct CAnimationBank {
-    C3DAnimationInfo* GetAnimationInfo(long animation);            // 0x00A242C0
+class CMeshDataBank { public:
+public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
 class CSymbolMap { public:
-    unsigned long Lookup(const CCharString& name);                 // 0x009E5120
+public:
+    long GetSymbolSLONG(const CCharString&) const;   // 0x009E5120
 };
 namespace NAnimationEvents {
 class CEvent { public:                                    // 8 bytes
@@ -88,20 +92,20 @@ template <class T, int N> struct CSmallVector {
 };
 class CManager { public:
     void*           __vftable;                     // +0x00
-    CAnimationBank* Bank;                          // +0x04
+    CMeshDataBank* Bank;                          // +0x04
     CSymbolMap      Symbols;                       // +0x08
     bool GetEmbeddedEventsBetweenTimes(long animation, CSmallVector<CEvent, 32>& events, float start, float end);
 };
 
 bool CManager::GetEmbeddedEventsBetweenTimes(long animation, CSmallVector<CEvent, 32>& events, float start, float end)
 {
-    CCountedPointer<const C3DAnimationStats> stats = Bank->GetAnimationInfo(animation)->GetAnimationStats();
+    CCountedPointer<const C3DAnimationStats> stats = Bank->PeekAnimation(animation)->GetAnimationStats();
     vector<CCharString> names;
     stats->GetTimingEventNames(names);
     bool found = false;
     for (CCharString* name = names._M_start; name != names._M_finish; ++name) {
-        unsigned long index = Symbols.Lookup(*name);
-        float time = stats->GetTimingEventTime(*name) / stats->GetDuration();
+        unsigned long index = Symbols.GetSymbolSLONG(*name);
+        float time = stats->GetEventTime(*name) / stats->GetDuration();
         if (time >= start && time <= end) {
             CEvent event;
             event.Index = index;

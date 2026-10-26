@@ -103,10 +103,13 @@ class CGameScriptInterface { public:                       // the quest's game s
     virtual void AddLineToConversation(long conversation, const CCharString& text, bool a, const CScriptThing& speaker, const CScriptThing& listener) const;   // slot 366 (+0x5b8) AddLineToConversation
 };
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
+public:
+    bool IsActiveThreadTerminating();   // 0x00CB7940
 };
+namespace NScript {
 class CQ_HangingTreeGoodScript : public CScriptBase {
 public:
     CGameScriptInterface* Game;                         // +0x40

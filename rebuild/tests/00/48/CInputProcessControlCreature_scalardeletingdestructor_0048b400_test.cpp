@@ -1,6 +1,5 @@
 #include <cstdio>
 
-void operator_delete_stub(void *p);
 
 class CInputProcessControlCreature
 { public:
@@ -17,7 +16,7 @@ void CInputProcessControlCreature::dtor()
     g_dtor_calls++;
 }
 
-void operator_delete_stub(void *p)
+void __cdecl operator delete(void* p)
 {
     g_delete_calls++;
     g_deleted_ptr = p;

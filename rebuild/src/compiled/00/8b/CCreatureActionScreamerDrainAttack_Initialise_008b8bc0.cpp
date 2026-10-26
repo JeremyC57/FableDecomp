@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B8BC0, length 240 bytes (plain `ret`, virtual).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PTarget +0xA8 three times, PCreature +8 twice), CThing::GetPosition
 // 0x004C73D0 (creature first, then target), CThingCreatureBase::GetCombatTypeDef 0x00666D10, CCharString(const char*, long)
-// 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetAnimationName(const CCharString&) 0x008574D0,
+// 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation(const CCharString&) 0x008574D0,
 // CCombatActionBase::Initialise 0x00857520 (direct base call, last).
 // Layout: the target pointer is the CCreatureActionBase member at +0xA8; the combat-type def's FrontNearLimit sits at retail
 // +0x80 (PDB +0x84: def layouts are 4 bytes smaller in retail). The PDB header for this class flattens its base.
@@ -33,21 +33,33 @@ class CThing { public:
     CCombatTypeDef* GetCombatTypeDef();         // 0x00666D10 (CThingCreatureBase)
 };
 
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();                  // 0x00857520
     unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;          // +0x08
+    CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
-    CBaseIntelligentPointer PTarget;            // +0xa8
+    CIntelligentPointer<CThing> PTarget;            // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_ScreamerDrainAttack : public CCombatActionBase { public:
@@ -71,11 +83,11 @@ void CCreatureAction_ScreamerDrainAttack::Initialise()
     }
     if (advance) {
         CCharString name("ST_CAST_DRAIN_LIFE_ADVANCE", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     else {
         CCharString name("ST_CAST_DRAIN_LIFE", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
 }

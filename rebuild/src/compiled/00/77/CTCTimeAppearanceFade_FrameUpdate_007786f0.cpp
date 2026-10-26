@@ -95,7 +95,8 @@ class CTCBase { public:
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
     unsigned char _pad0a[2];
-    CWorld* GetWorld();                         // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 struct CTCTimeAppearanceFade : CTCBase {
     virtual void FrameUpdate();
@@ -109,7 +110,7 @@ void CTCTimeAppearanceFade::FrameUpdate()
     CDefClassBase* defClass = ParentThing->DefClass;
     CFadeDefPointer def;
     if (defClass->GetSubDef(&def)) {
-        float time = GetWorld()->PGameTimeManager->Time;
+        float time = GetWorld().PGameTimeManager->Time;
         float position = 0.0f;
         if (GFGetValPositionInLimitsLooping(time, def->FadeInEnd, def->FadeOutStart, 0.0f, 1.0f, &position))
             appearance->SetAlpha(0xff);

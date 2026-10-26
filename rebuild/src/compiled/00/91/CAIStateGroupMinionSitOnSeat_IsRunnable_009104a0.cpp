@@ -13,7 +13,10 @@ class CAIStateGroupBase { public:
     unsigned char _pad[0x10];                   // +0x4..+0x13
 };
 
-extern long __fastcall GFGetCurrentFrame();     // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};     // 0x0049D870
 
 struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
     unsigned char _seat[0x20];                  // +0x14 PSeat, GotSeatPos, Sitting, SeatPosIndex, SeatPos, SittingOnBench
@@ -31,5 +34,5 @@ struct CAIStateGroup_MinionSitOnSeat : CAIStateGroup_MinionSitOnSeatBase {
 
 bool CAIStateGroup_MinionSitOnSeat::IsRunnable()
 {
-    return GFGetCurrentFrame() > FrameToSitDown && CAIStateGroup_MinionSitOnSeatBase::IsRunnable();
+    return CWorld::GetFrame() > FrameToSitDown && CAIStateGroup_MinionSitOnSeatBase::IsRunnable();
 }

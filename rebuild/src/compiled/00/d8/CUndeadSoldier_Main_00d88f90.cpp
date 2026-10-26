@@ -11,15 +11,16 @@
 // Shape: the scoped filter object of the landed entity-script Mains; the faction name is an implicit conversion; the
 // distance test's float is pushed before GetHero() is evaluated (right-to-left); the final wait is an endless frame loop
 // that only leaves when the thread terminates.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 class CScriptThing { public:                                    // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    ~CScriptThing();                                     // 0x004AA840
+    virtual ~CScriptThing();                                     // 0x004AA840
 };
 class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const;
@@ -130,19 +131,30 @@ class CGameScriptInterface { public:
     virtual void EntitySetInFaction(const CScriptThing& thing, const CCharString& faction) const;   // slot 601 (+0x964)
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CIsThingAlive {                                   // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                   // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                                // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-class CUndeadSoldier {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CUndeadSoldier : public CEntityScriptBase {
 public:
     void*                 __vftable;                     // +0x00
     CGameScriptInterface* Game;                          // +0x04
     CScriptThing          Me;                            // +0x08
-    void RegisterFilter(CIsThingAlive& filter);          // 0x00F35B10
-    bool IsActiveThreadTerminating();                    // 0x00F35B30
     void Main();
 };
 
@@ -150,7 +162,7 @@ void CUndeadSoldier::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

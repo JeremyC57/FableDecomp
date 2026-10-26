@@ -10,7 +10,10 @@
 // `? true : false` form of the second HasSeller test.
 extern long g_framesPerSecond;              // 0x01375550
 extern unsigned long g_minSecondsBetweenBuys;   // 0x0138C694
-long __fastcall GFGetFrameCount();          // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};          // 0x0049D870
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -30,7 +33,7 @@ struct CAIStateGroup_BuyFromSeller : CAIStateGroup_WorkBase {
 
 bool CAIStateGroup_BuyFromSeller::IsRunnable()
 {
-    if ((GFGetFrameCount() - FrameLastBought) / g_framesPerSecond > g_minSecondsBetweenBuys && IsInWorkHours()) {
+    if ((CWorld::GetFrame() - FrameLastBought) / g_framesPerSecond > g_minSecondsBetweenBuys && IsInWorkHours()) {
         if (!HasSeller())
             AcquireSeller();
         return HasSeller() ? true : false;

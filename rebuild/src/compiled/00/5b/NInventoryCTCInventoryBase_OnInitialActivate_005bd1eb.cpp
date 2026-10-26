@@ -10,7 +10,8 @@
 // Ego_r.exe ?OnInitialActivate@CTCInventoryBase@NInventory@@UAEXXZ 0x0062011E is 74 bytes / 35 instructions like retail.
 #pragma optimize("s", on)
 class CQuestManager { public:
-    bool IsBetweenQuestStartAndFinishScreens();  // 0x004AF290
+public:
+    bool IsBetweenQuestStartAndFinishScreens() const;   // 0x004AF290
 };
 extern CQuestManager* g_pQuestManager;           // 0x013B89FC
 

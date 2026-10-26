@@ -7,7 +7,10 @@
 // then the signed `>` against EndFrame (+0x84, `jle` to the false exit); two exits (`mov al,1` / `xor al,al`).
 // Layout: NCameraModes::CScriptModuleBase members from the PDB (0x4c bytes) and the derived members of
 // CScriptModuleTransitionBetweenPoints (PDB, 0x90 bytes). No engine header exists for these classes.
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                 // 0x0049D870
 class CBaseObject;
 struct CBase;
 class CGameCameraManager;
@@ -54,7 +57,7 @@ struct CScriptModuleTransitionBetweenPoints : CScriptModuleBase {
 
 bool CScriptModuleTransitionBetweenPoints::IsFinished() const
 {
-    if (!PreventSelfTermination && SelfTerminate && GFGetCurrentFrame() > EndFrame)
+    if (!PreventSelfTermination && SelfTerminate && CWorld::GetFrame() > EndFrame)
         return true;
     return false;
 }

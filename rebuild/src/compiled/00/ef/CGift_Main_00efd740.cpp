@@ -968,11 +968,16 @@ extern bool g_bScriptAnimationFlag;                 // 0x01375748 (a global bool
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-struct CGift {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CGift : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  void* ParentClass;                                  // +0x14
  void* PMasterData;                                  // +0x18
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CGift::Main()

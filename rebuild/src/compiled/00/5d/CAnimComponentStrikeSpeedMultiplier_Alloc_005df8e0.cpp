@@ -12,13 +12,12 @@ class CAnimComponentStrikeSpeedMultiplier { public:
     ULONG field8;   // +8
 };
 
-extern "C" void * __cdecl fable_op_new(unsigned int size);
 
 // this-call modeled as __fastcall: self arrives in ecx
 CAnimComponentBase * __fastcall Alloc(CAnimComponentStrikeSpeedMultiplier * component)
 {
     CAnimComponentStrikeSpeedMultiplier * p =
-        (CAnimComponentStrikeSpeedMultiplier *)fable_op_new(0xc);
+        (CAnimComponentStrikeSpeedMultiplier *)operator new(0xc);
     if (p) {
         p->field4 = 1;
         p->vtable = 0x1255800;

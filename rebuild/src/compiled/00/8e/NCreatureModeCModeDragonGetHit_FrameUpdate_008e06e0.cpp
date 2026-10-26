@@ -16,10 +16,21 @@ class CThingCreatureBase { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CBaseIntelligentPointer {           // vtable + PData (8 bytes)
-    virtual void v00();
-    void* PData;
-    CThing* GetPItem() const;              // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 
 class CCreatureActionBase { public:               // retail sizeof 0xa8
@@ -28,7 +39,7 @@ class CCreatureActionBase { public:               // retail sizeof 0xa8
 };
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
-    ~CCombatActionBase();                  // 0x0062E900
+    virtual ~CCombatActionBase();                  // 0x0062E900
 };
 class CCreatureAction_SnapDragonOutOf : public CCombatActionBase { public:
     CCreatureAction_SnapDragonOutOf(CThingCreatureBase* owner, CThing* thing);   // 0x008E49C0
@@ -47,7 +58,7 @@ struct CModeStandBase : CModeBase {        // retail sizeof 0x68
 namespace NCreatureMode {
 struct CModeDragonGetHit : CModeStandBase {   // vtable 0x012683E4
     unsigned char           Filter[0x0c];  // +0x68 CAnimFilterOfGroup
-    CBaseIntelligentPointer PTarget;       // +0x74 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PTarget;       // +0x74 CIntelligentPointer<CThing>
     long                    Timer;         // +0x7c
     void FrameUpdate();
 };

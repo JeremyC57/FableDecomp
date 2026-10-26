@@ -137,7 +137,8 @@ long CMessageEventManager::FindAllMessages(const CSeenOrHeardFilter& filter, lis
 #pragma auto_inline(on)
 
 class CWorldMap { public:
-    const CCharString& GetLevelScriptName(long map);    // 0x004FCFC0
+public:
+    const CCharString& GetLevelScriptName(long) const;   // 0x004FCFC0
 };
 class CWorld { public:
     virtual void w00(); virtual void w01(); virtual void w02(); virtual void w03(); virtual void w04(); virtual void w05(); virtual void w06();

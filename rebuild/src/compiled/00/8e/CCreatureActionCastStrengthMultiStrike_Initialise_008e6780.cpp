@@ -5,7 +5,7 @@
 //   0x0099EBF0 ("CTCHaste" 0x0123C2A0 / "MULTI_STRIKE_FRONT" 0x01287368), CThing::AddTC(const CCharString&, bool,
 //   CTCParamsBase*) 0x004C9D60, ~CCharString 0x0099EAE0, map<void*, float>::insert(const value_type&) 0x00580D21
 //   (pair<iterator,bool> by hidden pointer; byte twin of the landed set<ulong> insert), CTCHaste::RecalculateMultiplier
-//   0x00800020, CCombatActionBase::SetAnimationName 0x008574D0, CCombatActionBase::Initialise 0x00857520.
+//   0x00800020, CCombatActionBase::SetCombatAnimation 0x008574D0, CCombatActionBase::Initialise 0x00857520.
 // Layout: CTCHaste is interface type 0x8C (bit 12 of the presence word at +0x30); its multiplier map at +0x18 (landed
 //   CTCHaste::RemoveMultiplier 0x0058148D). The creature's component vector map at +0x44 is read with an INLINE
 //   STLport lower_bound here (signed `len/2` halving, `first = middle + 1; len = len - half - 1`), not the
@@ -29,7 +29,6 @@ class CThing { public:
     unsigned long m_presentBits[9];                   // +0x20 std::bitset of interface types
     SInterfaceEntry* m_interfacesFirst;               // +0x44
     SInterfaceEntry* m_interfacesLast;                // +0x48
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     __forceinline bool LacksTC(long type) const
     {
@@ -53,11 +52,24 @@ class CThing { public:
             it = m_interfacesLast;
         return it->component;
     }
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                  // +4
-    CThing* GetPItem() const;                         // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CMultiplierEntry {                             // map<void*, float>::value_type
@@ -81,10 +93,11 @@ class CTCHaste { public:
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
-    CBaseIntelligentPointer PCreature;                // +0x08
+    CIntelligentPointer<CThing> PCreature;                // +0x08
     unsigned char _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
-    void Initialise();                                // 0x00857520
+public:
+    virtual void Initialise();   // 0x00857520
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 class CCreatureAction_CastStrengthMultiStrike : public CCombatActionBase { public:
     void Initialise();
@@ -100,6 +113,6 @@ void CCreatureAction_CastStrengthMultiStrike::Initialise()
     CTCHaste* haste = (CTCHaste*)creature->GetTC(0x8C);
     haste->Multipliers.insert(CMultiplierEntry(this, 1.75f));
     haste->RecalculateMultiplier();
-    SetAnimationName("MULTI_STRIKE_FRONT");
+    SetCombatAnimation("MULTI_STRIKE_FRONT");
     CCombatActionBase::Initialise();
 }

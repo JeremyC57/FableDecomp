@@ -3,7 +3,7 @@
 // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inlined GetInterface, type 0xE3 = bit 3 of the dword at
 // CThing+0x3C), GetWorldFrame 0x0049D870, __ftol2. Globals: frames-per-second long 0x01375550.
 // Layout (retail, local model): CTCKraken PKrakenDef +0x0C (def float +0x78 = tentacle rise delay in seconds), Tentacles
-// list<CIntelligentPointer<CThing>> +0x44 (PDB +0x4C: retail sits 8 bytes lower); CTCKrakenTentacle TickToRise +0x34 (PDB +0x34).
+// list<CIntelligentPointer<CThing> > +0x44 (PDB +0x4C: retail sits 8 bytes lower); CTCKrakenTentacle TickToRise +0x34 (PDB +0x34).
 // Shape: the frames-per-second global and the def are named locals read before GetWorldFrame (retail order); the component out pointer is never reset, so a missing component keeps the previous one (retail ebp).
 class CTCBase;
 struct CInterfaceMap {
@@ -50,10 +50,21 @@ public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 template<class T> struct CListNode {
     CListNode* Next;
@@ -64,7 +75,10 @@ template<class T> struct CList {               // STLport list: header node poin
     CListNode<T>* Node;
 };
 extern long g_FramesPerSecond;                  // 0x01375550
-long GetWorldFrame();                           // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                           // 0x0049D870
 class CKrakenDef { public:
     unsigned char _pad00[0x78];
     float TentacleRiseDelay;                    // +0x78
@@ -85,17 +99,17 @@ class CTCKraken : public CTCBase {
 public:
     CKrakenDef* PKrakenDef;                     // +0x0c
     unsigned char _pad10[0x44 - 0x10];
-    CList<CBaseIntelligentPointer> Tentacles;   // +0x44
+    CList<CIntelligentPointer<CThing> > Tentacles;   // +0x44
     void RaiseSunkenTentacles();
 };
 
 void CTCKraken::RaiseSunkenTentacles()
 {
     CTCKrakenTentacle* tentacle;
-    for (CListNode<CBaseIntelligentPointer>* it = Tentacles.Node->Next; it != Tentacles.Node; it = it->Next) {
+    for (CListNode<CIntelligentPointer<CThing> >* it = Tentacles.Node->Next; it != Tentacles.Node; it = it->Next) {
         it->Data.GetPItem()->GetInterface(&tentacle, 0xe3);
         long fps = g_FramesPerSecond;
         CKrakenDef* def = PKrakenDef;
-        tentacle->TickToRise = GetWorldFrame() + (long)(def->TentacleRiseDelay * fps);
+        tentacle->TickToRise = CWorld::GetFrame() + (long)(def->TentacleRiseDelay * fps);
     }
 }

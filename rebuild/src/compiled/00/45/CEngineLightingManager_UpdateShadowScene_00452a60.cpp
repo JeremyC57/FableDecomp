@@ -6,16 +6,17 @@ struct CLocalSink {
     int slot;
     void Emit(int obj24, int* param);
 };
-struct CShadowObj {
-    void Apply(int arg);
+class CDataOutputStream { public:
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 class CEngineLightingManager { public:
     char pad0[0x18];
     int mode;          // +0x18
     char pad1c[0x24-0x1c];
-    CShadowObj* obj24; // +0x24
-    CShadowObj* obj28; // +0x28
+    CDataOutputStream* obj24; // +0x24
+    CDataOutputStream* obj28; // +0x28
 };
 
 extern "C" void __stdcall LM_Prologue(int cookie);
@@ -30,7 +31,7 @@ void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager*
         sink.Emit((int)self->obj24, param);
         break;
     case 3:
-        self->obj28->Apply(*param);
+        self->obj28->WriteSLONG(*param);
         break;
     }
 }

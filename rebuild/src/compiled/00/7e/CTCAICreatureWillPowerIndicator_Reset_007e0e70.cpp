@@ -18,13 +18,24 @@ class CThing { public:
     void Kill(bool immediately);                // 0x004C9B80
 };
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    void* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(pop)
-inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
+inline bool IsThingAlive(const CIntelligentPointer<CThing>& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
 
 class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
@@ -81,7 +92,7 @@ public:
     long  Timer;                                // +0x10
     long  ResetCount;                           // +0x14
     bool  ShowEffect;                           // +0x18
-    CBaseIntelligentPointer PEmitter;           // +0x19
+    CIntelligentPointer<CThing> PEmitter;           // +0x19
     void Reset(float time);
 };
 

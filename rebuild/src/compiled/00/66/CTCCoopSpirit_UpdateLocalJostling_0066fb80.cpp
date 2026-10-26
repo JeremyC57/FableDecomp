@@ -40,21 +40,27 @@ class CPlayerManager { public:
     long GetMainPlayerNumber();                 // 0x00449700
     CPlayer* GetPlayer(long number);            // 0x004498C0
 };
-class CTCCoopSpirit { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCCoopSpirit : public CTCBase { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
-    CPlayerManager* GetPlayerManager();         // 0x00686D40 (CTCBase)
     void UpdateLocalJostling();
 };
 
 void CTCCoopSpirit::UpdateLocalJostling()
 {
     for (long i = 0; i < 4; ++i) {
-        if (GetPlayerManager()->GetMainPlayerNumber() == i)
+        if (GetPlayerManager().GetMainPlayerNumber() == i)
             continue;
         if (ParentThing->PlayerNumber == i)
             continue;
-        CThing* hero = GetPlayerManager()->GetPlayer(i)->GetHeroThing();
+        CThing* hero = GetPlayerManager().GetPlayer(i)->GetHeroThing();
         if (!hero || hero->IsDead())
             continue;
         CThing* spirit = ParentThing;

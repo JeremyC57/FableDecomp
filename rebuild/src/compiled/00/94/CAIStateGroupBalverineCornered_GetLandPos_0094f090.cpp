@@ -17,12 +17,14 @@ struct CGeometryThing {
  unsigned char _beforePhysics[0x60]; CTCPhysicsBase* PhysicsTC;
  const C3DVector& GetPosition() const; // 004C73D0
 };
-struct CWorldMapHeightMethods { float GetHeightZBelowPos(const C3DVector&); }; // 0063E480; position argument is pushed before the preceding no-argument virtual getter.
+class CWorldMap { public: public:
+    float GetHeightZBelowPos(const C3DVector&) const;   // 0x0063E480
+}; // 0063E480; position argument is pushed before the preceding no-argument virtual getter.
 struct CWorldHeightView {
  virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
  virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
  virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
- virtual void v12(); virtual CWorldMapHeightMethods& PeekWorldMap() const; // slot13, CWorld RTTI vtable012390f0 ->004AE8C0, no stack arguments
+ virtual void v12(); virtual CWorldMap& PeekWorldMap() const; // slot13, CWorld RTTI vtable012390f0 ->004AE8C0, no stack arguments
 };
 struct CBalverineLandMethods : CAIStateGroupBase {
  CWorldHeightView* GetPWorld(); // 008FCFC0

@@ -1,7 +1,9 @@
 #pragma optimize("s",on)
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CMessageEventDef { public: int f0; };
-extern "C" void __fastcall CMessageEventDef_dtor(CMessageEventDef* message);
-extern void __cdecl op_delete(void* p);
 
 struct CLBP_Vtbl {
     void* CMessageEventDef_scalar_deleting_destructor(unsigned int flags);
@@ -10,9 +12,9 @@ struct CLBP_Vtbl {
 void* CLBP_Vtbl::CMessageEventDef_scalar_deleting_destructor(unsigned int flags)
 {
     CMessageEventDef* message = (CMessageEventDef*)this;
-    CMessageEventDef_dtor(message);
+    ((CParentDefClassBase*)(message))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1) {
-        op_delete(message);
+        operator delete(message);
     }
     return message;
 }

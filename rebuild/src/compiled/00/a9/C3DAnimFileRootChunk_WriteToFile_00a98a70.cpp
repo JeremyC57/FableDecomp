@@ -1,6 +1,6 @@
 // C3DAnimFileRootChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- loop flag, duration, then the sub-chunks
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A98A70, length 64 bytes.
-// Callees: CDataOutputStream::WriteBOOL @ 0x00993E30, CDataOutputStream::WriteFLOAT @ 0x00993EE0, CChunkedFileSuperChunk::WriteToFile @ 0x00AA78C0.
+// Callees: CDataOutputStream::WriteEBOOL @ 0x00993E30, CDataOutputStream::WriteFloat @ 0x00993EE0, CChunkedFileSuperChunk::WriteToFile @ 0x00AA78C0.
 // LoopFlag (+0x2c) is zero-extended into the bool argument (`xor eax,eax ; mov al,[esi+2Ch]`), Duration (+0x30)
 // is pushed as a dword.
 // Layout: the PDB (Ego_r) CChunkedFileSuperChunk is 0x34 bytes with 16-byte CArrays; retail's is 0x2c with 12-byte
@@ -21,9 +21,10 @@ class CDataOutputStream { public:
     virtual void WriteBytes(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteLONG(long value);                                    // 0x00993EB0
     void WriteULONG(unsigned long value);                          // 0x00993EA0
-    void WriteFLOAT(float value);                                  // 0x00993EE0
-    void WriteBOOL(bool value);                                    // 0x00993E30
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteFloat(float);   // 0x00993EE0
 };
 
 template <class T>
@@ -98,7 +99,7 @@ class C3DAnimFileRootChunk : public CChunkedFileSuperChunk { public:   // retail
 
 void C3DAnimFileRootChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
-    out.WriteBOOL(LoopFlag);
-    out.WriteFLOAT(Duration);
+    out.WriteEBOOL(LoopFlag);
+    out.WriteFloat(Duration);
     CChunkedFileSuperChunk::WriteToFile(out, saver);
 }

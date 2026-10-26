@@ -15,7 +15,10 @@ class CAIStateGroupBase { public:
 };
 
 extern long g_FramesPerSecond;                  // 0x01375550
-extern long __fastcall GFGetCurrentFrame();     // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};     // 0x0049D870
 
 struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
     unsigned char _seat[0x20];                  // +0x14 PSeat, GotSeatPos, Sitting, SeatPosIndex, SeatPos, SittingOnBench
@@ -35,5 +38,5 @@ void CAIStateGroup_MinionSitOnSeat::OnReplace()
 {
     CAIStateGroup_UsesSeat::OnReplace();
     long framesPerSecond = g_FramesPerSecond;   // read before the frame call (kept in edi across it)
-    FrameToSitDown = GFGetCurrentFrame() + framesPerSecond * 80;
+    FrameToSitDown = CWorld::GetFrame() + framesPerSecond * 80;
 }

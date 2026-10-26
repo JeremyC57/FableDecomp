@@ -73,16 +73,16 @@ class C3DAnimation2;
 class CBankFileAsyncData;
 class C3DAnimationInfo;
 
-class CAnimationDataBase {                   // the base class: vptr + 0x18 bytes, out-of-line destructor
+class CResource {                   // the base class: vptr + 0x18 bytes, out-of-line destructor
 public:
     virtual void v00();
-    ~CAnimationDataBase();                   // 0x009FC550
+    virtual ~CResource();                   // 0x009FC550
     unsigned char _body[0x18];
 };
 
 class C3DAnimationInfo {
 public:
-    class CAnimationData : public CAnimationDataBase {   // vtable 0x0129CE50
+    class CAnimationData : public CResource {   // vtable 0x0129CE50
     public:
         virtual void v00();
         CAnimationMap                       Animations;        // +0x1c

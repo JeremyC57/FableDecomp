@@ -58,12 +58,19 @@ class CPlayer { public:
     CThing* GetHeroCreature();                          // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
-class CTCContainer { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCContainer : public CTCBase { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    CPlayerManager* GetPlayerManager();                 // 0x00686D40 (CTCBase)
     void AddItemToInventory(CThing* item);
 };
 
@@ -72,7 +79,7 @@ void CTCContainer::AddItemToInventory(CThing* item)
     if (item->HasTC(0x1a)) {
         CTCInventoryItem* inventoryItem = (CTCInventoryItem*)item->GetTC(0x1a);
         long type = inventoryItem->GetInventoryType();
-        CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroCreature();
         inventoryItem->AddToInventory((CTCInventoryBase*)hero->GetTCIfPresent(type), false, true, 0, false, false);
     } else
         item->Kill(false);

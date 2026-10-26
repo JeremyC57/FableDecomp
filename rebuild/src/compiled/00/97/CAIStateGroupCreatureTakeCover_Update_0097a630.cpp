@@ -109,13 +109,12 @@ class CSoundPair { public:
     CSoundPair() : m_first(0), m_second(0) { }
 };
 class CCreatureActionBase { public:
-    void* __vftable;
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x114 - 0xa8];
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCreatureAction_ProjectileCrouch : public CCombatActionBase { public:   // retail sizeof 0x124 (members up to +0x11d)
     unsigned char _crouch[0x124 - 0x114];

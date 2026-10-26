@@ -2,17 +2,26 @@
 // Circular doubly-linked list of marker nodes: node+0=next, node+4=prev,
 // node+8 = embedded marker object.
 
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
 struct Marker;               // embedded at node+8
 struct Node { Node* next; Node* prev; };  // followed by Marker at +8
 
 struct QueryResult { char pad[0x91]; unsigned char flags; };
 
 // 0x00a01b50 : Marker::GetSomething(this=ecx) -> QueryResult*
-extern QueryResult* __fastcall Marker_Query(Marker* self);
 // 0x00a01c10 : Marker::~/cleanup(this=ecx)
-extern void __fastcall Marker_Destroy(Marker* self);
 // 0x00bfea14 : free(void*)
-extern "C" void __cdecl fable_free(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 class CMiniMapDisplay { public:
     char pad[0x20];
@@ -26,7 +35,7 @@ void __fastcall CMiniMapDisplay_RemoveAllDeadMarkers(CMiniMapDisplay* self)
     while (n != self->head)
     {
         Marker* m = (Marker*)((char*)n + 8);
-        QueryResult* q = Marker_Query(m);
+        QueryResult* q = ((QueryResult*)(((CBaseIntelligentPointer*)(m))->GetPItem()));
         if (q != 0 && (q->flags & 1) == 0)
         {
             n = n->next;
@@ -37,8 +46,8 @@ void __fastcall CMiniMapDisplay_RemoveAllDeadMarkers(CMiniMapDisplay* self)
             Node* pv = n->prev;
             pv->next = nx;
             nx->prev = pv;
-            Marker_Destroy(m);
-            fable_free(n);
+            ((CBaseIntelligentPointer*)(m))->CBaseIntelligentPointer::~CBaseIntelligentPointer();
+            free(n);
             n = nx;
         }
     }

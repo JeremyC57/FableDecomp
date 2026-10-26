@@ -6,9 +6,10 @@
 // Shape: `if (a() && b()) c();` with the creature read through PBrain each time (no local), which is what
 // gives the three separate `mov [esi+4] ; mov [+18h]` pairs and the sibling-call `jmp` at the end.
 class CThingCreatureBase { public:
-    bool IsPerformingAnyAction();           // 0x006622A0
     bool IsFreeToFinishAction();            // 0x006621C0
     void FinishCurrentAction();             // 0x00662650
+public:
+    bool IsPerformingAnyAction() const;   // 0x006622A0
 };
 
 class CAIBrain { public:

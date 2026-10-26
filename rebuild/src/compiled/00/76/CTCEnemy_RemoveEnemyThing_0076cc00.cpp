@@ -57,8 +57,9 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
 
 class CTCCreatureOpinionOfHero {                    // interface 0x4F
 public:
-    bool IsHeroOpinionEnemy();                      // 0x006827A0
     void SetHeroOpinionEnemy(bool enemy);           // 0x006815D0
+public:
+    bool IsHeroOpinionEnemy() const;   // 0x006827A0
 };
 
 class CThing {

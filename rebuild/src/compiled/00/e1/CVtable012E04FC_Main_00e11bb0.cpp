@@ -16,7 +16,15 @@ class CIsThingAlive:public CPredicateBase { public:
 };
 }
 #include "engine/CBaseObject.h"
+#define CScriptGameResourceObjectScriptedThingBase CScriptGameResourceObjectScriptedThingBaseLayout
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#undef CScriptGameResourceObjectScriptedThingBase
+
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectScriptedThingBaseLayout
+{
+public:
+    void Release();   // 0x00CD2770
+};
 extern const unsigned char ResourceVTable[]; //0127094C
 // Generated resource header flattens CBaseObject. This field-free API binds the
 // genuine CBaseObject constructor 0099A380 (vptr129A7D8, IntelligentPointer+4=0).
@@ -26,7 +34,6 @@ struct ScriptResource:CScriptGameResourceObjectScriptedThingBase {
  __forceinline ScriptResource(){InitializeCBaseObject();__vftable=(void*)ResourceVTable;PImp_Data=0;PImp_Info=0;}
  ~ScriptResource(); //007E74D0
  bool IsScripting(); //00CD23B9
- void Release(); //00CD2770
 };
 struct GameCalls;
 #pragma pointers_to_members(full_generality,single_inheritance)

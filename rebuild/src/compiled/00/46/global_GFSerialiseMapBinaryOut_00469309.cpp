@@ -13,10 +13,17 @@
 // Model: engine/CDataOutputStream.h + a methods-only writer adapter; STLport map = {header node pointer, count, comparator};
 //   node = {colour, parent, left, right, pair<const long, CBlendedParticleEffectSet>} (value at +0x10).
 #pragma optimize("s", on)
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteSLONG(long value);                             // 0x00993EB0
 };
 class CBlendedParticleEffectSet {
 public:

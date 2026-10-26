@@ -48,7 +48,8 @@ class CDiskFileWin32 : public CBase { public:                         // vtable 
     CWideString Pathname;                               // +0x18
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
     ~CDiskFileWin32() { Close(); }
-    void Read(void* data, long size, CASuspendableProcess* process);   // 0x0099A960
+public:
+    virtual void Read(void*, long, CASuspendableProcess*);   // 0x0099A960
 };
 
 struct CByteVector {                                    // STLport vector<unsigned char>, 12 bytes
@@ -77,7 +78,6 @@ class CDataInputStream { public:
     long                 SourceChunkStreamPos;          // +0x10
     long                 m_remaining;                   // +0x14
     CDataInputStream();                                 // 0x00993B20
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {
@@ -97,6 +97,8 @@ class CDataInputStream { public:
     __forceinline unsigned long ReadULONG() { unsigned long value; Read(&value, 4); return value; }
     __forceinline bool ReadEBOOL() { unsigned char value; Read(&value, 1); return value != 0; }
     __forceinline float ReadFLOAT() { float value; Read(&value, 4); return value; }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 struct SZeroed {
     long m_00;
@@ -106,7 +108,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:     // vtable 0
     SZeroed m_source;                                   // +0x18
     virtual void v00();
     CMemoryDataInputStream() { }
-    ~CMemoryDataInputStream();                          // 0x00993B10
+    virtual ~CMemoryDataInputStream();                          // 0x00993B10
     void OpenMemorySource(void* data, unsigned long size);   // 0x00994570
 };
 

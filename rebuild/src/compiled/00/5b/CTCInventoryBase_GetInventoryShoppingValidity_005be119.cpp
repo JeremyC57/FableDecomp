@@ -115,13 +115,18 @@ struct CTCFacing {                                          // interface 2
 class CPlayer { public: CThingHero* GetHeroThing(); };             // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };        // 0x00449970
 
-struct CTCInventoryBase {
+class CTCBase
+{
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+struct CTCInventoryBase : public CTCBase {
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04 CTCBase
     unsigned char _pad008[0xb8 - 0x08];
     CThing*       PShopKeeper;                              // +0xB8
 
-    CPlayerManager* GetPlayerManager() const;               // 0x00686D40 (CTCBase)
     bool GetInventoryShoppingValidity();
 };
 
@@ -136,7 +141,7 @@ bool CTCInventoryBase::GetInventoryShoppingValidity()
             if (IS_THING_ALIVE(creature)) {
                 if (creature->IsFreeToFinishAction())
                     creature->FinishCurrentAction();
-                CThingHero* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+                CThingHero* hero = GetPlayerManager().GetMainPlayer()->GetHeroThing();
                 if (IS_THING_ALIVE(hero)) {
                     CTCFacing* facing;
                     creature->GetInterface(&facing, 2);

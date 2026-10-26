@@ -67,11 +67,12 @@ struct CPlayer_Retail {
 struct CPlayerManager_Retail {
     CPlayer_Retail* GetPlayer();                 // 0x00449970 (labelled "Catch@0040d959", propagated)
 };
-struct CTCFireheartMinigame_Retail {          // interface type 0x108
+class CTCFireheartMinigame { public:          // interface type 0x108
     unsigned char _pad[0x4d];
     bool          m_forceQuit;                   // +0x4d
     void PlayGame();                             // 0x007E78E0 (CTCFireheartMinigame::PlayGame)
-    void Quit();                                 // 0x007E7A40 (CTCFireheartMinigame::Quit)
+public:
+    void Quit();   // 0x007E7A40
 };
 class CGameScriptInterface { public:
     virtual void v000();
@@ -90,7 +91,7 @@ void CGameScriptInterface::HeroQuitFireheartMinigame() const
 {
     CThing_Retail* hero = PlayerManager->GetPlayer()->GetHeroThing();
     if (hero && !hero->m_dead) {
-        CTCFireheartMinigame_Retail* minigame;
+        CTCFireheartMinigame* minigame;
         if (hero->GetInterface(&minigame, 0x108))
             minigame->Quit();
     }

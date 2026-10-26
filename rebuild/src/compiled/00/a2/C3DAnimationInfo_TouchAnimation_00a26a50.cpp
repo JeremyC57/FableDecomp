@@ -40,8 +40,9 @@ class C3DAnimationInfo { public:                  // engine/C3DAnimationInfo.h o
     void* Bank;                            // +4
     unsigned long Index;                   // +8
     CAnimationData* Data;                  // +0xc
-    void BeginLoading(bool wait);          // 0x00A26730
     void TouchAnimation();
+public:
+    void BeginLoading(bool) const;   // 0x00A26730
 };
 
 void C3DAnimationInfo::TouchAnimation()

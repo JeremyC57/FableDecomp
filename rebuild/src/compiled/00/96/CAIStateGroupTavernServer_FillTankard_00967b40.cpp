@@ -42,15 +42,23 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
+};
+__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -71,7 +79,7 @@ class CThingAICreature;
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 struct CCreatureAction_FillTankardFromJug : CCreatureActionBase {
     CCreatureAction_FillTankardFromJug(CThingAICreature* creature);   // 0x00842A80
@@ -101,11 +109,11 @@ class CAIStateGroupBase { public:
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool b);   // 0x0097DB70
 };
 struct CAIStateGroup_TavernServer : CAIStateGroupBase {
-    CBaseIntelligentPointer PJug;               // +0x14
-    CBaseIntelligentPointer PBar;               // +0x1c
-    CBaseIntelligentPointer PTable;             // +0x24
-    CBaseIntelligentPointer PTankard;           // +0x2c
-    CBaseIntelligentPointer PPub;               // +0x34
+    CIntelligentPointer<CThing> PJug;               // +0x14
+    CIntelligentPointer<CThing> PBar;               // +0x1c
+    CIntelligentPointer<CThing> PTable;             // +0x24
+    CIntelligentPointer<CThing> PTankard;           // +0x2c
+    CIntelligentPointer<CThing> PPub;               // +0x34
     void FreeBarPoint_009670a0();                        // 0x009670A0
     bool IsServingPointValid();                 // 0x00967250
     bool FillTankard();

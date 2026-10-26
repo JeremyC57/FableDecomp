@@ -26,8 +26,9 @@ struct CInputProcessYesNoQuestionRetail : CInputProcessVirtuals {
 };
 
 struct CTCBase_Retail;
-struct CTCSpecialAbilities_Retail {
-    void CancelCurrentMutexAbility();                       // 0x0072B420
+class CTCSpecialAbilities { public:
+public:
+    void CancelCurrentMutexAbility();   // 0x0072B420
 };
 struct STCEntry_Retail {                                    // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long            m_kind;
@@ -58,10 +59,15 @@ struct CThing_Retail {
 };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void*        vfptr;
-    CBaseObject* m_pItem;
-    CBaseObject* GetPItem();                                // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 struct CPlayer_Methods : CPlayer {
@@ -77,6 +83,6 @@ void CPlayer_Methods::InitModeClickPastText(EPlayerMode mode, CProcessedInput* i
     if (GetPlayerCharacter() && !GetPlayerCharacter()->m_dead) {
         CThing_Retail* character = GetPlayerCharacter();
         if (character->HasTC(0xa7))
-            ((CTCSpecialAbilities_Retail*)character->m_tcs.Find(0xa7))->CancelCurrentMutexAbility();
+            ((CTCSpecialAbilities*)character->m_tcs.Find(0xa7))->CancelCurrentMutexAbility();
     }
 }

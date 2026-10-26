@@ -8,10 +8,11 @@
 // ParentClass +0x14, PMasterData +0x18.
 // Shape: as the landed CHTE_Prisoner::Main 0x00D69F50 (scoped filter, `do/while` wait); the target call is the
 // nested `Game->GiveThingBestEnemyTarget(Me, Game->GetHero())` (the outer vtable fetched before the inner call).
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CGameScriptInterface { public:                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -78,8 +79,14 @@ class CGameScriptInterface { public:                     // vtable 0x01260F0C (r
     virtual void v449(); virtual void v450();
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;   // slot 451 (+0x70c)
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -87,15 +94,20 @@ struct CIsThingAlive {                             // vtable 0x012C32F0: a filte
 struct CQ_HeroSoulsArenaScript;
 struct CQ_SunnyvaleMasterData;
 
-class CHeroSoulsEnemy {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CHeroSoulsEnemy : public CEntityScriptBase {
 public:
     void*                    __vftable;            // +0x00
     CGameScriptInterface*    Game;                 // +0x04
     CScriptThing             Me;                   // +0x08
     CQ_HeroSoulsArenaScript* ParentClass;          // +0x14
     CQ_SunnyvaleMasterData*  PMasterData;          // +0x18
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -103,14 +115,14 @@ void CHeroSoulsEnemy::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (!IsDone()) {
+    if (!IsActiveThreadTerminating()) {
         Game->Pause(1.0f);
         Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
         do {
             Game->NewScriptFrame();
-        } while (!IsDone());
+        } while (!IsActiveThreadTerminating());
     }
 }

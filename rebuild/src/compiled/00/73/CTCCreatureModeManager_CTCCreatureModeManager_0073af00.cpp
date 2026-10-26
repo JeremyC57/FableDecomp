@@ -54,7 +54,8 @@ class CTCCreatureModeManager : public CTCBase_Calls { public:         // vtable 
     CRetailVector<long> AvailableIdleModes;             // +0x18
     virtual void v00();
     CTCCreatureModeManager(CThing* parent);
-    bool AddMode(long modeType);                        // 0x0073AE10
+public:
+    bool AddMode(unsigned long);   // 0x0073AE10
 };
 
 CTCCreatureModeManager::CTCCreatureModeManager(CThing* parent)

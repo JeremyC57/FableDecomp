@@ -1,14 +1,26 @@
 #pragma optimize("t", on)
-extern void __fastcall DestructFirstMember_004aa840(void* member);
-extern void __fastcall DestructSecondMember_00a01c10(void* member);
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+class CScriptThing {
+public:
+    virtual ~CScriptThing();   // 0x004AA840
+};
 extern void __fastcall CActionTalkedTo_Destruct(void* action);
-extern void __cdecl OperatorDelete(void* object);
 void* __fastcall CActionTalkedTo_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
 {
-    DestructFirstMember_004aa840(static_cast<unsigned char*>(action) + 20);
-    DestructSecondMember_00a01c10(static_cast<unsigned char*>(action) + 12);
+    ((CScriptThing*)(static_cast<unsigned char*>(action) + 20))->CScriptThing::~CScriptThing();
+    ((CBaseIntelligentPointer*)(static_cast<unsigned char*>(action) + 12))->CBaseIntelligentPointer::~CBaseIntelligentPointer();
     CActionTalkedTo_Destruct(action);
     if (flags & 1)
-        OperatorDelete(action);
+        operator delete(action);
     return action;
 }

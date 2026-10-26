@@ -41,7 +41,8 @@ class CRGBColour { public:
 class CDisplayManager {
 public:
     void ClearRenderTarget(const CRGBColour& colour, unsigned long flags);   // 0x009BE420
-    void SwapScreens();                            // 0x009BEEB0
+public:
+    bool SwapScreens();   // 0x009BEEB0
 };
 class CGameStateOwner_013b8394 {                   // the object held at 0x013B8394
 public:

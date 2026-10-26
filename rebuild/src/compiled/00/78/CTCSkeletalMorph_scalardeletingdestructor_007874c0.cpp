@@ -19,7 +19,7 @@ class CTCBase { public:                                   // engine/CTCBase.h of
     bool    ToBeRemoved;                           // +0x08
     bool    IsInGlobalUpdateTCs;                   // +0x09
     CTCBase(CThing& owner);                        // 0x00686800
-    ~CTCBase();                                    // 0x00686830
+    virtual ~CTCBase();                                    // 0x00686830
 };
 
 struct CSkeletalMorphArray {                       // CArray<CTCSkeletalMorph::CSkeletalMorph>, 0x0c bytes

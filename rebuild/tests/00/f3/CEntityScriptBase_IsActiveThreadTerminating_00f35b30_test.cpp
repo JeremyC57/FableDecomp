@@ -1,63 +1,41 @@
+// Behaviour test (0x00f35b30): CEntityScriptBase::IsActiveThreadTerminating asks the parent script (slot 3), which reports
+// its active thread's terminating flag (false without an active thread)
 #include <cstdio>
-
-struct Thread { char pad[0x18]; char terminating; };
-class CScriptBase { public: char pad[0x8]; Thread* activeThread; };
-
-char __fastcall IsActiveThreadTerminating(CScriptBase* self)
-{
-    Thread* t = self->activeThread;
-    if (t)
-        return t->terminating;
-    return 1;
-}
-
-class CCreatureAction_TrollWhackGroundBase
-{ public:
-    struct VTable
-    {
-        void* slot0;
-        void* slot1;
-        void* slot2;
-        CScriptBase* (__fastcall *GetScriptBase)(CCreatureAction_TrollWhackGroundBase*);
-    };
-    VTable* vtbl;
+class CSpawnedFuncBase {
+public:
+    bool Terminating;
 };
-
-char __fastcall Initialise(CCreatureAction_TrollWhackGroundBase* self)
-{
-    CScriptBase* sb = self->vtbl->GetScriptBase(self);
-    return IsActiveThreadTerminating(sb);
-}
-
-static CScriptBase g_sb;
-static Thread g_thread;
-
-static CScriptBase* __fastcall FakeGetScriptBase_impl(CCreatureAction_TrollWhackGroundBase* self)
-{
-    (void)self;
-    return &g_sb;
-}
-
+class CScriptBase {
+public:
+    CSpawnedFuncBase* PActiveThread;
+    bool IsActiveThreadTerminating() { return PActiveThread ? PActiveThread->Terminating : false; }
+};
+class CEntityScriptBase {
+public:
+    virtual ~CEntityScriptBase() { }
+    virtual void Main() = 0;
+    virtual void Init() { }
+    virtual CScriptBase* GetParentScript() const = 0;
+    bool IsActiveThreadTerminating() const { return GetParentScript()->IsActiveThreadTerminating(); }
+};
+class CTestEntityScript : public CEntityScriptBase {
+public:
+    CScriptBase* ParentClass;
+    int          ParentCalls;
+    virtual void Main() { }
+    virtual CScriptBase* GetParentScript() const { ++const_cast<CTestEntityScript*>(this)->ParentCalls; return ParentClass; }
+};
 int main()
 {
-    CCreatureAction_TrollWhackGroundBase::VTable vt;
-    vt.slot0 = 0;
-    vt.slot1 = 0;
-    vt.slot2 = 0;
-    vt.GetScriptBase = &FakeGetScriptBase_impl;
-
-    CCreatureAction_TrollWhackGroundBase obj;
-    obj.vtbl = &vt;
-
-    g_thread.terminating = 1;
-    g_sb.activeThread = &g_thread;
-
-    char result = Initialise(&obj);
-    if (result == 1)
-    {
-        printf("TROLLWHACK_INIT_OK\n");
-        return 0;
-    }
-    printf("FAIL\n");
-    return 1;
+    CSpawnedFuncBase thread; thread.Terminating = false;
+    CScriptBase script; script.PActiveThread = 0;
+    CTestEntityScript entity; entity.ParentClass = &script; entity.ParentCalls = 0;
+    const CEntityScriptBase& e = entity;
+    if (e.IsActiveThreadTerminating() || entity.ParentCalls != 1) { std::printf("00f35b30_TEST FAIL\n"); return 1; }
+    script.PActiveThread = &thread;
+    if (e.IsActiveThreadTerminating()) { std::printf("00f35b30_TEST FAIL\n"); return 1; }
+    thread.Terminating = true;
+    if (!e.IsActiveThreadTerminating() || entity.ParentCalls != 3) { std::printf("00f35b30_TEST FAIL\n"); return 1; }
+    std::printf("00f35b30_TEST PASS\n");
+    return 0;
 }

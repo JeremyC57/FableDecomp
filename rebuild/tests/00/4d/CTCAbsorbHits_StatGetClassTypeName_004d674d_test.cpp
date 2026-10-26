@@ -1,24 +1,33 @@
-#include "rebuild_abi.h"
 #include <cstdio>
-struct FableCharStringResult_004d674d
+
+class CCharString
 {
-    const char* seen_text;
-    int seen_len;
-    void* build(const char* text, int length);
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
-void* FableCharStringResult_004d674d::build(const char* text, int length)
+
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
+
+class CTCAbsorbHits
 {
-    seen_text = text; seen_len = length; return this;
-}
-extern "C" FableCharStringResult_004d674d* FABLE_FASTCALL
-FableStatGetClassTypeName_004d674d(FableCharStringResult_004d674d* result, void*);
+public:
+    static CCharString __fastcall StatGetClassTypeName();
+};
+
 int main()
 {
-    FableCharStringResult_004d674d r; r.seen_text = 0; r.seen_len = 0;
-    FableCharStringResult_004d674d* got = FableStatGetClassTypeName_004d674d(&r, 0);
-    if (got != &r) { std::printf("BAD_IDENTITY\n"); return 1; }
-    if (r.seen_len != -1) { std::printf("BAD_LEN\n"); return 1; }
-    if (r.seen_text == 0) { std::printf("BAD_TEXT\n"); return 1; }
+    {
+        CCharString name = CTCAbsorbHits::StatGetClassTypeName();
+        if (g_ctorCount != 1 || name.PStringData != &name) { std::printf("BAD_IDENTITY\n"); return 1; }
+        if (g_seenLength != -1) { std::printf("BAD_LEN\n"); return 1; }
+        if (g_seenText != (const char*)0x0123E74C) { std::printf("BAD_TEXT\n"); return 1; }
+    }
     std::printf("GETACTIONNAME_004d674d_OK\n");
     return 0;
 }

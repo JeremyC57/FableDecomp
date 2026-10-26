@@ -18,11 +18,7 @@ class CSoundMap { public: unsigned long _words[8]; };
 class C2DVector { public: float X; float Y; };
 
 class CPersistContext { public:
-    void Transfer(long& value);                     // 0x00431102
-    void Transfer(bool& value);                     // 0x0043314A
-    void Transfer(float& value);                    // 0x00431061
-    void Transfer(unsigned long& value);            // 0x00431020
-    void Transfer(CDefString& value);               // 0x0045228F
+    template <class T> void Transfer(T& value);                     // 0x00431102
     void Transfer(EReverbEnvironmentType& value);   // 0x00454CFA
     void Transfer(CSoundMap& value);                // 0x00470301
     void Transfer(EWorldMapNameGraphic& value);     // 0x00471765

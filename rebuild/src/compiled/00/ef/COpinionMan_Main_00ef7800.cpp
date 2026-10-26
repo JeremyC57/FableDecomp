@@ -996,12 +996,17 @@ struct CPredicate_And : CPredicateBase {               // CPredicate_And<CIsThin
 };
 }
 inline NScript::CPredicate_And And(const NScript::CIsThing& a, const NScript::CIsThingAlive& b) { return NScript::CPredicate_And(a, b); }
-struct COpinionMan {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct COpinionMan : public CEntityScriptBase {
     void* VTable; GameCalls* Game; CScriptThing Me;
     void* ParentClass;                                 // +0x14
     void* PMasterData;                                 // +0x18
-    void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 void COpinionMan::Main()

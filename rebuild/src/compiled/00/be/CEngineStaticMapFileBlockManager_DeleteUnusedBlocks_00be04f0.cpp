@@ -50,8 +50,9 @@ public:
 
 class CBankFileAsyncData {
 public:
-    bool IsFinished();                                  // 0x009D54E0
     static void __fastcall DiscardAsyncData(CCountedPointer<CBankFileAsyncData>& data);   // 0x009D68A0
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
 
 namespace std {

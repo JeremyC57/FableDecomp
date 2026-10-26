@@ -1,6 +1,10 @@
 #pragma optimize("s",on)
 // Leaf: OnDie
 // Reconstruction of CTCInventoryItem::OnDie @ 0x004e0b7d
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 typedef unsigned long DWORD;
 
 class CTCInventoryItem { public:
@@ -9,15 +13,14 @@ class CTCInventoryItem { public:
     void* p34;       // +0x34
 };
 
-extern "C" void __cdecl FreeHelper(void* p);          // 0xbfea14 (cdecl, pop ecx cleanup)
-void __fastcall BaseOnDie(void* self);                // 0x9fc550
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 #define VTBL_CTCINVENTORYITEM ((DWORD)0x1230ba0)
 
 void __fastcall OnDie(CTCInventoryItem* self)
 {
     if (self->p34 != 0)
-        FreeHelper(self->p34);
+        free(self->p34);
     self->vtbl = VTBL_CTCINVENTORYITEM;
-    BaseOnDie(self);
+    ((CResource*)(self))->CResource::~CResource();
 }

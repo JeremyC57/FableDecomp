@@ -25,15 +25,24 @@ class CSoundPair { public:                         // user constructor: the 8-by
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-struct CBaseIntelligentPointer {            // 8 bytes: vtable + item pointer
-    virtual void v00();
-    void* m_pItem;                          // +4
-    CBaseIntelligentPointer();              // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
     CIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
@@ -43,7 +52,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
 };
 
 class CCreatureAction_DragonRearUpFull : public CCombatActionBase { public:   // vtable 0x01293404
-    CIntelligentPointer PTarget;            // +0x114 CIntelligentPointer<...>
+    CIntelligentPointer<CThing> PTarget;            // +0x114 CIntelligentPointer<...>
     virtual void v00();
     CCreatureAction_DragonRearUpFull(CThingCreatureBase* owner, CThing* target);
 };

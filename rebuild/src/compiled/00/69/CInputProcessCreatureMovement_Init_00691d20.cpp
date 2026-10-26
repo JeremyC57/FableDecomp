@@ -6,19 +6,25 @@
 // Shape: the creature pointer is fetched first (edi), the 8-byte temporary lives at [esp+8] (base constructor, then its own vtable
 // store, then SetPItem), the member takes the temporary's item, and the temporary's base destructor runs last.
 class CThingPlayerCreature;
-struct CBaseIntelligentPointer {                    // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    CThingPlayerCreature* m_pItem;                  // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    void SetPItem(CThingPlayerCreature* item);      // 0x00A01B90
-    CThingPlayerCreature* GetPItem() const;         // 0x00A01B50
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01237F14
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01237F14
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
-    CIntelligentPointer(CThingPlayerCreature* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPlayerCreature();                     // 0x00487DC0
@@ -32,10 +38,10 @@ class CInputProcessCreatureMovement { public:
     void*               DefinitionManager;          // +0x1c
     void*               Component;                  // +0x20
     void*               PGamePlayerInterface;       // +0x24
-    CIntelligentPointer PCreature;                  // +0x28
+    CIntelligentPointer<const CThingPlayerCreature> PCreature;                  // +0x28
 };
 
 void CInputProcessCreatureMovement::Init()
 {
-    PCreature = CIntelligentPointer(MyPlayer->GetPlayerCreature());
+    PCreature = CIntelligentPointer<const CThingPlayerCreature>(MyPlayer->GetPlayerCreature());
 }

@@ -44,7 +44,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  struct InlineCopy { };                                 // tag: the inline copy retail expands at by-value call sites
  CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
  CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
- ~CScriptThing();                                       // 0x004AA840
+ virtual ~CScriptThing();                                       // 0x004AA840
  CScriptThing& operator=(const CScriptThing& other);    // 0x008AB980
 };
 #include "engine/CGameScriptInterface.h"
@@ -973,12 +973,17 @@ struct CQ_OrchardFarmRaidScript {
  unsigned char _pad61[0x2a];
  bool WhisperInCutscene;                             // +0x8b (PDB +0xa3)
 };
-struct COrchardFarmWhisper {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct COrchardFarmWhisper : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CQ_OrchardFarmRaidScript* ParentClass;              // +0x14
  void* PMasterData;                                  // +0x18
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void COrchardFarmWhisper::Main()

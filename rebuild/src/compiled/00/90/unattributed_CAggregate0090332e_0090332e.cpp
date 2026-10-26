@@ -14,9 +14,8 @@ struct CMember_004406d0 {
     ~CMember_004406d0();                            // 0x004406D0
 };
 
-struct CMember_008fd288 {
-    unsigned char _body[0x4];
-    ~CMember_008fd288();                            // 0x008FD288
+class CAIStateGroupBase { public:
+    virtual ~CAIStateGroupBase();                            // 0x008FD288
 };
 
 struct CMember_00a01c10 {
@@ -25,7 +24,7 @@ struct CMember_00a01c10 {
 };
 
 struct CAggregate_0090332e {
-    CMember_008fd288 m_first;            // +0 (its destructor is the tail call)
+    CAIStateGroupBase m_first;            // +0 (its destructor is the tail call)
     unsigned char _gap0[0x14];
     CMember_00a01c10 m_18;            // +0x18
     CMember_00a01c10 m_20;            // +0x20

@@ -39,14 +39,23 @@ class CNavigationInput { public:                       // 24 bytes
     float     Speed;                            // +0x14
     CNavigationInput() : Proximity(0), MovementType(0), Speed(0) {}
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x01237F1C
-    virtual void v01();
-    CIntelligentPointerConstThing() {}
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01237F1C
+public:
+    CIntelligentPointer() {}
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CNavigatorBase;
 class CSteeringAgent;
@@ -55,7 +64,7 @@ class CTCCreatureNavigation : public CTCBase { public:
     CRetailVector<CNavigatorBase*> PossibleNavigators;      // +0x10
     CNavigationInput NavigationTarget;          // +0x1c
     float Speed;                                // +0x34
-    CIntelligentPointerConstThing PThingToNotAvoid;         // +0x38
+    CIntelligentPointer<const CThing> PThingToNotAvoid;         // +0x38
     CRetailVector<const CSteeringAgent*> Agents;            // +0x40
     long NextUpdate;                            // +0x4c
     long FrameLastNavigated;                    // +0x50

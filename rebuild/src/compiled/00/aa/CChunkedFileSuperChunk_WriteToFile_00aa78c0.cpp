@@ -14,7 +14,8 @@ class CDataOutputStream { public:
     virtual long GetPosition();                     // slot 2
     virtual void v03();
     virtual void Write(const void* data, long size);// slot 4
-    void WriteLong_00993ea0(long value);                     // 0x00993EA0 (Write(&value, 4); manifest "WriteCBYTE" is propagated)
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 class CDataInputStream;
 class CChunkedFileSaver;
@@ -61,12 +62,12 @@ void CChunkedFileSuperChunk::WriteToFile(CDataOutputStream& stream, CChunkedFile
 {
     for (CChunkPointer* it = SubChunks.begin(); it != SubChunks.end(); ++it) {
         stream.Write(it->Object->ChunkType, 4);
-        stream.WriteLong_00993ea0(0);
+        stream.WriteULONG(0);
         long start = stream.GetPosition();
         it->Object->WriteToFile(stream, saver);
         long finish = stream.GetPosition();
         stream.SetPosition(start - 4);
-        stream.WriteLong_00993ea0(finish - start);
+        stream.WriteULONG(finish - start);
         stream.SetPosition(finish);
     }
 }

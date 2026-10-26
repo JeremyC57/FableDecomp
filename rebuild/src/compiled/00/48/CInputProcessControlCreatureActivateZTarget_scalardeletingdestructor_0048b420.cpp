@@ -1,18 +1,20 @@
 // CInputProcessControlCreatureActivateZTarget::`vector_deleting_destructor'
 // __fastcall (this in ecx), uint flags on stack, returns this.
 
+class CAInputProcess {
+public:
+    virtual ~CAInputProcess();   // 0x00A0D3D0
+};
 class CInputProcessControlCreatureActivateZTarget { public:
     // scalar destructor lives at 0xa0d3d0 in retail; model as an extern.
 };
 
-extern "C" void __fastcall LandscapeBackgroundPatch_dtor(CInputProcessControlCreatureActivateZTarget* process);
-extern "C" void operator_delete_impl(void* p);
 
 void* __fastcall CInputProcessControlCreatureActivateZTarget_scalar_deleting_destructor(
         CInputProcessControlCreatureActivateZTarget* process, int /*edx*/, unsigned int flags)
 {
-    LandscapeBackgroundPatch_dtor(process);
+    ((CAInputProcess*)(process))->CAInputProcess::~CAInputProcess();
     if (flags & 1)
-        operator_delete_impl(process);
+        operator delete(process);
     return process;
 }

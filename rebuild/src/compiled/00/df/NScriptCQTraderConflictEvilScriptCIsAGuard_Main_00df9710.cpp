@@ -27,7 +27,7 @@ class CScriptThing { public:                                   // 12 bytes, vtab
  CScriptThingImpl* PImp_Data;
  void* PImp_Info;
  CScriptThing(const CScriptThing& other);   // 0x004ABE90
- ~CScriptThing();                           // 0x004AA840
+ virtual ~CScriptThing();                           // 0x004AA840
  bool IsAlive() const;                      // slot 75, inlined below
 };
 struct CScriptThingImpl {
@@ -1032,12 +1032,17 @@ struct CQ_TraderConflictEvilScript {
  unsigned char BaseState[0x6a];
  bool PlayerEngaged;                                // +0x6A (PDB +0x82)
 };
-struct CIsAGuard {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CIsAGuard : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CQ_TraderConflictEvilScript* ParentClass;          // +0x14
  void* PMasterData;                                 // +0x18
- void SetPredicate(const NScript::CPredicateBase&); // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CIsAGuard::Main()

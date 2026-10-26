@@ -17,16 +17,16 @@ class CWideString { public:
 };
 extern CWideString g_emptyWideString;              // 0x013BCA24
 struct CIVCountedPointeeVirtual {
-    virtual void Destroy(int flags);               // slot 0
-    virtual void Delete();                         // slot 1
+    virtual void Destroy(int flags) const;               // slot 0
+    virtual void Delete() const;                         // slot 1
 };
 struct CIVRefCounted {                             // second base: the count at +4 behind the vptr
-    unsigned long IVRefCount;
-    __forceinline void DecRef() { --IVRefCount; }
+    mutable unsigned long IVRefCount;
+    __forceinline void DecRef() const { --IVRefCount; }
     __forceinline unsigned long GetRefCount() const { return IVRefCount; }
 };
 class CIVCountedPointeeBase : public CIVCountedPointeeVirtual, public CIVRefCounted { public:
-    __forceinline void ReleaseTemporary()
+    __forceinline void ReleaseTemporary() const
     {
         DecRef();
         if (GetRefCount() == 0)
@@ -45,12 +45,18 @@ struct CInventoryItemDef_Retail : CIVCountedPointeeBase {
     unsigned char _pad[0x34 - 8];
     long          DescriptionTextIndex;            // +0x34
 };
-struct CGroupEntry : CIVCountedPointeeBase {       // NGameText::CGroupEntry
+namespace NGameText {
+class CTextEntry : public CIVCountedPointeeBase { public:       // NGameText::CGroupEntry
     CWideString GetText() const;                   // 0x009C7A40
 };
-struct CDataBank {                                 // NGameText::CDataBank
-    CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
+}
+using NGameText::CTextEntry;
+namespace NGameText {
+class CDataBank { public:                                 // NGameText::CDataBank
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                        // +0x14
@@ -68,7 +74,7 @@ CWideString CItem_Methods::GetItemDescription() const
     long textIndex = GetInventoryItemDef().Object->DescriptionTextIndex;
     if (textIndex > 0) {
         CDataBank* bank = g_pMainGameComponent->TextBank;
-        return bank->GetPGroupEntry(textIndex, true).Object->GetText();
+        return bank->GetPTextEntry(textIndex, true).Object->GetText();
     }
     return g_emptyWideString;
 }

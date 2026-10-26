@@ -17,7 +17,8 @@ public:
     ~CCharString();                                  // 0x0099EAE0
 };
 struct CDefStringTable {
-    CCharString GetString(long id);                  // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;             // 0x013CA828
 class CTCBase; class CTCParamsBase;
@@ -68,8 +69,9 @@ class CThing { public:
     unsigned char InLimbo : 1;
     unsigned char KillLocked : 1;                    // bit 6
     unsigned char CreatedBySerialisation : 1;
-    CTCBase* AddTC(const CCharString& name, bool a2, CTCParamsBase* params);   // 0x004C9D60
     void CreateFromDef(const CThingDef* def);
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 void CThing::CreateFromDef(const CThingDef* def)
 {

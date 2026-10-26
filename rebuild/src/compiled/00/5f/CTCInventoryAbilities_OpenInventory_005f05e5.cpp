@@ -58,8 +58,13 @@ struct CCharStringVector {                                  // STLport vector<CC
     CCharString* begin() { return _M_start; }
     CCharString* end() { return _M_finish; }
 };
-class CGameDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410 (CDefinitionManager)
+class CDefinitionManager
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};
+
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();        // 0x0044C6B0
 };
 

@@ -12,25 +12,36 @@
 // ends, `xor al,al` on a hit).
 class CThing;
 
-struct CBaseIntelligentPointer {                 // CIntelligentPointer<CThing>: 8 bytes
-    void* m_pItem;
-    long  m_handle;
-    CThing* GetPItem() const;                    // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CThingPointerList {                       // retail std::list<CIntelligentPointer<CThing>>: one sentinel pointer
     struct node {
         node*                   next;
         node*                   prev;
-        CBaseIntelligentPointer value;           // +0x08
+        CIntelligentPointer<CThing> value;           // +0x08
     };
     node* head;
 };
 
 class CTCTargetingAI { public:
     unsigned char           _base[0x38];         // CTCTargetingBase
-    CBaseIntelligentPointer PBestEnemyCreatureForAttack;   // +0x38
-    CBaseIntelligentPointer PScriptTargetOverride;         // +0x40
+    CIntelligentPointer<CThing> PBestEnemyCreatureForAttack;   // +0x38
+    CIntelligentPointer<CThing> PScriptTargetOverride;         // +0x40
     CThingPointerList       ThingsToNotAttack;   // +0x48
     bool IsThingAttackable(const CThing* thing) const;
 };

@@ -11,14 +11,14 @@
 //   entry, and reuses it for the "_1_5" retry); each call re-fetches the bank handle by value.
 #include <string.h>
 #pragma pack(push, 1)
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     char*         PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;            // 0x004115A0
 };
-class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicString<char> Data; long NoRefs; };
 #pragma pack(pop)
 class CCharString { public:
     CCharStringData* PStringData;
@@ -86,7 +86,9 @@ struct CTCTargeting {
 };
 struct CTCText { CCharString GetBankHandle() const; };  // 0x004FAEE0
 class CPlayer { public: CThing* GetTargetThing() const; };      // 0x00487DD0
-class CPlayerManager { public: CPlayer* GetMainPlayer() const; };   // 0x00449960
+class CPlayerManager { public: public:
+    const CPlayer& GetMainPlayer() const;   // 0x00449960
+};   // 0x00449960
 class CMainGameComponent { public:
     unsigned char   Data[0x14];
     CTextDataBank*  TextBank;                            // +0x14
@@ -113,7 +115,7 @@ void CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing(CStringSet& en
     entries.clear();
     CThing* hero;
     CThing* target;
-    if (g_DebugNarrator == "" && (hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetTargetThing()) != 0
+    if (g_DebugNarrator == "" && (hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetTargetThing()) != 0
         && !(hero->LifeFlags & 1) && (hero->UsingComponents[0] & 0x100)
         && (target = GetComponent<CTCTargeting, 8>(hero)->GetTarget()) != 0 && (target->ThingTypeFlags & 0x10)) {
         if (target->UsingComponents[0] & 0x8000) {

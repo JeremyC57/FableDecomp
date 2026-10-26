@@ -6,10 +6,11 @@
 //   0x00CBE2FF (__fastcall), CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0. Entity interface (+4) slots 6 IsXbox,
 //   7 NewScriptFrame, 40 MsgIsGameInfoClickedPast, 70 GetHero, 115 DisplayGameInfo (cgsi_slots_aligned.tsv).
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 whose game-info-shown bool is at +0x82.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CCharString { public:
     void* Data;
@@ -39,8 +40,14 @@ class CGameScriptInterface { public:
     virtual void DisplayGameInfo(const CCharString& text) const;   // slot 115 (+0x1cc)
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CIsThingPredicate {                         // vtable 0x012C2FE8: a predicate holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingPredicate : public NScript::CPredicateBase {                         // vtable 0x012C2FE8: a predicate holding a script thing
     CScriptThing Thing;                            // +0x04
     CIsThingPredicate(const CScriptThing& thing) : Thing(thing) { }
     ~CIsThingPredicate() { }
@@ -49,14 +56,19 @@ struct CNOVIParent {
     unsigned char _pad[0x82];
     bool          GameInfoShown;                   // +0x82
 };
-class CNOVI_Barrel {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CNOVI_Barrel : public CEntityScriptBase {
 public:
     void*                 __vftable;               // +0x00
     CGameScriptInterface* Game;                    // +0x04
     CScriptThing          Me;                      // +0x08
     CNOVIParent*          ParentClass;             // +0x14
-    void SetPredicate(const CIsThingPredicate& predicate);   // 0x00F35B10
-    bool IsActiveThreadTerminating() const;        // 0x00F35B30
     void Main();
 };
 void CNOVI_Barrel::Main()

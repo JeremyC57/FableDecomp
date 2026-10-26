@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009255E0, length 115 bytes (+ int3 padding). Vtable 0x01290C64 (RTTI
 // `?A0x29922355::CCreatureAction_KrakenLowAttackLoop`: the class lives in an anonymous namespace of the kraken TU).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) @ 0x00857F30,
-// CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0.
+// CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0.
 // Label correction: the catalog row says CCreatureAction_KrakenHighAttackLoop (propagated); the vtable it stores and the
 // "ATTACK_LOW_LOOP" literal make it the low-attack twin of 0x00925780 (byte-identical up to relocations).
 // Shape: the zeroed sound pair is built by its inline constructor (register-zeroed frame words, landed 0x008CBD50); both settings are
@@ -28,7 +28,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                  // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 struct CCreatureAction_KrakenLowAttackLoop : CCombatActionBase {   // vtable 0x01290C64
     bool m_flag;                            // +0x114 (descriptive: the fourth argument)
@@ -44,6 +45,6 @@ CCreatureAction_KrakenLowAttackLoop::CCreatureAction_KrakenLowAttackLoop(CThingC
 {
     {
         CCharString name("ATTACK_LOW_LOOP", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
 }

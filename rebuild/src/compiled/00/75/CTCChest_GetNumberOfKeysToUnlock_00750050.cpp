@@ -21,11 +21,15 @@ class CCharString { public:
 };
 class CDefString { public: long Index; };
 struct CDefStringTable {
-    CCharString GetString(long id);                     // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
 class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index) const;   // 0x009ACCC0
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 class CDefPointeeBase { public:
     virtual void Destroy();                             // slot 0
@@ -71,10 +75,24 @@ class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;                                // +0x70
 };
-class CTCChest { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+class CTCContainer : public CTCBase
+{
+public:
+};
+class CTCContainerRewardHero : public CTCContainer
+{
+public:
+};
+
+class CTCChest : public CTCContainerRewardHero { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    const CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
     __forceinline CChestDef* GetChestDef(bool& found) const
     {
         CDefClassBase* thingDef = ParentThing->PDef;
@@ -93,7 +111,7 @@ long CTCChest::GetNumberOfKeysToUnlock(CCharString& keyName) const
     CDefHolder<CChestDef> def(out.Object);
     if (found && out.Object->OpenerObject > 0 && out.Object->OpenersRequired > 0) {
         {
-            CCharString name = g_DefStringTable.GetString(GetDefinitionManager()->GetDefNameFromGlobalIndex(def->OpenerObject).Index);
+            CCharString name = g_DefStringTable.GetString(GetDefinitionManager().GetDefNameFromGlobalIndex(def->OpenerObject).Index);
             keyName = name;
         }
         return def->OpenersRequired;

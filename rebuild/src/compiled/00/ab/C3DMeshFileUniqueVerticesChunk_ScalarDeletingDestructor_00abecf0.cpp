@@ -24,7 +24,7 @@ struct CArrayULong {
 class CChunkedFileChunk { public:
     virtual void v00();
     unsigned char _pad[0xc];                    // +0x04..+0x0f chunk header state
-    ~CChunkedFileChunk();                       // 0x00AA75C0
+    virtual ~CChunkedFileChunk();                       // 0x00AA75C0
 };
 
 class C3DMeshFileUniqueVerticesChunk : public CChunkedFileChunk { public:

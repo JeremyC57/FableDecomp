@@ -8,7 +8,7 @@
 // @ 0x009AD410, CThing::GetPosition @ 0x004C73D0, CThingObject::Create(long, const C3DVector&, long, const CRightHandedSet*,
 // unsigned long, const CCharString&) @ 0x00703210 (static __fastcall), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound
 // @ 0x0040F020 (inlined GetInterface for CTCMoney, type 0xCC = bit 12 of the bitset word +0x38, `test ah,10h`),
-// CTCBase::GetPRandomSeed @ 0x00686DA0, GFFloatRandom(float, unsigned long*) @ 0x004978A0 (__fastcall), C3DVector::RotateXY
+// CTCBase::GetPWorldSeed @ 0x00686DA0, GFFloatRandom(float, unsigned long*) @ 0x004978A0 (__fastcall), C3DVector::RotateXY
 // @ 0x00A14040, CTCPhysicsBase::SetAsMoving(bool) @ 0x006B0130.
 // Layout: Ego_r.pdb CTCGuard: PDef +0x0c, BribePool +0x10; CTCMoney gold +0x0c (landed model); retail CThing bitset +0x20,
 // interface map +0x44, PhysicsTC +0x60, dead bit +0x91; the physics component's velocity at +0x28.
@@ -81,7 +81,10 @@ public:
 };
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 
 class CTCBase {
@@ -91,8 +94,9 @@ public:
     CThing* GetParentThing() const { return ParentThing; }
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
-    CDefinitionManager* GetDefinitionManager();             // 0x006869D0
-    unsigned long* GetPRandomSeed();                        // 0x00686DA0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    unsigned long* GetPWorldSeed() const;   // 0x00686DA0
 };
 
 class CGuardDef;
@@ -109,7 +113,7 @@ void CTCGuard::OnDie()
         long index;
         {
             CCharString name("OBJECT_GOLDBAG_SMALL_WITH_COINS", -1);
-            index = GetDefinitionManager()->GetDefGlobalIndexFromName(name);
+            index = GetDefinitionManager().GetDefGlobalIndexFromName(name);
         }
         if (index > 0) {
             CThingObject* bag = CThingObject::Create(index, GetParentThing()->GetPosition(), 5, 0, 0, "");
@@ -118,7 +122,7 @@ void CTCGuard::OnDie()
                 if (bag->GetInterface(&money, 0xcc) && money)
                     money->Gold = BribePool;
                 C3DVector velocity(0.3f, 0.0f, 0.4f);
-                velocity.RotateXY(GFFloatRandom(1.0f, GetPRandomSeed()));
+                velocity.RotateXY(GFFloatRandom(1.0f, GetPWorldSeed()));
                 CTCPhysicsBase* physics = bag->PhysicsTC;
                 physics->Velocity = velocity;
                 physics->SetAsMoving(true);

@@ -11,6 +11,7 @@
 //        WAIT_UNTIL(Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) loops written as plain `while (!x)` (retail's neg/sbb/inc bool),
 //        each followed by a terminating test and the sit/stand call.
 // Leaf: Main
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -95,8 +96,14 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void EntitySetAsSittingOnFloor(const CScriptThing& thing, bool sitting) const;   // slot 493 (+0x7b4)
 };
 
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                  // 0x00E241B0 (out of line in this module)
@@ -106,8 +113,9 @@ class CEntityScriptBase { public:                             // retail 0x14 byt
     virtual void v00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 
 struct CBeggar : CEntityScriptBase {

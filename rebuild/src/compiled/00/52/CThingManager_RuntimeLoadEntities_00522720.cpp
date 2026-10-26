@@ -66,9 +66,9 @@ struct CEntityRuntimePersistence {
 };
 
 class CMemoryDataInputStream { public:
-    unsigned char _body[0x1c];
+    unsigned char _body[0x1c - 4];
     CMemoryDataInputStream(void* data, unsigned long size);    // 0x00994930
-    ~CMemoryDataInputStream();                                  // 0x00993B10
+    virtual ~CMemoryDataInputStream();                                  // 0x00993B10
 };
 
 class CMainGameComponent { public:

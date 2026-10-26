@@ -104,10 +104,11 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
     CThing_Retail* t = thing.GetThing();
     return t && !t->m_dead;
 }
-struct CTCPerceiveThing_Retail {
-    void SetSightRadius(float r);                  // 0x00744540
+class CTCPerceiveThing { public:
     void SetSoundRadius(float r);                  // 0x00744470
     void SetSmellRadius(float r);                  // 0x007444A0
+public:
+    void SetSightRadius(float);   // 0x00744540
 };
 class CGameScriptInterface { public:
     virtual void v000();
@@ -125,7 +126,7 @@ void CGameScriptInterface::EntitySetPerceptionVariables(const CScriptThing& thin
     if (thing.IsValid()) {
         CThing_Retail* t = thing.GetThing();
         if (t->HasTC(0x34)) {
-            CTCPerceiveThing_Retail* perceive = (CTCPerceiveThing_Retail*)GetTC(t, 0x34);
+            CTCPerceiveThing* perceive = (CTCPerceiveThing*)GetTC(t, 0x34);
             perceive->SetSightRadius(sightRadius);
             perceive->SetSoundRadius(soundRadius);
             perceive->SetSmellRadius(smellRadius);

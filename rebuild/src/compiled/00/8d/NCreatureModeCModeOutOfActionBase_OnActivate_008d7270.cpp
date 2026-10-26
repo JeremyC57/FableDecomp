@@ -2,7 +2,7 @@
 // Leaf: OnActivate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D7270, 171 bytes (`ret`; vtable 0x0126743C slot 5).
 // Callees: own virtuals slot 14 (+0x38, the recovery time in seconds, float), slot 13 (+0x34, the emitter type; -1 = none in
-// the base 0x0073DA20) and slot 12 (+0x30, empty in the base 0x0073DA10); __ftol2 0x00BFEA70; CThingAnimatable::SetSuspendAnimation
+// the base 0x0073DA20) and slot 12 (+0x30, empty in the base 0x0073DA10); __ftol2 0x00BFEA70; CThingAICreature::SetSuspendAnimation
 // (bool, long) 0x00833A10; GetHeadPosWithOffset(CThing*) 0x0085EE50 (`__fastcall`, C3DVector by hidden pointer in ecx);
 // CreateEffectThing(long, const C3DVector*, bool) 0x006E0880 (`__fastcall`); CBaseIntelligentPointer ctor 0x00A01B10, GetPItem
 // 0x00A01B50, SetPItem 0x00A01B90, dtor 0x00A01C10; CModeStandBase::OnActivate 0x008621A0 (qualified base call).
@@ -12,11 +12,12 @@
 // Shape: the frame rate is read into a local before the virtual call (spilled to the frame, then `fimul`); the new
 // emitter goes through a CIntelligentPointer<CThing> temporary assigned to PEmitter (inline operator= = SetPItem(GetPItem())),
 // destroyed by the implicit dtor (out-of-line base dtor, no vtable re-store).
-struct CThingAnimatable {                  // empty here: only its member is called (thing base at offset 0)
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
+class CThingAICreature { public:                  // empty here: only its member is called (thing base at offset 0)
+public:
+    void SuspendAI(bool, void*);   // 0x00833A10
 };
 
-class CThing : public CThingAnimatable { public:
+class CThing : public CThingAICreature { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                 // +0x10 creature state byte (compared with 1)
     unsigned char _pad11[0x5b];
@@ -33,21 +34,27 @@ CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool 
 
 extern long g_framesPerSecond;             // 0x01375550
 
-struct CBaseIntelligentPointer {           // vptr + item
-    virtual void v00();
-    CThing* PItem;
-    CBaseIntelligentPointer();             // 0x00A01B10
-    ~CBaseIntelligentPointer();            // 0x00A01C10
-    CThing* GetPItem() const;              // 0x00A01B50
-    void SetPItem(CThing* item);           // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 #pragma pack(push, 1)
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing() { }
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer() { }
+    CIntelligentPointer(T* item) { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(pop)
 
@@ -68,7 +75,7 @@ namespace NCreatureMode {
 struct CModeOutOfActionBase : CModeStandBase {   // vtable 0x0126743C
     long                     RecoveryCount;  // +0x68
     bool                     Recoverable;    // +0x6c
-    CIntelligentPointerThing PEmitter;       // +0x6d
+    CIntelligentPointer<CThing> PEmitter;       // +0x6d
     virtual void OnActivate();
 };
 #pragma pack(pop)
@@ -78,11 +85,11 @@ void CModeOutOfActionBase::OnActivate()
     long framesPerSecond = g_framesPerSecond;
     RecoveryCount = (long)(framesPerSecond * GetRecoveryTime());
     if (ParentThing->m_state == 1)
-        ParentThing->SetSuspendAnimation(true, 0);
+        ParentThing->SuspendAI(true, 0);
     long emitterType = GetEmitterType();
     if (emitterType >= 0 && (ParentThing->m_flags6c & 8)) {
         C3DVector position = GetHeadPosWithOffset(ParentThing);
-        PEmitter = CIntelligentPointerThing(CreateEffectThing(emitterType, &position, false));
+        PEmitter = CIntelligentPointer<CThing>(CreateEffectThing(emitterType, &position, false));
     }
     StartOutOfActionAnim();
     CModeStandBase::OnActivate();

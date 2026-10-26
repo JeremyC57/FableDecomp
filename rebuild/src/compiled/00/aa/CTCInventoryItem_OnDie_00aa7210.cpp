@@ -2,7 +2,7 @@
 // Frees the pointer member at +0x10 (cdecl helper) if non-null, then
 // tail-calls the base-class OnDie (__fastcall) on this.
 
-extern "C" void __cdecl FreeHelper_bfea14(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CTCInventoryItemBase
 {
@@ -19,6 +19,6 @@ class CTCInventoryItem : public CTCInventoryItemBase
 void CTCInventoryItem::OnDie()
 {
     if (this->PInventory)
-        FreeHelper_bfea14(this->PInventory);
+        free(this->PInventory);
     this->BaseOnDie();
 }

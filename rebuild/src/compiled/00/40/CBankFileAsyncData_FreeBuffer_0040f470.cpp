@@ -1,4 +1,4 @@
-extern void __cdecl EngineFree(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 class CBankFileAsyncData { public:
   char pad0[0xc];
@@ -14,7 +14,7 @@ void __fastcall CBankFileAsyncData_FreeBuffer(CBankFileAsyncData* self)
   if (self->p20 != 0) {
     self->Inner(self->Buffer, self->MemoryPool + 4);
     if (self->p20 != 0) {
-      EngineFree(self->p20);
+      free(self->p20);
     }
   }
 }

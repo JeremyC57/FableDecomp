@@ -21,9 +21,12 @@ CWideString __fastcall operator+(const CWideString& a, const CWideString& b);  /
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);      // 0x0099BF30
 CWideString __fastcall IntToWideString(long value);                            // 0x00405F00
 
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank* TextBank;                                // +0x14

@@ -52,10 +52,21 @@ class CTCCreatureModeManager { public:            // interface 0x31
     void RemoveMode(unsigned long mode);   // 0x0073ABA0
 };
 
-struct CBaseIntelligentPointer {           // vtable + PData (8 bytes)
-    virtual void v00();
-    void* PData;
-    CThingCreatureBase* GetPItem() const;  // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 
 class CCreatureActionBase { public:               // retail sizeof 0xa8
@@ -64,7 +75,7 @@ class CCreatureActionBase { public:               // retail sizeof 0xa8
 };
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];
-    ~CCombatActionBase();                  // 0x0062E900
+    virtual ~CCombatActionBase();                  // 0x0062E900
 };
 class CCreatureAction_CastWillDrainLifeSpell : public CCombatActionBase { public:   // retail sizeof 0x11c
     unsigned char _spell[0x08];
@@ -87,7 +98,7 @@ namespace NCreatureMode {
 class CModeBriarRoseConcentrate : public CModeStandBase { public:   // vtable 0x01268548
     unsigned char           Filter[0x0c];  // +0x68 CAnimFilterOfGroup
     long                    Timer;         // +0x74
-    CBaseIntelligentPointer PTarget;       // +0x78 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThingCreatureBase> PTarget;       // +0x78 CIntelligentPointer<CThingCreatureBase>
     unsigned char           Imposters[0x0c];   // +0x80 vector<CIntelligentPointer<CThing> > (12-byte retail vector)
     bool                    Imposter;      // +0x8c
     bool FindHitEvent();                   // 0x008E79A0

@@ -9,7 +9,8 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseIntelligentPointer();                           // 0x00A01B10
     CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+public:
+    void SetPItem(CBaseObject*);   // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();                                  // this instantiation's own vtable

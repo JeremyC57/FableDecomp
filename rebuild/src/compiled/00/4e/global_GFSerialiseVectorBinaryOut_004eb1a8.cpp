@@ -14,10 +14,17 @@
 // Model: engine/CDataOutputStream.h + a methods-only writer adapter; CExplosionRing is the PDB's 16-byte record (no engine
 //   header); the vector is STLport's three words.
 #pragma optimize("s", on)
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteSLONG(long value);                             // 0x00993EB0
 };
 class CExplosionRing {
 public:

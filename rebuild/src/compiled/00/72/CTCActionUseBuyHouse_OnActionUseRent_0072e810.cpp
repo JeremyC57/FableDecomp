@@ -30,15 +30,24 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& other); // 0x0099B8D0
     bool operator!=(const wchar_t* text) const;              // 0x0099B150
 };
-struct CBaseIntelligentPointer {                             // CIntelligentPointer<CThing>: 8 bytes
-    void* m_vfptr;
-    void* m_pItem;
-    void* GetPItem() const;                                  // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 class CFontBank;
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);  // 0x009C95E0
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;  // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    PTextBank;                                 // +0x14

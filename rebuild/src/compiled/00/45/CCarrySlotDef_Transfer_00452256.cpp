@@ -3,10 +3,9 @@ struct A { int x; };
 struct B { int x; };
 struct C { int x; };
 
+class CDefString;
 class CPersistContext { public:
-    void PersistA(A* p);
-    void PersistB(B* p);
-    void PersistC(C* p);
+    template <class T> void Transfer(T& value);
 };
 
 class CCarrySlotDef { public:
@@ -19,8 +18,8 @@ class CCarrySlotDef { public:
 
 void __fastcall CCarrySlotDef_Transfer(CCarrySlotDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->PersistA(&def->a);
-    ctx->PersistB(&def->b);
-    ctx->PersistC(&def->c);
-    ctx->PersistA(&def->a2);
+    ctx->Transfer(*(CDefString*)(&def->a));
+    ctx->Transfer(*(long*)(&def->b));
+    ctx->Transfer(*(bool*)(&def->c));
+    ctx->Transfer(*(CDefString*)(&def->a2));
 }

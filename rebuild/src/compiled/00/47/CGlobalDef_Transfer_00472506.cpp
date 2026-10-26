@@ -19,10 +19,7 @@ struct CCharStringVector { void* _M_start; void* _M_finish; void* _M_end_of_stor
 struct CDialogueLayerDefVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
 
 class CPersistContext { public:
-    void Transfer(long& value);                         // 0x00431102
-    void Transfer(float& value);                        // 0x00431061
-    void Transfer(CCharString& value);                  // 0x00431143
-    void Transfer(CEngineGraphic& value);               // 0x00451E11
+    template <class T> void Transfer(T& value);                         // 0x00431102
     void Transfer(CConversationCameraMap& value);       // 0x0047280C
     void Transfer(CCharStringVector& value);            // 0x004331F9
     void Transfer(CDialogueLayerDefVector& value);      // 0x00472A8D

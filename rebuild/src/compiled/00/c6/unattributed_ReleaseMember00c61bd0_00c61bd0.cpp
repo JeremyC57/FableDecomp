@@ -7,8 +7,8 @@
 // Tiny-body shape `ReleaseMember` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-void __cdecl Release_00bfeb1c(void* block);     // 0x00BFEB1C
 
+void __cdecl operator delete[](void* p);   // 0x00BFEB1C (MSVCR71)
 struct CClass_00c61bd0 {
     unsigned char _pad[0x4];
     void* m_pBlock;                        // +0x4
@@ -17,5 +17,5 @@ struct CClass_00c61bd0 {
 
 void CClass_00c61bd0::ReleaseMember_00c61bd0()
 {
-    Release_00bfeb1c(m_pBlock);
+    operator delete[](m_pBlock);
 }

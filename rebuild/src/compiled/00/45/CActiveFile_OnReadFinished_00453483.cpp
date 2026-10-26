@@ -6,7 +6,7 @@ struct CActiveFile {
 };
 
 extern int __fastcall CActiveFile_cb(void* ecx, int edx, char* arg);
-extern void __cdecl CActiveFile_free(void* q);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
@@ -14,5 +14,5 @@ void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
     CActiveFile_cb(self->p, self->DstFileHandle, &buf);
     void* q = self->p;
     if (q)
-        CActiveFile_free(q);
+        free(q);
 }

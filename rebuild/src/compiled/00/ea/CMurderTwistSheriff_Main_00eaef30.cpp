@@ -10,6 +10,7 @@
 //   CV_MurderTwistFinalScript is 0x14 smaller in retail than in the PDB view (SheriffState PDB +0x5c = retail +0x48,
 //   AssassinState +0x60 = +0x4c, Sheriff +0x68 = +0x54, seh_Sheriff +0x84 = +0x6c after the 12-byte Guards vector).
 // Shape: generated script code -- `if (IsActiveThreadTerminating()) return;` ahead of each statement that follows a wait.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -112,8 +113,14 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void SetCreatureBrain(const CScriptThing& thing, const CCharString& brain) const;   // slot 589 (+0x934) 0x00894B90
 };
 
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a predicate holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a predicate holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                  // 0x00E241B0 (out of line here)
@@ -122,8 +129,9 @@ class CEntityScriptBase { public:                             // retail 0x14 byt
     virtual void v00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 enum ESheriffState { SHERIFF_STATE_0, SHERIFF_STATE_1, SHERIFF_STATE_2, SHERIFF_STATE_3 };   // enumerator names not in the PDB dump
 enum EAssassinState { ASSASSIN_STATE_0, ASSASSIN_STATE_1, ASSASSIN_STATE_2, ASSASSIN_STATE_3, ASSASSIN_STATE_4 };

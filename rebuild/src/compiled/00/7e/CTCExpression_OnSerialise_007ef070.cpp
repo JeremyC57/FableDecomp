@@ -25,7 +25,8 @@ class CCharString { public:
 };
 inline CCharString EmptyString() { CCharString empty; return empty; }
 struct CDefStringTable {
-    CCharString GetString(long id);                     // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
 class CDefString { public:                                     // 4-byte def-name handle (user constructor: hidden-pointer return)

@@ -117,6 +117,9 @@ class CWorld { public:
     CCamera* Camera;                                // +0x18
     CCamera* GetCamera() { return Camera; }
     unsigned long* GetPRandomSeed();                // 0x0049D810
+
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 class CTCHeroStats { public:
     float GetMoralityPercentage() const;            // 0x0057A690
@@ -128,15 +131,21 @@ inline float Dot(const C3DVector& a, const C3DVector& b)
     d += a.X * b.X;
     return d;
 }
-long __fastcall GFGetCurrentFrame();                // 0x0049D870
+                // 0x0049D870
 
-class CTCCreatureExpression { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCCreatureExpression : public CTCBase { public:
     CThing*              ParentThing;               // +0x04 (CTCBase)
     unsigned char        _pad08[4];
     CExpressionStateList ExpressionStates;          // +0x0c
     bool                 Blinking;                  // +0x10
-    CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
     void ForcePrimaryExpression(long animIndex, float maxWeight);   // 0x007293A0
     void SetExpression(long expressionType, float maxWeight);       // 0x00729410
     void SetExpressionInline(long expressionType, float maxWeight); // its inline copy (one site)
@@ -156,7 +165,7 @@ __forceinline void CTCCreatureExpression::SetExpressionInline(long expressionTyp
     CDefPointer<CCreatureExpressionDef> def;
     ParentThing->PDef_Object->GetSubDef(&def);
     CExpressionMap* expressions = def->Expressions;
-    long anim = expressions->FindRandomElement(expressionType, GetWorld()->GetPRandomSeed());
+    long anim = expressions->FindRandomElement(expressionType, GetWorld().GetPRandomSeed());
     if (anim)
         ForcePrimaryExpression(anim, maxWeight);
 }
@@ -164,10 +173,10 @@ __forceinline void CTCCreatureExpression::SetExpressionInline(long expressionTyp
 void CTCCreatureExpression::FrameUpdate()
 {
     unsigned __int64 id = ParentThing->UniqueID;
-    if (((id + GFGetCurrentFrame()) & 0xf) != 0)
+    if (((id + CWorld::GetFrame()) & 0xf) != 0)
         return;
     if (ParentThing->Facing) {
-        C3DVector view = GetWorld()->GetCamera()->GetDirection();
+        C3DVector view = GetWorld().GetCamera()->GetDirection();
         if (Dot(view, ParentThing->Facing->GetFacing()) > 0.8f) {
             SetExpression(7, 1.0f);
             return;

@@ -15,7 +15,7 @@ class TreeNode { public:
     SubObject sub;       // +0x10
 };
 
-extern void __cdecl ProcessTreeNode(TreeNode* node);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CTextTreeWalkThrough {
     void BuildTreeArray(TreeNode* node);
@@ -28,7 +28,7 @@ void CTextTreeWalkThrough::BuildTreeArray(TreeNode* node)
             this->BuildTreeArray(node->child);
             TreeNode* next = node->next;
             node->sub.Cleanup_00429e16();
-            ProcessTreeNode(node);
+            free(node);
             node = next;
         } while (node);
     }

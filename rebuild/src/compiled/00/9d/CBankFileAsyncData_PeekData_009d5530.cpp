@@ -20,9 +20,10 @@ struct CCriticalSectionLock_Retail {            // 8 bytes on the stack
     ~CCriticalSectionLock_Retail();                                               // 0x00A629A0
 };
 
-struct CHandleBasedMemoryPool_Calls {
-    void Lock(long handle);              // 0x00A026F0
+class CHandleBasedMemoryPool { public:
     void Free(long handle);              // 0x00A62ED0
+public:
+    void Lock(long);   // 0x00A026F0
 };
 
 class CBankFileAsync { public:                  // the owning bank (+0x28); its critical section sits at +0x14c
@@ -42,7 +43,7 @@ class CBankFileAsyncData { public:
     void*                       m_pReadBuffer;    // +0x0c the buffer the file thread fills
     unsigned char               _pad10[0x08];
     unsigned long               m_bytesPending;   // +0x18
-    CHandleBasedMemoryPool_Calls*     m_pPool;          // +0x1c
+    CHandleBasedMemoryPool*     m_pPool;          // +0x1c
     long                        m_handle;         // +0x20 -1 when nothing is allocated
     CMovableResourceMemoryPool_Calls* m_pMovablePool;   // +0x24
     CBankFileAsync*             m_pBank;          // +0x28

@@ -17,8 +17,7 @@ struct CLongVector { long* _M_start; long* _M_finish; long* _M_end_of_storage; }
 struct CFloatVector { float* _M_start; float* _M_finish; float* _M_end_of_storage; };
 
 class CPersistContext { public:
-    void Transfer(long& value);                                    // 0x00431102
-    void Transfer(float& value);                                   // 0x00431061
+    template <class T> void Transfer(T& value);                                    // 0x00431102
     void Transfer(CAppearanceModifierScalingDefVector& value);     // 0x00479EF4
     void Transfer(CLongVector& value);                             // 0x00466A47
     void Transfer(CFloatVector& value);                            // 0x00464CBF

@@ -19,7 +19,10 @@
 // Lane feedback: the frame-rate global must be read into a local before the call (retail holds it in ebx),
 // and declared AFTER the def local, or the callee-saved registers swap. RELOCATION_MATCH.
 extern long g_FramesPerSecond;         // 0x01375550 (.data)
-extern long GFGetCurrentFrame();       // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};       // 0x0049D870
 
 struct CHeroMarriageDefCalls {
     unsigned char _pad_0x00[0x48];
@@ -42,6 +45,6 @@ bool CTCWife_Retail::WantsNiceGift()
     // follows the declaration order: def first, then the frame rate).
     CHeroMarriageDefCalls* def = this->PHeroMarriageDef_Object;
     long framesPerSecond = g_FramesPerSecond;
-    return GFGetCurrentFrame() - this->FrameLastReceivedNiceGift >
+    return CWorld::GetFrame() - this->FrameLastReceivedNiceGift >
            def->SecondsBetweenReceivingGiftOpinionReactionCanHappen * framesPerSecond;
 }

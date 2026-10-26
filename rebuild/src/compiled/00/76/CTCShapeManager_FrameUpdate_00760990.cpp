@@ -43,7 +43,8 @@ class CTCBase { public:
     bool ToBeRemoved;                                   // +0x08
     bool IsInGlobalUpdateTCs;                           // +0x09
     unsigned char _pad0a[2];
-    CWorld* GetWorld();                                 // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CTCShapeManager : public CTCBase { public:
     CShapePointer* PersistantShapes_first;              // +0x0c
@@ -62,7 +63,7 @@ void CTCShapeManager::FrameUpdate()
 {
     NewShapeActivated = false;
     LeavingShape = false;
-    CThing* hero = GetWorld()->GetCurrentPlayer()->GetControlledCreature();
+    CThing* hero = GetWorld().GetCurrentPlayer()->GetControlledCreature();
     if (hero && !(hero->Flags91 & 1)) {
         C3DVector pos = hero->GetPosition();
         if (pos.X >= ClosedShapeBounds.TopLeft.X && pos.X < ClosedShapeBounds.BottomRight.X &&

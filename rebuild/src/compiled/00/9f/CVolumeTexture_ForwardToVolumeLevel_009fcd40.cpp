@@ -28,8 +28,9 @@ class CVolume : public CBase { public:                            // vtable 0x01
 };
 
 class CVolumeTexture { public:
-    CVolume GetVolumeLevel(unsigned long level);    // 0x00A67EA0
     void ForwardToVolumeLevel(unsigned long level, void* argument);
+public:
+    CVolume GetVolumeLevel(long) const;   // 0x00A67EA0
 };
 
 void CVolumeTexture::ForwardToVolumeLevel(unsigned long level, void* argument)

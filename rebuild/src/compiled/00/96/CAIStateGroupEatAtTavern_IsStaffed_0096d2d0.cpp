@@ -6,6 +6,11 @@
 #include "engine/CAIBrain.h"
 #include "engine/CThingAICreature.h"
 #include "engine/CTCVillage.h"
+class CTCVillage;
+class CTCVillageMember {
+public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540
+};
 struct CTCVillager;
 struct CRetailInterfaceMap {
     struct Entry { long Type; void* Component; };
@@ -32,15 +37,27 @@ struct CRetailThingView {
         return false;
     }
 };
-struct CIntelligentPointerView {
-    void* __vftable;
-    CThingAICreature* Object;
-    CThingAICreature* GetPItem() const; // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+class CThingAICreature;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct CVillagePersonNode {
     CVillagePersonNode* Next;
     CVillagePersonNode* Previous;
-    CIntelligentPointerView Value;
+    CIntelligentPointer<CThingAICreature> Value;
 };
 // The engine village header retains donor 12-byte lists (+0x34 VillagePeople).
 // Retail lists are one head pointer, so VillagePeople is +0x2c; no header is redefined.
@@ -49,7 +66,6 @@ struct CRetailVillagePeopleView {
     unsigned char _beforePeople[0x2c];
     CVillagePeopleList VillagePeople;
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager*); // 0x007EE540
 inline CRetailThingView* ThingView(CThingAICreature* p) { return (CRetailThingView*)p; }
 
 
@@ -73,20 +89,20 @@ struct IStateGroupBuildingView {
 };
 struct CRetailWorkerView {
     unsigned char _beforeWorkBuilding[0x170];
-    CIntelligentPointerView WorkBuilding;
-    __forceinline CIntelligentPointerView& GetWorkBuilding() { return WorkBuilding; }
+    CIntelligentPointer<CThingAICreature> WorkBuilding;
+    __forceinline CIntelligentPointer<CThingAICreature>& GetWorkBuilding() { return WorkBuilding; }
 };
 bool __fastcall IsStaffed(CAIStateGroupBase* self, void*)
 {
     CThingBuilding* building = ((IStateGroupBuildingView*)self)->GetBuilding();
     CTCVillager* villager;
     if (ThingView(self->PBrain->Creature)->GetInterface(&villager, 0x23)) {
-        CTCVillage* owner = GFGetPVillageInterface(villager);
+        CTCVillage* owner = ((CTCVillageMember*)(villager))->GetPVillage();
         if (owner) {
             CRetailVillagePeopleView* village = (CRetailVillagePeopleView*)owner;
             for (CVillagePersonNode* person = village->VillagePeople.Head->Next;
                  person != village->VillagePeople.Head; person = person->Next) {
-                CIntelligentPointerView* p = &person->Value;
+                CIntelligentPointer<CThingAICreature>* p = &person->Value;
                 if (p->GetPItem() && !ThingView(p->GetPItem())->Dead &&
                     (void*)((CRetailWorkerView*)p->GetPItem())->GetWorkBuilding().GetPItem() == building) return true;
             }

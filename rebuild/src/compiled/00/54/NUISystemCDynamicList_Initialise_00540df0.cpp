@@ -1,6 +1,6 @@
-// NUISystem::CDynamicList::Initialise() -- CChangingStateComponent::Initialise(), reset the list positions (virtual slot 142) and mark the list initialised
+// NUISystem::CDynamicList::Initialise() -- NUISystem::CChangingStateComponent::Initialise(), reset the list positions (virtual slot 142) and mark the list initialised
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00540DF0, length 30 bytes (+ int3 padding).
-// Callees: NUISystem::CChangingStateComponent::Initialise @ 0x0052C730 (the base, called non-virtually), the virtual at +0x238 (slot 142 of the primary vtable
+// Callees: NUISystem::NUISystem::CChangingStateComponent::Initialise @ 0x0052C730 (the base, called non-virtually), the virtual at +0x238 (slot 142 of the primary vtable
 // 0x01246E44 = ResetPositions @ 0x005416B0 in rtti-vtables.tsv). Vtable 0x01246E44 slot 43 is this body. PDB CDynamicList (436 bytes): BInitialised at
 // +0x18c, retail +0x15c (the component bases are 0x30 smaller in the shipped build: CChangingStateComponent ends at +0x15c). Shape: the base
 // call, the virtual call through the reloaded vtable, then the immediate dword store.
@@ -164,7 +164,8 @@ struct CComponentRoot {                          // the primary base: vptr at +0
 class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:   // retail 0x15c bytes (hand29 / landed Initialise @ 0x0052C730)
     unsigned char _body[0x15c - 0x1c];      // +0x1c .. +0x15c
     CChangingStateComponent(long owner);           // 0x0052CC50
-    void Initialise();                             // 0x0052C730
+public:
+    virtual void Initialise();   // 0x0052C730
 };
 
 class CDynamicList : public CChangingStateComponent { public:    // vtables 0x01246E44 / 0x01246E20 / 0x01246E18

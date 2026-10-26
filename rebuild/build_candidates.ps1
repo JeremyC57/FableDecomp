@@ -4075,9 +4075,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0045228f'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_0045228f.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_0045228f_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferCDefString_0045228f.cpp'
+        TestSource = '00/45/CPersistContext_TransferCDefString_0045228f_test.cpp'
         PassPattern = 'CEngineLightingManager_0045228f_TEST PASS'
     }
     [pscustomobject]@{
@@ -4194,9 +4194,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00451e11'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00451e11.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00451e11_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferCEngineGraphic_00451e11.cpp'
+        TestSource = '00/45/CPersistContext_TransferCEngineGraphic_00451e11_test.cpp'
         PassPattern = 'CEngineLightingManager_00451e11_TEST PASS'
     }
     [pscustomobject]@{
@@ -4943,9 +4943,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00454e5b'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00454e5b.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00454e5b_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferESwitchTriggerType_00454e5b.cpp'
+        TestSource = '00/45/CPersistContext_TransferESwitchTriggerType_00454e5b_test.cpp'
         PassPattern = 'CEngineLightingManager_00454e5b_TEST PASS'
     }
     [pscustomobject]@{
@@ -4978,9 +4978,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00456b7d'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00456b7d.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00456b7d_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEOpinionDeedType_00456b7d.cpp'
+        TestSource = '00/45/CPersistContext_TransferEOpinionDeedType_00456b7d_test.cpp'
         PassPattern = 'CEngineLightingManager_00456b7d_TEST PASS'
     }
     [pscustomobject]@{
@@ -31352,9 +31352,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00473593'
-        Module = '_global'
-        Source = '00/47/CEngineLightingManager_UpdateShadowScene_00473593.cpp'
-        TestSource = '00/47/CEngineLightingManager_UpdateShadowScene_00473593_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_Transferunsignedchar_00473593.cpp'
+        TestSource = '00/47/CPersistContext_Transferunsignedchar_00473593_test.cpp'
         PassPattern = 'UPDATE_SHADOW_SCENE_SWITCH_TEST PASS'
     }
     [pscustomobject]@{
@@ -31429,9 +31429,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004735d6'
-        Module = 'CEngineLightingManager'
-        Source = '00/47/CEngineLightingManager_UpdateShadowScene_004735d6.cpp'
-        TestSource = '00/47/CEngineLightingManager_UpdateShadowScene_004735d6_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/47/CPersistContext_TransferELightingChannel_004735d6.cpp'
+        TestSource = '00/47/CPersistContext_TransferELightingChannel_004735d6_test.cpp'
         PassPattern = 'UPDATE_SHADOW_SCENE_004735D6_TEST PASS'
     }
     [pscustomobject]@{
@@ -32045,9 +32045,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00993b10'
-        Module = 'CChunkedFileChunk'
-        Source = '00/99/CChunkedFileChunk_CChunkedFileChunk_00993b10.cpp'
-        TestSource = '00/99/CChunkedFileChunk_CChunkedFileChunk_00993b10_test.cpp'
+        Module = 'CDataStream'
+        Source = '00/99/CDataStream_CDataStream_00993b10.cpp'
+        TestSource = '00/99/CDataStream_CDataStream_00993b10_test.cpp'
         PassPattern = 'marker_dtor_ok'
     }
     [pscustomobject]@{
@@ -32861,7 +32861,7 @@ $catalog = @(
         Module = 'CEntityScriptBase'
         Source = '00/f3/CEntityScriptBase_IsActiveThreadTerminating_00f35b30.cpp'
         TestSource = '00/f3/CEntityScriptBase_IsActiveThreadTerminating_00f35b30_test.cpp'
-        PassPattern = 'TROLLWHACK_INIT_OK'
+        PassPattern = '00f35b30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004167cd'
@@ -38493,177 +38493,177 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fd242'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd242.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd242_test.cpp'
+        Module = 'CAIStateGroup_MinionWander'
+        Source = '00/8f/CAIStateGroupMinionWander_GetName_008fd242.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionWander_GetName_008fd242_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd242_OK'
     }
     [pscustomobject]@{
         Address = '008fd288'
         Module = 'CAIStateGroupBase'
-        Source = '00/8f/std_Destval_008fd288.cpp'
-        TestSource = '00/8f/std_Destval_008fd288_test.cpp'
+        Source = '00/8f/CAIStateGroupBase_CAIStateGroupBase_008fd288.cpp'
+        TestSource = '00/8f/CAIStateGroupBase_CAIStateGroupBase_008fd288_test.cpp'
         PassPattern = 'DESTVAL_008fd288_OK'
     }
     [pscustomobject]@{
         Address = '008fd2b7'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd2b7.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd2b7_test.cpp'
+        Module = 'CAIStateGroup_GoToBed'
+        Source = '00/8f/CAIStateGroupGoToBed_GetName_008fd2b7.cpp'
+        TestSource = '00/8f/CAIStateGroupGoToBed_GetName_008fd2b7_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd2b7_OK'
     }
     [pscustomobject]@{
         Address = '008fd2e5'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd2e5.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd2e5_test.cpp'
+        Module = 'CAIStateGroup_MinionSleep'
+        Source = '00/8f/CAIStateGroupMinionSleep_GetName_008fd2e5.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionSleep_GetName_008fd2e5_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd2e5_OK'
     }
     [pscustomobject]@{
         Address = '008fd2f8'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd2f8.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd2f8_test.cpp'
+        Module = 'CAIStateGroup_MinionWorkInInn'
+        Source = '00/8f/CAIStateGroupMinionWorkInInn_GetName_008fd2f8.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionWorkInInn_GetName_008fd2f8_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd2f8_OK'
     }
     [pscustomobject]@{
         Address = '008fd31d'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd31d.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd31d_test.cpp'
+        Module = 'CAIStateGroup_MinionFindPersonalSpace'
+        Source = '00/8f/CAIStateGroupMinionFindPersonalSpace_GetName_008fd31d.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionFindPersonalSpace_GetName_008fd31d_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd31d_OK'
     }
     [pscustomobject]@{
         Address = '008fd330'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd330.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd330_test.cpp'
+        Module = 'CAIStateGroup_MinionReactToPlayerInteraction'
+        Source = '00/8f/CAIStateGroupMinionReactToPlayerInteraction_GetName_008fd330.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionReactToPlayerInteraction_GetName_008fd330_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd330_OK'
     }
     [pscustomobject]@{
         Address = '008fd343'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd343.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd343_test.cpp'
+        Module = 'CAIStateGroup_MinionReactToCriminal'
+        Source = '00/8f/CAIStateGroupMinionReactToCriminal_GetName_008fd343.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionReactToCriminal_GetName_008fd343_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd343_OK'
     }
     [pscustomobject]@{
         Address = '008fd356'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd356.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd356_test.cpp'
+        Module = 'CAIStateGroup_MinionGuardReactToCriminal'
+        Source = '00/8f/CAIStateGroupMinionGuardReactToCriminal_GetName_008fd356.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionGuardReactToCriminal_GetName_008fd356_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd356_OK'
     }
     [pscustomobject]@{
         Address = '008fd369'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd369.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd369_test.cpp'
+        Module = 'CAIStateGroup_MinionGuardReactToBribe'
+        Source = '00/8f/CAIStateGroupMinionGuardReactToBribe_GetName_008fd369.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionGuardReactToBribe_GetName_008fd369_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd369_OK'
     }
     [pscustomobject]@{
         Address = '008fd37c'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd37c.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd37c_test.cpp'
+        Module = 'CAIStateGroup_MinionGuardFollowPlayer'
+        Source = '00/8f/CAIStateGroupMinionGuardFollowPlayer_GetName_008fd37c.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionGuardFollowPlayer_GetName_008fd37c_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd37c_OK'
     }
     [pscustomobject]@{
         Address = '008fd3a1'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd3a1.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd3a1_test.cpp'
+        Module = 'CAIStateGroup_MinionCuriosity'
+        Source = '00/8f/CAIStateGroupMinionCuriosity_GetName_008fd3a1.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionCuriosity_GetName_008fd3a1_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd3a1_OK'
     }
     [pscustomobject]@{
         Address = '008fd3b4'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd3b4.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd3b4_test.cpp'
+        Module = 'CAIStateGroup_MinionGossip'
+        Source = '00/8f/CAIStateGroupMinionGossip_GetName_008fd3b4.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionGossip_GetName_008fd3b4_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd3b4_OK'
     }
     [pscustomobject]@{
         Address = '008fd3e5'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd3e5.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd3e5_test.cpp'
+        Module = 'CAIStateGroup_BanditGossip'
+        Source = '00/8f/CAIStateGroupBanditGossip_GetName_008fd3e5.cpp'
+        TestSource = '00/8f/CAIStateGroupBanditGossip_GetName_008fd3e5_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd3e5_OK'
     }
     [pscustomobject]@{
         Address = '008fd40d'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd40d.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd40d_test.cpp'
+        Module = 'CAIStateGroup_MinionMotherProtectFamily'
+        Source = '00/8f/CAIStateGroupMinionMotherProtectFamily_GetName_008fd40d.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionMotherProtectFamily_GetName_008fd40d_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd40d_OK'
     }
     [pscustomobject]@{
         Address = '008fd420'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd420.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd420_test.cpp'
+        Module = 'CAIStateGroup_MinionKidAnnoy'
+        Source = '00/8f/CAIStateGroupMinionKidAnnoy_GetName_008fd420.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionKidAnnoy_GetName_008fd420_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd420_OK'
     }
     [pscustomobject]@{
         Address = '008fd433'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd433.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd433_test.cpp'
+        Module = 'CAIStateGroup_MinionKidGroupTag'
+        Source = '00/8f/CAIStateGroupMinionKidGroupTag_GetName_008fd433.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionKidGroupTag_GetName_008fd433_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd433_OK'
     }
     [pscustomobject]@{
         Address = '008fd446'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd446.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd446_test.cpp'
+        Module = 'CAIStateGroup_MinionKidCalledToMother'
+        Source = '00/8f/CAIStateGroupMinionKidCalledToMother_GetName_008fd446.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionKidCalledToMother_GetName_008fd446_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd446_OK'
     }
     [pscustomobject]@{
         Address = '008fd483'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd483.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd483_test.cpp'
+        Module = 'CAIStateGroup_MinionFaceHero'
+        Source = '00/8f/CAIStateGroupMinionFaceHero_GetName_008fd483.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionFaceHero_GetName_008fd483_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd483_OK'
     }
     [pscustomobject]@{
         Address = '008fd496'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd496.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd496_test.cpp'
+        Module = 'CAIStateGroup_MinionPutOutFires'
+        Source = '00/8f/CAIStateGroupMinionPutOutFires_GetName_008fd496.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionPutOutFires_GetName_008fd496_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd496_OK'
     }
     [pscustomobject]@{
         Address = '008fd4a9'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd4a9.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd4a9_test.cpp'
+        Module = 'CAIStateGroup_MinionWatchFires'
+        Source = '00/8f/CAIStateGroupMinionWatchFires_GetName_008fd4a9.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionWatchFires_GetName_008fd4a9_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd4a9_OK'
     }
     [pscustomobject]@{
         Address = '008fd4d4'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd4d4.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd4d4_test.cpp'
+        Module = 'CAIStateGroup_MinionReactToUnconsciousPerson'
+        Source = '00/8f/CAIStateGroupMinionReactToUnconsciousPerson_GetName_008fd4d4.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionReactToUnconsciousPerson_GetName_008fd4d4_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd4d4_OK'
     }
     [pscustomobject]@{
         Address = '008fd4e7'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd4e7.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd4e7_test.cpp'
+        Module = 'CAIStateGroup_MinionReactToEnemy'
+        Source = '00/8f/CAIStateGroupMinionReactToEnemy_GetName_008fd4e7.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionReactToEnemy_GetName_008fd4e7_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd4e7_OK'
     }
     [pscustomobject]@{
         Address = '008fd4fa'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd4fa.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd4fa_test.cpp'
+        Module = 'CAIStateGroup_MinionReactToAlert'
+        Source = '00/8f/CAIStateGroupMinionReactToAlert_GetName_008fd4fa.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionReactToAlert_GetName_008fd4fa_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd4fa_OK'
     }
     [pscustomobject]@{
         Address = '008fd51f'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd51f.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd51f_test.cpp'
+        Module = 'CAIStateGroup_MinionHasInformation'
+        Source = '00/8f/CAIStateGroupMinionHasInformation_GetName_008fd51f.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionHasInformation_GetName_008fd51f_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd51f_OK'
     }
     [pscustomobject]@{
@@ -38675,142 +38675,142 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fd557'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd557.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd557_test.cpp'
+        Module = 'CAIStateGroup_MinionSitOnSeat'
+        Source = '00/8f/CAIStateGroupMinionSitOnSeat_GetName_008fd557.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionSitOnSeat_GetName_008fd557_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd557_OK'
     }
     [pscustomobject]@{
         Address = '008fd582'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd582.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd582_test.cpp'
+        Module = 'CAIStateGroup_MinionSitAtWork'
+        Source = '00/8f/CAIStateGroupMinionSitAtWork_GetName_008fd582.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionSitAtWork_GetName_008fd582_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd582_OK'
     }
     [pscustomobject]@{
         Address = '008fd595'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd595.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd595_test.cpp'
+        Module = 'CAIStateGroup_MinionSitAtInn'
+        Source = '00/8f/CAIStateGroupMinionSitAtInn_GetName_008fd595.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionSitAtInn_GetName_008fd595_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd595_OK'
     }
     [pscustomobject]@{
         Address = '008fd5a8'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd5a8.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd5a8_test.cpp'
+        Module = 'CAIStateGroup_MinionSitAtSchool'
+        Source = '00/8f/CAIStateGroupMinionSitAtSchool_GetName_008fd5a8.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionSitAtSchool_GetName_008fd5a8_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd5a8_OK'
     }
     [pscustomobject]@{
         Address = '008fd5bb'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd5bb.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd5bb_test.cpp'
+        Module = 'CAIStateGroup_MinionListenToStory'
+        Source = '00/8f/CAIStateGroupMinionListenToStory_GetName_008fd5bb.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionListenToStory_GetName_008fd5bb_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd5bb_OK'
     }
     [pscustomobject]@{
         Address = '008fd5e0'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd5e0.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd5e0_test.cpp'
+        Module = 'CAIStateGroup_MinionSitOutside'
+        Source = '00/8f/CAIStateGroupMinionSitOutside_GetName_008fd5e0.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionSitOutside_GetName_008fd5e0_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd5e0_OK'
     }
     [pscustomobject]@{
         Address = '008fd5f3'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd5f3.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd5f3_test.cpp'
+        Module = 'CAIStateGroup_MinionSitAtHome'
+        Source = '00/8f/CAIStateGroupMinionSitAtHome_GetName_008fd5f3.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionSitAtHome_GetName_008fd5f3_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd5f3_OK'
     }
     [pscustomobject]@{
         Address = '008fd606'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd606.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd606_test.cpp'
+        Module = 'CAIStateGroup_SitRoundCampfire'
+        Source = '00/8f/CAIStateGroupSitRoundCampfire_GetName_008fd606.cpp'
+        TestSource = '00/8f/CAIStateGroupSitRoundCampfire_GetName_008fd606_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd606_OK'
     }
     [pscustomobject]@{
         Address = '008fd619'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd619.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd619_test.cpp'
+        Module = 'CAIStateGroup_MinionGuardHeardYellForHelp'
+        Source = '00/8f/CAIStateGroupMinionGuardHeardYellForHelp_GetName_008fd619.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionGuardHeardYellForHelp_GetName_008fd619_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd619_OK'
     }
     [pscustomobject]@{
         Address = '008fd63e'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd63e.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd63e_test.cpp'
+        Module = 'CAIStateGroup_MinionGuardReactToPlayerWithWeapon'
+        Source = '00/8f/CAIStateGroupMinionGuardReactToPlayerWithWeapon_GetName_008fd63e.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionGuardReactToPlayerWithWeapon_GetName_008fd63e_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd63e_OK'
     }
     [pscustomobject]@{
         Address = '008fd651'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd651.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd651_test.cpp'
+        Module = 'CAIStateGroup_MinionGuardReactToBodyFoundMessage'
+        Source = '00/8f/CAIStateGroupMinionGuardReactToBodyFoundMessage_GetName_008fd651.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionGuardReactToBodyFoundMessage_GetName_008fd651_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd651_OK'
     }
     [pscustomobject]@{
         Address = '008fd676'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd676.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd676_test.cpp'
+        Module = 'CAIStateGroup_BanditSitRoundCampfire'
+        Source = '00/8f/CAIStateGroupBanditSitRoundCampfire_GetName_008fd676.cpp'
+        TestSource = '00/8f/CAIStateGroupBanditSitRoundCampfire_GetName_008fd676_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd676_OK'
     }
     [pscustomobject]@{
         Address = '008fd689'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd689.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd689_test.cpp'
+        Module = 'CAIStateGroup_SeekEnemy'
+        Source = '00/8f/CAIStateGroupSeekEnemy_GetName_008fd689.cpp'
+        TestSource = '00/8f/CAIStateGroupSeekEnemy_GetName_008fd689_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd689_OK'
     }
     [pscustomobject]@{
         Address = '008fd69c'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd69c.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd69c_test.cpp'
+        Module = 'CAIStateGroup_SeekScriptTarget'
+        Source = '00/8f/CAIStateGroupSeekScriptTarget_GetName_008fd69c.cpp'
+        TestSource = '00/8f/CAIStateGroupSeekScriptTarget_GetName_008fd69c_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd69c_OK'
     }
     [pscustomobject]@{
         Address = '008fd6af'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd6af.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd6af_test.cpp'
+        Module = 'CAIStateGroup_StealthSeekEnemy'
+        Source = '00/8f/CAIStateGroupStealthSeekEnemy_GetName_008fd6af.cpp'
+        TestSource = '00/8f/CAIStateGroupStealthSeekEnemy_GetName_008fd6af_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd6af_OK'
     }
     [pscustomobject]@{
         Address = '008fd6c2'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd6c2.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd6c2_test.cpp'
+        Module = 'CAIStateGroup_NonVillageGuardPatrol'
+        Source = '00/8f/CAIStateGroupNonVillageGuardPatrol_GetName_008fd6c2.cpp'
+        TestSource = '00/8f/CAIStateGroupNonVillageGuardPatrol_GetName_008fd6c2_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd6c2_OK'
     }
     [pscustomobject]@{
         Address = '008fd6d5'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd6d5.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd6d5_test.cpp'
+        Module = 'CAIStateGroup_Guard'
+        Source = '00/8f/CAIStateGroupGuard_GetName_008fd6d5.cpp'
+        TestSource = '00/8f/CAIStateGroupGuard_GetName_008fd6d5_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd6d5_OK'
     }
     [pscustomobject]@{
         Address = '008fd6fa'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd6fa.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd6fa_test.cpp'
+        Module = 'CAIStateGroup_Wander'
+        Source = '00/8f/CAIStateGroupWander_GetName_008fd6fa.cpp'
+        TestSource = '00/8f/CAIStateGroupWander_GetName_008fd6fa_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd6fa_OK'
     }
     [pscustomobject]@{
         Address = '008fd71f'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd71f.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd71f_test.cpp'
+        Module = 'CAIStateGroup_ChickenWander'
+        Source = '00/8f/CAIStateGroupChickenWander_GetName_008fd71f.cpp'
+        TestSource = '00/8f/CAIStateGroupChickenWander_GetName_008fd71f_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd71f_OK'
     }
     [pscustomobject]@{
         Address = '008fd744'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd744.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd744_test.cpp'
+        Module = 'CAIStateGroup_WanderAroundInitialPos'
+        Source = '00/8f/CAIStateGroupWanderAroundInitialPos_GetName_008fd744.cpp'
+        TestSource = '00/8f/CAIStateGroupWanderAroundInitialPos_GetName_008fd744_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd744_OK'
     }
     [pscustomobject]@{
@@ -38822,142 +38822,142 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fd77c'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd77c.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd77c_test.cpp'
+        Module = 'CAIStateGroup_CreatureFindCover'
+        Source = '00/8f/CAIStateGroupCreatureFindCover_GetName_008fd77c.cpp'
+        TestSource = '00/8f/CAIStateGroupCreatureFindCover_GetName_008fd77c_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd77c_OK'
     }
     [pscustomobject]@{
         Address = '008fd78f'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd78f.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd78f_test.cpp'
+        Module = 'CAIStateGroup_ChickenPanic'
+        Source = '00/8f/CAIStateGroupChickenPanic_GetName_008fd78f.cpp'
+        TestSource = '00/8f/CAIStateGroupChickenPanic_GetName_008fd78f_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd78f_OK'
     }
     [pscustomobject]@{
         Address = '008fd7b4'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd7b4.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd7b4_test.cpp'
+        Module = 'CAIStateGroup_ChickenBeg'
+        Source = '00/8f/CAIStateGroupChickenBeg_GetName_008fd7b4.cpp'
+        TestSource = '00/8f/CAIStateGroupChickenBeg_GetName_008fd7b4_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd7b4_OK'
     }
     [pscustomobject]@{
         Address = '008fd7f1'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd7f1.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd7f1_test.cpp'
+        Module = 'CAIStateGroup_FireflyWander'
+        Source = '00/8f/CAIStateGroupFireflyWander_GetName_008fd7f1.cpp'
+        TestSource = '00/8f/CAIStateGroupFireflyWander_GetName_008fd7f1_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd7f1_OK'
     }
     [pscustomobject]@{
         Address = '008fd816'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd816.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd816_test.cpp'
+        Module = 'CAIStateGroup_SmallBirdWander'
+        Source = '00/8f/CAIStateGroupSmallBirdWander_GetName_008fd816.cpp'
+        TestSource = '00/8f/CAIStateGroupSmallBirdWander_GetName_008fd816_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd816_OK'
     }
     [pscustomobject]@{
         Address = '008fd83b'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd83b.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd83b_test.cpp'
+        Module = 'CAIStateGroup_BirdFlyToFood'
+        Source = '00/8f/CAIStateGroupBirdFlyToFood_GetName_008fd83b.cpp'
+        TestSource = '00/8f/CAIStateGroupBirdFlyToFood_GetName_008fd83b_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd83b_OK'
     }
     [pscustomobject]@{
         Address = '008fd86d'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd86d.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd86d_test.cpp'
+        Module = 'CAIStateGroup_BirdGroundWander'
+        Source = '00/8f/CAIStateGroupBirdGroundWander_GetName_008fd86d.cpp'
+        TestSource = '00/8f/CAIStateGroupBirdGroundWander_GetName_008fd86d_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd86d_OK'
     }
     [pscustomobject]@{
         Address = '008fd89f'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd89f.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd89f_test.cpp'
+        Module = 'CAIStateGroup_BirdStartled'
+        Source = '00/8f/CAIStateGroupBirdStartled_GetName_008fd89f.cpp'
+        TestSource = '00/8f/CAIStateGroupBirdStartled_GetName_008fd89f_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd89f_OK'
     }
     [pscustomobject]@{
         Address = '008fd8c4'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd8c4.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd8c4_test.cpp'
+        Module = 'CAIStateGroup_MeleeCombatNearby'
+        Source = '00/8f/CAIStateGroupMeleeCombatNearby_GetName_008fd8c4.cpp'
+        TestSource = '00/8f/CAIStateGroupMeleeCombatNearby_GetName_008fd8c4_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd8c4_OK'
     }
     [pscustomobject]@{
         Address = '008fd8ea'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd8ea.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd8ea_test.cpp'
+        Module = 'CAIStateGroup_MeleeCombatNearby2'
+        Source = '00/8f/CAIStateGroupMeleeCombatNearby2_GetName_008fd8ea.cpp'
+        TestSource = '00/8f/CAIStateGroupMeleeCombatNearby2_GetName_008fd8ea_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd8ea_OK'
     }
     [pscustomobject]@{
         Address = '008fd8fd'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd8fd.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd8fd_test.cpp'
+        Module = 'CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose'
+        Source = '00/8f/CAIStateGroupMeleeCombatNearbyAttackWhenVeryClose_GetName_008fd8fd.cpp'
+        TestSource = '00/8f/CAIStateGroupMeleeCombatNearbyAttackWhenVeryClose_GetName_008fd8fd_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd8fd_OK'
     }
     [pscustomobject]@{
         Address = '008fd910'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd910.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd910_test.cpp'
+        Module = 'CAIStateGroup_VillageTaskTorch'
+        Source = '00/8f/CAIStateGroupVillageTaskTorch_GetName_008fd910.cpp'
+        TestSource = '00/8f/CAIStateGroupVillageTaskTorch_GetName_008fd910_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd910_OK'
     }
     [pscustomobject]@{
         Address = '008fd93b'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd93b.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd93b_test.cpp'
+        Module = 'CAIStateGroup_VillageTaskSecuritySweep'
+        Source = '00/8f/CAIStateGroupVillageTaskSecuritySweep_GetName_008fd93b.cpp'
+        TestSource = '00/8f/CAIStateGroupVillageTaskSecuritySweep_GetName_008fd93b_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd93b_OK'
     }
     [pscustomobject]@{
         Address = '008fd966'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd966.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd966_test.cpp'
+        Module = 'CAIStateGroup_VillageTaskHorn'
+        Source = '00/8f/CAIStateGroupVillageTaskHorn_GetName_008fd966.cpp'
+        TestSource = '00/8f/CAIStateGroupVillageTaskHorn_GetName_008fd966_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd966_OK'
     }
     [pscustomobject]@{
         Address = '008fd979'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd979.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd979_test.cpp'
+        Module = 'CAIStateGroup_KidWanderNearKids'
+        Source = '00/8f/CAIStateGroupKidWanderNearKids_GetName_008fd979.cpp'
+        TestSource = '00/8f/CAIStateGroupKidWanderNearKids_GetName_008fd979_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd979_OK'
     }
     [pscustomobject]@{
         Address = '008fd9a1'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd9a1.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd9a1_test.cpp'
+        Module = 'CAIStateGroup_KidWatchHopscotch'
+        Source = '00/8f/CAIStateGroupKidWatchHopscotch_GetName_008fd9a1.cpp'
+        TestSource = '00/8f/CAIStateGroupKidWatchHopscotch_GetName_008fd9a1_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd9a1_OK'
     }
     [pscustomobject]@{
         Address = '008fd9b4'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd9b4.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd9b4_test.cpp'
+        Module = 'CAIStateGroup_KidPlayHopscotch'
+        Source = '00/8f/CAIStateGroupKidPlayHopscotch_GetName_008fd9b4.cpp'
+        TestSource = '00/8f/CAIStateGroupKidPlayHopscotch_GetName_008fd9b4_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd9b4_OK'
     }
     [pscustomobject]@{
         Address = '008fd9c7'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd9c7.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd9c7_test.cpp'
+        Module = 'CAIStateGroup_KidHurtSelfRunToMother'
+        Source = '00/8f/CAIStateGroupKidHurtSelfRunToMother_GetName_008fd9c7.cpp'
+        TestSource = '00/8f/CAIStateGroupKidHurtSelfRunToMother_GetName_008fd9c7_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd9c7_OK'
     }
     [pscustomobject]@{
         Address = '008fd9ec'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd9ec.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd9ec_test.cpp'
+        Module = 'CAIStateGroup_KidReactToBlockage'
+        Source = '00/8f/CAIStateGroupKidReactToBlockage_GetName_008fd9ec.cpp'
+        TestSource = '00/8f/CAIStateGroupKidReactToBlockage_GetName_008fd9ec_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd9ec_OK'
     }
     [pscustomobject]@{
         Address = '008fd9ff'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd9ff.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd9ff_test.cpp'
+        Module = 'CAIStateGroup_WorkAtSchool'
+        Source = '00/8f/CAIStateGroupWorkAtSchool_GetName_008fd9ff.cpp'
+        TestSource = '00/8f/CAIStateGroupWorkAtSchool_GetName_008fd9ff_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd9ff_OK'
     }
     [pscustomobject]@{
@@ -38969,86 +38969,86 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fda4a'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fda4a.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fda4a_test.cpp'
+        Module = 'CAIStateGroup_TellStory'
+        Source = '00/8f/CAIStateGroupTellStory_GetName_008fda4a.cpp'
+        TestSource = '00/8f/CAIStateGroupTellStory_GetName_008fda4a_test.cpp'
         PassPattern = 'GETACTIONNAME_008fda4a_OK'
     }
     [pscustomobject]@{
         Address = '008fda7c'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fda7c.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fda7c_test.cpp'
+        Module = 'CAIStateGroup_WorkInWarehouse'
+        Source = '00/8f/CAIStateGroupWorkInWarehouse_GetName_008fda7c.cpp'
+        TestSource = '00/8f/CAIStateGroupWorkInWarehouse_GetName_008fda7c_test.cpp'
         PassPattern = 'GETACTIONNAME_008fda7c_OK'
     }
     [pscustomobject]@{
         Address = '008fda8f'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fda8f.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fda8f_test.cpp'
+        Module = 'CAIStateGroup_WorkSawingWood'
+        Source = '00/8f/CAIStateGroupWorkSawingWood_GetName_008fda8f.cpp'
+        TestSource = '00/8f/CAIStateGroupWorkSawingWood_GetName_008fda8f_test.cpp'
         PassPattern = 'GETACTIONNAME_008fda8f_OK'
     }
     [pscustomobject]@{
         Address = '008fdaa2'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdaa2.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdaa2_test.cpp'
+        Module = 'CAIStateGroup_WorkHammerAnvil'
+        Source = '00/8f/CAIStateGroupWorkHammerAnvil_GetName_008fdaa2.cpp'
+        TestSource = '00/8f/CAIStateGroupWorkHammerAnvil_GetName_008fdaa2_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdaa2_OK'
     }
     [pscustomobject]@{
         Address = '008fdab5'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdab5.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdab5_test.cpp'
+        Module = 'CAIStateGroup_StayNearSchool'
+        Source = '00/8f/CAIStateGroupStayNearSchool_GetName_008fdab5.cpp'
+        TestSource = '00/8f/CAIStateGroupStayNearSchool_GetName_008fdab5_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdab5_OK'
     }
     [pscustomobject]@{
         Address = '008fdada'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdada.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdada_test.cpp'
+        Module = 'CAIStateGroup_ThrowLogsOnFire'
+        Source = '00/8f/CAIStateGroupThrowLogsOnFire_GetName_008fdada.cpp'
+        TestSource = '00/8f/CAIStateGroupThrowLogsOnFire_GetName_008fdada_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdada_OK'
     }
     [pscustomobject]@{
         Address = '008fdaff'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdaff.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdaff_test.cpp'
+        Module = 'CAIStateGroup_IdleAtHome'
+        Source = '00/8f/CAIStateGroupIdleAtHome_GetName_008fdaff.cpp'
+        TestSource = '00/8f/CAIStateGroupIdleAtHome_GetName_008fdaff_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdaff_OK'
     }
     [pscustomobject]@{
         Address = '008fdb42'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdb42.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdb42_test.cpp'
+        Module = 'CAIStateGroup_CleanHouse'
+        Source = '00/8f/CAIStateGroupCleanHouse_GetName_008fdb42.cpp'
+        TestSource = '00/8f/CAIStateGroupCleanHouse_GetName_008fdb42_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdb42_OK'
     }
     [pscustomobject]@{
         Address = '008fdb6a'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdb6a.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdb6a_test.cpp'
+        Module = 'CAIStateGroup_CleanWork'
+        Source = '00/8f/CAIStateGroupCleanWork_GetName_008fdb6a.cpp'
+        TestSource = '00/8f/CAIStateGroupCleanWork_GetName_008fdb6a_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdb6a_OK'
     }
     [pscustomobject]@{
         Address = '008fdb8f'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdb8f.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdb8f_test.cpp'
+        Module = 'CAIStateGroup_SitForMeal'
+        Source = '00/8f/CAIStateGroupSitForMeal_GetName_008fdb8f.cpp'
+        TestSource = '00/8f/CAIStateGroupSitForMeal_GetName_008fdb8f_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdb8f_OK'
     }
     [pscustomobject]@{
         Address = '008fdc1d'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdc1d.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdc1d_test.cpp'
+        Module = 'CAIStateGroup_GazeAtWork'
+        Source = '00/8f/CAIStateGroupGazeAtWork_GetName_008fdc1d.cpp'
+        TestSource = '00/8f/CAIStateGroupGazeAtWork_GetName_008fdc1d_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdc1d_OK'
     }
     [pscustomobject]@{
         Address = '008fdc30'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdc30.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdc30_test.cpp'
+        Module = 'CAIStateGroup_LightHomeCandle'
+        Source = '00/8f/CAIStateGroupLightHomeCandle_GetName_008fdc30.cpp'
+        TestSource = '00/8f/CAIStateGroupLightHomeCandle_GetName_008fdc30_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdc30_OK'
     }
     [pscustomobject]@{
@@ -39060,79 +39060,79 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fdc56'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdc56.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdc56_test.cpp'
+        Module = 'CAIStateGroup_LightWorkCandle'
+        Source = '00/8f/CAIStateGroupLightWorkCandle_GetName_008fdc56.cpp'
+        TestSource = '00/8f/CAIStateGroupLightWorkCandle_GetName_008fdc56_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdc56_OK'
     }
     [pscustomobject]@{
         Address = '008fdc69'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdc69.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdc69_test.cpp'
+        Module = 'CAIStateGroup_LookAtInterestingThings'
+        Source = '00/8f/CAIStateGroupLookAtInterestingThings_GetName_008fdc69.cpp'
+        TestSource = '00/8f/CAIStateGroupLookAtInterestingThings_GetName_008fdc69_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdc69_OK'
     }
     [pscustomobject]@{
         Address = '008fdc91'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdc91.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdc91_test.cpp'
+        Module = 'CAIStateGroup_WanderAroundShops'
+        Source = '00/8f/CAIStateGroupWanderAroundShops_GetName_008fdc91.cpp'
+        TestSource = '00/8f/CAIStateGroupWanderAroundShops_GetName_008fdc91_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdc91_OK'
     }
     [pscustomobject]@{
         Address = '008fdca4'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdca4.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdca4_test.cpp'
+        Module = 'CAIStateGroup_StayNearFoodHall'
+        Source = '00/8f/CAIStateGroupStayNearFoodHall_GetName_008fdca4.cpp'
+        TestSource = '00/8f/CAIStateGroupStayNearFoodHall_GetName_008fdca4_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdca4_OK'
     }
     [pscustomobject]@{
         Address = '008fdcb7'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdcb7.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdcb7_test.cpp'
+        Module = 'CAIStateGroup_GoToPub'
+        Source = '00/8f/CAIStateGroupGoToPub_GetName_008fdcb7.cpp'
+        TestSource = '00/8f/CAIStateGroupGoToPub_GetName_008fdcb7_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdcb7_OK'
     }
     [pscustomobject]@{
         Address = '008fdcfd'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdcfd.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdcfd_test.cpp'
+        Module = 'CAIStateGroup_SitInPub'
+        Source = '00/8f/CAIStateGroupSitInPub_GetName_008fdcfd.cpp'
+        TestSource = '00/8f/CAIStateGroupSitInPub_GetName_008fdcfd_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdcfd_OK'
     }
     [pscustomobject]@{
         Address = '008fdd39'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdd39.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdd39_test.cpp'
+        Module = 'CAIStateGroup_BuyFromSeller'
+        Source = '00/8f/CAIStateGroupBuyFromSeller_GetName_008fdd39.cpp'
+        TestSource = '00/8f/CAIStateGroupBuyFromSeller_GetName_008fdd39_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdd39_OK'
     }
     [pscustomobject]@{
         Address = '008fdd4c'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdd4c.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdd4c_test.cpp'
+        Module = 'CAIStateGroup_SellToBuyer'
+        Source = '00/8f/CAIStateGroupSellToBuyer_GetName_008fdd4c.cpp'
+        TestSource = '00/8f/CAIStateGroupSellToBuyer_GetName_008fdd4c_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdd4c_OK'
     }
     [pscustomobject]@{
         Address = '008fdd5f'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdd5f.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdd5f_test.cpp'
+        Module = 'CAIStateGroup_HandyMan'
+        Source = '00/8f/CAIStateGroupHandyMan_GetName_008fdd5f.cpp'
+        TestSource = '00/8f/CAIStateGroupHandyMan_GetName_008fdd5f_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdd5f_OK'
     }
     [pscustomobject]@{
         Address = '008fdd84'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdd84.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdd84_test.cpp'
+        Module = 'CAIStateGroup_GameMaster'
+        Source = '00/8f/CAIStateGroupGameMaster_GetName_008fdd84.cpp'
+        TestSource = '00/8f/CAIStateGroupGameMaster_GetName_008fdd84_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdd84_OK'
     }
     [pscustomobject]@{
         Address = '008fdd97'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdd97.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdd97_test.cpp'
+        Module = 'CAIStateGroup_RockTroll'
+        Source = '00/8f/CAIStateGroupRockTroll_GetName_008fdd97.cpp'
+        TestSource = '00/8f/CAIStateGroupRockTroll_GetName_008fdd97_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdd97_OK'
     }
     [pscustomobject]@{
@@ -39144,100 +39144,100 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fddbd'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fddbd.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fddbd_test.cpp'
+        Module = 'CAIStateGroup_EarthTroll'
+        Source = '00/8f/CAIStateGroupEarthTroll_GetName_008fddbd.cpp'
+        TestSource = '00/8f/CAIStateGroupEarthTroll_GetName_008fddbd_test.cpp'
         PassPattern = 'GETACTIONNAME_008fddbd_OK'
     }
     [pscustomobject]@{
         Address = '008fddd0'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fddd0.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fddd0_test.cpp'
+        Module = 'CAIStateGroup_SeekPerceivedThing'
+        Source = '00/8f/CAIStateGroupSeekPerceivedThing_GetName_008fddd0.cpp'
+        TestSource = '00/8f/CAIStateGroupSeekPerceivedThing_GetName_008fddd0_test.cpp'
         PassPattern = 'GETACTIONNAME_008fddd0_OK'
     }
     [pscustomobject]@{
         Address = '008fddf5'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fddf5.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fddf5_test.cpp'
+        Module = 'CAIStateGroup_FollowPlayer'
+        Source = '00/8f/CAIStateGroupFollowPlayer_GetName_008fddf5.cpp'
+        TestSource = '00/8f/CAIStateGroupFollowPlayer_GetName_008fddf5_test.cpp'
         PassPattern = 'GETACTIONNAME_008fddf5_OK'
     }
     [pscustomobject]@{
         Address = '008fde08'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fde08.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fde08_test.cpp'
+        Module = 'CAIStateGroup_StandStill'
+        Source = '00/8f/CAIStateGroupStandStill_GetName_008fde08.cpp'
+        TestSource = '00/8f/CAIStateGroupStandStill_GetName_008fde08_test.cpp'
         PassPattern = 'GETACTIONNAME_008fde08_OK'
     }
     [pscustomobject]@{
         Address = '008fde2d'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fde2d.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fde2d_test.cpp'
+        Module = 'CAIStateGroup_BalverineWander'
+        Source = '00/8f/CAIStateGroupBalverineWander_GetName_008fde2d.cpp'
+        TestSource = '00/8f/CAIStateGroupBalverineWander_GetName_008fde2d_test.cpp'
         PassPattern = 'GETACTIONNAME_008fde2d_OK'
     }
     [pscustomobject]@{
         Address = '008fde52'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fde52.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fde52_test.cpp'
+        Module = 'CAIStateGroup_BalverineCornered'
+        Source = '00/8f/CAIStateGroupBalverineCornered_GetName_008fde52.cpp'
+        TestSource = '00/8f/CAIStateGroupBalverineCornered_GetName_008fde52_test.cpp'
         PassPattern = 'GETACTIONNAME_008fde52_OK'
     }
     [pscustomobject]@{
         Address = '008fde65'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fde65.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fde65_test.cpp'
+        Module = 'CAIStateGroup_BalverineJumpAtFleeingEnemy'
+        Source = '00/8f/CAIStateGroupBalverineJumpAtFleeingEnemy_GetName_008fde65.cpp'
+        TestSource = '00/8f/CAIStateGroupBalverineJumpAtFleeingEnemy_GetName_008fde65_test.cpp'
         PassPattern = 'GETACTIONNAME_008fde65_OK'
     }
     [pscustomobject]@{
         Address = '008fde78'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fde78.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fde78_test.cpp'
+        Module = 'CAIStateGroup_NymphFloatAround'
+        Source = '00/8f/CAIStateGroupNymphFloatAround_GetName_008fde78.cpp'
+        TestSource = '00/8f/CAIStateGroupNymphFloatAround_GetName_008fde78_test.cpp'
         PassPattern = 'GETACTIONNAME_008fde78_OK'
     }
     [pscustomobject]@{
         Address = '008fde8b'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fde8b.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fde8b_test.cpp'
+        Module = 'CAIStateGroup_NymphAttack'
+        Source = '00/8f/CAIStateGroupNymphAttack_GetName_008fde8b.cpp'
+        TestSource = '00/8f/CAIStateGroupNymphAttack_GetName_008fde8b_test.cpp'
         PassPattern = 'GETACTIONNAME_008fde8b_OK'
     }
     [pscustomobject]@{
         Address = '008fdeb0'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdeb0.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdeb0_test.cpp'
+        Module = 'CAIStateGroup_JackDragon'
+        Source = '00/8f/CAIStateGroupJackDragon_GetName_008fdeb0.cpp'
+        TestSource = '00/8f/CAIStateGroupJackDragon_GetName_008fdeb0_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdeb0_OK'
     }
     [pscustomobject]@{
         Address = '008fdec3'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdec3.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdec3_test.cpp'
+        Module = 'CAIStateGroup_JackOfBladesStage1'
+        Source = '00/8f/CAIStateGroupJackOfBladesStage1_GetName_008fdec3.cpp'
+        TestSource = '00/8f/CAIStateGroupJackOfBladesStage1_GetName_008fdec3_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdec3_OK'
     }
     [pscustomobject]@{
         Address = '008fded6'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fded6.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fded6_test.cpp'
+        Module = 'CAIStateGroup_JackOfBladesStage2'
+        Source = '00/8f/CAIStateGroupJackOfBladesStage2_GetName_008fded6.cpp'
+        TestSource = '00/8f/CAIStateGroupJackOfBladesStage2_GetName_008fded6_test.cpp'
         PassPattern = 'GETACTIONNAME_008fded6_OK'
     }
     [pscustomobject]@{
         Address = '008fdee9'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdee9.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdee9_test.cpp'
+        Module = 'CAIStateGroup_JackOfBladesStage3'
+        Source = '00/8f/CAIStateGroupJackOfBladesStage3_GetName_008fdee9.cpp'
+        TestSource = '00/8f/CAIStateGroupJackOfBladesStage3_GetName_008fdee9_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdee9_OK'
     }
     [pscustomobject]@{
         Address = '008fdefc'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdefc.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdefc_test.cpp'
+        Module = 'CAIStateGroup_MazeTeleport'
+        Source = '00/8f/CAIStateGroupMazeTeleport_GetName_008fdefc.cpp'
+        TestSource = '00/8f/CAIStateGroupMazeTeleport_GetName_008fdefc_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdefc_OK'
     }
     [pscustomobject]@{
@@ -39249,86 +39249,86 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fdf22'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdf22.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdf22_test.cpp'
+        Module = 'CAIStateGroup_MazeRangedCombat'
+        Source = '00/8f/CAIStateGroupMazeRangedCombat_GetName_008fdf22.cpp'
+        TestSource = '00/8f/CAIStateGroupMazeRangedCombat_GetName_008fdf22_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdf22_OK'
     }
     [pscustomobject]@{
         Address = '008fdf35'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdf35.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdf35_test.cpp'
+        Module = 'CAIStateGroup_MazeDefensiveMeleeCombat'
+        Source = '00/8f/CAIStateGroupMazeDefensiveMeleeCombat_GetName_008fdf35.cpp'
+        TestSource = '00/8f/CAIStateGroupMazeDefensiveMeleeCombat_GetName_008fdf35_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdf35_OK'
     }
     [pscustomobject]@{
         Address = '008fdf48'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdf48.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdf48_test.cpp'
+        Module = 'CAIStateGroup_MazeShieldedChase'
+        Source = '00/8f/CAIStateGroupMazeShieldedChase_GetName_008fdf48.cpp'
+        TestSource = '00/8f/CAIStateGroupMazeShieldedChase_GetName_008fdf48_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdf48_OK'
     }
     [pscustomobject]@{
         Address = '008fdf5b'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdf5b.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdf5b_test.cpp'
+        Module = 'CAIStateGroup_MazeTutorialBattle'
+        Source = '00/8f/CAIStateGroupMazeTutorialBattle_GetName_008fdf5b.cpp'
+        TestSource = '00/8f/CAIStateGroupMazeTutorialBattle_GetName_008fdf5b_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdf5b_OK'
     }
     [pscustomobject]@{
         Address = '008fdf6e'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdf6e.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdf6e_test.cpp'
+        Module = 'CAIStateGroup_MazeTutorialBattleTeleport'
+        Source = '00/8f/CAIStateGroupMazeTutorialBattleTeleport_GetName_008fdf6e.cpp'
+        TestSource = '00/8f/CAIStateGroupMazeTutorialBattleTeleport_GetName_008fdf6e_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdf6e_OK'
     }
     [pscustomobject]@{
         Address = '008fdf81'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdf81.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdf81_test.cpp'
+        Module = 'CAIStateGroup_MazeTutorialBattleRespondToLightning'
+        Source = '00/8f/CAIStateGroupMazeTutorialBattleRespondToLightning_GetName_008fdf81.cpp'
+        TestSource = '00/8f/CAIStateGroupMazeTutorialBattleRespondToLightning_GetName_008fdf81_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdf81_OK'
     }
     [pscustomobject]@{
         Address = '008fdf94'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdf94.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdf94_test.cpp'
+        Module = 'CAIStateGroup_MazeTutorialBattleUseShield'
+        Source = '00/8f/CAIStateGroupMazeTutorialBattleUseShield_GetName_008fdf94.cpp'
+        TestSource = '00/8f/CAIStateGroupMazeTutorialBattleUseShield_GetName_008fdf94_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdf94_OK'
     }
     [pscustomobject]@{
         Address = '008fdfa7'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdfa7.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdfa7_test.cpp'
+        Module = 'CAIStateGroup_Guildmaster'
+        Source = '00/8f/CAIStateGroupGuildmaster_GetName_008fdfa7.cpp'
+        TestSource = '00/8f/CAIStateGroupGuildmaster_GetName_008fdfa7_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdfa7_OK'
     }
     [pscustomobject]@{
         Address = '008fdfba'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdfba.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdfba_test.cpp'
+        Module = 'CAIStateGroup_BriarRose'
+        Source = '00/8f/CAIStateGroupBriarRose_GetName_008fdfba.cpp'
+        TestSource = '00/8f/CAIStateGroupBriarRose_GetName_008fdfba_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdfba_OK'
     }
     [pscustomobject]@{
         Address = '008fdfcd'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdfcd.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdfcd_test.cpp'
+        Module = 'CAIStateGroup_BriarRoseWillUse'
+        Source = '00/8f/CAIStateGroupBriarRoseWillUse_GetName_008fdfcd.cpp'
+        TestSource = '00/8f/CAIStateGroupBriarRoseWillUse_GetName_008fdfcd_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdfcd_OK'
     }
     [pscustomobject]@{
         Address = '008fdfe0'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdfe0.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdfe0_test.cpp'
+        Module = 'CAIStateGroup_MinionBehaviourGreetCreature'
+        Source = '00/8f/CAIStateGroupMinionBehaviourGreetCreature_GetName_008fdfe0.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionBehaviourGreetCreature_GetName_008fdfe0_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdfe0_OK'
     }
     [pscustomobject]@{
         Address = '008fdff3'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fdff3.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fdff3_test.cpp'
+        Module = 'CAIStateGroup_MinionBehaviourSad'
+        Source = '00/8f/CAIStateGroupMinionBehaviourSad_GetName_008fdff3.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionBehaviourSad_GetName_008fdff3_test.cpp'
         PassPattern = 'GETACTIONNAME_008fdff3_OK'
     }
     [pscustomobject]@{
@@ -39340,30 +39340,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fe036'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe036.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe036_test.cpp'
+        Module = 'CAIStateGroup_MinionReactToBurglary'
+        Source = '00/8f/CAIStateGroupMinionReactToBurglary_GetName_008fe036.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionReactToBurglary_GetName_008fe036_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe036_OK'
     }
     [pscustomobject]@{
         Address = '008fe049'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe049.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe049_test.cpp'
+        Module = 'CAIStateGroup_MinionReactToTrespassing'
+        Source = '00/8f/CAIStateGroupMinionReactToTrespassing_GetName_008fe049.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionReactToTrespassing_GetName_008fe049_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe049_OK'
     }
     [pscustomobject]@{
         Address = '008fe05c'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe05c.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe05c_test.cpp'
+        Module = 'CAIStateGroup_MinionReactToNoise'
+        Source = '00/8f/CAIStateGroupMinionReactToNoise_GetName_008fe05c.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionReactToNoise_GetName_008fe05c_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe05c_OK'
     }
     [pscustomobject]@{
         Address = '008fe081'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe081.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe081_test.cpp'
+        Module = 'CAIStateGroup_MinionReactToCrime'
+        Source = '00/8f/CAIStateGroupMinionReactToCrime_GetName_008fe081.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionReactToCrime_GetName_008fe081_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe081_OK'
     }
     [pscustomobject]@{
@@ -39375,184 +39375,184 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fe0a7'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe0a7.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe0a7_test.cpp'
+        Module = 'CAIStateGroup_MinionReactToCrimeFromSleep'
+        Source = '00/8f/CAIStateGroupMinionReactToCrimeFromSleep_GetName_008fe0a7.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionReactToCrimeFromSleep_GetName_008fe0a7_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe0a7_OK'
     }
     [pscustomobject]@{
         Address = '008fe0ba'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe0ba.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe0ba_test.cpp'
+        Module = 'CAIStateGroup_MinionReactToApology'
+        Source = '00/8f/CAIStateGroupMinionReactToApology_GetName_008fe0ba.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionReactToApology_GetName_008fe0ba_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe0ba_OK'
     }
     [pscustomobject]@{
         Address = '008fe127'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe127.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe127_test.cpp'
+        Module = 'CAIStateGroup_HoverWanderAroundThing'
+        Source = '00/8f/CAIStateGroupHoverWanderAroundThing_GetName_008fe127.cpp'
+        TestSource = '00/8f/CAIStateGroupHoverWanderAroundThing_GetName_008fe127_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe127_OK'
     }
     [pscustomobject]@{
         Address = '008fe13a'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe13a.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe13a_test.cpp'
+        Module = 'CAIStateGroup_HoverWander'
+        Source = '00/8f/CAIStateGroupHoverWander_GetName_008fe13a.cpp'
+        TestSource = '00/8f/CAIStateGroupHoverWander_GetName_008fe13a_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe13a_OK'
     }
     [pscustomobject]@{
         Address = '008fe16b'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe16b.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe16b_test.cpp'
+        Module = 'CAIStateGroup_HoverAttackUnlessTargetIsFleeing'
+        Source = '00/8f/CAIStateGroupHoverAttackUnlessTargetIsFleeing_GetName_008fe16b.cpp'
+        TestSource = '00/8f/CAIStateGroupHoverAttackUnlessTargetIsFleeing_GetName_008fe16b_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe16b_OK'
     }
     [pscustomobject]@{
         Address = '008fe17e'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe17e.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe17e_test.cpp'
+        Module = 'CAIStateGroup_HoverAllAroundTest'
+        Source = '00/8f/CAIStateGroupHoverAllAroundTest_GetName_008fe17e.cpp'
+        TestSource = '00/8f/CAIStateGroupHoverAllAroundTest_GetName_008fe17e_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe17e_OK'
     }
     [pscustomobject]@{
         Address = '008fe1a3'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe1a3.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe1a3_test.cpp'
+        Module = 'CAIStateGroup_HoverKeepInArea'
+        Source = '00/8f/CAIStateGroupHoverKeepInArea_GetName_008fe1a3.cpp'
+        TestSource = '00/8f/CAIStateGroupHoverKeepInArea_GetName_008fe1a3_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe1a3_OK'
     }
     [pscustomobject]@{
         Address = '008fe1b6'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe1b6.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe1b6_test.cpp'
+        Module = 'CAIStateGroup_HoverAttackArea'
+        Source = '00/8f/CAIStateGroupHoverAttackArea_GetName_008fe1b6.cpp'
+        TestSource = '00/8f/CAIStateGroupHoverAttackArea_GetName_008fe1b6_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe1b6_OK'
     }
     [pscustomobject]@{
         Address = '008fe1c9'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe1c9.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe1c9_test.cpp'
+        Module = 'CAIStateGroup_HoverHornetQueenTakeDamage'
+        Source = '00/8f/CAIStateGroupHoverHornetQueenTakeDamage_GetName_008fe1c9.cpp'
+        TestSource = '00/8f/CAIStateGroupHoverHornetQueenTakeDamage_GetName_008fe1c9_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe1c9_OK'
     }
     [pscustomobject]@{
         Address = '008fe1dc'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe1dc.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe1dc_test.cpp'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/8f/CAIStateGroupHoverHornetQueen_GetName_008fe1dc.cpp'
+        TestSource = '00/8f/CAIStateGroupHoverHornetQueen_GetName_008fe1dc_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe1dc_OK'
     }
     [pscustomobject]@{
         Address = '008fe1ef'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe1ef.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe1ef_test.cpp'
+        Module = 'CAIStateGroup_MinionLeaveRegion'
+        Source = '00/8f/CAIStateGroupMinionLeaveRegion_GetName_008fe1ef.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionLeaveRegion_GetName_008fe1ef_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe1ef_OK'
     }
     [pscustomobject]@{
         Address = '008fe214'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe214.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe214_test.cpp'
+        Module = 'CAIStateGroup_MinionMotherConsoleChild'
+        Source = '00/8f/CAIStateGroupMinionMotherConsoleChild_GetName_008fe214.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionMotherConsoleChild_GetName_008fe214_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe214_OK'
     }
     [pscustomobject]@{
         Address = '008fe239'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe239.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe239_test.cpp'
+        Module = 'CAIStateGroup_CreatureAdvanceInCover'
+        Source = '00/8f/CAIStateGroupCreatureAdvanceInCover_GetName_008fe239.cpp'
+        TestSource = '00/8f/CAIStateGroupCreatureAdvanceInCover_GetName_008fe239_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe239_OK'
     }
     [pscustomobject]@{
         Address = '008fe24c'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe24c.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe24c_test.cpp'
+        Module = 'CAIStateGroup_CreatureRangedCombat2'
+        Source = '00/8f/CAIStateGroupCreatureRangedCombat2_GetName_008fe24c.cpp'
+        TestSource = '00/8f/CAIStateGroupCreatureRangedCombat2_GetName_008fe24c_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe24c_OK'
     }
     [pscustomobject]@{
         Address = '008fe25f'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe25f.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe25f_test.cpp'
+        Module = 'CAIStateGroup_CreatureRangedCombatUseWillShield'
+        Source = '00/8f/CAIStateGroupCreatureRangedCombatUseWillShield_GetName_008fe25f.cpp'
+        TestSource = '00/8f/CAIStateGroupCreatureRangedCombatUseWillShield_GetName_008fe25f_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe25f_OK'
     }
     [pscustomobject]@{
         Address = '008fe288'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe288.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe288_test.cpp'
+        Module = 'CAIStateGroup_TestTestTest'
+        Source = '00/8f/CAIStateGroupTestTestTest_GetName_008fe288.cpp'
+        TestSource = '00/8f/CAIStateGroupTestTestTest_GetName_008fe288_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe288_OK'
     }
     [pscustomobject]@{
         Address = '008fe2ad'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe2ad.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe2ad_test.cpp'
+        Module = 'CAIStateGroup_CreatureTakeCover'
+        Source = '00/8f/CAIStateGroupCreatureTakeCover_GetName_008fe2ad.cpp'
+        TestSource = '00/8f/CAIStateGroupCreatureTakeCover_GetName_008fe2ad_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe2ad_OK'
     }
     [pscustomobject]@{
         Address = '008fe2c0'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe2c0.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe2c0_test.cpp'
+        Module = 'CAIStateGroup_RangedCombatUsePreferredFirePoint'
+        Source = '00/8f/CAIStateGroupRangedCombatUsePreferredFirePoint_GetName_008fe2c0.cpp'
+        TestSource = '00/8f/CAIStateGroupRangedCombatUsePreferredFirePoint_GetName_008fe2c0_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe2c0_OK'
     }
     [pscustomobject]@{
         Address = '008fe2d3'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe2d3.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe2d3_test.cpp'
+        Module = 'CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets'
+        Source = '00/8f/CAIStateGroupCreatureRangedCombatFireAtSpecificTargets_GetName_008fe2d3.cpp'
+        TestSource = '00/8f/CAIStateGroupCreatureRangedCombatFireAtSpecificTargets_GetName_008fe2d3_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe2d3_OK'
     }
     [pscustomobject]@{
         Address = '008fe2e6'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe2e6.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe2e6_test.cpp'
+        Module = 'CAIStateGroup_ReactToDeadLeader'
+        Source = '00/8f/CAIStateGroupReactToDeadLeader_GetName_008fe2e6.cpp'
+        TestSource = '00/8f/CAIStateGroupReactToDeadLeader_GetName_008fe2e6_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe2e6_OK'
     }
     [pscustomobject]@{
         Address = '008fe2f9'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe2f9.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe2f9_test.cpp'
+        Module = 'CAIStateGroup_CreatureGoUnderground'
+        Source = '00/8f/CAIStateGroupCreatureGoUnderground_GetName_008fe2f9.cpp'
+        TestSource = '00/8f/CAIStateGroupCreatureGoUnderground_GetName_008fe2f9_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe2f9_OK'
     }
     [pscustomobject]@{
         Address = '008fe31e'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe31e.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe31e_test.cpp'
+        Module = 'CAIStateGroup_CreatureIdleUnderground'
+        Source = '00/8f/CAIStateGroupCreatureIdleUnderground_GetName_008fe31e.cpp'
+        TestSource = '00/8f/CAIStateGroupCreatureIdleUnderground_GetName_008fe31e_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe31e_OK'
     }
     [pscustomobject]@{
         Address = '008fe348'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe348.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe348_test.cpp'
+        Module = 'CAIStateGroup_CreatureSeekEnemyUnderground'
+        Source = '00/8f/CAIStateGroupCreatureSeekEnemyUnderground_GetName_008fe348.cpp'
+        TestSource = '00/8f/CAIStateGroupCreatureSeekEnemyUnderground_GetName_008fe348_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe348_OK'
     }
     [pscustomobject]@{
         Address = '008fe35b'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe35b.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe35b_test.cpp'
+        Module = 'CAIStateGroup_BoastingCrowdMember'
+        Source = '00/8f/CAIStateGroupBoastingCrowdMember_GetName_008fe35b.cpp'
+        TestSource = '00/8f/CAIStateGroupBoastingCrowdMember_GetName_008fe35b_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe35b_OK'
     }
     [pscustomobject]@{
         Address = '008fe36e'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe36e.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe36e_test.cpp'
+        Module = 'CAIStateGroup_OpinionReactionRoot'
+        Source = '00/8f/CAIStateGroupOpinionReactionRoot_GetName_008fe36e.cpp'
+        TestSource = '00/8f/CAIStateGroupOpinionReactionRoot_GetName_008fe36e_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe36e_OK'
     }
     [pscustomobject]@{
         Address = '008fe381'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe381.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe381_test.cpp'
+        Module = 'CAIStateGroup_DeedReactionRoot'
+        Source = '00/8f/CAIStateGroupDeedReactionRoot_GetName_008fe381.cpp'
+        TestSource = '00/8f/CAIStateGroupDeedReactionRoot_GetName_008fe381_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe381_OK'
     }
     [pscustomobject]@{
@@ -39564,72 +39564,72 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fe3a7'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe3a7.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe3a7_test.cpp'
+        Module = 'CAIStateGroup_DeedReactionRootFromSleep'
+        Source = '00/8f/CAIStateGroupDeedReactionRootFromSleep_GetName_008fe3a7.cpp'
+        TestSource = '00/8f/CAIStateGroupDeedReactionRootFromSleep_GetName_008fe3a7_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe3a7_OK'
     }
     [pscustomobject]@{
         Address = '008fe3ba'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe3ba.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe3ba_test.cpp'
+        Module = 'CAIStateGroup_BeetleToggleHover'
+        Source = '00/8f/CAIStateGroupBeetleToggleHover_GetName_008fe3ba.cpp'
+        TestSource = '00/8f/CAIStateGroupBeetleToggleHover_GetName_008fe3ba_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe3ba_OK'
     }
     [pscustomobject]@{
         Address = '008fe3df'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe3df.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe3df_test.cpp'
+        Module = 'CAIStateGroup_BanditKingCharge'
+        Source = '00/8f/CAIStateGroupBanditKingCharge_GetName_008fe3df.cpp'
+        TestSource = '00/8f/CAIStateGroupBanditKingCharge_GetName_008fe3df_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe3df_OK'
     }
     [pscustomobject]@{
         Address = '008fe3f2'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe3f2.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe3f2_test.cpp'
+        Module = 'CAIStateGroup_BanditKingLunge'
+        Source = '00/8f/CAIStateGroupBanditKingLunge_GetName_008fe3f2.cpp'
+        TestSource = '00/8f/CAIStateGroupBanditKingLunge_GetName_008fe3f2_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe3f2_OK'
     }
     [pscustomobject]@{
         Address = '008fe405'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe405.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe405_test.cpp'
+        Module = 'CAIStateGroup_BanditKingThrowWeapons'
+        Source = '00/8f/CAIStateGroupBanditKingThrowWeapons_GetName_008fe405.cpp'
+        TestSource = '00/8f/CAIStateGroupBanditKingThrowWeapons_GetName_008fe405_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe405_OK'
     }
     [pscustomobject]@{
         Address = '008fe418'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe418.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe418_test.cpp'
+        Module = 'CAIStateGroup_IceTrollIcicleAttack'
+        Source = '00/8f/CAIStateGroupIceTrollIcicleAttack_GetName_008fe418.cpp'
+        TestSource = '00/8f/CAIStateGroupIceTrollIcicleAttack_GetName_008fe418_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe418_OK'
     }
     [pscustomobject]@{
         Address = '008fe42b'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe42b.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe42b_test.cpp'
+        Module = 'CAIStateGroup_IceTrollPoundGroundAttack'
+        Source = '00/8f/CAIStateGroupIceTrollPoundGroundAttack_GetName_008fe42b.cpp'
+        TestSource = '00/8f/CAIStateGroupIceTrollPoundGroundAttack_GetName_008fe42b_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe42b_OK'
     }
     [pscustomobject]@{
         Address = '008fe43e'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe43e.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe43e_test.cpp'
+        Module = 'CAIStateGroup_IceTrollIcicleAssault'
+        Source = '00/8f/CAIStateGroupIceTrollIcicleAssault_GetName_008fe43e.cpp'
+        TestSource = '00/8f/CAIStateGroupIceTrollIcicleAssault_GetName_008fe43e_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe43e_OK'
     }
     [pscustomobject]@{
         Address = '008fe451'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe451.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe451_test.cpp'
+        Module = 'CAIStateGroup_ScorpionKing'
+        Source = '00/8f/CAIStateGroupScorpionKing_GetName_008fe451.cpp'
+        TestSource = '00/8f/CAIStateGroupScorpionKing_GetName_008fe451_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe451_OK'
     }
     [pscustomobject]@{
         Address = '008fe464'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe464.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe464_test.cpp'
+        Module = 'CAIStateGroup_VersusRockTroll'
+        Source = '00/8f/CAIStateGroupVersusRockTroll_GetName_008fe464.cpp'
+        TestSource = '00/8f/CAIStateGroupVersusRockTroll_GetName_008fe464_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe464_OK'
     }
     [pscustomobject]@{
@@ -39641,107 +39641,107 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fe48a'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe48a.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe48a_test.cpp'
+        Module = 'CAIStateGroup_VersusScorpionKing'
+        Source = '00/8f/CAIStateGroupVersusScorpionKing_GetName_008fe48a.cpp'
+        TestSource = '00/8f/CAIStateGroupVersusScorpionKing_GetName_008fe48a_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe48a_OK'
     }
     [pscustomobject]@{
         Address = '008fe49d'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe49d.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe49d_test.cpp'
+        Module = 'CAIStateGroup_MinionFollowThing'
+        Source = '00/8f/CAIStateGroupMinionFollowThing_GetName_008fe49d.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionFollowThing_GetName_008fe49d_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe49d_OK'
     }
     [pscustomobject]@{
         Address = '008fe4b0'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe4b0.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe4b0_test.cpp'
+        Module = 'CAIStateGroup_MinionWalkToMarker'
+        Source = '00/8f/CAIStateGroupMinionWalkToMarker_GetName_008fe4b0.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionWalkToMarker_GetName_008fe4b0_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe4b0_OK'
     }
     [pscustomobject]@{
         Address = '008fe4d5'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe4d5.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe4d5_test.cpp'
+        Module = 'CAIStateGroup_StealStealableItem'
+        Source = '00/8f/CAIStateGroupStealStealableItem_GetName_008fe4d5.cpp'
+        TestSource = '00/8f/CAIStateGroupStealStealableItem_GetName_008fe4d5_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe4d5_OK'
     }
     [pscustomobject]@{
         Address = '008fe4e8'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe4e8.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe4e8_test.cpp'
+        Module = 'CAIStateGroup_RecoverStealableItem'
+        Source = '00/8f/CAIStateGroupRecoverStealableItem_GetName_008fe4e8.cpp'
+        TestSource = '00/8f/CAIStateGroupRecoverStealableItem_GetName_008fe4e8_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe4e8_OK'
     }
     [pscustomobject]@{
         Address = '008fe4fb'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe4fb.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe4fb_test.cpp'
+        Module = 'CAIStateGroup_CarryCrateAndFollow'
+        Source = '00/8f/CAIStateGroupCarryCrateAndFollow_GetName_008fe4fb.cpp'
+        TestSource = '00/8f/CAIStateGroupCarryCrateAndFollow_GetName_008fe4fb_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe4fb_OK'
     }
     [pscustomobject]@{
         Address = '008fe50e'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe50e.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe50e_test.cpp'
+        Module = 'CAIStateGroup_TavernServer'
+        Source = '00/8f/CAIStateGroupTavernServer_GetName_008fe50e.cpp'
+        TestSource = '00/8f/CAIStateGroupTavernServer_GetName_008fe50e_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe50e_OK'
     }
     [pscustomobject]@{
         Address = '008fe521'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe521.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe521_test.cpp'
+        Module = 'CAIStateGroup_TavernKeeper'
+        Source = '00/8f/CAIStateGroupTavernKeeper_GetName_008fe521.cpp'
+        TestSource = '00/8f/CAIStateGroupTavernKeeper_GetName_008fe521_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe521_OK'
     }
     [pscustomobject]@{
         Address = '008fe534'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe534.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe534_test.cpp'
+        Module = 'CAIStateGroup_SleepOnFloor'
+        Source = '00/8f/CAIStateGroupSleepOnFloor_GetName_008fe534.cpp'
+        TestSource = '00/8f/CAIStateGroupSleepOnFloor_GetName_008fe534_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe534_OK'
     }
     [pscustomobject]@{
         Address = '008fe547'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe547.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe547_test.cpp'
+        Module = 'CAIStateGroup_WhisperRetreat'
+        Source = '00/8f/CAIStateGroupWhisperRetreat_GetName_008fe547.cpp'
+        TestSource = '00/8f/CAIStateGroupWhisperRetreat_GetName_008fe547_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe547_OK'
     }
     [pscustomobject]@{
         Address = '008fe55a'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe55a.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe55a_test.cpp'
+        Module = 'CAIStateGroup_WhisperPotionCombat'
+        Source = '00/8f/CAIStateGroupWhisperPotionCombat_GetName_008fe55a.cpp'
+        TestSource = '00/8f/CAIStateGroupWhisperPotionCombat_GetName_008fe55a_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe55a_OK'
     }
     [pscustomobject]@{
         Address = '008fe56d'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe56d.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe56d_test.cpp'
+        Module = 'CAIStateGroup_Thunder'
+        Source = '00/8f/CAIStateGroupThunder_GetName_008fe56d.cpp'
+        TestSource = '00/8f/CAIStateGroupThunder_GetName_008fe56d_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe56d_OK'
     }
     [pscustomobject]@{
         Address = '008fe580'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe580.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe580_test.cpp'
+        Module = 'CAIStateGroup_Freeze'
+        Source = '00/8f/CAIStateGroupFreeze_GetName_008fe580.cpp'
+        TestSource = '00/8f/CAIStateGroupFreeze_GetName_008fe580_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe580_OK'
     }
     [pscustomobject]@{
         Address = '008fe5a5'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe5a5.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe5a5_test.cpp'
+        Module = 'CAIStateGroup_Drunk'
+        Source = '00/8f/CAIStateGroupDrunk_GetName_008fe5a5.cpp'
+        TestSource = '00/8f/CAIStateGroupDrunk_GetName_008fe5a5_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe5a5_OK'
     }
     [pscustomobject]@{
         Address = '008fe5ca'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe5ca.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe5ca_test.cpp'
+        Module = 'CAIStateGroup_EatAtHome'
+        Source = '00/8f/CAIStateGroupEatAtHome_GetName_008fe5ca.cpp'
+        TestSource = '00/8f/CAIStateGroupEatAtHome_GetName_008fe5ca_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe5ca_OK'
     }
     [pscustomobject]@{
@@ -39753,121 +39753,121 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fe5f0'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe5f0.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe5f0_test.cpp'
+        Module = 'CAIStateGroup_EatAtTavern'
+        Source = '00/8f/CAIStateGroupEatAtTavern_GetName_008fe5f0.cpp'
+        TestSource = '00/8f/CAIStateGroupEatAtTavern_GetName_008fe5f0_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe5f0_OK'
     }
     [pscustomobject]@{
         Address = '008fe603'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe603.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe603_test.cpp'
+        Module = 'CAIStateGroup_ServeFoodAtHome'
+        Source = '00/8f/CAIStateGroupServeFoodAtHome_GetName_008fe603.cpp'
+        TestSource = '00/8f/CAIStateGroupServeFoodAtHome_GetName_008fe603_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe603_OK'
     }
     [pscustomobject]@{
         Address = '008fe649'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe649.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe649_test.cpp'
+        Module = 'CAIStateGroup_ServeFoodAtTavern'
+        Source = '00/8f/CAIStateGroupServeFoodAtTavern_GetName_008fe649.cpp'
+        TestSource = '00/8f/CAIStateGroupServeFoodAtTavern_GetName_008fe649_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe649_OK'
     }
     [pscustomobject]@{
         Address = '008fe671'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe671.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe671_test.cpp'
+        Module = 'CAIStateGroup_ScreamerPursueTarget'
+        Source = '00/8f/CAIStateGroupScreamerPursueTarget_GetName_008fe671.cpp'
+        TestSource = '00/8f/CAIStateGroupScreamerPursueTarget_GetName_008fe671_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe671_OK'
     }
     [pscustomobject]@{
         Address = '008fe684'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe684.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe684_test.cpp'
+        Module = 'CAIStateGroup_KrakenAttack'
+        Source = '00/8f/CAIStateGroupKrakenAttack_GetName_008fe684.cpp'
+        TestSource = '00/8f/CAIStateGroupKrakenAttack_GetName_008fe684_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe684_OK'
     }
     [pscustomobject]@{
         Address = '008fe6a9'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe6a9.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe6a9_test.cpp'
+        Module = 'CAIStateGroup_KrakenTentacleIdle'
+        Source = '00/8f/CAIStateGroupKrakenTentacleIdle_GetName_008fe6a9.cpp'
+        TestSource = '00/8f/CAIStateGroupKrakenTentacleIdle_GetName_008fe6a9_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe6a9_OK'
     }
     [pscustomobject]@{
         Address = '008fe6ce'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe6ce.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe6ce_test.cpp'
+        Module = 'CAIStateGroup_KrakenTentacleRise'
+        Source = '00/8f/CAIStateGroupKrakenTentacleRise_GetName_008fe6ce.cpp'
+        TestSource = '00/8f/CAIStateGroupKrakenTentacleRise_GetName_008fe6ce_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe6ce_OK'
     }
     [pscustomobject]@{
         Address = '008fe6f3'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe6f3.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe6f3_test.cpp'
+        Module = 'CAIStateGroup_KrakenTentacleAttack'
+        Source = '00/8f/CAIStateGroupKrakenTentacleAttack_GetName_008fe6f3.cpp'
+        TestSource = '00/8f/CAIStateGroupKrakenTentacleAttack_GetName_008fe6f3_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe6f3_OK'
     }
     [pscustomobject]@{
         Address = '008fe718'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe718.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe718_test.cpp'
+        Module = 'CAIStateGroup_WifeGiveYouGift'
+        Source = '00/8f/CAIStateGroupWifeGiveYouGift_GetName_008fe718.cpp'
+        TestSource = '00/8f/CAIStateGroupWifeGiveYouGift_GetName_008fe718_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe718_OK'
     }
     [pscustomobject]@{
         Address = '008fe73d'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe73d.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe73d_test.cpp'
+        Module = 'CAIStateGroup_OpenAndCloseShop'
+        Source = '00/8f/CAIStateGroupOpenAndCloseShop_GetName_008fe73d.cpp'
+        TestSource = '00/8f/CAIStateGroupOpenAndCloseShop_GetName_008fe73d_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe73d_OK'
     }
     [pscustomobject]@{
         Address = '008fe778'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe778.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe778_test.cpp'
+        Module = 'CAIStateGroup_ShopkeeperWatchPlayer'
+        Source = '00/8f/CAIStateGroupShopkeeperWatchPlayer_GetName_008fe778.cpp'
+        TestSource = '00/8f/CAIStateGroupShopkeeperWatchPlayer_GetName_008fe778_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe778_OK'
     }
     [pscustomobject]@{
         Address = '008fe78b'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe78b.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe78b_test.cpp'
+        Module = 'CAIStateGroup_SetupWares'
+        Source = '00/8f/CAIStateGroupSetupWares_GetName_008fe78b.cpp'
+        TestSource = '00/8f/CAIStateGroupSetupWares_GetName_008fe78b_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe78b_OK'
     }
     [pscustomobject]@{
         Address = '008fe7b0'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe7b0.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe7b0_test.cpp'
+        Module = 'CAIStateGroup_BanditPlayDice'
+        Source = '00/8f/CAIStateGroupBanditPlayDice_GetName_008fe7b0.cpp'
+        TestSource = '00/8f/CAIStateGroupBanditPlayDice_GetName_008fe7b0_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe7b0_OK'
     }
     [pscustomobject]@{
         Address = '008fe7dd'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe7dd.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe7dd_test.cpp'
+        Module = 'CAIStateGroup_BanditPlot'
+        Source = '00/8f/CAIStateGroupBanditPlot_GetName_008fe7dd.cpp'
+        TestSource = '00/8f/CAIStateGroupBanditPlot_GetName_008fe7dd_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe7dd_OK'
     }
     [pscustomobject]@{
         Address = '008fe805'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe805.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe805_test.cpp'
+        Module = 'CAIStateGroup_MinionGuardGreetPlayer'
+        Source = '00/8f/CAIStateGroupMinionGuardGreetPlayer_GetName_008fe805.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionGuardGreetPlayer_GetName_008fe805_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe805_OK'
     }
     [pscustomobject]@{
         Address = '008fe82a'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe82a.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe82a_test.cpp'
+        Module = 'CAIStateGroup_MinionGuardBribed'
+        Source = '00/8f/CAIStateGroupMinionGuardBribed_GetName_008fe82a.cpp'
+        TestSource = '00/8f/CAIStateGroupMinionGuardBribed_GetName_008fe82a_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe82a_OK'
     }
     [pscustomobject]@{
         Address = '008fe84f'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe84f.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe84f_test.cpp'
+        Module = 'CAIStateGroup_ApprenticeHero'
+        Source = '00/8f/CAIStateGroupApprenticeHero_GetName_008fe84f.cpp'
+        TestSource = '00/8f/CAIStateGroupApprenticeHero_GetName_008fe84f_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe84f_OK'
     }
     [pscustomobject]@{
@@ -39879,44 +39879,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008fe893'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe893.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe893_test.cpp'
+        Module = 'CAIStateGroup_SkillPractice'
+        Source = '00/8f/CAIStateGroupSkillPractice_GetName_008fe893.cpp'
+        TestSource = '00/8f/CAIStateGroupSkillPractice_GetName_008fe893_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe893_OK'
     }
     [pscustomobject]@{
         Address = '008fe8b8'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe8b8.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe8b8_test.cpp'
+        Module = 'CAIStateGroup_OnHeroPush'
+        Source = '00/8f/CAIStateGroupOnHeroPush_GetName_008fe8b8.cpp'
+        TestSource = '00/8f/CAIStateGroupOnHeroPush_GetName_008fe8b8_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe8b8_OK'
     }
     [pscustomobject]@{
         Address = '008fe8dd'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe8dd.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe8dd_test.cpp'
+        Module = 'CAIStateGroup_AvoidRegionExit'
+        Source = '00/8f/CAIStateGroupAvoidRegionExit_GetName_008fe8dd.cpp'
+        TestSource = '00/8f/CAIStateGroupAvoidRegionExit_GetName_008fe8dd_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe8dd_OK'
     }
     [pscustomobject]@{
         Address = '008fe902'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe902.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe902_test.cpp'
+        Module = 'CAIStateGroup_SummonerLightningAttack'
+        Source = '00/8f/CAIStateGroupSummonerLightningAttack_GetName_008fe902.cpp'
+        TestSource = '00/8f/CAIStateGroupSummonerLightningAttack_GetName_008fe902_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe902_OK'
     }
     [pscustomobject]@{
         Address = '008fe915'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe915.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe915_test.cpp'
+        Module = 'CAIStateGroup_SummonerCharge'
+        Source = '00/8f/CAIStateGroupSummonerCharge_GetName_008fe915.cpp'
+        TestSource = '00/8f/CAIStateGroupSummonerCharge_GetName_008fe915_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe915_OK'
     }
     [pscustomobject]@{
         Address = '008fe928'
-        Module = '_global'
-        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe928.cpp'
-        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe928_test.cpp'
+        Module = 'CAIStateGroup_SummonerSummon'
+        Source = '00/8f/CAIStateGroupSummonerSummon_GetName_008fe928.cpp'
+        TestSource = '00/8f/CAIStateGroupSummonerSummon_GetName_008fe928_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe928_OK'
     }
     [pscustomobject]@{
@@ -42356,8 +42356,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007e2760'
         Module = 'CTCFineDialogue'
-        Source = '00/7e/CInputProcessManager_CInputProcessManager_007e2760.cpp'
-        TestSource = '00/7e/CInputProcessManager_CInputProcessManager_007e2760_test.cpp'
+        Source = '00/7e/CTCFineDialogue_CTCFineDialogue_007e2760.cpp'
+        TestSource = '00/7e/CTCFineDialogue_CTCFineDialogue_007e2760_test.cpp'
         PassPattern = 'OK_007e2760'
     }
     [pscustomobject]@{
@@ -44674,8 +44674,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006922a0'
         Module = 'NCreatureAction::CActionEventAddObject'
-        Source = '00/69/CActionDoCreatureAction_GetActionName_006922a0.cpp'
-        TestSource = '00/69/CActionDoCreatureAction_GetActionName_006922a0_test.cpp'
+        Source = '00/69/NCreatureActionCActionEventAddObject_GetHook_006922a0.cpp'
+        TestSource = '00/69/NCreatureActionCActionEventAddObject_GetHook_006922a0_test.cpp'
         PassPattern = '006922a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -48471,8 +48471,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0056e2d0'
         Module = 'NCameraModes::CCameraPointModeBase'
-        Source = '00/56/CInputProcessManager_CInputProcessManager_0056e2d0.cpp'
-        TestSource = '00/56/CInputProcessManager_CInputProcessManager_0056e2d0_test.cpp'
+        Source = '00/56/NCameraModesCCameraPointModeBase_CCameraPointModeBase_0056e2d0.cpp'
+        TestSource = '00/56/NCameraModesCCameraPointModeBase_CCameraPointModeBase_0056e2d0_test.cpp'
         PassPattern = 'DTOR_CHAIN_OK'
     }
     [pscustomobject]@{
@@ -68229,8 +68229,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0099a3b0'
         Module = 'CBaseObject'
-        Source = '00/99/CFourierAnalysis_CFourierAnalysis_0099a3b0.cpp'
-        TestSource = '00/99/CFourierAnalysis_CFourierAnalysis_0099a3b0_test.cpp'
+        Source = '00/99/CBaseObject_operator_0099a3b0.cpp'
+        TestSource = '00/99/CBaseObject_operator_0099a3b0_test.cpp'
         PassPattern = 'OK_0099a3b0'
     }
     [pscustomobject]@{
@@ -75774,16 +75774,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00686ae0'
-        Module = '_global'
-        Source = '00/68/global_GFGetPreMainMemoryUsed_00686ae0.cpp'
-        TestSource = '00/68/global_GFGetPreMainMemoryUsed_00686ae0_test.cpp'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_GetThingManager_00686ae0.cpp'
+        TestSource = '00/68/CTCBase_GetThingManager_00686ae0_test.cpp'
         PassPattern = 'PASS_00686ae0'
     }
     [pscustomobject]@{
         Address = '00686af0'
-        Module = '_global'
-        Source = '00/68/global_GFGetPreMainMemoryUsed_00686af0.cpp'
-        TestSource = '00/68/global_GFGetPreMainMemoryUsed_00686af0_test.cpp'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_GetThingManager_00686af0.cpp'
+        TestSource = '00/68/CTCBase_GetThingManager_00686af0_test.cpp'
         PassPattern = 'PASS_00686af0'
     }
     [pscustomobject]@{
@@ -88969,9 +88969,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00455008'
-        Module = '_global'
-        Source = '00/45/CEngineLightingManager_UpdateShadowScene_00455008.cpp'
-        TestSource = '00/45/CEngineLightingManager_UpdateShadowScene_00455008_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferEPSwitchTriggerType_00455008.cpp'
+        TestSource = '00/45/CPersistContext_TransferEPSwitchTriggerType_00455008_test.cpp'
         PassPattern = 'PASS_00455008'
     }
     [pscustomobject]@{
@@ -93066,8 +93066,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0043314a'
         Module = 'CPersistContext'
-        Source = '00/43/CPersistContext_TransferBool_0043314a.cpp'
-        TestSource = '00/43/CPersistContext_TransferBool_0043314a_test.cpp'
+        Source = '00/43/CPersistContext_Transferbool_0043314a.cpp'
+        TestSource = '00/43/CPersistContext_Transferbool_0043314a_test.cpp'
         PassPattern = 'PASS_0043314a'
     }
     [pscustomobject]@{
@@ -184423,9 +184423,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c33120'
-        Module = 'CScriptDefinitionManager'
-        Source = '00/c3/CScriptDefinitionManager_CScriptDefinitionManager_00c33120.cpp'
-        TestSource = '00/c3/CScriptDefinitionManager_CScriptDefinitionManager_00c33120_test.cpp'
+        Module = 'CVtable_012b4f74'
+        Source = '00/c3/CVtable012b4f74_CVtable012b4f74_00c33120.cpp'
+        TestSource = '00/c3/CVtable012b4f74_CVtable012b4f74_00c33120_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c33120_TEST PASS'
     }
@@ -198301,9 +198301,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c7d00'
-        Module = 'CDataBank'
-        Source = '00/9c/CDataBank_GetTextInfo_009c7d00.cpp'
-        TestSource = '00/9c/CDataBank_GetTextInfo_009c7d00_test.cpp'
+        Module = 'NGameTextCDataBank'
+        Source = '00/9c/NGameTextCDataBank_GetTextInfo_009c7d00.cpp'
+        TestSource = '00/9c/NGameTextCDataBank_GetTextInfo_009c7d00_test.cpp'
         PassPattern = '009c7d00_TEST PASS'
     }
     [pscustomobject]@{
@@ -199397,8 +199397,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004595a3'
         Module = 'CPersistContext'
-        Source = '00/45/CPersistContext_TransferColour004595a3_004595a3.cpp'
-        TestSource = '00/45/CPersistContext_TransferColour004595a3_004595a3_test.cpp'
+        Source = '00/45/CPersistContext_TransferCRGBColour_004595a3.cpp'
+        TestSource = '00/45/CPersistContext_TransferCRGBColour_004595a3_test.cpp'
         PassPattern = '004595a3_TEST PASS'
     }
     [pscustomobject]@{
@@ -200594,8 +200594,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00458f2b'
         Module = 'CPersistContext'
-        Source = '00/45/CPersistContext_TransferFloatRange00458f2b_00458f2b.cpp'
-        TestSource = '00/45/CPersistContext_TransferFloatRange00458f2b_00458f2b_test.cpp'
+        Source = '00/45/CPersistContext_TransferCFloatRange_00458f2b.cpp'
+        TestSource = '00/45/CPersistContext_TransferCFloatRange_00458f2b_test.cpp'
         PassPattern = '00458f2b_TEST PASS'
     }
     [pscustomobject]@{
@@ -209175,8 +209175,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c3c720'
         Module = 'CVtable_012b4f84'
-        Source = '00/c3/CVtable012b4f84_Shutdown_00c3c720.cpp'
-        TestSource = '00/c3/CVtable012b4f84_Shutdown_00c3c720_test.cpp'
+        Source = '00/c3/CVtable012b4f84_Close_00c3c720.cpp'
+        TestSource = '00/c3/CVtable012b4f84_Close_00c3c720_test.cpp'
         PassPattern = '00c3c720_TEST PASS'
     }
     [pscustomobject]@{
@@ -213635,9 +213635,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c3c450'
-        Module = 'CVtable_012B4F74'
-        Source = '00/c3/CVtable012B4F74_Close_00c3c450.cpp'
-        TestSource = '00/c3/CVtable012B4F74_Close_00c3c450_test.cpp'
+        Module = 'CVtable_012b4f74'
+        Source = '00/c3/CVtable012b4f74_Close_00c3c450.cpp'
+        TestSource = '00/c3/CVtable012b4f74_Close_00c3c450_test.cpp'
         PassPattern = '00c3c450_TEST PASS'
     }
     [pscustomobject]@{
@@ -301002,9 +301002,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a54fa0'
-        Module = 'std::vector<C2DLineF>'
-        Source = '00/a5/STLvectorC2DLineF_Minsertoverflow_00a54fa0.cpp'
-        TestSource = '00/a5/STLvectorC2DLineF_Minsertoverflow_00a54fa0_test.cpp'
+        Module = 'std::vector<CQuaternion>'
+        Source = '00/a5/stdvectorCQuaternion_Minsertoverflow_00a54fa0.cpp'
+        TestSource = '00/a5/stdvectorCQuaternion_Minsertoverflow_00a54fa0_test.cpp'
         PassPattern = '00a54fa0_TEST PASS'
     }
     [pscustomobject]@{
@@ -306311,9 +306311,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c3c7a0'
-        Module = 'CSoundBuffer_00c3c7a0'
-        Source = '00/c3/CSoundBuffer00c3c7a0_SetupEventNotification_00c3c7a0.cpp'
-        TestSource = '00/c3/CSoundBuffer00c3c7a0_SetupEventNotification_00c3c7a0_test.cpp'
+        Module = 'CVtable_012b4f84'
+        Source = '00/c3/CVtable012b4f84_SetupEventNotification_00c3c7a0.cpp'
+        TestSource = '00/c3/CVtable012b4f84_SetupEventNotification_00c3c7a0_test.cpp'
         PassPattern = '00c3c7a0_TEST PASS'
     }
     [pscustomobject]@{

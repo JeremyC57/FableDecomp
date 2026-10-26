@@ -6,7 +6,7 @@
 //   CTCEntityEvents::AddEvent(CEventBase*) @ 0x008113C0, CThing::GetDefinitionManager @ 0x004C7990,
 //   CDefinitionManager::GetDef<CThingPhysicalSwitchDef>(long, CDefPointer&) @ 0x0083E0D0,
 //   CThingPhysicalSwitch::PeekDefinition() const @ 0x0083D900 (landed under the propagated label
-//   "CThingDeadCreature::PeekDefinition"), CTCSoundPlayer::PlaySound(const CSoundPair&, const CSoundInit&, ...) @ 0x0066B280,
+//   "CThingDeadCreature::PeekDefinition"), CTCSoundPlayer::PlayAttachedSample(const CSoundPair&, const CSoundInit&, ...) @ 0x0066B280,
 //   the def's virtual slot 1 on the last release.
 // Layout (retail, local model): CThing interface bitset +0x20, interface map +0x44, def global index (unsigned short)
 //   +0x8c; CThingPhysicalSwitch::Triggered +0xd0 (Ego_r.pdb +0xe8, retail CThingPhysical is 0x18 lower);
@@ -54,7 +54,8 @@ class CSoundInit { public:
 };
 
 class CTCSoundPlayer { public:
-    unsigned long PlaySound(const CSoundPair& sound, const CSoundInit& init, bool attach, bool a, bool b);   // 0x0066B280
+public:
+    unsigned long PlayAttachedSample(const CSoundPair&, const CSoundInit&, bool, bool, bool);   // 0x0066B280
 };
 
 class CDefPointeeBase { public:
@@ -154,6 +155,6 @@ void CThingPhysicalSwitch::TriggerMe(CThing* triggerer)
     if (PeekDefinitionInline().TriggerSound && HasTC(0x10)) {
         CTCSoundPlayer* player = (CTCSoundPlayer*)GetTC(0x10);
         CSoundPair sound(PeekDefinition().TriggerSound);
-        player->PlaySound(sound, CSoundInit(), true, false, false);
+        player->PlayAttachedSample(sound, CSoundInit(), true, false, false);
     }
 }

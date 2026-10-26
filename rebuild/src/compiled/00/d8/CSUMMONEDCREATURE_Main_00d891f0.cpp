@@ -10,10 +10,11 @@
 // Shape: the landed CSummonerToKill::Main 0x00D88540 model: the predicate is a scoped temporary object, one frame and a
 // done check, the GiveThingBestEnemyTarget call with GetHero evaluated first (the interface vtable read twice), then
 // the top-tested wait loop on the master-data flag (16-aligned head) and the final removal.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CGameScriptInterface { public:                     // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv names)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -78,8 +79,14 @@ class CGameScriptInterface { public:                     // vtable 0x01260F0C (g
     virtual void v445(); virtual void v446(); virtual void v447(); virtual void v448(); virtual void v449(); virtual void v450();
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;   // slot 451 (+0x70c)
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0: a predicate holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a predicate holding a script thing
     CScriptThing Thing;                            // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
     ~CIsThingAlive() { }
@@ -90,15 +97,20 @@ struct CQ_SunnyvaleMasterData {
 };
 struct CQ_HeroSoulsNostroScript;
 
-class CSUMMONED_CREATURE {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CSUMMONED_CREATURE : public CEntityScriptBase {
 public:
     void*                     __vftable;           // +0x00
     CGameScriptInterface*     Game;                // +0x04
     CScriptThing              Me;                  // +0x08
     CQ_HeroSoulsNostroScript* ParentClass;         // +0x14
     CQ_SunnyvaleMasterData*   PMasterData;         // +0x18
-    void SetPredicate(const CIsThingAlive& predicate);   // 0x00F35B10 CEntityScriptBase::SetPredicate
-    bool IsActiveThreadTerminating() const;        // 0x00F35B30 CEntityScriptBase
     void Main();
 };
 

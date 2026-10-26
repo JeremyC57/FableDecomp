@@ -1,7 +1,7 @@
 // CCreatureAction_CastWillGhostSwordSpell::CCreatureAction_CastWillGhostSwordSpell(CThingCreatureBase*) -- will-spell combat action (action code 150, silent sound pair), spell level 0, animation "ST_CAST_SUMMON_GHOST_SWORD"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BBF20, length 106 bytes, `ret 4`. Vtable 0x0127CE7C.
 // Callees: CCombatActionBase::CCombatActionBase(owner, actionCode, const CSoundPair&) @ 0x00858030,
-//          CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName @ 0x008574D0
+//          CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0
 //          (manifest label "CTCInGameMenu::SetPDef" is propagated), CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the CSoundPair temporary zeroed by its inline constructor (immediate stores: no second zero use shares a
 //   register before the call), SpellLevel initialised to 0 after the vtable store, then the scoped named animation
@@ -26,7 +26,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);                                           // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_CastWillGhostSwordSpell : public CCombatActionBase { public:   // vtable 0x0127CE7C
@@ -41,6 +42,6 @@ CCreatureAction_CastWillGhostSwordSpell::CCreatureAction_CastWillGhostSwordSpell
 {
     {
         CCharString name("ST_CAST_SUMMON_GHOST_SWORD", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
 }

@@ -89,19 +89,25 @@ template <class T> struct CRetailList {                    // STLport list: the 
     void push_front(const T& value) { insert(begin(), value); }
 };
 
-class CTCEntityEvents { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCEntityEvents : public CTCBase { public:
     class CThing* ParentThing;                             // +0x04 (CTCBase)
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
     CRetailList<CCountedPointer<NEntityEvents::CEventBase> > Events;   // +0x0c
-    CWorld* GetWorld();                                     // 0x00686A70 (CTCBase)
     void AddEvent(NEntityEvents::CEventBase* event);
 };
 
 void CTCEntityEvents::AddEvent(NEntityEvents::CEventBase* event)
 {
-    event->Frame = GetWorld()->GetWorldFrame();
+    event->Frame = GetWorld().GetWorldFrame();
     Events.push_front(CCountedPointer<NEntityEvents::CEventBase>(event));
     event->OnAddedTo(*this);
 }

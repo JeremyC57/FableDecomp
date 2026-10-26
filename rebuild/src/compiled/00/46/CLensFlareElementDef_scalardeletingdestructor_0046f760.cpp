@@ -1,6 +1,10 @@
 #pragma optimize("s",on)
 #include "rebuild_abi.h"
 
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 /* 0x0046f760  CLandscapeBackgroundPatch::`vector deleting destructor'
  * Standard MSVC vector-deleting-destructor thunk:
  *   push esi; mov esi,ecx
@@ -14,14 +18,12 @@
 class CLandscapeBackgroundPatch;
 
 /* engine callees (addresses relocation-masked) */
-extern "C" void __fastcall CLensFlareElementDef_dtor(CLandscapeBackgroundPatch* thisptr);
-extern "C" void __cdecl operator_delete_thunk(void* p);
 
 void* __fastcall CLensFlareElementDef_vector_deleting_dtor(
         CLandscapeBackgroundPatch* thisptr, int /*edx*/, unsigned int flags)
 {
-    CLensFlareElementDef_dtor(thisptr);
+    ((CParentDefClassBase*)(thisptr))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        operator_delete_thunk(thisptr);
+        operator delete(thisptr);
     return thisptr;
 }

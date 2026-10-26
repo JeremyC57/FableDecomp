@@ -25,22 +25,24 @@ struct CRetailMapArray_00b424d0 {                 // CArray<CEngineMap*>: begin,
     unsigned long Size() const { return (unsigned long)(m_pEnd - m_pBegin); }
 };
 
-struct CBankFileAsync_00b424d0 {                  // the CStaticMapBankFile member: 0x171 bytes in retail (+0x34..+0x1a5)
+class CBankFileAsync { public:                  // the CStaticMapBankFile member: 0x171 bytes in retail (+0x34..+0x1a5)
     unsigned char _body[0x171];
-    void ProcessDisposalList();                    // 0x009D6730
+public:
+    void ProcessDisposalList();   // 0x009D6730
 };
 
 class CEngineWorldMap { public:
     unsigned char             _pad0[0x1c];        // +0x04 (after the vptr)
     CRetailMapArray_00b424d0  MapList;             // +0x20
     unsigned char             _pad1[0x34 - 0x2c];
-    CBankFileAsync_00b424d0   StaticMapFile;       // +0x34 (CStaticMapBankFile, a CBankFileAsync)
+    CBankFileAsync   StaticMapFile;       // +0x34 (CStaticMapBankFile, a CBankFileAsync)
     bool                      FirstWorldUpdate;    // +0x1a5
     unsigned char             _pad3[0x1b4 - 0x1a6];
     CRetailBoxVector_00b424d0 ChangedAreas;        // +0x1b4
-    void AutoBuildWorldMapGrid();                  // 0x00B40070
     virtual void FrameStart(const CEngineComponentParams& params);
     CEngineWorldMap();
+private:
+    void AutoBuildWorldMapGrid();   // 0x00B40070
 };
 
 void CEngineWorldMap::FrameStart(const CEngineComponentParams& params)

@@ -4,7 +4,7 @@ struct B { int x; };
 struct C { int x; };
 
 class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
-    void TransferFloat(void* value);                // 0x00431061 Transfer(float&)
+    template <class T> void Transfer(T& value);                // 0x00431061 Transfer(float&)
 };
 
 class CCarrySlotDef { public:
@@ -17,8 +17,8 @@ class CCarrySlotDef { public:
 
 void __fastcall CCarrySlotDef_Transfer(CCarrySlotDef* def, void* edx, CPersistContext* ctx)
 {
-    ctx->TransferFloat(&def->a);
-    ctx->TransferFloat(&def->b);
-    ctx->TransferFloat(&def->c);
-    ctx->TransferFloat(&def->a2);
+    ctx->Transfer(*(float*)(&def->a));
+    ctx->Transfer(*(float*)(&def->b));
+    ctx->Transfer(*(float*)(&def->c));
+    ctx->Transfer(*(float*)(&def->a2));
 }

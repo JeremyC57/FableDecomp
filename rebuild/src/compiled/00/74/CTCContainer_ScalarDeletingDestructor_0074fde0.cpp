@@ -47,7 +47,7 @@ class CTCBase { public:                                            // 0xc bytes;
     virtual void v00();
     CThing*       ParentThing;                              // +0x04
     unsigned char _pad08[4];                                // +0x08
-    ~CTCBase();                                             // 0x00686830
+    virtual ~CTCBase();                                             // 0x00686830
 };
 
 // The retail destructor stores no vtable of its own: modelled (as GOTCHAS 24m describes for a base chain

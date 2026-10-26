@@ -5,13 +5,17 @@ class CInputProcessBButtonExitMode { public: int tag; };
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 static void* g_last_deleted = 0;
-
-void __fastcall CInputProcessBButtonExitMode_dtor(CInputProcessBButtonExitMode* process)
+class CAInputProcess {
+public:
+    virtual ~CAInputProcess();
+};
+CAInputProcess::~CAInputProcess()
 {
+    CInputProcessBButtonExitMode* process = (CInputProcessBButtonExitMode*)this; (void)process;
     g_dtor_calls++;
     process->tag = -1;
 }
-void operator_delete_stub(void* p)
+void __cdecl operator delete(void* p)
 {
     g_delete_calls++;
     g_last_deleted = p;

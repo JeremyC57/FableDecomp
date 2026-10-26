@@ -11,8 +11,7 @@
 #pragma optimize("s", on)
 class CPersistContext {
 public:
-    void Transfer(long& value);                                  // 0x00431102
-    void Transfer(float& value);                                 // 0x00431061
+    template <class T> void Transfer(T& value);                                  // 0x00431102
 };
 class CJackDragonDef {
 public:

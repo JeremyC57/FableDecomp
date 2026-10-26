@@ -42,7 +42,8 @@ class CThingSearchTools { public:
     bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& filter, CThing** out) const;        // 0x007FD110
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -54,25 +55,32 @@ class CPlayer { public:
     CThing* GetPPlayerCharacter() const;                // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    ~CBaseIntelligentPointer();                         // 0x00A01C10
-    void SetPItem(CThing* item);                        // 0x00A01B90
-    CThing* GetPItem() const;                           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* const& item) : CBaseIntelligentPointer() { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* const& item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        T* item = other.GetPItem();
         SetPItem(item);
         return *this;
     }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCBase { public:
     void*   __vftable;                                  // +0x00
@@ -84,9 +92,9 @@ class CTCBase { public:
 };
 class CTCKraken : public CTCBase { public:
     unsigned char       _pad08[0x10 - 0x08];
-    CIntelligentPointer PChamber;                       // +0x10
-    CIntelligentPointer PCentreMarker;                  // +0x18
-    CIntelligentPointer PTarget;                        // +0x20
+    CIntelligentPointer<CThing> PChamber;                       // +0x10
+    CIntelligentPointer<CThing> PCentreMarker;                  // +0x18
+    CIntelligentPointer<CThing> PTarget;                        // +0x20
     void GetCentreMarker();
 };
 
@@ -103,12 +111,12 @@ void CTCKraken::GetCentreMarker()
         C2DBoxI area(x - 5, y - 5, x + 5, y + 5);
         CThing* found;
         GetThingSearchTools()->GetPFirstThingInRoughArea(area, CThingFilter_HasDefGlobalIndex(chamberIndex), &found);
-        PChamber = CIntelligentPointer(found);
+        PChamber = CIntelligentPointer<CThing>(found);
         {
             CCharString name("KRACKEN_CHAMBER_CENTRE");
             GetThingSearchTools()->GetPFirstThingInRoughArea(area, CThingFilter_HasTrackName(name), &found);
         }
-        PCentreMarker = CIntelligentPointer(found);
+        PCentreMarker = CIntelligentPointer<CThing>(found);
     }
-    PTarget = CIntelligentPointer(GetPlayerManager()->GetMainPlayer()->GetPPlayerCharacter());
+    PTarget = CIntelligentPointer<CThing>(GetPlayerManager()->GetMainPlayer().GetPPlayerCharacter());
 }

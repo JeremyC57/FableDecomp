@@ -1,7 +1,7 @@
 // CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Main() -- wait for departure mission point 1, show the beetle counter; while the point stays 1, count the live guild scorpions each frame, update the counter, and whenever fewer than three are about either finish the point (none alive, none left to spawn: point 2 and the next objective) or spawn another stag beetle at the spawn point furthest from the hero; finally remove the counter
 // Leaf: ?Main@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D643A0, 1090 bytes (int3 padded to 1104).
-// Callees: CEntityScriptBase::IsDone 0x00F35B30 (manifest "CCreatureAction_TrollWhackGroundBase::Initialise" is
+// Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30 (manifest "CCreatureAction_TrollWhackGroundBase::Initialise" is
 //   propagated), CCharString 0x0099EBF0 / ~ 0x0099EAE0, __ftol2 0x00BFEA70, CCountedPointer<CScriptThingImpl>::operator=
 //   0x00704580, ~vector<CScriptThing> 0x008AC970 (IsDone exit; inline copy with free 0x00BFEA14 at the loop end);
 //   CScriptThing::GetPos / SetToKillOnLevelUnload inlined (imp slots 6, 70); pGlobalScriptDef 0x0143E90C
@@ -13,6 +13,7 @@
 //   class-keyed); this row's class is now declared there, and CScorpionHome is nested in it as Ego_r.pdb spells it
 //   (?Main@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ, a private virtual; FableWin ?OnPredicateFail@/?GetParentScript@ the same) (wrapped, struct->class). Same bytes.
 #define VEC_DTOR
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -204,7 +205,8 @@ class CEntityScriptBase { public:
     virtual void Main() = 0;
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    bool IsDone();                                      // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
 };
 class NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome : public CEntityScriptBase {
 public:
@@ -220,29 +222,29 @@ void NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Main()
 {
     while (ParentClass->DepartureMissionPoint != 1) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     long counter = Game->AddQuestInfoCounter("HUD_BEETLE_ICON", (long)pGlobalScriptDef->GUI_DepartureBeetles, 1.0f);
     Game->DisplayQuestInfo(true);
     while (ParentClass->DepartureMissionPoint == 1) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         std::vector<CScriptThing> scorpions;
         Game->GetAllThingsWithScriptName("GuildScorpions", scorpions);
         Game->UpdateQuestInfoCounter(counter, (long)(pGlobalScriptDef->GUI_DepartureBeetles - ScorpionsLeft - scorpions.size()), -1);
         if (scorpions.size() < 3) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
             {
 #pragma inline_depth(0)
                 return;
 #pragma inline_depth()
             }
             if (scorpions.size() == 0 && ScorpionsLeft == 0) {
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                 {
 #pragma inline_depth(0)
                     return;
@@ -251,7 +253,7 @@ void NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Main()
                 ParentClass->DepartureMissionPoint = 2;
                 Game->SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", "", "");
             } else if (ScorpionsLeft > 0) {
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                 {
 #pragma inline_depth(0)
                     return;
@@ -265,7 +267,7 @@ void NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Main()
             }
         }
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->RemoveQuestInfoElement(counter);
     Game->DisplayQuestInfo(false);

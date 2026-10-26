@@ -18,9 +18,7 @@ struct CTargetingRangeMap {                                               // ret
 };
 
 class CPersistContext { public:
-    void Transfer(unsigned long& value);                                  // 0x00431020
-    void Transfer(bool& value);                                           // 0x0043314A
-    void Transfer(float& value);                                          // 0x00431061
+    template <class T> void Transfer(T& value);                                  // 0x00431020
     void Transfer(CTargetingRangeMap& value);                             // 0x0045DA65
 };
 

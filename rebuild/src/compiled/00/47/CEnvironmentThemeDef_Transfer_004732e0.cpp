@@ -9,9 +9,7 @@
 // the last member's address is formed in place (`add esi,0C0h`).
 #pragma optimize("s", on)
 class CPersistContext { public:
-    void Transfer(float& value);                // 0x00431061
-    void Transfer(bool& value);                 // 0x0043314A
-    void Transfer(long& value);                 // 0x00431102
+    template <class T> void Transfer(T& value);                // 0x00431061
 };
 
 class CParentDefClassBase { public:

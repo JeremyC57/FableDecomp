@@ -18,10 +18,9 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
 };
 class CScriptThing { public:                                       // vtable 0x01238C8C, 12 bytes
-    void* _vptr;
     void* PImpData;
     void* PImpInfo;
-    ~CScriptThing();                                        // 0x004AA840
+    virtual ~CScriptThing();                                        // 0x004AA840
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance); // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);  // 0x00CBE3EA

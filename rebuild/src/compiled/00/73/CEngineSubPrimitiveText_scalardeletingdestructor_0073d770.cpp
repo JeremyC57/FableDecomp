@@ -5,10 +5,16 @@
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
 // retail labels); the class itself is not attributed, so it is named by address.
 #pragma optimize("t", on)
-struct CBaseIntelligentPointer {            // vptr + data (8 bytes); vtable 0x0129C95C
-    void* _vptr;
-    void* PData;
-    ~CBaseIntelligentPointer();             // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
 
@@ -22,8 +28,8 @@ struct CObject_0073d770 {
 void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
     CObject_0073d770* object = static_cast<CObject_0073d770*>(self);
-    object->Member8.~CBaseIntelligentPointer();
-    object->Member0.~CBaseIntelligentPointer();
+    object->Member8.CBaseIntelligentPointer::~CBaseIntelligentPointer();
+    object->Member0.CBaseIntelligentPointer::~CBaseIntelligentPointer();
     if (flags & 1)
         operator delete(object);
     return self;

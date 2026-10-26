@@ -62,13 +62,19 @@ class CWorld { public:
     CTimeOfDay*   TimeOfDay;                                // +0x1c
 };
 
-class CTCClock { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCClock : public CTCBase { public:
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[4];
     void*         PDef;                                     // +0x0c CDefPointer<const CClockDef>
     float         LastTimeUpdated;                          // +0x10
-    CWorld* GetWorld();                                     // 0x00686A70 (CTCBase)
     float GetHandAnimationUpdateAmount();                   // 0x00732730
     void FrameUpdate();
 };
@@ -82,6 +88,6 @@ void CTCClock::FrameUpdate()
     else
         animation = complex->GetAnimation();
     CAnimFrameUpdate update(GetHandAnimationUpdateAmount());
-    LastTimeUpdated = GetWorld()->TimeOfDay->Time;
+    LastTimeUpdated = GetWorld().TimeOfDay->Time;
     animation->UpdateFrameLogic(update);
 }

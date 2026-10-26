@@ -5,13 +5,13 @@
 // Base copy (CBaseDef::Copy @ 0x431f10) is invoked on self+0. The generated
 // header flattens the base subobject, so model the base call through a cast
 // to a local CBaseDef declaring only the member.
-struct CBaseDef {
-    void Copy(const CBaseDef* src);
+class CDefClassBase { public:
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
 void __fastcall CSmashableDef_Copy(CSmashableDef* self, void* edx, const CSmashableDef* src)
 {
-    ((CBaseDef*)self)->Copy((const CBaseDef*)src);
+    ((CDefClassBase*)self)->operator=(*(const CDefClassBase*)src);
     self->Smashable = src->Smashable;
     self->ReplacementObject_Val = src->ReplacementObject_Val;
     self->SmashParticleEmitter = src->SmashParticleEmitter;

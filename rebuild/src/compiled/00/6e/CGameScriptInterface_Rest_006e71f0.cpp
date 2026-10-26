@@ -15,7 +15,10 @@ struct CScriptRunner {
 
 extern CScriptRunner* g_pScriptRunner;      // 0x013D2838
 extern long g_FramesPerSecond;              // 0x01375550
-long GetGameFrame();                        // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                        // 0x0049D870
 
 class CGameScriptInterface { public:
     void Rest(float seconds);
@@ -25,8 +28,8 @@ void CGameScriptInterface::Rest(float seconds)
 {
     if (g_pScriptRunner) {
         long fps = g_FramesPerSecond;
-        float endFrame = (float)GetGameFrame() + (float)fps * seconds;
-        while ((float)GetGameFrame() < endFrame) {
+        float endFrame = (float)CWorld::GetFrame() + (float)fps * seconds;
+        while ((float)CWorld::GetFrame() < endFrame) {
             if (g_pScriptRunner->m_bStopRequested)
                 break;
             g_pScriptRunner->YieldFrame();

@@ -175,7 +175,7 @@ class CTCTavernTable { public:                         // interface 0xb8
 class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_RemoveFoodFromTable : public CCreatureActionBase { public:   // retail sizeof 0xb4
     CBaseIntelligentPointer PThing;             // +0xa8

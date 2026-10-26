@@ -7,7 +7,7 @@
 //   0x0099EBF0 / operator+=(const char*) 0x0099F100 / ~CCharString 0x0099EAE0, CVectorMap::LowerBound const 0x004365B0 and
 //   non-const 0x0040F020 (inline component lookups 0x30 CTCCombat and 0x31 CTCCreatureModeManager), the combat component's
 //   blocking getter 0x007331E0 (a folded `mov al,[ecx+63h]` body: CTCCombat::Blocking is PDB +0x6f, -12 for three 12-byte
-//   retail vectors), CCombatActionBase::SetAnimationName 0x008574D0 / GetCombatManager 0x00856B10 / Initialise 0x00857520,
+//   retail vectors), CCombatActionBase::SetCombatAnimation 0x008574D0 / GetCombatManager 0x00856B10 / Initialise 0x00857520,
 //   CThing::GetPlayer 0x004C7A10, CTCCreatureModeManager::AddMode 0x0073AE10, _CIfmod 0x00BFEB28.
 // Globals: -1.0f 0x0122DEE0, 1.0f 0x0122DED8, 0.0f 0x0122DEDC, 1/(2pi) 0x01237F08, 360.0f 0x01238020, -135.0f 0x01276948,
 //   -45.0f 0x0127693C, 135.0f 0x01276938, 45.0f 0x0125D2B8, the double 1.0 0x01237F00; strings 0x01276954/0x0127694C/
@@ -110,10 +110,21 @@ class CThingCreatureBase : public CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    CThingCreatureBase* m_pItem;                               // +0x04
-    CThingCreatureBase* GetPItem() const;                      // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CCharString { public:
     void* PStringData;
@@ -140,10 +151,11 @@ public:
     virtual void v00(); virtual void v01();
     virtual void Initialise();                                 // 0x00857520
     unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;                         // +0x08
+    CIntelligentPointer<CThingCreatureBase> PCreature;                         // +0x08
     unsigned char           _pad10[0x114 - 0x10];
     CCombatManager* GetCombatManager();                        // 0x00856B10
-    void SetAnimationName(const CCharString& name);            // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 class CCombatAction_ControlledStrafeJump : public CCombatActionBase {
 public:
@@ -188,7 +200,7 @@ void CCombatAction_ControlledStrafeJump::Initialise()
     } else {
         name += "FORWARD";
     }
-    SetAnimationName(name);
+    SetCombatAnimation(name);
     if (GetCombatManager()->CombatStrafeTurningEnabled && !PCreature.GetPItem()->GetPlayer()->ZTargeting) {
         float delta = turnOffset - angle;
         const C3DVector& forward = PCreature.GetPItem()->GetPhysics()->GetRHSet()->Forward;

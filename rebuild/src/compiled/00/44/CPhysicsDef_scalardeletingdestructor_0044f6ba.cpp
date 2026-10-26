@@ -1,6 +1,8 @@
 #pragma optimize("s",on)
-extern void __fastcall CPhysicsDef_dtor(void* def);
-extern void __cdecl op_delete(void* p);
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 extern void* const CPhysicsDef_vftable;
 
 class CPhysicsDef { public:
@@ -11,9 +13,9 @@ void* __fastcall CPhysicsDef_scalar_deleting_destructor(CPhysicsDef* def, int ed
 {
     (void)edxpad;
     def->vftable = (void*)&CPhysicsDef_vftable;
-    CPhysicsDef_dtor(def);
+    ((CResource*)(def))->CResource::~CResource();
     if (flags & 1) {
-        op_delete(def);
+        operator delete(def);
     }
     return def;
 }

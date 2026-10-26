@@ -12,7 +12,10 @@
 // Shared model for the CSimpleMemoryPool rows (Ego_r.pdb layouts; the engine header's Root is opaque, so a local model is used).
 void* __cdecl operator new(unsigned int size);                     // 0x00BFEA1A
 void __cdecl operator delete(void* block);                         // 0x00BFE9BC
-void* __fastcall AllocateAligned(unsigned long size, unsigned long alignment);   // 0x009F2BE0
+class CMemoryAllocator {
+public:
+    static void* __fastcall AllocateAligned(unsigned long, long);   // 0x009F2BE0
+};   // 0x009F2BE0
 void __fastcall FreeAligned(void* block);                          // 0x009F2B20
 
 enum EAreaStatus { AREA_FREE = 0x61, AREA_USED = 0x67 };
@@ -38,7 +41,7 @@ struct CMemoryBlock : CIVCountedPointeeBase {      // CSimpleMemoryPool::CMemory
     {
         BlockSize = size + 0x10;
         NextBlock = 0;
-        BlockData = (unsigned char*)AllocateAligned(BlockSize, 0x10);
+        BlockData = (unsigned char*)CMemoryAllocator::AllocateAligned(BlockSize, 0x10);
         OwnsData = true;
     }
     CMemoryBlock(void* data, unsigned long size)

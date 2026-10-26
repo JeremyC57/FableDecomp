@@ -2,12 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009635C0, length 113 bytes (+ int3 padding).
 // Callees: CAIStateGroup_VersusEnemyBase::IsStillRunnable @ 0x00962AF0 (PDB-mangled manifest name),
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface,
-// type 0x31 = bit 17 of the presence word at +0x24), CTCCreatureModeManager::HasMode(long) @ 0x0073A8A0.
+// type 0x31 = bit 17 of the presence word at +0x24), CTCCreatureModeManager::IsModeActive(long) @ 0x0073A8A0.
 //
 // Shape: the base-class check returns its own al when false (`if (!Base::IsStillRunnable()) return false;`
 // needs no `xor al,al`: VC reuses the tested byte). Then the target's mode manager comes from the out-parameter
 // GetInterface whose result is not tested, so retail tail-duplicates `HasMode(0x38)` + the `neg ; sbb ; inc`
-// negation (`return HasMode(0x38) ? false : true;` -- `!HasMode()` widens to `sbb eax,eax ; inc eax`) into
+// negation (`return HasMode(0x38) ? false : true;` -- `!IsModeActive()` widens to `sbb eax,eax ; inc eax`) into
 // the hit arm and the miss arm (which reads the unwritten frame slot). Modelled over the
 // VersusEnemyBase PDB header (PTargetThing +0x14); the derived members follow the ScorpionKing header offsets.
 // Leaf: ?IsStillRunnable@CAIStateGroup_VersusScorpionKing
@@ -51,14 +51,25 @@ class CThing { public:
     }
 };
 
-struct CBaseIntelligentPointer {                // CIntelligentPointer<T>: vptr + item
-    void*   __vftable;                          // +0x00
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -73,11 +84,12 @@ class CAIBrain { public:
 };
 
 class CTCCreatureModeManager { public:                 // interface type 0x31 component
-    bool HasMode(long mode);                    // 0x0073A8A0
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 
 struct CAIStateGroup_VersusEnemyBase_Methods : CAIStateGroup_VersusEnemyBase {
-    const CBaseIntelligentPointer& Target() const { return *(const CBaseIntelligentPointer*)PTargetThing; }
+    const CIntelligentPointer<CThing>& Target() const { return *(const CIntelligentPointer<CThing>*)PTargetThing; }
     bool IsStillRunnable();                     // 0x00962AF0
 };
 
@@ -93,5 +105,5 @@ bool CAIStateGroup_VersusScorpionKing::IsStillRunnable()
         return false;
     CTCCreatureModeManager* modes;
     Target().GetPItem()->GetInterface(&modes, 0x31);
-    return modes->HasMode(0x38) ? false : true;
+    return modes->IsModeActive(0x38) ? false : true;
 }

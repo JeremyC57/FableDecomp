@@ -1,6 +1,10 @@
 #include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
-class CCreatureActionBase; extern int __fastcall sub(void* p);
+class CAnimationEntry {
+public:
+    long GetFlags() const;   // 0x005DC210
+};
+class CCreatureActionBase; 
 struct CCreatureActionBase_Methods : CCreatureActionBase {
     char M();
 };
-char CCreatureActionBase_Methods::M(){ unsigned int r=(unsigned int)sub(this->PAnimEntry_Data); return (char)((~(r>>3))&1); }
+char CCreatureActionBase_Methods::M(){ unsigned int r=(unsigned int)((int)(((CAnimationEntry*)(this->PAnimEntry_Data))->GetFlags())); return (char)((~(r>>3))&1); }

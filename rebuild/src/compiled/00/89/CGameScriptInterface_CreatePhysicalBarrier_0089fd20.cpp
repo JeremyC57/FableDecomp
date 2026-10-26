@@ -26,7 +26,7 @@ class CScriptThing : public CBase { public:                      // 12 bytes, vt
     CScriptThingPImp PImp;
     CScriptThing() {}                              // inline: CBase::CBase, the vtable, two zero words
 };
-struct CThing_Retail {
+class CThing { public:
     unsigned char  _pad00[0x74];
     CCharString    ScriptName;                     // +0x74
     unsigned char  _pad78[0x91 - 0x78];
@@ -41,7 +41,10 @@ struct CGameDefinitionManager_Retail {
     static CDefinitionManager_Retail& Get();       // 0x0044C6B0
 };
 class CWorld; class CMainGameComponent; class CDisplayEngine; struct CPlayerManager_Retail; class CThingSearchTools;
-CThing_Retail* __fastcall CreatePhysicalBarrierThing(const C3DVector& start, const C3DVector& end, float radius);   // 0x007FD4B0
+class CTCDPhysicalObstruction {
+public:
+    static CThing* __fastcall Create(const C3DVector&, const C3DVector&, float);   // 0x007FD4B0
+};   // 0x007FD4B0
 class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
@@ -55,7 +58,7 @@ class CGameScriptInterface { public:
 
 CScriptThing CGameScriptInterface::CreatePhysicalBarrier(float radius, const C3DVector& start, const C3DVector* end, CCharString scriptName) const
 {
-    CThing_Retail* t = CreatePhysicalBarrierThing(start, end ? *end : start, radius);
+    CThing* t = CTCDPhysicalObstruction::Create(start, end ? *end : start, radius);
     if (t && !t->m_dead) {
         t->ScriptName = scriptName;
         return t->GetScriptThing();

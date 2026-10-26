@@ -7,8 +7,9 @@ class CEngineLightingManager { public:
     void* obj28;      // +0x28
 };
 
-struct CScene {
-    void Apply(int a);   // this=[esi+0x28], one stack arg
+class CDataOutputStream { public:
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 struct CLocal {
     int v;
@@ -29,7 +30,7 @@ void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager*
         local.Do(self->obj24, arg);
         break;
     case 3:
-        ((CScene*)self->obj28)->Apply(*arg);
+        ((CDataOutputStream*)self->obj28)->WriteSLONG(*arg);
         break;
     }
 }

@@ -27,7 +27,7 @@ class CWideString { public:
     ~CWideString();                                // 0x0099B510
 };
 void* operator new(unsigned int size);             // 0x00BFEA1A
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 
 struct SCountBlock {
     long  m_references;
@@ -94,7 +94,7 @@ bool CBankFileAsync::OpenReadOnly(const CCharString& bankHandle, unsigned long f
 {
     if (!CBankFile_Retail::OpenReadOnly(bankHandle, flags))
         return false;
-    DisplayProgress("Opening bank", -1.0f, false, false);
+    NProgressDisplay::DisplayProgress("Opening bank", -1.0f, false, false);
     if (RetailMode) {
         SBankEntryInfo info;
         info.Type = 0;

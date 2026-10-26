@@ -3,12 +3,12 @@ class CSpecialAbilitiesDrainLifeDataDef { public:
     unsigned char _pad_0x0[0x28]; // to 0x28
     CSubField sub; // +0x28
 };
-struct CBaseDrainLifeDef {
-    void Copy(const CBaseDrainLifeDef* other);
+class CDefClassBase { public:
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
 void __fastcall CSpecialAbilitiesDrainLifeDataDef_Copy(CSpecialAbilitiesDrainLifeDataDef* self, int _edx, const CSpecialAbilitiesDrainLifeDataDef* other)
 {
-    ((CBaseDrainLifeDef*)self)->Copy((const CBaseDrainLifeDef*)other);
+    ((CDefClassBase*)self)->operator=(*(const CDefClassBase*)other);
     self->sub = other->sub;
 }

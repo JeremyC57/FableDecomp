@@ -1,5 +1,5 @@
 // C3DMeshFileConvexVolumeChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- version 1, the name, then each bounding plane as a normal vector and a distance
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00AAA9A0, 112 bytes. Callees: CDataOutputStream::WriteULong 0x00993EA0,
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00AAA9A0, 112 bytes. Callees: CDataOutputStream::WriteULONG 0x00993EA0,
 // WriteNullTerminatedString 0x00995AE0, Write3DVector 0x00993FD0, WriteFloat 0x00993EE0. No sub-chunk write.
 // Shared retail model of the landed C3DMeshFile*Chunk family (C3DMeshFileConvexVolumeChunk::GetChunkInfo
 // 0x00AA9AD0): Name +0x2C, Planes CArray +0x30 (16-byte elements: `sar 4`). The plane count is an unsigned
@@ -26,13 +26,14 @@ class C3DVector  { public: float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f
 
 class CChunkedFileSaver;
 class CDataOutputStream { public:
-    void WriteULong(unsigned long value);               // 0x00993EA0
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
     void WriteBool(bool value);                         // 0x00993E30
     void WriteMatrix3x4(const CMatrix3x4& m);           // 0x00994070
     void Write3DVector(const C3DVector& v);            // 0x00993FD0
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 // CChunkedFileChunk (0x10) -> CChunkedFileSuperChunk -> C3DMeshFileChunk (0x2c in retail).
@@ -74,10 +75,10 @@ class C3DMeshFileConvexVolumeChunk : public C3DMeshFileChunk { public:
 
 void C3DMeshFileConvexVolumeChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
-    out.WriteULong(1);
+    out.WriteULONG(1);
     out.WriteNullTerminatedString(Name);
     unsigned long count = Planes.Size();
-    out.WriteULong(count);
+    out.WriteULONG(count);
     for (unsigned long i = 0; i < count; ++i) {
         const C3DPlane& plane = Planes[i];
         out.Write3DVector(plane.Normal);

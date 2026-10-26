@@ -8,7 +8,7 @@
 // GetFacing (+0x118, C3DVector by hidden pointer), CTCGraphicAppearance::GetCameraFocalPos(float) @ 0x004C12D0 (C3DVector by
 // hidden pointer). Float pool 0x01238174 = 0.75f.
 // Layout: the CScriptModuleBase (0x4c bytes, POwner +0x38: camera LookAt +0x10, Position +0x54) plus Thing
-// (CIntelligentPointer<CThing>) at +0x4c; retail CThing keeps PhysicsTC at +0x60 and PTCGraphicAppearance at +0x64.
+// (CIntelligentPointer<CBaseObject>) at +0x4c; retail CBaseObject keeps PhysicsTC at +0x60 and PTCGraphicAppearance at +0x64.
 // Shape: the facing and the focal position are named locals filled by the by-value getters (the components read through
 // inline accessors straight into ecx); the position is `focal + facing * 0.75f` through inline C3DVector operators that
 // RETURN A CONSTRUCTED TEMPORARY (`return C3DVector(X * s, ...)`): VC keeps the scaled x/y on the x87 stack (z spilled)
@@ -42,7 +42,7 @@ class CTCGraphicAppearance {
 public:
     C3DVector GetCameraFocalPos(float height);       // 0x004C12D0
 };
-class CThing {
+class CBaseObject {
 public:
     unsigned char         _pad00[0x60];
     CTCPhysicsBase*       PhysicsTC;                 // +0x60 (retail)
@@ -50,10 +50,11 @@ public:
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
     CTCGraphicAppearance* GetPTCGraphicAppearance() const { return PTCGraphicAppearance; }
 };
-struct CIntelligentPointerThing {                    // CIntelligentPointer<CThing>
+class CBaseIntelligentPointer { public:                    // CIntelligentPointer<CBaseObject>
     void* __vftable;
     void* m_pItem;
-    CThing* GetPItem();                              // 0x00A01B50 CBaseIntelligentPointer::GetPItem
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
 };
 struct CCameraState {
     unsigned char _pad00[0x10];
@@ -70,7 +71,7 @@ public:
     unsigned char            _pad04[0x34];
     CCameraState*            POwner;                 // +0x38
     unsigned char            _pad3c[0x10];
-    CIntelligentPointerThing Thing;                  // +0x4c
+    CBaseIntelligentPointer Thing;                  // +0x4c
     void Update();
 };
 

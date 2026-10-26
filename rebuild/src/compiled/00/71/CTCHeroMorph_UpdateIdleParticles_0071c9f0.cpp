@@ -146,7 +146,8 @@ public:
     virtual void v00();
     CThing* Thing;                                      // +0x04
     unsigned char _pad08[4];
-    CPlayerManager* GetPlayerManager();                 // 0x00686D50
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
 };
 class CTCDParticleEmitter : public CTCBase {
 public:
@@ -185,8 +186,8 @@ void CTCHeroMorph::UpdateIdleParticles()
         else
             node = node->_M_next;
     }
-    long mode = GetPlayerManager()->GetMainPlayer()->GetCurrentMode();
-    CMovement* movement = GetPlayerManager()->GetMainPlayer()->GetMovement();
+    long mode = PeekPlayerManager().GetMainPlayer()->GetCurrentMode();
+    CMovement* movement = PeekPlayerManager().GetMainPlayer()->GetMovement();
     if (mode == 1 && !(movement->Velocity.X * movement->Velocity.X + movement->Velocity.Y * movement->Velocity.Y
                        + movement->Velocity.Z * movement->Velocity.Z > g_fEpsilon * g_fEpsilon)) {
         if (!FrameHeroBecameIdle) {

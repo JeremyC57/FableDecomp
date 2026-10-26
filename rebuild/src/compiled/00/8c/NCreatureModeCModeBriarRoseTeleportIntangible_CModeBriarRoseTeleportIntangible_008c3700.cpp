@@ -24,7 +24,10 @@ class CCharString { public:
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }   // "" = the shared empty literal 0x0129AAF4
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 class CAnimFilterOfGroup { public:
     virtual void v00();
@@ -34,7 +37,7 @@ class CAnimFilterOfGroup { public:
         : m_string()
     {
         m_string = name;
-        m_hash = Calc_004014a0(0, name.GetPString(), name.GetLength());
+        m_hash = CCRC::Calc(0, name.GetPString(), name.GetLength());
     }
 };
 
@@ -44,16 +47,24 @@ struct CModeBase_00861e00 {
     CModeBase_00861e00(CThing* thing);     // 0x00861E00
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* PItem;                           // +0x04
-    CBaseIntelligentPointer();             // 0x00A01B10
-    void SetPItem(void* item);             // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
-    virtual void v00();
-    CIntelligentPointerCreature(CThingCreatureBase* item) : CBaseIntelligentPointer() { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 namespace NCreatureMode {
@@ -61,7 +72,7 @@ namespace NCreatureMode {
 struct CModeBriarRoseTeleportIntangible : CModeBase_00861e00 {
     CAnimFilterOfGroup m_animFilter;       // +0x68
     unsigned long Timer;             // +0x74 (not touched by the ctor)
-    CIntelligentPointerCreature m_pTarget; // +0x78
+    CIntelligentPointer<CThingCreatureBase> m_pTarget; // +0x78
     virtual void v00();
     CModeBriarRoseTeleportIntangible(CThing* thing, CThingCreatureBase* target);
 };

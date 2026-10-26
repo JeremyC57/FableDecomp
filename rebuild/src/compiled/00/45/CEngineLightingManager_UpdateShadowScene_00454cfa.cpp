@@ -14,8 +14,9 @@ struct CShadowLocal {
     void Build(void* obj24, int* param);   // default thiscall, 2 stack args
 };
 
-struct CShadowTarget {
-    void Emit(int arg);                    // default thiscall, 1 stack arg
+class CDataOutputStream { public:
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 extern void __fastcall LM_Enter(CEngineLightingManager* self, void* edx, void* marker);
@@ -30,7 +31,7 @@ void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager*
         local.Build(self->obj24, param);
         break;
     case 3:
-        ((CShadowTarget*)self->obj28)->Emit(*param);
+        ((CDataOutputStream*)self->obj28)->WriteSLONG(*param);
         break;
     }
 }

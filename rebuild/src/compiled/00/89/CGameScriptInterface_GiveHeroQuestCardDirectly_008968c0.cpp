@@ -55,15 +55,22 @@ class CTCQuestCard { public:
     bool IsVignette() const;                            // 0x007022E0
 };
 class CPlayer { public: CThing* GetHeroThing(); };             // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
+class CPlayerManager { public: public:
+    CPlayer& GetMainPlayer();   // 0x00449970
+};    // 0x00449970
 class CQuestManager { public:
     bool IsQuestCardActive(const CCharString& name);    // 0x004AF560
     bool ActivateQuestCard(CThing* card, bool b);       // 0x004B4AA0
 };
 extern CQuestManager* g_pQuestManager;                  // 0x013B89FC
-class CGameDefinitionManager { public:
+class CDefinitionManager
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};
+
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 
 #define VPAD1(a) virtual void a();
@@ -89,7 +96,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::GiveHeroQuestCardDirectly(const CCharString& cardDefName, const CCharString& questName, bool silent) const
 {
-    CThing* hero = PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
     if (!hero || (hero->m_deadFlags & 1))
         return;
     if (g_pQuestManager->IsQuestCardActive(cardDefName))

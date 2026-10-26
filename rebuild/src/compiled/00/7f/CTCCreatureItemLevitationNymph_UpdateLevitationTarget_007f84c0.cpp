@@ -23,25 +23,33 @@ class CThing { public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
-    virtual void v00();
-    CIntelligentPointerConstThing() {}
-    CIntelligentPointerConstThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
+public:
+    CIntelligentPointer() {}
+    CIntelligentPointer(T* item) { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
         SetPItem(other.GetPItem());
         return *this;
     }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<const CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->Flags91 & 1))
@@ -56,7 +64,7 @@ struct CTCCreatureItemLevitationNymph {
     C2DVector NymphHoverXYDirectionFromTarget;  // +0x18
     float NymphHoverHeightOffset;               // +0x20
     float NymphHoverXYMagnitude;                // +0x24
-    CIntelligentPointerConstThing PTarget;      // +0x28
+    CIntelligentPointer<const CThing> PTarget;      // +0x28
     void SetTarget(CThing* target, float xyMagnitude, float heightOffset);
     void UpdateLevitationTarget();              // vtable 0x012415F4 slot 31
 };

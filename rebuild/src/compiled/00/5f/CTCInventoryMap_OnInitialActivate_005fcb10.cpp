@@ -68,11 +68,19 @@ class CThingManager { public:
 class CTCTeleporter { public:                               // interface type 0xDD
     void SetAsActive(bool active);                   // 0x007DFEB0
 };
-struct CTCInventoryBase_Map {
+class CTCBase
+{
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void OnInitialActivate();                // slot 6 @ 0x005BD1EB
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
+};
+
+struct CTCInventoryBase_Map : public CTCBase {
+    virtual void OnInitialActivate();
+
     unsigned char _pad04[0x200 - 0x04];
-    CThingManager* GetThingManager();                // 0x00686AE0 (CTCBase)
 };
 class CTCInventoryMap : public CTCInventoryBase_Map { public:
     CSerialisedUIDPointer SerialisedTeleporterUIDs;  // +0x200
@@ -85,7 +93,7 @@ void CTCInventoryMap::OnInitialActivate()
     if (uids) {
         for (unsigned __int64* it = uids->_M_start; it != uids->_M_finish; ++it) {
             __int64 uid = *it;
-            CThing* thing = GetThingManager()->GetThingWithUID(uid);
+            CThing* thing = GetThingManager().GetThingWithUID(uid);
             if (thing && !thing->IsDead) {
                 CTCTeleporter* teleporter;
                 if (thing->GetInterface(&teleporter, 0xDD))

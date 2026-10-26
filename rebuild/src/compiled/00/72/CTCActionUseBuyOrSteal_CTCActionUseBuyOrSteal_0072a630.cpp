@@ -35,16 +35,22 @@ struct CDefPointer {                           // CDefPointer<T const>
     CDefPointer() : m_pDef(0) { }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                      // +0x04
-    CBaseIntelligentPointer();                 // 0x00A01B10
-    void SetPItem(CBaseObject* item);          // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
     CIntelligentPointer(CBaseObject* item) : CBaseIntelligentPointer() { SetPItem(item); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
 class CTCActionUseBase : public CTCBase { public:            // vtable 0x0123F09C (own constructor 0x004DA939)
@@ -54,7 +60,7 @@ class CTCActionUseBase : public CTCBase { public:            // vtable 0x0123F09
 };
 
 struct CTCActionUseBuyOrSteal : CTCActionUseBase {   // vtable 0x0126679C
-    CIntelligentPointer PPerformer;            // +0x14
+    CIntelligentPointer<CThing> PPerformer;            // +0x14
     bool WaitingForConfirmation;               // +0x1c
     virtual void v00();
     CTCActionUseBuyOrSteal(CThing& owner);

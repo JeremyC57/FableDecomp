@@ -26,7 +26,7 @@ class CScriptThing { public:                                   // 12 bytes, vtab
     virtual void t000();
     void* PImpData;
     void* PImpInfo;
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 void __fastcall AddLogbookStoryEntryString(const CCharString& tag);   // 0x00CBE960
@@ -49,7 +49,7 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
 class CScriptDataBase;
 class CEntityScriptBase;
 template <class T> class CCountedPointer { public: T* Data; void* Info; };
-struct __declspec(novtable) CEntityScriptBindingBase {
+class __declspec(novtable) CEntityScriptBindingBase { public:
     virtual const CCharString& GetEntityScriptName() const = 0;
 };
 template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
@@ -193,12 +193,14 @@ class CScriptDef { public:
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                                                 // 0x00CB7940
     void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
     void PostAddScriptedEntities();                                                   // 0x00CB8930
 };
+namespace NScript {
 class CQ_HeroSoulsBriarScript : public CScriptBase {
 public:
     struct CBriarRose { static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_HeroSoulsBriarScript& parent, CScriptDataBase* data, const CScriptThing& thing); };          // 0x00D81630

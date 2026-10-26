@@ -22,9 +22,10 @@ class CScriptThing { public:                                   // 12 bytes, vtab
 };
 
 class CBaseObject { public:                                    // vtable 0x0129A7D8
-    CBaseObject();                                      // 0x0099A380
-    virtual ~CBaseObject();                             // 0x0099A430
     void* IntelligentPointer;                           // +0x04
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C

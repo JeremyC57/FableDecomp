@@ -58,6 +58,9 @@ __declspec(noinline) void CObjectDef::GetSubDef(CDefPointer<CInventoryItemDef>* 
 class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CObjectDef>* out) const;   // 0x0042B040
 };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};
 void* FindDef_CDefinitionManager_GetDef();   // stand-in callee of the stand-in body below
 #pragma auto_inline(off)
 __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CObjectDef>* out) const
@@ -77,7 +80,8 @@ struct CGameState {
 class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CGameState*   GameState;                                // +0x24
-    const CDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
+public:
+    const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
 };
 extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 

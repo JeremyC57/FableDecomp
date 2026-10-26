@@ -10,7 +10,16 @@
 // context-argument slot) through CPersistContext::Error. The symbol's long value is converted to float (`fild`) before
 // the name's destructor. Otherwise ReadAsFloat's x87 result is stored straight to the output.
 // CStringParser uses engine/CStringParser.h; CPersistContext (no engine header) is modelled from the PDB layout.
+#define CStringParser CStringParserLayout
 #include "engine/CStringParser.h"
+#undef CStringParser
+class CCharString;
+
+class CStringParser : public CStringParserLayout
+{
+public:
+    CCharString ReadAsString();   // 0x009BA6F0
+};
 
 class CCharString { public:
     CCharStringData* PStringData;
@@ -21,7 +30,6 @@ extern const char g_msgUnknownSymbol_0122dfe8[];               // 0x0122DFE8
 
 struct CStringParserMethods : CStringParser {
     long PeekNextItemType();                                   // 0x009BA900 (EParsedItemType)
-    CCharString ReadAsString();                                // 0x009BA6F0
     float ReadAsFloat();                                       // 0x009BA650
 };
 

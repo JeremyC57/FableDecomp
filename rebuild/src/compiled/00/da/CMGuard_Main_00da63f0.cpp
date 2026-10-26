@@ -11,6 +11,7 @@
 //   engine/CScriptThing.h {vptr, PImp_Data +4, PImp_Info +8}, modelled locally for its virtuals.
 // Shape: literals are implicit CCharString conversions (right to left, before the other arguments); each tag is a
 //   SetDataString on the by-value guard local; the IsDone exits after the spawn only run the local's destructor.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -30,7 +31,7 @@ class CScriptThing { public:                              // vtable 0x01238C8C, 
     virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
     CScriptThing*   PImp_Data;                     // +0x04
     CCPPointerInfo* PImp_Info;                     // +0x08
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 class CGameScriptInterface { public:
@@ -59,14 +60,19 @@ struct CQ_MinionClifftopChaseScript {
 };
 struct CQ_SunnyvaleMasterData;
 
-class CM_Guard {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CM_Guard : public CEntityScriptBase {
 public:
     void*                         __vftable;       // +0x00
     CGameScriptInterface*         Game;            // +0x04
     CScriptThing                  Me;              // +0x08
     CQ_MinionClifftopChaseScript* ParentClass;     // +0x14
     CQ_SunnyvaleMasterData*       PMasterData;     // +0x18
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -74,19 +80,19 @@ void CM_Guard::Main()
 {
     while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), 20.0f)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptThing guard = Game->CreateCreature("CREATURE_BS_GUARD", Me.GetPos(), "GuardToLeadTheWay", false);
     if (!ParentClass->FirstGuardTagged) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         guard.SetDataString("MCC4");
         ParentClass->FirstGuardTagged = true;
     } else {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         guard.SetDataString("MCC5");
     }

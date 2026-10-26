@@ -35,7 +35,7 @@ class CThingCreatureBase { public:
 class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_AimMissileWeapon : public CCreatureActionBase { public:    // retail sizeof 0xb0
     CBaseIntelligentPointer PTarget;            // +0xa8
@@ -48,7 +48,7 @@ class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:  
 };
 class CCombatActionBase : public CCreatureActionBase { public:    // retail sizeof 0x114
     unsigned char _combat[0x114 - 0xa8];
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:   // retail sizeof 0x118
     long Loop;                                  // +0x114

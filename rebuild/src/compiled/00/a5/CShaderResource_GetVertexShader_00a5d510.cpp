@@ -37,10 +37,15 @@ public:
     CCharString             VSConstantLayout;           // +0x20
     CCharString GetVSConstantLayout() const { return VSConstantLayout; }
 };
-class CShaderDataBank {
+class CBankFile
+{
+public:
+    CCharString GetEntrySymbol(unsigned long) const;   // 0x009CC1D0
+};
+
+class CShaderDataBank : public CBankFile {
 public:
     CShaderBankEntry* GetVertexShader(unsigned long index) const;   // 0x00A61FA0
-    CCharString GetEntrySymbol(unsigned long index) const;          // 0x009CC1D0 (CBankFile)
 };
 
 struct CVertexShaderData {

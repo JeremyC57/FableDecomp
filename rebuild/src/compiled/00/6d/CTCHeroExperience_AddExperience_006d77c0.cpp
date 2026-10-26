@@ -66,7 +66,7 @@ class CHeroStatsDef { public:
     long ExpToSpendAtWhichToDisplayTutorial;    // +0x64
 };
 
-class CDefinitionManager { public:
+class CGameDefinitionManager { public:
     unsigned char  _pad00[0xdc];
     CHeroStatsDef* PHeroStatsDef;               // +0xdc
 };
@@ -118,9 +118,16 @@ struct SPickup {                                // pair<long,long>
     SPickup(const SPickup& o) : first(o.first), second(o.second) { }
 };
 
-class CTCHeroExperience {
+class CTCBase
+{
 public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCHeroExperience : public CTCBase {
+public:
     CThing* ParentThing;                                    // +0x04
     bool ToBeRemoved;                                       // +0x08
     bool IsInGlobalUpdateTCs;                               // +0x09
@@ -138,7 +145,6 @@ public:
     void* AttackHistory;                                    // +0x50
     CHeroExperienceDef* PDef;                               // +0x54
 
-    CDefinitionManager* GetDefinitionManager() const;       // 0x006869D0 (CTCBase)
     long GetExperiencePickupMultiplierForParam(float param) const
     {
         long multiplier = (long)(param / PDef->ExperienceMultiplierParamPerUnitComboMultiplier + 0.5);
@@ -157,8 +163,8 @@ void CTCHeroExperience::AddExperience(long amount)
     long added = GetExperiencePickUpMultiplier() * amount;
     TotalExperiencePoints += added;
     ExperiencePointsAvailableToSpend += added;
-    GFLimitHigh(ExperiencePointsAvailableToSpend, GetDefinitionManager()->PHeroStatsDef->MaximumExpToSpend);
-    if (ExperiencePointsAvailableToSpend > GetDefinitionManager()->PHeroStatsDef->ExpToSpendAtWhichToDisplayTutorial
+    GFLimitHigh(ExperiencePointsAvailableToSpend, GetDefinitionManager().PHeroStatsDef->MaximumExpToSpend);
+    if (ExperiencePointsAvailableToSpend > GetDefinitionManager().PHeroStatsDef->ExpToSpendAtWhichToDisplayTutorial
         && !g_pQuestManager->IsBetweenQuestStartAndFinishScreens()
         && !ParentThing->IsIncapacitated()) {
         CTCHero* hero;

@@ -8,6 +8,7 @@
 // Layout = Ego_r.pdb CBriarRose (80 bytes, the landed DoSpeech model): ParentClass +0x14 (CQ_MinionCampScript*), whose
 //          timer sits at +0x60.
 // Shape: the parent's timer is read through an inline CTimer getter taking the timer by reference (`add eax,60h ; mov eax,[eax]`).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -41,14 +42,19 @@ struct CQ_MinionCampScript {
     CTimer        CampTimer;                  // +0x60
 };
 
-class CBriarRose {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CBriarRose : public CEntityScriptBase {
 public:
     void*                 __vftable;          // +0x00
     void*                 Game;               // +0x04
     unsigned char         Me[0x0c];           // +0x08
     CQ_MinionCampScript*  ParentClass;        // +0x14
     void*                 PMasterData;        // +0x18
-    bool IsDone();                            // 0x00F35B30
     void DoSpeech(const CCharString& line);   // 0x00DA2610
     void DoOnSpeakToSpeech();
 };
@@ -57,15 +63,15 @@ void CBriarRose::DoOnSpeakToSpeech()
 {
     CCharString line("TEXT_QST_B08_BRIAR_ONSPEAKTO");  // 0x012D7138
     if (GetTime(ParentClass->CampTimer) > 48) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         line += "_START";                         // 0x012CD3B8
     } else if (GetTime(ParentClass->CampTimer) > 24) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         line += "_MIDDLE";                         // 0x012D7114
     } else {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         line += "_END";                         // 0x012D710C
     }

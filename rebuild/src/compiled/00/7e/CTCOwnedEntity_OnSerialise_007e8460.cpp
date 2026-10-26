@@ -13,11 +13,21 @@
 // Layout: Ego_r.pdb CTCOwnedEntity (0x20): CTCBase {vptr, ParentThing +4, flags +8}, SwitchableNavigationTCAdded +0x0c,
 // POwner +0x0d (CIntelligentPointer<CThing>, 8 bytes, unaligned in the PDB too), OwnerUID +0x18; retail CThing level short
 // +0x8e; CPersistContext mode +0x18 (1 or 3 = saving).
+#define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
+#undef CTCBase
+class CThingManager;
+
+class CTCBase : public CTCBaseLayout
+{
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
+};
 class CThing { public:
     unsigned char _pad00[0x8e];
     short m_level;                              // +0x8e
-    bool IsLevelLess();                         // 0x004C7930
+public:
+    bool IsLevelLess() const;   // 0x004C7930
 };
 class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
@@ -35,7 +45,6 @@ public:
     bool  SwitchableNavigationTCAdded;          // +0x0c
     unsigned char POwner[0x0b];                 // +0x0d CIntelligentPointer<CThing> (8 bytes) + padding
     unsigned __int64 OwnerUID;                  // +0x18
-    CThingManager* GetThingManager();           // 0x00686AE0 (CTCBase)
     void OnSerialise(CPersistContext& context, bool);
 };
 
@@ -45,13 +54,13 @@ void CTCOwnedEntity::OnSerialise(CPersistContext& context, bool)
     if (context.IsSaving()) {
         long version = 1;
         context.Transfer("VersionNumber", version, 0L);
-        unsigned __int64 uid = GetThingManager()->RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, OwnerUID);
+        unsigned __int64 uid = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, OwnerUID);
         context.Transfer("OwnerUID", uid, 0);
     } else {
         long version;
         context.Transfer("VersionNumber", version, 0L);
         context.Transfer("OwnerUID", OwnerUID, 0);
         if (version == 1 && OwnerUID != 0)
-            OwnerUID = GetThingManager()->RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, OwnerUID);
+            OwnerUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, OwnerUID);
     }
 }

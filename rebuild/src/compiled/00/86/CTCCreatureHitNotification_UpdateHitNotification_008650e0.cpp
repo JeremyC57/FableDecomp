@@ -11,7 +11,16 @@
 // end()) __copy(pos + 1, finish, pos)` with the element assignment = list operator= + the frame word, `--finish`,
 // `_Destroy(finish)` = the inline list destructor: clear() then the sentinel's null-tested deallocate).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
+#define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
+#undef CTCBase
+class CWorld;
+
+class CTCBase : public CTCBaseLayout
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
 
 struct CWeaponTrailEntry { unsigned long m_data[7]; };   // 28 bytes
 struct SListNodeBase { SListNodeBase* m_next; SListNodeBase* m_prev; };
@@ -84,13 +93,12 @@ class CWorld { public:
 
 class CTCCreatureHitNotification : public CTCBase { public:
     CFlashVector Flashes;                                // +0x0c
-    CWorld* GetWorld();                                  // 0x00686A70 (CTCBase)
     void UpdateHitNotification();
 };
 
 void CTCCreatureHitNotification::UpdateHitNotification()
 {
-    long frame = GetWorld()->GetWorldFrame();
+    long frame = GetWorld().GetWorldFrame();
     for (NCreatureHitNotification::CFlash* it = Flashes.begin(); it != Flashes.end(); ) {
         if (it->CreationFrame < frame)
             it = Flashes.erase(it);

@@ -49,7 +49,7 @@ class CDataInputStream { public:
 };
 class CMemoryDataInputStream : public CDataInputStream { public:
     CMemoryDataInputStream(const void* data, long size);   // 0x00994930
-    ~CMemoryDataInputStream();                       // 0x00993B10
+    virtual ~CMemoryDataInputStream();                       // 0x00993B10
     long  position;                                  // +0x04
     long  sourceLength;                              // +0x08
     long  chunkBase;                                 // +0x0c

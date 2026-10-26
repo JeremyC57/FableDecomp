@@ -1,7 +1,7 @@
 // CAIStateGroup_VersusScorpionKing::FindChargeEvent(const CIntelligentPointer<CThing>&) -- false while the target is alive and in mode 0x3F
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E8A10, length 113 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CVectorMap::LowerBound @ 0x0040F020 (inlined
-// GetInterface, type 0x31 = bit 17 of the presence word at +0x24), CTCCreatureModeManager::HasMode(long)
+// GetInterface, type 0x31 = bit 17 of the presence word at +0x24), CTCCreatureModeManager::IsModeActive(long)
 // @ 0x0073A8A0.
 //
 // Shape: a member that never reads `this` (`ret 4`, ecx untouched); the pointer argument is held in esi for
@@ -49,14 +49,25 @@ class CThing { public:
     }
 };
 
-struct CBaseIntelligentPointer {                // CIntelligentPointer<T>: vptr + item
-    void*   __vftable;                          // +0x00
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -71,17 +82,18 @@ class CAIBrain { public:
 };
 
 class CTCCreatureModeManager { public:                 // interface type 0x31 component
-    bool HasMode(long mode);                    // 0x0073A8A0
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 
 struct CAIStateGroup_VersusScorpionKing_Methods : CAIStateGroup_VersusScorpionKing {
-    bool FindChargeEvent(const CBaseIntelligentPointer& target);
+    bool FindChargeEvent(const CIntelligentPointer<CThing>& target);
 };
 
-bool CAIStateGroup_VersusScorpionKing_Methods::FindChargeEvent(const CBaseIntelligentPointer& target)
+bool CAIStateGroup_VersusScorpionKing_Methods::FindChargeEvent(const CIntelligentPointer<CThing>& target)
 {
     CTCCreatureModeManager* modes;
-    if (IS_THING_ALIVE(target) && target.GetPItem()->GetInterface(&modes, 0x31) && modes->HasMode(0x3F))
+    if (IS_THING_ALIVE(target) && target.GetPItem()->GetInterface(&modes, 0x31) && modes->IsModeActive(0x3F))
         return false;
     return true;
 }

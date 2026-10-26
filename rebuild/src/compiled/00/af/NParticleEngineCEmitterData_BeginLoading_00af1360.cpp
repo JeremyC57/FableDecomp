@@ -13,13 +13,21 @@
 // Shape: the entry and the read result are counted-pointer locals (the read result an unnamed temporary assigned through
 // the out-of-line operator= and released inline right after); the resource size is `(data ? data->Sizeof() + 8 : 8) +
 // 12` (a ternary local then one add).
+#define CResource CResourceLayout
 #include "engine/CResource.h"
+#undef CResource
+
+class CResource : public CResourceLayout
+{
+public:
+    void SetResourceSize(unsigned long);   // 0x009FBF20
+};
 
 struct CResourceMethods : CResource {
-    void SetResourceSize(unsigned long size);      // 0x009FBF20
 };
-struct CResourceListMethods {
-    bool MakeFreeSpace(unsigned long size);        // 0x009FC4F0
+class CResourceList { public:
+public:
+    bool MakeFreeSpace(unsigned long);   // 0x009FC4F0
 };
 
 void __fastcall DestroyCountedObject(void* object);
@@ -55,7 +63,7 @@ class CBankFileAsyncEntry { public:
 };
 class CBankFileAsync { public:
     unsigned char _pad[0x168];
-    CResourceListMethods ResourceList;             // +0x168
+    CResourceList ResourceList;             // +0x168
     unsigned long GetEntryDataSize(unsigned long index);   // 0x009CC240
     CCountedPointer<CBankFileAsyncEntry> CreateEntry(unsigned long index);   // 0x009D58D0
 };

@@ -2,7 +2,7 @@
 // Grade: RELOCATION_MATCH -- the mode test is a named bool (`bool writing = context.Mode == 2 || context.Mode == 3; if (writing) ... else ...`): that lays the writing arm first (`cmp 2 ; je W ; cmp 3 ; jne E`) and lets the compiler duplicate the WriteBuffer call per string arm; `if (a || b)` directly lays the Transfer arm first and merges the arms
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B64E0, length 142 bytes (`ret 4`).
 // Callees: CCharString::CCharString() @ 0x0099E4B0, CQuestManager::SaveGameState(CCharString&) @ 0x004B5EE0,
-// CDataOutputStream::WriteULong @ 0x00993EA0, CDataOutputStream::WriteBuffer(const void*, long) @ 0x00996610 (catalog
+// CDataOutputStream::WriteULONG @ 0x00993EA0, CDataOutputStream::WriteBuffer(const void*, long) @ 0x00996610 (catalog
 // "PersistData_CompressAndVerify", as in the landed CContainmentVolume::SaveBinary 0x00A75400), CPersistContext::
 // Transfer(CCharString&) @ 0x009BAB50 (the out-of-line reading path; catalog label propagated),
 // CQuestManager::TransferBoasts(CPersistContext&) @ 0x004B05C0, CCharString::~CCharString @ 0x0099EAE0.
@@ -28,8 +28,9 @@ class CCharString { public:
 };
 
 class CDataOutputStream { public:
-    void WriteULong(unsigned long value);          // 0x00993EA0
     void WriteBuffer(const void* data, long size); // 0x00996610
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 class CPersistContext { public:
@@ -52,7 +53,7 @@ void CQuestManager::SaveGameState(CPersistContext& context)
     SaveGameState(state);
     bool writing = context.Mode == 2 || context.Mode == 3;
     if (writing) {
-        context.Stream->WriteULong(state.GetLength());
+        context.Stream->WriteULONG(state.GetLength());
         context.Stream->WriteBuffer(state.GetPString(), state.GetLength());
     } else
         context.Transfer_009bab50(state);

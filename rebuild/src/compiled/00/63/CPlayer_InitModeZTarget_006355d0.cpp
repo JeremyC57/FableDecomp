@@ -11,7 +11,15 @@
 // bitset +0x20, interface map +0x44.
 // Shape: optional components are `T* p = 0; if (HasTC(t)) p = GetTC<T>(t);` (the miss zero kept in a callee-saved
 // register and the call made either way); the mode-0x22 test reads the manager through the const GetTC.
+#define CPlayer CPlayerLayout
 #include "engine/CPlayer.h"
+#undef CPlayer
+
+class CPlayer : public CPlayerLayout
+{
+public:
+    void SetAggressiveMode(bool);   // 0x00487EB0
+};
 
 typedef long EPlayerMode;
 class CProcessedInput;
@@ -76,8 +84,9 @@ class CTCCreatureModeManager { public:                         // interface 0x31
     bool AddMode(unsigned long mode);                   // 0x0073AE10
 };
 class CTCCarrying { public:                                    // interface 0x46
-    bool HasPendingActions();                           // 0x006A1270
     CThing* RemoveThingFromPrimarySlot(bool drop);      // 0x006A1E00
+public:
+    bool IsPrimarySlotFree() const;   // 0x006A1270
 };
 class CTCTargetingPlayer { public:                             // interface 0x08
     void SetAsPickUpNewLockTarget();                    // 0x008023A0
@@ -97,7 +106,6 @@ class CWorld { public:
 
 struct CPlayer_Methods : CPlayer {
     CThing* GetHeroThing();                             // 0x00487DC0
-    void SetAggressiveMode(bool aggressive);            // 0x00487EB0
     void InitModeZTarget(EPlayerMode mode, CProcessedInput* input);
 };
 
@@ -127,7 +135,7 @@ void CPlayer_Methods::InitModeZTarget(EPlayerMode mode, CProcessedInput* input)
             CTCCarrying* carrying = 0;
             if (hero->HasTC(0x46))
                 carrying = hero->GetTC<CTCCarrying>(0x46);
-            if (!carrying->HasPendingActions())
+            if (!carrying->IsPrimarySlotFree())
                 carrying->RemoveThingFromPrimarySlot(false);
         }
     }

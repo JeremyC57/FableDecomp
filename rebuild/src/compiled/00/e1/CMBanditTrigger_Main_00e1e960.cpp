@@ -965,13 +965,18 @@ struct CQR_EscortTraderScript {
     unsigned char _pad[0x50];
     bool          TraderFollowing;                      // +0x50 (PDB +0x64)
 };
-struct CM_BanditTrigger {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+struct CM_BanditTrigger : public CEntityScriptBase {
     void* VTable; GameCalls* Game; CScriptThing Me;     // +0x00 / +0x04 / +0x08
     CQR_EscortTraderScript* ParentClass;                // +0x14
     void* PMasterData;                                  // +0x18
     bool BanditTriggered;                               // +0x1c
-    void SetPredicate(const NScript::CPredicateBase&);  // 0x00F35B10
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
     void Main();
 };
 

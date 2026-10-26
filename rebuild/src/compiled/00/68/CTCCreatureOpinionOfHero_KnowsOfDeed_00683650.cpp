@@ -58,10 +58,16 @@ class CPlayer { public:
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                   // 0x00449960
 };
-class CTCCreatureOpinionOfHero { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
+
+class CTCCreatureOpinionOfHero : public CTCBase { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
-    CPlayerManager* GetPlayerManager_00686d50();         // 0x00686D50 (CTCBase)
     bool KnowsOfDeed(long deedHandle, long deedType, bool includePending);   // 0x00681AE0
     bool KnowsOfDeed(long deedHandle, bool includePending);
 };
@@ -83,7 +89,7 @@ static __forceinline CTCHeroOpinionDeedLog* GetDeedLog(CThing* thing)
 
 bool CTCCreatureOpinionOfHero::KnowsOfDeed(long deedHandle, bool includePending)
 {
-    CThing* hero = GetPlayerManager_00686d50()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetHeroThing();
     if (hero) {
         COpinionDeed* deed = GetDeedLog(hero)->GetDeedFromHandle(deedHandle);
         if (deed)

@@ -10,7 +10,7 @@
 // before the argument's GetPItem (plain nested call). Layout from the constructor 0x00944470.
 class CBaseObject;
 
-struct CCrateThing {
+class CCrateThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06();
     virtual bool CanBePutIn(CBaseObject* place);        // slot 7 (+0x1c)
@@ -23,16 +23,26 @@ class CTCVillage { public:
     bool IsCookTime_00658b20();                                  // 0x00658B20
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                      // +0x04
-    CCrateThing* GetPItem() const;                      // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CAIFilter_ShouldStillBeWorkingInWarehouse {
     CTCVillage*             m_pVillage;                 // +0x04
-    CBaseIntelligentPointer m_pCrate;                   // +0x08
-    CBaseIntelligentPointer m_pWarehouse;               // +0x10
+    CIntelligentPointer<CCrateThing> m_pCrate;                   // +0x08
+    CIntelligentPointer<CCrateThing> m_pWarehouse;               // +0x10
     virtual bool operator()();
 };
 

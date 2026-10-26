@@ -1,6 +1,6 @@
 // C3DAnimFileBoneMaskChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver&) const -- count then one bool per bone
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB06B0, length 80 bytes.
-// Callees: CDataOutputStream::WriteULONG @ 0x00993EA0, CDataOutputStream::WriteBOOL @ 0x00993E30.
+// Callees: CDataOutputStream::WriteULONG @ 0x00993EA0, CDataOutputStream::WriteEBOOL @ 0x00993E30.
 // The bool array lives at +0x10 (begin) / +0x14 (end); Size() is recomputed on every loop test (both pointers
 // re-read) and the element is zero-extended (`xor eax,eax ; mov al,[..]`) into the bool argument. The saver is unused.
 // No super-chunk write: this chunk derives from the plain CChunkedFileChunk.
@@ -21,8 +21,9 @@ class CDataOutputStream { public:
     void WriteLONG(long value);                                    // 0x00993EB0
     void WriteULONG(unsigned long value);                          // 0x00993EA0
     void WriteFLOAT(float value);                                  // 0x00993EE0
-    void WriteBOOL(bool value);                                    // 0x00993E30
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
 };
 
 template <class T>
@@ -96,5 +97,5 @@ void C3DAnimFileBoneMaskChunk::WriteToFile(CDataOutputStream& out, CChunkedFileS
 {
     out.WriteULONG(EnableMask.Size());
     for (unsigned long i = 0; i < EnableMask.Size(); ++i)
-        out.WriteBOOL(EnableMask[i]);
+        out.WriteEBOOL(EnableMask[i]);
 }

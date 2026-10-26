@@ -1,9 +1,16 @@
 #include "engine/CEnemyDef.h"
 #include <cstdio>
-class CDefClassBase;
+class CDefClassBase {
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);
+};
 struct CEnemyDef_Methods : CEnemyDef { void base_clone(const CDefClassBase* src); };
 static void* g_self; static const void* g_src;
-void CEnemyDef_Methods::base_clone(const CDefClassBase* src) { g_self = this; g_src = src; }
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+{
+    const CDefClassBase* src = (const CDefClassBase*)&other_; (void)src; g_self = ((CEnemyDef_Methods*)this); g_src = src;
+    return *this;
+}
 void __fastcall CEnemyDef_Copy(CEnemyDef* self, int, const CDefClassBase* src);
 int main()
 {

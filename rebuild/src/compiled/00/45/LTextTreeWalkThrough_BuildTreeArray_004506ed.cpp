@@ -11,7 +11,7 @@ struct LTextTreeWalkThrough { char dummy; };
    so ecx=this, single stack arg, ret 4 (matches the __fastcall retail). */
 struct NodeArg { TreeNode* p; };
 
-extern "C" void __cdecl FreeNode(TreeNode* n);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall LTextTreeWalkThrough_BuildTreeArray(LTextTreeWalkThrough* self, NodeArg arg)
 {
@@ -21,7 +21,7 @@ void __fastcall LTextTreeWalkThrough_BuildTreeArray(LTextTreeWalkThrough* self, 
         NodeArg ca; ca.p = node->child;
         LTextTreeWalkThrough_BuildTreeArray(self, ca);
         TreeNode* nxt = node->next;
-        FreeNode(node);
+        free(node);
         node = nxt;
     }
 }

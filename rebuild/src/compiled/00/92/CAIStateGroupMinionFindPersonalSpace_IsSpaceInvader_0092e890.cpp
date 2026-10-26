@@ -2,7 +2,7 @@
 // current and previous positions agree within 1e-4 on every axis) that is not in creature mode 8 or 9.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092E890, length 179 bytes (+ int3 padding). `ret 4`, `this` unused.
 // Callees: CVectorMap::LowerBound @ 0x004365B0 (inlined HasTC + entry lookup, type 0x31 = CTCCreatureModeManager,
-// bit 17 of the bitset dword at +0x24), CTCCreatureModeManager::HasMode @ 0x0073A8A0 (twice); 1e-4f @ 0x0129BA3C.
+// bit 17 of the bitset dword at +0x24), CTCCreatureModeManager::IsModeActive @ 0x0073A8A0 (twice); 1e-4f @ 0x0129BA3C.
 // Shape: `(float)fabs(a - b) <= 1e-4f` gives `fcomp ; test ah,41h ; jp`; the motion block is the thing's +0x60
 // pointer with two C3DVectors at +0x0c / +0x18. The lookup key is stored in the dead argument slot ([esp+8]).
 // No engine header for this class.
@@ -108,7 +108,8 @@ struct CThingWithMotion {
 };
 
 class CTCCreatureModeManager { public:
-    bool HasMode(long mode);                    // 0x0073A8A0
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 
 struct CAIStateGroup_MinionFindPersonalSpace : CAIStateGroupBase {
@@ -123,7 +124,7 @@ bool CAIStateGroup_MinionFindPersonalSpace::IsSpaceInvader(CThing* thing)
             (float)fabs(motion->PosY - motion->LastPosY) <= 1e-4f &&
             (float)fabs(motion->PosZ - motion->LastPosZ) <= 1e-4f && thing->HasTC(0x31)) {
             CTCCreatureModeManager* modes = (CTCCreatureModeManager*)thing->FindEntry(0x31)->component;
-            if (!modes->HasMode(8) && !modes->HasMode(9))
+            if (!modes->IsModeActive(8) && !modes->IsModeActive(9))
                 return true;
         }
     }

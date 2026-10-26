@@ -42,8 +42,8 @@ public:
     CGameTimeManager* PGameTimeManager;                // +0x1C scoped_ptr<CGameTimeManager>
 };
 class CTCBase {
-public:
-    const CWorld& PeekWorld() const;                   // 0x00686A80
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 
 static inline float HHMMToDayFraction(long time)

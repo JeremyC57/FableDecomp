@@ -27,17 +27,23 @@ struct CStrikeQuery {                          // the creature's object at +0x10
     virtual void v014();
     virtual bool IsStriking();                // slot 15 (+0x3c)
 };
-class CThingPlayerCreature { public:
+class CThingCreatureBase
+{
+public:
+    bool IsPerformingAnyAction() const;   // 0x006622A0
+};
+
+class CThingPlayerCreature : public CThingCreatureBase { public:
     unsigned char _pad[0x100];
     CStrikeQuery* m_pStrikeQuery;             // +0x100
-    bool IsPerformingAnyAction();             // 0x006622A0
 };
 class CPlayer { public:
     bool IsInitialised();                     // 0x0099A330
     CThingPlayerCreature* GetPlayerCreature();// 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                 // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 extern long g_BulletTimeStrikeSeconds;        // 0x01375550
 extern long g_BulletTimeFramesPerSecond;      // 0x01378D08
@@ -55,9 +61,9 @@ public:
 
 void CBulletTimeManager::UpdateCombatRelatedEffects()
 {
-    if (!PlayerManager->GetMainPlayer()->IsInitialised())
+    if (!PlayerManager->GetMainPlayer().IsInitialised())
         return;
-    CThingPlayerCreature* creature = PlayerManager->GetMainPlayer()->GetPlayerCreature();
+    CThingPlayerCreature* creature = PlayerManager->GetMainPlayer().GetPlayerCreature();
     if (creature == 0 || !creature->IsPerformingAnyAction())
         return;
     if (creature->m_pStrikeQuery->IsStriking()) {

@@ -44,7 +44,6 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -56,6 +55,8 @@ class CThing { public:
         }
         return false;
     }
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long player,
@@ -63,7 +64,10 @@ class CThingObject : public CThing { public:
 };
 class CTCOwnedEntity { public: void SetPOwner(CThing* owner); };   // 0x007E8590
 class CTCGold { public: unsigned char _pad[0xc]; long Gold; };     // interface 0xCC
-class CDefinitionManager { public: long GetDefGlobalIndexFromName(const CCharString& name); };   // 0x009AD410
+class CDefinitionManager { public: long GetDefGlobalIndexFromName(const CCharString& name) const; };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};   // 0x009AD410
 struct CGameTime { unsigned char _pad[0x14]; long Day; };
 class CWorld { public: unsigned char _pad[0x1c]; CGameTime* Time; };
 class CBuyableHouseDef { public:
@@ -78,7 +82,14 @@ class CBuyableHouseDef { public:
 };
 template<class T> inline const T& min_of(const T& a, const T& b) { return b < a ? b : a; }
 
-class CTCBuyableHouse { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCBuyableHouse : public CTCBase { public:
     void*             __vftable;                        // +0x00
     CThing*           ParentThing;                      // +0x04
     unsigned char     _pad08[0x4];
@@ -91,8 +102,6 @@ class CTCBuyableHouse { public:
     long              CurrentDressLevel;                // +0x1c
     unsigned char     _pad20[0x44 - 0x20];
     long              VirtualMoneyBags;                 // +0x44
-    CWorld* GetWorld() const;                           // 0x00686A80
-    CDefinitionManager* GetDefinitions() const;         // 0x006869D0
     long CountMoneyBags() const;                        // 0x006C04D0
     void DestroyMoneyBags(bool giveToHero);             // 0x006C0580
     bool GetRentMoneyPos(C3DVector* pos, long index, long count);   // 0x006C06D0
@@ -100,8 +109,8 @@ class CTCBuyableHouse { public:
     CBuyableHouseDef* GetDef() const { return PDef; }
     long GetNumberOfRentBagsDue() const
     {
-        if (PDef && Rented && GetWorld()->Time->Day >= DayNextRentIsDue) {
-            long due = (GetWorld()->Time->Day - DayNextRentIsDue) / PDef->DaysBetweenRentPayments + 1;
+        if (PDef && Rented && PeekWorld().Time->Day >= DayNextRentIsDue) {
+            long due = (PeekWorld().Time->Day - DayNextRentIsDue) / PDef->DaysBetweenRentPayments + 1;
             if (due > 0)
                 return due;
         }
@@ -131,7 +140,7 @@ void CTCBuyableHouse::CreateRentMoney()
         long index;
         {
             CCharString name("OBJECT_GOLDBAG_SMALL_WITH_COINS");
-            index = GetDefinitions()->GetDefGlobalIndexFromName(name);
+            index = GetDefinitionManager().GetDefGlobalIndexFromName(name);
         }
         if (index <= 0)
             continue;

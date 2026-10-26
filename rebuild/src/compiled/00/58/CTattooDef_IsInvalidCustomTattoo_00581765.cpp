@@ -23,7 +23,10 @@ class CWideString { public:
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);        // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);            // 0x0099BF30
-bool __fastcall PathExists(const CWideString& path);        // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};        // 0x00999230
 CWideString __fastcall GetValidProfileName(const CWideString& name);   // 0x00406350
 namespace NResourceDirectoryNames {
 CWideString __fastcall GetSaveDir_0041a650();                        // 0x0041A650
@@ -63,10 +66,10 @@ bool CTattooDef::IsInvalidCustomTattoo() const
         return false;
     CUserProfileManager* profiles = CUserProfileManager::Get();
     CWideString profileDir = NResourceDirectoryNames::GetSaveDir_0041a650() + GetValidProfileName(profiles->ProfileName) + L"\\";
-    if (PathExists(profileDir + CustomFileName.ToWideString())) {
+    if (CAFile::PathExists(profileDir + CustomFileName.ToWideString())) {
         CWideString baseDir = NResourceDirectoryNames::GetCustomTattooDir() + L"\\";
         CDiskFileWin32 file(profileDir + CustomFileName.ToWideString(), FILE_ACCESS_READ, 2);
-        if (PathExists(baseDir + CustomFileNameBase.ToWideString())) {
+        if (CAFile::PathExists(baseDir + CustomFileNameBase.ToWideString())) {
             CDiskFileWin32 baseFile(baseDir + CustomFileNameBase.ToWideString(), FILE_ACCESS_READ, 2);
             if (!FilesAreIdentical(file, baseFile))
                 return false;

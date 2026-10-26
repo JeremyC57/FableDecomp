@@ -83,12 +83,17 @@ public:
 inline bool IsAlive(const CThing* thing) { return thing && !(thing->Flags91 & 1); }
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThingBuilding>& thing);   // 0x0065F8CA
 
+class CThingManager;
+class CWorld;
 class CTCBase {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void OnVillageChanged();                // slot 6 (+0x18)
     CThing* Thing;                                  // +0x04
     unsigned char _pad08[4];
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CTCVillage : public CTCBase {
 public:
@@ -107,8 +112,6 @@ class CWorld { public: unsigned char _pad[0x1c]; CGameClock* PClock; };
 
 class CTCDummyVillagerBase : public CTCBase {
 public:
-    CThingManager* GetThingManager() const;         // 0x00686AE0
-    CWorld* GetWorld() const;                       // 0x00686A70
 };
 
 class CTCDummyVillager : public CTCDummyVillagerBase {
@@ -132,7 +135,7 @@ public:
 void CTCDummyVillager::OnInitialActivate()
 {
     if (HomeBuildingUID) {
-        CThing* thing = GetThingManager()->FindThingByUID(HomeBuildingUID);
+        CThing* thing = GetThingManager().FindThingByUID(HomeBuildingUID);
         if (thing) {
             if (thing->ThingType == 3)
                 HomeBuilding = CIntelligentPointer<CThingBuilding>((CThingBuilding*)thing);
@@ -140,7 +143,7 @@ void CTCDummyVillager::OnInitialActivate()
             Respawnable = false;
     }
     if (WorkBuildingUID) {
-        CThing* thing = GetThingManager()->FindThingByUID(WorkBuildingUID);
+        CThing* thing = GetThingManager().FindThingByUID(WorkBuildingUID);
         if (thing) {
             if (thing->ThingType == 3)
                 WorkBuilding = CIntelligentPointer<CThingBuilding>((CThingBuilding*)thing);
@@ -148,7 +151,7 @@ void CTCDummyVillager::OnInitialActivate()
             Respawnable = false;
     }
     if (CreatureUID) {
-        CThing* thing = GetThingManager()->FindThingByUID(CreatureUID);
+        CThing* thing = GetThingManager().FindThingByUID(CreatureUID);
         if (thing && thing->ThingType == 1) {
             Creature = CIntelligentPointer<CThingAICreature>((CThingAICreature*)thing);
             CThingAICreature* c = Creature.Get();
@@ -168,7 +171,7 @@ void CTCDummyVillager::OnInitialActivate()
             }
         }
     }
-    if ((!Creature.Get() || (Creature->Flags91 & 1)) && CanBeRecreated() && GetWorld()->PClock->Day >= DayToBeRecreated &&
+    if ((!Creature.Get() || (Creature->Flags91 & 1)) && CanBeRecreated() && GetWorld().PClock->Day >= DayToBeRecreated &&
         Thing->HasTC(0x23)) {
         CTCVillage* village = ((CTCVillageMember*)Thing->GetTC(0x23))->GetVillage();
         if (village)

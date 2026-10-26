@@ -3,9 +3,8 @@
 // this wrapper calls the complete destructor009F1560 and operator delete00BFE9BC.
 class CCodeSectionManager;
 void __fastcall DestroyCodeSectionManager(CCodeSectionManager*); // 009F1560, member ABI
-void DeleteCodeSectionManagerStorage(void*); // 00BFE9BC, cdecl
 void* __fastcall CCodeSectionManager_ScalarDeletingDestructor(CCodeSectionManager* self,int,unsigned int flags) {
  DestroyCodeSectionManager(self);
- if(flags&1) DeleteCodeSectionManagerStorage(self);
+ if(flags&1) operator delete(self);
  return self;
 }

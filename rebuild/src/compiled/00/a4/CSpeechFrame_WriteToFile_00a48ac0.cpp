@@ -1,13 +1,14 @@
 // CSpeechFrame::WriteToFile(CDataOutputStream* stream) const -- save one lip-sync analysis frame: the 0x0FF7DA7A tag, the frequency count, each frequency's real part, then amplitude, median, base frequency and variance
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A48AC0, length 129 bytes (`ret 4`).
-// Callees: CDataOutputStream::WriteULong @ 0x00993EA0, WriteFloat @ 0x00993EE0 (both under the propagated "WriteCBYTE" label).
+// Callees: CDataOutputStream::WriteULONG @ 0x00993EA0, WriteFloat @ 0x00993EE0 (both under the propagated "WriteCBYTE" label).
 // Layout: Ego_r.pdb CSpeechFrame (0x20) with the retail 12-byte CArray<CComplexNumber> Frequencies at +0, so the floats sit at
 // +0x0c..+0x18 (PDB +0x10..+0x1c).
 // Shape: the loop bound is the array size re-read every pass (unsigned `jb`), the element read as `m_first[i]`.
 // Leaf: WriteToFile
 class CDataOutputStream { public:
-    void WriteULong(unsigned long value);           // 0x00993EA0
     void WriteFloat(float value);                   // 0x00993EE0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 class CComplexNumber { public: float Real; float Imaginary; };
@@ -29,8 +30,8 @@ class CSpeechFrame { public:
 
 void CSpeechFrame::WriteToFile(CDataOutputStream* stream) const
 {
-    stream->WriteULong(0x0ff7da7a);
-    stream->WriteULong(Frequencies.Size());
+    stream->WriteULONG(0x0ff7da7a);
+    stream->WriteULONG(Frequencies.Size());
     for (unsigned long i = 0; i < Frequencies.Size(); ++i)
         stream->WriteFloat(Frequencies[i].Real);
     stream->WriteFloat(Amplitude);

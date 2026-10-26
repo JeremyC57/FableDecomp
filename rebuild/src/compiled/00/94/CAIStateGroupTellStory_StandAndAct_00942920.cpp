@@ -28,7 +28,7 @@ class CSoundPair { public:
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];                      // +0x04..+0xa7
-    ~CCreatureActionBase();                         // 0x00693EF0
+    virtual ~CCreatureActionBase();                         // 0x00693EF0
 };
 
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:

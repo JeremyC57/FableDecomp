@@ -29,7 +29,10 @@ class CCharString { public:
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0 CCRC::Calc
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0 CCRC::Calc
 
 class CAnimFilterOfGroup { public:                    // vtable 0x01267568
     virtual void v00();
@@ -39,7 +42,7 @@ class CAnimFilterOfGroup { public:                    // vtable 0x01267568
     __forceinline void SetGroupInline(const CCharString& group)   // the same body, expanded at this site
     {
         Group = group;
-        GroupCRC = Calc_004014a0(0, group.GetPString(), group.GetLength());
+        GroupCRC = CCRC::Calc(0, group.GetPString(), group.GetLength());
     }
 };
 

@@ -19,11 +19,20 @@ template <class T> class CArray { public:      // retail CArray: 12 bytes
     T& operator[](unsigned long index) const { return m_pFirst[index]; }
 };
 
-struct CDataBank {                      // CBankFile base (0x90 bytes in retail) + the text-bank state
+class CBankFile
+{
+public:
+    unsigned long GetEntryDataType(unsigned long) const;   // 0x009CC210
+};
+class CBankFileAsync : public CBankFile
+{
+public:
+};
+
+struct CDataBank : public CBankFileAsync {                      // CBankFile base (0x90 bytes in retail) + the text-bank state
     void*                        __vftable;               // +0x000
     unsigned char                _bankFile[0x1e0 - 4];    // +0x004 .. +0x1e0
     CArray<CDataBankGroupEntry*> Entries;                 // +0x1e0 (PDB name; CDataBankEntry* in the PDB)
-    unsigned long GetEntryDataType(unsigned long index) const;   // 0x009CC210 (CBankFile)
     void BeginLoadingGroup(unsigned long index);
 };
 

@@ -8,10 +8,11 @@
 //          Slot names are descriptive. Same entity-script shape as the landed CHTE_Prisoner::Main 0x00D69F50.
 // Layout = Ego_r.pdb CChunkCollectionIndicator (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14
 //          (CQ_AwakeningTheOracleScript*, collected count at +0x4c), PMasterData +0x18, BarID +0x1c.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    ~CScriptThing();                          // 0x004AA840
+    virtual ~CScriptThing();                          // 0x004AA840
 };
 class CCharString { public:
     void* PStringData;
@@ -68,8 +69,14 @@ class CGameScriptInterface { public:
     virtual void UpdateProgressBar(long bar, long value, long maximum);   // slot 335 (+0x53c)
 };
 
-struct CIsThingAlive {                         // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                         // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                     // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -80,7 +87,14 @@ struct CQ_AwakeningTheOracleScript {
     long          ChunksCollected;            // +0x4c
 };
 
-class CChunkCollectionIndicator {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CChunkCollectionIndicator : public CEntityScriptBase {
 public:
     void*                        __vftable;   // +0x00
     CGameScriptInterface*        Game;        // +0x04
@@ -88,8 +102,6 @@ public:
     CQ_AwakeningTheOracleScript* ParentClass; // +0x14
     void*                        PMasterData; // +0x18
     long                         BarID;       // +0x1c
-    void RegisterFilter(CIsThingAlive& filter);   // 0x00F35B10
-    bool IsDone();                            // 0x00F35B30
     void Main();
 };
 
@@ -97,17 +109,17 @@ void CChunkCollectionIndicator::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->Update();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->SetHUDActive(true);
     {
         CCharString title("HUD_EXPR_TABLET_Y");
         BarID = Game->AddProgressBar(title, 4, 1.0f);
     }
-    while (!IsDone()) {
+    while (!IsActiveThreadTerminating()) {
         Game->UpdateProgressBar(BarID, ParentClass->ChunksCollected, -1);
         Game->Update();
     }

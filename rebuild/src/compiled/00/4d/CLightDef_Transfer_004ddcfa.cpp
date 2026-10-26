@@ -16,10 +16,7 @@ public:
 enum EPointLightChannelEffect { };                          // enumerators not needed
 class CPersistContext {
 public:
-    void Transfer(CRGBColour& value);                            // 0x004595A3
-    void Transfer(long& value);                                  // 0x00431102
-    void Transfer(float& value);                                 // 0x00431061
-    void Transfer(bool& value);                                  // 0x0043314A
+    template <class T> void Transfer(T& value);                            // 0x004595A3
     void Transfer(EPointLightChannelEffect& value);              // 0x004DDDAC
 };
 class CLightDef {

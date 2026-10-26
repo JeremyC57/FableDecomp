@@ -7,7 +7,10 @@
 // (landed @ 0x004AFF80: the same two clears and the frame store) inlined.
 // Layout (retail): FrameBoastsLastUpdated +0x64, Boasts +0x68, AcceptedBoasts +0x6c (lists of one head pointer),
 // WorldDestructed +0x8e (PDB +0xa0/+0xa4/+0xb0/+0xea).
-long __fastcall GFGetCurrentFrame();               // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};               // 0x0049D870
 
 struct CBoastList {                                // list<CBoast>: one head-node pointer
     void* m_pHead;
@@ -26,7 +29,7 @@ class CQuestManager { public:
     {
         Boasts.clear();
         AcceptedBoasts.clear();
-        FrameBoastsLastUpdated = GFGetCurrentFrame();
+        FrameBoastsLastUpdated = CWorld::GetFrame();
     }
     void OnWorldDestruction();
 };

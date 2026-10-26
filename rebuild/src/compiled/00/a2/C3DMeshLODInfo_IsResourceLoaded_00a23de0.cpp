@@ -3,7 +3,8 @@
 // The non-null case is tested first so the `return true` block lands last, which is
 // the layout retail emitted.
 class CBankFileAsyncData { public:
-    bool IsFinished();
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
 
 class C3DMeshLODInfo { public:

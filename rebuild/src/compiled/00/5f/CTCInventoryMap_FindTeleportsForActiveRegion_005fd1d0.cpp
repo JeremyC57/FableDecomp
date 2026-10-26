@@ -174,8 +174,9 @@ class CRegion { public:
     unsigned long size() const { return LinkedMapsFinish - LinkedMapsStart; }
 };
 class CWorldMap { public:
-    const CRegion& GetRegion(long index);             // 0x004FC180
     C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const;   // 0x004FC3C0
+public:
+    const CRegion& GetRegion(long) const;   // 0x004FC180
 };
 class CThingFilter_HasTC { public:
     long m_type;

@@ -23,7 +23,10 @@ class CWideString { public:
     ~CWideString();                                  // 0x0099B510
 };
 
-bool __fastcall PathExists(const CWideString& path); // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+}; // 0x00999230
 
 class CASuspendableProcess;
 enum FileAccessType { FILE_ACCESS_READ = 1 };
@@ -59,7 +62,7 @@ struct CSkyRendererMethods : CEngineSkyRenderer {
 
 void CSkyRendererMethods::BuildStarFieldVB()
 {
-    if (PathExists(StarVBFilePath())) {
+    if (CAFile::PathExists(StarVBFilePath())) {
         CDiskFileWin32 file(StarVBFilePath(), FILE_ACCESS_READ, 2);
         file.Read(&StarCount, 4, 0);
         StarField().Initialise(VERTEX_TYPE_STAR_FIELD, StarCount, 0x18, 0, VERTEX_BUFFER_POOL_MANAGED);

@@ -15,17 +15,28 @@ public:
     long GetKindQuery();                        // 0x00661FF0
 };
 
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
-    void* _vfptr;
-    CThingAICreature* m_pItem;
-    CThingAICreature* GetPItem() const;         // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-bool __fastcall IS_THING_ALIVE(const CBaseIntelligentPointer& thing);   // 0x004AB8F0
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThingAICreature>& thing);   // 0x004AB8F0
 
 struct SVillagerNode {                          // STLport list node
     SVillagerNode* _M_next;
     SVillagerNode* _M_prev;
-    CBaseIntelligentPointer _M_data;
+    CIntelligentPointer<CThingAICreature> _M_data;
 };
 
 class CTCVillage { public:
@@ -38,7 +49,7 @@ long CTCVillage::GetNumberOfGayVillagers()
 {
     long count = 0;
     for (SVillagerNode* node = VillagePeople->_M_next; node != VillagePeople; node = node->_M_next) {
-        CBaseIntelligentPointer& villager = node->_M_data;
+        CIntelligentPointer<CThingAICreature>& villager = node->_M_data;
         if (IS_THING_ALIVE(villager) && villager.GetPItem()->GetKindQuery() == 1 &&
             (villager.GetPItem()->m_flags1c9 & 8) && (villager.GetPItem()->m_flags1c9 & 0x10))
             ++count;

@@ -63,7 +63,7 @@ class CCombatActionBase { public:                          // retail sizeof 0x11
     virtual void v10();
     virtual void* Clone() const;                    // slot 11 (+0x2c, a counted copy of itself)
     unsigned char _body[0x114 - 4];
-    ~CCombatActionBase();                           // 0x0062E900
+    virtual ~CCombatActionBase();                           // 0x0062E900
 };
 struct CIntelligentPointerProjectile : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
     virtual void v00();

@@ -58,11 +58,21 @@ public:
     CSoundSource* PSoundSource;                             // +0x98
 };
 
-class CBaseIntelligentPointer {
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
-    virtual void v00();
-    void* PItem;                                            // +0x04
-    CThingSoundEmitter* GetPItem() const;                   // 0x00A01B50
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CTCSoundPlayer {
@@ -70,10 +80,16 @@ public:
     void* m_pVtable;                                        // +0x00 CTCBase
     CThing* ParentThing;                                    // +0x04
     unsigned char _base08[4];
-    CBaseIntelligentPointer PAttachedEmitter;               // +0x0C CIntelligentPointer<CThingSoundEmitter>
+    CIntelligentPointer<CThingSoundEmitter> PAttachedEmitter;               // +0x0C CIntelligentPointer<CThingSoundEmitter>
 };
 
-class CTCTalk {
+class CTCBase
+{
+protected:
+    const CASoundBank& PeekSampleBank() const;   // 0x00686D70
+};
+
+class CTCTalk : public CTCBase {
 public:
     void* m_pVtable;                                        // +0x00 CTCBase
     const CThing* ParentThing;                              // +0x04
@@ -87,10 +103,9 @@ public:
     float SampleLoadedTime;                                 // +0x20
     CASoundBank* PSpeechBank;                               // +0x24
 
-    CASoundBank* GetDefaultSpeechBank() const;              // 0x00686D70
     bool IsSpeechSamplePlaying() const;
 private:
-    const CASoundBank& GetSpeechBank() const { return PSpeechBank ? *PSpeechBank : *GetDefaultSpeechBank(); }
+    const CASoundBank& GetSpeechBank() const { return PSpeechBank ? *PSpeechBank : *(&PeekSampleBank()); }
 };
 
 bool CTCTalk::IsSpeechSamplePlaying() const

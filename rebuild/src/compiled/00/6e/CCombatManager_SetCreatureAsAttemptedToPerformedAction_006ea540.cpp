@@ -19,7 +19,8 @@ class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                  // +0x18
     unsigned __int64 GetUID() const { return UniqueID; }
-    bool IsCombatEligible() const;              // 0x00662410
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 
 class CCombatSequenceBase { public:
@@ -89,7 +90,7 @@ class CCombatManager { public:
 
 void CCombatManager::SetCreatureAsAttemptedToPerformedAction(const CThingCreatureBase& creature, bool performed)
 {
-    if (!creature.IsCombatEligible())
+    if (!creature.IsInMeleeAsAttacker())
         return;
     CCombatantInfo& info = GetCombatantInfo(creature.GetUID());
     if (info.AttackerInfo.CurrentSequence < 0)

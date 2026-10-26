@@ -2,7 +2,6 @@
 // retail 0x0048b4a0 __fastcall(this, uint flags) -> void*
 
 // operator delete (retail 0xbfe9bc)
-void __cdecl operator_delete_impl(void* p);
 
 class CInputProcessTargetLockCycleTargets
 { public:
@@ -15,6 +14,6 @@ void* __fastcall CInputProcessTargetLockCycleTargets_scalar_deleting_destructor(
 {
     process->destroy();
     if (flags & 1)
-        operator_delete_impl(process);
+        operator delete(process);
     return process;
 }

@@ -13,6 +13,7 @@
 // Shape: the nested GetHero call fetches the interface vtable once; the loop recomputes size() each pass.
 #include "fable_string.h"
 
+namespace NScript { class CPredicateBase; }
 class CCPPointerInfo { public: long References; };
 class C3DVector { public: float X, Y, Z; };
 
@@ -219,12 +220,13 @@ class CEntityScriptBase { public:                               // +0 vptr, +4 G
     void* __vftable;
     CGameScriptInterface* Game;                          // +0x04
     CScriptThingRuntime Me;                              // +0x08
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
 };
 namespace NScript {
 struct CAT_Phase1Guard : CEntityScriptBase {        // nested in CQ_AmbushTradersScript
     CQ_AmbushTradersScript* ParentClass;             // +0x14
     void* PMasterData;                                   // +0x18
-    bool IsDone();                                       // 0x00F35B30
     void Init();
 };
 }
@@ -247,7 +249,7 @@ void NScript::CAT_Phase1Guard::Init()
     Game->EntitySetThingAsEnemyOfThing(Game->GetHero(), Me);
     for (unsigned long i = 0; i < ParentClass->AllBandits.size(); ++i) {
         if (ParentClass->AllBandits[i].IsAlive()) {
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
             Game->EntitySetThingAsEnemyOfThing(Me, ParentClass->AllBandits[i]);
             Game->EntitySetThingAsEnemyOfThing(ParentClass->AllBandits[i], Me);

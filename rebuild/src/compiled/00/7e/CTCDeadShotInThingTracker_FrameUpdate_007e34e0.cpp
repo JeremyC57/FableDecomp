@@ -21,10 +21,21 @@ class CThing { public:
     void Kill(bool immediately);                            // 0x004C9B80
 };
 
-struct CBaseIntelligentPointer {                            // sizeof 8: vptr + PData
-    virtual void v00();
-    void* PData;                                            // +0x04 CBaseObjectPointer*
-    CThing* GetPItem() const;                               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CTCDeadShotInThingTracker { public:
@@ -32,7 +43,7 @@ class CTCDeadShotInThingTracker { public:
     CThing*                 ParentThing;                    // +0x04 (CTCBase)
     bool                    ToBeRemoved;                    // +0x08
     bool                    IsInGlobalUpdateTCs;            // +0x09
-    CBaseIntelligentPointer PThingStuckIn;                  // +0x0c CIntelligentPointer<const CThing>
+    CIntelligentPointer<CThing> PThingStuckIn;                  // +0x0c CIntelligentPointer<const CThing>
     bool                    HasThingStuckIn;                // +0x14
     void FrameUpdate();
 };

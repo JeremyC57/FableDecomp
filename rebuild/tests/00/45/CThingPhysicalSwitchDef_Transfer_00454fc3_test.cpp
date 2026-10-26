@@ -1,45 +1,52 @@
 #include <cstdio>
-
-static int g_seq;
-static int g_log[8];
-static int g_baseCalled;
-
-struct CSerial {
-    void mA(void* p);
-    void mB(void* p);
-    void mC(void* p);
+// Behaviour test for 0x00454FC3: the reconstructed body (pragmas stripped) driven through recording stubs;
+// checks the transfer order, the helper chosen per member (kind) and the member address.
+static const void* g_p[32]; static int g_k[32]; static int g_n = 0;
+static void Rec(int k, const void* p) { if (g_n < 32) { g_k[g_n] = k; g_p[g_n] = p; } ++g_n; }
+enum EPSwitchTriggerType { };
+class CEngineGraphic { public: unsigned char _body[0x0e]; };   // retail 14 bytes
+class CPersistContext { public:
+    template <class T> void Transfer(T& value);       // one-argument transfer helpers (namepass TR2)
 };
-
-class CThingPhysicalSwitchDef { public:
-    void BaseTransfer(CSerial* s);
+class CThingBaseDef { public:
+    virtual void Transfer(CPersistContext& context);   // 0x00676BE0
+    unsigned char _body04[0x70 - 4];                   // retail def base (Ego_r.pdb CThingBaseDef 0x74 less 4)
 };
+class CThingPhysicalSwitchDef : public CThingBaseDef { public:
+    EPSwitchTriggerType TriggerType; // +0x70
+    CEngineGraphic UntriggeredGraphic; // +0x74
+    CEngineGraphic TriggeredGraphic; // +0x82
+    long TriggerSound;              // +0x90
+    virtual void Transfer(CPersistContext& context);
+};
+template <> void CPersistContext::Transfer<CEngineGraphic>(CEngineGraphic& value);
+template <> void CPersistContext::Transfer<EPSwitchTriggerType>(EPSwitchTriggerType& value);
+template <> void CPersistContext::Transfer<long>(long& value);
 
-void CSerial::mA(void* p){ g_log[g_seq++] = 1; }
-void CSerial::mB(void* p){ g_log[g_seq++] = 2; }
-void CSerial::mC(void* p){ g_log[g_seq++] = 3; }
-void CThingPhysicalSwitchDef::BaseTransfer(CSerial* s){ g_baseCalled = 1; }
-
-void __fastcall CThingPhysicalSwitchDef_Transfer(CThingPhysicalSwitchDef* self, void* edx, CSerial* s)
+void CThingPhysicalSwitchDef::Transfer(CPersistContext& context)
 {
-    self->BaseTransfer(s);
-    char* base = (char*)self;
-    s->mA(base + 0x70);
-    s->mB(base + 0x74);
-    s->mB(base + 0x82);
-    s->mC(base + 0x90);
+    CThingBaseDef::Transfer(context);
+    context.Transfer(TriggerType);
+    context.Transfer(UntriggeredGraphic);
+    context.Transfer(TriggeredGraphic);
+    context.Transfer(TriggerSound);
 }
-
-int main(){
-    char buf[0x100];
-    CThingPhysicalSwitchDef* obj = (CThingPhysicalSwitchDef*)buf;
-    CSerial s;
-    g_seq = 0; g_baseCalled = 0;
-    for(int i=0;i<8;i++) g_log[i]=0;
-    CThingPhysicalSwitchDef_Transfer(obj, 0, &s);
-    if(g_baseCalled==1 && g_log[0]==1 && g_log[1]==2 && g_log[2]==2 && g_log[3]==3 && g_seq==4){
-        std::printf("CThingPhysicalSwitchDef_00454fc3_TEST PASS\n");
-        return 0;
-    }
-    std::printf("FAIL base=%d seq=%d\n", g_baseCalled, g_seq);
+template <> void CPersistContext::Transfer<CEngineGraphic>(CEngineGraphic& v) { Rec(6, &v); }
+template <> void CPersistContext::Transfer<EPSwitchTriggerType>(EPSwitchTriggerType& v) { Rec(11, &v); }
+template <> void CPersistContext::Transfer<long>(long& v) { Rec(3, &v); }
+void CThingBaseDef::Transfer(CPersistContext& context) { Rec(1, this); }
+static CThingPhysicalSwitchDef d;
+int main()
+{
+    CPersistContext c;
+    d.Transfer(c);
+    bool ok = g_n == 5;
+    ok = ok && g_k[0] == 1 && g_p[0] == (const void*)&d;
+    ok = ok && g_k[1] == 11 && g_p[1] == (const void*)&d.TriggerType;
+    ok = ok && g_k[2] == 6 && g_p[2] == (const void*)&d.UntriggeredGraphic;
+    ok = ok && g_k[3] == 6 && g_p[3] == (const void*)&d.TriggeredGraphic;
+    ok = ok && g_k[4] == 3 && g_p[4] == (const void*)&d.TriggerSound;
+    if (ok) { std::printf("CThingPhysicalSwitchDef_00454fc3_TEST PASS\n"); return 0; }
+    std::printf("FAIL %d\n", g_n);
     return 1;
 }

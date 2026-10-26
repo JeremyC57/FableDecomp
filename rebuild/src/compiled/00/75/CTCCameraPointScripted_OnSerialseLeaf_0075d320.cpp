@@ -9,11 +9,21 @@
 // ThingUID +0x70, PAT +0x78, TransitionTime +0x7c, LookDirSet/StartPosSet/EndPosSet +0x80..0x82; CPersistContext Mode +0x18.
 // Shape: on load the three "set" flags are raised first; the UID tail follows the landed CTCDRegionExit::OnSerialise
 // (0x00779430), except that the saving arm only transfers a non-zero UID.
+#define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
+#undef CTCBase
+class CThingManager;
+
+class CTCBase : public CTCBaseLayout
+{
+protected:
+    CThingManager& GetThingManager();   // 0x00686AE0
+};
 class CThing { public:
     unsigned char _pad00[0x8e];
     short m_level;                              // +0x8e
-    bool IsLevelLess();                         // 0x004C7930
+public:
+    bool IsLevelLess() const;   // 0x004C7930
 };
 class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
@@ -39,7 +49,6 @@ public:
     bool  LookDirSet;                           // +0x80
     bool  StartPosSet;                          // +0x81
     bool  EndPosSet;                            // +0x82
-    CThingManager* GetThingManager();           // 0x00686AE0 (CTCBase)
     void OnSerialseLeaf(CPersistContext& context);
 };
 
@@ -65,12 +74,12 @@ void CTCCameraPointScripted::OnSerialseLeaf(CPersistContext& context)
     context.Transfer("TransitionTime", TransitionTime, 0.0f);
     if (context.IsSaving()) {
         if (ThingUID != 0) {
-            unsigned __int64 uid = GetThingManager()->RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, ThingUID);
+            unsigned __int64 uid = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, ThingUID);
             context.Transfer("ThingUID", uid, 0);
         }
     } else {
         context.Transfer("ThingUID", ThingUID, 0);
         if (ThingUID != 0)
-            ThingUID = GetThingManager()->RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, ThingUID);
+            ThingUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, ThingUID);
     }
 }

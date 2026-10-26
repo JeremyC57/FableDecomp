@@ -1,7 +1,7 @@
 // CPersistContext::StartSection(CPersistContextWriteSection& section, const CCharString& name) -- name the section; binary save writes the name and a zero length placeholder and remembers the stream position, text save appends "START_<name>\r\n"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BAB60, length 132 bytes (+ int3 padding).
 // Callees: CCharString::operator=(const CCharString&) @ 0x0099EFB0, CDataOutputStream::WriteNullTerminatedString @ 0x00995AE0,
-// CDataOutputStream::WriteLong @ 0x00993EB0 (catalogued "WriteCBYTE"; writes a long), the save stream's virtual
+// CDataOutputStream::WriteSLONG @ 0x00993EB0 (catalogued "WriteCBYTE"; writes a long), the save stream's virtual
 // GetPosition (slot 2, `call [eax+8]`), operator+(const char*, const CCharString&) @ 0x0099F690 and
 // operator+(const CCharString&, const char*) @ 0x0099F600 (both __fastcall: hidden result ecx, left edx, right on the
 // stack), CCharString::operator+=(const CCharString&) @ 0x0099F0A0, ~CCharString @ 0x0099EAE0 (x2).
@@ -23,8 +23,9 @@ class CDataOutputStream { public:
     virtual void v00();
     virtual void v01();
     virtual long GetPosition();                             // slot 2
-    void WriteLong(long value);                             // 0x00993EB0
     void WriteNullTerminatedString(const CCharString& value);   // 0x00995AE0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 class CMemoryDataInputStream;
 
@@ -56,7 +57,7 @@ void CPersistContext::StartSection(CPersistContextWriteSection& section, const C
     section.Name = name;
     if (Mode == 3) {
         PSaveStream->WriteNullTerminatedString(name);
-        PSaveStream->WriteLong(0);
+        PSaveStream->WriteSLONG(0);
         section.StartPosition = PSaveStream->GetPosition();
     } else if (Mode == 1) {
         *PStringToSaveTo += "START_" + section.Name + "\r\n";

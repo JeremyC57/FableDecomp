@@ -25,31 +25,32 @@ struct CCountedPointer_0041c150 {                     // 8 bytes: the object and
         m_pCount = 0;
     }
 };
-struct CGraphicFrameData_0041c150 {                   // the shared frame data: a reference count, flags, a counted texture
+class CGraphicFrameData { public:                   // the shared frame data: a reference count, flags, a counted texture
     long                    m_references;          // +0x00
     long                    m_4;
     CCountedPointer_0041c150   m_texture;             // +0x08
     unsigned char           _pad10[0xa];
     unsigned char           m_flags;               // +0x1a (bit 4 = initialised)
-    void Uninitialise();                           // 0x009FCBA0
-    __forceinline ~CGraphicFrameData_0041c150()
+    __forceinline ~CGraphicFrameData()
     {
         if (m_flags & 0x10)
             Uninitialise();
     }
+public:
+    void Uninitialise();   // 0x009FCBA0
 };
 
 class CGraphicFrame { public:
-    CGraphicFrameData_0041c150* m_pData;                // +0x00
+    CGraphicFrameData* m_pData;                // +0x00
     void UnInitialise();
 };
 
 void CGraphicFrame::UnInitialise()
 {
-    CGraphicFrameData_0041c150* data = m_pData;
+    CGraphicFrameData* data = m_pData;
     if (data) {
         if (--data->m_references == 0) {
-            data->~CGraphicFrameData_0041c150();          // the inline destructor chain (a `delete` would go through the out-of-line deleting destructor)
+            data->~CGraphicFrameData();          // the inline destructor chain (a `delete` would go through the out-of-line deleting destructor)
             operator delete(data);
         }
         m_pData = 0;

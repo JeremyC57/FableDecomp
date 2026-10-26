@@ -18,13 +18,19 @@ class CCharString { public:
     CCharString& operator=(const char* text);      // 0x0099EFE0
 };
 class CWorldMap { public:
-    long GetRegionNumberFromName(const CCharString& name);   // 0x004FC210
+    long GetRegionNumberFromName(const CCharString& name) const;   // 0x004FC210
     long GetCurrentRegion() const;                 // 0x004FB150
-    long GetNextRegionOnRouteTo(long from, long to);         // 0x004FB4D0
+    long GetNextRegionOnRouteTo(long from, long to) const;         // 0x004FB4D0
 };
 class CThing;
 class CQuestCardDef;
-class CTCQuestCard { public:
+class CTCBase
+{
+protected:
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20
+};
+
+class CTCQuestCard : public CTCBase { public:
     void*          __vftable;                      // +0x00
     CThing*        ParentThing;                    // +0x04
     bool           ToBeRemoved;                    // +0x08
@@ -40,16 +46,15 @@ class CTCQuestCard { public:
     CCharString    ScriptQuestName;                // +0x28
     long           GoldReward;                     // +0x2c
     long           RenownReward;                   // +0x30
-    CWorldMap* GetWorldMap() const;                // 0x00686D20
     CCharString GetMarkerRegionName() const;
 };
 CCharString CTCQuestCard::GetMarkerRegionName() const
 {
     CCharString name(TeleporterRegionName);
     if (name != "") {
-        long region = GetWorldMap()->GetRegionNumberFromName(name);
+        long region = PeekWorldMap().GetRegionNumberFromName(name);
         if (region > 0) {
-            if (GetWorldMap()->GetNextRegionOnRouteTo(GetWorldMap()->GetCurrentRegion(), region) != -1)
+            if (PeekWorldMap().GetNextRegionOnRouteTo(PeekWorldMap().GetCurrentRegion(), region) != -1)
                 name = "";
         }
     }

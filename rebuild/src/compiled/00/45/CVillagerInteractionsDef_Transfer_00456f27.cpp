@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
+class CDefString;
 class CPersistContext { public:
-    void PersistA_0045228f(int& r);
-    void PersistB(int& r);
+    template <class T> void Transfer(T& value);
 };
 
 class CVillagerInteractionsDef { public:
@@ -13,7 +13,7 @@ class CVillagerInteractionsDef { public:
 
 void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def, void* /*edx*/, CPersistContext* ctx)
 {
-    ctx->PersistA_0045228f(def->fieldA);
-    ctx->PersistA_0045228f(def->fieldB);
-    ctx->PersistB(def->fieldC);
+    ctx->Transfer(*(CDefString*)&(def->fieldA));
+    ctx->Transfer(*(CDefString*)&(def->fieldB));
+    ctx->Transfer(*(float*)&(def->fieldC));
 }

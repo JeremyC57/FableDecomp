@@ -15,8 +15,11 @@
 class CWorld;
 class CThingAICreature;
 
-long __fastcall GFGetCurrentFrame();                        // 0x0049D870
-unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                        // 0x0049D870
+long __fastcall GFROR13(unsigned long);      // 0x00497890
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
@@ -37,6 +40,6 @@ void CAIStateGroup_BanditPlayDice_Methods::InitStateGroup(const CWorld& world, C
     DiceGame = 0;
     WasCarryingWeapon = false;
     unsigned long joinDelay = WorldRandomRange(*GetPWorldSeed(), 3000);
-    FrameToJoin = (long)(GFGetCurrentFrame() + joinDelay * 0.5f);
-    FrameToInitiate = WorldRandomRange(*GetPWorldSeed(), 3000) + GFGetCurrentFrame();
+    FrameToJoin = (long)(CWorld::GetFrame() + joinDelay * 0.5f);
+    FrameToInitiate = WorldRandomRange(*GetPWorldSeed(), 3000) + CWorld::GetFrame();
 }

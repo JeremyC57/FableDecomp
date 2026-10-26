@@ -3,7 +3,7 @@
 // Leaf: HaveSex
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CF920, length 378 bytes (plain `ret`, /GS cookie 0x0139C8A8).
 // Callees: CTCBase::AddToGlobalUpdateTCs() 0x00686ED0; CDisplayEngine::StartScreenFadeOut(float, float, CRGBColour, float)
-//   0x00434C00 on the main component's display engine (+0x28); CTCBase::GetWorld() const 0x00686A80; CWorld::
+//   0x00434C00 on the main component's display engine (+0x28); CTCBase::PeekWorld() const 0x00686A80; CWorld::
 //   GetCurrentPlayer() 0x0049D9D0; CMemoryBuffer::Copy 0x009F1760; CMainGameComponent::AddGameEvent 0x0041649C (the
 //   landed SendPauseEvent(true) inlined, as the landed InitiateDivorce 0x006CEF20); CTCBase::GetPlayerManager()
 //   0x00686D40 (manifest "GetDisplayEngine" propagated); CPlayerManager::GetMainPlayer() 0x00449970; CPlayer::
@@ -137,8 +137,16 @@ template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-class CTCWife { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCWife : public CTCBase { public:
     void*             ParentThing;                          // +0x04
     unsigned char     _pad_0x08[4];
     CDefPointer<const CHeroMarriageDef> PHeroMarriageDef;   // +0x0c
@@ -147,8 +155,6 @@ class CTCWife { public:
     unsigned char     _pad_0x28[0x2c - 0x28];
     bool              WaitingForSex;                        // +0x2c
     void AddToGlobalUpdateTCs();                            // 0x00686ED0 (CTCBase)
-    const CWorld* GetWorld() const;                         // 0x00686A80 (CTCBase)
-    CPlayerManager* GetPlayerManager();                     // 0x00686D40 (CTCBase)
     void HaveSex();
 };
 
@@ -158,12 +164,12 @@ void CTCWife::HaveSex()
     g_pMainGameComponent->GetDisplayEngine()->StartScreenFadeOut(PHeroMarriageDef->WeddingTimeForScreenToFadeOut,
         PHeroMarriageDef->WeddingTimeForScreenToFadeIn, CRGBColour(0, 0, 0, 255), -1.0f);
     CGameEvent gameEvent(9);                                // SendPauseEvent(true) written out
-    gameEvent.Player = GetWorld()->GetCurrentPlayer()->m_playerNumber;
+    gameEvent.Player = PeekWorld().GetCurrentPlayer()->m_playerNumber;
     gameEvent.AddBool(true);
     g_pMainGameComponent->AddGameEvent(gameEvent);
     WaitingForFadeOut = true;
     WaitingForSex = true;
-    CThing* hero = GetPlayerManager()->GetMainPlayer().GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
     if (hero && !hero->IsDead()) {
         CTCHeroStats* stats = 0;
         if (hero->HasTC(4))

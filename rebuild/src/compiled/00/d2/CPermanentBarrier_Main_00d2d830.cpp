@@ -16,6 +16,7 @@
 //   address then precede Me.GetPos() -- VC evaluates arguments right to left -- and the returned effect handle is a
 //   named local that lives across the wait loop (destroyed after it). The two string temporaries die right after the
 //   call. Layout as the CEntityScriptBase family: Game +4, CScriptThing Me +8 (12 bytes).
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CCharStringData;
 class CCharString { public:
@@ -31,7 +32,7 @@ public:
     void* PImp_Data;
     void* PImp_Info;
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 
 class CGameScriptInterface { public:
@@ -58,31 +59,42 @@ class CGameScriptInterface { public:
                                       float angle, bool alwaysUpdate, bool persistent) const;   // slot 100 (+0x190)
 };
 
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
 
-class CPermanentBarrier {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CPermanentBarrier : public CEntityScriptBase {
 public:
     void*                 __vftable;                   // +0x00
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void RegisterFilter(const CIsThingAlive& filter);        // 0x00F35B10
-    bool IsDone();                                     // 0x00F35B30
     void Main();
 };
 
 void CPermanentBarrier::Main()
 {
-    RegisterFilter(CIsThingAlive(Me));
+    SetPredicate(CIsThingAlive(Me));
     Game->Update();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptThing effect = Game->CreateEffect("HK_MAGIC_BARRIER", Me.GetPos(), "", 0.0f, false, false);
     do {
         Game->Update();
-    } while (!IsDone());
+    } while (!IsActiveThreadTerminating());
 }

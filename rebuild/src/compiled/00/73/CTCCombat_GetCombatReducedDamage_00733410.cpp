@@ -37,7 +37,8 @@ class CThingCreatureBase { public:
     virtual bool IsInCombatStance();                        // slot 77 (+0x134)
     unsigned char        _pad04[0xfc];
     CCreatureActionBase* CurrentAction;                     // +0x100
-    bool IsPerformingAnyAction();                           // 0x006622A0
+public:
+    bool IsPerformingAnyAction() const;   // 0x006622A0
 };
 
 struct CTCCombat_Methods : CTCCombat {

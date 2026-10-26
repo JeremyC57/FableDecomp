@@ -1,17 +1,24 @@
 #include "engine/CCameraCollisionDef.h"
 #include <cstdio>
-class CDefClassBase;
+class CDefClassBase {
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);
+};
 
 
 static int g_called = 0;
 extern "C" void base_copy_called() { g_called = 1; }
 
-void __fastcall CDefClassBase_Copy(void* self, void* edx, const CDefClassBase* src);
 
 void __fastcall CCameraCollisionDef_Copy(CCameraCollisionDef* self, void* edx, const CDefClassBase* src);
 
-void __fastcall CDefClassBase_Copy(void* self, void* edx, const CDefClassBase* src) {
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+{
+    void* self = (void*)this; (void)self;
+    void* edx = 0; (void)edx;
+    const CDefClassBase* src = (const CDefClassBase*)&other_; (void)src;
     base_copy_called();
+    return *this;
 }
 
 int main() {

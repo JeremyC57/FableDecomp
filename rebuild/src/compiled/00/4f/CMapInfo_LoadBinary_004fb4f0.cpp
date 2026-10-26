@@ -26,7 +26,6 @@ public:
     long                 SourceChunkStreamPos;
     long                 m_remaining;       // +0x14
     CCharString ReadPresizedString();                                  // 0x00996390
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {
@@ -45,6 +44,8 @@ public:
     __forceinline bool ReadBool() { unsigned char v; Read(&v, sizeof(v)); return v != 0; }
     __forceinline long ReadLong() { long v; Read(&v, sizeof(v)); return v; }
     __forceinline unsigned __int64 ReadULong64() { unsigned __int64 v; Read(&v, sizeof(v)); return v; }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char*, long);   // 0x00993CA0
 };
 
 class C2DCoordI { public: long X, Y; };

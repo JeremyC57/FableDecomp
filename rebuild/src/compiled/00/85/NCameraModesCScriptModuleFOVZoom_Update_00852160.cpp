@@ -8,7 +8,10 @@
 // `+=` on the owner (+0x84) re-read after the copies.
 // Layout: PDB NCameraModes::CScriptModuleFOVZoom (see 0x008520F0); the owner (POwner +0x38) is the
 // camera state with LookAt +0x10, Position +0x54 and the FOV at +0x84.
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                 // 0x0049D870
 
 class C3DVector { public:
     float X, Y, Z;
@@ -53,7 +56,7 @@ struct CScriptModuleFOVZoom {
 
 void CScriptModuleFOVZoom::Update()
 {
-    if (GFGetCurrentFrame() < EndFrame) {
+    if (CWorld::GetFrame() < EndFrame) {
         POwner->Position = POwner->Position + Increment;
         POwner->LookAt = LookAtPos;
         POwner->FOV += FOVIncrement;

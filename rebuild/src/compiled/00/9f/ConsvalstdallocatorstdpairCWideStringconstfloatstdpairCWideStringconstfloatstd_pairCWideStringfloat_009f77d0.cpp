@@ -5,7 +5,7 @@
 
 struct Pair; // std::pair<CWideString const,float>
 
-extern "C" void __cdecl destroy_helper(Pair* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 // Modeled as a real non-static member => __fastcall: this in ecx, args on stack,
 // no edx spill. Retail was emitted at /Od (frame kept + dead this-store).
@@ -20,6 +20,6 @@ void AllocT::cons_val(Pair* dest, Pair* val)
     (void)val;
     if (dest != 0)
     {
-        destroy_helper(dest);
+        free(dest);
     }
 }

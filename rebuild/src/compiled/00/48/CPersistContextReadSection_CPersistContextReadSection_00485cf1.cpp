@@ -19,8 +19,8 @@ public:
 };
 class CMemoryDataInputStream {
 public:
-    unsigned char Data[0x1c];
-    ~CMemoryDataInputStream();                               // 0x00993B10
+    unsigned char Data[0x1c - 4];
+    virtual ~CMemoryDataInputStream();                               // 0x00993B10
 };
 class CStringParser {
 public:

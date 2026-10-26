@@ -89,7 +89,8 @@ struct CAppearanceDefHolder {                       // releases the sub-def read
 
 class C3DAnimationInfo;
 class CMeshDataBank { public:
-    C3DAnimationInfo* GetAnimation(long index);     // 0x00A242C0
+public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
 class CWorld { public:
     unsigned char _pad00[0x3c];
@@ -129,7 +130,7 @@ void CTCDoor_Methods::UpdateOpenStatusTriggerTypeScript()
             CAppearanceDefHolder appearance(out.Object);
             const CAnimationEntry& entry = appearance.Def->Animation.GetAnim(g_CCharString_013bad34, 0, CAnimFilterNoGroup());
             CWorld* world = ((CTCBase*)this)->GetWorld();
-            world->PMainMeshBank->GetAnimation(entry.BankIndex);
+            world->PMainMeshBank->PeekAnimation(entry.BankIndex);
         } else {
             Close();
         }

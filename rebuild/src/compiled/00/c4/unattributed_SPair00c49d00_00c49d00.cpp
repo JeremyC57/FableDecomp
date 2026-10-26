@@ -5,8 +5,8 @@
 // one-pointer holder whose inline destructor frees its block (EH state 0 while the first is alive),
 // then the first (a 0x1c-byte string) is destroyed out of line (state -1). The user-declared pair
 // destructor is the landed unit.
-void __cdecl Release_00bfeb1c(void* block);   // 0x00BFEB1C
 
+void __cdecl operator delete[](void* p);   // 0x00BFEB1C (MSVCR71)
 struct CFirst_00c49d00 {                   // 0x1c bytes
     unsigned char _body[0x1c];
     ~CFirst_00c49d00();                    // 0x00C1C820
@@ -14,7 +14,7 @@ struct CFirst_00c49d00 {                   // 0x1c bytes
 
 struct CBlockHolder_00c49d00 {             // +0x1c
     void* m_pBlock;
-    ~CBlockHolder_00c49d00() { Release_00bfeb1c(m_pBlock); }
+    ~CBlockHolder_00c49d00() { operator delete[](m_pBlock); }
 };
 
 struct SPair_00c49d00 {

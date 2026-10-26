@@ -15,6 +15,7 @@
 // Shape: the landed CMuteGuardOutsideWoods::Main 0x00D86150 / CWaitingGuardInWoods::Main 0x00D86680 models; each costume
 //   test owns five conditional CCharString temporaries (flag word in ebx) and is materialised as a bool before its branch;
 //   the full- and part-costume arms share one cross-jumped tail; the security line is a switch with the default arm first.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -25,12 +26,14 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 class CBaseObject { public:                                   // CBaseIntelligentPointer root
     virtual void b00();
     void* m_pIntelligentPointer;                       // +0x04
-    CBaseObject();                                     // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 struct CCountedPointerWords {
     void* Data;
@@ -40,7 +43,7 @@ struct CCountedPointerWords {
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
     bool IsScripting();                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
@@ -100,22 +103,29 @@ struct GameCalls {                                     // CGameScriptInterface v
     virtual void AddPersonToConversation(long conversation, const CScriptThing& person) const;   // slot 365 (+0x5b4)
     virtual void AddLineToConversation(long conversation, const CCharString& text, bool a, const CScriptThing& speaker, const CScriptThing& listener) const;   // slot 366 (+0x5b8)
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a predicate holding a script thing
+namespace NScript {
+class __declspec(novtable) CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a predicate holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-namespace NScript {
 struct CEntityScriptBase {                             // retail 0x14 bytes
     virtual void v00();
     GameCalls*   Game;                                 // +0x04
     CScriptThing Me;                                   // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
-    bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
+namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_TraderConflictGoodScript { public:
     unsigned char _pad[0x54];

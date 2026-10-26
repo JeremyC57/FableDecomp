@@ -102,10 +102,19 @@ class CAnimationEntry { public:
     long Animation;                                         // +0x00
 };
 
-struct CTCMeleeTrap {
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+class CTCTrapBase : public CTCBase
+{
+public:
+};
+
+struct CTCMeleeTrap : public CTCTrapBase {
     unsigned char _pad00[0x61];
     bool          StrikeAnimation;                          // +0x61
-    CWorld* GetWorld() const;                               // 0x00686A70 (CTCBase)
     void InitialiseStrikeAnimation(const CAnimationEntry& entry);
 };
 
@@ -116,7 +125,7 @@ void CTCMeleeTrap::InitialiseStrikeAnimation(const CAnimationEntry& entry)
     CStringVector names;
     manager->GetEventNames(animation, names);
     StrikeAnimation = false;
-    CWorld* world = GetWorld();
+    CWorld* world = (&GetWorld());
     world->PAnimationBank->Query(entry.Animation);
     for (CCharString* it = names._M_start; it != names._M_finish; ++it) {
         if (it->StartsWith(g_StrikeStart) || *it == g_CombatStrikeEvent || *it == g_CombatStrikeEvent2)

@@ -8,7 +8,10 @@
 // (homed in the dead `other` slot and passed by reference); the interpolated array is a by-value temporary assigned then freed.
 // Leaf: InterpolateTo
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 namespace NParticleEngine {
 class CParticleSystem;
@@ -36,7 +39,7 @@ struct CSplinePosParamData {
 void CSplinePosParamData::InterpolateTo(const CSplinePosParamData& other, float t)
 {
     MaintainSplineShape = t > 0.5f ? other.MaintainSplineShape : MaintainSplineShape;
-    unsigned long defaultValue = Calc_004014a0(0, "", 0);
+    unsigned long defaultValue = CCRC::Calc(0, "", 0);
     SplinePosParam = GFInterpolateArray(SplinePosParam, other.SplinePosParam, t, defaultValue);
 }
 

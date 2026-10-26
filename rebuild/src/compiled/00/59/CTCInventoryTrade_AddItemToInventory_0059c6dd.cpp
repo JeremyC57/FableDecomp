@@ -12,7 +12,7 @@
 // EInventoryCategoryIdentifier): engine/CTCInventoryTrade.h sits 0x2C bytes above retail at this point (smaller
 // retail base, vector, list and maps), so the header is not included and a local model carries the PDB name.
 // `if (category && AddItem(...)) return true; return false;` gives the retail `test al,al ; je ; mov al,1 ; jmp` exits.
-// The local view is named CTCInventoryTrade_Retail so it does not shadow the PDB header engine/CTCInventoryTrade.h.
+// The local view is named CTCInventoryTrade so it does not shadow the PDB header engine/CTCInventoryTrade.h.
 #pragma optimize("s", on)
 class CThing;
 namespace NInventory {
@@ -30,14 +30,15 @@ struct CTCInventoryBase_Retail {
     unsigned char _pad_0x04[0x130 - 4];
     NInventory::CCategory* GetCategoryWithIndex(long index);   // 0x005BCE3C
 };
-struct CTCInventoryTrade_Retail : CTCInventoryBase_Retail {
+class CTCInventoryTrade : CTCInventoryBase_Retail { public:
     unsigned char _pad_0x130[0x170 - 0x130];
     long CategoryIdent;                             // +0x170
-    long GetCategoryIndexForTradeType();
     bool vfunc_80(CThing* thing, bool silent, long unused0, long price, long unused1);
+public:
+    long GetCategoryIndexForTradeType();   // 0x0059B6F4
 };
 #pragma auto_inline(off)
-long CTCInventoryTrade_Retail::GetCategoryIndexForTradeType()
+long CTCInventoryTrade::GetCategoryIndexForTradeType()
 {
     for (long i = 0; i < 2; ++i)
         if (g_categoryIdentIndices[i].CategoryIdent == CategoryIdent)
@@ -46,7 +47,7 @@ long CTCInventoryTrade_Retail::GetCategoryIndexForTradeType()
 }
 #pragma auto_inline(on)
 
-bool CTCInventoryTrade_Retail::vfunc_80(CThing* thing, bool silent, long unused0, long price, long unused1)
+bool CTCInventoryTrade::vfunc_80(CThing* thing, bool silent, long unused0, long price, long unused1)
 {
     NInventory::CCategory* category = GetCategoryWithIndex(GetCategoryIndexForTradeType());
     if (category && category->AddItem(thing, silent, price))

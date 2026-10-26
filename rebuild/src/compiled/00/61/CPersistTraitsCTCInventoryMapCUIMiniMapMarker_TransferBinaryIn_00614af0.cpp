@@ -13,7 +13,19 @@
 //   inlined six times (speed TU, `position += size`) through inline CPersistTraits<T>::TransferBinaryIn, each local in
 //   the dead value-argument slot (`value` lives in edi); the name length read is forwarded in eax into
 //   ReadString, whose result temporary also takes the value slot. No frame pointer.
+#define CMemoryDataInputStream CMemoryDataInputStreamLayout
 #include "engine/CMemoryDataInputStream.h"
+#undef CMemoryDataInputStream
+class CCharString;
+
+class CDataInputStream
+{
+public:
+    CCharString ReadString(unsigned long);   // 0x00996BE0
+};
+class CMemoryDataInputStream : public CDataInputStream, public CMemoryDataInputStreamLayout
+{
+};
 
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -30,7 +42,6 @@ public:
 // pointer, chunkLength +0x14 = bytes left in the chunk); the overflow reader and ReadString are CDataInputStream's.
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
-    CCharString ReadString(long length);                               // 0x00996BE0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

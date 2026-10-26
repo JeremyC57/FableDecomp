@@ -130,7 +130,9 @@ class CTCHeroStats { public:                                          // interfa
 struct CTCHeroState { unsigned char _pad00[0xd]; bool CanUseAbilities; };   // interface 0x29
 struct CTCSpellCost { long GetCost(); };                       // interface 0x91, 0x0079A610
 class CTCHeroExperience { public: void AddTrainableStatExperience(long stat, long amount); };   // interface 0x68, 0x006D8300
-struct CSoundInfo { unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d); };   // interface 0x10, 0x0066BD00
+class CTCSoundPlayer { public: public:
+    unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
+};   // interface 0x10, 0x0066BD00
 class CMessageEvent;
 class CMessageEventManager { public:
     CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority);   // 0x00687540
@@ -139,14 +141,25 @@ class CWorld { public: unsigned char _pad00[0x60]; CMessageEventManager* PMessag
 extern long g_FrameRate;                                       // 0x01375550
 
 // Layout: retail CTCInventoryAbilities (Ego_r.pdb - 0x18): CurrentSpecialAbilityUsedFromQuickAccess +0x142, Abilities +0x160.
-class CTCInventoryAbilities { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryAbilities : public NInventory::CTCInventoryBase { public:
     void*   __vftable;
     CThing* ParentThing;                                       // +0x04
     unsigned char _pad08[0x142 - 0x08];
     bool    CurrentSpecialAbilityUsedFromQuickAccess;          // +0x142
     unsigned char _pad143[0x160 - 0x143];
     CAbilityEntryVector Abilities;                             // +0x160
-    CWorld* GetWorld();                                        // 0x00686A70 (CTCBase)
     bool IsAbleToUseAbility(EHeroAbility ability, bool checkCost) const;   // 0x005EE49A
     void OnSpecialAbilityUsed(EHeroAbility ability, bool fromQuickAccess);
 };
@@ -179,7 +192,7 @@ void CTCInventoryAbilities::OnSpecialAbilityUsed(EHeroAbility ability, bool from
             CurrentSpecialAbilityUsedFromQuickAccess = fromQuickAccess;
             CThing* parent = ParentThing;
             long frames = g_FrameRate;
-            CMessageEventManager* messages = GetWorld()->PMessageEventManager;
+            CMessageEventManager* messages = GetWorld().PMessageEventManager;
             messages->AddMessage(0x44, frames, &parent->GetPosition(), 0, 0, 0.0f, 0.0f, ability);
             stats->ModifyStaminaBy(cost);
             ++stats->AbilityUseCounts[ability];
@@ -190,8 +203,8 @@ void CTCInventoryAbilities::OnSpecialAbilityUsed(EHeroAbility ability, bool from
             }
         }
     } else {
-        CSoundInfo* sound;
+        CTCSoundPlayer* sound;
         if (ParentThing->GetInterfaceFound(&sound, 0x10))
-            sound->PlaySound("HERO_ABILITY_CAST_FAILED", 1, 0, 0, -1);
+            sound->PlayAttachedCriteria("HERO_ABILITY_CAST_FAILED", 1, 0, 0, -1);
     }
 }

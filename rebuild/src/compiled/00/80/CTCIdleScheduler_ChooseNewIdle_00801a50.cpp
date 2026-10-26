@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00801A50, 390 bytes (+ int3 padding), `ret`.
 //   Ego_r.pdb: `?ChooseNewIdle@CTCIdleScheduler@@QAEXXZ`.
 // Callees: CTCBase::GetWorld() @ 0x00686A70 (result unused), CWorld::GetWorldFrame() @ 0x0049D870 (static),
-//   CTCBase::GetDefinitions() @ 0x006869D0, CDefinitionManager::GetDef<T>(long, CDefPointer<T>*) @ 0x0042AF3C,
+//   CTCBase::GetDefinitionManager() @ 0x006869D0, CDefinitionManager::GetDef<T>(long, CDefPointer<T>*) @ 0x0042AF3C,
 //   CDefClassBase::GetSubDef<CIdleSchedulerDef> @ 0x00801670 (landed), map<EIdleStateGroup, long>::find @ 0x008014F0
 //   (landed, iterator by hidden pointer), map<EIdleStateGroup, long>::operator[] @ 0x00802190, the state group's
 //   virtual slot 11 (+0x2c, can-run test), the defs' virtual slot 1 (destroy at the last release).
@@ -115,7 +115,10 @@ struct CThingDef : CDefClassBase {
     bool GetSubDef(CDefPointer<CIdleSchedulerDef>* out);   // 0x00801670 (GetSubDef<CIdleSchedulerDef>)
 };
 class CDefinitionManager { public:
-    bool GetDef(long index, CDefPointer<CThingDef>* out);  // 0x0042AF3C
+    bool GetDef(long index, CDefPointer<CThingDef>* out) const;  // 0x0042AF3C
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 class CThing { public:
     unsigned char _pad00[0x8c];
@@ -123,7 +126,14 @@ class CThing { public:
     long GetDefIndex() const { return DefIndex; }
 };
 
-class CTCIdleScheduler { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCIdleScheduler : public CTCBase { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     bool          ToBeRemoved;                       // +0x08
@@ -134,8 +144,6 @@ class CTCIdleScheduler { public:
     long          Preferred;                         // +0x24 EIdleStateGroup
     long          FrameLastChecked;                  // +0x28
 
-    CWorld* GetWorld() const;                        // 0x00686A70 (CTCBase)
-    CDefinitionManager* GetDefinitions() const;      // 0x006869D0 (CTCBase)
     void ChooseNewIdle();
 };
 
@@ -145,7 +153,7 @@ class CTCIdleScheduler { public:
 CDefClassBase* LookUpDef(long index);               // the manager's raw lookup (stand-in only)
 CDefClassBase* LookUpSubDef(const CDefClassBase* def);
 #pragma auto_inline(off)
-bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out)
+bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out) const
 {
     CThingDef* def = (CThingDef*)LookUpDef(index);
     out->Object = def;
@@ -161,12 +169,12 @@ bool CThingDef::GetSubDef(CDefPointer<CIdleSchedulerDef>* out)
 
 void CTCIdleScheduler::ChooseNewIdle()
 {
-    FrameLastChecked = GetWorld()->GetWorldFrame();
+    FrameLastChecked = GetWorld().GetWorldFrame();
     if (Preferred != 0 && ParentThing->DefIndex != 0) {
         CDefPointer<CIdleSchedulerDef> idleDef;
         CDefPointer<CThingDef> thingDef;
         CThing* thing = ParentThing;
-        GetDefinitions()->GetDef(thing->GetDefIndex(), &thingDef);
+        GetDefinitionManager().GetDef(thing->GetDefIndex(), &thingDef);
         if (thingDef.Object->GetSubDef(&idleDef)) {
             CWeightMap& weights = idleDef.Object->IdleWeights;
             if (Contains(weights, Preferred)) {

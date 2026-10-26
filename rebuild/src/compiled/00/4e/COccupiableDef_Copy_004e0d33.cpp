@@ -1,11 +1,11 @@
 #include "engine/COccupiableDef.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CSubField { int v; };
-struct CBaseDrainLifeDef {
-    void Copy(const CBaseDrainLifeDef* other);
+class CDefClassBase { public:
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
 void __fastcall CSpecialAbilitiesDrainLifeDataDef_Copy(COccupiableDef* self, int _edx, const COccupiableDef* other)
 {
-    ((CBaseDrainLifeDef*)self)->Copy((const CBaseDrainLifeDef*)other);
+    ((CDefClassBase*)self)->operator=(*(const CDefClassBase*)other);
     self->TypeFlags = other->TypeFlags;
 }

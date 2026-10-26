@@ -14,10 +14,17 @@
 // Shape: the landed GFSerialiseVectorBinaryOut template (0x005C12A1) without the size pragmas: count = size()
 //   (`sar 4`), WriteLong(count), then traits.TransferBinaryOut(stream, &value[i]) with the index strength-reduced
 //   to a byte offset in edi and a down-counter in esi.
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteLong(long value);                             // 0x00993EB0
 };
 
 class CAttackHistoryCombo { public:                                // 16 bytes
@@ -47,7 +54,7 @@ void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std:
 {
     CPersistTraits<T> traits;
     long count = value.size();
-    stream.WriteLong(count);
+    stream.WriteSLONG(count);
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, &value[i]);
 }

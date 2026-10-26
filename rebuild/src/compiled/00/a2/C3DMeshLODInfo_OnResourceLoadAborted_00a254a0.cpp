@@ -48,13 +48,16 @@ class C3DMeshLODInfo { public:
 };
 FABLE_STATIC_ASSERT(sizeof(C3DMeshLODInfo) == 0x34);
 
-void __fastcall DiscardAsyncData(CCountedPointer<CBankFileAsyncData>& fileData);   // 0x009D68A0
+class CBankFileAsyncData {
+public:
+    static void __fastcall DiscardAsyncData(CCountedPointer<CBankFileAsyncData>&);   // 0x009D68A0
+};   // 0x009D68A0
 struct C3DMeshLODInfo_Methods : C3DMeshLODInfo {
     void OnResourceLoadAborted();
 };
 void C3DMeshLODInfo_Methods::OnResourceLoadAborted()
 {
-    DiscardAsyncData(FileData);
+    CBankFileAsyncData::DiscardAsyncData(FileData);
     FileData.Reset();
     MeshInfo->RemoveLOD(LOD, false);
 }

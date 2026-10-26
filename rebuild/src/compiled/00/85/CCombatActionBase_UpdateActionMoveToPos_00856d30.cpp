@@ -18,15 +18,27 @@ class C3DVector { public:
     float Z;
 };
 
-struct CThingCreatureBase_Calls {
+class CThingCreatureBase { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
-    float GetAnimMovementLength(long animID);   // 0x006627A0
+public:
+    float GetAnimMovementDistance(long) const;   // 0x006627A0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThingCreatureBase_Calls* GetPItem() const; // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:
@@ -46,7 +58,7 @@ class CCombatActionBase { public:
     virtual void v68(); virtual void v69();
     virtual C3DVector GetNextPos();             // slot 70 (+0x118): 0x008575C0
     unsigned char _pad04[4];                    // +0x04
-    CBaseIntelligentPointer PCreature;          // +0x08
+    CIntelligentPointer<CThingCreatureBase> PCreature;          // +0x08
     unsigned char _pad10[0xdd - 0x10];          // +0x10
     bool PreferredFinalPosSet;                  // +0xdd
     bool IsUsingActionMovement();               // 0x00692A50 (CCreatureActionBase)
@@ -57,8 +69,8 @@ class CCombatActionBase { public:
 void CCombatActionBase::UpdateActionMoveToPos()
 {
     C3DVector pos = PCreature.GetPItem()->GetPosition();
-    CThingCreatureBase_Calls* creature = PCreature.GetPItem();
-    if (creature->GetAnimMovementLength(GetAnimationIndex()) > 0.0001f || IsUsingActionMovement() || PreferredFinalPosSet)
+    CThingCreatureBase* creature = PCreature.GetPItem();
+    if (creature->GetAnimMovementDistance(GetAnimationIndex()) > 0.0001f || IsUsingActionMovement() || PreferredFinalPosSet)
         pos = GetNextPos();
     SetMoveToPos(pos);
 }

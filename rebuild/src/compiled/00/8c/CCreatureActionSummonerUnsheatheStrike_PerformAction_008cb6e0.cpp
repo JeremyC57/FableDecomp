@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CB6E0, length 159 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, twice), CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface
 // lookup for type 0x46 = bit 6 of the bitset byte at +0x28), CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal 0x01265458
-// "CARRY_SLOT_PRIMARY_SHEATHE"), CThing::GetDefinitionManager @ 0x004C7990, CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410,
+// "CARRY_SLOT_PRIMARY_SHEATHE"), CThing::PeekDefinitionManager @ 0x004C7990, CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410,
 // CCharString::~CCharString @ 0x0099EAE0, CTCCarrying::RemoveThingInCarrySlot(long, bool) @ 0x006A16A0, CThing::Kill(bool) @ 0x004C9B80,
 // CCreatureAction_UnsheatheWeapons::PerformAction @ 0x008B7BA0 (direct base call, last).
 // Shape: the out-parameter GetInterface as the if (carrying component in esi, pushed only inside); the slot name is a scoped named CCharString that
@@ -12,7 +12,10 @@
 #include "fable_string.h"
 class CTCBase;
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -26,7 +29,6 @@ class CThing { public:
     CInterfaceMap m_interfaces;             // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                // +0x91 bit 0: dead
-    CDefinitionManager* GetDefinitionManager();   // 0x004C7990
     void Kill(bool immediately);            // 0x004C9B80
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -41,11 +43,24 @@ class CThing { public:
         }
         return false;
     }
+public:
+    const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x004C7990
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCCarrying { public:                        // interface type 0x46 component
     CThing* RemoveThingInCarrySlot(long slot, bool drop);   // 0x006A16A0
@@ -55,7 +70,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];                // +0x04
-    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
 };
 class CCreatureAction_UnsheatheWeapons : public CCreatureActionBase { public:
@@ -72,7 +87,7 @@ void CCreatureAction_SummonerUnsheatheStrike::PerformAction()
         long slot;
         {
             CCharString slotName("CARRY_SLOT_PRIMARY_SHEATHE", -1);
-            slot = PCreature.GetPItem()->GetDefinitionManager()->GetDefGlobalIndexFromName(slotName);
+            slot = PCreature.GetPItem()->PeekDefinitionManager().GetDefGlobalIndexFromName(slotName);
         }
         CThing* sheathed = pCarrying->RemoveThingInCarrySlot(slot, false);
         if (sheathed != 0 && !(sheathed->m_flags91 & 1))

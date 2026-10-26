@@ -7,7 +7,7 @@
 // CBaseIntelligentPointer 0x00A01B10 / SetPItem 0x00A01B90 (CIntelligentPointer<CThing> vtable 0x01238C6C), CCharString
 // 0x0099EBF0 / ~ 0x0099EAE0 ("" 0x0122D70E), CGameDefinitionManager::Get 0x0044C6B0, GetGlobalIndexFromClassIndex 0x009AD390,
 // GetDef<CSpecialAbilitiesFireballSpellDef> 0x005F8A57, LowerBound 0x0040F020 (0xA7 special abilities: `test cl,cl ; jns`,
-// 0x10 sound player, 4 hero stats), CTCSoundPlayer::PlaySound 0x0066BD00, __ftol2 0x00BFEA70; g_FramesPerSecond 0x01375550.
+// 0x10 sound player, 4 hero stats), CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00, __ftol2 0x00BFEA70; g_FramesPerSecond 0x01375550.
 // Shape: the CTCForcePushPower ctor (0x007A54A0) init list sharing the ebx zero; implicit-literal string temps; the stamina
 // level loop converts `(float)stamina` INSIDE the loop condition from a named long -- VC hoists it as loop-invariant through a
 // stack slot (`mov ecx,[eax+58h] ; mov [esp+14h],ecx ; fild ; fstp` to the same word) and aligns the loop head with
@@ -103,7 +103,8 @@ public:
     long CurrentAbility;                            // +0x10 EHeroAbility
 };
 class CTCSoundPlayer { public:                             // interface 0x10
-    unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
+public:
+    unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };
 class CTCHeroStats : public CTCHeroStatsDonor {
  public:                               // interface 4
@@ -164,7 +165,7 @@ CTCFireballSpell::CTCFireballSpell(CThing& parent)
     CGameDefinitionManager::Get().GetDef(index, &PDef);
     CTCSoundPlayer* sound;
     if (ParentThing->GetInterface(&sound, 0x10))
-        InitLoopingSound = sound->PlaySound("HERO_ABILITY_FIREBALL_LOOP", 1, 0, 0, -1);
+        InitLoopingSound = sound->PlayAttachedCriteria("HERO_ABILITY_FIREBALL_LOOP", 1, 0, 0, -1);
     CTCHeroStats* stats;
     if (ParentThing->GetInterface(&stats, 4)) {
         long stamina = stats->Stamina;

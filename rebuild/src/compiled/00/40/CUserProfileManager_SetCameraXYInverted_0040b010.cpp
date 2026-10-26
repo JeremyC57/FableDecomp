@@ -6,8 +6,9 @@ class CUserProfileManager { public:
   char pad2[0xbf];
   char CameraXYInvertedNewProfile; /* +0xcf */
   void CUserProfileManager_SetCameraXYInverted(char a, char b);
-  void sub1();
   void sub2();
+protected:
+    void ApplyValues();   // 0x00407370
 };
 
 void CUserProfileManager::CUserProfileManager_SetCameraXYInverted(char a, char b)
@@ -15,7 +16,7 @@ void CUserProfileManager::CUserProfileManager_SetCameraXYInverted(char a, char b
   if (this->gate)
     this->CameraXYInvertedNewProfile = a;
   this->CameraXYInverted = a;
-  this->sub1();
+  ApplyValues();
   if (b)
     this->sub2();
 }

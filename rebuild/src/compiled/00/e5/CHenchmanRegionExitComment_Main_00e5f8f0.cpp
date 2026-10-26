@@ -1002,12 +1002,17 @@ typedef long EHENCHMAN_COMMENT;
 struct CV_BodyGuardScript {
  bool MakeHenchmanComment(const CCharString& text, long priority, EHENCHMAN_COMMENT type, const CScriptThing& target);   // 0x00E5EBD0
 };
-struct CHenchmanRegionExitComment {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CHenchmanRegionExitComment : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CV_BodyGuardScript* ParentClass;                    // +0x14
  void* PMasterData;                                  // +0x18
  std::vector<CScriptThing, std::allocator<CScriptThing> > HenchmanVector;   // +0x1c
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CHenchmanRegionExitComment::Main()

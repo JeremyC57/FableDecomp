@@ -14,8 +14,9 @@ public:
 class CPersistContext {
 public:
     template <class T> void TransferVectorBinary(std::vector<T>& v);   // 0x004331F9 for CCharString
-    void TransferLong(long& value);                      // 0x00431102
+    template <class T> void Transfer(T& value);                      // 0x00431102
 };
+template <> void CPersistContext::Transfer<long>(long& value);
 class CFrontEndDef {
 public:
     unsigned char            _base[0x3c];                // CParentDefClassBase (vptr, 0x39 bytes, padding)
@@ -28,14 +29,16 @@ public:
 void CFrontEndDef::Transfer(CPersistContext& context)
 {
     context.TransferVectorBinary(vAttractModeMovie);
-    context.TransferLong(ErrorMessageBackgroundGraphic);
-    context.TransferLong(ButtonABigGraphic);
-    context.TransferLong(ButtonBBigGraphic);
+    context.Transfer(ErrorMessageBackgroundGraphic);
+    context.Transfer(ButtonABigGraphic);
+    context.Transfer(ButtonBBigGraphic);
 }
 
 static void* g_seq[8]; static int g_n;
 template <class T> void CPersistContext::TransferVectorBinary(std::vector<T>& v) { g_seq[g_n++] = &v; }
-void CPersistContext::TransferLong(long& value) { g_seq[g_n++] = &value; }
+template <> void CPersistContext::Transfer<long>(long& value_)
+{
+    long& value = *(long*)&value_; (void)&value; g_seq[g_n++] = &value; }
 int main()
 {
     static double mem[0x60 / 8];

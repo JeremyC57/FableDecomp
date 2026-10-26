@@ -45,7 +45,10 @@ class CPlayerGuiDef { public:
     long      StatBoxEdgeGraphic;        // +0x2e0 (unused here)
     long      StatBoxTextEdgeGraphic;    // +0x2e4
 };
-extern CPlayerGuiDef* __fastcall PeekGuiDef();                          // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};                          // 0x00438570
 class CGraphicDataBank { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -67,15 +70,22 @@ class CParticleEmitterManager { public:
 };
 }
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;
-    CBaseObject* GetPItem() const;                                      // 0x00A01B50
-    ~CBaseIntelligentPointer();                                         // 0x00A01C10
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item);                                       // 0x00655318
     CIntelligentPointer& operator=(const CIntelligentPointer& other);  // 0x0065533C
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 template<class T> struct CRetailVector {
     T* m_pFirst; T* m_pLast; T* m_pEnd;
@@ -105,7 +115,7 @@ void CStatBar::DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraph
     C2DVector textPos(0.0f, 0.0f);
     if (graphic > 0) {
         if (withText) {
-            CPlayerGuiDef* def = PeekGuiDef();
+            const CPlayerGuiDef* def = (&CPlayerGui::PeekGuiDef());
             CFontBank* font = g_pGameUI->Font;
             C2DVector corner = pos;
             corner.X = (float)g_pDisplayManager_013b8390->GetRenderTargetDimensions().Width - corner.X;

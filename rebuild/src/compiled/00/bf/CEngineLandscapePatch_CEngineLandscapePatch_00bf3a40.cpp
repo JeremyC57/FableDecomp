@@ -4,7 +4,6 @@
 // object at +8) when the count at +0 reaches zero, operator delete @ 0x00BFE9BC for the block. Vtables: 0x012A8200 = CEngineLandscapePatch, 0x0129B860 =
 // CMovableResource (rtti-vtables.tsv). Shape: as CParticleSimulation::~CParticleSimulation @ 0x00AE0630 with the pointer at +0x40: the release re-reads the
 // block pointer after the decrement (`dec [eax] ; mov eax,[esi+44h] ; cmp [eax],0`) and again for the delete; both words are zeroed before the base vtable store.
-extern "C" void __cdecl operator_delete_00bfe9bc(void* block);   // 0x00BFE9BC
 
 struct SCountBlock {                               // the counted pointer's shared block
     long         m_count;                          // +0x00
@@ -21,7 +20,7 @@ struct CCountedResourcePointer {
             --m_pBlock->m_count;
             if (m_pBlock->m_count == 0) {
                 m_pBlock->m_pfnDestroy(m_pBlock->m_pObject);
-                operator_delete_00bfe9bc(m_pBlock);
+                operator delete(m_pBlock);
             }
         }
         m_pObject = 0;

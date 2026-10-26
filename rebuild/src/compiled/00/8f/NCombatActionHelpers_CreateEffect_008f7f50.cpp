@@ -26,7 +26,10 @@ public:
     C3DVector() {}
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 
 class CBaseClass {                              // vtable 0x01231710 (polymorphic: the vptr sits at +0)
 public:
@@ -110,7 +113,7 @@ void __fastcall CreateEffect(const CThingCreatureBase& creature, long effectType
     CTCDParticleEmitter* emitter = 0;
     if (effect->HasTC(0x4b))
         emitter = (CTCDParticleEmitter*)effect->PTCDriver;
-    unsigned long key = Calc_004014a0(0, "DIRECTION", 9);
+    unsigned long key = CCRC::Calc(0, "DIRECTION", 9);
     NParticleEngine::SVectorParam directionParam(key, direction);
     NParticleEngine::CParticleUpdateParameters parameters;
     parameters.VectorParams.Vector.push_back(directionParam);

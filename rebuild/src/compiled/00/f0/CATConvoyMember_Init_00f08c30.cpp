@@ -16,6 +16,7 @@
 #include "engine/CScriptThing.h"
 #include "engine/CASuspendableProcess.h"
 
+namespace NScript { class CPredicateBase; }
 class CCPPointerInfo { public: long References; };
 struct CCharStringCmp : CCharString {
     bool operator!=(const char* text) const;          // 0x0099E960
@@ -831,13 +832,18 @@ struct CSpawnedFuncAmbush : CSpawnedFuncBaseRuntime {
 FABLE_STATIC_ASSERT(sizeof(CSpawnedFuncAmbush) == 0x48);
 #endif
 
-struct CAT_ConvoyMember {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CAT_ConvoyMember : public CEntityScriptBase {
     void* __vftable;
     CGameScriptInterface* GSI;
     CScriptThingRuntime Thing;
     CQ_AmbushTradersScript* ParentClass; // PDB +0x14
     void* PMasterData;                   // PDB +0x18
-    bool IsDone();                       // 0x00F35B30
     void Init();
 };
 #if defined(_MSC_VER)
@@ -863,20 +869,20 @@ void CAT_ConvoyMember::Init()
 {
     CCharStringCmp defName = Thing.GetDefName();
     if (defName != "CREATURE_TRADER_01") {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         GSI->EntitySetThingAsEnemyOfThing(Thing, GSI->GetHero());
         GSI->EntitySetThingAsEnemyOfThing(GSI->GetHero(), Thing);
         for (unsigned int i = 0; i < ParentClass->AllBandits.size(); ++i) {
             if (ParentClass->AllBandits[i].IsAlive()) {
-                if (IsDone())
+                if (IsActiveThreadTerminating())
                     return;
                 GSI->EntitySetThingAsEnemyOfThing(Thing, ParentClass->AllBandits[i]);
                 GSI->EntitySetThingAsEnemyOfThing(ParentClass->AllBandits[i], Thing);
             }
         }
     } else {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         CCharString marker("HUD_ORB_GREEN_SMALL", -1);
         GSI->MiniMapAddMarker(Thing, marker);

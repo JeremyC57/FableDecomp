@@ -3,7 +3,7 @@
 // Retail 0x0047DF8A, 245 bytes (`ret 4`); vtable 0x01236804. Size TU (`push dword ptr [esp+0Ch]` pass-through, `fldz ; fstp`
 // double zeroes, `or ecx,-1`): `#pragma optimize("s", on)`, as the landed CTCInGameMenu::ConfirmedVideoOptionsChanged 0x0047D012.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, vector<CEnginePrimitiveHandle>::vector(size_type) @ 0x00485D30 (count 5),
-// map<CWideString,bool>::map() @ 0x00486055 (out of line), CTCBase::AddToGlobalUpdateTCs @ 0x00686ED0. Double 0x01236700 = -1.0.
+// map<CWideString,bool>::map() @ 0x00486055 (out of line), CTCBase::AddToGlobalTCs @ 0x00686ED0. Double 0x01236700 = -1.0.
 // Layout: Ego_r.pdb CTCInGameMenu with retail 12-byte containers (engine/CTCInGameMenu.h carries the PDB offsets, 16-byte
 // vectors): InGameMenuOpen +0x0c, PDef +0x10, ActiveScreen +0x18, ItemCount +0x1c, ItemHighlightIndex +0x20, ItemTopIndex
 // +0x24, FileNames +0x28, FileTimes +0x34, PrimitiveHandles +0x40, MenuPrimitiveHandles +0x4c, Components +0x58,
@@ -24,7 +24,8 @@ public:
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
-    void AddToGlobalUpdateTCs();                            // 0x00686ED0
+public:
+    void AddToGlobalTCs();   // 0x00686ED0
 };
 
 template <class T> struct CAllocator { CAllocator() { } };  // STLport allocator<T> (empty)
@@ -103,5 +104,5 @@ CTCInGameMenu::CTCInGameMenu(CThing* thing)
       SaveGameToLoad(-1), VideoChangesTimer(-1.0), SaveGameIndex(-1), FramesToWaitToSave(-1), PSaveInProgress(0),
       PMousePointer(0), PYesNo(0)
 {
-    AddToGlobalUpdateTCs();
+    AddToGlobalTCs();
 }

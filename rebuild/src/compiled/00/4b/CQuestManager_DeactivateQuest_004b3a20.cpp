@@ -18,7 +18,6 @@
 // PQuestCurrentlyRunning +0x88, DayActive +0x8c, NightActive +0x8d, NumberOfQuestsBetweenStartAndFinishScreens +0x98);
 // CActiveQuest (landed ctor 0x004B0310): ID +0, PScript +8, LoadedResources +0x25, QuestName +0x30.
 #include <new>
-void* __cdecl operator_new(unsigned int size);      // 0x00BFEA1A
 void __cdecl operator delete(void* p);              // 0x00BFE9BC
 
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
@@ -134,7 +133,7 @@ extern CCodeSectionManagerPointer g_pCodeSectionManager;   // 0x013CAA68
 __forceinline CCodeSectionManager* GetCodeSectionManager()
 {
     if (!g_pCodeSectionManager.m_pObject)
-        g_pCodeSectionManager.Reset(new(operator_new(0x2c)) CCodeSectionManager());
+        g_pCodeSectionManager.Reset(new(operator new(0x2c)) CCodeSectionManager());
     return g_pCodeSectionManager.m_pObject;
 }
 
@@ -154,8 +153,9 @@ class CQuestManager { public:
 
     void ClearQuestPersistScript(const CCharString& questName);                          // 0x004B39B0
     void RemoveActiveQuestCardAndMakeAvailableAgain(const CCharString& name, bool b);    // 0x004B0B90
-    bool IsQuestActive(const CCharString& name);                                          // 0x004AF610
     void DeactivateQuest(CCountedPointer<CActiveQuest> quest, unsigned long reason);
+public:
+    bool IsQuestActive(const CCharString&) const;   // 0x004AF610
 };
 
 // Same-TU stand-in for list<CCountedPointer<CActiveQuest>>::remove 0x004BA390 (an instantiation in this TU): only its

@@ -29,7 +29,8 @@ public:
 };
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer();                            // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 namespace NPlayerGui {
 class CDrawQuestInfo {
@@ -47,7 +48,7 @@ public:
 };
 void CPlayerGui::UpdateQuestInfoIfHeroAlive()
 {
-    CThing* hero = PlayerManager->GetMainPlayer()->GetPlayerCharacter();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPlayerCharacter();
     if (hero && !hero->Dead)
         PDrawQuestInfo->Update();
 }

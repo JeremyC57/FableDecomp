@@ -3,7 +3,6 @@
 // call 0xa0d3d0 = scalar destructor (~CInputProcessControlCreature)
 // call 0xbfe9bc = operator delete
 
-void operator_delete_stub(void *p);           // maps to 0xbfe9bc
 
 class CInputProcessControlCreature
 { public:
@@ -15,6 +14,6 @@ void * CInputProcessControlCreature::scalar_deleting_destructor(unsigned int fla
 {
     this->dtor();
     if (flags & 1)
-        operator_delete_stub(this);
+        operator delete(this);
     return this;
 }

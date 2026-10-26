@@ -23,8 +23,10 @@ class CWideString { public:
 };
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& left, const wchar16* right);       // 0x0099BF30
-void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name,
-                          CWideString* extension);  // 0x00997620
+class CAFile {
+public:
+    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+};  // 0x00997620
 CWideString __fastcall GetLevelsDirectory_0041a060();       // 0x0041A060 (L"Data\\Levels\\", hidden result in ecx)
 
 struct CWorld_Methods : CWorld {
@@ -34,7 +36,7 @@ struct CWorld_Methods : CWorld {
 CWideString __fastcall CWorld_Methods::ConvertWorldToQuestPath(const CWideString& world)
 {
     CWideString name;
-    SplitPath(world, 0, 0, &name, 0);
+    CAFile::SplitPath(world, 0, 0, &name, 0);
     name = GetLevelsDirectory_0041a060() + name + (const wchar16*)L".qst";
     return name;
 }

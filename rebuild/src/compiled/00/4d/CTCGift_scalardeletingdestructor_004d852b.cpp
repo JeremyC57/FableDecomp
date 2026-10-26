@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCGift_Destruct(void* gift);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCGift_ScalarDeletingDestructor(void* gift, int, unsigned int flags)
 {
-    CTCGift_Destruct(gift);
+    ((CTCBase*)(gift))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(gift);
+        operator delete(gift);
     return gift;
 }

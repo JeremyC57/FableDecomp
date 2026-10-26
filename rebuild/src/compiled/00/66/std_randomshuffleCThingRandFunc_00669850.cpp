@@ -14,7 +14,7 @@
 //   the member re-reads Seed after every store, 124v113). The register
 //   arguments are homed in the 8-byte frame (first and last re-read from it in the loop). No pragma.
 class CThing;
-unsigned long __fastcall GFROR13(unsigned long value);       // 0x00497890
+long __fastcall GFROR13(unsigned long);       // 0x00497890
 
 // The landed GFRandom (0x005472A0 model): the seed pointer is a by-value parameter, so the rotated value stays in eax.
 __forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)

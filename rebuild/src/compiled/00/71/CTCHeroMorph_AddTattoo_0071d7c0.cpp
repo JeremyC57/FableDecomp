@@ -6,7 +6,7 @@
 // Callees: CDefClassBase::GetSubDef<const CTattooDef>(CDefPointer*) const @ 0x005B1EFC, STLport `__copy(first, last, result,
 // random_access_iterator_tag, long*)` @ 0x0071FA60 and `_Destroy(first, last, tag)` @ 0x005B26E9 (both `__fastcall`, the inlined
 // erase(begin(), end()) of clear()), vector<CDefPointer>::erase(iterator) @ 0x00720810, `_M_insert_overflow` @ 0x005B3275 (the
-// inlined push_back's growth path), CTCBase::GetWorld() const @ 0x00686A80 + static CWorld::GetWorldFrame @ 0x0049D870, the defs'
+// inlined push_back's growth path), CTCBase::PeekWorld() const @ 0x00686A80 + static CWorld::GetWorldFrame @ 0x0049D870, the defs'
 // virtual slot 1 on release.
 // Shape: clear() and push_back are inlined here (AddTattoo(long) calls their out-of-line copies); the copied CDefPointer for
 // push_back is built in the dead `tattooThing` slot, which also homes the empty tag temporaries -- VC7.1 overlaps them only with
@@ -124,7 +124,8 @@ public:
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    const CWorld* GetWorld() const;                     // 0x00686A80
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 class CTCHeroMorph : public CTCBase {
 public:
@@ -169,6 +170,6 @@ void CTCHeroMorph::AddTattoo(const CThing& tattooThing)
             Tattoos.push_back(CThingDefPointer(tattooThing.PDef));
         }
         Changed = true;
-        FrameTattoosChanged = GetWorld()->GetWorldFrame();
+        FrameTattoosChanged = PeekWorld().GetWorldFrame();
     }
 }

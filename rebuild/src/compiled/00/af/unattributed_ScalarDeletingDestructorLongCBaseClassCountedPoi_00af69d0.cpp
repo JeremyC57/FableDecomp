@@ -39,7 +39,7 @@ template<class T> class CCountedPointer { public:
 class CBaseClass { public:
     virtual void v0();
     CBaseClass();
-    ~CBaseClass();                                        // 0x0099A2E0 (vtable store only)
+    virtual ~CBaseClass();                                        // 0x0099A2E0 (vtable store only)
 };
 class CScriptThing : public CBaseClass { public:                       // PDB: CBaseClass + CCountedPointer<CScriptThing> PImp (sizeof 0x0c)
     CCountedPointer<CScriptThing> PImp;                  // +0x04 of the member

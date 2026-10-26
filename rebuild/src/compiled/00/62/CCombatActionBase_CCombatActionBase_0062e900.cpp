@@ -14,13 +14,23 @@
 // CDefPointer dtor clears Object inside its null test (landed ~CTCLight 0x00640F80 form).
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 class CThing;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    ~CBaseIntelligentPointer();                             // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer { virtual void v00(); };   // CIntelligentPointer<CThing>
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer { virtual void v00(); };   // CIntelligentPointer<const CThing>
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};   // CIntelligentPointer<CThing>
+   // CIntelligentPointer<const CThing>
 class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                                  // slot 1
@@ -63,8 +73,8 @@ class CCreatureActionBase { public:                                // retail siz
     unsigned char _body[0xa8 - 4];
 };
 struct __declspec(novtable) CCombatActionBase : CCreatureActionBase {
-    CIntelligentPointerThing      PTarget;                  // +0xa8
-    CIntelligentPointerConstThing PCameraPoint;             // +0xb0
+    CIntelligentPointer<CThing>      PTarget;                  // +0xa8
+    CIntelligentPointer<const CThing> PCameraPoint;             // +0xb0
     CDefPointer<const CMeleeCombatAbilityDef> PMeleeAbilityDef;   // +0xb8
     CStrikeEventList StrikeEvents;                          // +0xbc
     long  LastStrikeEventEndTime;                           // +0xc0
@@ -88,7 +98,7 @@ struct __declspec(novtable) CCombatActionBase : CCreatureActionBase {
     long  FrameUpdatePauseFrames;                           // +0xec
     CPtrVector<const CAnimationEntry> CombatAnimations;     // +0xf0
     long  ActiveStrikeEventIndex;                           // +0xfc
-    CIntelligentPointerThing LastWeaponUsedInStrike;        // +0x100
+    CIntelligentPointer<CThing> LastWeaponUsedInStrike;        // +0x100
     C3DVector PreferredMovementVector;                      // +0x108
     virtual ~CCombatActionBase();
 };

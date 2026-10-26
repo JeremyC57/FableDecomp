@@ -4,7 +4,10 @@
 // The global visibility byte is at 0x0137575B. CDrawBase::Drawing is the byte at +0x18 (PDB CDrawBase: PlayerGui +4 .. Bank +0x14, Drawing +0x18).
 // The one stack argument (`ret 4`) is unused (the drawer's Draw(...) signature); it is modelled as a long. Shape: `mov al,[flag] ; test ; je ; mov byte ptr [ecx+18h],1 ; call`.
 class CPlayerGuiDef;
-extern CPlayerGuiDef* __fastcall PeekGuiDef();    // 0x00438570
+class CPlayerGui {
+public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
+};    // 0x00438570
 extern bool g_mouseCursorVisible_0137575b;         // 0x0137575B
 
 namespace NPlayerGui {
@@ -19,7 +22,7 @@ void CDrawMouseCursor::Draw(long)
 {
     if (g_mouseCursorVisible_0137575b) {
         Drawing = true;
-        PeekGuiDef();
+        (&CPlayerGui::PeekGuiDef());
     }
 }
 

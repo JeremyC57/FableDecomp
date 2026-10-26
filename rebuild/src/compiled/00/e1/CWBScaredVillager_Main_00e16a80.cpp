@@ -10,6 +10,7 @@
 // kept in edi for the ctor and the inline dtor store; the scripted-thing handle's inline ctor (CBaseObject call, own
 // vtable, zeroed counted pointer) and implicit dtor (release, CScriptGameResourceObjectBase vtable, ~CBaseObject) bracket
 // the rotated wait loop.
+namespace NScript { class CPredicateBase; }
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
 class CCPPointerInfo { public:                                  // CCountedPointer's shared block
@@ -37,20 +38,27 @@ template <class T> class CCountedPointer { public:
 };
 
 class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C
-    unsigned char _body[0xc];
+    unsigned char _body[0xc - 4];
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    ~CScriptThing();                                     // 0x004AA840
+    virtual ~CScriptThing();                                     // 0x004AA840
 };
 
-struct CIsThingConscious {                               // NScript predicate, vtable 0x012C2FE8: Thing alive and not unconscious
+namespace NScript {
+class CPredicateBase
+{
+public:
+    virtual bool operator()() const;                     // slot 0 (0x00CDDAB0)
+};
+}
+struct CIsThingConscious : public NScript::CPredicateBase {                               // NScript predicate, vtable 0x012C2FE8: Thing alive and not unconscious
     CScriptThing Thing;                                  // +0x04
     CIsThingConscious(const CScriptThing& thing) : Thing(thing) {}
     ~CIsThingConscious() {}
-    virtual bool operator()() const;                     // slot 0 (0x00CDDAB0)
 };
 
 class CBaseObject { public:                                     // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
     void* IntelligentPointer;                            // +0x04
+protected:
     CBaseObject();                                       // 0x0099A380
     virtual ~CBaseObject();                              // 0x0099A430
 };
@@ -75,8 +83,9 @@ class CEntityScriptBase { public:                               // retail 0x14 b
     virtual void v00();
     CGameScriptInterface* Game;                          // +0x04
     CScriptThing          Me;                            // +0x08
-    void SetPredicate(CIsThingConscious& predicate);     // 0x00F35B10
     bool IsActiveThreadTerminating() const;              // 0x00F35B30 (PDB: const)
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 
 struct CWB_ScaredVillager : CEntityScriptBase {

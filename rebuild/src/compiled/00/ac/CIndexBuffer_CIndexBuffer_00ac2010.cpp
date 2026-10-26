@@ -12,11 +12,11 @@ struct SRenderDevice_Retail {
     unsigned char            _pad[0x58];
     IDirect3DDevice_Retail*  m_pDevice;            // +0x58
 };
-struct SDeviceRecord_013ca618 {
+class CSystemManager { public:
     unsigned char          _pad[0x60];
     SRenderDevice_Retail*  m_pRender;              // +0x60
 };
-SDeviceRecord_013ca618* __cdecl GetDeviceRecord_009a4ec0();   // 0x009A4EC0 (labelled "GFGetSystemManager")
+CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0 (labelled "GFGetSystemManager")
 class CIndexBuffer { public:                              // vtable 0x0129EF2C
     virtual void v00();
     IDirect3DIndexBuffer_Retail* m_pBuffer;        // +0x04
@@ -30,7 +30,7 @@ CIndexBuffer::CIndexBuffer(unsigned long length, unsigned long usage, long forma
     : PAllocatedBuffer(0)
 {
     m_pBuffer = 0;
-    GetDeviceRecord_009a4ec0()->m_pRender->m_pDevice->CreateIndexBuffer(length, usage, format, pool, &m_pBuffer, 0);
+    GFGetSystemManager()->m_pRender->m_pDevice->CreateIndexBuffer(length, usage, format, pool, &m_pBuffer, 0);
     m_length = length;
     m_count = count;
 }

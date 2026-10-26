@@ -33,9 +33,9 @@ struct CMessageEventManager_Retail {
     CMessageEvent_Retail* FindMostRecentMessage(const CSeenOrHeardFilter& filter);   // 0x008ABED0
 };
 class CScriptThing { public:
-    unsigned char _data[0xc];                       // 12 bytes (vptr + the thing's intelligent pointer)
+    unsigned char _data[0xc - 4];                       // 12 bytes (vptr + the thing's intelligent pointer)
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
-    ~CScriptThing();                                // 0x004AA840 (the label "~C3DClothPrimitive" is propagated)
+    virtual ~CScriptThing();                                // 0x004AA840 (the label "~C3DClothPrimitive" is propagated)
 };
 struct CThing_Retail {
     CScriptThing GetScriptThing();                  // 0x004C7E50 (by value through the hidden result pointer)

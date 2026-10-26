@@ -8,7 +8,7 @@
 // retail store schedule (last-frame Z first, the other two after the flag byte).
 #include "engine/CRenderManagerCore.h"
 
-double GFGetTime();     // 0x009E1BC0
+double __fastcall GFGetTime();     // 0x009E1BC0
 
 // d3d9.h is not on the verifier include path, so the IDirect3DDevice9 vtable is declared locally
 // (COM methods are __stdcall with `this` pushed; unnamed slots are placeholders).

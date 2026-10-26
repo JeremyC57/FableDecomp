@@ -9,7 +9,7 @@
 // Shape: no vtable store of its own, so the most-derived class is `__declspec(novtable)` with an empty destructor; the
 // members die in reverse order. The +0x64 list's destructor is inline (`clear(); if (m_head) free(m_head);` -- the head
 // null test and free inline after the out-of-line clear), the +0x68 list's is out of line; the base destructor is a `jmp`.
-void __cdecl free(void* block);                // 0x00BFEA14
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct SListNode;
 

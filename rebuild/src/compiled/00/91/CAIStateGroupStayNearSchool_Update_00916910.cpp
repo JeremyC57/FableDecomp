@@ -189,6 +189,8 @@ class CAIStateGroupBase { public:
         *seed = rotated;
         return rotated % range;
     }
+public:
+    void Terminate();   // 0x008FCF40
 };
 
 // vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
@@ -260,7 +262,6 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelli
 struct CAIStateGroup_StayNearSchoolU : CAIStateGroup_StayNearSchool {
     long AIAction_MoveToThingProximity(long repeat, CIntelligentPointerConstThing target, float distance, bool* reached,
         long movement, bool a, bool b, bool c, bool d, float speed);         // 0x0097E380
-    void Terminate();                           // 0x008FCF40
 };
 
 void CAIStateGroup_StayNearSchool::Update()

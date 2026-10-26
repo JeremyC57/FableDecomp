@@ -108,7 +108,7 @@ class CCreatureActionBase { public:
 };
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _body[0x110];                 // retail sizeof 0x114
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCreatureAction_NymphTeleportIntoLimbo : public CCombatActionBase { public:
     CCreatureAction_NymphTeleportIntoLimbo(CThingCreatureBase* owner);    // 0x008CA800

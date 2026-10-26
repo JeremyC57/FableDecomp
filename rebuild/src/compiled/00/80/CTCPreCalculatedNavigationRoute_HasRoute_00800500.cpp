@@ -14,14 +14,25 @@ class CThing { public:
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
-    virtual void v00();
-    void* PData;                                            // +0x04
-    CThing* GetPItem() const;                               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #pragma pack(pop)
 
-inline bool IS_THING_DEAD(const CBaseIntelligentPointer& pointer)
+inline bool IS_THING_DEAD(const CIntelligentPointer<CThing>& pointer)
 {
     if (pointer.GetPItem() != 0) {
         if (!pointer.GetPItem()->IsDead())
@@ -46,7 +57,7 @@ struct CTCBase_Layout {                                     // engine/CTCBase.h 
 };
 
 class CTCPreCalculatedNavigationRoute : public CTCBase_Layout { public:
-    CBaseIntelligentPointer PThingToCalculateRouteTo;       // +0x0c CIntelligentPointer<const CThing>
+    CIntelligentPointer<CThing> PThingToCalculateRouteTo;       // +0x0c CIntelligentPointer<const CThing>
     unsigned __int64        ThingToCalculateRouteToUID;     // +0x18
     CRetailVector_RouteNode Route;                          // +0x20
     long HasRoute() const;

@@ -10,14 +10,23 @@
 // after it, then the derived vtable and the zeroes from one `xor eax,eax`: PDef is a member
 // OBJECT with an inline constructor (a plain pointer initialiser sinks the vtable store below
 // every zero store).
-struct CBaseIntelligentPointer {                   // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    void* m_pItem;                                 // +0x04
-    CBaseIntelligentPointer();                     // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CThing { public:                                    // 0xc0 bytes
     virtual void v00();
@@ -26,7 +35,7 @@ class CThing { public:                                    // 0xc0 bytes
 };
 class CThingGameObject : public CThing { public:                 // vtable 0x01244F7C
     virtual void v00();
-    CIntelligentPointer m_owner;                   // +0xc0
+    CIntelligentPointer<CThing> m_owner;                   // +0xc0
     unsigned char       _padc8[0x8];               // +0xc8
     CThingGameObject(long type) : CThing(type), m_owner() { }
 };

@@ -1,6 +1,6 @@
 // CCreatureAction_GetUpFromSitting::CCreatureAction_GetUpFromSitting(CThingCreatureBase*, const CCharString&, long, bool) -- base CCombatActionBase(owner, 50, zeroed CSoundPair), SittingMode and RemoveOnPerformAction from the arguments, own vtable, then the animation name handed to the base setter
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00860150, length 96 bytes.
-// Callees: CCombatActionBase::CCombatActionBase @ 0x00858030, CCombatActionBase::SetAnimationName @ 0x008574D0 (propagated
+// Callees: CCombatActionBase::CCombatActionBase @ 0x00858030, CCombatActionBase::SetCombatAnimation @ 0x008574D0 (propagated
 // manifest label "CTCInGameMenu::SetPDef"; every call site of the landed family passes an animation name).
 // Vtable 0x01276C2C (rtti-vtables.tsv). Retail CCombatActionBase is 0x114 bytes (PDB 0x12c), so this class's
 // members sit at +0x114.. (PDB +0x12c..) and `this` is modelled locally; member names are the Ego_r.pdb names.
@@ -21,7 +21,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114 (the P
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0 (propagated manifest label; the landed family names it so)
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_GetUpFromSitting : public CCombatActionBase { public:   // vtable 0x01276C2C
@@ -36,5 +37,5 @@ CCreatureAction_GetUpFromSitting::CCreatureAction_GetUpFromSitting(CThingCreatur
     , SittingMode(sittingMode)
     , RemoveOnPerformAction(removeOnPerformAction)
 {
-    SetAnimationName(animName);
+    SetCombatAnimation(animName);
 }

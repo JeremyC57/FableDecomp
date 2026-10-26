@@ -42,7 +42,8 @@ struct CThingBaseDefPointer {                        // CDefPointer<const CThing
 };
 
 struct CDefStringTable {
-    CCharString GetString(long index);               // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;             // 0x013CA828
 
@@ -66,7 +67,10 @@ class CThingManager { public:                               // a CClassFactory
 };
 extern CThingManager* g_pThingManager;               // 0x013B8A1C
 
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                 // 0x0049D870
 
 class CThing {
 public:
@@ -100,8 +104,9 @@ public:
     unsigned char        LevelPersistent : 1;        // bit 4
 
     void CreateUID();                                // 0x004C7FF0
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     bool ConstructFromParams(long defGlobalIndex, long playerNumber, long mapNumber, bool reregister);
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 
 bool CThing::ConstructFromParams(long defGlobalIndex, long playerNumber, long mapNumber, bool reregister)
@@ -111,7 +116,7 @@ bool CThing::ConstructFromParams(long defGlobalIndex, long playerNumber, long ma
     DefGlobalIndex = (unsigned short)defGlobalIndex;
     PlayerNumber = (signed char)playerNumber;
     CurrentMapNumber = (short)mapNumber;
-    WorldFrameCreatedAt = GFGetCurrentFrame();
+    WorldFrameCreatedAt = CWorld::GetFrame();
     RenderListNext = 0;
     RenderListPrev = 0;
     UpdateListNext = 0;

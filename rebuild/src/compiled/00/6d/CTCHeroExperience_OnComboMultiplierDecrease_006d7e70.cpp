@@ -13,7 +13,7 @@
 // CDefPointer), PHeroStatsDef +0x5c. engine/CTCHeroExperience.h carries the Ego_r.pdb debug-STL layout (TrainableStatLevels
 // +0x28, PDef +0x70, ...), which disagrees with the retail offsets from +0x24 on, so the class is modelled locally (as the
 // landed 0x006D8CA0 Copy and 0x006D6850 GetCategoryTrainableStatIsIn do). The def classes carry Ego_r.pdb member names at
-// their retail offsets; only the members the bodies read are placed. CTCCombat_Calls / CWorld_Calls: engine/CTCCombat.h and
+// their retail offsets; only the members the bodies read are placed. CTCCombat / CWorld_Calls: engine/CTCCombat.h and
 // engine/CWorld.h hold those classes' data layouts; only calls are needed here, so they are call-only structs.
 struct CTCBaseComponent;
 
@@ -49,8 +49,9 @@ class CThingCreatureBase : public CThing { public:
     bool IsChild() const;                       // 0x00661F70
 };
 
-struct CTCCombat_Calls {
-    void SetMeleeFlourishValid(bool valid);     // 0x00733E10
+class CTCCombat { public:
+public:
+    void SetMeleeFlourishValid(bool);   // 0x00733E10
 };
 
 struct CIteratorTag { CIteratorTag() { } };
@@ -236,7 +237,7 @@ public:
 
 void CTCHeroExperience::OnComboMultiplierDecrease()
 {
-    CTCCombat_Calls* combat;
+    CTCCombat* combat;
     ParentThing->GetInterface(&combat, 0x30);
     combat->SetMeleeFlourishValid(false);
 }

@@ -37,13 +37,24 @@ class CThing { public:
     }
 };
 
-struct CBaseIntelligentPointer {                    // CIntelligentPointer<CThingAICreature>: 8 bytes
-    virtual void v00();
-    CThing* m_pItem;                                // +0x04
-    CThing* GetPItem() const;                       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -74,7 +85,7 @@ class CTCGhostSword { public:
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[4];
     void* PDef;                                     // +0x0C CDefPointer<const CSpecialAbilitiesGhostSwordDef>
-    CRetailVector<CBaseIntelligentPointer> Minions; // +0x10
+    CRetailVector<CIntelligentPointer<CThing> > Minions; // +0x10
     void CancelMove();
 };
 

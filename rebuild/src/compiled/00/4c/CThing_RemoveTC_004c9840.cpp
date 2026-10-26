@@ -13,18 +13,24 @@
 //          with the end iterator built in its by-value slot (user copy ctor) and the returned iterator in the dead `type` slot;
 //          the node value is {CIntelligentPointer<CThing>, CTCBase*} built from a CIntelligentPointer(this) temporary.
 class CThing;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item) { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CTCBase { public:
@@ -39,9 +45,9 @@ class CTCBase { public:
 };
 
 struct STCRemoval {
-    CIntelligentPointer PThing;                 // +0x00
+    CIntelligentPointer<CThing> PThing;                 // +0x00
     CTCBase*            PTC;                    // +0x08
-    STCRemoval(const CIntelligentPointer& thing, CTCBase* tc) : PThing(thing), PTC(tc) { }
+    STCRemoval(const CIntelligentPointer<CThing>& thing, CTCBase* tc) : PThing(thing), PTC(tc) { }
 };
 
 struct STCRemovalNode { STCRemovalNode* next; STCRemovalNode* prev; STCRemoval value; };
@@ -115,6 +121,6 @@ void CThing::RemoveTC(long type)
         return;
     tc->PendingRemoval = true;
     m_presentBits.reset(tc->GetInterfaceType());
-    g_TCRemovalList.push_back(STCRemoval(CIntelligentPointer(this), tc));
+    g_TCRemovalList.push_back(STCRemoval(CIntelligentPointer<CThing>(this), tc));
     tc->OnRemove();
 }

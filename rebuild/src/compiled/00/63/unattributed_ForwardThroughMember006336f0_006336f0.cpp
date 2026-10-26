@@ -7,17 +7,18 @@
 // Tiny-body shape `ForwardThroughMember` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CTarget {
-    void Method();                         // 0x00A0D2D0
+class CAInputProcess { public:
+public:
+    void RemoveFromInterface();   // 0x00A0D2D0
 };
 
 struct CClass_006336f0 {
     unsigned char _pad[0x19c];
-    CTarget* m_pTarget;                    // +0x19c
+    CAInputProcess* m_pTarget;                    // +0x19c
     void ForwardThroughMember_006336f0(long, long);
 };
 
 void CClass_006336f0::ForwardThroughMember_006336f0(long, long)
 {
-    m_pTarget->Method();
+    m_pTarget->RemoveFromInterface();
 }

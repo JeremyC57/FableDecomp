@@ -32,10 +32,23 @@ struct CDefStringTable {
 extern CDefStringTable g_DefStringTable;           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}     // the trace output, compiled out
 
-class CThingCreatureBase { public:
+class CThing
+{
+public:
+    CDefString GetDefName() const;   // 0x004C7CC0
+};
+class CThingPhysical : public CThing
+{
+public:
+};
+class CThingGameObject : public CThingPhysical
+{
+public:
+};
+
+class CThingCreatureBase : public CThingGameObject { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                     // +0x18
-    CDefString GetDefName() const;                 // 0x004C7CC0 (CThing::GetDefName)
     unsigned __int64 GetUID() const { return UniqueID; }
 };
 bool __fastcall IsAbleToBeAttacked(const CThingCreatureBase& creature);   // 0x0085FB30

@@ -1,8 +1,10 @@
 #pragma optimize("s",on)
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 struct CMember { };
 extern void __fastcall CMember_dtor(CMember* def);
-extern void __fastcall Base_dtor(void* def);
-extern void __cdecl op_delete(void* p);
 extern const int g_vtbl;
 
 class CClockDef { public:
@@ -17,8 +19,8 @@ void* __fastcall CClockDef_scalar_deleting_destructor(CClockDef* def, int edx, u
 {
     CMember_dtor(&def->m28);
     *(const int**)def = &g_vtbl;
-    Base_dtor(def);
+    ((CResource*)(def))->CResource::~CResource();
     if (flags & 1)
-        op_delete(def);
+        operator delete(def);
     return def;
 }

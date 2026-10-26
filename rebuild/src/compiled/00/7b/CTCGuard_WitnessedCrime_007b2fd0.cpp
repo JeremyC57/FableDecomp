@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B2FD0, 336 bytes (`ret 8`). Ego_r.pdb
 // `?WitnessedCrime@CTCGuard@@QAEXABVCOpinionDeed@@J@Z`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (interfaces 0x23 village member, 0x51 hero deed log),
-// CTCVillageMember::GetPVillage @ 0x007EE540, CTCVillage::IsDeedHandled(long) @ 0x0065914B (descriptive), CBaseIntelligentPointer::
+// CTCVillageMember::GetPVillage @ 0x007EE540, CTCVillage::HasCrimeBeenReported(long) @ 0x0065914B (descriptive), CBaseIntelligentPointer::
 // GetPItem @ 0x00A01B50, CWorld::PeekMyPlayer @ 0x0049D9D0, CPlayer::GetHeroCreature @ 0x00487DC0, CTCHeroOpinionDeedLog::
 // GetDeedEffectsDef(long) @ 0x006C5630 (CDefPointer by hidden pointer), GFGetCurrentFrame @ 0x0049D870, CTCGuard's crime report
 // @ 0x007B2C70 (village, handle, deed type, self flag; named descriptively), CTCVillage::RecalculateSecuritySweep(long) @ 0x00659C32.
@@ -84,22 +84,34 @@ template <class T> class CDefPointer { public:
     }
     T* operator->() const { return Object; }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                      // +0x04
-    CThing* GetPItem() const;                           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class COpinionDeed { public:
     long Type;                                          // +0x00 EOpinionDeedType
     unsigned char _pad04[0x14];
-    CBaseIntelligentPointer Perpetrator;                // +0x18
+    CIntelligentPointer<CThing> Perpetrator;                // +0x18
 };
 class CTCHeroOpinionDeedLog { public:                          // interface 0x51
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
 class CTCVillage { public:
-    bool IsDeedHandled(long handle);                    // 0x0065914B
     void RecalculateSecuritySweep(long flags);          // 0x00659C32
+public:
+    bool HasCrimeBeenReported(long);   // 0x0065914B
 };
 class CTCVillageMember { public:                               // interface 0x23
     CTCVillage* GetPVillage() const;                    // 0x007EE540
@@ -122,7 +134,7 @@ void CTCGuard::WitnessedCrime(const COpinionDeed& deed, long deedHandle)
     CTCVillage* village = ParentThing->GetTC<CTCVillageMember>(0x23)->GetPVillage();
     if (!village)
         return;
-    if (village->IsDeedHandled(deedHandle))
+    if (village->HasCrimeBeenReported(deedHandle))
         return;
     CThing* parent = ParentThing;
     bool self = deed.Perpetrator.GetPItem() == parent;

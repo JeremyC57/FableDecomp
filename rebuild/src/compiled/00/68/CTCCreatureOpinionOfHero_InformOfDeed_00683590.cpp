@@ -78,17 +78,23 @@ class CTCHeroOpinionDeedLog { public:
     COpinionDeed* GetDeedFromHandle(long handle);       // 0x006C58F0
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
-class CTCCreatureOpinionOfHero { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCCreatureOpinionOfHero : public CTCBase { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    CPlayerManager* GetPlayerManager();                 // 0x00686D40 (CTCBase)
     void InformOfDeed(long deedType, long deedHandle, const COpinionDeedEffectsDef* effects, bool flag);   // 0x00682810
     void InformOfDeed(long deedHandle, bool flag);
 };
 
 void CTCCreatureOpinionOfHero::InformOfDeed(long deedHandle, bool flag)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer()->GetHeroCreature();
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);

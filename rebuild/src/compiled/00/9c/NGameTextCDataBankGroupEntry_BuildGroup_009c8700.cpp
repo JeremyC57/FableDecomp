@@ -35,9 +35,10 @@ class CBankFileAsyncData { public:
     unsigned char _pad[0x10];
     long DataSize;                     // +0x10
     long GetDataSize() const { return DataSize; }
-    bool IsFinished();                 // 0x009D54E0
     bool WaitUntilFinished();          // 0x009D5B60
     const void* PeekData() const;      // 0x009D5530 (byte-identical to GetData 0x009D5580)
+public:
+    bool IsFinished() const;   // 0x009D54E0
 };
 
 void __fastcall DestroyBankFileAsyncData(void* object);   // the deleter stored in the count block
@@ -68,10 +69,9 @@ template <class T> class CCountedPointer { public:
 
 class CDataInputStream;
 class CMemoryDataInputStream { public:
-    void* __vftable;
     unsigned char _body[0x18];
     CMemoryDataInputStream(const void* data, long size);   // 0x00994930
-    ~CMemoryDataInputStream();                       // 0x00993B10
+    virtual ~CMemoryDataInputStream();                       // 0x00993B10
 };
 
 namespace NGameText {

@@ -1,12 +1,13 @@
 // CCrateTeamMember::IsThingCarryingCrate(const CScriptThing& thing) -- whether the thing carries one of the raid's live crates; every step re-checks IsOutOfAction (an out-of-action member answers false)
 // Leaf: IsThingCarryingCrate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DCED10, 210 bytes (224 with padding), `ret 4`.
-// Callees: CCrateTeamMember::IsOutOfAction 0x00F35B30 (landed caller 0x00DCEC70; the manifest label is propagated),
+// Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30 (landed caller 0x00DCEC70; the manifest label is propagated),
 //   the crate's CScriptThing virtual slots 75 (+0x12c, alive) and 63 (+0xfc, carried by), the thing's slot 1 (+4).
 // Layout: Ego_r.pdb CCrateTeamMember (landed 0x00DCEC70): ParentClass +0x14; the parent script's crate vector of 12-byte
 //   CScriptThings at +0x54.
-// Shape: the result goes through an inline Return(value) = `if (IsOutOfAction()) return false; return value;` (the
+// Shape: the result goes through an inline Return(value) = `if (IsActiveThreadTerminating()) return false; return value;` (the
 //   false case keeps the call and drops its result; the true case is `neg ; sbb ; inc`); size() is recomputed per test.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                       // 12 bytes: vptr + counted pointer
     virtual void v00();
     virtual void* GetThing() const;             // slot 1 (+0x04)
@@ -101,14 +102,20 @@ struct CQ_OrchardFarmRaidScript {
     CRetailVector<CScriptThing> Crates;     // +0x54
 };
 
-struct CCrateTeamMember {
+class CEntityScriptBase
+{
+public:
     virtual void v00();
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CCrateTeamMember : public CEntityScriptBase {
     unsigned char _pad04[0x10];
     CQ_OrchardFarmRaidScript* ParentClass;  // +0x14
-    bool IsOutOfAction();                   // 0x00F35B30
     bool Return(bool value)
     {
-        if (IsOutOfAction())
+        if (IsActiveThreadTerminating())
             return false;
         return value;
     }
@@ -118,7 +125,7 @@ struct CCrateTeamMember {
 bool CCrateTeamMember::IsThingCarryingCrate(const CScriptThing& thing)
 {
     for (unsigned long i = 0; i < ParentClass->Crates.size(); ++i) {
-        if (IsOutOfAction())
+        if (IsActiveThreadTerminating())
             return false;
         if (ParentClass->Crates[i].IsAlive()) {
             if (ParentClass->Crates[i].IsBeingCarriedBy(thing.GetThing()))

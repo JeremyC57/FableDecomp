@@ -12,7 +12,7 @@
 // destructor is inline and empty (its vtable store only); `__forceinline` on the virtual destructor is what inlines it
 // into the `??_G` (plain inline leaves a `call ??1`); the `new CBaseObject` factory pulls the vtable and the
 // deleting destructor into the translation unit.
-// Leaf: ??_GCBaseObject
+// Leaf: ??_GCBaseObject@@MAEPAXI@Z
 class CBaseObject;
 
 struct CBaseObjectPointer {
@@ -28,7 +28,8 @@ public:
 class CBaseObject : public CBaseClass {            // vtable 0x0129A7D8
 public:
     CBaseObjectPointer* IntelligentPointer;        // +0x04
-
+    friend CBaseObject* MakeBaseObject();
+protected:                                         // Ego_r.pdb: ??0CBaseObject@@IAE@XZ, ??1CBaseObject@@MAE@XZ
     CBaseObject() : IntelligentPointer(0) {}
     __forceinline virtual ~CBaseObject()
     {

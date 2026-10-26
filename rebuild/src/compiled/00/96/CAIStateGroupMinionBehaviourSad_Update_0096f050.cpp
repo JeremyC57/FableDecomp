@@ -142,6 +142,8 @@ class CAIStateGroupBase { public:
         *seed = rotated;
         return rotated % range;
     }
+public:
+    void Terminate();   // 0x008FCF40
 };
 
 // vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
@@ -167,7 +169,7 @@ class CSoundPair { public:
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];                      // +0x04..+0xa7
-    ~CCreatureActionBase();                         // 0x00693EF0
+    virtual ~CCreatureActionBase();                         // 0x00693EF0
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];                      // +0xa8..+0xb3
@@ -181,7 +183,6 @@ struct CAIStateGroupBehaviourBase : CAIStateGroupBase {
         long movement, bool a, bool b, bool c, bool d, float speed);         // 0x0097E380
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing target, long frames, float speed);  // 0x0097D6F0
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
-    void Terminate();                               // 0x008FCF40
     bool UpdateEmote();                             // 0x00957A20
 };
 

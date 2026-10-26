@@ -47,32 +47,38 @@ class CThing { public:
         return false;
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
-    void SetPItem(CThing* item);                    // 0x00A01B90
-    CThing* GetPItem() const;                       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct SThingPointerNode {                          // STLport _List_node<CIntelligentPointer<CThing>> (16 bytes)
     SThingPointerNode*  _M_next;
     SThingPointerNode*  _M_prev;
-    CIntelligentPointer _M_data;
+    CIntelligentPointer<CThing> _M_data;
 };
 struct CThingPointerList {                          // std::list<CIntelligentPointer<CThing>>: the header node
     SThingPointerNode* _M_node;
     SThingPointerNode* begin() const { return _M_node->_M_next; }
     SThingPointerNode* end() const { return _M_node; }
-    SThingPointerNode* insert(SThingPointerNode* position, const CIntelligentPointer& value)
+    SThingPointerNode* insert(SThingPointerNode* position, const CIntelligentPointer<CThing>& value)
     {
         SThingPointerNode* node = (SThingPointerNode*)malloc(sizeof(SThingPointerNode));
-        new (&node->_M_data) CIntelligentPointer(value);
+        new (&node->_M_data) CIntelligentPointer<CThing>(value);
         SThingPointerNode* prev = position->_M_prev;
         node->_M_next = position;
         node->_M_prev = prev;
@@ -80,7 +86,7 @@ struct CThingPointerList {                          // std::list<CIntelligentPoi
         position->_M_prev = node;
         return node;
     }
-    void push_back(const CIntelligentPointer& value) { insert(end(), value); }
+    void push_back(const CIntelligentPointer<CThing>& value) { insert(end(), value); }
 };
 
 class CTCKraken { public:
@@ -94,12 +100,12 @@ class CTCKraken { public:
 };
 void CTCKraken::AddStrikeExplosion(CThing* explosion)
 {
-    ExplosionList.push_back(CIntelligentPointer(explosion));
+    ExplosionList.push_back(CIntelligentPointer<CThing>(explosion));
     CExplosionDriver* driver;
     explosion->GetTCDriver(&driver);
     driver->AddExcludedThing(ParentThing);
     for (SThingPointerNode* it = Tentacles.begin(); it != Tentacles.end(); it = it->_M_next) {
-        CIntelligentPointer& tentacle = it->_M_data;
+        CIntelligentPointer<CThing>& tentacle = it->_M_data;
         if (tentacle.GetPItem() && !tentacle.GetPItem()->Dead)
             driver->AddExcludedThing(tentacle.GetPItem());
     }

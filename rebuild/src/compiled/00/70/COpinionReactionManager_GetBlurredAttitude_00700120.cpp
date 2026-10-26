@@ -12,7 +12,7 @@
 // (the nonzero arm falls through; an `if (range == 0) return 0;` helper lays the zero arm first), with the element
 // read duplicated into both arms of the guard.
 // Leaf: GetBlurredAttitude
-extern unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {

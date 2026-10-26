@@ -19,7 +19,7 @@ class CCreatureActionBase { public:               // retail sizeof 0xa8
 };
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
-    ~CCombatActionBase();                  // 0x0062E900
+    virtual ~CCombatActionBase();                  // 0x0062E900
     bool HasPerformedAction() const;       // 0x006925A0
 };
 class CThingCreatureBase { public:

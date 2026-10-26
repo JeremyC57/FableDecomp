@@ -29,7 +29,8 @@ class C3DAnimationInfo { public:
 };
 
 class CMeshDataBank { public:
-    C3DAnimationInfo* GetAnimation(long index);   // 0x00A242C0
+public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
 
 class CWorld { public:
@@ -49,7 +50,7 @@ float CThingCreatureBase::GetAnimMovementDistance(long animIndex) const
 {
     if (animIndex) {
         CMeshDataBank* bank = PeekWorld().PMainMeshBank;
-        return bank->GetAnimation(animIndex)->MovementVector.Length() * 0.01f;
+        return bank->PeekAnimation(animIndex)->MovementVector.Length() * 0.01f;
     }
     return 0.0f;
 }

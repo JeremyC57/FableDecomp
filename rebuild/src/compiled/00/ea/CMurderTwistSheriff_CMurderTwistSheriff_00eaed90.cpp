@@ -28,9 +28,10 @@ class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
 };
 class CBaseObject { public:                          // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
-    virtual void v00();
     void* m_pIntelligentPointer;              // +0x04
-    CBaseObject();                            // 0x0099A380
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                // +0x08 Data, +0x0c Info

@@ -20,8 +20,8 @@ class CCharString { public:
     ~CCharString();                                      // 0x0099EAE0
 };
 class CGame;
-struct CEngineSystem { long Update(); };                 // 0x009A6460
-CEngineSystem* GetEngineSystem();                        // 0x009A4EC0
+class CSystemManager { public: long Update(); };                 // 0x009A6460
+CSystemManager* __fastcall GFGetSystemManager();                        // 0x009A4EC0
 class CGameJoystickManager { public:
     static CGameJoystickManager& __fastcall Get();       // 0x0049BB90
     void SetMainPlayerJoystickDeviceNumber(long device); // 0x0049BB30
@@ -71,7 +71,7 @@ bool CFrontendGameComponent::Run(CGameComponent*& nextComponent)
 {
     Running = true;
     while (!Quit) {
-        long state = GetEngineSystem()->Update();
+        long state = GFGetSystemManager()->Update();
         if (state == 2)
             Quit = true;
         else if (state == 1) {

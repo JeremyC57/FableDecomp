@@ -15,7 +15,10 @@ class CWideString { public:
     operator const wchar_t*();                     // 0x0099AF00
     ~CWideString();                                // 0x0099B510
 };
-CWideString __fastcall ConvertPathToFullPath(const CWideString& path);   // 0x00999110
+class CAFile {
+public:
+    static CWideString __fastcall ConvertPathToFullPath(const CWideString&);   // 0x00999110
+};   // 0x00999110
 
 class CSystemManager;
 
@@ -27,7 +30,7 @@ class CDriveManager { public:
 
 long CDriveManager::DeleteDirectory(const CWideString& path)
 {
-    CWideString fullPath = ConvertPathToFullPath(path);
+    CWideString fullPath = CAFile::ConvertPathToFullPath(path);
     if (RemoveDirectoryW(fullPath))
         return 1;
     GetLastError();

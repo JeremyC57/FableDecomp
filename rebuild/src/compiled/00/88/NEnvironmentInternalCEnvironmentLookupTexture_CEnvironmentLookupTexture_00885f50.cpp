@@ -62,9 +62,10 @@ public:
     virtual void v00();
     virtual ~CSurface() { Uninitialise(); }
     void Uninitialise();                            // 0x009F2E20
-    void InitialiseAsImage(const C2DExtentsI& extents, const CPixelFormat& format, bool flag);   // 0x009F3230
     void LoadFromBitmapFileToPreallocatedSurface(const CWideString& filename, unsigned long flags);   // 0x009F2DD0
     void CopyToMemory(void* destination, long pitch);   // 0x009F3520
+public:
+    bool InitialiseAsImage(const C2DExtentsI&, const CPixelFormat&, bool);   // 0x009F3230
 };
 
 void* __cdecl operator new[](unsigned int size);    // 0x00BFEB22

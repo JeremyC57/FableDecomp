@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054F370, 158 bytes (160 with padding), virtual, `ret 0Ch`.
 // Vtable 0x01249CCC (NUISystem::CText) slot 145; Ego_r.pdb `?SetValue@CText@NUISystem@@UAEXABVCCharString@@_N1@Z`.
 // Callees: the CRC Calc 0x004014A0 (`__fastcall(seed, data, length)`), CCharString::GetCRC's out-of-line copy
-//   0x00404310 (manifest CCharString_ComputeCRC32), NGameText::CDataBank::GetTagFromCRC 0x009CC410, CCharString::
+//   0x00404310 (manifest CCharString_ComputeCRC32), NGameText::NGameText::CDataBank::LookupValue 0x009CC410, CCharString::
 //   ToWideString 0x0099E480, ~CWideString 0x0099B510, and the (K, const CWideString&, bool) overload, slot 143 (+0x23c).
 // Globals: g_pMainGameComponent 0x013B86A0 (game-text bank +0x14), g_pNewFrontendGameComponent 0x013B871C (+0x60).
 // Shape: the tag starts at 0 (esi); GetCRC is an in-class inline member called twice: VC7.1 expands it at the first
@@ -12,7 +12,10 @@
 //   parameter's name is descriptive. The bank is read through an inline const getter (name descriptive): a direct
 //   member read loads it after the Calc call, a named local hoists it above the string reads; the getter puts the load
 //   between them, duplicated into both null arms as in retail.
-unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0
 
 class CCharStringData { public:
     char* PData;                                    // +0x00
@@ -26,7 +29,7 @@ public:
     CWideString ToWideString() const;               // 0x0099E480
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->PData; }
-    unsigned long GetCRC() const { return Calc(0, GetString(), GetLength()); }   // out-of-line copy 0x00404310
+    unsigned long GetCRC() const { return CCRC::Calc(0, GetString(), GetLength()); }   // out-of-line copy 0x00404310
 };
 class CWideString {
 public:
@@ -38,7 +41,8 @@ public:
 namespace NGameText {
 class CDataBank {
 public:
-    unsigned long GetTagFromCRC(unsigned long crc) const;   // 0x009CC410
+public:
+    unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
 class CMainGameComponent { public:
@@ -212,10 +216,10 @@ void CText::SetValue(const CCharString& text, bool lookUpTag, bool keepSize)
     unsigned long tag = 0;
     if (lookUpTag) {
         if (g_pMainGameComponent) {
-            tag = g_pMainGameComponent->GetGameTextDataBank()->GetTagFromCRC(text.GetCRC());
+            tag = g_pMainGameComponent->GetGameTextDataBank()->LookupValue(text.GetCRC());
         }
         else if (g_pNewFrontendGameComponent) {
-            tag = g_pNewFrontendGameComponent->GetGameTextDataBank()->GetTagFromCRC(text.GetCRC());
+            tag = g_pNewFrontendGameComponent->GetGameTextDataBank()->LookupValue(text.GetCRC());
         }
     }
     SetValue(tag, text.ToWideString(), keepSize);

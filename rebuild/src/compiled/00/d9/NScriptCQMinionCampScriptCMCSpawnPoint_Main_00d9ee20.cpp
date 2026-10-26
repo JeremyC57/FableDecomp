@@ -19,7 +19,7 @@ class CScriptThing { public:                                   // 12 bytes, vtab
  void* PImp_Data;
  void* PImp_Info;
  CScriptThing(const CScriptThing& other);   // 0x004ABE90
- ~CScriptThing();                           // 0x004AA840
+ virtual ~CScriptThing();                           // 0x004AA840
 };
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
@@ -926,6 +926,13 @@ class CCharString { public:
  ~CCharString();                                    // 0x0099EAE0
 };
 int __cdecl rand();                                 // 0x00BFEB16
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
 namespace NScript {
 class CQ_MinionCampScript { public:
  unsigned char BaseState[0x4b];
@@ -936,12 +943,10 @@ class CQ_MinionCampScript { public:
  bool ShouldSpawn;                                  // +0x98 (PDB +0xbc)
  bool IsSpawnPointToSpawn(const CScriptThing& thing);   // 0x00D9F070 (descriptive)
 };
-struct CMC_SpawnPoint {
+struct CMC_SpawnPoint : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CQ_MinionCampScript* ParentClass;                  // +0x14
  void* PMasterData;                                 // +0x18
- void SetPredicate(const CPredicateBase&);          // 0x00F35B10
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 }

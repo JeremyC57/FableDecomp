@@ -19,10 +19,21 @@
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
 class CThingCreatureBase;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThingCreatureBase* GetPItem() const;       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 
 class CCreatureActionBase { public:
@@ -32,7 +43,7 @@ class CCreatureActionBase { public:
 
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];                // +0xa8..+0x113
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
 };
 
 class CCreatureAction_ScorpionSummon : public CCombatActionBase { public:
@@ -55,11 +66,11 @@ class CAIStateGroupBase { public:
 
 class CAIStateGroup_ScorpionKing : public CAIStateGroupBase {
 public:
-    CBaseIntelligentPointer PArenaCentre;       // +0x14 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThingCreatureBase> PArenaCentre;       // +0x14 CIntelligentPointer<CThing>
     unsigned char TrapThings[0x0c];             // +0x1c STLport vector<CIntelligentPointer<CThing> >
     bool bIsRangeAttack;                        // +0x28
     long ChargeCount;                           // +0x2c
-    CBaseIntelligentPointer PEnemy;             // +0x30 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThingCreatureBase> PEnemy;             // +0x30 CIntelligentPointer<CThingCreatureBase>
     long EnemyKnockDownFrame;                   // +0x38
     float HealthAtLastTailStrike;               // +0x3c
     bool IsStillRunnable();                     // 0x0097B870

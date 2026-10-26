@@ -135,7 +135,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:   // vtable 0x01285424
     CIntelligentPointerConstThing PTarget;                  // +0xa8

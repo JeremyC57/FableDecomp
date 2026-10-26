@@ -78,6 +78,9 @@ class CDefinitionManager { public:
     CThingDefPointer GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};
 
 class CTCHeroAttachableAppearanceModifiers { public:                  // interface 0x5E
     void GetAppearanceModifierList(CLongList& out, long type) const;   // 0x00706800
@@ -107,10 +110,21 @@ class CThing { public:
     }
 };
 
-class CTCInventoryClothing { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryClothing : public NInventory::CTCInventoryBase { public:
     void*   __vftable;
     CThing* ParentThing;                                       // +0x04
-    const CDefinitionManager* GetDefinitions() const;          // 0x006869D0 (CTCBase)
     long GetCurrentTotalArmorValue() const;
 };
 long CTCInventoryClothing::GetCurrentTotalArmorValue() const
@@ -127,12 +141,12 @@ long CTCInventoryClothing::GetCurrentTotalArmorValue() const
         CLongList worn;
         modifiers->GetAppearanceModifierList(worn, 2);
         for (SLongListNode* node = worn._M_node->_M_next, *end = worn._M_node; node != end; node = node->_M_next) {
-            CThingDefPointer def = GetDefinitions()->GetPDefFromGlobalIndex(node->_M_data);
+            CThingDefPointer def = GetDefinitionManager().GetPDefFromGlobalIndex(node->_M_data);
             CDefPointer<const CAppearanceModifierDef> modifier;
             if (def->GetSubDef(&modifier)) {
                 uncovered.erase(modifier->SuitPart);
                 float factor = 1.0f;
-                CDefPointer<const CArmourDef> armour = GetDefinitions()->GetPDefFromGlobalIndex(modifier->ArmourDefIndex);
+                CDefPointer<const CArmourDef> armour = GetDefinitionManager().GetPDefFromGlobalIndex(modifier->ArmourDefIndex);
                 SNode* found = armour->DamageFactors.find(0);
                 if (found != armour->DamageFactors._M_header)
                     factor = found->second;
@@ -143,17 +157,17 @@ long CTCInventoryClothing::GetCurrentTotalArmorValue() const
     for (SNode* part = uncovered._M_header->_M_left, *end = uncovered._M_header; part != end; part = Successor(part)) {
         long index = 0;
         switch (part->first) {
-        case 1: index = GetDefinitions()->GetDefGlobalIndexFromName("OBJECT_HERO_NO_HAT"); break;
-        case 2: index = GetDefinitions()->GetDefGlobalIndexFromName("OBJECT_HERO_NO_SHIRT"); break;
-        case 3: index = GetDefinitions()->GetDefGlobalIndexFromName("OBJECT_HERO_NO_GLOVES"); break;
-        case 4: index = GetDefinitions()->GetDefGlobalIndexFromName("OBJECT_HERO_NO_TROUSERS"); break;
-        case 5: index = GetDefinitions()->GetDefGlobalIndexFromName("OBJECT_HERO_NO_BOOTS"); break;
+        case 1: index = GetDefinitionManager().GetDefGlobalIndexFromName("OBJECT_HERO_NO_HAT"); break;
+        case 2: index = GetDefinitionManager().GetDefGlobalIndexFromName("OBJECT_HERO_NO_SHIRT"); break;
+        case 3: index = GetDefinitionManager().GetDefGlobalIndexFromName("OBJECT_HERO_NO_GLOVES"); break;
+        case 4: index = GetDefinitionManager().GetDefGlobalIndexFromName("OBJECT_HERO_NO_TROUSERS"); break;
+        case 5: index = GetDefinitionManager().GetDefGlobalIndexFromName("OBJECT_HERO_NO_BOOTS"); break;
         }
-        CThingDefPointer def = GetDefinitions()->GetPDefFromGlobalIndex(index);
+        CThingDefPointer def = GetDefinitionManager().GetPDefFromGlobalIndex(index);
         CDefPointer<const CAppearanceModifierDef> modifier;
         if (def->GetSubDef(&modifier)) {
             float factor = 1.0f;
-            CDefPointer<const CArmourDef> armour = GetDefinitions()->GetPDefFromGlobalIndex(modifier->ArmourDefIndex);
+            CDefPointer<const CArmourDef> armour = GetDefinitionManager().GetPDefFromGlobalIndex(modifier->ArmourDefIndex);
             SNode* found = armour->DamageFactors.find(0);
             if (found != armour->DamageFactors._M_header)
                 factor = found->second;

@@ -71,22 +71,32 @@ struct CCreatureAction_PlayCombatAnimationRetail : CCombatActionBaseRetail {
     CCreatureAction_PlayCombatAnimationRetail(CThingCreatureBase*, const CCharString&, bool); // 0x008B7FF0
 };
 
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer(); // 0x00A01C10
-    CThing* item;
-    CBaseIntelligentPointer(); // 0x00A01B10
-    CThing* GetPItem() const; // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 // The donor Maze record is flattened/nonpolymorphic. Model the retail base
 // and observed members without adding a second vptr.
 struct MazeRangedMethods : CAIStateGroupBase {
-    CBaseIntelligentPointer PTarget; // +0x14 (retail)
+    CIntelligentPointer<CThing> PTarget; // +0x14 (retail)
 #ifdef _MSC_VER
     unsigned char _pad_0x1c[4];
 #endif
     long LastCompletedPhase; // +0x20 (retail)
     CAIBrain* Brain() const { return PBrain; }
-    CBaseIntelligentPointer& Target() { return PTarget; }
+    CIntelligentPointer<CThing>& Target() { return PTarget; }
     bool CanRun(); // 0x00954220
     long AIAction_PerformActionAndWait(CCreatureActionBaseRetail*, bool); // 0x0097DB70
     void Terminate(); // 0x008FCF40

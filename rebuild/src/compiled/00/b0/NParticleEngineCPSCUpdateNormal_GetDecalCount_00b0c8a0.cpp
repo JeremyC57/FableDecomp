@@ -12,7 +12,7 @@
 // test re-fetches the item through the out-of-line GetPItem; the flags are read through the PDB's inline
 // `bool IsDead() const` / `IsInitialised() const` (the bool return gives `mov al ; shr al,5 ; test al,1`; a direct
 // bit-field test is `test byte ptr [eax+40h],20h`); the sum lives in ebx. Plain `ret`.
-struct CParticleEmitter {                   // NParticleEngine::CParticleEmitter (landed callee spelling)
+class CParticleEmitter { public:                   // NParticleEngine::CParticleEmitter (landed callee spelling)
     unsigned char  _pad00[0x40];
     unsigned short Priority : 3;            // +0x40 bits 0-2
     unsigned short IsScreenDisplacement : 1;
@@ -29,14 +29,25 @@ struct CParticleEmitter {                   // NParticleEngine::CParticleEmitter
     long GetNoDecals();                         // 0x00AEDCD0
 };
 
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer();
-    void* m_pItem;                          // +0x04
-    void* GetPItem() const;                 // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual ~CIntelligentPointer();
     T* Get() const { return (T*)GetPItem(); }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 template <class T> struct SListNode {       // STLport _List_node
     SListNode* _M_next;

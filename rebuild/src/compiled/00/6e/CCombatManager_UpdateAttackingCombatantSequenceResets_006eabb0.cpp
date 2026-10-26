@@ -13,9 +13,10 @@
 class CThing;
 
 class CThingCreatureBase { public:
-    bool IsPerformingAnyAction();           // 0x006622A0
     bool IsFreeToFinishAction();            // 0x006621C0
     void FinishCurrentAction();             // 0x00662650
+public:
+    bool IsPerformingAnyAction() const;   // 0x006622A0
 };
 
 bool __fastcall IsAbleToBeAttacked(CThing* thing);   // 0x0085FB30
@@ -29,7 +30,8 @@ class CCombatSequenceBase { public:
     virtual bool IsReadyToReset();                       // slot 5 (+0x14)
     virtual bool IsFinished();                           // slot 6 (+0x18)
     virtual bool IsResetOnTargetLost();                  // slot 7 (+0x1c)
-    bool IsZoneValid();                     // 0x008B0610
+public:
+    bool IsZoneValid() const;   // 0x008B0610
 };
 
 struct CCountedSequencePointer {            // CCountedPointer<CCombatSequenceBase>

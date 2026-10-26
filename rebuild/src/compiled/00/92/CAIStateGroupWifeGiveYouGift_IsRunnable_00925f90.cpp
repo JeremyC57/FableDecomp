@@ -51,7 +51,8 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 
 class CAIStateGroupBase { public:
@@ -84,7 +85,7 @@ bool CAIStateGroup_WifeGiveYouGift::IsRunnable()
     if (PBrain->PCreature->GetInterface(&spouse, 0xD7)) {
         GiftToGiveDef = spouse->GiftDefToGive;
         if (GiftToGiveDef > 0) {
-            CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetHeroThing();
+            CThing* hero = GetPPlayerManager()->GetMainPlayer().GetHeroThing();
             if (hero != 0 && !(hero->m_flags91 & 1)) {
                 const C3DVector& pos = PBrain->PCreature->GetPosition();
                 const C3DVector& heroPos = hero->GetPosition();

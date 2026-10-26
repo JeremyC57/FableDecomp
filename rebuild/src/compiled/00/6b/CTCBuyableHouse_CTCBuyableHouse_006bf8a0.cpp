@@ -11,14 +11,23 @@
 // members, so the class is restated polymorphically with the same names and offsets.
 class CThing;
 class CBuyableHouseDef;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* PData;                                // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {     // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {     // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
     CIntelligentPointer() {}
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
@@ -42,10 +51,10 @@ public:
     long DayNextRentIsDue;                      // +0x18
     long CurrentDressLevel;                     // +0x1c
     long MaxDressLevel;                         // +0x20
-    CIntelligentPointer MainSignPost;           // +0x24
-    CIntelligentPointer DressingSignPost;       // +0x2c
+    CIntelligentPointer<CThing> MainSignPost;           // +0x24
+    CIntelligentPointer<CThing> DressingSignPost;       // +0x2c
     long FrameToNextCheckIfWeNeedToCreateAnything;  // +0x34
-    CIntelligentPointer WifeLivingHere;         // +0x38
+    CIntelligentPointer<CThing> WifeLivingHere;         // +0x38
     bool InitiallySetupDressLevel;              // +0x40
     long VirtualMoneyBags;                      // +0x44
     bool HasPreviouslyBeenBuyable;              // +0x48

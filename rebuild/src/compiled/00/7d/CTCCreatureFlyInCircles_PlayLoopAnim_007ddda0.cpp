@@ -86,7 +86,14 @@ class CWorld { public:
 
 enum EFlyMode { FLY_MODE_STRAFE, FLY_MODE_LOOP, FLY_MODE_BREATHE_FIRE };
 
-struct CTCCreatureFlyInCircles {
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+struct CTCCreatureFlyInCircles : public CTCBase {
     void*               __vftable;                         // +0x00
     CThing*             ParentThing;                       // +0x04 (CTCBase)
     unsigned char       _pad08[0x0c - 0x08];
@@ -96,8 +103,8 @@ struct CTCCreatureFlyInCircles {
     bool                Transitioning;                     // +0x38
     unsigned char       _pad39[0x6c - 0x39];
     float               SwoopProgress;                     // +0x6c
-    CWorld* GetWorld();                                    // 0x00686A70 (CTCBase)
-    const CWorld* PeekWorld() const;                       // 0x00686A80 (CTCBase)
+
+protected:
     void PlayLoopAnim();
 };
 
@@ -106,7 +113,7 @@ void CTCCreatureFlyInCircles::PlayLoopAnim()
     CCharString animation;
     float windSpeed = 0.0f;
     C3DVector direction;
-    CThing* hero = PeekWorld()->PeekMyPlayer()->GetPPlayerCharacter();
+    CThing* hero = PeekWorld().PeekMyPlayer()->GetPPlayerCharacter();
     if (hero && !hero->IsDead())
         direction = hero->GetPosition() - Creature->GetPosition();
     else
@@ -127,7 +134,7 @@ void CTCCreatureFlyInCircles::PlayLoopAnim()
             windSpeed = 1.5f;
         break;
     }
-    CWorld* world = GetWorld();
+    CWorld* world = (&GetWorld());
     world->Environment->OverrideWindDirection(direction, windSpeed);
     bool started = Creature->SetCurrentAction(CCreatureAction_DragonFlight(Creature, animation));
     if (started && Transitioning)

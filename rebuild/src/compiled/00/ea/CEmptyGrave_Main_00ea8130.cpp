@@ -87,14 +87,14 @@ class CScriptGameResourceObjectScriptedThingBase { public:     // vtable 0x01270
     virtual void h000();
     unsigned char _body[0xc];
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0
-    ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
 class CScriptGameResourceObjectMovieBase { public:             // vtable 0x01260EF4, 0x10 bytes
     virtual void m000();
     unsigned char _body[0xc];
     CScriptGameResourceObjectMovieBase();               // 0x006E7B60
-    ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
+    virtual ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
 };
 struct CCutsceneFlagMap { void* _body[3]; };            // map<CCharString, bool>
 struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase>

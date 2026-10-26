@@ -2,8 +2,22 @@
 struct Sub { int pad; };
 struct Obj { char pad[0x114]; Sub sub; };
 static int g_sub=0, g_fin=0; static Sub* g_subptr=0; static Obj* g_objptr=0;
-extern "C" void __fastcall SubHelper_00a01c10(Sub* s){ g_sub++; g_subptr=s; }
-extern "C" void __fastcall FinishHelper(Obj* o){ g_fin++; g_objptr=o; }
+class CBaseIntelligentPointer {
+public:
+    virtual ~CBaseIntelligentPointer();
+};
+CBaseIntelligentPointer::~CBaseIntelligentPointer()
+{
+    Sub* s = (Sub*)this; (void)s; g_sub++; g_subptr=s;
+}
+class CCombatActionBase {
+public:
+    virtual ~CCombatActionBase();
+};
+CCombatActionBase::~CCombatActionBase()
+{
+    Obj* o = (Obj*)this; (void)o; g_fin++; g_objptr=o;
+}
 void __fastcall DestVal_Music_D(Obj* self);
 int main(){
     Obj o;

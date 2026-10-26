@@ -20,16 +20,17 @@ class CTCPhysicsBase { public:
     bool OldMoving : 1;
     void SetAsMoving(bool moving);              // 0x006B0130
 };
-struct CThingPhysicalBase {
+class CBaseObject { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
 };
 struct CBaseIntelligentPointer {
     void* m_vfptr;
     void* m_pItem;
-    CThingPhysicalBase* GetPItem() const;       // 0x00A01B50
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
 };
-class CThingGameObject : public CThingPhysicalBase { public:
+class CThingGameObject : public CBaseObject { public:
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91
     unsigned char _pad92[0xc0 - 0x92];

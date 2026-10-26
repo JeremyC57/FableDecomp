@@ -43,7 +43,6 @@ struct CAssoc;
 extern "C" void FABLE_FASTCALL CAssoc_dtor(CAssoc* thisptr);
 
 // Global scalar operator delete (__cdecl).
-extern "C" void FABLE_CDECL fable_operator_delete(void* p);
 
 extern "C" void* FABLE_FASTCALL CAssoc_scalar_deleting_dtor(
         CAssoc* thisptr,
@@ -53,7 +52,7 @@ extern "C" void* FABLE_FASTCALL CAssoc_scalar_deleting_dtor(
     CAssoc_dtor(thisptr);
 
     if (flags & 1)
-        fable_operator_delete(thisptr);
+        operator delete(thisptr);
 
     return thisptr;
 }

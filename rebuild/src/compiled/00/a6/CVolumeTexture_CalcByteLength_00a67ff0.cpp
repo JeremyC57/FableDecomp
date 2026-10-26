@@ -57,10 +57,11 @@ class CVolumeTexture { public:                            // vtable 0x0129DC18, 
         return size;
     }
     void Uninitialise();                           // 0x00A68060
-    CVolume GetVolumeLevel(unsigned int level);    // 0x00A67EA0
     void ReleaseTexture();
     void CalcByteLength();
     bool InitialiseFromPreallocatedVolumeTexture(IDirect3DVolumeTexture9* texture);
+public:
+    CVolume GetVolumeLevel(long) const;   // 0x00A67EA0
 };
 void CVolumeTexture::CalcByteLength()
 {

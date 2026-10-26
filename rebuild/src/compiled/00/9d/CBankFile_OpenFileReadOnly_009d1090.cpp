@@ -22,7 +22,10 @@ class CWideString { public:
     CWideString();                                 // 0x0099AED0
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
-bool __fastcall PathExists(const CWideString& path);   // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};   // 0x00999230
 class CDiskFileWin32 : public CBase { public:                    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
@@ -72,7 +75,7 @@ bool CBankFile::OpenFileReadOnly(const CWideString& filename, unsigned long flag
     Solid = false;
     UpdatingFlag = false;
     RetailMode = false;
-    if (!PathExists(filename))
+    if (!CAFile::PathExists(filename))
         return false;
     BankFile.Reset(new CDiskFileWin32);
     BankFile->Open(filename, 1, 4);

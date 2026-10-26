@@ -1,13 +1,16 @@
+class CCombatActionBase {
+public:
+    virtual ~CCombatActionBase();   // 0x0062E900
+};
 class CCreatureAction_BreakIntoMelee { public:
     void* vftable;
 };
 
-void __fastcall CCreatureAction_BreakIntoMelee_dtor(CCreatureAction_BreakIntoMelee* action);
 void operator delete(void*);
 
 void* __fastcall CCreatureAction_BreakIntoMelee_scalar_deleting_destructor(CCreatureAction_BreakIntoMelee* action, int edx_unused, unsigned int flags)
 {
-    CCreatureAction_BreakIntoMelee_dtor(action);
+    ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
     if (flags & 1)
         operator delete(action);
     return action;

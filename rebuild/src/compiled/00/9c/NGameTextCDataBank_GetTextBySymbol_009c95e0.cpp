@@ -29,20 +29,23 @@ class CWideString { public:
 };
 extern CWideString g_emptyWideString_013bca24;      // 0x013BCA24
 
-struct CGroupEntry {                                // NGameText::CGroupEntry (ref-counted, polymorphic)
+namespace NGameText {
+class CTextEntry { public:                                // NGameText::CGroupEntry (ref-counted, polymorphic)
     virtual void v00();
-    virtual void Destroy();                         // slot 1
-    long          m_refCount;                       // +0x04
+    virtual void Destroy() const;                   // slot 1
+    mutable long  m_refCount;                       // +0x04
     unsigned char _pad08[0x20];
     CWideString   m_text;                           // +0x28
 };
-struct CIVCountedPointer {                          // CIVCountedPointer<const CGroupEntry>
-    CGroupEntry* m_pObject;
+}
+using NGameText::CTextEntry;
+template <class T> class CIVCountedPointer { public:   // CIVCountedPointer<const NGameText::CTextEntry>
+    T* m_pObject;
     CIVCountedPointer(const CIVCountedPointer& other);
 };
 struct CEntryReference {                            // holds the reference taken by GetPGroupEntry until the text is copied
-    CGroupEntry* m_pEntry;
-    __forceinline CEntryReference(CGroupEntry* entry) : m_pEntry(entry) { }
+    const CTextEntry* m_pEntry;
+    __forceinline CEntryReference(const CTextEntry* entry) : m_pEntry(entry) { }
     __forceinline ~CEntryReference()
     {
         if (--m_pEntry->m_refCount == 0)
@@ -50,20 +53,22 @@ struct CEntryReference {                            // holds the reference taken
     }
 };
 
+class CBankFile { public:                                       // primary base of NGameText::CDataBank (Ego_r)
+    unsigned long GetEntryDataType(unsigned long index) const;   // 0x009CC210 (FableWin ?GetEntryDataType@CBankFile@@QBEKK@Z)
+};
 namespace NGameText {
-class CDataBank { public:
+class CDataBank : public CBankFile { public:
     unsigned long LookupValue(unsigned long crc) const;          // 0x009CC410
-    unsigned long GetEntryDataType(unsigned long index) const;   // 0x009CC210
-    CIVCountedPointer GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
-    CWideString GetTextBySymbol(const CCharString& symbol) const;
+    CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;
 };
 
-CWideString CDataBank::GetTextBySymbol(const CCharString& symbol) const
+const CWideString CDataBank::GetTextBySymbol(const CCharString& symbol) const
 {
     unsigned long index = LookupValue(Calc_004014a0(0, symbol.GetChars(), symbol.GetLength()));
     if (index > 0 && GetEntryDataType(index) == 0) {
-        CIVCountedPointer pointer = GetPGroupEntry(index, true);
-        CGroupEntry* entry = pointer.m_pObject;
+        CIVCountedPointer<const CTextEntry> pointer = GetPTextEntry(index, true);
+        const CTextEntry* entry = pointer.m_pObject;
         if (entry) {
             CEntryReference reference(entry);
             return entry->m_text;

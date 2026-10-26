@@ -18,21 +18,27 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     CTCBase_Calls(CThing* thing);                           // 0x00686800
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                                   // +0x04
-    CBaseIntelligentPointer();                              // 0x00A01B10
-    void SetPItem(CBaseObject* item);                       // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer_CThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
 struct CTCWaterWader : CTCBase_Calls {                      // vtable 0x0126D95C
-    CIntelligentPointer_CThing PParticle;                   // +0x0c
-    CIntelligentPointer_CThing PWaterfallParticle;          // +0x14
+    CIntelligentPointer<CThing> PParticle;                   // +0x0c
+    CIntelligentPointer<CThing> PWaterfallParticle;          // +0x14
     bool                       OldWade;                     // +0x1c
     virtual void v00();
     CTCWaterWader(CThing* thing);

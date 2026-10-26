@@ -13,8 +13,7 @@
 // operator delete @ 0x00BFEA14.
 // Shape: the singleton accessor is inline (`if (!p) p.Reset(new T); return p;`) and read before the by-value copy;
 // erase is out of line; the two vector destructors use by-value _Destroy(first, last) range helpers (end cached).
-void* __cdecl operator_new(unsigned int size);     // 0x00BFEA1A
-void __cdecl free(void*);   // 0x00BFEA14
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 inline void* operator new(unsigned int, void* where) { return where; }
 
 class CCharString { public:
@@ -39,7 +38,7 @@ extern CParticleMorphManagerPointer g_pParticleMorphManager;   // 0x013CAA68
 __forceinline CParticleMorphManager* GetParticleMorphManager()
 {
     if (!g_pParticleMorphManager.m_pObject)
-        g_pParticleMorphManager.Reset(new(operator_new(0x2c)) CParticleMorphManager());
+        g_pParticleMorphManager.Reset(new(operator new(0x2c)) CParticleMorphManager());
     return g_pParticleMorphManager.m_pObject;
 }
 

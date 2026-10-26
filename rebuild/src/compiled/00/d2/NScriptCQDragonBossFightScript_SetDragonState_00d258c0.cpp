@@ -30,12 +30,15 @@ public:
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 namespace NScript {
+}   // namespace NScript (CScriptBase is global in retail)
 class CScriptBase {                                     // retail 0x40 bytes
 public:
     virtual ~CScriptBase();
     unsigned char _body[0x3c];
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
+public:
+    bool IsActiveThreadTerminating();   // 0x00CB7940
 };
+namespace NScript {
 class CQ_DragonBossFightScript : public CScriptBase {
 public:
     enum EDragonState {

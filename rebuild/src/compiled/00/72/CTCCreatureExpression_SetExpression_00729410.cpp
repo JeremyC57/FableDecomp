@@ -80,13 +80,19 @@ class CWorld { public:
     unsigned long* GetPRandomSeed();                // 0x0049D810
 };
 
-class CTCCreatureExpression { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCCreatureExpression : public CTCBase { public:
     CThing*              ParentThing;               // +0x04 (CTCBase)
     unsigned char        _pad08[4];
     CExpressionStateList ExpressionStates;          // +0x0c
     bool                 Blinking;                  // +0x10
-    CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
     void ForcePrimaryExpression(long animIndex, float maxWeight);   // 0x007293A0
     void SetExpression(long expressionType, float maxWeight);
 };
@@ -104,7 +110,7 @@ void CTCCreatureExpression::SetExpression(long expressionType, float maxWeight)
     CDefPointer<CCreatureExpressionDef> def;
     ParentThing->PDef_Object->GetSubDef(&def);
     CExpressionMap* expressions = def->Expressions;
-    long anim = expressions->FindRandomElement(expressionType, GetWorld()->GetPRandomSeed());
+    long anim = expressions->FindRandomElement(expressionType, GetWorld().GetPRandomSeed());
     if (anim)
         ForcePrimaryExpression(anim, maxWeight);
 }

@@ -23,7 +23,10 @@ public:
     const char* GetPString() const { return PStringData == 0 ? g_emptyLiteral_0129aaf4 : PStringData->PData; }
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC-32
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC-32
 
 class CBase {
 public:
@@ -119,7 +122,7 @@ public:
 
 bool CCRCSymbolMap::FindSymbol(const CCharString& name, long& value) const
 {
-    const CVectorMap<unsigned long, long>::value_type* it = SLONGMap.Find(Calc_004014a0(0, name.GetPString(), name.GetLength()));
+    const CVectorMap<unsigned long, long>::value_type* it = SLONGMap.Find(CCRC::Calc(0, name.GetPString(), name.GetLength()));
     if (it != SLONGMap.End()) {
         value = it->second;
         return true;

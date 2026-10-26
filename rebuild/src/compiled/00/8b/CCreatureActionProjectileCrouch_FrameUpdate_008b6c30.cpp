@@ -1,7 +1,7 @@
 // CCreatureAction_ProjectileCrouch::FrameUpdate() -- the base frame update; then, when turning to face the target, turn the creature's facing towards FacePos (snap when within ~5 degrees, otherwise step 1/72 turn towards the side the target is on) and set the wrapped facing angle
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B6C30, length 546 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CCombatActionBase::FrameUpdate @ 0x00859D80, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
-//          CThing::GetPosition @ 0x004C73D0, C3DVector::RotateAboutZ(float turns) @ 0x00A14040, _CIfmod @ 0x00BFEB28;
+//          CThing::GetPosition @ 0x004C73D0, C3DVector::RotateXY(float turns) @ 0x00A14040, _CIfmod @ 0x00BFEB28;
 //          the physics TC (+0x60) slot 70 (+0x118, the facing vector by hidden pointer) and slot 66 (+0x108, set the
 //          XY facing angle).
 // Globals: the reciprocal-square-root mantissa table 0x013CE558, 3.0f, 0.5f, cos(5 deg) 0.9962f 0x0127A54C, 0.0f,
@@ -31,8 +31,9 @@ class C3DVector { public:
     __forceinline C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
     __forceinline void Normalise() { *this *= FastInvSqrt(Z * Z + Y * Y + X * X); }
     float Dot(const C3DVector& o) const { return Z * o.Z + Y * o.Y + X * o.X; }
-    void RotateAboutZ(float turns);                         // 0x00A14040
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+public:
+    void RotateXY(float);   // 0x00A14040
 };
 
 __forceinline float WrapAngle(float angle)
@@ -61,17 +62,28 @@ class CThing { public:
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
     const C3DVector& GetPosition() const;                   // 0x004C73D0
 };
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;
-    CThing* GetPItem() const;                               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 #pragma pack(push, 1)
 class CCombatActionBase { public:
     virtual void FrameUpdate();                             // 0x00859D80
     unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;                      // +0x08
+    CIntelligentPointer<CThing> PCreature;                      // +0x08
     unsigned char           _pad10[0x114 - 0x10];
 };
 class CCreatureAction_ProjectileCrouch : public CCombatActionBase { public:
@@ -93,11 +105,11 @@ void CCreatureAction_ProjectileCrouch::FrameUpdate()
     C3DVector desired = facing;
     if (facing.Dot(toTarget) < 0.9962f) {
         C3DVector side = facing;
-        side.RotateAboutZ(0.25f);
+        side.RotateXY(0.25f);
         if (side.Dot(toTarget) > 0.0f)
-            desired.RotateAboutZ(0.013888889f);
+            desired.RotateXY(0.013888889f);
         else
-            desired.RotateAboutZ(-0.013888889f);
+            desired.RotateXY(-0.013888889f);
     } else
         desired = toTarget;
     CTCPhysicsBase* physics = PCreature.GetPItem()->PhysicsTC;

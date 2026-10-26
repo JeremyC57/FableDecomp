@@ -53,7 +53,7 @@ class CHeroExperienceDef : public CDefBase { public: };
 class CHeroCombatDef : public CDefBase { public: };
 class CHeroStatsDef : public CDefBase { public: };
 
-class CDefinitionManager { public:
+class CGameDefinitionManager { public:
     unsigned char _pad00[0xdc];
     CDefPointer<CHeroStatsDef> HeroStatsDef;        // +0xdc
     CDefPointer<CHeroStatsDef> GetHeroStatsDef() const { return HeroStatsDef; }
@@ -117,7 +117,8 @@ class CTCBase { public:
     CThing* ParentThing;                            // +0x04
     bool    ToBeRemoved;                            // +0x08
     bool    IsInGlobalUpdateTCs;                    // +0x09
-    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
 };
 
 class CTCHeroExperience : public CTCBase { public:                // vtable 0x0125F6C4
@@ -153,5 +154,5 @@ CTCHeroExperience::CTCHeroExperience(CThing* parent)
       AbleToGainExperience(true),
       ExperienceSpentOnStats(10)
 {
-    PHeroStatsDef = GetDefinitionManager()->GetHeroStatsDef();
+    PHeroStatsDef = GetDefinitionManager().GetHeroStatsDef();
 }

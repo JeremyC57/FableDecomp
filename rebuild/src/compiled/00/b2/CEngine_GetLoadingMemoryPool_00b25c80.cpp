@@ -3,7 +3,6 @@
 // Callees: the pointer info's deleter at +4 (called with the object at +8 in ecx when the count reaches zero), operator delete @ 0x00BFE9BC for the info block.
 // Shape: the CCountedPointer temporary's copy constructor (`++count`) and destructor (`--count`, destroy at zero) are both inlined and share one null test of
 // the info pointer; the compiler keeps both count stores (`mov [esi],ecx ; mov [esi],eax`). The object pointer (edi) is the result. A static member.
-extern "C" void __cdecl operator_delete_00bfe9bc(void* block);   // 0x00BFE9BC
 
 struct CMemoryPool;
 
@@ -27,7 +26,7 @@ struct CCountedPointer_Pool {
         if (m_pInfo) {
             if (--m_pInfo->m_count == 0) {
                 m_pInfo->m_pfnDestroy(m_pInfo->m_pObject);
-                operator_delete_00bfe9bc(m_pInfo);
+                operator delete(m_pInfo);
             }
         }
     }

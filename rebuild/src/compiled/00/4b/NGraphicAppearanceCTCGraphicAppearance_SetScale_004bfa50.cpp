@@ -36,13 +36,14 @@ class CThing { public:
     void AddToRenderList();                                 // 0x004C7AC0
 };
 
-struct C3DAnimation {
+class CAnimateThing { public:
     unsigned char _pad00[0x88];
     float         Scale;                                    // +0x88
 };
 
 class CTCAnimationComplex { public:
-    C3DAnimation* GetAnimation();                           // 0x0070B460
+public:
+    CAnimateThing& GetAnimation();   // 0x0070B460
 };
 
 #pragma pack(push, 2)
@@ -74,7 +75,7 @@ void CTCGraphicAppearance::SetScale(float scale)
 {
     Scale = scale;
     if (ParentThing->HasInterface(0x5a))
-        ((CTCAnimationComplex*)ParentThing->GetInterface(0x5a))->GetAnimation()->Scale = scale * MainGraphic.RenderSizeX;
+        ((CTCAnimationComplex*)ParentThing->GetInterface(0x5a))->GetAnimation().Scale = scale * MainGraphic.RenderSizeX;
     ParentThing->AddToRenderList();
     UpdatePrimitiveReasons |= 4;
 }

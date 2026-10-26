@@ -4,13 +4,18 @@ static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 static void* g_last_deleted = 0;
 
-extern "C" void __fastcall CInputProcessHeroInformationScreens_dtor(void* process)
+class CAInputProcess {
+public:
+    virtual ~CAInputProcess();
+};
+CAInputProcess::~CAInputProcess()
 {
+    void* process = (void*)this; (void)process;
     (void)process;
     ++g_dtor_calls;
 }
 
-extern "C" void __cdecl operator_delete_LBP(void* p)
+void __cdecl operator delete(void* p)
 {
     ++g_delete_calls;
     g_last_deleted = p;

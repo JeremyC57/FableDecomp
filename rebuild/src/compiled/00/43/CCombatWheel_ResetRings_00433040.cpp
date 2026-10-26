@@ -1,6 +1,6 @@
 struct Ring { };
 extern "C" void __fastcall Ring_reset(Ring* r);
-extern "C" void __cdecl engine_free(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CCombatWheel {
     Ring* begin;
@@ -19,6 +19,6 @@ void __fastcall CCombatWheel_ResetRings(CCombatWheel* self)
     }
     void* base = self->begin;
     if (base) {
-        engine_free(base);
+        free(base);
     }
 }

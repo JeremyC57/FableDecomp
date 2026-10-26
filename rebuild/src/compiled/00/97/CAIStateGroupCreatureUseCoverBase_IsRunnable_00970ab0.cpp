@@ -5,10 +5,11 @@
 // type 8 = word 0 bit 8: `test ch,1`), the component's virtual slot 29 (+0x74) returning the target thing,
 // IsToAttackTarget(CThing* creature, CThing* target) @ 0x00864D00 (__fastcall, bool),
 // CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10, own slot 15 (+0x3c).
-// Shape: `PTargetThing = CIntelligentPointer<const CThing>(target)` -- the temporary (vtable 0x0123E7D8)
+// Shape: `PTargetThing = CIntelligentPointer<CThingCreatureBase>((CThingCreatureBase*)target)` -- the temporary (vtable 0x0123E7D8)
 // shares the 8-byte frame with the lookup key; its inline operator= is SetPItem(GetPItem()).
 // The leaf test's result is returned directly (bool in al). PTargetThing sits at +0x14 (first member after
 // the 0x14-byte CAIStateGroupBase); engine header is byte-flattened so a local model is used.
+class CThingCreatureBase;
 class CThing;
 
 struct CBaseIntelligentPointer
@@ -114,7 +115,7 @@ struct CAIStateGroup_CreatureUseCoverBase
     virtual bool IsRunnableLeaf();                  // slot 15 (+0x3c)
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08 priority, name, flags
-    CIntelligentPointer<const CThing> PTargetThing; // +0x14
+    CIntelligentPointer<CThingCreatureBase> PTargetThing; // +0x14
 };
 
 bool CAIStateGroup_CreatureUseCoverBase::IsRunnable()
@@ -125,7 +126,7 @@ bool CAIStateGroup_CreatureUseCoverBase::IsRunnable()
         CThing* target = ((CTCInterface8*)creature->FindEntry(8)->component)->GetTarget();
         if (target && IsToAttackTarget(PBrain->Creature, target))
         {
-            PTargetThing.SetPItem(CIntelligentPointer<const CThing>(target).GetPItem());
+            PTargetThing.SetPItem(CIntelligentPointer<CThingCreatureBase>((CThingCreatureBase*)target).GetPItem());
             return IsRunnableLeaf();
         }
     }

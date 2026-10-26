@@ -39,7 +39,8 @@ class C3DVector { public:
         Y *= r;
         Z *= r;
     }
-    void RotateAboutZ(float angle);                         // 0x00A14040
+public:
+    void RotateXY(float);   // 0x00A14040
 };
 class CInputEvent { public:
     unsigned char _body[0x34];
@@ -91,7 +92,7 @@ void CTCAssassinRush::UpdateDirectionOverride()
             DirectionOverrideVector.Z = 0.0f;
             DirectionOverrideVector.Normalise();
             float angle = ParentThing->GetCurrentRelativeMovementAngleXY();
-            DirectionOverrideVector.RotateAboutZ(angle);
+            DirectionOverrideVector.RotateXY(angle);
         }
     }
 }

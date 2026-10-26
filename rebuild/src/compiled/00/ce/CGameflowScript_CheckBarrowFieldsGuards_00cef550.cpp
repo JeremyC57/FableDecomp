@@ -21,10 +21,9 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
 };
 class CScriptThing { public:
-    void* __vftable;
     void* PImp_Data;
     void* PImp_Info;
-    ~CScriptThing();                                        // 0x004AA840
+    virtual ~CScriptThing();                                        // 0x004AA840
 };
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();

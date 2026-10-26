@@ -17,6 +17,7 @@
 //   PMasterData +0x18. CScriptThing model as the landed CSecretBook::Main 0x00DDE940 / CBanditAttacker::Main 0x00D1F610.
 // Shape: the keeper test is a `&&` loop condition, so its two temporaries carry VC's destruction flags (the frame word
 //   zeroed in the prologue); the second wait is `while (!used)` (materialised `neg/sbb/inc`).
+namespace NScript { class CPredicateBase; }
 class C3DVector;
 class CCharString { public:
     void* PStringData;
@@ -169,7 +170,8 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
 };
 struct CSecretPassageFirstGate : CEntityScriptBase {
     CQ_OpeningGraveyardSecretPassageScript* ParentClass;   // +0x14

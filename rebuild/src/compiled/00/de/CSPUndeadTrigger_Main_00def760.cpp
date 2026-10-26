@@ -85,7 +85,7 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     virtual void t04(); virtual void t05();
     virtual const C3DVector& GetPos() const;           // slot 6 (+0x18)
     CCountedPointer PImp;                              // +0x04
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
     __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }   // 0x008AB980 out of line
 };
 struct CScriptThingVector {                            // STLport vector<CScriptThing>

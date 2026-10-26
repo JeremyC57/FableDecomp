@@ -128,10 +128,13 @@ struct CScriptThingVector {                             // std::vector<CScriptTh
 };
 
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
+public:
+    bool IsActiveThreadTerminating();   // 0x00CB7940
 };
+namespace NScript {
 
 class CQ_TraderConflictGoodScript : public CScriptBase {
 public:

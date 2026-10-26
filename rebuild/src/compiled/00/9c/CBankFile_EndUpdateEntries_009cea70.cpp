@@ -19,7 +19,10 @@ public:
     operator const wchar16*() const;                // 0x0099AF10
 };
 
-bool __fastcall PathExists(const CWideString& path);   // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};   // 0x00999230
 
 struct CDiskFileCalls {
     virtual void v00();
@@ -58,7 +61,7 @@ void CBankFile_Retail::EndUpdateEntries()
     WriteFileInformation(true);
     {
         CWideString recoveryPath = GetRecoveryFilePath();
-        if (PathExists(recoveryPath))
+        if (CAFile::PathExists(recoveryPath))
             DeleteFileW(recoveryPath);
     }
     Solid = false;

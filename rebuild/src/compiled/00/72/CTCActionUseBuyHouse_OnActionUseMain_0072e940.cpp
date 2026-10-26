@@ -67,9 +67,12 @@ class CWideString { public:
 };
 bool __fastcall ConstructString(CWideString* text, long value);   // 0x009C7B70
 class CFontBank;
-struct CDataBank {
-    CWideString GetTextBySymbol(const CCharString& symbol);  // 0x009C95E0
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;  // 0x009C95E0
 };
+}
+using NGameText::CDataBank;
 class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    PTextBank;                                 // +0x14

@@ -53,8 +53,9 @@ class CPlayerManager;
 class CThing;
 class CPlayer { public: CThing* GetHeroThing(); };             // 0x00487DC0
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
     long GetMainPlayerNumber();                         // 0x00449700
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CTCDExperienceOrb { public:
     unsigned char _pad00[0x10];
@@ -78,7 +79,6 @@ class CThing { public:
     unsigned char  _bits91 : 4;
     unsigned char  InLimbo : 1;                         // +0x91 bit 5
     unsigned char  _bits91b : 2;
-    CPlayerManager* GetPlayerManager();                 // 0x004C7A00
     bool GetTCDriver(CTCDExperienceOrb** out);          // 0x006AE5C0 (GetTCDriver<CTCDExperienceOrb>)
     __forceinline bool HasTC(long type) const
     {
@@ -112,6 +112,8 @@ class CThing { public:
             spirit = GetTC<CTCCoopSpirit>(0xc7);
         return spirit;
     }
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x004C7A00
 };
 #pragma auto_inline(off)
 // Same-TU body of the GetTCDriver<CTCDExperienceOrb> instantiation (retail 0x006AE5C0): the driver pointer is written
@@ -139,7 +141,7 @@ class CThingPlayerCreature : public CThingCreatureBase { public:
         CTCHeroExperience* experience;
         if (hero && hero->GetInterface(&experience, 0x68))
             experience->AddExperience(orb->ExperiencePoints);
-        if (PlayerNumber != GetPlayerManager()->GetMainPlayerNumber())
+        if (PlayerNumber != GetPlayerManager().GetMainPlayerNumber())
             GetCoopSpirit()->AddExperience(orb->ExperiencePoints);
         orb->OnCollected(this);
     }
@@ -161,5 +163,5 @@ void CThingPlayerCreature::OnCollision(ECollideType type, const C3DVector& posit
     CTCDExperienceOrb* orb;
     if (!thing->HasTC(0x69) || !thing->GetTCDriver(&orb))
         return;
-    CollectExperienceOrb(orb, GetPlayerManager()->GetMainPlayer()->GetHeroThing());
+    CollectExperienceOrb(orb, GetPlayerManager().GetMainPlayer().GetHeroThing());
 }

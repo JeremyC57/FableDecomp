@@ -5,14 +5,18 @@ class CLandscapeBackgroundPatch { public: int dummy; };
 
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
-
-void __fastcall CQuickAccessItemButtonGuiDef_dtor(CLandscapeBackgroundPatch* thisptr)
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();
+};
+CParentDefClassBase::~CParentDefClassBase()
 {
+    CLandscapeBackgroundPatch* thisptr = (CLandscapeBackgroundPatch*)this; (void)thisptr;
     (void)thisptr;
     ++g_dtor_calls;
 }
 
-void __cdecl fable_operator_delete(void* p)
+void __cdecl operator delete(void* p)
 {
     (void)p;
     ++g_delete_calls;

@@ -20,7 +20,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 
 class CCPPointerInfo { public:                                // CCountedPointer's shared block
@@ -94,13 +94,13 @@ bool CWorld::InitMeshBank()
 {
     {
         CCharString text("Opening Mesh Bank");
-        DisplayProgress(text, -1.0f, false, false);
+        NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
     }
     PMainMeshBank = GFGetSystemManager()->GetMeshBankManager().OpenMeshBank("MBANK_ALLMESHES", false);
     PAnimationManager = PMainMeshBank->AnimationManager;
     {
         CCharString text("Setting Mesh Bank");
-        DisplayProgress(text, -1.0f, false, false);
+        NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
     }
     NGraphicAppearance::CTCGraphicAppearance::SetMeshBank(*PMainMeshBank);
     return true;

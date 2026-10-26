@@ -27,8 +27,7 @@ enum ECrimeSeverity { CRIME_SEVERITY_0 };
 enum ETutorialCategory { TUTORIAL_CATEGORY_0 };
 
 class CPersistContext { public:
-    void Transfer(long& value);                                              // 0x00431102
-    void Transfer(float& value);                                             // 0x00431061
+    template <class T> void Transfer(T& value);                                              // 0x00431102
     void Transfer(COpinionTransientOffsetList& value);                       // 0x004792CF
     void Transfer(COpinionDeedReactionDefVector& value);                     // 0x00479466
     void Transfer(EDialogueLayer& value);                                    // 0x00479187

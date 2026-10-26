@@ -5,10 +5,12 @@
 class CCharString { public: char* p; };
 class CWideString { public: unsigned short* p; };
 
-// Subobject at global[0x14] whose member GetText builds a CWideString by value.
-struct Sub {
-    CWideString GetText(CCharString const& str);
+// The game text bank at global[0x14]: NGameText::CDataBank::GetTextBySymbol 0x009C95E0 (FableWin, const, returns const CWideString).
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;
 };
+}
 
 struct CGameScriptInterface_Methods : CGameScriptInterface {
     CWideString GetTextString(CCharString const& str);
@@ -19,6 +21,6 @@ extern char* g_globalObj;
 
 CWideString CGameScriptInterface_Methods::GetTextString(CCharString const& str)
 {
-    Sub* sub = *(Sub**)(g_globalObj + 0x14);
-    return sub->GetText(str);
+    NGameText::CDataBank* bank = *(NGameText::CDataBank**)(g_globalObj + 0x14);
+    return bank->GetTextBySymbol(str);
 }

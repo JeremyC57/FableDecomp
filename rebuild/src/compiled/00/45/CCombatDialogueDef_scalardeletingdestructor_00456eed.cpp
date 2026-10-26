@@ -1,12 +1,14 @@
 #pragma optimize("s",on)
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CCombatDialogueDef;
-extern void __fastcall CCombatDialogueDef_dtor(CCombatDialogueDef* def);
-extern void __cdecl op_delete(void* p);
 
 void* __fastcall CCombatDialogueDef_scalar_deleting_destructor(CCombatDialogueDef* def, int /*edx*/, unsigned int flags)
 {
-    CCombatDialogueDef_dtor(def);
+    ((CParentDefClassBase*)(def))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        op_delete((void*)def);
+        operator delete((void*)def);
     return def;
 }

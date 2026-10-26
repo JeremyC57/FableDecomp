@@ -14,7 +14,7 @@
 // Shape: the local array's inline ctor/dtor (a by-value _Destroy(first, last) range helper -- the end pointer cached
 // in ebp -- with `add edi,44h`, then free); the cutscene flag stored
 // after the assignment, before the local's destructor.
-void __cdecl free(void*);   // 0x00BFEA14 (operator delete)
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 class CThing;
 

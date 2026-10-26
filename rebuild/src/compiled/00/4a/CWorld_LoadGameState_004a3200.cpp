@@ -25,7 +25,10 @@ class CWideString { public:
 };
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
 CWideString __fastcall GetProfileDirectory();          // 0x0041A1A0
-bool __fastcall PathExists(const CWideString& path);   // 0x00999230
+class CAFile {
+public:
+    static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+};   // 0x00999230
 bool __fastcall IsPathFile(const CWideString& path);   // 0x00999A30
 struct CFileFinder { void* Handle; unsigned long Flags; };
 bool __fastcall FindFirstFile(const CWideString& pattern, CFileFinder* finder, wchar16* fileName);   // 0x00999760
@@ -70,7 +73,7 @@ bool CWorld::LoadGameState(const CWideString& name, bool loadNow)
             SaveGamePathName = path;
             return true;
         }
-        if (found && PathExists(path) && IsPathFile(path)) {
+        if (found && CAFile::PathExists(path) && IsPathFile(path)) {
             if (loadNow) {
                 SerialisingAboutToLoadHeroState = IsHeroStateFileValid(name);
                 bool loaded = LoadGameStateInternal(path, false);

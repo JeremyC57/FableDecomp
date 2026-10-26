@@ -25,17 +25,28 @@ class CTCEnemy { public:
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {                            // sizeof 8: vptr + PData
-    virtual void v00();
-    void* PData;                                            // +0x04 CBaseObjectPointer*
-    CThing* GetPItem() const;                               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CTCUnholyPower { public:
     virtual void v00();
     CThing*                 ParentThing;                    // +0x04 (CTCBase)
     unsigned char           _body[0x6d - 0x08];             // ToBeRemoved .. CutSceneCancel (+0x6c)
-    CBaseIntelligentPointer PTarget;                        // +0x6d CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PTarget;                        // +0x6d CIntelligentPointer<CThingCreatureBase>
     bool                    IsZTargetting;                  // +0x75
     bool Attackable(CThingCreatureBase* creature);
 };

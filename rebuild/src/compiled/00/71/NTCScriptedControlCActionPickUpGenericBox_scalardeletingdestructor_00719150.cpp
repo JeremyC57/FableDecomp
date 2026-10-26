@@ -1,12 +1,14 @@
 #pragma optimize("t", on)
-extern void __fastcall DestructMember_004aa840(void* member);
+class CScriptThing {
+public:
+    virtual ~CScriptThing();   // 0x004AA840
+};
 extern void __fastcall CActionPickUpGenericBox_Destruct(void* action);
-extern void __cdecl OperatorDelete(void* object);
 void* __fastcall CActionPickUpGenericBox_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
 {
-    DestructMember_004aa840(static_cast<unsigned char*>(action) + 12);
+    ((CScriptThing*)(static_cast<unsigned char*>(action) + 12))->CScriptThing::~CScriptThing();
     CActionPickUpGenericBox_Destruct(action);
     if (flags & 1)
-        OperatorDelete(action);
+        operator delete(action);
     return action;
 }

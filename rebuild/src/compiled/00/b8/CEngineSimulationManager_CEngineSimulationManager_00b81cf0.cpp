@@ -22,7 +22,7 @@ class CEngineComponent { public:                          // 0x0c bytes
     virtual void v01();
     void* m_pOwner;
     long  m_8;
-    ~CEngineComponent();                           // 0x00B59730
+    virtual ~CEngineComponent();                           // 0x00B59730
 };
 
 class CEnginePrimitiveSimulationInfo;

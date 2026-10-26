@@ -48,25 +48,31 @@ public:
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual long GetMapNumberAt(const C3DVector& position);   // slot 16 (+0x40)
-    long GetRegionNumberMapIsIn(long map);               // 0x004FC190
-    CRegion& GetRegion_004fb490(long region);                     // 0x004FB490
+public:
+    long GetRegionNumberMapIsIn(long) const;   // 0x004FC190
+    CRegion& GetRegion(long);   // 0x004FB490
 };
 
-class CTCHero {
+class CTCBase
+{
+protected:
+    CWorldMap& GetWorldMap();   // 0x00686D30
+};
+
+class CTCHero : public CTCBase {
 public:
     void*   __vfptr;                                     // +0x00
     CThing* ParentThing;                                 // +0x04 (CTCBase)
     unsigned char _pad08[4];
     bool    WeaponsUsable;                               // +0x0C
     bool    WillUsable;                                  // +0x0D
-    CWorldMap* GetWorldMap();                            // 0x00686D30 (CTCBase)
     void SetWeaponsAsUsable(bool usable);                // 0x006CA380
     void OnCreate();
 };
 
 void CTCHero::OnCreate()
 {
-    CRegion& region = GetWorldMap()->GetRegion_004fb490(GetWorldMap()->GetRegionNumberMapIsIn(GetWorldMap()->GetMapNumberAt(ParentThing->GetPosition())));
+    CRegion& region = GetWorldMap().GetRegion(GetWorldMap().GetRegionNumberMapIsIn(GetWorldMap().GetMapNumberAt(ParentThing->GetPosition())));
     if (region.GetDef().Object) {
         SetWeaponsAsUsable(!region.GetDef()->PreventHeroWeaponUse);
         WillUsable = !region.GetDef()->PreventHeroWillUse;

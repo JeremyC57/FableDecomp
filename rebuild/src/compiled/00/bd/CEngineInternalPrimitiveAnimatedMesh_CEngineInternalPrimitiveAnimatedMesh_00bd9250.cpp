@@ -27,7 +27,7 @@ class CBaseClass {
 public:
     CBaseClass() { }
     virtual void v00();
-    ~CBaseClass();                                 // 0x0099A2E0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
 };
 
 class C3DAnimationInterpolator {

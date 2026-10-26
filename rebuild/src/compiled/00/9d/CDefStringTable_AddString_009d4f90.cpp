@@ -25,14 +25,24 @@ class CCharString { public:
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
     const char* GetPString() const { return PStringData == 0 ? g_emptyString : PStringData->Text; }
 };
-unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0 CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0 CRC
 
-class CMemoryDataOutputStream { public:                   // 0x18 bytes, vtable 0x0129A788
+class CDataOutputStream
+{
+public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
     virtual void v03();
     virtual void Write(const void* data, long length);   // slot 4 (+0x10)
+public:
+    void WriteNullTerminatedString(const CCharString&);   // 0x00995AE0
+};
+
+class CMemoryDataOutputStream : public CDataOutputStream { public:                   // 0x18 bytes, vtable 0x0129A788
     void* NewLine;                                 // +0x04
     unsigned char* First;                          // +0x08
     unsigned char* Last;                           // +0x0c
@@ -40,7 +50,6 @@ class CMemoryDataOutputStream { public:                   // 0x18 bytes, vtable 
     unsigned long Position;                        // +0x14
     long GetSize();                                // 0x00994B40
     void WriteRepeatedByte(unsigned char value, long count);   // 0x00994230
-    void WriteNullTerminatedString(const CCharString& text);   // 0x00995AE0
     void* PeekData();                              // 0x00995E70
     void WriteULong(unsigned long value) { Write(&value, 4); }
 };
@@ -91,7 +100,7 @@ long CDefStringTable::AddString(const CCharString& text)
     if (StringStream.GetSize() == 0)
         StringStream.WriteRepeatedByte(0, 4);
     long offset = StringStream.GetSize();
-    StringStream.WriteULong(Calc(0, text.GetPString(), text.GetLength()));
+    StringStream.WriteULong(CCRC::Calc(0, text.GetPString(), text.GetLength()));
     StringStream.WriteNullTerminatedString(text);
     StringMap[text] = offset;
     ++StringCount;

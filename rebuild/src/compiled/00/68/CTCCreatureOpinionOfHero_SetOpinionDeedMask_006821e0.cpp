@@ -189,13 +189,18 @@ public:
 };
 class CThing;
 
-class CTCCreatureOpinionOfHero {
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCCreatureOpinionOfHero : public CTCBase {
 public:
     void* __vftable;                                   // +0x00
     CThing* ParentThing;                               // +0x04
     unsigned char _pad08[0x3c - 0x08];
     std::vector<bool> DeedMask;                        // +0x3c
-    CWorld* GetWorld() const;                          // 0x00686A70 (CTCBase)
     void SetOpinionDeedMask(long defIndex);
 };
 
@@ -203,7 +208,7 @@ void CTCCreatureOpinionOfHero::SetOpinionDeedMask(long defIndex)
 {
     DeedMask.resize(OPINION_DEED_TYPE_COUNT, true);
     if (defIndex) {
-        CGameDefinitionManager* defManager = GetWorld()->DefinitionManager;
+        CGameDefinitionManager* defManager = GetWorld().DefinitionManager;
         CDefPointer<const COpinionDeedMaskDef> def;
         if (defManager->GetDefClassTypeNameFromGlobalIndex(defIndex) == "OPINION_DEED_MASK" && defManager->GetDef(defIndex, &def)) {
             std::fill(DeedMask.begin(), DeedMask.end(), def->DeedEnabledDefault);

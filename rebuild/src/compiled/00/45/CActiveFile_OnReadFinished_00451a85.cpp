@@ -2,12 +2,12 @@
 // Leaf: OnReadFinished
 struct CActiveFile { void* payload; };
 void __fastcall CActiveFile_Prep(CActiveFile* self);
-void CActiveFile_FreePayload(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     CActiveFile_Prep(self);
     void* p = self->payload;
     if (p)
-        CActiveFile_FreePayload(p);
+        free(p);
 }

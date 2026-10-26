@@ -94,8 +94,11 @@ class CAIStateGroupBase { public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 extern long g_framesPerSecond;                  // 0x01375550
 
@@ -120,5 +123,5 @@ void CAIStateGroup_MinionGossip::InitStateGroup(const CWorld& world, CThingAICre
         r = rotated % range;
     else
         r = 0;
-    FrameOfLastGossip = GFGetCurrentFrame() - r;
+    FrameOfLastGossip = CWorld::GetFrame() - r;
 }

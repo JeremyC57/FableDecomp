@@ -19,7 +19,10 @@ class CCharString { public:
     unsigned long GetLength() const { if (!m_pStringData) return 0; return m_pStringData->m_length; }
     const char* GetString() const { return m_pStringData == 0 ? "" : m_pStringData->m_pChars; }   // "" = 0x0129AAF4
 };
-unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0
 class CThing {
 public:
     unsigned char    _pad00[0x18];
@@ -48,7 +51,7 @@ void CThingManager::OnThingKill(CThing* thing)
             unsigned long length = name.GetLength();
             const char* text = name.GetString();
             unsigned __int64 uid = thing->UID;
-            unsigned long crc = Calc(0, text, length);
+            unsigned long crc = CCRC::Calc(0, text, length);
             EntityRuntimePersistence.AddPersistedDeadEntity(uid, thing->IsGameStatePersisted(), crc);
         }
     }

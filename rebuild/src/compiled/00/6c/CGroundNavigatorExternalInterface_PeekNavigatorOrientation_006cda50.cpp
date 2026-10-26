@@ -94,11 +94,13 @@ class CThingCreatureBase { public:                        // the retail creature
     }
 };
 #include "engine/CGroundNavigatorExternalInterface.h"
+class C2DVector;
 class C2DVector { public:
     float x, y;
     C2DVector(const C3DVector& v) : x(v.x), y(v.y) {}
     C2DVector(const C2DVector& o) : x(o.x), y(o.y) {}
-    C2DVector* Normalise();                        // 0x00A14540 (C2DVector::Normalise)
+public:
+    C2DVector& Normalise();   // 0x00A14540
 };
 
 struct CGroundNavigatorExternalInterface_Methods : CGroundNavigatorExternalInterface {

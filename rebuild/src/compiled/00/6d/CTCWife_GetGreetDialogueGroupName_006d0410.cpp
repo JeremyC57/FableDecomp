@@ -8,7 +8,7 @@
 //   CCharString&) 0x0099EFB0, ~CCharString 0x0099EAE0, operator+(const char*, const CCharString&) 0x0099F690 (__fastcall,
 //   hidden result in ecx, as landed); CTCBase::GetWorld() const 0x00686A70 and PeekWorld() const 0x00686A80 (both read the
 //   world from 0x013B8A1C +0x24; manifest "GetDisplayEngine" propagated; PDB order GetWorld, PeekWorld);
-//   COpinionReactionManager::GetThingAttitudeToPlayer(CThing*) 0x00701840 (world +0x74); CTCBase::GetPRandomSeed()
+//   COpinionReactionManager::GetThingAttitudeToPlayer(CThing*) 0x00701840 (world +0x74); CTCBase::GetPWorldSeed()
 //   0x00686DA0 (as landed); GFFloatRandom(float, unsigned long*) 0x004978A0 and GFROR13(unsigned long) 0x00497890
 //   (__fastcall, as landed).
 // Data: "TEXT_AI_WIFE_SEX_OFFER_TO_GO_TO_BED" 0x0125EEB0, "TEXT_AI_WIFE_OPINION_ACT_GREET_TO_HERO_" 0x0125EE88,
@@ -80,8 +80,17 @@ class CHeroMarriageDef { public:
     float         ProbabilityOfCourtingAdviceOnGreet;       // +0x88
 };
 
-class CTCWife { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x00686DA0
+    CWorld& GetWorld() const;   // 0x00686A70
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCWife : public CTCBase { public:
     CThing*                  ParentThing;                   // +0x04
     unsigned char            _pad08[4];
     const CHeroMarriageDef*  PHeroMarriageDef;              // +0x0c CDefPointer<const CHeroMarriageDef>
@@ -92,9 +101,6 @@ class CTCWife { public:
     mutable long             FrameLastGaveSexOffer;         // +0x64
     unsigned char            _pad68[0x91 - 0x68];
     bool                     ReceivedWeddingRing;           // +0x91 (retail)
-    CWorld& GetWorld() const;                               // 0x00686A70 (CTCBase)
-    const CWorld& PeekWorld() const;                        // 0x00686A80 (CTCBase)
-    unsigned long* GetPRandomSeed() const;                  // 0x00686DA0 (CTCBase)
     bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= CWorld::GetWorldFrame(); }
     EOpinionAttitudeType GetAttitudeToPlayer(CThing* thing) const
     {
@@ -131,8 +137,8 @@ bool CTCWife::GetGreetDialogueGroupName(CCharString& groupName) const
         return true;
     }
     if (((const CThingAICreatureFlags*)ParentThing)->CanBeMarried &&
-        PHeroMarriageDef->ProbabilityOfCourtingAdviceOnGreet > GFFloatRandom(1.0f, GetPRandomSeed()) && IsCourtingHero()) {
-        groupName = g_CourtingAdviceGroupNames[GFRandom(4, GetPRandomSeed())];
+        PHeroMarriageDef->ProbabilityOfCourtingAdviceOnGreet > GFFloatRandom(1.0f, GetPWorldSeed()) && IsCourtingHero()) {
+        groupName = g_CourtingAdviceGroupNames[GFRandom(4, GetPWorldSeed())];
         return true;
     }
     return false;

@@ -47,7 +47,13 @@ struct CThingList {                                      // VC6-style std::list<
 
 typedef long EKrakenBossPhase;
 
-class CTCKraken {
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCKraken : public CTCBase {
 public:
     void*                      __vfptr;                  // +0x00
     CThingCreatureBase*        ParentThing;              // +0x04 (CTCBase)
@@ -59,7 +65,6 @@ public:
     unsigned char              _pad48[0x60 - 0x48];
     EKrakenBossPhase           Phase;                    // +0x60
     long                       Mode;                     // +0x64 EKrakenMode
-    CWorld* GetWorld();                                  // 0x00686A70 (CTCBase)
     void CreateTentacles();                              // 0x007FC210
     void RaiseSunkenTentacles();                         // 0x007FB610
     void EndHeadEffects();                               // 0x007FB150
@@ -75,7 +80,7 @@ public:
 
 void CTCKraken::SetPhase(EKrakenBossPhase phase)
 {
-    CCombatManager* combat = GetWorld()->CombatManager;
+    CCombatManager* combat = GetWorld().CombatManager;
     CThingCreatureBase* thing = ParentThing;
     Phase = phase;
     PTCBoss->SetNextBossPhase(phase, false);

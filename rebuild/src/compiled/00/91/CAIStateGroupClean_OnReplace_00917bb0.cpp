@@ -53,10 +53,16 @@ class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction();               // 0x006622A0
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 struct CCountBlock {
     long Count;
@@ -109,7 +115,7 @@ class CCreatureActionBase { public:
     virtual void v10();
     virtual void* Clone() const;                // slot 11 (+0x2c)
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];

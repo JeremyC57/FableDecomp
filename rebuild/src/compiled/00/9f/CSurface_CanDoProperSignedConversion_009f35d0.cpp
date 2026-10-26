@@ -15,7 +15,17 @@
 //   { ... return true; } return false;`): it keeps the callee-saved pushes at entry and puts the `mov al,1` epilogue
 //   before the shared `xor al,al` one (flat early returns shrink-wrap the first test; a do/while(0) + break form puts
 //   the false exit first).
+#define CSurface CSurfaceLayout
 #include "engine/CSurface.h"
+#undef CSurface
+class CPixelFormat;
+
+class CSurface : public CSurfaceLayout
+{
+public:
+    unsigned long GetHeight() const;   // 0x00415BF0
+    CPixelFormat GetPixelFormat() const;   // 0x009F2F60
+};
 
 struct D3DSURFACE_DESC_Local {                     // D3DSURFACE_DESC, 0x20 bytes
     unsigned long Format;                          // +0x00 D3DFORMAT
@@ -50,9 +60,7 @@ class CPixelFormat { public:
 };
 
 struct CSurface_Methods : CSurface {
-    CPixelFormat GetPixelFormat() const;           // 0x009F2F60
     unsigned long GetWidth() const;                // 0x00415BD0
-    unsigned long GetHeight() const;               // 0x00415BF0
     // the inline expansions of the first GetPixelFormat() / GetWidth() calls
     CPixelFormat GetPixelFormatInline() const
     {

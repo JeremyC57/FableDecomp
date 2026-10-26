@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCMoneyReceiver_Destruct(void* receiver);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCMoneyReceiver_ScalarDeletingDestructor(void* receiver, int, unsigned int flags)
 {
-    CTCMoneyReceiver_Destruct(receiver);
+    ((CTCBase*)(receiver))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(receiver);
+        operator delete(receiver);
     return receiver;
 }

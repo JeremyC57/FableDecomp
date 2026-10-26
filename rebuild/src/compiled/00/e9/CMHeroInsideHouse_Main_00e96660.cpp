@@ -14,6 +14,7 @@
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -105,7 +106,7 @@ struct CHandlePImp {
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CHandlePImp PImp;                                   // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
-    ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
+    virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
     bool IsScripting();                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
@@ -233,13 +234,18 @@ struct CHauntedHouseScript {
     bool          HeroInside;                           // +0x53
     void DoMission_BodyGuardSimple(CCharString guard1, CCharString guard2);   // 0x00E96C30
 };
-struct CM_HeroInsideHouse {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CM_HeroInsideHouse : public CEntityScriptBase {
     void*                 __vftable;                    // +0x00
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
     CHauntedHouseScript*  ParentClass;                  // +0x14
     void*                 PMasterData;                  // +0x18
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
     void Main();
 };
 

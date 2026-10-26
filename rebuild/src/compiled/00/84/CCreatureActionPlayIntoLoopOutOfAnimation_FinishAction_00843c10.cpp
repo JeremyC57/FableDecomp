@@ -16,22 +16,37 @@ class CThingCreatureBase { public:
     bool IsBusy() const;                              // 0x00661E70 (manifest: CanCollideWithLandscape)
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
-long GetWorldFrame();                                 // 0x0049D870 (manifest: GFGetPreMainMemoryUsed)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CThingCreatureBase* GetPItem() const;             // 0x00A01B50
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                                 // 0x0049D870 (manifest: GFGetPreMainMemoryUsed)
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CCreatureActionBase { public:                          // retail sizeof 0xa8
     virtual ~CCreatureActionBase();                   // 0x00693EF0
     unsigned char _pad04[4];
-    CBaseIntelligentPointer PCreature;                // +0x08
+    CIntelligentPointer<CThingCreatureBase> PCreature;                // +0x08
     unsigned char _pad10[0x20 - 0x10];
     long InterruptionGroupID;                         // +0x20
     long InterruptionPriority;                        // +0x24
     unsigned char _pad28[0xa8 - 0x28];
-    void FinishAction();                              // 0x00694430
     CThingCreatureBase* GetCreature() const { return PCreature.GetPItem(); }
+public:
+    virtual void FinishAction();   // 0x00694430
 };
 class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { public:
     long        Stage;                                // +0xa8
@@ -59,7 +74,7 @@ void CCreatureAction_PlayIntoLoopOutOfAnimation::FinishAction()
             NumberOfTimesToLoop, (float)FrameToFinish, UseAnimationMovement, InterruptionGroupID, InterruptionPriority));
         break;
     case 1:
-        if (NumberOfTimesToLoop <= 0 && GetWorldFrame() >= FrameToFinish)
+        if (NumberOfTimesToLoop <= 0 && CWorld::GetFrame() >= FrameToFinish)
             GetCreature()->SetCurrentAction(CCreatureAction_PlayIntoLoopOutOfAnimation(GetCreature(), OutOfAnimName,
                 UseAnimationMovement, InterruptionGroupID, InterruptionPriority));
         else {

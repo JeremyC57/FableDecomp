@@ -1,13 +1,16 @@
+class CBaseClass {
+public:
+    virtual ~CBaseClass();   // 0x0099A2E0
+};
 struct CActiveSoundInfo {
     void* vftable;
 };
 
-void __fastcall CActiveSoundInfo_dtor(CActiveSoundInfo* info);
 void operator delete(void*);
 
 void* __fastcall CActiveSoundInfo_scalar_deleting_destructor(CActiveSoundInfo* info, int edx_unused, unsigned int flags)
 {
-    CActiveSoundInfo_dtor(info);
+    ((CBaseClass*)(info))->CBaseClass::~CBaseClass();
     if (flags & 1)
         operator delete(info);
     return info;

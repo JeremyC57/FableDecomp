@@ -11,7 +11,10 @@ struct ListNode {
 
 struct SubObj;
 extern void __fastcall SubObj_Clear(SubObj* s);
-extern int __cdecl GetSomeCounter();
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};   // 0x0049D870
 
 struct CTCGraphicAppearance {
     char pad[0x38];
@@ -35,7 +38,7 @@ void __fastcall CTCGraphicAppearance_ClearAllPrimitivesDueToBeingOutOfRange(CTCG
             n = n->next;
         }
         SubObj_Clear((SubObj*)((char*)appearance + 0x38));
-        appearance->counter = GetSomeCounter() + 1;
+        appearance->counter = CWorld::GetFrame() + 1;
         appearance->state &= 0x7f;
     }
 }

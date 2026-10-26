@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCCupboard_Destruct(void* cupboard);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCCupboard_ScalarDeletingDestructor(void* cupboard, int, unsigned int flags)
 {
-    CTCCupboard_Destruct(cupboard);
+    ((CTCBase*)(cupboard))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(cupboard);
+        operator delete(cupboard);
     return cupboard;
 }

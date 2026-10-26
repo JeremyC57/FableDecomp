@@ -1,8 +1,6 @@
 #pragma optimize("s",on)
 class CPersistContext { public:
-    void PersistFloat(void* p);
-    void PersistOther(void* p);
-    void PersistSub(void* p);
+    template <class T> void Transfer(T& value);
 };
 
 class CPhysicsDef { public:
@@ -18,11 +16,11 @@ class CPhysicsDef { public:
 
 void __fastcall CPhysicsDef_Transfer(CPhysicsDef* def, int edx, CPersistContext* ctx)
 {
-    ctx->PersistFloat(&def->Diameter);
-    ctx->PersistFloat(&def->Friction);
-    ctx->PersistFloat(&def->Elasticity);
-    ctx->PersistOther(&def->pad3c);
-    ctx->PersistFloat((float*)&def->pad34);
-    ctx->PersistFloat((float*)&def->pad38);
-    ctx->PersistSub(&def->sub[0]);
+    ctx->Transfer(*(float*)(&def->Diameter));
+    ctx->Transfer(*(float*)(&def->Friction));
+    ctx->Transfer(*(float*)(&def->Elasticity));
+    ctx->Transfer(*(long*)(&def->pad3c));
+    ctx->Transfer(*(float*)((float*)&def->pad34));
+    ctx->Transfer(*(float*)((float*)&def->pad38));
+    ctx->Transfer(*(bool*)(&def->sub[0]));
 }

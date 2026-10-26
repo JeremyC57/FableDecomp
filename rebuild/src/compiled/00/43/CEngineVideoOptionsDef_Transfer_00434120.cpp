@@ -4,9 +4,7 @@
 // Honest retail view uses the donor names; no native virtual calls occur here.
 #include <stddef.h>
 class CPersistContext { public:
- void TransferInt(int&); // 00431102
- void TransferFloat(float&); // 00431061
- void TransferBool(bool&); // 0043314a
+ template <class T> void Transfer(T& value); // 00431102
 };
 class CEngineVideoOptionsDef { public:
  unsigned char DefinitionBase[0x3c];
@@ -24,25 +22,25 @@ class CEngineVideoOptionsDef { public:
 typedef char NativeVideoSize[(sizeof(CEngineVideoOptionsDef)==0x78)?1:-1];
 typedef char NativeVideoOffset[(offsetof(CEngineVideoOptionsDef,HiresTextureMemory)==0x3c)?1:-1];
 void CEngineVideoOptionsDef::Transfer(CPersistContext& c) {
- c.TransferInt(HiresTextureMemory);
- c.TransferFloat(LODErrorTolerance);
- c.TransferFloat(CharacterLODErrorTolerance);
- c.TransferFloat(DrawDistanceMultiplier);
- c.TransferFloat(DrawDistanceMinimum);
- c.TransferFloat(DrawDistanceMaximum);
- c.TransferFloat(RepeatedMeshDrawDistanceFactor);
- c.TransferFloat(MinimumZSpriteAsMeshDistance);
- c.TransferFloat(MaximumZSpriteAsMeshDistance);
- c.TransferFloat(ZSpriteDrawDistanceMultiplier);
- c.TransferInt(ShadowBufferSize);
- c.TransferFloat(ShadowDistanceScale);
- c.TransferBool(Enable2DDisplacement);
- c.TransferBool(Enable3DDisplacement);
- c.TransferBool(EnableGlow);
- c.TransferBool(EnableRadialBlur);
- c.TransferBool(EnableWaterReflection);
- c.TransferBool(EnableWeatherEffects);
- c.TransferBool(EnableColourFilter);
- c.TransferFloat(WeatherDensity);
- c.TransferBool(EnableRepeatedMeshes);
+ c.Transfer(*(long*)&(HiresTextureMemory));
+ c.Transfer(LODErrorTolerance);
+ c.Transfer(CharacterLODErrorTolerance);
+ c.Transfer(DrawDistanceMultiplier);
+ c.Transfer(DrawDistanceMinimum);
+ c.Transfer(DrawDistanceMaximum);
+ c.Transfer(RepeatedMeshDrawDistanceFactor);
+ c.Transfer(MinimumZSpriteAsMeshDistance);
+ c.Transfer(MaximumZSpriteAsMeshDistance);
+ c.Transfer(ZSpriteDrawDistanceMultiplier);
+ c.Transfer(*(long*)&(ShadowBufferSize));
+ c.Transfer(ShadowDistanceScale);
+ c.Transfer(Enable2DDisplacement);
+ c.Transfer(Enable3DDisplacement);
+ c.Transfer(EnableGlow);
+ c.Transfer(EnableRadialBlur);
+ c.Transfer(EnableWaterReflection);
+ c.Transfer(EnableWeatherEffects);
+ c.Transfer(EnableColourFilter);
+ c.Transfer(WeatherDensity);
+ c.Transfer(EnableRepeatedMeshes);
 }

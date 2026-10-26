@@ -13,11 +13,14 @@
 // external non-virtual __fastcall helpers; the harness masks the relocation
 // dwords so any consistent targets reproduce the bytes.
 
+class CBaseClass {
+public:
+    virtual ~CBaseClass();   // 0x0099A2E0
+};
 class CCharString;
 struct SymbolPair;
 
 // ecx = this. Modeled as single-arg free __fastcall (self in ecx, edx unused).
-extern "C" void __fastcall CCharString_Dtor(CCharString *self); // 0x99a2e0
 extern "C" void __fastcall SymbolPair_Dtor(SymbolPair *self);   // 0x4c2e90
 
 class CCharString { public:};
@@ -34,7 +37,7 @@ struct SymbolPair
 // unused by the body, matching retail.
 void __fastcall _Dest_val_SymbolPair(SymbolPair *self, SymbolPair *unused)
 {
-    CCharString_Dtor(&self->strB);   // lea ecx,[esi+0x30]; call
-    CCharString_Dtor(&self->strA);   // lea ecx,[esi+0x14]; call
+    ((CBaseClass*)(&self->strB))->CBaseClass::~CBaseClass();   // lea ecx,[esi+0x30]; call
+    ((CBaseClass*)(&self->strA))->CBaseClass::~CBaseClass();   // lea ecx,[esi+0x14]; call
     SymbolPair_Dtor(self);           // mov ecx,esi; jmp (tail call)
 }

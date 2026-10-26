@@ -60,7 +60,10 @@ class CAIStateGroupBase { public:
 };
 
 extern long g_FramesPerSecond;                  // 0x01375550
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};            // 0x0049D870
 
 class CTCCreatureModeManager { public:                 // interface 0x31
     bool AddMode(unsigned long mode);           // 0x0073AE10
@@ -79,12 +82,12 @@ struct CAIStateGroup_WorkAtSchool : CAIStateGroupBaseA {
 bool CAIStateGroup_WorkAtSchool::StandAndTalk(float seconds)
 {
     long fps = g_FramesPerSecond;
-    long endFrame = (long)(GFGetCurrentFrame() + fps * seconds);
+    long endFrame = (long)(CWorld::GetFrame() + fps * seconds);
     CTCCreatureModeManager* modes;
     PBrain->PCreature->GetInterface(&modes, 0x31);
     modes->AddMode(0x1b);
     long result = AIAction_DoNothing();
-    while (result == 4 && GFGetCurrentFrame() <= endFrame && !IsStopping())
+    while (result == 4 && CWorld::GetFrame() <= endFrame && !IsStopping())
         result = AIAction_DoNothing();
     modes->RemoveMode(0x1b);
     return result == 2;

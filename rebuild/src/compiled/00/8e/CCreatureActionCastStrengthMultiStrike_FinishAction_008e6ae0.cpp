@@ -19,10 +19,21 @@ class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
-    virtual void v00();
-    CThingCreatureBase* PItem;
-    CThingCreatureBase* GetPItem() const;       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCreatureActionBase { public:
@@ -31,9 +42,9 @@ class CCreatureActionBase { public:
 
 class CCombatActionBase : public CCreatureActionBase { public:
     long _pad04;
-    CBaseIntelligentPointer Owner;              // +0x08 (the owning creature)
+    CIntelligentPointer<CThingCreatureBase> Owner;              // +0x08 (the owning creature)
     unsigned char _pad10[0xa8 - 0x10];
-    CBaseIntelligentPointer Target;             // +0xa8 (the action's target)
+    CIntelligentPointer<CThingCreatureBase> Target;             // +0xa8 (the action's target)
     unsigned char _padb0[0x114 - 0xb0];
     virtual void FinishAction();                // 0x00859A20
 };

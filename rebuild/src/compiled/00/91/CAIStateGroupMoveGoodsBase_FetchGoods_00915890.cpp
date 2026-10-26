@@ -93,7 +93,7 @@ struct CAIFilterBase;
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
     long GetActionID() const;                   // 0x00692620
 };
 struct CCreatureAction_FetchGoods : CCreatureActionBase {

@@ -71,21 +71,22 @@ class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 
-struct CTCBaseModel {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
     unsigned char _pad0a[2];
-    CPlayerManager* GetPlayerManager();         // 0x00686D40
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
 };
-struct CTCUndeadSoul : CTCBaseModel {
+struct CTCUndeadSoul : CTCBase {
     virtual void FrameUpdate();
 };
 
 void CTCUndeadSoul::FrameUpdate()
 {
-    const CThing* hero = GetPlayerManager()->GetMainPlayer()->GetControlledCreature();
+    const CThing* hero = GetPlayerManager().GetMainPlayer()->GetControlledCreature();
     if (hero && !(hero->m_flags & 1) && hero->HasTC(0x6f)
         && ((const CTCInventoryAbilities*)hero->GetTC(0x6f))->IsAbleToUseAbility(7, true)) {
         if (!ParentThing->DrawIsDrawable()) {

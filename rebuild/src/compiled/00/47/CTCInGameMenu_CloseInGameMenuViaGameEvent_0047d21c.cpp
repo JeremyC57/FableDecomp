@@ -48,22 +48,28 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                        // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 
 enum { GAME_EVENT_CLOSE_IN_GAME_MENU = 0x1C };
 
-class CTCInGameMenu { public:
+class CTCBase
+{
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCInGameMenu : public CTCBase { public:
     void* __vftable;                                 // +0x00
     void* ParentThing;                               // +0x04 CTCBase
 
-    CPlayerManager* GetPlayerManager() const;        // 0x00686D40 (CTCBase)
     void CloseInGameMenuViaGameEvent();
 };
 
 void CTCInGameMenu::CloseInGameMenuViaGameEvent()
 {
-    CThingCreatureBase* const& hero = GetPlayerManager()->GetMainPlayer()->GetCharacterThing();
+    CThingCreatureBase* const& hero = GetPlayerManager().GetMainPlayer().GetCharacterThing();
     if (IS_THING_ALIVE_0043dbd0<CThing*>(hero)) {
         CGameEvent event(GAME_EVENT_CLOSE_IN_GAME_MENU);
         event.Player = hero->PlayerNumber;

@@ -16,20 +16,30 @@ struct CAIStateGroupBase_Calls {
     CAIStateGroupBase_Calls();                              // 0x008FD255
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* PData;                                            // +4
-    CBaseIntelligentPointer();                              // 0x00A01B10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x0123E7D8
-    virtual void v00();
+class CThingCreatureBase;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {      // vtable 0x0123E7D8
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroupBase_Calls {
     long                NextHawkFrame;                      // +0x14
-    CIntelligentPointer Customer;                           // +0x18
+    CIntelligentPointer<CThingCreatureBase> Customer;                           // +0x18
     virtual void v00();                                     // own vtable 0x0128BF48
     CAIStateGroup_MinionHawkingFromStall();
 };

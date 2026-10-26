@@ -34,7 +34,7 @@ class CScriptThing { public:
     CThingBase* PThing;                                // +0x04
     long        _08;                                   // +0x08
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
     const C3DVector& GetPosition() const { return PThing == 0 ? g_ZeroVector : *PThing->GetPosition(); }
     float GetAngleXY() const { return PThing == 0 ? 0.0f : PThing->GetAngleXY(); }
 };

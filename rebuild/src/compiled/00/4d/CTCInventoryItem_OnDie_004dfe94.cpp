@@ -2,13 +2,16 @@
 // Leaf: OnDie
 // Byte-exact reconstruction of CTCInventoryItem::OnDie @ 0x004dfe94
 
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 class CTCInventoryItem;
 
 // free cdecl callee @ 0xbfea14 (push arg; call; pop ecx cleanup)
-extern "C" void __cdecl FreeSlot(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 // base OnDie member forwarder @ 0x9fc550 (this in ecx)
-void __fastcall BaseOnDie(CTCInventoryItem* self);
 
 class CTCInventoryItem { public:
     void** vtbl;      // +0x00
@@ -19,8 +22,8 @@ class CTCInventoryItem { public:
 void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* self)
 {
     if (self->field28) {
-        FreeSlot(self->field28);
+        free(self->field28);
     }
     self->vtbl = (void**)0x1230ba0;
-    BaseOnDie(self);
+    ((CResource*)(self))->CResource::~CResource();
 }

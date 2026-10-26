@@ -22,26 +22,37 @@ class CThing { public:
     bool IsDead() const { return (m_flags91 & 1) != 0; }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     return p.GetPItem() != 0 && !(p.GetPItem()->m_flags91 & 1);
 }
 
 // Retail STLport vector<CIntelligentPointer<CThing>>: {start, finish, end_of_storage}.
 struct CThingPointerVector {
-    CBaseIntelligentPointer* _M_start;
-    CBaseIntelligentPointer* _M_finish;
-    CBaseIntelligentPointer* _M_end_of_storage;
-    CBaseIntelligentPointer* begin() const { return _M_start; }
+    CIntelligentPointer<CThing>* _M_start;
+    CIntelligentPointer<CThing>* _M_finish;
+    CIntelligentPointer<CThing>* _M_end_of_storage;
+    CIntelligentPointer<CThing>* begin() const { return _M_start; }
     unsigned long size() const { return _M_finish - _M_start; }
-    CBaseIntelligentPointer& operator[](unsigned long n) const { return *(begin() + n); }
+    CIntelligentPointer<CThing>& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
 class CAIStateGroupBase { public:
@@ -57,7 +68,7 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase {
-    CBaseIntelligentPointer PTargetThing;       // +0x14 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThing> PTargetThing;       // +0x14 CIntelligentPointer<CThingCreatureBase>
 };
 
 struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_EnemyCreatureBase {
@@ -80,7 +91,7 @@ bool CAIStateGroup_HoverHornetQueen::IsStillRunnable()
     if (!IS_THING_ALIVE(PTargetThing))
         return false;
     if (CircleMarkers.size() > 0) {
-        CBaseIntelligentPointer& marker = CircleMarkers[0];
+        CIntelligentPointer<CThing>& marker = CircleMarkers[0];
         if (marker.GetPItem() == 0)
             return false;
         if (marker.GetPItem()->IsDead())

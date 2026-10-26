@@ -1,13 +1,16 @@
+class CCombatActionBase {
+public:
+    virtual ~CCombatActionBase();   // 0x0062E900
+};
 class CCreatureAction_BalverineCorneredJumpIntoSky { public:
     void* vftable;
 };
 
-void __fastcall CCreatureAction_BalverineCorneredJumpIntoSky_dtor(CCreatureAction_BalverineCorneredJumpIntoSky* action);
 void operator delete(void*);
 
 void* __fastcall CCreatureAction_BalverineCorneredJumpIntoSky_scalar_deleting_destructor(CCreatureAction_BalverineCorneredJumpIntoSky* action, int edx_unused, unsigned int flags)
 {
-    CCreatureAction_BalverineCorneredJumpIntoSky_dtor(action);
+    ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
     if (flags & 1)
         operator delete(action);
     return action;

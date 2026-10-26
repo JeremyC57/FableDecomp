@@ -12,6 +12,7 @@
 // Shape: as the landed CHeroSoulsEnemy::Main 0x00D7F110 (scoped CIsThingAlive filter, NewScriptFrame, IsDone); the wait
 // is a `while (!(hit))` loop whose condition builds three conditional CCharString temporaries (ebx construction flags,
 // the condition parked in a frame byte); after the loop an IsDone test guards the quest flag store.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -29,14 +30,20 @@ class CScriptThing { public:                                   // 12 bytes, vtab
     virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;              // slot 42 (+0xa8)
     unsigned char _body[8];
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing();                                    // 0x004AA840
+    virtual ~CScriptThing();                                    // 0x004AA840
 };
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
 };
-struct CIsThingAlive {                                  // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -48,15 +55,20 @@ struct CQ_HeroSoulsArenaScript {
 };
 struct CQ_SunnyvaleMasterData;
 
-class CSummoner2 {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CSummoner2 : public CEntityScriptBase {
 public:
     void*                    __vftable;                 // +0x00
     CGameScriptInterface*    Game;                      // +0x04
     CScriptThing             Me;                        // +0x08
     CQ_HeroSoulsArenaScript* ParentClass;               // +0x14
     CQ_SunnyvaleMasterData*  PMasterData;               // +0x18
-    void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
-    bool IsDone();                                      // 0x00F35B30
     void Main();
 };
 
@@ -64,18 +76,18 @@ void CSummoner2::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     while (!(Me.MsgIsHitBy("SCRIPT_NAME_HERO")
              || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO")))) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     ParentClass->PlayerHitSummoner2 = true;
 }

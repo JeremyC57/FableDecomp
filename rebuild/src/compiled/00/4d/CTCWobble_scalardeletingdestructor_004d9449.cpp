@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCWobble_Destruct(void* wobble);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCWobble_ScalarDeletingDestructor(void* wobble, int, unsigned int flags)
 {
-    CTCWobble_Destruct(wobble);
+    ((CTCBase*)(wobble))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(wobble);
+        operator delete(wobble);
     return wobble;
 }

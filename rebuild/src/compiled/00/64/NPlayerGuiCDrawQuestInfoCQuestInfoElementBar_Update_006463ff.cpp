@@ -23,15 +23,23 @@ class CThingPhysical { public:
     float         MaxHealth;                       // +0xb0
     float         Health;                          // +0xb4
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CThingPhysical* GetPItem() const;              // 0x00A01B50
-    ~CBaseIntelligentPointer();                    // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(CThing* thing);            // 0x00655145
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x00655180
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThingPhysical>* p);   // 0x00655D04
 #pragma auto_inline(off)
@@ -45,8 +53,9 @@ class CThingManager { public:
     CThing* GetThingWithUID(unsigned __int64 uid);  // 0x0051ED80
 };
 class CWorldMap { public:
-    long GetRegionNumberMapIsIn(long map);          // 0x004FC190
     long GetCurrentRegionNumber();                  // 0x004FB150
+public:
+    long GetRegionNumberMapIsIn(long) const;   // 0x004FC190
 };
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02();

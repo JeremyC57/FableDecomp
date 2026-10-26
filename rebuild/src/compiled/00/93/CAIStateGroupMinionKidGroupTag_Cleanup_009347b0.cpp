@@ -98,12 +98,16 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};            // 0x0049D870
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 extern long g_framesPerSecond;                  // 0x01375550
 
 class CTCCreatureModeManager { public:
-    void RemoveMode(long mode);                 // 0x0073ABA0
+public:
+    void RemoveMode(unsigned long);   // 0x0073ABA0
 };
 
 class CTCCreatureGroupTag { public:
@@ -149,5 +153,5 @@ void CAIStateGroup_MinionKidGroupTag::Cleanup()
         PBrain->PCreature->GetInterface(&modes, 0x31);
         modes->RemoveMode(1);
     }
-    FrameLastPlayedIn = GFGetCurrentFrame() + RandomFramesWithin(2);
+    FrameLastPlayedIn = CWorld::GetFrame() + RandomFramesWithin(2);
 }

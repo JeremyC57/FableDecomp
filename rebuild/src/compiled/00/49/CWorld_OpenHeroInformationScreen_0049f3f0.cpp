@@ -38,7 +38,8 @@ class CManager { public:
 };
 }
 class CPlayerGui { public:
-    NHeroInformationScreens::CManager* GetPHeroInfoScreensManager();   // 0x00437CD0
+public:
+    NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 class CPlayer { public:

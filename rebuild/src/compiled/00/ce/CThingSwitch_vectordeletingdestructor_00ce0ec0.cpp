@@ -20,8 +20,7 @@ class CFrontEndScreen { public:                   // vtable 0x012C3224; label NU
 };
 }
 class CScriptThing { public:                       // vtable 0x01238C8C (.?AVCScriptThing@@)
-    void* _vptr;
-    ~CScriptThing();                        // 0x004AA840
+    virtual ~CScriptThing();                        // 0x004AA840
 };
 void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
 
@@ -37,8 +36,8 @@ struct CObject_00ce0ec0 : NUISystem::CFrontEndScreen {
 void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
     CObject_00ce0ec0* object = static_cast<CObject_00ce0ec0*>(self);
-    object->Member28.~CScriptThing();
-    object->Member1c.~CScriptThing();
+    object->Member28.CScriptThing::~CScriptThing();
+    object->Member1c.CScriptThing::~CScriptThing();
     object->NUISystem::CFrontEndScreen::~CFrontEndScreen();
     if (flags & 1)
         operator delete(object);

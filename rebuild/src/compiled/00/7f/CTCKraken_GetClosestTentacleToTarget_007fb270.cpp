@@ -98,8 +98,9 @@ class CTCKrakenTentacle { public:
     unsigned char _pad00[0x44];
     float AngleOffset;                                // +0x44
 };
-struct CTCScriptedHook {
-    bool HasMode(long mode);                          // 0x0073A8A0
+class CTCCreatureModeManager { public:
+public:
+    bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
 struct STentacleNode {
     STentacleNode* _M_next;
@@ -157,7 +158,7 @@ bool CTCKraken::GetClosestTentacleToTarget(CTentacleIterator& closest)
         }
         if (found) {
             CThing* thing = closest._M_node->_M_data.GetPItem();
-            if (thing->HasTC(0x31) && !thing->FindTC<CTCScriptedHook>(0x31)->HasMode(0x54))
+            if (thing->HasTC(0x31) && !thing->FindTC<CTCCreatureModeManager>(0x31)->IsModeActive(0x54))
                 return true;
         }
     }

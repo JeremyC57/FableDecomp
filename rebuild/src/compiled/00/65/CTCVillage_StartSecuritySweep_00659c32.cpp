@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00659C32, length 74 bytes. The catalog name "RecalculateSecuritySweep" is
 // not a PDB name; the body is `?StartSecuritySweep@CTCVillage@@QAEX_N@Z` (one bool parameter, ret 4; the landed caller
 // 0x00849250 passes 0).
-// Callees: CTCVillage::InvalidateAndClearAllSecuritySweepTasks() @ 0x006590A0, CTCBase::GetWorld() const @ 0x00686A80
+// Callees: CTCVillage::InvalidateAndClearAllSecuritySweepTasks() @ 0x006590A0, CTCBase::PeekWorld() const @ 0x00686A80
 // (manifest "CViewBase::GetDisplayEngine" is propagated) and the static world-frame getter @ 0x0049D870 called
 // through it, CTCVillage::CalculateSecuritySweepTasks() @ 0x00659800.
 // Size TU (the shared tail call, the walk entered by `jmp`): `optimize("s",on)`.
@@ -34,7 +34,13 @@ class CWorld { public:
     static long GetWorldFrame();            // 0x0049D870
 };
 
-class CTCVillage { public:
+class CTCBase
+{
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+class CTCVillage : public CTCBase { public:
     void*          __vftable;               // +0x00
     unsigned char  _pad_0x04[0xC];
     long           FrameStartedSecuritySweep;   // +0x10
@@ -43,7 +49,6 @@ class CTCVillage { public:
     unsigned char  _pad_0x60[0x54];
     bool           SecuritySweepUrgent;     // +0xB4
     float          InitialSecuritySweepRadius;  // +0xB8
-    const CWorld* GetWorld() const;         // 0x00686A80 (CTCBase)
     void InvalidateAndClearAllSecuritySweepTasks();   // 0x006590A0
     void CalculateSecuritySweepTasks();     // 0x00659800
     void StartSecuritySweep(bool urgent);
@@ -56,7 +61,7 @@ void CTCVillage::StartSecuritySweep(bool urgent)
     if (queued != 0) {
         InvalidateAndClearAllSecuritySweepTasks();
     } else {
-        FrameStartedSecuritySweep = GetWorld()->GetWorldFrame();
+        FrameStartedSecuritySweep = PeekWorld().GetWorldFrame();
         InitialSecuritySweepRadius = 20.0f;
     }
     CalculateSecuritySweepTasks();

@@ -10,7 +10,7 @@
 // Globals: the speech-bank -> lip-sync-bank symbol map @ 0x013B8394 (null while there is no sound).
 // Layout: CTCTalk (Ego_r.pdb) PSpeechBank +0x24, as the landed SetUpSpeechSample model.
 // Shape: a zero-initialised result returned once at the end (`xor eax,eax` preloaded beside the map test; an early
-//   `return 0` returns the tested global instead); `PSpeechBank ? PSpeechBank : GetDefaultSpeechBank()` calls the default
+//   `return 0` returns the tested global instead); `PSpeechBank ? PSpeechBank : PeekSampleBank()` calls the default
 //   getter with `this` still in ecx; the map is re-read from the global for each call; the fallback is the tail call.
 class CASoundBank;
 class CLipSyncDataBank;
@@ -23,7 +23,13 @@ public:
 };
 extern CSymbolMap* g_pSpeechBankMap;                        // 0x013B8394
 
-class CTCTalk {
+class CTCBase
+{
+protected:
+    const CASoundBank& PeekSampleBank() const;   // 0x00686D70
+};
+
+class CTCTalk : public CTCBase {
 public:
     void* m_pVtable;                                        // +0x00 CTCBase
     CThing* ParentThing;                                    // +0x04
@@ -37,7 +43,6 @@ public:
     float SampleLoadedTime;                                 // +0x20
     CASoundBank* PSpeechBank;                               // +0x24
 
-    CASoundBank* GetDefaultSpeechBank() const;              // 0x00686D70
 private:
     const CLipSyncDataBank* GetPLipSyncBank() const;
 };
@@ -46,7 +51,7 @@ const CLipSyncDataBank* CTCTalk::GetPLipSyncBank() const
 {
     const CLipSyncDataBank* lipSync = 0;
     if (g_pSpeechBankMap) {
-        CASoundBank* bank = PSpeechBank ? PSpeechBank : GetDefaultSpeechBank();
+        const CASoundBank* bank = PSpeechBank ? PSpeechBank : (&PeekSampleBank());
         lipSync = (const CLipSyncDataBank*)g_pSpeechBankMap->FindValueForSymbol((long)bank);
         if (!lipSync)
             lipSync = (const CLipSyncDataBank*)g_pSpeechBankMap->FindFirstValue();

@@ -1,13 +1,14 @@
 class CTCWife { public:
     char pad0[0x10];
     int state;
-    bool SomeCondition();
     int IsInLoveWithHero();
+public:
+    bool IsCourtingHero() const;   // 0x006CF890
 };
 
 int CTCWife::IsInLoveWithHero()
 {
-    if (this->SomeCondition())
+    if (IsCourtingHero())
     {
         if (this->state == 0xc)
             return 1;

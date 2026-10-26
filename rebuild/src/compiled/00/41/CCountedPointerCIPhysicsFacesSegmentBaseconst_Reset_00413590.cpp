@@ -45,8 +45,6 @@ struct FableFacesCountedPointer_00413590
 
 extern void FABLE_FASTCALL FableFacesObjectDelete_00413300(void *object);
 
-extern "C" void *FABLE_CDECL FableFacesControlAllocate_00413590(fable_u32 size);
-extern "C" void FABLE_CDECL FableFacesControlDelete_00413590(void *control);
 
 extern "C" void FABLE_FASTCALL FableFacesCountedPointerReset_00413590(
     FableFacesCountedPointer_00413590 *self,
@@ -61,7 +59,7 @@ extern "C" void FABLE_FASTCALL FableFacesCountedPointerReset_00413590(
         if (self->control->owners == 0)
         {
             self->control->destroyObject(self->control->object);
-            FableFacesControlDelete_00413590(self->control);
+            operator delete(self->control);
         }
     }
 
@@ -71,7 +69,7 @@ extern "C" void FABLE_FASTCALL FableFacesCountedPointerReset_00413590(
     if (newObject != 0)
     {
         FableFacesControl_00413590 *fresh =
-            (FableFacesControl_00413590 *)FableFacesControlAllocate_00413590(0xc);
+            (FableFacesControl_00413590 *)operator new(0xc);
         FableFacesControl_00413590 *result;
         if (fresh != 0)
         {

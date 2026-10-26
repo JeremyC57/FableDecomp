@@ -8,11 +8,12 @@ class CCharString { public:                        // one pointer (fable_string.
     char* m_pData;
 };
 
-struct CQuestManager_Calls {              // engine/CQuestManager.h exists but is not used: only this call is modelled
-    bool FindByName(const CCharString& name);   // 0x004AF610
+class CQuestManager { public:              // engine/CQuestManager.h exists but is not used: only this call is modelled
+public:
+    bool IsQuestActive(const CCharString&) const;   // 0x004AF610
 };
 
-extern CQuestManager_Calls* g_pQuestManager;   // 0x013B89FC
+extern CQuestManager* g_pQuestManager;   // 0x013B89FC
 
 // engine/CCreatureAction_ActivateQuest.h exists but is not used: its PDB layout puts ScriptName at +0xb4 (retail +0xa8,
 // the base's three containers are 4 bytes wider there) and carries no vtable; the retail `this` is modelled locally.
@@ -27,6 +28,6 @@ class CCreatureAction_ActivateQuest { public:
 
 void CCreatureAction_ActivateQuest::FrameUpdate()
 {
-    if (!g_pQuestManager->FindByName(ScriptName))
+    if (!g_pQuestManager->IsQuestActive(ScriptName))
         FinishAction();
 }

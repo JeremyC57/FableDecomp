@@ -9,7 +9,10 @@
 // +0x24 (engine header CAIStateGroup_WanderAroundShops.h). Frame 8, result through __ftol2.
 extern long g_framesPerSecond;                  // 0x01375550
 extern float g_wanderShopsBuyDelay;             // 0x0138CE2C
-long __fastcall GFGetFrameCount();              // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};              // 0x0049D870
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -26,5 +29,5 @@ struct CAIStateGroup_WanderAroundShops : CAIStateGroupBase {
 void CAIStateGroup_WanderAroundShops::Cleanup()
 {
     long fps = g_framesPerSecond;
-    NextFrameBuy = (long)(GFGetFrameCount() + fps * g_wanderShopsBuyDelay);
+    NextFrameBuy = (long)(CWorld::GetFrame() + fps * g_wanderShopsBuyDelay);
 }

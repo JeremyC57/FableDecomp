@@ -10,9 +10,10 @@
 //   (CQ_FireHeartScript*) +0x14, PMasterData +0x18. In the retail CQ_FireHeartScript (0x64 below the PDB) the
 //   HasScytheCutscenePlayed flag is +0x1a1 and the seh_BriarRose handle +0x154.
 // Shape: the early arm ends in `call ; pop ; ret`; the release test goes through a named handle pointer (edi; a member
-//   expression re-reads ParentClass for the Release call); `while (!StartScriptingEntity(...)) { NewScriptFrame(); if (IsDone())
+//   expression re-reads ParentClass for the Release call); `while (!StartScriptingEntity(...)) { NewScriptFrame(); if (IsActiveThreadTerminating())
 //   return; }` is rotated (test first, body + bottom test), the handle address re-derived from ParentClass for each call and
-//   &Me kept in edi; the final `IsDone();` is a tail jump.
+//   &Me kept in edi; the final `IsActiveThreadTerminating();` is a tail jump.
+namespace NScript { class CPredicateBase; }
 class CThing;
 class CScriptThing { public: unsigned char _body[12]; };
 
@@ -52,20 +53,25 @@ struct CQ_FireHeartScript {                      // retail offsets (PDB less 0x6
 };
 struct CQ_SunnyvaleMasterData;
 
-struct CFH_BriarRose {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CFH_BriarRose : public CEntityScriptBase {
     void*                       __vftable;       // +0x00
     CGameScriptInterface_Calls* Game;            // +0x04
     CScriptThing                Me;              // +0x08
     CQ_FireHeartScript*         ParentClass;     // +0x14
     CQ_SunnyvaleMasterData*     PMasterData;     // +0x18
-    bool IsDone();                               // 0x00F35B30
     void Main();
 };
 
 void CFH_BriarRose::Main()
 {
     if (ParentClass->HasScytheCutscenePlayed) {
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         Game->RemoveThing(Me, false, true);
         return;
@@ -75,8 +81,8 @@ void CFH_BriarRose::Main()
         handle->Release();
     while (!Game->StartScriptingEntity(Me, ParentClass->seh_BriarRose, SCRIPT_AI_PRIORITY_HIGHEST)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    IsDone();
+    IsActiveThreadTerminating();
 }

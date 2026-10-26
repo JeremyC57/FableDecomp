@@ -11,10 +11,17 @@
 //   for (i = 0; i < count; ++i) traits.TransferBinaryOut(stream, &value[i]);` with the enum traits inline; speed TU
 //   (aligned loop head, no frame).  `value._M_start` is re-read every pass because WriteSLONG is opaque.
 // Model: engine/CDataOutputStream.h + a methods-only writer adapter; the vector is STLport's three words.
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteSLONG(long value);                             // 0x00993EB0
 };
 
 enum ENavigatorType { NAVIGATOR_TYPE_NONE = -1, NAVIGATOR_TYPE_0 = 0 };

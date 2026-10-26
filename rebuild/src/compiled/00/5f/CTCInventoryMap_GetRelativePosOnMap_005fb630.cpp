@@ -82,8 +82,19 @@ class CWorld { public:
 class C3DVector { public: float X, Y, Z; };
 class C2DVector { public: float X, Y; };
 namespace NUISystem { class CComponent; }
-class CTCInventoryMap { public:
-    const CWorld* GetWorld() const;                     // 0x00686A80 (CTCBase)
+class CTCBase
+{
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+namespace NInventory {
+class CTCInventoryBase : public CTCBase
+{
+public:
+};
+}
+
+class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
     void GetRelativePosOnMap(NUISystem::CComponent* component, const C3DVector& position, C2DVector& relative) const;
 };
 
@@ -92,10 +103,10 @@ void CTCInventoryMap::GetRelativePosOnMap(NUISystem::CComponent* component, cons
     CUIMiscThingsDefPointer def;
     long index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex("UI_MISC_THINGS_DEF", 1);
     CGameDefinitionManager::Get().GetDef(index, &def);
-    if (GetWorld()->GetWorldMap()->Maps.size() > 0) {
+    if (PeekWorld().GetWorldMap()->Maps.size() > 0) {
         C2DBoxI bounds;
-        for (long i = 1; i < GetWorld()->GetWorldMap()->Maps.size(); ++i) {
-            const C2DBoxI& box = GetWorld()->GetWorldMap()->Maps._M_start[i].Box;
+        for (long i = 1; i < PeekWorld().GetWorldMap()->Maps.size(); ++i) {
+            const C2DBoxI& box = PeekWorld().GetWorldMap()->Maps._M_start[i].Box;
             if (i == 1) {
                 bounds = box;
             } else {

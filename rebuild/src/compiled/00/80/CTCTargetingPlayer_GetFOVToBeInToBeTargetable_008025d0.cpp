@@ -6,7 +6,7 @@
 //   GetPTargetedThing in the donor, exactly where 0x008025D0 sits between the landed SetAsTargetNextThing 0x00802590 and
 //   ClearLockedTarget 0x00802650 in retail; the catalog label "GetModifierValue" is descriptive.
 // Leaf: GetFOVToBeInToBeTargetable
-// Callees: CThing::GetPlayer 0x004C7A10. Constant: 1/360 (0.0027777778f) @ 0x01238E00 (degrees -> turns).
+// Callees: CThing::PeekPlayer 0x004C7A10. Constant: 1/360 (0.0027777778f) @ 0x01238E00 (degrees -> turns).
 // Layout (local model, as the landed siblings 0x008026A0 / 0x00802420): CTCBase ParentThing +0x04; CTCTargetingAI
 //   PSubDef (the CTargetingDef) +0x30 -- engine/CTCTargetingPlayer.h flattens the base to pads there. Ego_r.pdb
 //   CTargetingDef: TargetArc +0x30, TargetArcPCThirdPersonAimingMode +0x34. Retail CPlayer
@@ -23,7 +23,8 @@ class CPlayer : public CPlayerDonor {
 };
 
 class CThing { public:
-    CPlayer* GetPlayer();                                    // 0x004C7A10
+public:
+    const CPlayer& PeekPlayer() const;   // 0x004C7A10
 };
 
 class CTargetingDef { public:
@@ -45,7 +46,7 @@ class CTCTargetingPlayer : public CTCTargetingAI { public:
 
 float CTCTargetingPlayer::GetFOVToBeInToBeTargetable() const
 {
-    if (ParentThing->GetPlayer()->PCProjectileWeaponThirdPersonAimingMode)
+    if (ParentThing->PeekPlayer().PCProjectileWeaponThirdPersonAimingMode)
         return PSubDef->TargetArcPCThirdPersonAimingMode * (1.0f / 360.0f);
     return PSubDef->TargetArc * (1.0f / 360.0f);
 }

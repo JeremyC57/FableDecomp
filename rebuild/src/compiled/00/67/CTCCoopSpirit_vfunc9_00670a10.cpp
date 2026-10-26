@@ -17,7 +17,8 @@ class CCharString { public:
 };
 
 struct CDefStringTable {
-    CCharString GetString(long tablePos);           // 0x009D49B0
+public:
+    CCharString GetString(long) const;   // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;            // 0x013CA828
 
@@ -34,13 +35,24 @@ class CThing { public:
     void Kill(bool removeNow);                      // 0x004C9B80
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                  // +0x04
-    CThing* GetPItem() const;                       // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-inline bool IsThingAlive(const CBaseIntelligentPointer& p)
+inline bool IsThingAlive(const CIntelligentPointer<CThing>& p)
 {
     return p.GetPItem() && !(p.GetPItem()->m_stateFlags & 1);
 }
@@ -62,7 +74,7 @@ class CTCCoopSpirit { public:
     C3DVector       MovementVector;                 // +0x18
     void*           Master;                         // +0x24
     CCoopSpiritDef* PCoopSpiritDef;                 // +0x28 CDefPointer<const CCoopSpiritDef>
-    CBaseIntelligentPointer PParticleEmitter;       // +0x2c CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PParticleEmitter;       // +0x2c CIntelligentPointer<CThing>
 
     void SetAppearanceParticle(const CCharString& name);   // 0x006705F0
     void UpdateMovement();                          // 0x00670820

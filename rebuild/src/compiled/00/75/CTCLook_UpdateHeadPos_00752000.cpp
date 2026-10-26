@@ -27,7 +27,8 @@ class CThing { public:
     const C3DVector& GetPosition() const;      // 0x004C73D0
 };
 class CThingCreatureBase { public:
-    C3DVector GetHeadPos(bool exact);          // 0x00661B40
+public:
+    C3DVector GetHeadPos(bool) const;   // 0x00661B40
 };
 class CLookDef { public:
     unsigned char _pad00[0x54];
@@ -41,7 +42,13 @@ extern float g_HeadPosCacheTolerance;          // 0x013826A0 (.data tunable, 0.0
 extern long  g_HeadPosCacheFrames;             // 0x01375550 (.data, 15)
 
 #pragma pack(push, 1)
-class CTCLook { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCLook : public CTCBase { public:
     void*               __vftable;              // +0x00
     CThing*             ParentThing;            // +0x04
     unsigned char       _pad08[0x10 - 0x08];
@@ -52,7 +59,6 @@ class CTCLook { public:
     C3DVector           CachedHeadPos;          // +0xa1 (PDB +0xa5)
     unsigned char       _padAD[0xb0 - 0xad];
     long                HeadCacheTimer;         // +0xb0 (PDB +0xb4)
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
     bool ShouldGetExactHeadPos();               // 0x00751BC0
     void UpdateHeadPos();
 };
@@ -61,7 +67,7 @@ class CTCLook { public:
 void CTCLook::UpdateHeadPos()
 {
     if (!PDef->AlwaysUpdateHeadPos) {
-        CWorld* world = GetWorld();
+        CWorld* world = (&GetWorld());
         const C3DVector& thingPos = ParentThing->GetPosition();
         C3DVector toCamera = world->GetCameraPosition() - thingPos;
         if (HeadCacheTimer > 0 && toCamera.MagnitudeSquared() > 64.0f) {

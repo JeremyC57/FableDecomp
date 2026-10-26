@@ -50,18 +50,26 @@ class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction();               // 0x006622A0
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {    // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {    // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 struct CCountBlock {
     long Count;
@@ -114,7 +122,7 @@ class CCreatureActionBase { public:
     virtual void v10();
     virtual void* Clone() const;                // slot 11 (+0x2c)
     unsigned char _body[0xa4];
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
@@ -123,13 +131,13 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
 };
 class CTCExclusiveUse { public:
     unsigned char _pad[0xc];
-    CIntelligentPointerThing User;              // +0x0c
-    void SetUser(CThing* user) { User = CIntelligentPointerThing(user); }
+    CIntelligentPointer<CThing> User;              // +0x0c
+    void SetUser(CThing* user) { User = CIntelligentPointer<CThing>(user); }
 };
 class CTCDiceGame { public:
     unsigned char _pad[0xc];
     long NumberOfPlayers;                       // +0x0c
-    CIntelligentPointerThing CurrentPlayer;     // +0x10
+    CIntelligentPointer<CThing> CurrentPlayer;     // +0x10
     void SetCurrentPlayer(CThing* player);      // 0x00929550
     CThing* GetCurrentPlayer() const { return CurrentPlayer.GetPItem(); }
 };

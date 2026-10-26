@@ -10,17 +10,18 @@
 // ParentClass (CQ_EndGameBossBattleScript*) +0x14, PMasterData +0x18; the parent's "fight ready" byte at +0x48 (unnamed
 // in the PDB layout, named descriptively).
 // Shape: the landed Prisoner Main prologue; the marker name is an implicit-conversion temporary; the readiness wait is
-// `while (flag != true) { yield; if (IsDone()) return; }` (the constant 1 hoisted into bl); the target call nests the
+// `while (flag != true) { yield; if (IsActiveThreadTerminating()) return; }` (the constant 1 hoisted into bl); the target call nests the
 // GetHero call (both vtable loads up front); the idle wait is a bottom-tested do/while.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
 class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -85,8 +86,14 @@ class CGameScriptInterface { public:
     virtual void v447(); virtual void v448(); virtual void v449(); virtual void v450();
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;   // slot 451 (+0x70c)
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
@@ -96,15 +103,20 @@ struct CQ_EndGameBossBattleScript {
     bool JackReadyToFight;                         // +0x48
 };
 struct CQ_SunnyvaleMasterData;
-class CEndGameJackOfBladesBoss {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CEndGameJackOfBladesBoss : public CEntityScriptBase {
 public:
     void*                       __vftable;         // +0x00
     CGameScriptInterface*       Game;              // +0x04
     CScriptThing                Me;                // +0x08
     CQ_EndGameBossBattleScript* ParentClass;       // +0x14
     CQ_SunnyvaleMasterData*     PMasterData;       // +0x18
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -112,21 +124,21 @@ void CEndGameJackOfBladesBoss::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->MiniMapAddMarker(Me, "HUD_ORB_QUEST_CORE");
     while (ParentClass->JackReadyToFight != true) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     do {
         Game->NewScriptFrame();
-    } while (!IsDone());
+    } while (!IsActiveThreadTerminating());
 }

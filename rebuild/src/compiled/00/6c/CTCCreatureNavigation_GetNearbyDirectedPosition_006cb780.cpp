@@ -40,11 +40,17 @@ class CNavigatorBase { public:
 class CWorldMap { public:
     bool IsPosInMap(const C3DVector& position) const;   // 0x004FC600
 };
-class CTCCreatureNavigation { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20
+};
+
+class CTCCreatureNavigation : public CTCBase { public:
     unsigned char _pad04[0x0c - 0x04];
     CNavigatorBase* PNavigator;                         // +0x0c
-    const CWorldMap& PeekWorldMap() const;              // 0x00686D20 (CTCBase)
     bool GetNearbyDirectedPosition(const C3DVector& from, float distance, const C3DVector& direction, float spread, C3DVector* out);
 };
 

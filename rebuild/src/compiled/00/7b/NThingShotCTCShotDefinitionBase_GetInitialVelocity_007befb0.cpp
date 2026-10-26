@@ -22,19 +22,24 @@ class CWorld { public:
     unsigned long* GetPRandomSeed();         // 0x0049D810
 };
 
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
 namespace NThingShot {
 
-class CTCShotDefinitionBase { public:
+class CTCShotDefinitionBase : public CTCBase { public:
     unsigned char        _pad[0x38];
     const CThingShotDef* PShotDef;           // +0x38 (PDB +0x3c)
-    CWorld* GetWorld();                      // 0x00686A70 (CTCBase)
     float GetInitialVelocity();
 };
 
 float CTCShotDefinitionBase::GetInitialVelocity()
 {
     float speed = PShotDef->Speed / g_GameFramesPerSecond;
-    return ((0.5f - GFFloatRandom(1.0f, GetWorld()->GetPRandomSeed())) * 0.4f + 1.0f) * speed;
+    return ((0.5f - GFFloatRandom(1.0f, GetWorld().GetPRandomSeed())) * 0.4f + 1.0f) * speed;
 }
 
 }

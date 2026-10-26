@@ -3,16 +3,16 @@
 //
 // Retail 0x007DFB20, 304 bytes incl. padding (`ret 4`); vtable 0x0126FD2C. Ego_r.pdb CTCFish (0x1c).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CDefClassBase::GetSubDef<CFishDef>(CDefPointer<const CFishDef>*) const
-// @ 0x007B2600 (label "GetSubDef<CAICreatureWillPowerIndicatorDef>" is a byte-twin instantiation), CTCBase::GetPRandomSeed
+// @ 0x007B2600 (label "GetSubDef<CAICreatureWillPowerIndicatorDef>" is a byte-twin instantiation), CTCBase::GetPWorldSeed
 // @ 0x00686DA0 (three times), _ftol2 @ 0x00BFEA70, GFROR13 @ 0x00497890 (__fastcall). Float 0x0122DCB4 = 2^32 (the unsigned
 // conversion fix-up).
 // Layout = Ego_r.pdb CTCFish: PDef +0x0c, Length +0x10, Weight +0x14, Speed +0x18; CFishDef MinLength +0x28, MaxLength +0x2c,
 // MinWeight +0x30, MaxWeight +0x34, MinSpeed +0x38, MaxSpeed +0x3c (PDB offsets); retail CThing base def +0x70.
 // Shape: PDef is an init-list CDefPointer (one immediate zero store after the vtable) filled through the base def; each
-// field is `Min + (float)GFRandom((unsigned long)Max, GetPRandomSeed())` with the engine's inline LCG random (seed advanced in
+// field is `Min + (float)GFRandom((unsigned long)Max, GetPWorldSeed())` with the engine's inline LCG random (seed advanced in
 // place, GFROR13, `range ? seed % range : 0`; arguments evaluated right to left, so the seed accessor runs before the
 // float-to-integer conversion); the def pointer is re-read from the member before each field.
-unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
+long __fastcall GFROR13(unsigned long);      // 0x00497890
 
 __forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
@@ -54,7 +54,8 @@ public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     unsigned char _pad08[0x4];                              // ToBeRemoved, IsInGlobalUpdateTCs
-    unsigned long* GetPRandomSeed();                        // 0x00686DA0
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x00686DA0
 };
 
 class CTCFish : public CTCBase {                            // vtable 0x0126FD2C
@@ -71,7 +72,7 @@ CTCFish::CTCFish(CThing& thing)
     : CTCBase(&thing), PDef()
 {
     ParentThing->PBaseDef->GetSubDef(&PDef);
-    Length = PDef->MinLength + (float)GFRandom((unsigned long)PDef->MaxLength, GetPRandomSeed());
-    Weight = PDef->MinWeight + (float)GFRandom((unsigned long)PDef->MaxWeight, GetPRandomSeed());
-    Speed = PDef->MinSpeed + (float)GFRandom((unsigned long)PDef->MaxSpeed, GetPRandomSeed());
+    Length = PDef->MinLength + (float)GFRandom((unsigned long)PDef->MaxLength, GetPWorldSeed());
+    Weight = PDef->MinWeight + (float)GFRandom((unsigned long)PDef->MaxWeight, GetPWorldSeed());
+    Speed = PDef->MinSpeed + (float)GFRandom((unsigned long)PDef->MaxSpeed, GetPWorldSeed());
 }

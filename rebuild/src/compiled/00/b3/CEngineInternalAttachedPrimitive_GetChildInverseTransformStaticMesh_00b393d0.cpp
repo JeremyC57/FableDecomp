@@ -22,7 +22,10 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetPString() const { return m_pStringData == 0 ? "" : m_pStringData->m_pData; }
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0
 
 struct SCountBlock {
     long m_references;
@@ -116,7 +119,7 @@ bool CEngineInternalAttachedPrimitive::GetChildInverseTransformStaticMesh(CMatri
     if (child->MeshInfo->IsLoadedStats()) {
         CCountedPointer<const C3DMeshStats> stats = child->MeshInfo->GetMeshStats();
         const CCharString& name = AttachmentInfo.ChildDummyName;
-        unsigned long key = Calc_004014a0(0, name.GetPString(), name.GetLength());
+        unsigned long key = CCRC::Calc(0, name.GetPString(), name.GetLength());
         const C3DDummyObject* dummy = stats->GetDummyObject(key, AttachmentInfo.ChildDummyIndex);
         if (dummy)
             inverse->SetInverse(dummy->Transform);

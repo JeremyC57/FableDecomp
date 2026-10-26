@@ -96,8 +96,9 @@ template<class T> class CCountedPointer { public:
 };
 
 class CBaseObject { public:
-    virtual ~CBaseObject();                          // 0x0099A430
     void* IntelligentPointer;                        // +0x04
+protected:
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectBase : public CBaseObject { public: // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() { }

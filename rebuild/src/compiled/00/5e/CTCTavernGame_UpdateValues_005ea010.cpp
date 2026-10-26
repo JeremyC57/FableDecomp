@@ -59,7 +59,7 @@ class CHeroStatsDef { public:
     unsigned char _pad00[0x5c];
     long MaximumMoney;                                  // +0x5c
 };
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char _pad00[0xdc];
     CHeroStatsDef* PHeroStatsDef;                       // +0xdc CDefPointer<const CHeroStatsDef>
 };
@@ -67,8 +67,15 @@ class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                                // +0x70
 };
-class CTCTavernGame { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCTavernGame : public CTCBase { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x20 - 0x08];
     bool IsBeingPlayed;                                 // +0x20
@@ -82,7 +89,6 @@ class CTCTavernGame { public:
     long CurrentMoney;                                  // +0x40
     unsigned char _pad44[0xa4 - 0x44];
     long NumConsecutiveRoundsWon;                       // +0xa4
-    CDefinitionHolder* GetDefinitions() const;          // 0x006869D0 (CTCBase)
     bool UpdateValues();
 };
 
@@ -98,8 +104,8 @@ bool CTCTavernGame::UpdateValues()
         for (CPrizeScoreDef* prize = def->PrizeScores_first; prize != def->PrizeScores_last; ++prize) {
             if (def->BestScoreHigh ? Score >= prize->Score : Score <= prize->Score) {
                 CurrentMoney += BaseBet * prize->Mult;
-                if (CurrentMoney > GetDefinitions()->PHeroStatsDef->MaximumMoney)
-                    CurrentMoney = GetDefinitions()->PHeroStatsDef->MaximumMoney;
+                if (CurrentMoney > GetDefinitionManager().PHeroStatsDef->MaximumMoney)
+                    CurrentMoney = GetDefinitionManager().PHeroStatsDef->MaximumMoney;
                 TotalWinnings += (prize->Mult - 1) * BaseBet;
                 prizeWon = true;
                 break;

@@ -19,16 +19,24 @@ class CSoundPair { public:                         // two sound ids, zeroed by t
 };
 CAnimationEntry* __fastcall GetTableAnimation(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +0x04
-    CBaseIntelligentPointer();              // 0x00A01B10
-    void SetPItem(CThing* item);            // 0x00A01B90
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {         // vtable 0x01238C6C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {         // vtable 0x01238C6C
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CCreatureActionBase { public:                // retail sizeof 0xa8
@@ -39,10 +47,10 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
 
 #pragma pack(push, 1)
 class CCreatureAction_ShowTrophy : public CCreatureActionBase { public:      // vtable 0x0125F7B4; retail sizeof 0xbd
-    CIntelligentPointer PTrophy;            // +0xa8 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PTrophy;            // +0xa8 CIntelligentPointer<CThing>
     long TrophyState;                       // +0xb0
     unsigned char Shown;                    // +0xb4
-    CIntelligentPointer PTrophyObject;      // +0xb5 CIntelligentPointer<CThing> (unaligned)
+    CIntelligentPointer<CThing> PTrophyObject;      // +0xb5 CIntelligentPointer<CThing> (unaligned)
     virtual void v00();
     CCreatureAction_ShowTrophy(CThingCreatureBase* owner, CThing* trophy, const CCharString& animation, long last);
 };

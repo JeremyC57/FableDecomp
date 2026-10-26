@@ -5,12 +5,11 @@ class CTCMapwho { public:
 };
 
 // cdecl free function @ 0xbfe9bc
-void MapwhoUnregister(CTCMapwho* p);
 
 void __stdcall CTCMapwho_OnDie(CTCMapwho* p)
 {
     if (p) {
         p->Cleanup();
-        MapwhoUnregister(p);
+        operator delete(p);
     }
 }

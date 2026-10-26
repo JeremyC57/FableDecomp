@@ -10,8 +10,9 @@
 #include "engine/CReactionFrequencyTraits_PeriodicFrequency.h"
 
 class CDataOutputStream { public:
-    void WriteULong(unsigned long value);               // 0x00993EA0
     void WriteFloat(float value);                       // 0x00993EE0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 struct CReactionFrequencyTraits_PeriodicFrequency_TransferBinaryOut : CReactionFrequencyTraits_PeriodicFrequency {
@@ -22,7 +23,7 @@ void CReactionFrequencyTraits_PeriodicFrequency_TransferBinaryOut::TransferBinar
 {
     stream.WriteFloat(LowFreqPerMin);
     stream.WriteFloat(HighLowFreqInterval);
-    stream.WriteULong(FramesPerMinute);
-    stream.WriteULong(RampUpTimeFrames);
-    stream.WriteULong(CutoffIntervalFrames);
+    stream.WriteULONG(FramesPerMinute);
+    stream.WriteULONG(RampUpTimeFrames);
+    stream.WriteULONG(CutoffIntervalFrames);
 }

@@ -32,24 +32,25 @@ class CShaderRenderManager { public:
     bool          WorldTransformIsIdentity;        // +0x1e8
     unsigned char _pad1e9[0x1ef];
     unsigned long DirtyFlags;                      // +0x3d8
-    void SetVSConstants(long base, void* data, unsigned long count);   // 0x0098B930
-    void UpdatePixelShader();                      // 0x00988A20
-    void UpdatePixelShaderConstants();             // 0x00989BF0
     void UpdateFlag20State();                      // 0x0098A8E0 (manifest label C3DMeshFileXUVTangentChunk::WriteToFile, propagated)
     void UpdateWorldSpaceTextureTransform();       // 0x009894B0
     void UpdateObjectSpaceTextureTransform();      // 0x00989230
-    void UpdateWorldSpaceFogTransform();           // 0x00989640
     void UpdateObjectSpaceFogTransform();          // 0x00989540
-    void UpdateAmbient();                          // 0x00989760
-    void UpdateFogColour();                        // 0x009897C0
-    void UpdateLightGlobals();                     // 0x0098A760
     void UpdateObjectSpaceLighting(unsigned long renderFlags);   // 0x00989CB0
-    void UpdateWorldSpaceLighting();               // 0x0098A540
     void UpdateLocalisedSphereMapping();           // 0x00988E80
     void ResetWorldTransform();                    // 0x00988290
-    void UpdateCombinedProjectionTransform();      // 0x00988A50
     void UpdateFlag8State();                       // 0x00989700 (manifest label UpdateAmbient, duplicated with 0x00989760)
     void PrepareForRender(unsigned long renderFlags);
+private:
+    void SetVSConstants(long, const void*, unsigned long);   // 0x0098B930
+    void UpdateAmbient();   // 0x00989760
+    void UpdateCombinedProjectionTransform();   // 0x00988A50
+    void UpdateFogColour();   // 0x009897C0
+    void UpdateLightGlobals();   // 0x0098A760
+    void UpdatePixelShader();   // 0x00988A20
+    void UpdatePixelShaderConstants();   // 0x00989BF0
+    void UpdateWorldSpaceFogTransform();   // 0x00989640
+    void UpdateWorldSpaceLighting();   // 0x0098A540
 };
 
 void CShaderRenderManager::PrepareForRender(unsigned long renderFlags)

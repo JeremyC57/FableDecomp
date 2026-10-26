@@ -9,12 +9,12 @@
 // manifest label is kept only when unique) and frees the object when bit 0 of the flag is set
 // (operator delete @ 0x00BFE9BC, landed-trusted). Re-emitted per translation unit; this file is the
 // copy at this address. One of 9 bodies of this shape.
-struct CBase_0099a430 {
-    virtual void v00();
-    ~CBase_0099a430();                          // 0x0099A430
+class CBaseObject { public:
+protected:
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 
-class CScriptGameResourceObjectBase : public CBase_0099a430 { public:
+class CScriptGameResourceObjectBase : public CBaseObject { public:
     virtual ~CScriptGameResourceObjectBase() { }
 };
 

@@ -9,10 +9,10 @@
 // engine/CDefClassBase.h (PDB, 0x25 bytes padded to 0x28) is the base layout, modelled locally
 // with its operator=. The manifest label "Copy" is rejected: the body is the assignment
 // operator (the copy constructor twin is @ 0x00E54CA0).
-struct CDefClassBase_Retail {                  // engine/CDefClassBase.h: vptr + 0x24 bytes
+class CDefClassBase { public:                  // engine/CDefClassBase.h: vptr + 0x24 bytes
     virtual void v00();
     unsigned char _body[0x24];
-    CDefClassBase_Retail& operator=(const CDefClassBase_Retail& other);   // 0x00431F10
+    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
 struct CRetailVector_CCharString {             // VC6-era Dinkumware vector<CCharString>: first / last / end
@@ -22,7 +22,7 @@ struct CRetailVector_CCharString {             // VC6-era Dinkumware vector<CCha
     CRetailVector_CCharString& operator=(const CRetailVector_CCharString& other);   // 0x00432EE9
 };
 
-class CConversation : public CDefClassBase_Retail { public:  // vtable 0x012E5FF0
+class CConversation : public CDefClassBase { public:  // vtable 0x012E5FF0
     long                      Lines;           // +0x28
     CRetailVector_CCharString Speaker;         // +0x2c
     CRetailVector_CCharString Dialogue;        // +0x38
@@ -34,7 +34,7 @@ class CConversation : public CDefClassBase_Retail { public:  // vtable 0x012E5FF
 
 CConversation& CConversation::operator=(const CConversation& other)
 {
-    CDefClassBase_Retail::operator=(other);
+    CDefClassBase::operator=(other);
     Lines = other.Lines;
     Speaker = other.Speaker;
     Dialogue = other.Dialogue;

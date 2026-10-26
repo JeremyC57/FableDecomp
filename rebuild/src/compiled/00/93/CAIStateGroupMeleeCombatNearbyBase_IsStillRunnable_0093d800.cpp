@@ -57,7 +57,8 @@ class CThing { public:
     }
 };
 class CThingCreatureBase : public CThing { public:
-    bool IsRegisteredCombatant();               // 0x00662410
+public:
+    bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
 bool __fastcall IsAbleToBeEngagedInCombat(CThing* thing);  // 0x0085FBC0
 struct CTCCombatEngage {                        // interface 0x30
@@ -82,12 +83,23 @@ struct CTCCombatRange {                         // interface 0xAA
 class CTCStealth { public:                             // interface 0x36
     void SetAsRunningAwayFromCombat();          // 0x007470E0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-__forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
+__forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -106,7 +118,7 @@ class CAIStateGroupBase { public:
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
 };
 struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
-    CBaseIntelligentPointer PEnemy;             // +0x14
+    CIntelligentPointer<CThing> PEnemy;             // +0x14
     bool IsEnemyRunningAway();                  // 0x0093D3A0
     virtual bool IsStillRunnable(bool checkCombatant);
 };
@@ -127,7 +139,7 @@ bool CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(bool checkCombatant)
                     result = perceive->CanSeeOrSmellPerceivedThing() || perceive->GetDirectAwareness();
                 if (result) {
                     if (checkCombatant)
-                        result = GetCreature()->IsRegisteredCombatant();
+                        result = GetCreature()->IsInMeleeAsAttacker();
                     if (result) {
                         const CThing* creature = GetCreature();
                         const CThing* enemy = PEnemy.GetPItem();

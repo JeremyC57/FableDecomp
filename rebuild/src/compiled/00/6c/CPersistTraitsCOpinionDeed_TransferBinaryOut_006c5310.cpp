@@ -5,10 +5,10 @@
 //   a propagated label: it returns the frame global 0x013B89BC); CBaseIntelligentPointer ctor @ 0x00A01B10, GetPItem
 //   @ 0x00A01B50, dtor @ 0x00A01C10; CIntelligentPointer vtable 0x01238C6C.
 // Layout (PDB COpinionDeed, 0x28 bytes): DeedType +0, DeedHandle +4, Position +8, FrameHappened +0x14, PTarget
-//   (CIntelligentPointer<const CThing>, 8 bytes) +0x18, WasSearchingForWitnesses +0x20, IsStillHappening +0x21,
+//   (CIntelligentPointer<CThing>, 8 bytes) +0x18, WasSearchingForWitnesses +0x20, IsStillHappening +0x21,
 //   IsCrimeReportedToVillage +0x22, IsCrime +0x23, ExtraData +0x24. No engine header exists; local model.
 // Shape: the frame written is the live frame while the deed is still happening (`IsStillHappening ? GFGetCurrentFrame()
-//   : FrameHappened`). The target goes through a local CPersistTraits<CIntelligentPointer<const CThing> > (8 bytes: its
+//   : FrameHappened`). The target goes through a local CPersistTraits<CIntelligentPointer<CThing> > (8 bytes: its
 //   default value is an intelligent pointer -- inline ctor = base ctor call + derived vtable store, implicit dtor = base
 //   dtor call) whose TransferBinaryOut is inlined (the out-of-line copy is 0x006C52D0): UniqueID (+0x18 of the thing)
 //   or 0 for an empty pointer. Speed-optimised (default) TU.
@@ -47,7 +47,7 @@ class COpinionDeed { public:
     long                               DeedHandle;                  // +0x04
     C3DVector                          Position;                    // +0x08
     long                               FrameHappened;               // +0x14
-    CIntelligentPointer<const CThing>  PTarget;                     // +0x18
+    CIntelligentPointer<CThing>  PTarget;                     // +0x18
     bool                               WasSearchingForWitnesses;    // +0x20
     bool                               IsStillHappening;            // +0x21
     bool                               IsCrimeReportedToVillage;    // +0x22
@@ -81,6 +81,6 @@ void CPersistTraits<COpinionDeed*>::TransferBinaryOut(CDataOutputStream* stream,
     out->WriteEBOOL((*value)->IsCrimeReportedToVillage);
     out->WriteEBOOL((*value)->IsCrime);
     out->WriteLong((*value)->ExtraData);
-    CPersistTraits<CIntelligentPointer<const CThing> > traits;
+    CPersistTraits<CIntelligentPointer<CThing> > traits;
     traits.TransferBinaryOut(stream, &(*value)->PTarget);
 }

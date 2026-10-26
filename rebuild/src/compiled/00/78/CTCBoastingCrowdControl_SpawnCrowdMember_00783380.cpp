@@ -150,10 +150,15 @@ class CThingAICreature : public CThing { public:
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                                CThingAICreatureInit* init);   // 0x00833800
 };
-class CTCBoastingCrowdControl { public:
+class CTCBase
+{
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x00686DA0
+};
+
+class CTCBoastingCrowdControl : public CTCBase { public:
     void*   __vftable;
     CThing* ParentThing;                                // +0x04
-    unsigned long* GetRandomSeed();                     // 0x00686DA0
     bool SpawnCrowdMember(CThing* lookAt, CThing* spawnPoint, CThing* village);
 };
 
@@ -188,14 +193,14 @@ bool CTCBoastingCrowdControl::SpawnCrowdMember(CThing* lookAt, CThing* spawnPoin
             else if (def->MaleDef == 0)
                 female = true;
             else
-                female = (GFRandom(GetRandomSeed()) & 1) != 0;
+                female = (GFRandom(GetPWorldSeed()) & 1) != 0;
             CThingAICreatureInit init;
             init.ScriptName = g_CrowdMemberScriptName;
             init.EnableCreatureAutoPlacing = false;
             CThingAICreature* creature = CThingAICreature::Create(female ? def->FemaleDef : def->MaleDef,
                                                                   spawnPoint->GetPosition(), 4, &init);
             if (creature) {
-                creature->AutoPlaceNear(spawnPoint->GetPosition(), (GFFloatRandom(0.5f, GetRandomSeed()) + 0.5f) * 5.0f);
+                creature->AutoPlaceNear(spawnPoint->GetPosition(), (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * 5.0f);
                 CTCPlacement* placement;
                 if (creature->HasTC(2))
                     placement = (CTCPlacement*)creature->GetTC(2);

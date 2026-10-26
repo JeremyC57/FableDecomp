@@ -235,9 +235,10 @@ bool CDefLookup::GetCarryable(DefPointer<CCarryableDef>* out)const {
 #pragma auto_inline(on)
 
 class CTCCarrying { public:
- CThing* GetThingInPrimarySlot(); //006A1440
  CThing* RemoveThingFromPrimarySlot(bool); //006A1E00
  void PutThingInCarrySlot(CThing*,long,bool); //006A1F80
+public:
+    CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 class CCreatureAction_Drink:public CCreatureActionBase { public:
     virtual ~CCreatureAction_Drink();

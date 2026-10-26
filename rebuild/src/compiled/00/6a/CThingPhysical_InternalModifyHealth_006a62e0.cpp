@@ -25,10 +25,11 @@ class CTCBoss { public:                                            // TC 0xad
 struct CTCHeroHealthObserver {                              // TC 4
     void OnHealthChanged();                                 // 0x0057A753
 };
-struct CTCObservable {                                      // TC 9
+class CTCTargeted { public:                                      // TC 9
     unsigned char _pad00[0x0c];
     unsigned long Flags;                                    // +0x0c
-    void SetFlags(unsigned long flags);                     // 0x007EA270
+public:
+    void SetTargetingFlags(unsigned long);   // 0x007EA270
 };
 struct CThingPhysicalDef {
     unsigned char _pad00[0x54];
@@ -36,7 +37,13 @@ struct CThingPhysicalDef {
 };
 extern bool g_bPlayerInvulnerable;                          // 0x013B86C7
 extern bool g_bCreaturesInvulnerable;                       // 0x013B86C8
-class CThingPhysical { public:
+class CThing
+{
+public:
+    void SetAsFrameUpdated();   // 0x004C7C40
+};
+
+class CThingPhysical : public CThing { public:
     unsigned char _pad00[0x10];
     unsigned char ThingClass;                               // +0x10 (1 creature, 2 player)
     unsigned char _pad11[0x0f];
@@ -65,7 +72,6 @@ class CThingPhysical { public:
         CInterfaceMap::SEntry* it = map->LowerBound(type);
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
-    void SetAsFrameUpdated();                               // 0x004C7C40
 private:
     void InternalModifyHealth(float delta, bool allowDeath);
 };
@@ -101,9 +107,9 @@ void CThingPhysical::InternalModifyHealth(float delta, bool allowDeath)
             ((CTCHeroHealthObserver*)GetTC(4))->OnHealthChanged();
     } else if (ThingClass == 1) {
         if (Health <= 0.0001f && HasTC(9)) {
-            CTCObservable* observable = (CTCObservable*)GetTC(9);
+            CTCTargeted* observable = (CTCTargeted*)GetTC(9);
             if (observable->Flags & 2)
-                observable->SetFlags(observable->Flags & ~2);
+                observable->SetTargetingFlags(observable->Flags & ~2);
         }
     }
     SetAsFrameUpdated();

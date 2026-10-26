@@ -66,9 +66,10 @@ class CTCInventoryAbilities { public:
     void*   __vftable;                               // +0x00
     CThing* ParentThing;                             // +0x04 CTCBase
 
-    long GetAbilityMaximumLevel(EHeroAbility ability);           // 0x005EDEA3
     float GetAbilityMoralityCostFactor(EHeroAbility ability);    // 0x005EDFF7
     long GetAbilityMaximumLevelWithRenown(EHeroAbility ability);
+public:
+    long GetAbilityMaximumLevel(EHeroAbility) const;   // 0x005EDEA3
 };
 
 long CTCInventoryAbilities::GetAbilityMaximumLevelWithRenown(EHeroAbility ability)

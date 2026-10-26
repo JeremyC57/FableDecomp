@@ -63,7 +63,6 @@ public:
     CInterfaceMap m_interfaces;                                // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                                    // +0x91 bit 0
-    CPlayer* GetPlayer() const;                                // 0x004C7A30
     __forceinline bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
@@ -77,6 +76,8 @@ public:
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return ((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
+public:
+    CPlayer& GetPlayer();   // 0x004C7A30
 };
 class CThingCreatureBase : public CThing { };
 class CThingPlayerCreature : public CThingCreatureBase {
@@ -102,7 +103,7 @@ extern const char g_emptyString_0122d70e[];                    // 0x0122D70E (""
 
 bool CThingPlayerCreature::PreOnKill()
 {
-    if (GetPlayer()->IsMainPlayer()) {
+    if (GetPlayer().IsMainPlayer()) {
         if (HasTC(0x11)) {
             CThing* item = ((CTCInventoryBase*)GetTC(0x11))->GetResurrectionItemInInventory();
             if (item && !item->Dead) {

@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00898340, length 208 bytes, `ret 4`.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, the TC map lower bound
 // @ 0x0040F020, CWorld virtual slot 12 GetWorldMap (+0x30), CWorldMap::GetCurrentRegionNumber @ 0x004FB150,
-// CWorldMap::GetRegionEntry(long) @ 0x004FB490 (0x58-byte region records), the region def's virtual slot 1 (destroy).
+// CWorldMap::GetRegion(long) @ 0x004FB490 (0x58-byte region records), the region def's virtual slot 1 (destroy).
 // Layout: CGameScriptInterface World +0x04, PlayerManager +0x14; CThing dead bit +0x91 bit 0, TC 0x29 present bit
 // +0x24 bit 9, TC map +0x44; CTCHero: CTCHero WillUsable +0x0D, WillUseOverriddenByScripts +0x0F; region record def
 // pointer +0x24 (counted, count at def+4), CRegionDef::PreventHeroWillUse +0x71 (PDB +0x7D).
@@ -94,7 +94,8 @@ class CRegion { public:                          // 0x58-byte world-map region r
 
 class CWorldMap { public:
     long GetCurrentRegionNumber();        // 0x004FB150
-    CRegion& GetRegionEntry(long region); // 0x004FB490
+public:
+    CRegion& GetRegion(long);   // 0x004FB490
 };
 
 class CWorld { public:
@@ -120,7 +121,7 @@ void CGameScriptInterface::SetHeroWillAsUsable(bool usable) const
         CTCHero* will = hero->GetTC<CTCHero>(0x29);
         will->WillUseOverriddenByScripts = !usable;
         if (usable) {
-            CRegion& region = World->GetWorldMap()->GetRegionEntry(World->GetWorldMap()->GetCurrentRegionNumber());
+            CRegion& region = World->GetWorldMap()->GetRegion(World->GetWorldMap()->GetCurrentRegionNumber());
             CCountedPointer<CRegionDef> def(region.m_pDef.Data);
             if (!def.IsNull()) {
                 if (!def->PreventHeroWillUse)

@@ -18,20 +18,25 @@ class CTCBase { public:                                   // engine/CTCBase.h of
     bool    ToBeRemoved;                           // +0x08
     bool    IsInGlobalUpdateTCs;                   // +0x09
     CTCBase(CThing& owner);                        // 0x00686800
-    ~CTCBase();                                    // 0x00686830
+    virtual ~CTCBase();                                    // 0x00686830
 };
 
-struct CIntelligentPointer {                       // CIntelligentPointer<CThing>: vptr + item
-    void* m_vtable;
-    void* m_pItem;
-    CIntelligentPointer();
-    ~CIntelligentPointer();                        // 0x00A01C10 (CBaseIntelligentPointer)
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 class CTCFishingSpot : public CTCBase { public:                  // vtable 0x0126D51C
-    CIntelligentPointer PParticle1;                // +0x0c
-    CIntelligentPointer PParticle2;                // +0x14
-    CIntelligentPointer PParticleFish;             // +0x1c
+    CBaseIntelligentPointer PParticle1;                // +0x0c
+    CBaseIntelligentPointer PParticle2;                // +0x14
+    CBaseIntelligentPointer PParticleFish;             // +0x1c
     bool                Enabled;                   // +0x24
     void RemoveParticles();                        // 0x007B01C0
     CTCFishingSpot(CThing& owner) : CTCBase(owner) { }

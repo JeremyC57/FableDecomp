@@ -1,6 +1,6 @@
 // CReactionMatch_Sphere::TransferBinaryOut(CDataOutputStream& stream) const -- write the reaction type, the centre opinion set (count + raw floats) and the squared radius
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007003A0, length 87 bytes (virtual).
-// Callees: CDataOutputStream::WriteLong @ 0x00993EB0 (x2), the stream's virtual WriteData(const void*, unsigned long)
+// Callees: CDataOutputStream::WriteSLONG @ 0x00993EB0 (x2), the stream's virtual WriteData(const void*, unsigned long)
 // (slot 4, +0x10), WriteFloat @ 0x00993EE0.
 // Layout: PDB names (CReactionMatch::ReactionType +0x04, Centre, SqRadius) but the retail offsets: retail CArray<T>
 // is three pointers (0x0c) where the PDB's is 0x10, so COpinionSet Centre is +0x08..+0x13 and SqRadius sits at
@@ -13,8 +13,9 @@
 class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
+public:
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
@@ -27,7 +28,7 @@ class COpinionSet { public:
     CArray<float> OpinionValues;                        // +0x00
     void TransferBinaryOut(CDataOutputStream& stream) const
     {
-        stream.WriteLong(OpinionValues.Size());
+        stream.WriteSLONG(OpinionValues.Size());
         stream.WriteData(OpinionValues.GetList(), OpinionValues.Size() * sizeof(float));
     }
 };
@@ -42,7 +43,7 @@ struct CReactionMatch_Sphere {
 
 void CReactionMatch_Sphere::TransferBinaryOut(CDataOutputStream& stream) const
 {
-    stream.WriteLong(ReactionType);
+    stream.WriteSLONG(ReactionType);
     Centre.TransferBinaryOut(stream);
     stream.WriteFloat(SqRadius);
 }

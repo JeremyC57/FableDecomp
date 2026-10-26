@@ -1,5 +1,5 @@
 // C3DMeshFileGroupChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- bone index, vertex blend count, each blend's vertex index (16-bit) and weight, then the sub-chunks
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00ABAEE0, 111 bytes. Callees: CDataOutputStream::WriteLONG 0x00993EB0,
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00ABAEE0, 111 bytes. Callees: CDataOutputStream::WriteSLONG 0x00993EB0,
 // WriteULONG 0x00993EA0, WriteUSHORT 0x00993E80, WriteFLOAT 0x00993EE0, CChunkedFileSuperChunk::WriteToFile 0x00AA78C0.
 // The PDB header (engine/C3DMeshFileGroupChunk.h) sits 8 bytes high; retail layout with its names (as the parked
 // GetChunkInfo 0x00ABAE50): BoneIndex +0x2C, VertexList CArray<C3DVertexBlend2> +0x30 (8-byte elements). The
@@ -20,14 +20,15 @@ class CDataOutputStream { public:
     virtual void v02();
     virtual void v03();
     virtual void WriteBytes(const void* data, unsigned long size);   // slot 4 (+0x10)
-    void WriteLONG(long value);                                    // 0x00993EB0
     void WriteULONG(unsigned long value);                          // 0x00993EA0
-    void WriteFLOAT(float value);                                  // 0x00993EE0
     void WriteBOOL(bool value);                                    // 0x00993E30
     void WriteUBYTE(unsigned char value);                          // 0x00993E50
     void WriteUSHORT(unsigned short value);                        // 0x00993E80
     void WriteMatrix3x4(const CMatrix3x4& m);                      // 0x00994070
     void WriteNullTerminatedString(const CCharString& text);       // 0x00995AE0
+public:
+    void WriteFloat(float);   // 0x00993EE0
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 template <class T>
@@ -105,13 +106,13 @@ class C3DMeshFileGroupChunk : public CChunkedFileSuperChunk { public:
 
 void C3DMeshFileGroupChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
-    out.WriteLONG(BoneIndex);
+    out.WriteSLONG(BoneIndex);
     unsigned long count = VertexList.Size();
     out.WriteULONG(count);
     for (unsigned long i = 0; i < count; ++i) {
         const C3DVertexBlend2& blend = VertexList[i];
         out.WriteUSHORT((unsigned short)blend.VertexIndex);
-        out.WriteFLOAT(blend.BlendValue);
+        out.WriteFloat(blend.BlendValue);
     }
     CChunkedFileSuperChunk::WriteToFile(out, saver);
 }

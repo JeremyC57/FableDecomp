@@ -5,8 +5,8 @@
 // (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 4`.
 // Callees: CTCBase::GetDefinitionManager() @ 0x006869D0, CDefinitionManager::GetDef<CExpressionDef>(const
 //          CCharString&, CDefPointer<CExpressionDef>*) @ 0x00593666 (label says CHeroPostcardGeneratorDef;
-//          propagated), CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long) @ 0x005BDF08, CThing::GetPlayer()
-//          @ 0x004C7A10 (x2 per test), CPlayer::GetPlayerNumber() @ 0x00487510, CGamePlayerInterface::
+//          propagated), CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long) @ 0x005BDF08, CThing::PeekPlayer()
+//          @ 0x004C7A10 (x2 per test), CPlayer::GetJoystickDeviceNumber() @ 0x00487510, CGamePlayerInterface::
 //          IsGameActionEventInQueue(long, long, long) @ 0x00446B10 (actions 0x37 / 0x38, button event 2 = held).
 // Shape: the def pointer local is zeroed, filled by GetDef and then read once into edi; the def's inline counted
 // Release (`dec [edi+4] ; jne ; call [vtable+4]`) is duplicated on both returns, the true path without a null test
@@ -74,11 +74,13 @@ class CGamePlayerInterface { public:
 class CPlayer { public:
     unsigned char         _pad_0x00[0x0C];
     CGamePlayerInterface* PGamePlayerInterface;      // +0x0C
-    long GetPlayerNumber();                          // 0x00487510
+public:
+    long GetJoystickDeviceNumber() const;   // 0x00487510
 };
 
 class CThing { public:
-    CPlayer* GetPlayer();                            // 0x004C7A10
+public:
+    const CPlayer& PeekPlayer() const;   // 0x004C7A10
 };
 
 class CTCInventory { public:
@@ -90,8 +92,8 @@ class CTCInventory { public:
     __forceinline bool IsActionButtonHeld(long action)
     {
         CThing* thing = ParentThing;
-        CGamePlayerInterface* input = thing->GetPlayer()->PGamePlayerInterface;
-        return input->IsGameActionEventInQueue(action, 2, thing->GetPlayer()->GetPlayerNumber());
+        CGamePlayerInterface* input = thing->PeekPlayer().PGamePlayerInterface;
+        return input->IsGameActionEventInQueue(action, 2, thing->PeekPlayer().GetJoystickDeviceNumber());
     }
     bool IsButtonHeldForExpression(const CCharString& expressionName);
 };

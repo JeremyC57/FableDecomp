@@ -56,7 +56,8 @@ class CTCBase { public:
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
-    CWorld* GetWorld();                         // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
 };
 class CTCSolidToThing : public CTCBase { public:
     CPtrVector NotSolidToThings;                // +0x0c
@@ -65,7 +66,7 @@ class CTCSolidToThing : public CTCBase { public:
 
 void CTCSolidToThing::FrameUpdate()
 {
-    CWorld* world = GetWorld();
+    CWorld* world = (&GetWorld());
     unsigned __int64 uid = ParentThing->UID;
     if ((uid + world->GetWorldFrame()) % 75 == 0) {
         if (!NotSolidToThings.empty())

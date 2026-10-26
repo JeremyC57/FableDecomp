@@ -10,6 +10,7 @@
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}.
 // Shape: the handle is a function-scope local destroyed once at the merged exit; every early `return` after a frame shares it;
 //   the facing/target calls fetch the interface vtable before the inner GetHero (VC evaluates the callee first).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     ~CCharString();                           // 0x0099EAE0
@@ -22,7 +23,7 @@ class CScriptThing { public:                          // 12 bytes, polymorphic
     virtual bool IsAwareOfHero() const;        // slot 16 (+0x40) 0x004AAAC0
     unsigned char _body[8];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    ~CScriptThing();                          // 0x004AA840
+    virtual ~CScriptThing();                          // 0x004AA840
 };
 
 struct CCountedPointerWords {                  // {Data, Info}
@@ -32,8 +33,9 @@ struct CCountedPointerWords {                  // {Data, Info}
 };
 class CBaseObject { public:                           // CBaseIntelligentPointer root (polymorphic: vptr +0)
     void* m_pIntelligentPointer;               // +0x04
-    CBaseObject();                             // 0x0099A380
-    virtual ~CBaseObject();
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                 // +0x08 Data, +0x0c Info
@@ -123,20 +125,32 @@ class CGameScriptInterface { public:                  // vtable 0x01260F0C (slot
     virtual CCharString GetActiveQuestName();   // slot 655 (+0xa3c) 0x00891880
 };
 
-struct CIsThingAlive {                         // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                         // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                     // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
 
-class CMinionEscortEnd {
+class CEntityScriptBase
+{
 public:
     virtual void v00();
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CMinionEscortEnd : public CEntityScriptBase {
+public:
     CGameScriptInterface* Game;               // +0x04
     CScriptThing          Me;                 // +0x08
-    void RegisterFilter(CIsThingAlive& filter);   // 0x00F35B10
-    bool IsDone();                            // 0x00F35B30
     void Main();
 };
 
@@ -144,33 +158,33 @@ void CMinionEscortEnd::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
     if (handle.IsScripting())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_4)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->EntitySetFacingAngleTowardsThing(Me, Game->GetHero(), false);
     while (!Me.IsAwareOfHero()) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     Game->OpinionSourceSetAsAttentionGrabbing(Me, true);
     handle.Release();
     do {
         Game->NewScriptFrame();
-    } while (!IsDone());
+    } while (!IsActiveThreadTerminating());
 }

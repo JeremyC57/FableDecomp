@@ -2,8 +2,22 @@
 struct Sub { int x; };
 struct Self { char pad[0x114]; Sub m114; };
 static int g_sub=0, g_other=0; static Sub* g_subarg=0; static Self* g_otherarg=0;
-extern "C" void __fastcall SubClean(Sub* s){ g_sub++; g_subarg=s; }
-extern "C" void __fastcall OtherClean(Self* s){ g_other++; g_otherarg=s; }
+class __declspec(novtable) CBaseIntelligentPointer {
+public:
+    virtual ~CBaseIntelligentPointer();
+};
+CBaseIntelligentPointer::~CBaseIntelligentPointer()
+{
+    Sub* s = (Sub*)this; (void)s; g_sub++; g_subarg=s;
+}
+class __declspec(novtable) CCombatActionBase {
+public:
+    virtual ~CCombatActionBase();
+};
+CCombatActionBase::~CCombatActionBase()
+{
+    Self* s = (Self*)this; (void)s; g_other++; g_otherarg=s;
+}
 extern "C" void __fastcall DestVal_114_A(Self* self, void* edx);
 int main(){
     Self o; 

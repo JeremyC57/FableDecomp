@@ -10,8 +10,7 @@
 #include "engine/CTCBase.h"
 #undef CTCBase
 class CTCBase { public:                            // vtable 0x0125BE0C (.?AVCTCBase@@)
-    void* _vptr;
-    ~CTCBase();                             // 0x00686830 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
+    virtual ~CTCBase();                             // 0x00686830 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
 };
 struct CMap_004e34b2 {                      // unattributed STLport map/set: {header, count}; _M_erase @ 0x004DD782, header freed with free
     void* _M_header;

@@ -8,6 +8,10 @@
 // Destroys second (CSymbolInfo) which itself has an inner subobject at +0 that
 // needs (ecx=*(sec+0), edx=*(sec+4)) then the CSymbolInfo dtor, then CCharString dtor.
 
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CCharString { public:
     void* p;
 };
@@ -31,12 +35,11 @@ extern "C" void __fastcall destroy_inner_val(void* ecx_val, void* edx_val);
 // callee 0x478743: CSymbolInfo dtor-helper on (self+0x40).
 extern "C" void __fastcall symbolinfo_dtor(CSymbolInfo* self);
 // tail 0x430300: CCharString dtor on (self+0).
-extern "C" void __fastcall ccharstring_dtor(CCharString* self);
 
 void __fastcall _Dest_val_CSymbolInfo___(SymPair* p)
 {
     CSymbolInfo* sec = &p->second;
     destroy_inner_val(sec->inner.a, sec->inner.b);
     symbolinfo_dtor(sec);
-    ccharstring_dtor(&p->first);
+    ((CParentDefClassBase*)(&p->first))->CParentDefClassBase::~CParentDefClassBase();
 }

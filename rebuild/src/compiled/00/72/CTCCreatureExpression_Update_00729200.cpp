@@ -94,13 +94,19 @@ class CWorld { public:
     CGameScriptInterface* PGameScriptInterface;         // +0x38
     bool IsInMovieSequence() { return PGameScriptInterface->IsInMovieSequence(); }
 };
-class CTCCreatureExpression { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCCreatureExpression : public CTCBase { public:
     void* ParentThing;                                  // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
     CExpressionStateList ExpressionStates;              // +0x0c
     bool Blinking;                                      // +0x10
-    CWorld* GetWorld();                                 // 0x00686A70 (CTCBase)
     void UpdateBlinking(CAnimateThing& animate, const CAnimateThingUpdate& update);   // 0x00728FF0
     void Update(CAnimateThing& animate, const CAnimateThingUpdate& update);
 };
@@ -123,7 +129,7 @@ void CTCCreatureExpression::Update(CAnimateThing& animate, const CAnimateThingUp
     }
     if (!ExpressionStates.empty()) {
         animate.RemoveAllAnimsWithTypeFlags(1);
-        if (!GetWorld()->IsInMovieSequence()) {
+        if (!GetWorld().IsInMovieSequence()) {
             for (it = ExpressionStates.begin(); it != ExpressionStates.end(); it = it->_M_next) {
                 CAnimInit init(0x12, 1, it->_M_data.AnimIndex, 0, false, 0, 100);
                 init.Frame = CAnimFrameInfo(1.0f, 1.0f);

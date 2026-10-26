@@ -34,12 +34,21 @@ struct CTCGraphicAppearance {
     unsigned char  _pad_0x00[0x44];
     CEngineGraphic Graphic;                            // +0x44
 };
-class CThingGameObject { public:
+class CThing
+{
+public:
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
+};
+class CThingPhysical : public CThing
+{
+public:
+};
+
+class CThingGameObject : public CThingPhysical { public:
     unsigned char         _pad_0x00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;        // +0x64 CThing [PDB +0x74]
     unsigned char         _pad_0x68[0xb0 - 0x68];
     float                 MaxHealth;                   // +0xb0 CThingPhysical [PDB +0xc8]
-    CTCBase* AddTC(const CCharString& name, bool a2, CTCParamsBase* params);   // 0x004C9D60 (CThing)
     bool OnCreate();                                   // 0x00838A40
 };
 class CThingVillage : public CThingGameObject { public:

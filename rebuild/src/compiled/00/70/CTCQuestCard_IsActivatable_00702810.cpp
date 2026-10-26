@@ -151,15 +151,16 @@ public:
     CPlayer* GetMainPlayer() const;                       // 0x00449960
 };
 
-class CTCBaseModel {                                      // CTCBase: vtable +0x00, ParentThing +0x04, +0x08
+class CTCBase {                                      // CTCBase: vtable +0x00, ParentThing +0x04, +0x08
 public:
     void* _vtable;                                        // +0x00
     CThing* ParentThing;                                  // +0x04
     long _base08;                                         // +0x08
-    CPlayerManager* GetPlayerManager() const;             // 0x00686D50
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
 };
 
-class CTCQuestCard : public CTCBaseModel {                // Ego_r.pdb CTCQuestCard (52 bytes)
+class CTCQuestCard : public CTCBase {                // Ego_r.pdb CTCQuestCard (52 bytes)
 public:
     CDefPointer<const CQuestCardDef> PDef;                // +0x0c
     bool IsActivatable() const;
@@ -170,7 +171,7 @@ bool CTCQuestCard::IsActivatable() const
     if (PDef.Object) {
         for (std::map<EQuestCardPrerequisite, long>::const_iterator it = PDef->Prerequisites.begin(); it != PDef->Prerequisites.end(); ++it) {
             if (it->first == QUEST_CARD_PREREQUISITE_RENOWN_LEVEL) {
-                CThing* hero = GetPlayerManager()->GetMainPlayer()->GetControlledCreature();
+                CThing* hero = PeekPlayerManager().GetMainPlayer()->GetControlledCreature();
                 if (hero && !hero->Dead) {
                     const CTCHeroStats* stats = 0;
                     hero->GetInterface(TC_HERO_STATS, &stats);

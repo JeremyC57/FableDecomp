@@ -11,16 +11,27 @@
 //   resident list (STLport list of CIntelligentPointer<CThing>) at +0x2C.
 // Shape: the member pointers are reached through inline accessors (`lea ecx,[eax+N]`); a null or dead resident `continue`s without advancing (as retail: the iterator is only advanced on the
 //   non-matching path, and reset to begin() after each kill).
-struct CThing_Retail;
-struct CBaseIntelligentPointer {
-    void* _vptr;
-    void* m_pInfo;
-    CThing_Retail* GetPItem() const;                    // 0x00A01B50
+class CThing_Retail;
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 struct SResidentNode {
     SResidentNode*          _M_next;
     SResidentNode*          _M_prev;
-    CBaseIntelligentPointer _M_data;                    // +0x08
+    CIntelligentPointer<CThing_Retail> _M_data;                    // +0x08
 };
 struct CResidentList {
     SResidentNode* _M_node;
@@ -38,7 +49,7 @@ struct CInterfaceMap_Retail {
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 class CScriptThing;
-struct CThing_Retail {
+class CThing_Retail { public:
     unsigned char           _pad00[0x20];
     unsigned long           m_presentBits[9];       // +0x20
     CInterfaceMap_Retail    m_interfaces;           // +0x44
@@ -48,8 +59,8 @@ struct CThing_Retail {
     unsigned char           m_dead : 1;             // +0x91 bit 0
     unsigned char           m_91_1 : 7;
     unsigned char           _pad92[0xd6];
-    CBaseIntelligentPointer HomeBuilding;           // +0x168
-    CBaseIntelligentPointer OtherResidence;         // +0x170
+    CIntelligentPointer<CThing_Retail> HomeBuilding;           // +0x168
+    CIntelligentPointer<CThing_Retail> OtherResidence;         // +0x170
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     __forceinline CTCBase_Retail* GetInterface(long interfaceType)
     {
@@ -60,8 +71,8 @@ struct CThing_Retail {
             it = map->last;
         return it->component;
     }
-    CBaseIntelligentPointer& GetHomeBuilding() { return HomeBuilding; }
-    CBaseIntelligentPointer& GetOtherResidence() { return OtherResidence; }
+    CIntelligentPointer<CThing_Retail>& GetHomeBuilding() { return HomeBuilding; }
+    CIntelligentPointer<CThing_Retail>& GetOtherResidence() { return OtherResidence; }
     void SetIsAvailableForResidency(bool available);    // 0x0082E090
     void Kill(bool flag);                               // 0x004C9B80
     CScriptThing GetScriptThing();                      // 0x004C7E50
@@ -115,7 +126,7 @@ CScriptThing CGameScriptInterface::SetResidency(const CScriptThing& building, bo
                 CResidentList& residents = ((CTCVillageMember_Retail*)house->GetInterface(0x23))->GetVillage()->Residents;
                 SResidentNode* it = residents._M_node->_M_next;
                 while (it != residents._M_node) {
-                    CBaseIntelligentPointer& resident = it->_M_data;
+                    CIntelligentPointer<CThing_Retail>& resident = it->_M_data;
                     if (!resident.GetPItem() || resident.GetPItem()->m_dead)
                         continue;
                     if (resident.GetPItem()->GetHomeBuilding().GetPItem() == house) {

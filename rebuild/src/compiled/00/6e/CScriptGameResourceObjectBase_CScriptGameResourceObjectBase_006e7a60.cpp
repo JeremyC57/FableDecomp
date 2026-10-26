@@ -8,17 +8,18 @@
 // constructor @ 0x0099A380 runs, then the compiler stores this class's vtable (0x0126008C
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-namespace N_0099a380 { struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseIntelligentPointer();                           // 0x0099A380
-}; } using N_0099a380::CBaseIntelligentPointer;
+class CBaseObject { public:
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
+};
 
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:
+class CScriptGameResourceObjectBase : public CBaseObject { public:
     virtual void v00();                    // this class has its own vtable
     CScriptGameResourceObjectBase();
 };
 
 CScriptGameResourceObjectBase::CScriptGameResourceObjectBase()
-    : CBaseIntelligentPointer()
+    : CBaseObject()
 {
 }

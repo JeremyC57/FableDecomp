@@ -11,6 +11,7 @@
 //   CQ_REscortTraderScript::WatchForExpressionFollow 0x00E1FCF0.
 #include <string.h>
 #pragma intrinsic(strcmp)
+namespace NScript { class CPredicateBase; }
 enum EHeroAbility { HERO_ABILITY_NONE };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 #pragma pack(push, 1)
@@ -89,19 +90,26 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
     ~CScriptThing();                                    // 0x004AA840
 };
-namespace N_0099a380 { struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
+class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-}; } using N_0099a380::CBaseIntelligentPointer;
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
+};
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CIsThingConscious {                              // vtable 0x012C2FE8
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingConscious : public NScript::CPredicateBase {                              // vtable 0x012C2FE8
     CScriptThing m_thing;                               // +0x04 (copied and destroyed out of line)
     CIsThingConscious(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingConscious() { }
@@ -128,7 +136,7 @@ struct CScriptGameResourceObjectMovieFull : CScriptGameResourceObjectBase {
 };
 struct CMovieStorage { void* Words[4]; };              // raw frame storage of one movie handle (0x10 bytes)
 inline void* operator new(unsigned int, void* where) { return where; }   // placement form: the handle is destroyed by hand
-class CScriptGameResourceObjectMovieBase : public CBaseIntelligentPointer { public:   // vtable 0x01260EF4; built in place in CMovieStorage, destroyed by hand
+class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; built in place in CMovieStorage, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
     __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     __forceinline void DestroyInline()
@@ -247,8 +255,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void RegisterFilter(CIsThingConscious& filter);     // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CGuardHoldingBandit : CEntityScriptBase {
     CQ_BreakSiegeScript* ParentClass;                   // +0x14
@@ -260,7 +269,7 @@ void CGuardHoldingBandit::Main()
 {
     {
         CIsThingConscious filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

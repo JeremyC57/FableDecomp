@@ -9,10 +9,11 @@
 //   SetIsThingForcePushable; global interface 0x0143E8F8 slot 90 GetTimer through the parent's CTimer.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14; the parent's NostroVulnerableTimer is at +0x54
 //   (landed CSUMMONED_CREATURE::OnPredicateFail 0x00D89160: PDB 104, retail 0x14 lower).
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12];
+    unsigned char _body[12 - 4];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CCharString { public:
     void* Data;
@@ -130,25 +131,36 @@ class CTimer { public:
 };
 void __fastcall FadeOutThing(const CScriptThing& thing, float time, float alpha);   // 0x00CBE814
 void __fastcall FadeInThing(const CScriptThing& thing, float time);                 // 0x00CBE7AA
-struct CIsThingAlive {                             // vtable 0x012C32F0
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0
     CScriptThing Thing;                            // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
     ~CIsThingAlive() { }
 };
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
 namespace NScript {
 class CQ_HeroSoulsNostroScript { public:
     unsigned char _pad[0x54];
     CTimer        NostroVulnerableTimer;           // +0x54
 
-    class CNostro {
+    class CNostro : public CEntityScriptBase {
     public:
         void*                     __vftable;       // +0x00
         CGameScriptInterface*     Game;            // +0x04
         CScriptThing              Me;              // +0x08
         CQ_HeroSoulsNostroScript* ParentClass;     // +0x14
-        void SetPredicate(const CIsThingAlive& predicate);   // 0x00F35B10
-        bool IsActiveThreadTerminating() const;    // 0x00F35B30
         void Main();
     };
 };

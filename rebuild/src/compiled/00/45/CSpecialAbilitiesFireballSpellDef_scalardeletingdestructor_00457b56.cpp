@@ -1,5 +1,4 @@
 #pragma optimize("s",on)
-extern void __cdecl eng_operator_delete(void* p);
 
 class CSpecialAbilitiesFireballSpellDef { public:
     void* vftable;
@@ -11,6 +10,6 @@ void* CSpecialAbilitiesFireballSpellDef::scalar_deleting_destructor(unsigned int
 {
     this->dtor();
     if (flags & 1)
-        eng_operator_delete(this);
+        operator delete(this);
     return this;
 }

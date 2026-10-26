@@ -126,7 +126,8 @@ public:
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 class CTCSwitchableNavigation { public:                      // interface 0x79
-    void SetEnabled(bool enabled);                    // 0x00787580 (manifest "InitialActivate")
+public:
+    void SetAsBlockingNavigation(bool);   // 0x00787580
 };
 class CTCAnimatingObject { public:                           // interface 0x83
     void PlayAnimation(const CCharString& name, long a, bool b);   // 0x007F90B0
@@ -153,7 +154,7 @@ void CTCJackPillar::Enable(bool enable)
         ParentThing->PPhysics->Deactivate(0);
     CTCSwitchableNavigation* navigation;
     if (ParentThing->GetInterface(&navigation, 0x79))
-        navigation->SetEnabled(enable);
+        navigation->SetAsBlockingNavigation(enable);
     if (enable) {
         CTCAnimatingObject* animating = ParentThing->GetTC<CTCAnimatingObject>(0x83);
         animating->PlayAnimation("RISE", 0, false);

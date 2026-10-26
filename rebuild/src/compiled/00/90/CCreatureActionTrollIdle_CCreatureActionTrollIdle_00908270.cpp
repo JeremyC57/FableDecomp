@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00908270, length 89 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) @ 0x00857F30
 // (the five-parameter base constructor), CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("SPECIAL_IDLE"
-// @ 0x0127A43C, -1), CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0 (the manifest's
+// @ 0x0127A43C, -1), CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0 (the manifest's
 // "CTCInGameMenu::SetPDef" is a propagated label; every caller passes an animation name, see the landed
 // 0x008C0520), CCharString::~CCharString @ 0x0099EAE0.
 // Vtable 0x0128E79C = CCreatureAction_TrollIdle (rtti-vtables.tsv), so the manifest module CCombatAction_StabThing is a propagated label and wrong. Action code 50; the pair's zero stores precede the pushes.
@@ -25,7 +25,8 @@ class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetAnimationName(const CCharString& name);                                                         // 0x008574D0
+public:
+    void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
 
 class CCreatureAction_TrollIdle : public CCombatActionBase { public:
@@ -37,5 +38,5 @@ CCreatureAction_TrollIdle::CCreatureAction_TrollIdle(CThingCreatureBase* owner, 
     : CCombatActionBase(owner, target, 50, CSoundPair())
 {
     CCharString name("SPECIAL_IDLE", -1);
-    SetAnimationName(name);
+    SetCombatAnimation(name);
 }

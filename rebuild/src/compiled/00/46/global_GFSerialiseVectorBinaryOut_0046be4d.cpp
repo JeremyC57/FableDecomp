@@ -15,8 +15,8 @@
 #pragma optimize("s", on)
 
 class CCharStringData;
-struct CDataOutputStreamWriter {
-    virtual ~CDataOutputStreamWriter();                     // slot 0
+class CDataOutputStream { public:
+    virtual ~CDataOutputStream();                     // slot 0
     virtual void SetPosition(unsigned long position);       // slot 1
     virtual unsigned long GetPosition() const;              // slot 2
     virtual void Close();                                   // slot 3
@@ -40,13 +40,13 @@ public:
 }
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CReverbEnvironmentEntry> {
-    __forceinline void TransferBinaryOut(CDataOutputStreamWriter& stream, const CReverbEnvironmentEntry* value) const
+    __forceinline void TransferBinaryOut(CDataOutputStream& stream, const CReverbEnvironmentEntry* value) const
     {
         stream.Write(value, sizeof(CReverbEnvironmentEntry));
     }
 };
 template <class T>
-void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std::vector<T>& value)
+void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream& stream, std::vector<T>& value)
 {
     CPersistTraits<T> traits;
     long count = value.size();
@@ -54,4 +54,4 @@ void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStreamWriter& stream, std:
     for (long i = 0; i < count; ++i)
         traits.TransferBinaryOut(stream, &value[i]);
 }
-template void __fastcall GFSerialiseVectorBinaryOut<CReverbEnvironmentEntry>(CDataOutputStreamWriter& stream, std::vector<CReverbEnvironmentEntry>& value);
+template void __fastcall GFSerialiseVectorBinaryOut<CReverbEnvironmentEntry>(CDataOutputStream& stream, std::vector<CReverbEnvironmentEntry>& value);

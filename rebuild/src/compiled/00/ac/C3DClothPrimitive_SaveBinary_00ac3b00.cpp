@@ -16,7 +16,7 @@ class CDataOutputStream { public:
 class CMemoryDataOutputStream : public CDataOutputStream { public:
     unsigned char _body[0x14];                                  // +0x04 .. +0x17
     CMemoryDataOutputStream();                                  // 0x00996AF0
-    ~CMemoryDataOutputStream();                                 // 0x00996B30
+    virtual ~CMemoryDataOutputStream();                                 // 0x00996B30
     unsigned long GetSize();                                    // 0x00994B40
     void* PeekData();                                           // 0x00995E70
 };

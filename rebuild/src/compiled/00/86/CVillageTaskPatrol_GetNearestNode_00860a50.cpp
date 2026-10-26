@@ -18,16 +18,27 @@ class CThingTrackNode : public CThing { public:
     unsigned char    _pad2[0xed - 0xd4];
     bool             IsEnd;                        // +0xed (retail)
 };
-struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vptr + item (8 bytes)
-    virtual void v00();
-    CThing* PItem;
-    CThing* GetPItem() const;                      // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CVillageTaskPatrol { public:
     virtual void v00();
     unsigned char           _pad04[4];             // +0x04 (CVillageTaskBase)
-    CBaseIntelligentPointer PatrolStart;           // +0x08 CIntelligentPointer<const CThingTrackNode>
-    CBaseIntelligentPointer CreatureAssignedToTask;   // +0x10 CIntelligentPointer<const CThing>
+    CIntelligentPointer<CThing> PatrolStart;           // +0x08 CIntelligentPointer<const CThingTrackNode>
+    CIntelligentPointer<CThing> CreatureAssignedToTask;   // +0x10 CIntelligentPointer<const CThing>
     bool                    TaskLocked;            // +0x18
     const CThingTrackNode* GetNearestNode(const C3DVector& position);
 };

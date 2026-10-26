@@ -4,10 +4,17 @@
 //   CDataOutputStream::WriteUInt64 @ 0x00993EC0 (manifest "WriteCBYTE"; writes 8 bytes from its argument slot).
 // Layout: CThing::UniqueID (ulong64) at +0x18 (PDB); CBaseIntelligentPointer is {vptr/pad, PData} (8 bytes), only
 //   its GetPItem is used. The 64-bit zero lives in esi:edi across the branch. Speed-optimised (default) TU.
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteUHUGE(unsigned __int64);   // 0x00993EC0
+};
 
 struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteUInt64(unsigned __int64 value);       // 0x00993EC0
 };
 
 class CThing { public:
@@ -15,12 +22,21 @@ class CThing { public:
     unsigned __int64 UniqueID;          // +0x18
 };
 
-struct CBaseIntelligentPointer {
-    void* _padding_;                    // +0x00
-    void* PData;                        // +0x04 CBaseObjectPointer*
-    CThing* GetPItem() const;           // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
+};
 
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<CIntelligentPointer<CThing> > {
@@ -32,5 +48,5 @@ void CPersistTraits<CIntelligentPointer<CThing> >::TransferBinaryOut(CDataOutput
     unsigned __int64 uid = 0;
     if (value->GetPItem() != 0)
         uid = value->GetPItem()->UniqueID;
-    ((CDataOutputStream_Methods*)stream)->WriteUInt64(uid);
+    ((CDataOutputStream_Methods*)stream)->WriteUHUGE(uid);
 }

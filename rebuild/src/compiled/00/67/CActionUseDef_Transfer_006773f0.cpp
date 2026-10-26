@@ -2,8 +2,8 @@
 // SnapToActionPoint, IgnoreActionPoints and TutorialCategory.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006773F0, length 232 bytes (virtual, `ret 4`).
 // Callees: CPersistContext::CheckCRC @ 0x00404500 (x4, the empty key "" @ 0x0122D70E), CDefString::TransferBinaryIn
-// @ 0x0044FC00 (manifest "CPersistTraits<float>::TransferBinaryIn" propagated), CDataOutputStream::WriteLong
-// @ 0x00993EB0 (x2), CPersistTraits<bool>::TransferBinaryIn @ 0x00403EB0 (x2), CDataOutputStream::WriteBool
+// @ 0x0044FC00 (manifest "CPersistTraits<float>::TransferBinaryIn" propagated), CDataOutputStream::WriteSLONG
+// @ 0x00993EB0 (x2), CPersistTraits<bool>::TransferBinaryIn @ 0x00403EB0 (x2), CDataOutputStream::WriteEBOOL
 // @ 0x00993E30 (x2), CPersistTraits<ETutorialCategory>::TransferBinaryIn @ 0x0040FEF0.
 // Shape: four inline CPersistContext::Transfer<T> calls of the landed CActivateQuestDef::Transfer (0x007B5740) /
 // CReadableDef::Transfer (0x007E81B0) template -- each member address formed before its CRC call (ebx, the last
@@ -16,8 +16,9 @@
 class CMemoryDataInputStream;
 
 class CDataOutputStream { public:
-    void WriteLong(long value);                         // 0x00993EB0
-    void WriteBool(bool value);                         // 0x00993E30
+public:
+    void WriteEBOOL(bool);   // 0x00993E30
+    void WriteSLONG(long);   // 0x00993EB0
 };
 
 class CDefString { public:                                     // a name stored as its def-string table position
@@ -31,17 +32,17 @@ template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<bool> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value);   // 0x00403EB0
-    static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteBool(value); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteEBOOL(value); }
 };
 template<> struct CPersistTraits<ETutorialCategory> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream* stream, ETutorialCategory* value);   // 0x0040FEF0
-    static void TransferBinaryOut(CDataOutputStream* stream, const ETutorialCategory& value) { stream->WriteLong(value); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const ETutorialCategory& value) { stream->WriteSLONG(value); }
 };
 template<> struct CPersistTraits<CDefString> {
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream* stream, CDefString* value) { value->TransferBinaryIn(stream); }
-    static void TransferBinaryOut(CDataOutputStream* stream, const CDefString& value) { stream->WriteLong(value.TablePos); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const CDefString& value) { stream->WriteSLONG(value.TablePos); }
 };
 
 class CPersistContext { public:

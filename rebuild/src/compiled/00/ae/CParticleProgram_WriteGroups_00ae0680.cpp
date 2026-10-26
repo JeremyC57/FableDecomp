@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE0680, 133 bytes, static __fastcall (stream in ecx, groups in edx), plain `ret`.
 // Identity: Ego_r.pdb `?WriteGroups@CParticleProgram@@CIXAAVCDataOutputStream@@ABV?$CArray@VC3DGroup2@@@@@Z`; its only
 //   callers are the two tail calls of CParticleProgram::WriteToFile 0x00AE2230 (landed; SimGroups +0xFC, NonSimGroups +0x108).
-// Callees: CDataOutputStream::WriteULong 0x00993EA0 (x3), C3DGroup2::PeekVertexBlends() const 0x00AC40A0 (the CArray data
+// Callees: CDataOutputStream::WriteULONG 0x00993EA0 (x3), C3DGroup2::PeekVertexBlends() const 0x00AC40A0 (the CArray data
 //   accessor `size() > 0 ? first : (T*)&array`; catalogued under the propagated "C3DMeshFileGroupChunk::GetList"), the
 //   stream's virtual Write(const void*, long) (slot 4, +0x10).
 // Layout: retail CArray<T> is an STLport vector of three pointers (12 bytes); C3DGroup2 is {long BoneIndex,
@@ -38,7 +38,8 @@ public:
     virtual void v02();
     virtual void v03();
     virtual void Write(const void* data, long length); // slot 4 (+0x10)
-    void WriteULong(unsigned long value);              // 0x00993EA0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
 class CParticleProgram {
@@ -49,12 +50,12 @@ private:
 void __fastcall CParticleProgram::WriteGroups(CDataOutputStream& stream, const CArray<C3DGroup2>& groups)
 {
     unsigned long count = groups.size();
-    stream.WriteULong(count);
+    stream.WriteULONG(count);
     for (unsigned long i = 0; i < count; ++i) {
         const C3DGroup2& group = groups[i];
-        stream.WriteULong(group.GetBoneIndex());
+        stream.WriteULONG(group.GetBoneIndex());
         long blends = group.GetVertexBlendCount();
-        stream.WriteULong(blends);
+        stream.WriteULONG(blends);
         stream.Write(group.PeekVertexBlends(), blends * sizeof(C3DVertexBlend2));
     }
 }

@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 class CPersistContext { public:
-    void PersistA(int& r);
+    template <class T> void Transfer(T& value);
     void PersistB_00466a47(int& r);
 };
 
@@ -13,7 +13,7 @@ class CVillagerInteractionsDef { public:
 
 void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def, void* /*edx*/, CPersistContext* ctx)
 {
-    ctx->PersistA(def->fieldA);
-    ctx->PersistA(def->fieldB);
+    ctx->Transfer(*(float*)&(def->fieldA));
+    ctx->Transfer(*(float*)&(def->fieldB));
     ctx->PersistB_00466a47(def->fieldC);
 }

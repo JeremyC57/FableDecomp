@@ -14,6 +14,7 @@
 //   QuestSucceeded +0x49).
 // Shape: the CRandomAttacker 0x00DE21D0 hit-test chain (conditional string temporaries in ebx bits 1/2/4, the result in a
 //   byte slot); the handle's compiler-generated destructor is inline once (the first exit) and out of line elsewhere.
+namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
 class CCharString { public:
@@ -74,21 +75,28 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
     CCountedPointer PImp;                              // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
 
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool a, float time, bool b);                  // 0x00CBE716
+void __fastcall FadeOutAndKillEntity(const CScriptThing&, float, bool, bool);                  // 0x00CBE716
 class CBaseObject { public:                                   // {vptr, intelligent-pointer link}
     void* IntelligentPointer;                          // +0x04
-    CBaseObject();                                     // 0x0099A380
-    virtual ~CBaseObject();                            // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     ~CScriptGameResourceObjectBase() { }
@@ -131,7 +139,14 @@ class CTimer { public:
     __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(Handle); }
 };
 struct CQ_SunnyvaleMasterData;
-class CBH_GangGruntSpawn {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CBH_GangGruntSpawn : public CEntityScriptBase {
 public:
     void*                   __vftable;                 // +0x00
     CGameScriptInterface*   Game;                      // +0x04
@@ -139,8 +154,6 @@ public:
     CQ_BountyHuntScript*    ParentClass;               // +0x14
     CQ_SunnyvaleMasterData* PMasterData;               // +0x18
     CTimer                  WaitForTimer;              // +0x1c
-    void RegisterFilter(CIsThingAlive& filter);        // 0x00F35B10
-    bool IsActiveThreadTerminating();                  // 0x00F35B30
     void Main();
 };
 
@@ -149,7 +162,7 @@ void CBH_GangGruntSpawn::Main()
     CScriptGameResourceObjectScriptedThingBase scripted;
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

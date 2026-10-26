@@ -1,7 +1,7 @@
 // C3DMeshFileVerticesChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const -- the vertex count, then position, normal and UV of every vertex as eight floats; no base call
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABBDF0, length 151 bytes.
 // Leaf: WriteToFile
-// Callees: 0x00993EA0 CDataOutputStream::WriteULong, 0x00993EE0 CDataOutputStream::WriteFloat.
+// Callees: 0x00993EA0 CDataOutputStream::WriteULONG, 0x00993EE0 CDataOutputStream::WriteFloat.
 // Shape: a plain CChunkedFileChunk (0x10 base) with the retail three-pointer CArray<C3DVertex2> at +0x10
 // (PDB header: same offset, 0x10-wide CArray). C3DVertex2 is 32 bytes (PDB: Position, Normal, U, V) so the
 // count is `sar esi,5`; the indexed loop is strength-reduced to a byte offset in ebx and a down-counter in
@@ -45,12 +45,13 @@ class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteUShort(unsigned short value);             // 0x00993E80
-    void WriteULong(unsigned long value);               // 0x00993EA0
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
     void WriteBool(bool value);                         // 0x00993E30
     void WriteMatrix3x4(const CMatrix3x4& m);           // 0x00994070
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 class CDataInputStream { public:
     virtual void v0(); virtual void v1();
@@ -105,7 +106,7 @@ class C3DMeshFileVerticesChunk : public CChunkedFileChunk { public:
 void C3DMeshFileVerticesChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
 {
     unsigned long count = VertexList.Size();
-    out.WriteULong(count);
+    out.WriteULONG(count);
     for (unsigned long i = 0; i < count; ++i) {
         const C3DVertex2& vertex = VertexList[i];
         out.WriteFloat(vertex.Position.X);

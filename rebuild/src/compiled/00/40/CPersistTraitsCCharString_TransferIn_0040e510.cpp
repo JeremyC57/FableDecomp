@@ -10,7 +10,16 @@
 // built there ([esp+14h]); the ReadAsStringUntilString result is the one `push ecx` frame word. The early error return
 // is tail-merged by VC into the second error call (the first arm pushes its message and jumps to the shared `push esi ;
 // call Error`). The implicit const char* -> CCharString conversions use the (text, -1) constructor.
+#define CStringParser CStringParserLayout
 #include "engine/CStringParser.h"
+#undef CStringParser
+class CCharString;
+
+class CStringParser : public CStringParserLayout
+{
+public:
+    CCharString ReadAsSymbol();   // 0x009BA790
+};
 
 class CPersistContext;
 
@@ -24,7 +33,6 @@ class CCharString { public:
 
 // Method view over the shared engine header (the reader touches no parser fields directly).
 struct CStringParserReader : CStringParser {
-    CCharString ReadAsSymbol();                                  // 0x009BA790
     CCharString ReadAsStringUntilString(const CCharString& end); // 0x009BA330
 };
 

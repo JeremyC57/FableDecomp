@@ -9,7 +9,7 @@
 // Layout: retail CTCInventoryTrade CategoryIdent +0x170 (engine header PDB +0x19C less 0x2C of 16-byte debug containers).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-void __cdecl FreeStorage(void* p);                             // 0x00BFEA14
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct CItemCount {                                            // std::pair<long,long>: item type, count
     long first;
@@ -20,7 +20,7 @@ struct CItemCountVector {                                      // STLport vector
     CItemCount* _M_finish;
     CItemCount* _M_end_of_storage;
     CItemCountVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~CItemCountVector() { if (_M_start) FreeStorage(_M_start); }
+    ~CItemCountVector() { if (_M_start) free(_M_start); }
     CItemCount* begin() const { return _M_start; }
     unsigned long size() const { return _M_finish - _M_start; }
     CItemCount& operator[](unsigned long n) { return *(begin() + n); }

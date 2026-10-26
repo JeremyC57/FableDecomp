@@ -16,6 +16,7 @@
 // Shape: the landed CScytheNearOracle::Main 0x00E2A320 / CDF_ThunderHelmet::Main 0x00E6F1C0 handle and movie models; the
 //   boy handle is reached through ParentClass (virtual calls), its scripted-control reset is an inline helper taking it by
 //   reference. Twin: CTH_ThunderGirl::Main 0x00EDFA00 (seh_Girl +0x58).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -67,8 +68,14 @@ class CScriptThing : public CBaseClass { public:                     // 12 bytes
     CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     ~CScriptThing() { }                                // out-of-line copy 0x004AA840
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0
+namespace NScript {
+class __declspec(novtable) CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                  // 0x00E241B0
@@ -77,12 +84,13 @@ typedef long EScriptAIPriority;
 typedef long EScriptEntityMoveType;
 typedef long ETextGroupSelectionMethod;
 typedef long EGameflowPosition;
-struct CBaseIntelligentPointer {                       // vtable 0x0129A7D8
+class CBaseObject { public:                       // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                       // +0x04
-    CBaseIntelligentPointer();                         // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                // 0x0099A430
+protected:
+    CBaseObject();                                       // 0x0099A380
+    virtual ~CBaseObject();                              // 0x0099A430
 };
-class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -243,14 +251,15 @@ struct GameCalls {                                     // CGameScriptInterface v
 };
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE3EA
 
-namespace NScript {
 struct CEntityScriptBase {                             // retail 0x14 bytes
     virtual void e00();
     GameCalls*   Game;                                 // +0x04
     CScriptThing Me;                                   // +0x08
-    void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
-    bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
+namespace NScript {
 class CQ_SunnyvaleMasterData { public:
     void*             _vptr;                           // +0x00
     EGameflowPosition PostSavePosition;                // +0x04

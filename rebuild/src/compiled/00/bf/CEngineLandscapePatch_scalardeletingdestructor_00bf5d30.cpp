@@ -11,7 +11,6 @@
 // operator delete[] (the vtable's own slot 0 is the `??_E` @ 0x00BDD3E0 from a TU that has one), so VC emits `??_G`.
 // Both destructors must be `__forceinline` (GOTCHAS 24i): a plain inline counted-pointer destructor stays out of line, and a
 // plain inline virtual destructor makes `??_G` collapse to `call ??1 ; FreeVirtual`.
-extern "C" void __cdecl operator_delete_00bfe9bc(void* block);   // 0x00BFE9BC
 
 class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
@@ -37,7 +36,7 @@ struct CCountedResourcePointer {
             --m_pBlock->m_count;
             if (m_pBlock->m_count == 0) {
                 m_pBlock->m_pfnDestroy(m_pBlock->m_pObject);
-                operator_delete_00bfe9bc(m_pBlock);
+                operator delete(m_pBlock);
             }
         }
         m_pObject = 0;

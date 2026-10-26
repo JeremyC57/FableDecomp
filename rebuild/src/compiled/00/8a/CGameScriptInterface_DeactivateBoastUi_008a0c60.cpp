@@ -43,8 +43,9 @@ struct CThing_Retail {
 };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }          // free inline: the pointer comes back in eax
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-struct CTCBoastUI_Retail {
-    void Deactivate();                             // 0x0056A880
+class CTCBoastUI { public:
+public:
+    void Deactivate();   // 0x0056A880
 };
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -60,12 +61,13 @@ class CScriptThing { public:
     virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
-struct CPlayer_Retail {
+class CPlayer { public:
     CThing_Retail* GetHeroCreature();              // 0x00487DC0 (the manifest label "_Cons_val<...>" is propagated)
     CThing_Retail* GetControlledCreature();        // 0x00487DD0 (the manifest label "_Cons_val<...>" is propagated)
 };
-struct CPlayerManager_Retail {
-    CPlayer_Retail* GetMainPlayer();               // 0x00449970 (labelled "Catch@0040d959", propagated)
+class CPlayerManager { public:
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 struct CDisplayEngine_Retail; class CWorld;
 class CGameScriptInterface { public:
@@ -74,7 +76,7 @@ class CGameScriptInterface { public:
     long                    Component;
     CDisplayEngine_Retail*  DisplayEngine;                   // +0x0c
     long                    DefinitionManager;
-    CPlayerManager_Retail*  PlayerManager;                   // +0x14
+    CPlayerManager*  PlayerManager;                   // +0x14
     unsigned char           _pad18[4];
     bool                    m_handLampLit;                   // +0x1c (read when the hero has no hand-lamp component)
     void DeactivateBoastUi() const;
@@ -82,7 +84,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::DeactivateBoastUi() const
 {
-    CThing_Retail* t = PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThing_Retail* t = PlayerManager->GetMainPlayer().GetHeroCreature();
     if (t->HasTC(0xe8))
-        ((CTCBoastUI_Retail*)GetTC(t, 0xe8))->Deactivate();
+        ((CTCBoastUI*)GetTC(t, 0xe8))->Deactivate();
 }

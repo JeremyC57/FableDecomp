@@ -10,6 +10,7 @@
 // Shape: a top-tested `while` (the distance test repeated at the bottom, aligned head) whose body returns on
 // IsDone; the by-value CCharString argument is built by GetDataString straight into its argument slot
 // (`push ecx ; push esp`), the position fetched last (arguments evaluate right to left).
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // (not called: the getter builds the argument in place)
@@ -85,14 +86,19 @@ struct CQ_HangingTreeGoodScript {
 };
 struct CQ_SunnyvaleMasterData;
 
-class CHTG_AmbushPoint {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CHTG_AmbushPoint : public CEntityScriptBase {
 public:
     void*                     __vftable;           // +0x00
     CGameScriptInterface*     Game;                // +0x04
     CScriptThing              Me;                  // +0x08
     CQ_HangingTreeGoodScript* ParentClass;         // +0x14
     CQ_SunnyvaleMasterData*   PMasterData;         // +0x18
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -100,10 +106,10 @@ void CHTG_AmbushPoint::Main()
 {
     while (!IsDistanceBetweenThingsUnder(Me, ParentClass->m_trackedThing, 15.0f)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     ParentClass->SpawnEnemies(Me.GetPos(), Me.GetDataString(), 4);
     Game->Pause(0.5f);

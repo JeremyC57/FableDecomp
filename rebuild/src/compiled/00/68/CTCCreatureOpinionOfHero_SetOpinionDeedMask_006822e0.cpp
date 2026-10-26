@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006822E0, length 39 bytes (+9 int3). Caller CGameScriptInterface::
 // EntitySetOpinionDeedMask (0x0089C2E0, call at 0x0089C324); the index overload 0x006821E0 is called directly by the
 // other EntitySetOpinionDeedMask (0x0089C2D4).
-// Callees: the world accessor @ 0x00686A70, CGameDefinitionManager::GetDefGlobalIndexFromName(const CCharString&)
+// Callees: the world accessor @ 0x00686A70, CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&)
 // @ 0x009AD410, SetOpinionDeedMask(long) @ 0x006821E0.
 // Shape: the twin of SetOpinionReactionMask(const CCharString&) 0x00681E30.
 #include <string.h>
@@ -33,8 +33,13 @@ public:
     }
 };
 
-class CGameDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name) const;  // 0x009AD410
+class CDefinitionManager
+{
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};
+
+class CGameDefinitionManager : public CDefinitionManager { public:
 };
 
 class CWorld { public:
@@ -84,7 +89,13 @@ class COpinionPersonalityDef { public:             // retail offsets (the def ro
 
 class CDefPointeeBase;
 
-class CTCCreatureOpinionOfHero { public:
+class CTCBase
+{
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCCreatureOpinionOfHero : public CTCBase { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08
@@ -107,14 +118,13 @@ class CTCCreatureOpinionOfHero { public:
     bool InFindAGuardAndYellForHelp;        // +0x343
     CBaseIntelligentPointer PUnknownThreatOpinionSource;   // +0x344
     long FrameLastUpdatedUnknownThreat;     // +0x34c
-    CWorld* GetWorld() const;               // 0x00686A70
     void SetOpinionDeedMask(long defIndex);                 // 0x006821E0
     void SetOpinionDeedMask(const CCharString& defName);
 };
 
 void CTCCreatureOpinionOfHero::SetOpinionDeedMask(const CCharString& defName)
 {
-    CGameDefinitionManager* definitions = GetWorld()->DefinitionManager;
+    CGameDefinitionManager* definitions = GetWorld().DefinitionManager;
     long defIndex = definitions->GetDefGlobalIndexFromName(defName);
     if (defIndex)
         SetOpinionDeedMask(defIndex);

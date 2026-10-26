@@ -1,6 +1,6 @@
 // CTCContainerRewardHero::GetDynamicPotionDefIndex() -- pick the potion a reward container should give the living hero: the health or mana potion, by whichever stat is relatively lower, else by which kind he carries fewer of
 // Retail 0x0074E280, 480 bytes (plain `ret`, `long` result: 0 without a living hero carrying an inventory).
-// Callees: CTCBase::GetPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
+// Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
 // CPlayer::GetHeroCreature @ 0x00487DC0, CVectorMap LowerBound const @ 0x004365B0 (inlined const GetTC: inventory 0x11,
 // hero stats 4), CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CGameDefinitionManager::Get
 // @ 0x0044C6B0, CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410,
@@ -75,16 +75,25 @@ class CTCHeroStats { public:
     long          MaxWillPower;                     // +0x5c
 };
 
-class CTCContainerRewardHero { public:
+class CTCBase
+{
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
+class CTCContainer : public CTCBase
+{
+public:
+};
+
+class CTCContainerRewardHero : public CTCContainer { public:
     void*   __vftable;                              // +0x00
     CThing* Thing;                                  // +0x04 CTCBase parent thing
-    const CPlayerManager* GetPlayerManager() const; // 0x00686D50
     long GetDynamicPotionDefIndex();
 };
 
 long CTCContainerRewardHero::GetDynamicPotionDefIndex()
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetHeroCreature();
     CTCInventoryBase* inventory;
     if (!hero || hero->Dead || !hero->GetInterface(&inventory, 0x11))
         return 0;

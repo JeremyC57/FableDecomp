@@ -107,23 +107,32 @@ class CTCSoundPlayer { public:                         // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
-    CBaseObject* m_pItem;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();         // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        T* item = other.GetPItem();
         SetPItem(item);
         return *this;
     }
+
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -156,7 +165,7 @@ public:
     CWillButtonHelperTimer Timer;               // +0x0c
     CDefClassBase* PDef;                        // +0x40 CDefPointer<CSpecialAbilitiesFireballSpellDef const>
     unsigned long InitLoopingSound;             // +0x44
-    CIntelligentPointer FireballBuildUpEffect;  // +0x48
+    CIntelligentPointer<CThing> FireballBuildUpEffect;  // +0x48
     bool ImmediateCastMode;                     // +0x50
     bool OneAnimCastMode;                       // +0x51
     unsigned char PTarget[8];                   // +0x52
@@ -186,7 +195,7 @@ void CTCFireballSpell::FrameUpdate()
         bool found = PDef->GetSubDef(effectsSlot) && effectsSlot.m_p->GetEffectFromString("BUILDUP_EFFECT", effectType);
         CSpecialEffectsDef* effects = effectsSlot.m_p;
         if (found) {
-            FireballBuildUpEffect = CIntelligentPointer(CreateParticleEffect(effectType, parent->GetPosition()));
+            FireballBuildUpEffect = CIntelligentPointer<CThing>(CreateParticleEffect(effectType, parent->GetPosition()));
             if (IS_THING_ALIVE(FireballBuildUpEffect)) {
                 CTCDParticleEmitter* emitter;
                 CThing* effect = FireballBuildUpEffect.GetPItem();

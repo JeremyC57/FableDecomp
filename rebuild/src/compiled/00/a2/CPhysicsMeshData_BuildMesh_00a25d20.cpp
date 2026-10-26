@@ -10,7 +10,7 @@ template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
-    unsigned long Sizeof() const { return Data ? Data->DoSizeof() + 8 : 8; }
+    unsigned long Sizeof() const { return Data ? Data->Sizeof() + 8 : 8; }
     void Reset()
     {
         if (Info) {
@@ -46,7 +46,8 @@ class CBankFileAsyncData { public:
     unsigned char _pad00[0x10];
     unsigned long Size;                            // +0x10
     void* GetData();                               // 0x009D5530
-    unsigned long DoSizeof();                      // 0x009D5620
+public:
+    unsigned long Sizeof() const;   // 0x009D5620
 };
 class C3DMeshFile;
 class CMovableResourceMemoryPool;
@@ -56,8 +57,9 @@ class CPhysicsMesh { public:
     long RefCount;                                 // +0x04
     unsigned char _pad08[0xc0 - 0x08];
     CPhysicsMesh(C3DMeshFile* file, CMovableResourceMemoryPool* pool);   // 0x00A6DA40
-    long Sizeof();                                 // 0x00A6C900
     void Release() { if (--RefCount == 0) Destroy(); }
+public:
+    long Sizeof() const;   // 0x00A6C900
 };
 struct C3DMeshFileLoader {
     CCountedPointer<C3DMeshFile> LoadMeshFileCompressed(void* data, unsigned long size, CMovableResourceMemoryPool* pool);   // 0x00A9B740

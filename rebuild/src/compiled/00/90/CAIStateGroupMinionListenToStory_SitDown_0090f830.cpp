@@ -21,7 +21,10 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC {
+public:
+    static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
+};   // 0x004014A0: CRC
 struct CDefStringTable {
     CCharString GetString(long index) const;    // 0x009D49B0
 };
@@ -68,7 +71,7 @@ class CAnimFilterOfGroup { public:                     // vtable 0x01267568
             length = group.PStringData->Length;
             data = group.PStringData->Chars;
         }
-        GroupCRC = Calc_004014a0(0, data, length);
+        GroupCRC = CCRC::Calc(0, data, length);
     }
 };
 class CAIStateGroupBase;

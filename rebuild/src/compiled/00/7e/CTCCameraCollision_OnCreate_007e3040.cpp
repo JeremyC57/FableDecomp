@@ -63,13 +63,16 @@ class CCameraCollisionDef : public CDefClassBase { public:};
 
 class CDefinitionManager
 { public:
-    bool GetDef(long globalIndex, CDefPointer<CThingDef>* out);   // GetDef<T> instance @ 0x0042AF3C
+    bool GetDef(long globalIndex, CDefPointer<CThingDef>* out) const;   // GetDef<T> instance @ 0x0042AF3C
+};
+class CGameDefinitionManager : public CDefinitionManager
+{
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
 #pragma auto_inline(off)
-__declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<CThingDef>* out)
+__declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<CThingDef>* out) const
 {
     void* def = FindDef_CDefinitionManager_GetDef_0();
     if (!def)
@@ -94,7 +97,8 @@ class CTCBase
     bool    IsInGlobalUpdateTCs;                    // +0x09
     unsigned char _pad_0x0a[0x2];                   // +0x0a
     void OnCreate();                                 // 0x00686850 (empty)
-    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
 };
 
 class CTCCameraCollision : public CTCBase
@@ -108,6 +112,6 @@ void CTCCameraCollision::OnCreate()
 {
     CTCBase::OnCreate();
     CDefPointer<CThingDef> thingDef;
-    GetDefinitionManager()->GetDef(ParentThing->DefGlobalIndex, &thingDef);
+    GetDefinitionManager().GetDef(ParentThing->DefGlobalIndex, &thingDef);
     thingDef->GetSubDef(&CameraCollisionDef);
 }

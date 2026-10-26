@@ -21,7 +21,7 @@ struct CThingPlacement_Retail {                    // the thing's placement / ph
     unsigned char _pad04[8];
     C3DVector     m_position;                      // +0x0c
 };
-struct CThing_Retail {
+class CThing_Retail { public:
     unsigned char  _pad00[0x60];
     CThingPlacement_Retail* m_pPlacement;          // +0x60
     CThingPlacement_Retail* GetPlacement() const { return m_pPlacement; }
@@ -31,10 +31,21 @@ struct CThing_Retail {
     const C3DVector& GetPosition() const { return m_pPlacement->m_position; }   // inline twin of 0x004C73D0
     float GetAngleXY() const { return m_pPlacement->GetAngleXY(); }
 };
-struct CBaseIntelligentPointer {                   // CIntelligentPointer<CThing>: vptr + item (8 bytes)
-    void*          m_pVtbl;
-    void*          m_pItem;
-    CThing_Retail* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CGameScriptThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
@@ -48,7 +59,7 @@ class CGameScriptThing { public:
     virtual void v64(); virtual void v65(); virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69(); virtual void v70();
     virtual void UpdateScript();                   // slot 71 (+0x11C)
     unsigned char           _pad04[8];
-    CBaseIntelligentPointer PThing;                // +0x0c CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing_Retail> PThing;                // +0x0c CIntelligentPointer<CThing>
     unsigned char           _pad14[0x14];
     C3DVector               Pos;                   // +0x28
     C3DVector               HomePos;               // +0x34

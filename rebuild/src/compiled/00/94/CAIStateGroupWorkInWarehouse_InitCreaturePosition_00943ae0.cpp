@@ -19,18 +19,34 @@ class CThing { public:
     const C3DVector& GetPosition();             // 0x004C73D0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CThing* GetPItem();                         // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CThingCrate : CThing {
-    CThing* GetPWarehouse() { return reinterpret_cast<CBaseIntelligentPointer*>(PWarehouse)->GetPItem(); }
+    CThing* GetPWarehouse() { return reinterpret_cast<CIntelligentPointer<CThing>*>(PWarehouse)->GetPItem(); }
 };
 
-class CThingAICreature { public:
-    bool AutoPlaceNear(const C3DVector& position, float radius);    // 0x00665DF0
+class CThingCreatureBase
+{
+public:
+    bool AutoPlaceNear(const C3DVector&, float);   // 0x00665DF0
+};
+
+class CThingAICreature : public CThingCreatureBase { public:
 };
 
 class CGame { public:
@@ -68,7 +84,7 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_WorkInWarehouse : CAIStateGroupBase {
     unsigned char PWorkBuilding[8];             // +0x14 CIntelligentPointer<CThing>
-    CBaseIntelligentPointer PCrate;             // +0x1c CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PCrate;             // +0x1c CIntelligentPointer<CThing>
     virtual bool InitCreaturePosition();
 };
 

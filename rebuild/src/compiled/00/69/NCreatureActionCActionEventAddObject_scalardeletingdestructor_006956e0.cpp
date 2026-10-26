@@ -5,8 +5,7 @@
 // retail labels); the class itself is not attributed, so it is named by address.
 #pragma optimize("t", on)
 class CBaseClass { public:                         // vtable 0x01231710 (.?AVCBaseClass@@)
-    void* _vptr;
-    ~CBaseClass();                          // 0x0099A2E0
+    virtual ~CBaseClass();                          // 0x0099A2E0
 };
 class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;

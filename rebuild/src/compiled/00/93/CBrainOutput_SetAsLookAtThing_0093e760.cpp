@@ -12,25 +12,31 @@
 // destroyed after the store).
 class CThing;
 
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(const CThing* item);          // 0x00A01B90
-    const CThing* GetPItem();                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01237F1C
-    virtual void v00();
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01237F1C
+public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CBrainOutput { public:
     unsigned long       Types;                  // +0x00
     long                LookFlags;              // +0x04
     unsigned char       _pad[0x38];             // +0x08..+0x3f
-    CIntelligentPointer LookAtThing;            // +0x40
+    CIntelligentPointer<const CThing> LookAtThing;            // +0x40
     void SetAsLookAtThing(const CThing* thing, long lookFlags);
 };
 
@@ -38,7 +44,7 @@ void CBrainOutput::SetAsLookAtThing(const CThing* thing, long lookFlags)
 {
     Types |= 4;
     {
-        CIntelligentPointer pointer;
+        CIntelligentPointer<const CThing> pointer;
         pointer.SetPItem(thing);
         LookAtThing.SetPItem(pointer.GetPItem());
     }

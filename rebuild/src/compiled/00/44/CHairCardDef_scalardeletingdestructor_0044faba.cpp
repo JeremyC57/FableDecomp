@@ -1,17 +1,19 @@
 #pragma optimize("s",on)
+class CResource {
+public:
+    virtual ~CResource();   // 0x009FC550
+};
 class CHairCardDef { public:
     void* vptr;
 };
-extern void __fastcall CHairCardDef_dtor(CHairCardDef* def);
-extern void __cdecl engine_delete(void* p);
 extern void* const CHairCardDef_vftable;
 
 void* __fastcall CHairCardDef_scalar_deleting_destructor(CHairCardDef* def, int /*edx*/, unsigned int flags)
 {
     def->vptr = (void*)&CHairCardDef_vftable;
-    CHairCardDef_dtor(def);
+    ((CResource*)(def))->CResource::~CResource();
     if (flags & 1) {
-        engine_delete(def);
+        operator delete(def);
     }
     return def;
 }

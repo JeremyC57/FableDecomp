@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCWeatherVane_Destruct(void* vane);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCWeatherVane_ScalarDeletingDestructor(void* vane, int, unsigned int flags)
 {
-    CTCWeatherVane_Destruct(vane);
+    ((CTCBase*)(vane))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(vane);
+        operator delete(vane);
     return vane;
 }

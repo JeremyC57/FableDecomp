@@ -70,12 +70,15 @@ template <class T, class A1, class A2> struct CSpawnedFunc2 : CSpawnedFuncBase {
 };
 namespace NScript {
 class CQ_SunnyvaleMasterData;
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];                          // +0x04 .. +0x40
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
+public:
+    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
+    bool IsActiveThreadTerminating();   // 0x00CB7940
 };
+namespace NScript {
 class CHeroBoastsScript : public CScriptBase { public:
     CGameScriptInterface*   GSI;                        // +0x40
     CQ_SunnyvaleMasterData* PMasterData;                // +0x44

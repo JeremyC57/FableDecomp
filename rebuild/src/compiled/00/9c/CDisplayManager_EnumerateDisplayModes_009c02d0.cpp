@@ -301,7 +301,8 @@ class CPixelFormat {
 public:
     long FormatIndex;
     long GetD3DFormat() const { return g_PixelFormatTable[FormatIndex].D3DFormat; }
-    long GetColourDepth() const;                    // 0x009E3820
+public:
+    unsigned long GetColourDepth() const;   // 0x009E3820
 };
 
 struct D3DDISPLAYMODE {

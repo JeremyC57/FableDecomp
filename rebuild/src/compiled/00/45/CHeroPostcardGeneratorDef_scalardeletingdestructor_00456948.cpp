@@ -1,4 +1,8 @@
 #pragma optimize("s",on)
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CHeroPostcardGeneratorDef { public:
     int f0;
     int Parent;
@@ -8,14 +12,12 @@ class CHeroPostcardGeneratorDef { public:
     void* tex;
 };
 
-extern void __fastcall CHeroPostcardGeneratorDef_dtor(CHeroPostcardGeneratorDef* def);
-extern void __cdecl eng_operator_delete(void* p);
 
 void* __fastcall CHeroPostcardGeneratorDef_scalar_deleting_destructor(CHeroPostcardGeneratorDef* def, int edx, unsigned int flags)
 {
     (void)edx;
-    CHeroPostcardGeneratorDef_dtor(def);
+    ((CParentDefClassBase*)(def))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1)
-        eng_operator_delete(def);
+        operator delete(def);
     return def;
 }

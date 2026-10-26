@@ -1,13 +1,15 @@
 struct LM_Local { void build(void* obj24, void* arg); };
 // Leaf: UpdateShadowScene
-struct LM_Obj28 { void apply(int arg); };
+class CDataOutputStream { public: public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 class CEngineLightingManager { public:
     char pad0[0x18];
     int mode;      /* +0x18 */
     char pad1c[0x24-0x1c];
     void* obj24;   /* +0x24 */
-    LM_Obj28* obj28;   /* +0x28 */
+    CDataOutputStream* obj28;   /* +0x28 */
 };
 
 void __stdcall LM_Guard(const char* name);
@@ -24,7 +26,7 @@ void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager*
         ((LM_Local*)&local)->build(self->obj24, arg);
         break;
     case 3:
-        self->obj28->apply(*(int*)arg);
+        self->obj28->WriteSLONG(*(int*)arg);
         break;
     }
 }

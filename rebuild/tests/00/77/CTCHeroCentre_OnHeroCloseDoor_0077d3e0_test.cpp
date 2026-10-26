@@ -5,7 +5,13 @@ struct CSingletonTarget { int called; };
 static CSingletonTarget g_target = {0};
 CSingletonTarget* g_singleton_13b8790 = &g_target;
 
-extern "C" void __fastcall Singleton_Method_4374b0(CSingletonTarget* self) {
+class CPlayerGui {
+public:
+    void Open();
+};
+void CPlayerGui::Open()
+{
+    CSingletonTarget* self = (CSingletonTarget*)this; (void)self;
     self->called++;
 }
 

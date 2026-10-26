@@ -61,7 +61,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 extern bool g_dummyTypeInUse0;                  // 0x013BAE18
 extern bool g_dummyTypeInUse1;                  // 0x013BAE19

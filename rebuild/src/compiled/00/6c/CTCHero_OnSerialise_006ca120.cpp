@@ -3,7 +3,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem() const @ 0x00A01B50, CThing::IsLevelLess() const @ 0x004C7930,
 //          CTCBase::GetThingManager() const @ 0x00686AE0, CThingManager::RemapUIDForSerialisation @ 0x0051E210,
 //          CPersistContext::Transfer<unsigned __int64> @ 0x0044BB00, CPersistContext::Transfer<CCharString> @ 0x004109A0,
-//          CTCBase::GetDefinitions() const @ 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex @ 0x009AD9E0,
+//          CTCBase::GetDefinitionManager() const @ 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex @ 0x009AD9E0,
 //          CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CDefStringTable::GetString @ 0x009D49B0 (table
 //          object 0x013CA828), CCharString ctors/dtor/operator=.
 // Layout (Ego_r.pdb CTCHero, matches retail): HeroTitleObjectDef +0x14, PHeroTitleSubDef +0x18, LastWeaponEquipped
@@ -80,6 +80,9 @@ public:
     CDefPointer<const CDefinition> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0
     long GetDefGlobalIndexFromName(const CCharString& name) const;                       // 0x009AD410
 };
+class CGameDefinitionManager : public CDefinitionManager
+{
+};
 
 class CThing {
 public:
@@ -116,8 +119,9 @@ public:
     virtual void v00();
     CThing* Thing;                                  // +0x04
     unsigned char _pad08[4];
-    const CDefinitionManager* GetDefinitions() const;   // 0x006869D0
-    CThingManager* GetThingManager() const;         // 0x00686AE0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    CThingManager& GetThingManager();   // 0x00686AE0
 };
 
 class CTCHero : public CTCBase {
@@ -143,11 +147,11 @@ void CTCHero::OnSerialise(CPersistContext* context, long)
         if (LastWeaponEquipped.GetPItem() && !(LastWeaponEquipped.GetPItem()->Flags91 & 1)) {
             CThing* weapon = LastWeaponEquipped.GetPItem();
             unsigned __int64 uid = weapon->UID;
-            LastWeaponEquippedID = GetThingManager()->RemapUIDForSerialisation(true, Thing->IsLevelLess(), Thing->LevelIndex, uid);
+            LastWeaponEquippedID = GetThingManager().RemapUIDForSerialisation(true, Thing->IsLevelLess(), Thing->LevelIndex, uid);
         }
         context->Transfer("LastWeaponEquippedID", LastWeaponEquippedID, 0);
         CCharString defName("");
-        CDefPointer<const CDefinition> def = GetDefinitions()->GetPDefFromGlobalIndex(HeroTitleObjectDef);
+        CDefPointer<const CDefinition> def = GetDefinitionManager().GetPDefFromGlobalIndex(HeroTitleObjectDef);
         if (def.Object)
         {
             CCharString name = g_DefStringTable.GetString(def->GetDefName().Index);
@@ -157,10 +161,10 @@ void CTCHero::OnSerialise(CPersistContext* context, long)
     } else {
         context->Transfer("LastWeaponEquippedID", LastWeaponEquippedID, 0);
         if (LastWeaponEquippedID)
-            LastWeaponEquippedID = GetThingManager()->RemapUIDForSerialisation(false, Thing->IsLevelLess(), Thing->LevelIndex, LastWeaponEquippedID);
+            LastWeaponEquippedID = GetThingManager().RemapUIDForSerialisation(false, Thing->IsLevelLess(), Thing->LevelIndex, LastWeaponEquippedID);
         CCharString defName("");
         context->Transfer("hero_title_object_def_name", defName, EmptyString());
-        HeroTitleObjectDef = GetDefinitions()->GetDefGlobalIndexFromName(defName);
+        HeroTitleObjectDef = GetDefinitionManager().GetDefGlobalIndexFromName(defName);
         PHeroTitleSubDef = 0;
     }
 }

@@ -149,7 +149,13 @@ struct CComponentVector {
     void clear() { erase(begin(), end()); }
 };
 
-class CTCBoastUI { public:
+class CTCBase
+{
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40
+};
+
+class CTCBoastUI : public CTCBase { public:
     void*            __vftable;                        // +0x00
     CThing*          ParentThing;                      // +0x04
     unsigned char    _pad08[0x18 - 0x08];              // CTCBase flags, BoastGroups (12-byte map)
@@ -160,7 +166,6 @@ class CTCBoastUI { public:
     bool             AllowedToOpen;                    // +0x29
     bool             ActivationRequested;              // +0x2a
     bool             ActivateLater;                    // +0x2b
-    CPlayerManager* GetPlayerManager();                // 0x00686D40 (CTCBase)
     void Activate();                                   // 0x0056AD40
     void GlobalUpdate(long);
 };
@@ -202,7 +207,7 @@ void CTCBoastUI::GlobalUpdate(long)
         Active = false;
         Quitting = false;
         ActivationRequested = false;
-        GetPlayerManager()->GetMainPlayer()->RemoveMode(0x20);
+        GetPlayerManager().GetMainPlayer()->RemoveMode(0x20);
     }
     if (ActivationRequested) {
         if (Active) {

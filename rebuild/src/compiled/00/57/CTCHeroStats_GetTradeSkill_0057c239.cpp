@@ -64,7 +64,7 @@ class CHeroStatsDef { public:
     CFloatVector  TradeSkillForGuileLevel;                 // +0xF0
 };
 
-class CDefinitionManager { public:
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC
     const CHeroStatsDef* GetHeroStatsDef() const { return PHeroStatsDef; }
@@ -74,11 +74,16 @@ class CTCHeroExperience { public:
     unsigned long GetTrainableStatLevel(long stat) const;  // 0x006D6520
 };
 
-class CTCHeroStats { public:
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+class CTCHeroStats : public CTCBase { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
 
-    CDefinitionManager* GetDefinitionManager() const;  // 0x006869D0 (CTCBase)
     float GetTradeSkill() const;
 };
 
@@ -87,7 +92,7 @@ float CTCHeroStats::GetTradeSkill() const
     const CThing* thing = ParentThing;
     if (thing->HasTC(0x68)) {
         unsigned long level = thing->GetTC<const CTCHeroExperience>(0x68)->GetTrainableStatLevel(5);
-        const CHeroStatsDef* def = GetDefinitionManager()->GetHeroStatsDef();
+        const CHeroStatsDef* def = GetDefinitionManager().GetHeroStatsDef();
         if (level < def->TradeSkillForGuileLevel.size())
             return def->TradeSkillForGuileLevel[level];
         if (def->TradeSkillForGuileLevel.size() > 0)

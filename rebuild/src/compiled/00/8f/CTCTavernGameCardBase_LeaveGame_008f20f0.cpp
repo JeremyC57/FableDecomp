@@ -113,12 +113,18 @@ class CWorld { public:
     CCameraManagerSource* GetCameraSource() { return m_pCameraSource; }
 };
 
-class CTCTavernGame { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCTavernGame : public CTCBase { public:
     unsigned char _body04[0xf0 - 0x04];         // CTCBase + CTCTavernGame members (retail 0xF0)
     void LeaveGame();                           // 0x005EC650
     void KillThing(CThing* thing);              // 0x005E9A60
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
 };
 struct CTCTavernGameCardBase : CTCTavernGame {  // vtable 0x01288294
     unsigned char _pad_0xf0[0x38];
@@ -151,7 +157,7 @@ void CTCTavernGameCardBase::LeaveGame()
     SelectedCard = 0;
     HighlightedCard = 0;
     CGameCameraManager* camera;
-    GetWorld()->GetCameraSource()->GetCameraManager(&camera);
+    GetWorld().GetCameraSource()->GetCameraManager(&camera);
     camera->ReleaseScriptedControl();
     camera->ResetCamera();
 }

@@ -11,6 +11,7 @@
 // Shape: the top-tested wait loop of the landed CHTG_AmbushPoint::Main 0x00D73610 (distance test repeated at the
 // bottom, the 10.0f pushed before GetHero); the two literal names are implicit CCharString conversions built before
 // every other argument (right to left), the created creature is a named local destroyed after them.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -20,7 +21,7 @@ class C3DVector { public: float X, Y, Z; };
 class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
     unsigned char _body[8];
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
@@ -44,14 +45,19 @@ class CGameScriptInterface { public:                     // vtable 0x01260F0C (g
 struct CQ_SecretPassageScript;
 struct CQ_SunnyvaleMasterData;
 
-class CSP_NymphTrigger {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CSP_NymphTrigger : public CEntityScriptBase {
 public:
     void*                   __vftable;             // +0x00
     CGameScriptInterface*   Game;                  // +0x04
     CScriptThing            Me;                    // +0x08
     CQ_SecretPassageScript* ParentClass;           // +0x14
     CQ_SunnyvaleMasterData* PMasterData;           // +0x18
-    bool IsActiveThreadTerminating() const;        // 0x00F35B30 CEntityScriptBase
     void Main();
 };
 

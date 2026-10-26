@@ -14,11 +14,16 @@
 // Leaf: AIAction_CombatPerformActionAndWait
 class CThing;
 
-struct CBaseIntelligentPointer
-{
-    virtual void v00();
-    CThing* m_pItem;                                // +0x04
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
 struct CCountBlock                                  // CCountedPointer's shared block
@@ -82,7 +87,8 @@ class CThingCreatureBase
 { public:
     unsigned char _pad[0x100];
     CCreatureActionBase* CurrentAction;             // +0x100
-    bool IsPerformingAnyAction();                   // 0x006622A0
+public:
+    bool IsPerformingAnyAction() const;   // 0x006622A0
 };
 
 class CAIStateGroupBase

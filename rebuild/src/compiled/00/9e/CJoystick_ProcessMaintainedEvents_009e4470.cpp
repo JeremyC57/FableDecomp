@@ -1,16 +1,21 @@
 // CJoystick::ProcessMaintainedEvents(const CInputEvent*). Leaf: ProcessMaintainedEvents
 #include "engine/CJoystick.h"
 #include <stdlib.h>
-struct Vector2{float X,Y;Vector2(){}Vector2(const Vector2& b):X(b.X),Y(b.Y){}};
+class C2DVector{ public:float X,Y;C2DVector(){}C2DVector(const C2DVector& b):X(b.X),Y(b.Y){}};
 enum EInputEventType { RetailEventNone=0, JoystickButtonPressed=19, JoystickButtonHeld=20, JoystickButtonReleased=21 };
-struct InputEventNative {
+class CInputEvent { public:
  unsigned char Data[32];long DeviceType,DeviceNumber;EInputEventType Type;float CurrentTime,StartTime;
- InputEventNative();~InputEventNative();
- EInputEventType GetType()const;long GetJoystickButton()const;float GetJoystickButtonPressureFraction()const;Vector2 GetJoystickPosition()const;
- void SetAsJoystickButtonHeld(long,float,const Vector2&,double);
+ CInputEvent();~CInputEvent();
+ 
+public:
+    long GetJoystickButton() const;   // 0x00A03B90
+    float GetJoystickButtonPressureFraction() const;   // 0x00A03BA0
+    C2DVector GetJoystickPosition() const;   // 0x00A043A0
+    EInputEventType GetType() const;   // 0x00A03B40
+    void SetAsJoystickButtonHeld(long, float, const C2DVector&, double);   // 0x00A040D0
 };
 struct BaseClassNative{BaseClassNative();virtual ~BaseClassNative();};
-struct MaintainedEvent:BaseClassNative{InputEventNative Event;MaintainedEvent();virtual ~MaintainedEvent();};
+struct MaintainedEvent:BaseClassNative{CInputEvent Event;MaintainedEvent();virtual ~MaintainedEvent();};
 struct EventNode{EventNode* Next;EventNode* Prev;MaintainedEvent Value;};
 struct Iterator{EventNode* Node;Iterator(EventNode* p):Node(p){}Iterator(const Iterator& b):Node(b.Node){}};
 struct EventList {
@@ -23,13 +28,13 @@ struct EventList {
 // Retail list is a single sentinel pointer at D0C; donor list has extra size/allocator fields.
 struct JoystickNative {
  unsigned char Prefix[0xd0c];EventList MaintainedEventsList;
- void ProcessMaintainedEvents(const InputEventNative*);
+ void ProcessMaintainedEvents(const CInputEvent*);
 };
-void JoystickNative::ProcessMaintainedEvents(const InputEventNative* event){
+void JoystickNative::ProcessMaintainedEvents(const CInputEvent* event){
  if(event->GetType()==19){
   MaintainedEventsList.PushBack();
   MaintainedEvent& held=MaintainedEventsList.Back();
-  Vector2 position;position=event->GetJoystickPosition();
+  C2DVector position;position=event->GetJoystickPosition();
   held.Event.SetAsJoystickButtonHeld(event->GetJoystickButton(),event->GetJoystickButtonPressureFraction(),position,event->StartTime);
   held.Event.DeviceNumber=event->DeviceNumber;
  }else if(event->GetType()==21){
@@ -40,6 +45,6 @@ void JoystickNative::ProcessMaintainedEvents(const InputEventNative* event){
   }
  }
 }
-FABLE_STATIC_ASSERT(sizeof(InputEventNative)==52);
+FABLE_STATIC_ASSERT(sizeof(CInputEvent)==52);
 FABLE_STATIC_ASSERT(sizeof(MaintainedEvent)==56);
 FABLE_STATIC_ASSERT(offsetof(JoystickNative,MaintainedEventsList)==0xd0c);

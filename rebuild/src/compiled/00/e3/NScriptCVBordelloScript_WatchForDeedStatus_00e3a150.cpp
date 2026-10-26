@@ -19,10 +19,9 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
 };
 class CScriptThing { public:                                       // vtable 0x01238C8C, 12 bytes
-    void* _vptr;
     void* PImpData;
     void* PImpInfo;
-    ~CScriptThing();                                        // 0x004AA840
+    virtual ~CScriptThing();                                        // 0x004AA840
 };
 class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();

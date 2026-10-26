@@ -6,7 +6,7 @@
 //   landed CThingAICreature constructor 0x00831F80 names that vtable. Node = 0x10 bytes. Catalog label
 //   "ListWrapper_InsertElement" is descriptive.
 // Callees: malloc @ 0x00BFEA0E; CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, ::GetPItem() const
-//   @ 0x00A01B50, ::SetPItem(CBaseIntelligentItem*) @ 0x00A01B90.
+//   @ 0x00A01B50, ::SetPItem(CBaseObject*) @ 0x00A01B90.
 // Shape: STLport `insert(pos, x) { _Node* tmp = _M_create_node(x); n = pos._M_node; p = n->_M_prev; tmp->_M_next = n;
 //   tmp->_M_prev = p; p->_M_next = tmp; n->_M_prev = tmp; return tmp; }`; _M_create_node's placement copy runs the
 //   pointer's inline copy constructor (base ctor, derived vtable store, `SetPItem(x.GetPItem())`) behind the null
@@ -15,15 +15,16 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
 
 class CThingAICreature;
-class CBaseIntelligentItem;
+class CBaseObject;
 
 class CBaseIntelligentPointer {                     // 8 bytes: vptr + the pointee link
 public:
     virtual void v00();
-    CBaseIntelligentItem* PItem;                    // +0x04
+    CBaseObject* PItem;                    // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
-    CBaseIntelligentItem* GetPItem() const;         // 0x00A01B50
-    void SetPItem(CBaseIntelligentItem* item);      // 0x00A01B90
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50
+    void SetPItem(CBaseObject*);   // 0x00A01B90
 };
 
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // <CThingAICreature>: vtable 0x0123E7E0

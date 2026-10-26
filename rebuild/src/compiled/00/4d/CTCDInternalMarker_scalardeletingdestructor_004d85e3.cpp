@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCDInternalMarker_Destruct(void* marker);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCDInternalMarker_ScalarDeletingDestructor(void* marker, int, unsigned int flags)
 {
-    CTCDInternalMarker_Destruct(marker);
+    ((CTCBase*)(marker))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(marker);
+        operator delete(marker);
     return marker;
 }

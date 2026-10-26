@@ -100,8 +100,8 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
 };
 
 
-void __cdecl free(void*);   // 0x00BFEA14 (operator delete)
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
+long __fastcall GFROR13(unsigned long);   // 0x00497890
 
 struct CThingVector {                           // std::vector<CThing*> (first, last, end of storage)
     CThing** m_first;

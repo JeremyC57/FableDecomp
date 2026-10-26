@@ -11,7 +11,7 @@
 // loop are hoisted by VC into the three byte locals; the bit-count check is a 64-bit range test of blockSize * 8 that
 // returns without closing the timer.
 #include <string.h>
-double GetHighResTime();                                   // 0x009E1BC0
+double __fastcall GFGetTime();                                   // 0x009E1BC0
 extern double g_RangeDecompressTime;                       // 0x0143E970
 extern unsigned long g_RangeDecompressBytes;               // 0x0143E978
 extern const unsigned long g_RangeCompressorByteMasks[];   // 0x013AC944
@@ -47,11 +47,11 @@ struct CRangeCompressor {
 
 void CRangeCompressor::Decompress(const unsigned char* data, long count, long stride, void* dest)
 {
-    g_RangeDecompressTime -= GetHighResTime();
+    g_RangeDecompressTime -= GFGetTime();
     g_RangeDecompressBytes += count * stride;
     if (*data == 0) {
         memcpy(dest, data + 1, count * stride);
-        g_RangeDecompressTime += GetHighResTime();
+        g_RangeDecompressTime += GFGetTime();
         return;
     }
     ++data;
@@ -124,5 +124,5 @@ void CRangeCompressor::Decompress(const unsigned char* data, long count, long st
         column += blockSize;
         flags = *data++;
     }
-    g_RangeDecompressTime += GetHighResTime();
+    g_RangeDecompressTime += GFGetTime();
 }

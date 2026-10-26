@@ -17,8 +17,10 @@ class CPhysicsCollideResponse { public:
     float     Friction;                         // +0x18
 };
 class CWorldMap { public:
-    float GetGroundSizeZAt(const C3DVector& position);        // 0x0063A300
-    C3DVector GetGroundFaceNormalAt(const C3DVector& position); // 0x0063AB10
+public:
+    C3DVector GetGroundFaceNormalAt(const C3DVector&) const;   // 0x0063AB10
+public:
+    float GetGroundSizeZAt(const C3DVector&) const;   // 0x0063A300
 };
 class CTCPhysicsBase { public:
     virtual void v00();

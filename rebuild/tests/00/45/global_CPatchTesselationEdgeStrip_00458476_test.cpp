@@ -10,7 +10,14 @@ static int g_base = 0;
 // spy on the MSVCR71 free thunk (0x00BFEA14) the source calls; it never releases (test objects live on the stack)
 static int g_armed = 0;   // armed only around the call under test (CRT start-up/exit frees are ignored)
 extern "C" void __cdecl free(void* p_) { void* p = (void*)p_; if (!g_armed) return; if (p) g_deletes++; }
-void __fastcall CPatchTesselationEdgeStrip_base_dtor(CPatchTesselationEdgeStrip*) { g_base++; }
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();
+};
+CParentDefClassBase::~CParentDefClassBase()
+{
+     g_base++;
+}
 
 int main()
 {

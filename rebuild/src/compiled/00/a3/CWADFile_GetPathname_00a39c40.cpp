@@ -20,8 +20,13 @@ class CCharString { public:
     CWideString ToWideString() const;       // 0x0099E480
 };
 
-class CBankFileAsync { public:
-    CCharString GetEntrySymbol(unsigned long index);   // 0x009CC1D0
+class CBankFile
+{
+public:
+    CCharString GetEntrySymbol(unsigned long) const;   // 0x009CC1D0
+};
+
+class CBankFileAsync : public CBankFile { public:
 };
 
 struct CWADFile_Methods : CWADFile {

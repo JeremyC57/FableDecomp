@@ -17,10 +17,8 @@ struct CLongVector {                             // std::vector<long> (retail 12
     long* _M_end_of_storage;
 };
 class CPersistContext { public:
-    void Transfer(long& value);                  // 0x00431102
-    void Transfer(float& value);                 // 0x00431061
+    template <class T> void Transfer(T& value);                  // 0x00431102
     void Transfer(CLongVector& value);           // 0x00466A47
-    void Transfer(CRGBColour& value);            // 0x004595A3
 };
 class CTavernGameSpotTheAdditionDef { public:
     unsigned char _head[0x24];                   // CDefClassBase body after the vptr (links, index, flag bits)

@@ -10,6 +10,7 @@
 //   CScriptThing Me +8}, ParentClass +0x14 whose tracked script thing sits at +0x68).
 // Shape: the four waits are top-tested `while` loops (test repeated at the bottom) each followed by an IsDone check;
 //   the outer `do { } while (on screen)` restarts with a script frame; the closing IsDone result is unused.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);
@@ -90,14 +91,19 @@ struct CQ_HangingTreeGoodScript {
 };
 struct CQ_SunnyvaleMasterData;
 
-class CHTG_AmbushPointRear {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CHTG_AmbushPointRear : public CEntityScriptBase {
 public:
     void*                     __vftable;           // +0x00
     CGameScriptInterface*     Game;                // +0x04
     CScriptThing              Me;                  // +0x08
     CQ_HangingTreeGoodScript* ParentClass;         // +0x14
     CQ_SunnyvaleMasterData*   PMasterData;         // +0x18
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -105,33 +111,33 @@ void CHTG_AmbushPointRear::Main()
 {
     do {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         while (!IsDistanceBetweenThingsUnder(Me, ParentClass->m_trackedThing, 15.0f)) {
             Game->NewScriptFrame();
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
         }
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         while (!IsDistanceBetweenThingsOver(Me, ParentClass->m_trackedThing, 20.0f)) {
             Game->NewScriptFrame();
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
         }
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         while (Game->IsCameraPosOnScreen(Me.GetPos())) {
             Game->NewScriptFrame();
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
         }
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         Game->Pause(1.0f);
     } while (Game->IsCameraPosOnScreen(Me.GetPos()));
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     ParentClass->SpawnEnemies(Me.GetPos(), Me.GetDataString(), 4);
-    IsDone();
+    IsActiveThreadTerminating();
 }

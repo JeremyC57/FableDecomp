@@ -10,6 +10,7 @@
 //          stores), a frame loop on Me's virtual awareness test that bails out when the script is done, the nested
 //          `Game->GiveThingBestEnemyTarget(Me, Game->GetHero())` (the outer vtable fetched before the inner call) and a final
 //          update-until-done loop.
+namespace NScript { class CPredicateBase; }
 class CScriptThing { public:                              // 12 bytes: vptr + the counted implementation
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -17,7 +18,7 @@ class CScriptThing { public:                              // 12 bytes: vptr + th
     virtual bool IsAwareOfHero() const;            // slot 16 (+0x40)
     unsigned char _body[8];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
+    virtual ~CScriptThing();                               // 0x004AA840
 };
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -82,21 +83,32 @@ class CGameScriptInterface { public:
     virtual void v445(); virtual void v446(); virtual void v447(); virtual void v448(); virtual void v449(); virtual void v450();
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target);   // slot 451 (+0x70c)
 };
-struct CIsThingAlive {                              // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                              // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-class CDW5_Balv {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+
+class CDW5_Balv : public CEntityScriptBase {
 public:
     void*                 __vftable;               // +0x00
     CGameScriptInterface* Game;                    // +0x04
     CScriptThing          Me;                      // +0x08
     void*                 ParentClass;             // +0x14
     void*                 PMasterData;             // +0x18
-    void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -104,22 +116,22 @@ void CDW5_Balv::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->Update();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     while (!Me.IsAwareOfHero()) {
         Game->Update();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     for (;;) {
         Game->Update();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
 }

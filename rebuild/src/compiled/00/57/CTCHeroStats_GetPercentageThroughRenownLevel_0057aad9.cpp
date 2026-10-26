@@ -1,6 +1,6 @@
 // CTCHeroStats::GetPercentageThroughRenownLevel() const -- renown points earned in the current level as a fraction of that level's cost (0 outside the cost table)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057AAD9, 59 bytes.
-// Callee: CTCBase::GetDefinitions() @ 0x006869D0 (ParentThing's definition holder; +0xDC its CDefPointer<CHeroStatsDef>).
+// Callee: CTCBase::GetDefinitionManager() @ 0x006869D0 (ParentThing's definition holder; +0xDC its CDefPointer<CHeroStatsDef>).
 // Globals: 0.0f @ 0x0122DEDC.
 //
 // Shape: the level is range-checked signed (`test ecx,ecx ; jl`) and then unsigned against the cost vector's size
@@ -24,12 +24,18 @@ class CHeroStatsDef { public:
     CLongVector   RenownLevelCosts;            // +0xAC (PDB +0xB4)
 };
 
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;              // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
 
-struct CTCHeroStats_Retail {
+class CTCBase
+{
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+};
+
+struct CTCHeroStats_Retail : public CTCBase {
     void*         __vftable;                   // +0x00
     void*         ParentThing;                 // +0x04 CTCBase
     unsigned char _pad_0x08[0x68];
@@ -37,13 +43,12 @@ struct CTCHeroStats_Retail {
     long          RenownMaxLevel;              // +0x74 (PDB +0x7C)
     long          RenownPointsInLevel;         // +0x78 (PDB +0x80)
 
-    CDefinitionHolder* GetDefinitions() const; // 0x006869D0
     float GetPercentageThroughRenownLevel() const;
 };
 
 float CTCHeroStats_Retail::GetPercentageThroughRenownLevel() const
 {
-    const CHeroStatsDef* def = GetDefinitions()->PHeroStatsDef;
+    const CHeroStatsDef* def = GetDefinitionManager().PHeroStatsDef;
     if (RenownLevel >= 0 && (unsigned long)RenownLevel < def->RenownLevelCosts.size())
         return (float)RenownPointsInLevel / def->RenownLevelCosts[RenownLevel];
     return 0.0f;

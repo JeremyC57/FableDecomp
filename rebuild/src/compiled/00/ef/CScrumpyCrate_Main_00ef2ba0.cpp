@@ -10,6 +10,7 @@
 // Layout: Ego_r.pdb CScrumpyCrate (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14,
 // PMasterData +0x18 (neither used here).
 // Shape: the carry waits are `while (!(!x))` (retail's `test al,al ; setne`), the first carry tests plain `if (x)`.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -30,10 +31,16 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     virtual bool IsBeingCarriedBy(const CCharString& name) const;   // slot 63 (+0xfc) 0x004AAFE0
     void* PImp[2];
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    ~CScriptThing();                                   // 0x004AA840
+    virtual ~CScriptThing();                                   // 0x004AA840
 };
-struct CIsThingAlive {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CPredicateBase
+{
+public:
     virtual void v00();
+};
+}
+struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                  // 0x00E241B0
@@ -65,8 +72,9 @@ class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
-    void RegisterFilter(CIsThingAlive& filter);        // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
+public:
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 struct CScrumpyCrate : CEntityScriptBase {
     void* ParentClass;                                 // +0x14 CPersonalScript_EmptyScript*
@@ -78,7 +86,7 @@ void CScrumpyCrate::Main()
 {
     {
         CIsThingAlive filter(Me);
-        RegisterFilter(filter);
+        SetPredicate(filter);
     }
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())

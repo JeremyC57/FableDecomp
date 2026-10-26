@@ -5,10 +5,17 @@
 // Layout: PDB CReactionFrequencyTraitsArray (0x278 bytes) = { CReactionFrequencyTraits* LowHigh[2][79] }. Local model.
 // Shape: the nested index loops become two count-down loops over one walking element pointer (the outer counter lives
 //   in the dead value-argument slot, the inner in ebx). Speed-optimised (default) TU.
+#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
+#undef CDataOutputStream
+
+class CDataOutputStream : public CDataOutputStreamLayout
+{
+public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteLong(long value);                     // 0x00993EB0
 };
 
 class CReactionFrequencyTraits { public:
@@ -35,11 +42,11 @@ void CPersistTraits<CReactionFrequencyTraitsArray>::TransferBinaryOut(CDataOutpu
         for (int j = 0; j < 79; ++j) {
             CReactionFrequencyTraits* traits = value->LowHigh[i][j];
             if (traits != 0) {
-                out->WriteLong(traits->GetType());
+                out->WriteSLONG(traits->GetType());
                 traits->TransferBinaryOut(stream);
             }
             else
-                out->WriteLong(0);
+                out->WriteSLONG(0);
         }
     }
 }

@@ -10,7 +10,7 @@ struct CTextTreeNode {
     CInner inner;           // +0x10
 };
 
-extern "C" void __cdecl FreeTreeNode(void* p);
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 class LTextTreeWalkThrough {
 public:
@@ -23,7 +23,7 @@ void LTextTreeWalkThrough::BuildTreeArray(CTextTreeNode* node)
         this->BuildTreeArray(node->child);
         CTextTreeNode* nxt = node->next;
         node->inner.Destroy_004e41a1(0);
-        FreeTreeNode(node);
+        free(node);
         node = nxt;
     }
 }

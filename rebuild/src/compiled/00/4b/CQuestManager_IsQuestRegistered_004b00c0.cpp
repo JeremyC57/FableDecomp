@@ -13,12 +13,12 @@
 //   `find(...) != end` gives `setne bl`.
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     bool operator==(const char* text) const;       // 0x004115A0
 };
 class CCharString {
 public:
-    CBasicStringChar* PStringData;
+    CBasicString<char>* PStringData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
     long FindCharPos(char c) const;                // 0x0099E5A0

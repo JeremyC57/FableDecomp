@@ -1,6 +1,6 @@
 // C3DMesh2::InitialisePointers(unsigned long boneCount, bool) -- carve the mesh's pooled block into the bone transforms, keyframes, bones, materials and primitives, constructing the materials and primitives in place
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A896A0, 160 bytes (`ret 8`, the second argument unused). Callees:
-// CMovableResourceMemoryPool::GetPointerFromHandle 0x00A026B0, C3DMeshMaterial::C3DMeshMaterial 0x00ABF7B0,
+// CHandleBasedMemoryPool::GetPointerFromHandle 0x00A026B0, C3DMeshMaterial::C3DMeshMaterial 0x00ABF7B0,
 // C3DPrimitive2::C3DPrimitive2 0x00A90700.
 // Retail layout as the landed C3DMesh2 rows (8 bytes below the Ego_r PDB). Element sizes: CMatrix4x4 0x40,
 // C3DKeyframe 0x30, C3DBone2 0x3C, C3DMeshMaterial 0x30, C3DPrimitive2 0xA0. The materials and primitives are
@@ -14,9 +14,14 @@ inline void ConstructElements(T* elements, unsigned long count)
         new (elements) T;
 }
 
-class CMovableResourceMemoryPool { public:
+class CHandleBasedMemoryPool
+{
+public:
+    void* GetPointerFromHandle(long);   // 0x00A026B0
+};
+
+class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:
     unsigned long GetAllocatedSize(long handle);    // 0x00A026D0
-    void* GetPointerFromHandle(long handle);         // 0x00A026B0
 };
 
 class C3DMeshStats { public:

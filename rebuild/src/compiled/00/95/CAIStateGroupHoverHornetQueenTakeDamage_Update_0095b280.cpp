@@ -11,7 +11,26 @@
 //          key's home); the 0x114-byte action temporary fills the rest of the 0x118 frame.
 // Layout: engine/CAIStateGroup_HoverHornetQueenTakeDamage.h (bIsRangeAttack +0x1d, RangeAttackCount +0x20,
 //          FrameOfLastHit +0x24); PTarget (intelligent pointer) at +0x14 as in the landed IsRunnable 0x0095AA60.
+#define CAIStateGroup_HoverHornetQueenTakeDamage CAIStateGroup_HoverHornetQueenTakeDamageLayout
 #include "engine/CAIStateGroup_HoverHornetQueenTakeDamage.h"
+#undef CAIStateGroup_HoverHornetQueenTakeDamage
+
+class CAIStateGroupBase
+{
+public:
+    void Terminate();   // 0x008FCF40
+};
+class CAIStateGroup_EnemyCreatureBase : public CAIStateGroupBase
+{
+public:
+};
+class CAIStateGroup_HoverMovementBase : public CAIStateGroup_EnemyCreatureBase
+{
+public:
+};
+class CAIStateGroup_HoverHornetQueenTakeDamage : public CAIStateGroup_HoverMovementBase, public CAIStateGroup_HoverHornetQueenTakeDamageLayout
+{
+};
 
 class CTCBase;
 struct CInterfaceMap {
@@ -81,7 +100,6 @@ struct CAIStateGroupHoverHornetQueenTakeDamageMethods : CAIStateGroup_HoverHorne
     CBaseIntelligentPointer& PTarget() { return *(CBaseIntelligentPointer*)_pad_0x14; }
     CWorld* GetPWorld();                        // 0x008FCFC0
     long AIAction_CombatPerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DA40
-    void Terminate();                           // 0x008FCF40
     void Update();
 };
 

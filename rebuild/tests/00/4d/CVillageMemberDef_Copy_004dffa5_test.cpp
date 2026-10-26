@@ -1,6 +1,9 @@
 #include <cstdio>
 
-class CDefClassBase;
+class CDefClassBase {
+public:
+    CDefClassBase& operator=(const CDefClassBase& other);
+};
 
 struct CVillageMemberBase {
   void Duplicate(const CDefClassBase* src);
@@ -12,8 +15,11 @@ class CVillageMemberDef { public:
 };
 
 static int g_base_called = 0;
-void CVillageMemberBase::Duplicate(const CDefClassBase* src) {
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+{
+    const CDefClassBase* src = (const CDefClassBase*)&other_; (void)src;
   g_base_called = 1;
+    return *this;
 }
 
 void __fastcall CVillageMemberDef_Copy(CVillageMemberDef* self, void* edx, const CDefClassBase* src);

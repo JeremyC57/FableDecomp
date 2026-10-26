@@ -10,15 +10,16 @@ struct CIndexBuffer_00b6d480 {
     void Uninitialise();                           // 0x00AC1EE0
 };
 
-struct CVertexBufferWin32_00b6d480 {
+class CVertexBufferWin32 { public:
     unsigned char _body[0x34];
-    void Uninitialise();                           // 0x00A63200
+public:
+    void Uninitialise();   // 0x00A63200
 };
 
 class CEngineWaterRenderer { public:
     unsigned char               _pad0[0x68];
     CIndexBuffer_00b6d480       SeaBackgroundIndexBuffer;     // +0x68
-    CVertexBufferWin32_00b6d480 SeaBackgroundVertexBuffer;    // +0x7c
+    CVertexBufferWin32 SeaBackgroundVertexBuffer;    // +0x7c
     long                        SeaBackgroundVertexCount;     // +0xb0
     long                        SeaBackgroundPolyCount;       // +0xb4
     unsigned char               _pad1[0x276 - 0xb8];

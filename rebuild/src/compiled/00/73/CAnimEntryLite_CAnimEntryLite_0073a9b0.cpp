@@ -1,7 +1,7 @@
 // CAnimEntryLite::CAnimEntryLite(const CAnimationEntry& entry) -- cache the entry's bank index, transition time, delay time and flags
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073A9B0, length 61 bytes (+ int3 padding).
 // Callees: CAnimationEntry::GetAnimationTransitionInTime() @ 0x005DC1D0 (component type 1 value),
-// CAnimationEntry::GetAnimationDelayTime() @ 0x005DC1F0 (component type 2 value; the manifest label is the
+// CAnimationEntry::GetDelayTime() @ 0x005DC1F0 (component type 2 value; the manifest label is the
 // propagated "GetAnimationTransitionInTime"), CAnimationEntry::GetFlagsComponent(T**) @ 0x005E0380 (out pointer,
 // inlined GetAnimationFlags: its component's +0x08).
 // Layout: PDB CAnimEntryLite (0x10): BankIndex +0x00, DelayTime +0x04, TransitionTime +0x08, AnimFlags +0x0c.
@@ -19,7 +19,6 @@ class CAnimationEntry { public:
     long GroupName;                             // +0x08 CDefString
     void* Components;                           // +0x0c CIVCountedPointer<CAnimComponentMap>
     long GetAnimationTransitionInTime_005dc1d0() const;  // 0x005DC1D0
-    long GetAnimationDelayTime() const;         // 0x005DC1F0
     void GetFlagsComponent(CAnimComponentFlags** ppComponent) const;    // 0x005E0380 (out pointer)
     long GetAnimationFlags() const
     {
@@ -27,6 +26,8 @@ class CAnimationEntry { public:
         GetFlagsComponent(&pComponent);
         return pComponent->Flags;
     }
+public:
+    long GetDelayTime() const;   // 0x005DC1F0
 };
 
 struct CAnimEntryLite {
@@ -41,6 +42,6 @@ CAnimEntryLite::CAnimEntryLite(const CAnimationEntry& entry)
 {
     BankIndex = entry.BankIndex;
     TransitionTime = entry.GetAnimationTransitionInTime_005dc1d0();
-    DelayTime = entry.GetAnimationDelayTime();
+    DelayTime = entry.GetDelayTime();
     AnimFlags = entry.GetAnimationFlags();
 }

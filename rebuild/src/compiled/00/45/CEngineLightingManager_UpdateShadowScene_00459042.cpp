@@ -3,14 +3,16 @@
 // CEngineLightingManager::UpdateShadowScene @ 00451e59  __fastcall void (this, void* arg)
 
 struct Local4 { int v; void Fill_00459083(void* obj24, void* arg); };
-struct Obj28 { void Draw(int v); };
+class CDataOutputStream { public: public:
+    void WriteSLONG(long);   // 0x00993EB0
+};
 
 class CEngineLightingManager { public:
     char pad_18[0x18];
     int mode;               // +0x18  scene/shadow mode selector
     char pad_1c[0x24-0x1c];
     void* obj24;            // +0x24
-    Obj28* obj28;           // +0x28
+    CDataOutputStream* obj28;           // +0x28
 };
 
 extern "C" void __stdcall ProfileScope(unsigned int hash);
@@ -25,7 +27,7 @@ void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager*
         local.Fill_00459083(self->obj24, arg);
         break;
     case 3:
-        self->obj28->Draw(*(int*)arg);
+        self->obj28->WriteSLONG(*(int*)arg);
         break;
     }
 }

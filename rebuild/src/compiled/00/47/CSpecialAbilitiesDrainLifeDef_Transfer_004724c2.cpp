@@ -4,7 +4,7 @@ class CPersistContext { public:
     void PersistA_00464cbf(void* p);
     void PersistB_00466a47(void* p);
     void PersistC(void* p);
-    void PersistD(void* p);
+    template <class T> void Transfer(T& value);
 };
 class CSpecialAbilitiesDrainLifeDef { public:
     unsigned char _pad[0x3c];
@@ -22,5 +22,5 @@ void CSpecialAbilitiesDrainLifeDef::Transfer(CPersistContext& ctx)
     ctx.PersistB_00466a47(&f1);
     ctx.PersistA_00464cbf(&f2);
     ctx.PersistC(&f3);
-    ctx.PersistD(&f4);
+    ctx.Transfer(*(float*)(&f4));
 }

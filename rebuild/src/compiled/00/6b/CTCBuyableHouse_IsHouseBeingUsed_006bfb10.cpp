@@ -59,13 +59,14 @@ class HasBuildingAsHomeOrWork { public: CThingInterfaces* Building; HasBuildingA
 long __stdcall CountIfWork(SPeopleIter first, SPeopleIter last, HasBuildingAsWork pred);              // 0x006C1C70
 long __stdcall CountIfHomeOrWork(SPeopleIter first, SPeopleIter last, HasBuildingAsHomeOrWork pred);  // 0x006600EC
 
-struct CTCVillage_Model {
+class CTCVillage { public:
     unsigned char    _pad_0x00[0x2c];
     CPeopleList People;                          // +0x2c list<CIntelligentPointer<CThingAICreature>> node
 };
 
 class CTCVillageMember { public:
-    CTCVillage_Model* GetPVillage() const;                  // 0x007EE540
+public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540
 };
 
 struct CTCBuyableHouse_Model {
@@ -78,7 +79,7 @@ bool CTCBuyableHouse_Model::IsHouseBeingUsed(bool asWorkplace) const
 {
     CTCVillageMember* member;
     if (ParentThing->GetInterface(&member, 0x23)) {         // TC_VILLAGE_MEMBER
-        CTCVillage_Model* village = member->GetPVillage();
+        CTCVillage* village = member->GetPVillage();
         if (village) {
             long count;
             if (asWorkplace)

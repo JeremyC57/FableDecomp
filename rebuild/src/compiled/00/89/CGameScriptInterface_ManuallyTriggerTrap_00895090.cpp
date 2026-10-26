@@ -1,5 +1,9 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 
+class CTCTrapBase {
+public:
+    void ManualTrigger();   // 0x00788388
+};
 struct CTrapInterfaceEntry { int Key; void* Interface; };
 struct CTrapInterfaceMap {
     CTrapInterfaceEntry* Begin;
@@ -16,7 +20,6 @@ struct CGameScriptInterfaceTrapVTable {
     unsigned char _pad_0x00[0x2c];
     CTrapTargetView* (__fastcall *GetTarget)(CGameScriptInterface*);
 };
-extern "C" void __fastcall Iface_Do_00788388(void* self);
 
 bool __stdcall CGameScriptInterface_ManuallyTriggerTrap(CGameScriptInterface* self)
 {
@@ -29,7 +32,7 @@ bool __stdcall CGameScriptInterface_ManuallyTriggerTrap(CGameScriptInterface* se
         CTrapInterfaceEntry* end = map->End;
         if (entry == end || entry->Key > 0x7d)
             entry = end;
-        Iface_Do_00788388(entry->Interface);
+        ((CTCTrapBase*)(entry->Interface))->ManualTrigger();
         return true;
     }
     return false;

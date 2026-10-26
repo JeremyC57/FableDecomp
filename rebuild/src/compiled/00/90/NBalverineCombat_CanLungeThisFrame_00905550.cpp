@@ -60,7 +60,10 @@ class CThingCreatureBase { public:
     CDefClassBase* m_pDef;                      // +0x70
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};            // 0x0049D870
 extern long g_framesPerSecond;                  // 0x01375550
 extern long g_lastLungeFrame;                   // 0x013BB660
 
@@ -75,7 +78,7 @@ bool __fastcall NBalverineCombat::CanLungeThisFrame(const CThingCreatureBase& cr
     if (creature.m_pDef->GetSubDef(def))
         seconds = def->SecondsBetweenLunges;
     long fps = g_framesPerSecond;
-    if ((float)(GFGetCurrentFrame() - g_lastLungeFrame) > seconds * fps)
+    if ((float)(CWorld::GetFrame() - g_lastLungeFrame) > seconds * fps)
         return true;
     return false;
 }

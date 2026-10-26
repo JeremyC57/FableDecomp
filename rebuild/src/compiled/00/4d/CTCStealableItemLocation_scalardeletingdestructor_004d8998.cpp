@@ -1,10 +1,12 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCStealableItemLocation_Destruct(void* location);
-extern void __cdecl OperatorDelete(void* object);
+class CTCBase {
+public:
+    virtual ~CTCBase();   // 0x00686830
+};
 void* __fastcall CTCStealableItemLocation_ScalarDeletingDestructor(void* location, int, unsigned int flags)
 {
-    CTCStealableItemLocation_Destruct(location);
+    ((CTCBase*)(location))->CTCBase::~CTCBase();
     if (flags & 1)
-        OperatorDelete(location);
+        operator delete(location);
     return location;
 }

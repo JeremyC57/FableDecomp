@@ -73,8 +73,9 @@ class CTCCreatureModeManager { public:
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08
     bool IsInGlobalUpdateTCs;               // +0x09
-    bool AddMode(long modeType);            // 0x0073AE10
     void SetupDefaultMode();
+public:
+    bool AddMode(unsigned long);   // 0x0073AE10
 };
 
 void CTCCreatureModeManager::SetupDefaultMode()

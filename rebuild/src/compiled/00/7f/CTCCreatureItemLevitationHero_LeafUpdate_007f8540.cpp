@@ -34,7 +34,10 @@ class CThing { public:
     void Kill(bool checkLocked);            // 0x004C9B80
 };
 
-long GetWorldFrame();                       // 0x0049D870 (returns the global frame counter @ 0x013B89BC)
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};                       // 0x0049D870 (returns the global frame counter @ 0x013B89BC)
 
 class CTCCreatureItemLevitationBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -53,7 +56,7 @@ class CTCCreatureItemLevitationBase { public:
     bool HasTimedOut()
     {
         long lastAdd = LastAddFrame;
-        return GetWorldFrame() > lastAdd + 30;
+        return CWorld::GetFrame() > lastAdd + 30;
     }
     void PopItem()
     {

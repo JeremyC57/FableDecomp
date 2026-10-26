@@ -1,7 +1,7 @@
 // CTCCameraPointBuilding::IsLeafCriteriaMet() -- a building camera point applies when the observed thing stands in this point's building and the camera tools see the hero from the thing's focal point (entry/exit points never apply)
 // Leaf: IsLeafCriteriaMet
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075DAA0, length 229 bytes (+ int3 padding).
-// Callees: CTCBase::GetWorld() const @ 0x00686A80, CGameCameraManager::GetCameraManager(CCameraManager**) (virtual slot 10, +0x28;
+// Callees: CTCBase::PeekWorld() const @ 0x00686A80, CGameCameraManager::GetCameraManager(CCameraManager**) (virtual slot 10, +0x28;
 // world +0x34), CTCCameraPointBuilding::GetOwnerBuilding @ 0x0075D940, NCameraModes::CBase::GetObservedThing() const @ 0x0084F1B0 (the
 // camera manager's current mode, +0x98), CTCGraphicAppearance::GetCameraFocalPos(float) @ 0x004C12D0, CThing::GetPosition
 // @ 0x004C73D0, GetPBuildingThingOccupying(CThing*) @ 0x006989D0 (__fastcall), CTools::IsLineOfSightFiltered @ 0x00877C40 (the
@@ -50,17 +50,30 @@ class CWorld { public:
     CGameCameraManager* PCameraManager;         // +0x34
     CGameCameraManager* GetCameraManager() const { return PCameraManager; }
 };
-class CTCCameraPointBuilding {
+class CTCBase
+{
 public:
     virtual void v00();
+    virtual bool IsLeafCriteriaMet();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+class CTCCameraPointDefinitionBase : public CTCBase
+{
+public:
+};
+
+class CTCCameraPointBuilding : public CTCCameraPointDefinitionBase {
+public:
+    virtual bool IsLeafCriteriaMet();
+
+public:
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x40 - 0x08];
     bool    InMyBuilding;                       // +0x40
     bool    ExitPoint;                          // +0x41
     bool    StartPoint;                         // +0x42
-    CWorld* GetWorld() const;                   // 0x00686A80 (CTCBase)
     bool GetOwnerBuilding(const CThing** building);     // 0x0075D940
-    virtual bool IsLeafCriteriaMet();
 };
 
 const CThing* FindOwnerBuilding_0075d940(const CTCCameraPointBuilding* point);   // stand-in callee of the body below
@@ -78,7 +91,7 @@ bool CTCCameraPointBuilding::IsLeafCriteriaMet()
 {
     const CThing* thing;
     CCameraManager* camera;
-    if (GetWorld()->GetCameraManager()->GetCameraManager(&camera) && GetOwnerBuilding(&thing)) {
+    if (PeekWorld().GetCameraManager()->GetCameraManager(&camera) && GetOwnerBuilding(&thing)) {
         CThing* observed = camera->PCurrentMode->GetObservedThing();
         if (observed) {
             C3DVector focal = observed->PGraphicAppearance->GetCameraFocalPos(1.0f);

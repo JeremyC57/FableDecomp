@@ -1,7 +1,7 @@
 // NUISystem::CTable::Initialise() -- re-initialise a table: base initialise, rebuild its sprites, drop the sprite map and both separation vectors, and re-parent every child
-// Leaf: ?Initialise@CTable@NUISystem@@QAEXXZ (Ego_r.pdb UAEXXZ @ 0x005CB190; virtual, modelled non-virtual)
+// Leaf: ?Initialise@CTable@NUISystem@@UAEXXZ
 // Retail: Fable.exe @ 0x00550C60, 238 bytes, plain `ret`.
-// Body: only when PHorizontalSeparations and PVerticalSeparations are both set: CChangingStateComponent::Initialise()
+// Body: only when PHorizontalSeparations and PVerticalSeparations are both set: NUISystem::CChangingStateComponent::Initialise()
 // (0x0052C730, non-virtual base call); virtual slot 142 (+0x238, 0x00551EA0); Sprites.clear() (STLport _Rb_tree::clear:
 // _M_erase(root) 0x00553690, leftmost = rightmost = header, root = 0, count = 0); delete PHorizontalSeparations and
 // delete PVerticalSeparations (inline ~vector<unsigned long>: free(_M_start) 0x00BFEA14 when set; operator delete
@@ -84,7 +84,8 @@ public:
 };
 class CChangingStateComponent : public CComponent {
 public:
-    void Initialise();                                   // 0x0052C730
+public:
+    virtual void Initialise();   // 0x0052C730
 };
 class CTable : public CChangingStateComponent {
 public:

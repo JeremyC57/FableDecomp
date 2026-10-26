@@ -15,10 +15,20 @@ class CThing { public:
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    void*        m_vtable;
-    CBaseObject* m_pItem;
-    CThing* GetPItem() const;                               // 0x00A01B50
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CTCSummonSpell { public:
@@ -29,7 +39,7 @@ class CTCSummonSpell { public:
     unsigned char           _pad0a[2];
     void*                   PDef;                           // +0x0c CDefPointer<CSpecialAbilitiesSummonSpellDef const>
     bool                    JustReleased;                   // +0x10
-    CBaseIntelligentPointer Minion;                         // +0x11 CIntelligentPointer<CThingAICreature> (unaligned)
+    CIntelligentPointer<CThing> Minion;                         // +0x11 CIntelligentPointer<CThingAICreature> (unaligned)
     long                    FadeInTimer;                    // +0x19
     unsigned char           _pad1d[0x34 - 0x1d];
     bool                    CutSceneCancelled;              // +0x34

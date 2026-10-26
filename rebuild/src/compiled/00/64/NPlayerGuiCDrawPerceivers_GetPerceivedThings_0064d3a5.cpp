@@ -8,18 +8,29 @@
 // on entry and re-read from the member after the calls; the output vector pointer is reloaded from its argument slot for the call.
 class CThing;
 
-struct CBaseIntelligentPointer {
-    void* m_pItem;
-    void* m_pInfo;
-    const CThing* GetPItem();                      // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 struct CRetailThingPointerList {                   // VC6 Dinkumware list<CIntelligentPointer<const CThing>>: one sentinel pointer
-    struct node { node* next; node* prev; CBaseIntelligentPointer value; };
+    struct node { node* next; node* prev; CIntelligentPointer<CThing> value; };
     struct iterator {
         node* m_pNode;
         explicit iterator(node* n) : m_pNode(n) { }
-        CBaseIntelligentPointer& operator*() const { return m_pNode->value; }
+        CIntelligentPointer<CThing>& operator*() const { return m_pNode->value; }
         iterator& operator++() { m_pNode = m_pNode->next; return *this; }
         bool operator!=(const iterator& o) const { return m_pNode != o.m_pNode; }
     };

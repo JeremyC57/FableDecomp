@@ -20,7 +20,7 @@ extern "C" int __cdecl strcmp(const char* a, const char* b);
 long __fastcall Compare(const char* a, const char* b);      // 0x00411570
 
 #pragma pack(push, 1)
-struct CBasicStringChar {
+template <class T> class CBasicString { public:
     char*         PData;                                    // +0x00
     unsigned long StringLength;                             // +0x04
     unsigned long DataLength : 31;
@@ -28,7 +28,7 @@ struct CBasicStringChar {
     bool operator==(const char* text) const;                // 0x004115A0
 };
 class CCharStringData { public:
-    CBasicStringChar Data;
+    CBasicString<char> Data;
     long             NoRefs;
 };
 #pragma pack(pop)

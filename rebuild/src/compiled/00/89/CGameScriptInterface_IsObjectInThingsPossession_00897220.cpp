@@ -38,13 +38,15 @@ class CScriptThing { public:
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
 };
-struct CDefinitionManager_Retail { long GetDefGlobalIndexFromName(const CCharString& name); };   // 0x009AD410
+class CDefinitionManager { public: public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
+};   // 0x009AD410
 class CGameScriptInterface { public:
     virtual void v000();
     void*                       World;              // +0x04 (engine/CGameScriptInterface.h)
     void*                       Component;          // +0x08
     void*                       DisplayEngine;      // +0x0c
-    CDefinitionManager_Retail*  DefinitionManager;  // +0x10
+    CDefinitionManager*  DefinitionManager;  // +0x10
     bool IsObjectInThingsPossession(const CCharString& objectDefName, const CScriptThing& thing) const;
 };
 

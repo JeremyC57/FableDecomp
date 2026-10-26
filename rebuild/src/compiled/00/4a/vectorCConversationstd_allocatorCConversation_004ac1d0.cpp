@@ -9,7 +9,7 @@ struct Vec {
     Elem* last;
     void Destroy();
 };
-extern "C" void __cdecl Free2(void* p);   // 0x00bfea14
+extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 void Vec::Destroy() {
     Elem* p = this->first;
     Elem* end = this->last;
@@ -17,5 +17,5 @@ void Vec::Destroy() {
         p->Destroy(0);
         ++p;
     }
-    if (this->first) Free2(this->first);
+    if (this->first) free(this->first);
 }

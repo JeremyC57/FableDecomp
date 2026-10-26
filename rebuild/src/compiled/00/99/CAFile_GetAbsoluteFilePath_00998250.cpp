@@ -21,13 +21,13 @@
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 extern const char g_emptyLiteral_0129aaf4[];            // 0x0129AAF4: ""
 
-struct CBasicStringChar {                               // CBasicString<char>
+template <class T> class CBasicString { public:                               // CBasicString<char>
     char*         PData;                                // +0x00
     long          StringLength;                         // +0x04
     bool operator==(const char* text) const;            // 0x004115A0
 };
 class CCharStringData { public:
-    CBasicStringChar Data;                              // +0x00
+    CBasicString<char> Data;                              // +0x00
 };
 
 class CCharString

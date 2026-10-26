@@ -5,7 +5,7 @@
 //   the only caller of this body is CModeDragonFireBeam::OnDeactivate (0x008DBB03). The catalog label
 //   "CCreatureAction_CastWillReclaimUndeadFollower::PerformAction" is propagated. No engine header exists.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CVectorMap::LowerBound @ 0x0040F020,
-//          CTCDParticleEmitter::FadeOrKill @ 0x006E05F0 (manifest label "EnterTimelineEnd" is propagated).
+//          CTCDParticleEmitter::EnterTimelineEnd @ 0x006E05F0 (manifest label "EnterTimelineEnd" is propagated).
 // Shape: the member's address is taken once (esi), the bool store is scheduled right after it; then the
 //   FadeOrKillEffect body of 0x0072ABD0 (IS_THING_ALIVE, a null-default interface 0x4b lookup into edi, the emitter
 //   call made even on null).
@@ -38,15 +38,26 @@ class CThing { public:
     }
 };
 
-struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + item
-    void*   __vftable;                      // +0x00
-    CThing* m_pItem;                        // +0x04
-    CThing* GetPItem() const;               // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: 
+public:
+    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
+public:
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
+};
 
-inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
         if (!(p.GetPItem()->m_flags91 & 1))
@@ -56,7 +67,8 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 class CTCDParticleEmitter { public:                // interface type 0x4b component
-    void FadeOrKill();                      // 0x006E05F0
+public:
+    void EnterTimelineEnd();   // 0x006E05F0
 };
 
 
@@ -77,7 +89,7 @@ void CModeDragonFireBeam::KillBeamEffect()
     if (IS_THING_ALIVE(effect)) {
         CTCDParticleEmitter* emitter = 0;
         effect.GetPItem()->GetTC(&emitter, 0x4b);
-        emitter->FadeOrKill();
+        emitter->EnterTimelineEnd();
     }
 }
 }

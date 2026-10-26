@@ -1,13 +1,15 @@
 #pragma optimize("s",on)
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();   // 0x00430300
+};
 class CSpecialAbilitiesGhostSwordDef { public: void* vftable; };
-extern void __fastcall CSpecialAbilitiesGhostSwordDef_dtor(CSpecialAbilitiesGhostSwordDef* def);
-extern void operator_delete_stub(void* p);
 
 void* __fastcall CSpecialAbilitiesGhostSwordDef_scalar_deleting_destructor(CSpecialAbilitiesGhostSwordDef* def, int edx, unsigned int flags) {
     (void)edx;
-    CSpecialAbilitiesGhostSwordDef_dtor(def);
+    ((CParentDefClassBase*)(def))->CParentDefClassBase::~CParentDefClassBase();
     if (flags & 1) {
-        operator_delete_stub(def);
+        operator delete(def);
     }
     return def;
 }

@@ -64,10 +64,21 @@ class CWorld { public:
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
 class CAIBrain { public:
@@ -84,10 +95,10 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
-    CBaseIntelligentPointer PPub;               // +0x14 CIntelligentPointer<CThingBuilding>
-    CBaseIntelligentPointer PBar;               // +0x1c CIntelligentPointer<CThingObject>
-    CBaseIntelligentPointer PTable;             // +0x24 CIntelligentPointer<CThingObject>
-    CBaseIntelligentPointer PBarman;            // +0x2c CIntelligentPointer<CThingAICreature>
+    CIntelligentPointer<CThing> PPub;               // +0x14 CIntelligentPointer<CThingBuilding>
+    CIntelligentPointer<CThing> PBar;               // +0x1c CIntelligentPointer<CThingObject>
+    CIntelligentPointer<CThing> PTable;             // +0x24 CIntelligentPointer<CThingObject>
+    CIntelligentPointer<CThing> PBarman;            // +0x2c CIntelligentPointer<CThingAICreature>
     bool GetPaymentRequestReplyMessage();
 };
 long TmplSink_00947e20(const void* self, long seen, CMessageEvent** ppEvent);   // stand-in: the work AIAction_WaitForMessage does

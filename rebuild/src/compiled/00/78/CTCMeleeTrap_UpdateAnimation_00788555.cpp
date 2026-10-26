@@ -27,8 +27,9 @@ struct CAnimFrameTime {                                 // 12 bytes
 class CAnimateThing { public:
     void UpdateFrameLogic(const CAnimFrameTime& time);  // 0x0070E8B0
 };
-struct CTCAnimation {                                   // interface 0x5a
-    CAnimateThing& GetAnimation();                      // 0x0070B460
+class CTCAnimationComplex { public:                                   // interface 0x5a
+public:
+    CAnimateThing& GetAnimation();   // 0x0070B460
 };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -70,8 +71,15 @@ class CFadeInFadeOutBase { public:                             // 0x1c
     unsigned long ToColour;                             // +0x18 CRGBColour
     bool IsOpen();                                      // 0x0048DA30
 };
-class CTCTrapBase { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70
+};
+
+class CTCTrapBase : public CTCBase { public:
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x38 - 0x08];
     CFadeInFadeOutBase TrapOpener;                      // +0x38 (PDB +0x44)
@@ -80,7 +88,6 @@ class CTCTrapBase { public:
     bool          Triggered;                            // +0x59
     bool          LastTriggerOnProximity;               // +0x5a
     long          TrapType;                             // +0x5c ETrapType
-    CWorld* GetWorld();                                 // 0x00686A70 (CTCBase)
     void Reset();                                       // 0x00787BF1
 };
 struct CTCMeleeTrap : CTCTrapBase {
@@ -93,8 +100,8 @@ struct CTCMeleeTrap : CTCTrapBase {
 void CTCMeleeTrap::UpdateAnimation()
 {
     CThing* thing = ParentThing;
-    CAnimFrameTime time(GetUpdateTimeForThing(thing, GetWorld()));
-    CAnimateThing& animation = ParentThing->PeekTC<CTCAnimation>(0x5a)->GetAnimation();
+    CAnimFrameTime time(GetUpdateTimeForThing(thing, (&GetWorld())));
+    CAnimateThing& animation = ParentThing->PeekTC<CTCAnimationComplex>(0x5a)->GetAnimation();
     if (!PlayingContinuous && Triggered) {
         if (TrapOpener.IsOpen()) {
             if (TrapType == 2)

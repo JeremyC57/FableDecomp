@@ -10,13 +10,20 @@
 // second vtable 0x01257A84; CTCInventoryStats' destructor stores the CBase vtable 0x0123A3E0 at +0x130); slot 3 of the
 // map's copy (0x005FA590) returns the byte at map+0x240, the CBase default (0x004D2E41) returns true. The flag byte
 // at +0xD5 of the display engine is named from use. Local model: no engine header for CTCInventoryMap / CBase.
-class CDisplayEngine { public:
+class CWorld { public:
     unsigned char _pad_0x00[0xd5];
     unsigned char m_teleportAllowed;          // +0xD5 (name from use)
 };
 
-struct CTCInventoryBase_Retail {              // primary base, vptr at +0; retail size 0x130
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+};
+
+struct CTCInventoryBase_Retail : public CTCBase {              // primary base, vptr at +0; retail size 0x130
     unsigned char _body[0x130 - 4];
 };
 
@@ -30,13 +37,12 @@ class CBase { public:                                // secondary base at +0x130
 }
 
 class CTCInventoryMap : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
-    CDisplayEngine* GetDisplayEngine();       // 0x00686A80
     bool IsTeleportValid();
 };
 
 bool CTCInventoryMap::IsTeleportValid()
 {
-    if (GetDisplayEngine()->m_teleportAllowed && !IsBlocked())
+    if (PeekWorld().m_teleportAllowed && !IsBlocked())
         return true;
     return false;
 }

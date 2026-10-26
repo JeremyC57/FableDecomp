@@ -8,8 +8,9 @@
 // CScriptThing::IsAlive.
 // Layout: the CEntityScriptBase family (as the landed CHTE_Executioner::Main 0x00D6A0D0): Game +4, CScriptThing Me +8.
 // Shape: the BeardyBaldy (0x00E503D0) wait: the name is an implicit conversion; the handle has THREE destructor sites (the
-// return inside the loop, a second `if (IsDone()) return;` after it, and the end): VC7.1 expands the inline destructor at
+// return inside the loop, a second `if (IsActiveThreadTerminating()) return;` after it, and the end): VC7.1 expands the inline destructor at
 // the first site only and calls the out-of-line ~CScriptThing (0x004AA840) at the other two, which tail-merge.
+namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
@@ -82,12 +83,17 @@ class CGameScriptInterface { public:
     virtual void RemoveThing(const CScriptThing& thing, bool a, bool b);   // slot 108 (+0x1b0)
 };
 
-class CTrophiesBriarTrophy {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+class CTrophiesBriarTrophy : public CEntityScriptBase {
 public:
     void*                 __vftable;                        // +0x00
     CGameScriptInterface* Game;                             // +0x04
     CScriptThing          Me;                               // +0x08
-    bool IsDone();                                          // 0x00F35B30
     void Main();
 };
 
@@ -96,10 +102,10 @@ void CTrophiesBriarTrophy::Main()
     CScriptThing briar = Game->GetThingWithScriptName("BriarRose");
     while (briar.IsAlive()) {
         Game->Update();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->RemoveThing(Me, false, true);
 }

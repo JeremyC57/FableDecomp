@@ -19,7 +19,9 @@ class CThing { public:
     unsigned char Dead : 1;                      // +0x91 bit 0
 };
 class CPlayer { public: CThing* GetHeroThing(); };                   // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };          // 0x00449970
+class CPlayerManager { public: public:
+    CPlayer& GetMainPlayer();   // 0x00449970
+};          // 0x00449970
 class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
 extern CQuestManager* g_pQuestManager;           // 0x013B89FC
 
@@ -31,7 +33,7 @@ class CWorld : public CWorldDonor {
 
 bool CWorld::AutoSaveInternal(const CWideString& name, bool b)
 {
-    CThing* hero = PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
     if (hero && !hero->Dead && !AutoSaveLocked)
     {
         AutoSaveLocked = true;

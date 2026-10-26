@@ -103,6 +103,8 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
+    void Terminate();   // 0x008FCF40
 };
 
 
@@ -127,7 +129,6 @@ struct CAIStateGroup_Drunk : CAIStateGroupBase {
     long FrameToNextTalkToSelf;                     // +0x14
     unsigned long* GetPWorldSeed();                 // 0x008FCFD0
     long AIAction_DoNothing();                      // 0x0097E200 (EAIActionReturn)
-    void Terminate();                               // 0x008FCF40
     void TalkToSelfUpdate();
 };
 

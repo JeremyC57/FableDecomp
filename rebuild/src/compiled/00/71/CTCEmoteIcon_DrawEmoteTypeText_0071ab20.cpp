@@ -1,5 +1,5 @@
 // CTCEmoteIcon::DrawEmoteTypeText(const CEnginePrimitivePrepareInfo& info) -- within 24 units of the camera, draw the emote text in white half a unit above the thing's static focal point, scaled 1.4x the emote scale
-// Retry 10b (combined getter sweep, FIXES B-15): the graphic appearance and the emote font are read through inline getters (`ParentThing->GetGraphicAppearance()`, `GetGameSubsystem()->GetEmoteFont()`); plain member reads give the parked register difference.
+// Retry 10b (combined getter sweep, FIXES B-15): the graphic appearance and the emote font are read through inline getters (`ParentThing->GetGraphicAppearance()`, `PeekComponent()->GetEmoteFont()`); plain member reads give the parked register difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071AB20, 244 bytes (+ int3 padding), `ret 4`.
 // Callees: CTCBase::GetCamera @ 0x00686A80 (`[g_pMainGameComponent]+0x24`, the world's current camera; manifest
 //   "CViewBase::GetDisplayEngine" is propagated), CThing::GetPosition @ 0x004C73D0, the camera's virtual slot 8 (+0x20,
@@ -54,7 +54,7 @@ class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CEnginePrimitiveRenderer* PRenderer;        // +0x34
 };
-class CCamera { public:
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual C3DVector GetPosition() const;      // slot 8 (+0x20)
@@ -75,28 +75,34 @@ class CMainGameComponent { public:
     CFontBank* EmoteFont;                       // +0x16144
     CFontBank* GetEmoteFont() const { return EmoteFont; }
 };
-class CTCEmoteIcon { public:
+class CTCBase
+{
+public:
     virtual void v00();
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60
+};
+
+class CTCEmoteIcon : public CTCBase { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
     long        ActiveTimer;                    // +0x0c
     CWideString EmoteText;                      // +0x10
     long        EmoteIcon;                      // +0x14
     float       EmoteScale;                     // +0x18
-    const CCamera* GetCamera() const;           // 0x00686A80 (CTCBase)
-    CMainGameComponent* GetGameSubsystem();     // 0x00686D60 (CTCBase)
     void DrawEmoteTypeText(const CEnginePrimitivePrepareInfo& info);
 };
 
 void CTCEmoteIcon::DrawEmoteTypeText(const CEnginePrimitivePrepareInfo& info)
 {
-    const CCamera* camera = GetCamera();
+    const CWorld* camera = (&PeekWorld());
     const C3DVector& pos = ParentThing->GetPosition();
     if ((camera->GetPosition() - pos).GetLengthSquared() < 576.0f) {
         C3DVector focal;
         if (ParentThing->GetGraphicAppearance()->GetStaticFocalPosIfLoaded(&focal)) {
             focal.Z += g_EmoteTextHeight;
-            CFontBank* font = GetGameSubsystem()->GetEmoteFont();
+            CFontBank* font = PeekComponent().GetEmoteFont();
             CEnginePrimitiveText text(ParentThing->UID, focal, EmoteScale * 1.4f, EmoteText, *font,
                                       CRGBColour(255, 255, 255, 255), true, 0);
             info.PRenderer->AddPrimitive(text);

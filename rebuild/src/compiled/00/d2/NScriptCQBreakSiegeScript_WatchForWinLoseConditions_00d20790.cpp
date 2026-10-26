@@ -117,10 +117,12 @@ class CGameScriptInterface { public:                       // the quest's game s
     virtual void EntitySetAsKillable(const CScriptThing& thing, bool a, bool b) const;   // slot 517 (+0x814) EntitySetAsKillable
 };
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
+}   // namespace NScript (CScriptBase is global in retail)
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
+namespace NScript {
 class CQ_BreakSiegeScript : public CScriptBase {
 public:
     CGameScriptInterface* Game;                         // +0x40

@@ -5,8 +5,7 @@
 // The +0x0 callee is a polymorphic class destructor, so this is a derived class's destructor body;
 // the class itself is not attributed and is named by address.
 class CBaseClass { public:                         // vtable 0x01231710 (.?AVCBaseClass@@)
-    void* _vptr;
-    ~CBaseClass();                          // 0x0099A2E0
+    virtual ~CBaseClass();                          // 0x0099A2E0
 };
 class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;

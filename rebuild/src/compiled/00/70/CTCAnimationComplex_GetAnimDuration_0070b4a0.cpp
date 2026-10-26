@@ -14,7 +14,8 @@ class C3DAnimationInfo { public:
 };
 
 class CMeshDataBank { public:
-    C3DAnimationInfo* GetAnimation(long index);   // 0x00A242C0
+public:
+    const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
 
 class CWorld { public:
@@ -30,7 +31,8 @@ class CTCBase { public:                               // engine/CTCBase.h layout
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
     bool    IsInGlobalUpdateTCs;               // +0x09
-    const CWorld& PeekWorld() const;           // 0x00686A80
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 
 class CTCAnimationComplex : public CTCBase { public:
@@ -42,7 +44,7 @@ float CTCAnimationComplex::GetAnimDuration(long animIndex) const
 {
     if (animIndex) {
         CMeshDataBank* bank = PeekWorld().PMainMeshBank;
-        return bank->GetAnimation(animIndex)->Duration;
+        return bank->PeekAnimation(animIndex)->Duration;
     }
     return 0.0f;
 }

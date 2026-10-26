@@ -12,7 +12,8 @@ class CPlayer { public:
     bool HasMode(long mode);                        // 0x00634160
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                       // 0x00449970
+public:
+    CPlayer& GetMainPlayer();   // 0x00449970
 };
 class CEngine { public:
     unsigned char _pad[0x1c];
@@ -116,7 +117,7 @@ __declspec(noinline) void CGameCameraManager::SetCameraManagerDef(const CDefPoin
 #pragma auto_inline(on)
 void CGameCameraManager::RemoveCombatCameraMode()
 {
-    if (!g_pEngine->m_pPlayerManager->GetMainPlayer()->HasMode(0x2f)) {
+    if (!g_pEngine->m_pPlayerManager->GetMainPlayer().HasMode(0x2f)) {
         CDefPointer<CCameraManagerDef> def;
         World->m_pDefinitionManager->GetDef(PCameraManagerSet->MainCameraManagerDef, def);
         SetCameraManagerDef(def);

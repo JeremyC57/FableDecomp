@@ -11,7 +11,10 @@ class CMessageEvent { public:                             // PDB layout (0x58 by
     unsigned char _pad3c[0x1c];
 };
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
-long __fastcall GetCurrentTime_0049d870();         // 0x0049D870
+class CWorld {
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};         // 0x0049D870
 
 struct SMessageNode {                              // the STLport-style list node: next, prev, then the event at +8
     SMessageNode* m_pNext;
@@ -44,7 +47,7 @@ void CMessageEventManager::Update()
     SMessageNode* node = Messages.m_pHead->m_pNext;
     while (node != Messages.m_pHead) {
         CMessageEvent* event = &node->m_value;
-        if (event->Lifespan != 0 && event->TimeStamp + event->Lifespan < (unsigned long)GetCurrentTime_0049d870())
+        if (event->Lifespan != 0 && event->TimeStamp + event->Lifespan < (unsigned long)CWorld::GetFrame())
             node = Messages.Erase(node);
         else
             node = node->m_pNext;

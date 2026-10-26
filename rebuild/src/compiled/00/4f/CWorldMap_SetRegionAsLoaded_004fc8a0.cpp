@@ -30,7 +30,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
+namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 
 class CRegion { public: unsigned char _body[0x58]; };
 class CMiniMapDisplay { public: void InitialiseOnRegionLoad(const CRegion& region); };   // 0x0082BA00
@@ -50,11 +50,11 @@ void CWorldMap::SetRegionAsLoaded(long region, const CCharString& name)
     LoadedRegion = region;
     {
         CCharString text("SetRegionAsLoaded: Initialise MiniMap");
-        DisplayProgress(text, -1.0f, false, false);
+        NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
     }
     g_pPlayerGui->GetPMiniMapDisplay()->InitialiseOnRegionLoad(Regions[LoadedRegion]);
     {
         CCharString text("SetRegionAsLoaded: Initialise MiniMap End");
-        DisplayProgress(text, -1.0f, false, false);
+        NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
     }
 }

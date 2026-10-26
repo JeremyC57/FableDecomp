@@ -45,7 +45,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  CScriptThing() { }
  CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
  CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
- ~CScriptThing();                                       // 0x004AA840
+ virtual ~CScriptThing();                                       // 0x004AA840
  CScriptThing& operator=(const CScriptThing& other);    // 0x008AB980
 };
 #include "engine/CGameScriptInterface.h"
@@ -1123,12 +1123,17 @@ class CCounter { public:                                    // Ego_r.pdb CCounte
  bool operator>(float seconds) const;               // 0x00D90670
  CCounter& operator=(float seconds);                // 0x00D90550
 };
-struct CHenchmanComment {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CHenchmanComment : public CEntityScriptBase {
  void* VTable; GameCalls* Game; CScriptThing Me;
  CV_BodyGuardScript* ParentClass;                    // +0x14
  void* PMasterData;                                  // +0x18
  std::vector<CScriptThing, std::allocator<CScriptThing> > HenchmanVector;   // +0x1c
- bool IsActiveThreadTerminating();                  // 0x00F35B30
  void Main();
 };
 void CHenchmanComment::Main()

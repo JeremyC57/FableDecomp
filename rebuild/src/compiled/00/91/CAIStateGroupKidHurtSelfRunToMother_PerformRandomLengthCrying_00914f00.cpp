@@ -26,9 +26,8 @@ class CThing { public:
     CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
 };
 class CCreatureActionBase { public:
-    void* __vftable;
     unsigned char _body[0xa4];                  // +0x04..+0xa7
-    ~CCreatureActionBase();                     // 0x00693EF0
+    virtual ~CCreatureActionBase();                     // 0x00693EF0
 };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];                  // +0xa8..+0xb3

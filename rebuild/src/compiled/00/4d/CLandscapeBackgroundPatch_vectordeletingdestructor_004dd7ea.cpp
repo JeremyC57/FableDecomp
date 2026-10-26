@@ -14,7 +14,6 @@
 typedef unsigned int uint;
 
 // operator delete @ 0xbfe9bc
-extern void __cdecl operator_delete(void* p);
 
 class CLandscapeBackgroundPatch
 { public:
@@ -29,6 +28,6 @@ void* CLandscapeBackgroundPatch::VectorDeletingDtor(uint flags)
 {
     this->ScalarDtor();
     if (flags & 1)
-        operator_delete(this);
+        operator delete(this);
     return this;
 }

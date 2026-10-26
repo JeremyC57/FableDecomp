@@ -12,6 +12,7 @@
 // Layout (retail bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14, +0x1c mode, +0x20
 //   state, +0x2c timer index, +0x30 health bar id; parent flag +0x5a.
 #include <string.h>
+namespace NScript { class CPredicateBase; }
 class CCharStringData { public:
     char*         PData;
     unsigned long Length;
@@ -140,7 +141,13 @@ struct CTraderParent {
     unsigned char _pad00[0x5a];
     bool          LongInfection;                             // +0x5a
 };
-struct CTraderScript {
+class CEntityScriptBase
+{
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30
+};
+
+struct CTraderScript : public CEntityScriptBase {
     void*                       __vftable;                   // +0x00
     CGameScriptInterface_Calls* Game;                        // +0x04
     CScriptThing                Me;                          // +0x08
@@ -151,7 +158,6 @@ struct CTraderScript {
     long                        _24, _28;                    // +0x24
     long                        Timer;                       // +0x2c
     long                        HealthBar;                   // +0x30
-    bool IsInterrupted();                                    // 0x00F35B30
     void HandleTrader(long state);
 };
 
@@ -160,32 +166,32 @@ void CTraderScript::HandleTrader(long state)
     State = state;
     if (state != 2)
         return;
-    if (IsInterrupted())
+    if (IsActiveThreadTerminating())
         return;
     Game->EntityFollowThing(Me, Game->GetHero(), 3.0f, true);
     Game->SetEntityAsRegionFollowing(Game->GetHero(), Me, true);
     Game->DisplayQuestInfo(true);
     if (Me.GetDataString() == "INFECTED") {
-        if (IsInterrupted())
+        if (IsActiveThreadTerminating())
             return;
         HealthBar = Game->AddQuestInfoBarHealth(Me, CRGBColour(255, 0, 0, 255), "HUD_QUEST_ICON_TRADER", 1.0f);
         Mode = 1;
         if (ParentClass->LongInfection) {
-            if (IsInterrupted())
+            if (IsActiveThreadTerminating())
                 return;
             g_pThingManager_0143e8f8->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTimeLong);
         } else {
-            if (IsInterrupted())
+            if (IsActiveThreadTerminating())
                 return;
             g_pThingManager_0143e8f8->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTime);
         }
     } else if (Me.GetDataString() == "SCARED") {
-        if (IsInterrupted())
+        if (IsActiveThreadTerminating())
             return;
         HealthBar = Game->AddQuestInfoBarHealth(Me, CRGBColour(255, 0, 0, 255), "HUD_QUEST_ICON_TRADER_HAT_01", 1.0f);
         Game->EntitySetAsScared(Me, true);
     } else if (Me.GetDataString() == "FRIENDLY") {
-        if (IsInterrupted())
+        if (IsActiveThreadTerminating())
             return;
         HealthBar = Game->AddQuestInfoBarHealth(Me, CRGBColour(255, 0, 0, 255), "HUD_QUEST_ICON_TRADER_HAT_02", 1.0f);
     }

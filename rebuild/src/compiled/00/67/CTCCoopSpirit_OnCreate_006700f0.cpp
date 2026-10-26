@@ -19,18 +19,24 @@ class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;                             // +0x8c
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                                       // +0x04
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
     CBaseIntelligentPointer();                           // 0x00A01B10
-    ~CBaseIntelligentPointer();                          // 0x00A01C10
-    CThing* GetPItem() const;                            // 0x00A01B50
-    void SetPItem(CThing* item);                         // 0x00A01B90
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+public:
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 template <class T> class CDefPointer { public:
     T* Object;
@@ -90,14 +96,14 @@ class CTCCoopSpirit : public CTCBase { public:
     C3DVector                         MovementVector;    // +0x18
     CPlayer*                          Master;            // +0x24
     CDefPointer<const CCoopSpiritDef> PCoopSpiritDef;    // +0x28
-    CIntelligentPointerThing          PParticleEmitter;  // +0x2c
+    CIntelligentPointer<CThing>          PParticleEmitter;  // +0x2c
     void OnCreate();
 };
 
 void CTCCoopSpirit::OnCreate()
 {
     {
-        PParticleEmitter = CIntelligentPointerThing(0);
+        PParticleEmitter = CIntelligentPointer<CThing>(0);
     }
     CTCBase::OnCreate();
     MovementVector = C3DVector(0, 0, 0);

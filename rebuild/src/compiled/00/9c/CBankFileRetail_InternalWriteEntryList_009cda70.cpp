@@ -1,7 +1,7 @@
 // CBankFile::InternalWriteEntryList(CDataOutputStream& stream) -- write the entry list: count the written entries per data type (and the furthest data end), write the per-type counts, then one record per written entry (index, type, size, offset, state CRC, symbol, checksum, filenames, info bytes); record the information size and file size, return the entry count
 // Leaf: InternalWriteEntryList
 // Retail 0x009CDA70, 1248 bytes, `ret 4`.
-// Callees: CDataOutputStream::WriteULong 0x00993EA0, WritePresizedString 0x00995A80, the stream's virtual slots 2 (+0x08,
+// Callees: CDataOutputStream::WriteULONG 0x00993EA0, WritePresizedString 0x00995A80, the stream's virtual slots 2 (+0x08,
 //   GetPosition) and 4 (+0x10, Write(data, size)); CPackedUIntArray::operator[] 0x00A629F0; map<unsigned long, unsigned
 //   long> insert_unique 0x00431363 / operator[] 0x00553E60 / _M_erase 0x0042FE07; malloc 0x00BFEA0E, free 0x00BFEA14;
 //   CCharString(const char*, long) 0x0099EBF0 / copy 0x0099EC30 / ~ 0x0099EAE0 ("(Unknown)" 0x0129A03C).
@@ -25,8 +25,9 @@ class CDataOutputStream { public:
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
     virtual void v03();
     virtual void Write(const void* data, long size);   // slot 4 (+0x10)
-    void WriteULong(unsigned long value);              // 0x00993EA0
     void WritePresizedString(const CCharString& s);    // 0x00995A80
+public:
+    void WriteULONG(unsigned long);   // 0x00993EA0
 };
 struct CByteVector {                                   // CArray<char> (STLport vector, 12 bytes)
     char* _M_start;
@@ -220,30 +221,30 @@ unsigned long CBankFile_Retail::InternalWriteEntryList(CDataOutputStream& stream
                 maxIndex = i;
         }
     }
-    stream.WriteULong(typeCounts._M_node_count);
+    stream.WriteULONG(typeCounts._M_node_count);
     for (SULongNode* it = typeCounts._M_header->left; it != typeCounts._M_header; it = CULongMap::_M_increment(it)) {
-        stream.WriteULong(it->value.first);
-        stream.WriteULong(it->value.second);
+        stream.WriteULONG(it->value.first);
+        stream.WriteULONG(it->value.second);
     }
     for (unsigned long i = 0; i < UpdateData.size(); ++i) {
         if (RuntimeData[i].Valid && RuntimeData[i].DataOffset != 0) {
             CBankFileEntryUpdateData* update = UpdateData[i];
             if (!update->RequiresUpdate) {
-                stream.WriteULong(42);
-                stream.WriteULong(i);
-                stream.WriteULong(GetEntryDataType(i));
-                stream.WriteULong(GetEntryDataSize(i));
-                stream.WriteULong(GetEntryDataOffset(i));
-                stream.WriteULong(update->StateBlockCRC);
+                stream.WriteULONG(42);
+                stream.WriteULONG(i);
+                stream.WriteULONG(GetEntryDataType(i));
+                stream.WriteULONG(GetEntryDataSize(i));
+                stream.WriteULONG(GetEntryDataOffset(i));
+                stream.WriteULONG(update->StateBlockCRC);
                 stream.WritePresizedString(GetEntrySymbol(i));
-                stream.WriteULong(Checksums[i]);
-                stream.WriteULong(update->Filenames_Size);
+                stream.WriteULONG(Checksums[i]);
+                stream.WriteULONG(update->Filenames_Size);
                 for (unsigned long j = 0; j < (unsigned long)update->Filenames_Size; ++j)
                     stream.WritePresizedString(update->Filenames_Start[j]);
                 unsigned long infoSize = update->InfoSize;
                 CByteVector info(infoSize, 0);
                 update->ReadInfo(0, info.GetData(), infoSize);
-                stream.WriteULong(infoSize);
+                stream.WriteULONG(infoSize);
                 stream.Write(info.GetData(), infoSize);
             }
         }

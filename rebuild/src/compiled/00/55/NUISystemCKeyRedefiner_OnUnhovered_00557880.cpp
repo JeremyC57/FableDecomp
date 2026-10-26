@@ -1,5 +1,5 @@
-// NUISystem::CKeyRedefiner::OnUnhovered() -- calls CClickable::OnHovered (sic, retail bug), then switches to state 4 (unhovered)
-// Retail 0x00557880, 22 bytes (vtable 0x0124ADBC slot 144). Callees: 0x0055AEB0 (CClickable::OnHovered, the same target as
+// NUISystem::CKeyRedefiner::OnUnhovered() -- calls NUISystem::CClickable::OnHovered (sic, retail bug), then switches to state 4 (unhovered)
+// Retail 0x00557880, 22 bytes (vtable 0x0124ADBC slot 144). Callees: 0x0055AEB0 (NUISystem::CClickable::OnHovered, the same target as
 // OnHovered 0x00557860; CClickable::OnUnhovered is the separate 0x0055AEF0), ChangeState (slot 48, +0xC0).
 // Name: Ego_r.pdb ?OnUnhovered@CKeyRedefiner@NUISystem@@MAEXXZ.
 #ifndef _MSC_VER
@@ -136,10 +136,11 @@ class CClickable : public CChangingStateComponent, public CHoverableBase { publi
  unsigned char _pad184[0x188 - 0x184];
  CActionList* PActionsOnRightClicked; // +0x188
  unsigned char _pad18c[0x194 - 0x18c];
- void OnHovered();                    // 0x0055AEB0
  void OnUnhovered();                  // 0x0055AEF0
  void OnLeftUnclicked();              // 0x0055ACF0
  void OnRightClicked();
+protected:
+    virtual void OnHovered();   // 0x0055AEB0
 };
 // STLport list<EGameAction>: one sentinel pointer, malloc/free node allocator, no size member.
 struct CGameActionList {

@@ -10,7 +10,14 @@ static void* g_last_free = 0;
 static int g_base_called = 0;
 
 extern "C" void my_free(void* p) { g_freed++; g_last_free = p; }
-void __fastcall base_die_forward(CTCInventoryItem* self) { g_base_called++; }
+class CParentDefClassBase {
+public:
+    virtual ~CParentDefClassBase();
+};
+CParentDefClassBase::~CParentDefClassBase()
+{
+    CTCInventoryItem* self = (CTCInventoryItem*)this; (void)self; g_base_called++;
+}
 
 void __fastcall OnDie(CTCInventoryItem* self);
 

@@ -141,7 +141,8 @@ class CPlayer { public:
     CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+public:
+    long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
 class CWorld { public:
     unsigned char _pad00[0x10];

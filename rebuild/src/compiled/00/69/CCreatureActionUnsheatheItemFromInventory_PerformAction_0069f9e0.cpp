@@ -86,18 +86,30 @@ class CThing { public:
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                         // +0x04
-    CThing* GetPItem() const;                                // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCCarrying { public:
-    bool HasPendingActions();                                // 0x006A1270
     CThing* GetThingInPrimarySlot();                         // 0x006A1440
     void RemoveThing(CThing* thing);                         // 0x006A19B0
     bool IsCarryingThing(CThing* thing);                     // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool drop);           // 0x006A1E00
     void PutThingInCarrySlot(CThing* thing, long slot, bool flag);   // 0x006A1F80
+public:
+    bool IsPrimarySlotFree() const;   // 0x006A1270
 };
 void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);   // 0x00845CE0
 struct CTC1A {
@@ -116,12 +128,12 @@ class CTCCreatureModeManager { public:
 class CCreatureActionBase { public:                                 // retail sizeof 0xa8
     virtual void v00();
     unsigned char           _pad04[4];
-    CBaseIntelligentPointer PCreature;                       // +0x08
+    CIntelligentPointer<CThing> PCreature;                       // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
 class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
-    CBaseIntelligentPointer PItem;                           // +0xa8
+    CIntelligentPointer<CThing> PItem;                           // +0xa8
     CThing* GetItem() const { return PItem.GetPItem(); }
     void PerformAction();
 };
@@ -134,7 +146,7 @@ void CCreatureAction_UnsheatheItemFromInventory::PerformAction()
         if (creature->HasTC(0x46))
             carrying = creature->GetTC<CTCCarrying>(0x46);
     }
-    if (!carrying->HasPendingActions()) {
+    if (!carrying->IsPrimarySlotFree()) {
         CThing* held = carrying->GetThingInPrimarySlot();
         if (held->HasTC(0x48))
             DropWeapon(held, carrying, GetCreature());
@@ -145,7 +157,7 @@ void CCreatureAction_UnsheatheItemFromInventory::PerformAction()
             if (!carrying->IsCarryingThing(held))
                 tc->OnNotCarried();
         }
-        if (!carrying->HasPendingActions())
+        if (!carrying->IsPrimarySlotFree())
             carrying->RemoveThingFromPrimarySlot(false);
     }
     if (GetItem() && !(GetItem()->m_flags91 & 1)) {

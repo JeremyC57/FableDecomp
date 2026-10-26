@@ -62,14 +62,25 @@ class CTCPerceiveThing { public:                       // interface 0x34
     bool CanHear;                               // +0x32 (descriptive)
     CThing* GetPerceivedThing();                // 0x007446A0
 };
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+class CBaseObject;
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
+public:
+    CBaseIntelligentPointer();                           // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
+    void SetPItem(CBaseObject* item);                    // 0x00A01B90
+private:
+    CBaseObjectPointer* PData;                           // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CThingAICreature : public CThing { public:
     unsigned char _pad2[0x168 - 0x4c];
-    CBaseIntelligentPointer PHome;              // +0x168
+    CIntelligentPointer<CThing> PHome;              // +0x168
 };
 class CMessageEventFilter_IsOfType { public:
     long m_type;
