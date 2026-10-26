@@ -15,6 +15,11 @@
 // Shape: the fraction is read first into the dead `info` slot; the physics pointer is a named local so GetHeroThing and
 //   the +0x60 load come before the argument pushes; the camera returned with its position replaced is a named local
 //   copied out through the copy ctor (no NRVO).
+// Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayer CPlayerDonor
+#include "engine/CPlayer.h"
+#undef CPlayer
 class C3DVector { public:
     float X, Y, Z;
 };
@@ -42,9 +47,8 @@ class CThing { public:
     unsigned char   _pad[0x60];
     CTCPhysicsBase* PPhysics;                 // +0x60
 };
-class CPlayer { public:
-    unsigned char _pad[0x220];
-    bool          UsingFreeCamera;            // +0x220
+class CPlayer : public CPlayerDonor {
+ public:
     CCamera GetFreeCamera(float t) const;     // 0x00487180
     CThing* GetHeroThing();                   // 0x00487DC0
 };

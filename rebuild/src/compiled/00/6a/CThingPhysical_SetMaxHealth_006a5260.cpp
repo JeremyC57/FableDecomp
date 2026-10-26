@@ -7,16 +7,19 @@
 // `Health += new - old` (difference first, `fadd [Health]`). The final clamp re-reads MaxHealth from
 // memory: it is an inline helper taking the maximum by const reference (a plain `if (Health > MaxHealth)`
 // forwards the stored parameter instead, `fcomp [esp+8]`).
+// Layout (supersedes any local-model note above): engine/CThingPhysical.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CThingPhysical CThingPhysicalDonor
+#include "engine/CThingPhysical.h"
+#undef CThingPhysical
 template <class T> inline void ClampMax(T& value, const T& maximum)
 {
     if (value > maximum)
         value = maximum;
 }
 
-class CThingPhysical { public:
-    unsigned char _pad00[0xb0];
-    float         MaxHealth;                             // +0xb0
-    float         Health;                                // +0xb4
+class CThingPhysical : public CThingPhysicalDonor {
+ public:
     void SetMaxHealth(float maxHealth, bool adjustHealth);
 };
 

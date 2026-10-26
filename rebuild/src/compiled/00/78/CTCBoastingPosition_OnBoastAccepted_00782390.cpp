@@ -19,6 +19,11 @@
 //         +0x2e (CBaseIntelligentPointer is byte-packed). Retail CThing: interface bitset +0x20, CVectorMap +0x44, dead flag
 //         +0x91 bit 0. CTCHeroStats (interface 4) Money retail +0x3c (PDB +0x44: map and vector 4 bytes shorter);
 //         CTCBoastingPodium = interface 0x70; CTCTargeted (interface 9) Targetable +0x10.
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 class CTCBase;
 class CBaseObject;
 
@@ -122,11 +127,10 @@ template <class T> inline bool __fastcall IS_THING_ALIVE(const T& thing)
     return false;
 }
 
-class CTCHeroStats {                                // interface 4
+class CTCHeroStats : public CTCHeroStatsDonor {
+                                // interface 4
 public:
     enum { INTERFACE_TYPE = 4 };
-    unsigned char _pad00[0x3c];
-    long Money;                                     // +0x3c
 };
 class CTCTargeted {                                 // interface 9
 public:

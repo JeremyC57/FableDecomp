@@ -93,7 +93,7 @@ bool CAIStateGroup_OnHeroPush::IsRunnable()
 #if defined(_MSC_VER)
 typedef char fable_abi_assert_group_brain[(offsetof(CAIStateGroupBase, PBrain) == 0x04) ? 1 : -1];
 typedef char fable_abi_assert_brain_creature[(offsetof(CAIBrain, Creature) == 0x18) ? 1 : -1];
-typedef char fable_abi_assert_creature_size[(sizeof(CThingAICreature) == 0x210) ? 1 : -1];
+typedef char fable_abi_assert_creature_size[(sizeof(CThingAICreature) == 0x1d8) ? 1 : -1];
 typedef char fable_abi_assert_pushdir[(offsetof(CAIStateGroup_OnHeroPush, PushDir) == 0x14) ? 1 : -1];
 typedef char fable_abi_assert_vector[(sizeof(C3DVector) == 0x0c) ? 1 : -1];
 typedef char fable_abi_assert_component_pushdir[(offsetof(CTCOnHeroPush, PushDir) == 0x10) ? 1 : -1];

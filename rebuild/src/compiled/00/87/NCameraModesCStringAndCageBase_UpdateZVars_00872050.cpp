@@ -13,18 +13,19 @@
 // Retail layout (Ego_r.pdb - 0x24 for this class, as the landed CStringAndCage ctor 0x0069DE30): CBase::CameraManager +0x40,
 //   ViewOccluded +0xA0; DesiredHeightOffset +0xA4, CurrentHeightOffset +0xB0. CGameCameraManager (retail): MinWorldHeight
 //   +0xF8, MaxWorldHeight +0xFC, LimitMinMaxWorldHeight +0x152 (PDB +0x108 / +0x10C / +0x16E).
+// Layout (supersedes any local-model note above): engine/CGameCameraManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CGameCameraManager CGameCameraManagerDonor
+#include "engine/CGameCameraManager.h"
+#undef CGameCameraManager
 class C3DVector { public: float X, Y, Z; };
 class CThing {
 public:
     const C3DVector& GetPosition() const;                  // 0x004C73D0
 };
 class CThingGameObject : public CThing { };
-class CGameCameraManager { public:
-    unsigned char _pad000[0xf8];
-    float         MinWorldHeight;                          // +0xf8
-    float         MaxWorldHeight;                          // +0xfc
-    unsigned char _pad100[0x152 - 0x100];
-    bool          LimitMinMaxWorldHeight;                  // +0x152
+class CGameCameraManager : public CGameCameraManagerDonor {
+ public:
 };
 namespace NCameraModes {
 class CTools { unsigned char _body[0x24]; };          // CGameCameraManager::CamTools (+0x78)

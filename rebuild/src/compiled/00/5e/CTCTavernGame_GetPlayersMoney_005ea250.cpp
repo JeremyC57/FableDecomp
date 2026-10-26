@@ -1,11 +1,13 @@
-// CTCTavernGame::GetPlayersMoney() -- the tavern game def's "PlayersMoney" text followed by the player's money (less the stake while a bet is placed, state 4)
+// CTCTavernGame::GetPlayersMoney() -- the tavern game def's "PlayersMoney" text followed by the player's money (less the stake when the previous state was 4, bet placed)
 // Leaf: GetPlayersMoney
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EA250, 182 bytes (`ret 4`: the CWideString result's hidden pointer).
 // Callees: as GetBet 0x005EA1A0: CDefClassBase::GetSubDef_005ed4a0 @ 0x005ED4A0, CWideString() @ 0x0099AED0, FormatWideString
 // @ 0x0099BA70 (L"%d"), CWideString(const CWideString&) @ 0x0099B720, ~CWideString @ 0x0099B510, CTCTavernGame::GetText
 // @ 0x005E9E70, operator+ @ 0x0099BE70; the def's virtual slot 1.
 // Layout (retail, not engine/CTCTavernGame.h: the PDB header's 0x14-byte UIComponents vector is 12 bytes in retail, as the landed
-// GetWinPhrase 0x005EA100): CTCTavernGame BaseBet +0x34 (PDB +0x3c), CurrentMoney +0x40 (PDB +0x48), TavernGameState +0xc4 (Ego_r.pdb +0xdc less the retail containers);
+// GetWinPhrase 0x005EA100): CTCTavernGame BaseBet +0x34 (PDB +0x3c), CurrentMoney +0x40 (PDB +0x48), PreviousTavernGameState +0xc4
+// (engine/CTCTavernGame.h now has these retail STLport 4.6 offsets: TavernGameState +0xc0, PreviousTavernGameState +0xc4, as the
+// landed SetStateAfterTime 0x005E9B70);
 // CTavernGameDef PlayersMoney +0xf0.
 // Shape: the twin of GetBet 0x005EA1A0: a zeroed CDefPointer filled by GetSubDef (same-TU stand-in body that writes only the
 // out slot, so the def stays in edi for the release), the amount (`CurrentMoney`, less BaseBet in state 4) in a local, and
@@ -72,7 +74,7 @@ class CTCTavernGame { public:
     long TotalWinnings;                                 // +0x3c
     long CurrentMoney;                                  // +0x40
     unsigned char _pad44[0xc4 - 0x44];
-    long TavernGameState;                               // +0xc4 ETavernGameStates
+    long PreviousTavernGameState;                               // +0xc4 ETavernGameStates
     CWideString GetText(unsigned long textId);          // 0x005E9E70
     CWideString GetPlayersMoney();
 };
@@ -82,7 +84,7 @@ CWideString CTCTavernGame::GetPlayersMoney()
     CDefPointer<CTavernGameDef> def;
     ParentThing->PDef->GetSubDef_005ed4a0(def);
     long money = CurrentMoney;
-    if (TavernGameState == 4)
+    if (PreviousTavernGameState == 4)
         money -= BaseBet;
     return GetText(def->PlayersMoney) + IntToWideString(money);
 }

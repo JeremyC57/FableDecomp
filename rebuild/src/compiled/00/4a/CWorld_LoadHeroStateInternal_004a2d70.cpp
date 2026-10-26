@@ -1,5 +1,5 @@
 // CWorld::LoadHeroStateInternal(const CWideString& name) -- load "<name>.hs" from the profile directory (a missing file is fine) with SerialisingHeroState latched for the load; a loaded region-leaving autosave companion is then deleted from the drive
-// Leaf: ?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z (Ego_r.pdb, protected; modelled public)
+// Leaf: ?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z (Ego_r.pdb, protected)
 // Retail: Fable.exe @ 0x004A2D70, 277 bytes, `ret 4`.
 // Body: file = name + L".hs" (__fastcall operator+ 0x0099BF30, L".hs" 0x01236A74); path = CUserProfileManager::Get()
 // (0x0040D2A0).GetPathNameFromFileName(file, false) (0x00408120); !PathExists(path) (__fastcall 0x00999230) -> true.
@@ -14,6 +14,11 @@
 // separate size test rotates esi/ecx); path reuses the dead `name` argument slot; the load result stays in bl across the three destructors; the
 // missing-file exit (nested success path) returns true with its own destructor pair at the end.
 // Opt: /O2 (16-aligned entry).
+// Layout (supersedes any local-model note above): engine/CWorld.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CWorld CWorldDonor
+#include "engine/CWorld.h"
+#undef CWorld
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
 int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60
@@ -55,10 +60,10 @@ struct CDriveManagerPointer {                           // static CCountedPointe
 };
 extern CDriveManagerPointer g_pDriveManager;            // 0x013CAA28
 
-class CWorld { public:
-    unsigned char _pad[0x102];
-    bool          SerialisingHeroState;                 // +0x102 (PDB +0x10E)
+class CWorld : public CWorldDonor {
+ public:
     bool LoadGameStateInternal(const CWideString& path, bool b);   // 0x004A21F0
+ protected:
     bool LoadHeroStateInternal(const CWideString& name);
 };
 

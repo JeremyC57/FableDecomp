@@ -14,6 +14,11 @@
 //   adjacent bools, at +0x340 / +0x341 in retail (Ego_r.pdb's debug layout has them at +0x64C / +0x64D).
 // Label: catalog "CThing_UpdateSkillState" -> Ego_r.pdb ?SetGreetedThingReactingTo@CAIStateGroup_OpinionReactionRoot@@AAEXXZ.
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
+// Layout (supersedes any local-model note above): engine/CTCCreatureOpinionOfHero.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCCreatureOpinionOfHero CTCCreatureOpinionOfHeroDonor
+#include "engine/CTCCreatureOpinionOfHero.h"
+#undef CTCCreatureOpinionOfHero
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -50,10 +55,8 @@ class CAIStateGroupBase { public:
     void* Name_PStringData;                     // +0x0c
     unsigned char Terminated, Priority, Enabled, _pad13;
 };
-class CTCCreatureOpinionOfHero { public:               // interface 0x4F
-    unsigned char _pad[0x340];
-    bool InteractedFlag;                        // +0x340
-    bool GreetedFlag;                           // +0x341
+class CTCCreatureOpinionOfHero : public CTCCreatureOpinionOfHeroDonor {
+ public:               // interface 0x4F
 };
 class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase {
 public:

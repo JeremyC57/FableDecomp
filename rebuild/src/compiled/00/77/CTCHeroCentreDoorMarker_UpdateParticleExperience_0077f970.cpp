@@ -12,6 +12,11 @@
 // HasTC returns the raw masked word (`test ch,8` on +0x28).
 // Layout (packed, landed 0x0077F5C0): PParticle +0x15; retail CWorld ExperienceSpendingEnabled +0xd6 (PDB +0xe2, three 16-byte
 // PDB vectors are 12 bytes in retail); CThing interface bitset +0x20, interface map +0x44, dead bit 0 of +0x91.
+// Layout (supersedes any local-model note above): engine/CWorld.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CWorld CWorldDonor
+#include "engine/CWorld.h"
+#undef CWorld
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -65,10 +70,8 @@ public:
 };
 template <class P> inline bool IS_THING_ALIVE(const P& p) { return p.GetPItem() && !p.GetPItem()->Dead; }
 
-class CWorld { public:
-    unsigned char _pad00[0xd6];
-    bool ExperienceSpendingEnabled;                     // +0xd6
-    bool SavingEnabled;                                 // +0xd7
+class CWorld : public CWorldDonor {
+ public:
 };
 class CTCBase {
 public:

@@ -10,6 +10,11 @@
 // test, LowerBound on the +0x44 map with the key in the `push ecx` frame word, end-or-larger-key -> the end entry, the
 // component left in eax. The out pointer is NOT initialised: on the absent path retail reads the uninitialised local
 // (`mov eax,[esp+N]`) and still makes the call, which the same source reproduces.
+// Layout (supersedes any local-model note above): engine/CTCCreatureGenerator.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCCreatureGenerator CTCCreatureGeneratorDonor
+#include "engine/CTCCreatureGenerator.h"
+#undef CTCCreatureGenerator
 struct CTCBaseInterface;
 struct CInterfaceMap {                         // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBaseInterface* component; };
@@ -50,9 +55,8 @@ class CTCActivationReceptorBase : public CTCBase { public:   // retail 0x2c byte
     virtual void Deactivate();                 // slot 29: 0x007F7700
 };
 
-class CTCCreatureGenerator { public:
-    unsigned char _pad[0x4f];
-    bool ExternalTrigger;                      // +0x4f
+class CTCCreatureGenerator : public CTCCreatureGeneratorDonor {
+ public:
     void SetAsActive(bool active);             // 0x00749DD0
 };
 

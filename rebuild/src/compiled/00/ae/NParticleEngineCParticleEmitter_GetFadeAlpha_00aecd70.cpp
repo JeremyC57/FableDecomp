@@ -10,14 +10,14 @@
 //   in namespace NParticleEngine, so the mangled leaf would be wrong.
 // Label: catalog "IsVisible_CalcFadeAlpha" is descriptive.
 // Shape: the `||` of the two out-of-range tests puts the shared `return 0.0f` at the function end.
+// Layout (supersedes any local-model note above): engine/CParticleEmitter.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CParticleEmitter CParticleEmitterDonor
+#include "engine/CParticleEmitter.h"
+#undef CParticleEmitter
 namespace NParticleEngine {
-class CParticleEmitter {
+class CParticleEmitter : public CParticleEmitterDonor {
 public:
-    char  Pad0[0x15c];
-    float MaxDrawDistance;                                  // +0x15c
-    float FadeOutStart;                                     // +0x160
-    float FadeInStart;                                      // +0x164
-    float FadeInEnd;                                        // +0x168
     float GetFadeAlpha(float distance) const;
 };
 

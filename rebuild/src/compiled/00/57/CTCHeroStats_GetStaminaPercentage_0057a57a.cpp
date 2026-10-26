@@ -11,13 +11,15 @@
 //   `fcomp`), `> 0` as `test ah,41h ; jne`, the in-place `/=` giving retail's `fild ; fdiv st,st(1) ; fstp st(1)`
 //   (`return Stamina / max` folds to `fidivr`, a named quotient local to `fdivrp`), the 0.0f pool constant
 //   0x0122DEDC (`fld`, never `fldz`) on both the compare and the zero return. Size TU.
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 #pragma optimize("s", on)
 
-class CTCHeroStats {
+class CTCHeroStats : public CTCHeroStatsDonor {
 public:
-    unsigned char _pad_0x00[0x58];
-    long          Stamina;                          // +0x58 (PDB +0x60)
-    long          MaxStamina;                       // +0x5C (PDB +0x64)
     float GetStaminaPercentage() const;
 };
 

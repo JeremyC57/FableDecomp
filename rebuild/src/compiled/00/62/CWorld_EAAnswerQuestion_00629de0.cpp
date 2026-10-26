@@ -16,6 +16,11 @@
 //   across GetSampleBank()), with the answer read into the dead event-argument slot and the zero message position a
 //   C3DVector temporary. The two PlaySoundEvent statements of the if/else share their tail (`mov ecx,edi; call [eax+10]`);
 //   `mov eax,1` serves both the CSoundInit stores and the `answer == 1` compare.
+// Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CSubtitleRenderer CSubtitleRendererDonor
+#include "engine/CSubtitleRenderer.h"
+#undef CSubtitleRenderer
 class CCharString { public: void* PStringData; };
 class C3DVector {
 public:
@@ -55,10 +60,8 @@ public:
     CCharString   TextBoxButtonBSoundCriteria;        // +0x5EC (PDB +0x628)
 };
 CPlayerGuiDef* __fastcall PeekGuiDef();                // 0x00438570
-class CSubtitleRenderer {
+class CSubtitleRenderer : public CSubtitleRendererDonor {
 public:
-    unsigned char _pad[0xe5];
-    bool          DisplayingText;                      // +0xE5 (PDB +0xED)
     void Clear(bool all);                              // 0x00492BAB
 };
 class CPlayerGui {

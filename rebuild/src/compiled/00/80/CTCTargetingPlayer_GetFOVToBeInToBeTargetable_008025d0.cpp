@@ -13,9 +13,13 @@
 //   PCProjectileWeaponThirdPersonAimingMode +0x21A (PDB +0x222; the landed CPlayer rows use +0x21A).
 // Shape: two complete `return def->x * K;` arms (`fld [def+N] ; fmul [K]`, the def loaded into a different register on
 //   each arm because the test's flag byte was held in cl).
-class CPlayer { public:
-    unsigned char _pad000[0x21a];
-    bool          PCProjectileWeaponThirdPersonAimingMode;   // +0x21A
+// Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayer CPlayerDonor
+#include "engine/CPlayer.h"
+#undef CPlayer
+class CPlayer : public CPlayerDonor {
+ public:
 };
 
 class CThing { public:

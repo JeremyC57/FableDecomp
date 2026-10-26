@@ -12,6 +12,11 @@
 //   0x006E0BE0 / SetAlwaysUpdate 0x006E0590; CCharString 0x0099EBF0 / ~ 0x0099EAE0.
 // Layout (retail CTCTeleporter = Ego_r.pdb, packed): PDef +0x0c, Active +0x10, Activated +0x11, HeroInsideRadius +0x12,
 //   PParticle +0x13, WaitingForTutorialToFinish +0x1b; CTeleporterDef Radius +0x28, ParticleEffect +0x2c, flag +0x30.
+// Layout (supersedes any local-model note above): engine/CWorld.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CWorld CWorldDonor
+#include "engine/CWorld.h"
+#undef CWorld
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
 class CBaseObject;
@@ -96,11 +101,8 @@ class CPlayerManager { public:
     CPlayer* GetPlayer_00449960();                               // 0x00449960
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
-class CWorld { public:
-    unsigned char _pad00[0xa4];
-    bool Paused;                                        // +0xa4 (descriptive)
-    unsigned char _pada5[0xd5 - 0xa5];
-    bool TeleportingEnabled;                            // +0xd5 (descriptive)
+class CWorld : public CWorldDonor {
+ public:
 };
 class CWorldMap { public:
     long GetRegionNumberMapIsIn(long mapIndex);         // 0x004FC190

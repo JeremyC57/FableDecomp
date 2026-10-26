@@ -6,6 +6,11 @@
 // Layout: retail C3DAnimation2 is 4 smaller than Ego_r.pdb from +0x40 (landed 0x00A4E150): SequenceCount +0x58, Sequences +0x5c,
 //   SequenceDataBufferSize +0x60, SequenceDataBuffer +0x64; C3DAnimationSequence 8 bytes, C3DAnimationSequenceData 0x2c;
 //   C3DAnimFileXSequenceChunk CompressedData (STLport vector) +0x10; retail CMemoryDataInputStream 0x1c (GOTCHAS chunk 244).
+// Layout (supersedes any local-model note above): engine/C3DAnimation2.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define C3DAnimation2 C3DAnimation2Donor
+#include "engine/C3DAnimation2.h"
+#undef C3DAnimation2
 struct SCountBlock { long references; void (__fastcall* destroy)(void*); void* object; };
 template<class T> class CCountedPointer { public:
     T* Object; SCountBlock* Count;
@@ -62,13 +67,8 @@ class C3DAnimationSequence { public:
     void ReadCompressedFromFile(CDataInputStream* in, unsigned long size, C3DAnimationSequenceData* data, CSimpleMemoryPool* pool);   // 0x00A4CDD0
 };
 
-class C3DAnimation2 {
+class C3DAnimation2 : public C3DAnimation2Donor {
 public:
-    unsigned char _00[0x58];
-    unsigned long             SequenceCount;            // +0x58
-    C3DAnimationSequence*     Sequences;                // +0x5c
-    unsigned long             SequenceDataBufferSize;   // +0x60
-    C3DAnimationSequenceData* SequenceDataBuffer;       // +0x64
     void ReadCompressedFileData(C3DAnimFileObjectChunk* chunk, CSimpleMemoryPool* pool);
 };
 

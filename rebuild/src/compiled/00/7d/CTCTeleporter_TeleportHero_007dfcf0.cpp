@@ -6,8 +6,10 @@
 //          CMemoryBuffer::Copy(unsigned long, const void*) 0x009F1760 (x7); the physics component's GetFacingAngleXY (slot
 //          63, `call [edx+0FCh]`); CTCBase::GetPlayerManager() const 0x00686D50; CPlayerManager::GetMainPlayerNumber()
 //          0x00449700; CWorld::HandleMoveHeroToRegionGameEvent(CGameEvent*) 0x0049EAF0; __security_check_cookie 0x00BFE9F9.
-// Layout (retail): CWorld::RegionLoadViaTeleporter +0x12f (Ego_r.pdb +0x13c: the region-load block sits 0xd below the
-//          PDB); CThing physics component +0x60; CGameEvent as the landed CTCHeroCentre::OpenTrainingScreen 0x0077D4B0
+// Layout (retail): CWorld +0x12f is DisplayMiniMapOnRegionLoad in engine/CWorld.h (retail STLport 4.6 offsets: Ego_r.pdb
+//          +0x13f less the 0x10 of four shrunk containers; RegionLoadViaTeleporter is +0x12c). Five other hero moves
+//          (KickHeroToMostRecentSafeRegion, TeleportHeroToGuildSealRecallLocation, TeleportHeroToBoastingArea,
+//          CTCDRegionExit::MoveHeroThroughExit) set the same byte, so it is not teleporter-specific; CThing physics component +0x60; CGameEvent as the landed CTCHeroCentre::OpenTrainingScreen 0x0077D4B0
 //          (Type +0, Player +4, Data +5, EndPos +0x25, Valid +0x26, Replacement +0x27).
 // Shape: the payload goes in through inline by-value AddFloat/AddBool helpers (each value homed in its own frame word,
 //        the float ones sharing one, the bool ones another); the false bool shares the bl zero with the event's
@@ -55,7 +57,7 @@ class CGameEvent : public CMemoryBuffer { public:
 
 class CWorld { public:
     unsigned char _pad_0x00[0x12f];
-    bool          RegionLoadViaTeleporter;      // +0x12f
+    bool          DisplayMiniMapOnRegionLoad;   // +0x12f
     void HandleMoveHeroToRegionGameEvent(CGameEvent* event);   // 0x0049EAF0
 };
 class CPlayerManager { public:
@@ -77,7 +79,7 @@ class CTCTeleporter : public CTCBase { public:
 
 void CTCTeleporter::TeleportHero()
 {
-    GetWorld()->RegionLoadViaTeleporter = true;
+    GetWorld()->DisplayMiniMapOnRegionLoad = true;
     CGameEvent event(0x2c);
     event.AddFloat(ParentThing->GetPosition().X);
     event.AddFloat(ParentThing->GetPosition().Y);

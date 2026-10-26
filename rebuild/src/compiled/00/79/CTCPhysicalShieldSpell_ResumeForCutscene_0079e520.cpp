@@ -4,8 +4,9 @@
 //   frame slot), CTCPhysicalShieldSpell::PlaySound @ 0x0079DE00 (landed as "CTCBulletTime::PlaySoundW", whose header already
 //   suspects this class), CCharString::~CCharString @ 0x0099EAE0.
 // Layout (PDB CTCPhysicalShieldSpell; no engine header): +0x04 the owner thing, PDef +0x0c (CDefPointer, one word), SpellLevel
-//   +0x10 (1-based), LoopingSound +0x40, CutSceneCancelled +0x46. CSpecialAbilitiesPhysicalShieldDef::LoopingSound[4] at +0x54
-//   (`[ecx+eax*4+50h]` = LoopingSound[SpellLevel - 1]). CThing +0x10 = the type byte (2 = player).
+//   +0x10 (0-based, as PlayShieldEffects' MaxWidth[SpellLevel]), LoopingSound +0x40, CutSceneCancelled +0x46.
+//   CSpecialAbilitiesPhysicalShieldDef::LoopingSound[4] at +0x50 (retail STLport 4.6: CParentDefClassBase's CVectorMap is 0x10,
+//   engine/CSpecialAbilitiesPhysicalShieldDef.h; `[ecx+eax*4+50h]` = LoopingSound[SpellLevel]). CThing +0x10 = the type byte (2 = player).
 // Shape: the owner is a named local taken first (edi, read before the GetString call); the string is a named local; the
 //   flag is cleared after the level/def/owner loads; the player test is `sete cl`
 //   pushed as the bool; the sound handle is stored before the string's destructor runs.
@@ -27,8 +28,8 @@ class CThing { public:
 };
 
 class CSpecialAbilitiesPhysicalShieldDef { public:
-    unsigned char _pad00[0x54];
-    long          LoopingSound[4];          // +0x54 CDefString
+    unsigned char _pad00[0x50];
+    long          LoopingSound[4];          // +0x50 CDefString
 };
 
 class CTCPhysicalShieldSpell { public:
@@ -59,7 +60,7 @@ void CTCPhysicalShieldSpell::ResumeForCutscene()
     if (CutSceneCancelled) {
         CThing* owner = ParentThing;
         CutSceneCancelled = false;
-        CCharString sound = g_DefStringTable.GetString(PDef->LoopingSound[SpellLevel - 1]);
+        CCharString sound = g_DefStringTable.GetString(PDef->LoopingSound[SpellLevel]);
         LoopingSound = PlaySound(sound, owner->Type == 2);
     }
 }

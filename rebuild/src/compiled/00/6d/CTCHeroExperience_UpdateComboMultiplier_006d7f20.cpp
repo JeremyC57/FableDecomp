@@ -13,6 +13,11 @@
 // Model: CTCHeroExperience in its retail layout (12-byte STLport vectors, 4-byte lists; engine/CTCHeroExperience.h has the
 // Ego_r.pdb debug-STL offsets), as in the landed 0x006D64B0. CTCHeroStats::MaximumMultiplier is +0x98 (PDB +0xA0, retail
 // CTCHeroStats sits 8 below the PDB as in the landed 0x0057B327).
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 struct CTCBaseComponent;
 
 struct CInterfaceMap {
@@ -42,9 +47,8 @@ class CThing { public:
 
 
 class CTCCombat { public: void SetMeleeFlourishValid(bool valid); };   // 0x00733E10
-class CTCHeroStats { public:
-    unsigned char _pad00[0x98];
-    long MaximumMultiplier;                     // +0x98 (PDB +0xa0)
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:
 };
 class CTCHeroOnlineScoreboard { public: void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter); };   // 0x0055F3B0
 

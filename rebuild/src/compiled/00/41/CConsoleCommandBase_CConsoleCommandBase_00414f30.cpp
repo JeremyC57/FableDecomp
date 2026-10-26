@@ -6,7 +6,8 @@
 // CConsoleInputBase (the inlined base constructor's store), 0x0122E638 = CConsoleCommandBase
 // (rtti-vtables.tsv); the manifest's "CConsoleClasslessCommand" label is propagated.
 // Layout = Ego_r.pdb: CConsoleInputBase {vptr, CCharString Name +4}, ParamTypes at +8 -- a 12-byte
-// retail vector (engine/CConsoleCommandBase.h reserves 16, hence the `_Retail` model). The second
+// retail vector (engine/CConsoleCommandBase.h, retail STLport 4.6 layout: sizeof 0x14; the `_Retail` model carries the
+// base-class constructor shape the flat header cannot). The second
 // argument arrives by reference and its dword is pushed for the list constructor (`mov edx,[ecx]`).
 #include "engine/CConsoleCommandBase.h"
 
@@ -33,7 +34,8 @@ struct CConsoleCommandBase_Retail : CConsoleInputBase {
 };
 
 FABLE_STATIC_ASSERT(sizeof(CConsoleCommandBase_Retail) == 0x14);
-FABLE_STATIC_ASSERT(sizeof(CConsoleCommandBase) == 0x18);       // the PDB vector is 4 bytes larger
+FABLE_STATIC_ASSERT(sizeof(CConsoleCommandBase) == sizeof(CConsoleCommandBase_Retail));
+FABLE_STATIC_ASSERT(offsetof(CConsoleCommandBase, ParamTypes) == 0x08);
 
 CConsoleCommandBase_Retail::CConsoleCommandBase_Retail(const CCharString& name, const long& type)
     : CConsoleInputBase(name)

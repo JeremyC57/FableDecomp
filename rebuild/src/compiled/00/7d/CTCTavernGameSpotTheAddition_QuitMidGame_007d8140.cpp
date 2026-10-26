@@ -5,11 +5,13 @@
 //          0x005E9B20.
 // Members: GameFinished +0x28 and GameWon +0x21 (CTCTavernGame, PDB +0x30/+0x29: retail 8 lower).
 // Shape: the constant argument push (`push 3F800000h`) is hoisted above the two byte stores.
-class CTCTavernGame { public:
-    unsigned char _pad[0x21];
-    bool GameWon;                       // +0x21
-    unsigned char _pad_0x22[0x6];
-    bool GameFinished;                  // +0x28
+// Layout (supersedes any local-model note above): engine/CTCTavernGame.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCTavernGame CTCTavernGameDonor
+#include "engine/CTCTavernGame.h"
+#undef CTCTavernGame
+class CTCTavernGame : public CTCTavernGameDonor {
+ public:
     void SetState(long state);          // 0x005E9B20
 };
 

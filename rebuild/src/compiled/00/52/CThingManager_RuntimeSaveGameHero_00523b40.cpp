@@ -19,6 +19,11 @@
 //   is filled by the save calls and destroyed element by element; the empty script (a named local: a temporary
 //   passes the constructor's eax and shifts every later register choice) and the script text both live in the dead
 //   `binary` slot. The vector destructor is `__forceinline` (retail expands it; the lane calls it).
+// Layout (supersedes any local-model note above): engine/CMemoryDataOutputStream.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CMemoryDataOutputStream CMemoryDataOutputStreamDonor
+#include "engine/CMemoryDataOutputStream.h"
+#undef CMemoryDataOutputStream
 extern "C" void* __cdecl malloc(unsigned int size);                                   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                                            // 0x00BFEA14
 
@@ -167,12 +172,8 @@ __declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __posi
 
 }
 
-class CMemoryDataOutputStream {
+class CMemoryDataOutputStream : public CMemoryDataOutputStreamDonor {
 public:
-    void*         __vftable;                                                           // +0x00
-    unsigned char _pad_0x04[0x04];
-    unsigned char Data[0x0c];                                                          // +0x08 retail CArray<char>
-    unsigned long CurrentPosition;                                                     // +0x14
     CMemoryDataOutputStream();                                                         // 0x00996AF0
     ~CMemoryDataOutputStream();                                                        // 0x00996B30
     void ReserveSize(unsigned long size);                                              // 0x00996BC0

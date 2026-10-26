@@ -9,6 +9,11 @@
 // Shape: as the landed ReplacePathExtension 0x00997800 (three locals, null extension); the joined path is a NAMED local
 // copied into the result (VC7.1 has no NRVO here); the two operator+ temporaries die at the end of the full expression.
 // Layout: retail CBankFile BankFile_Data (CDiskFileWin32*) +0x7c (PDB +0x8c, retail -0x10).
+// Layout (supersedes any local-model note above): engine/CBankFile.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CBankFile CBankFileDonor
+#include "engine/CBankFile.h"
+#undef CBankFile
 class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
@@ -25,10 +30,8 @@ class CDiskFileWin32 { public:
     virtual CWideString GetPathname() const;       // slot 11 (+0x2c)
 };
 
-class CBankFile {
+class CBankFile : public CBankFileDonor {
 public:
-    unsigned char _pad[0x7c];
-    CDiskFileWin32* BankFile_Data;                 // +0x7c CCountedPointer<CDiskFileWin32>::Data
     CWideString GetRecoveryFilePath();
 };
 

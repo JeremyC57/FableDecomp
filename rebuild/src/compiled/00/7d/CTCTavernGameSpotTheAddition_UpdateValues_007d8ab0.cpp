@@ -10,6 +10,11 @@
 //          NumConsecutiveRoundsWon +0xa4; CTavernGameDef PrizeScores +0x174 (0x30-byte entries, Score +0x28);
 //          CTCHeroStats (retail) PrizeGivenGuessTheAddition +0x19a, BestTimeGuessTheAddition +0x190 (Ego_r.pdb - 0x18).
 // Globals: a prize-enable byte @ 0x013833D0 and a "scoreboard updated" byte @ 0x013BAE25 (stored after the reports).
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 class CTCBase;
 
 struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -77,11 +82,8 @@ struct CDefPointer {
     CTavernGameDef* operator->() const { return Object; }
 };
 
-class CTCHeroStats { public:                        // retail layout
-    unsigned char _pad_0x00[0x190];
-    float BestTimeGuessTheAddition;          // +0x190
-    unsigned char _pad_0x194[6];
-    bool  PrizeGivenGuessTheAddition;        // +0x19a
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:                        // retail layout
 };
 
 class CTCTavernGame { public:

@@ -14,6 +14,11 @@
 //        duplicated GUI/QuitWithDelay tail.
 // Layout: Ego_r.pdb CTCFireheartMinigame matches retail (Markers +0x0C, InSession +0x4C, ForceQuit +0x4D, Initialised
 //         +0x54, XPos +0x68, YPos +0x6C, QuitWithDelay +0x88); retail CThing PhysicsTC +0x60; CPlayerGui::DisplayBottomHalfGUI +0x330.
+// Layout (supersedes any local-model note above): engine/CPlayerGui.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayerGui CPlayerGuiDonor
+#include "engine/CPlayerGui.h"
+#undef CPlayerGui
 class CThing;
 class CTCBase;
 
@@ -65,10 +70,8 @@ public:
     CPlayer* GetMainPlayer();                       // 0x00449970
 };
 
-class CPlayerGui {
+class CPlayerGui : public CPlayerGuiDonor {
 public:
-    unsigned char _pad00[0x330];
-    bool DisplayBottomHalfGUI;                      // +0x330
 };
 extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 

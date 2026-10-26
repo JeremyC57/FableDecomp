@@ -1,4 +1,4 @@
-// CTCInventoryTrade::OpenActualBuyInventoryPC() -- rebuilds the PC trade screen: the buy inventory when the open trade menu is the top-level trade list, else the special-items inventory
+// CTCInventoryTrade::OpenActualBuyInventoryPC() -- rebuilds the PC trade screen: the buy inventory when the top-level list component (+0x220) is named PC_TOP_LEVEL_TRADE_LIST, else the special-items inventory
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005AE972, length 108 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CTCInventoryTrade::DeleteComponents() @ 0x0059C8AE, the open menu component's virtual slot 84 (+0x150, its name as a
 // CCharString by hidden pointer), CBasicString<char>::operator==(const char*) @ 0x004115A0 (inside the inline
@@ -7,7 +7,8 @@
 // String: "PC_TOP_LEVEL_TRADE_LIST" @ 0x012536C8.
 // Shape: the CCharString operator== is `__forceinline` (a size TU leaves a plain inline out of line); the result is a named bool ([ebp-1]) so the name temporary dies before the branch; both arms are calls
 // sharing the `mov ecx,ebx`.
-// Layout: retail CTCInventoryTrade PCurrentOpenTradeMenu +0x220 (engine header PDB +0x274; local model).
+// Layout: retail CTCInventoryTrade PTop_Level_List +0x220 (engine/CTCInventoryTrade.h at the retail STLport 4.6 offsets,
+//   as the landed constructor 0x0059EB0C: PMouse_Pointer +0x21c, PTop_Level_List +0x220, PCurrentOpenTradeMenu +0x224).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <string.h>
@@ -127,7 +128,7 @@ class CComponent { public:
 
 class CTCInventoryTrade { public:
     unsigned char _pad_0x00[0x220];
-    NUISystem::CComponent* PCurrentOpenTradeMenu;   // +0x220
+    NUISystem::CComponent* PTop_Level_List;   // +0x220
     void DeleteComponents();                    // 0x0059C8AE
     void ConstructActualBuyInventoryPC();       // 0x005AC10E
     void ConstructActualSpecialInventoryPC();   // 0x005A8C66
@@ -137,7 +138,7 @@ class CTCInventoryTrade { public:
 void CTCInventoryTrade::OpenActualBuyInventoryPC()
 {
     DeleteComponents();
-    bool topLevel = PCurrentOpenTradeMenu->GetName() == "PC_TOP_LEVEL_TRADE_LIST";
+    bool topLevel = PTop_Level_List->GetName() == "PC_TOP_LEVEL_TRADE_LIST";
     if (topLevel)
         ConstructActualBuyInventoryPC();
     else

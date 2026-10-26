@@ -7,7 +7,8 @@
 // Layout: retail CTCBoastUI (12-byte STLport map at +0xc, Active +0x18, Quitting +0x28, ActivationRequested +0x2a) as
 // the landed 0x0056AC10/0x0056A880; CBoast from Ego_r.pdb (ID +0, ScriptName +0xc, Text +0x10, Title +0x14,
 // GroupIndex +0x1c); map node value at +0x10; CThing TC bitset +0x20, interface vector +0x44/+0x48; quest
-// manager 0x013B89FC with a list at +0x68.
+// manager 0x013B89FC with its Boasts list at +0x68 (engine/CQuestManager.h, retail STLport 4.6: Boasts +0x68,
+// AcceptedBoasts +0x6c, as the landed CQuestManager::GetBoast 0x004AF7A0 / IsBoastTaken 0x004AF810).
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 
 class CCharString { public:
@@ -325,7 +326,7 @@ struct CBoastList {
 };
 class CQuestManager { public:
     unsigned char _pad00[0x68];
-    CBoastList    AcceptedBoasts;                       // +0x68
+    CBoastList    Boasts;                               // +0x68
 };
 extern CQuestManager* g_pQuestManager;                  // 0x013B89FC
 
@@ -379,7 +380,7 @@ void CTCBoastUI::BoastTaken(const CBoast* boast)
         crowd = (CTCBoastingCrowdControl*)ParentThing->GetTC(0x73);
         crowd->OnHeroBoast(boast);
     }
-    if (g_pQuestManager->AcceptedBoasts.empty()) {
+    if (g_pQuestManager->Boasts.empty()) {
         if (crowd)
             crowd->DetachAll();
         Deactivate();

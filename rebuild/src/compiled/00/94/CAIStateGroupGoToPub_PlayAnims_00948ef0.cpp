@@ -10,6 +10,11 @@
 // so for a positive duration it never plays (retail behaviour, kept).
 // Layout: GoToPub from Ego_r.pdb (base 0x14, PTable +0x24); the 0xcf component is the tavern game (see the landed sibling
 // 0x00948D40): IsBeingPlayed +0x20 in retail (Ego_r.pdb +0x28 with a 16-byte vector).
+// Layout (supersedes any local-model note above): engine/CTCTavernGame.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCTavernGame CTCTavernGameDonor
+#include "engine/CTCTavernGame.h"
+#undef CTCTavernGame
 class CCharString;
 class CTCBase;
 struct CInterfaceMap {
@@ -55,9 +60,8 @@ class CThing { public:
         return false;
     }
 };
-class CTCTavernGame { public:                          // interface 0xcf
-    unsigned char _pad0[0x20];
-    bool IsBeingPlayed;                         // +0x20
+class CTCTavernGame : public CTCTavernGameDonor {
+ public:                          // interface 0xcf
 };
 struct CBaseIntelligentPointer {
     virtual void v00();

@@ -11,6 +11,11 @@
 // names; the map number is Ego_r.pdb CThing::CurrentMapNumber (short, PDB +0x9E, retail +0x8E; setter SetCurrentMapNumber(long)).
 // Shape: `this`, the world map and the door's region number live in the 12-byte frame; the vector element is reached through the
 // STLport `*(begin() + 10)` (the dead `add eax,958h` is the vector's `this`).
+// Layout (supersedes any local-model note above): engine/CMiniMapDisplay.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CMiniMapDisplay CMiniMapDisplayDonor
+#include "engine/CMiniMapDisplay.h"
+#undef CMiniMapDisplay
 class CThing { public:
     unsigned char _pad00[0x8e];
     short         CurrentMapNumber;             // +0x8e (Ego_r.pdb +0x9e)
@@ -59,10 +64,8 @@ class CGame { public:
 };
 extern CGame* g_pGame;                          // 0x013B86A0
 class CRegion;
-class CMiniMapDisplay { public:
-    void*         __vftable;                    // +0x00
-    unsigned char _pad04[0xb4];
-    CRegion*      PRegion;                      // +0xb8
+class CMiniMapDisplay : public CMiniMapDisplayDonor {
+ public:
     void AddAutoMarker(const CThing* thing, long graphicIndex);   // 0x0082A500
     void InitialiseDemonDoorMarkers();
 };

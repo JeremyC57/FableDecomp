@@ -11,7 +11,7 @@
 // Global: the default camera-mode def pointer 0x013BA8D8 (the CDefPointer<const CCameraModeDef> the landed PushLookAround
 //   0x00699A50 / 0x0069E3D0 pass to the mode constructors).
 // Label: catalog "CGameCameraManager_Destructor" -- CGameCameraManager::~CGameCameraManager (non-deleting).
-// Layout: retail is 0x1c bytes narrower than Ego_r.pdb (retail CTools 0x20, STLport vector 12, list 4, map 12) -- as the
+// Layout: retail is 0x24 bytes narrower than Ego_r.pdb (0x160 vs 0x184; retail CTools 0x20, STLport vector 12, list 4, map 12) -- as the
 //   landed CGameCameraManager rows (PDef +0x134, UsingCameraManually +0x12c, PObservedThing +0x100); PDB member names.
 // Shape: the body's three iterator stores and the default-def release through the pointee's inline ReleaseTemporary()
 //   over the ref-count base's two inline accessors (DecRef, then GetRefCount: the second-base pointer materialised once,

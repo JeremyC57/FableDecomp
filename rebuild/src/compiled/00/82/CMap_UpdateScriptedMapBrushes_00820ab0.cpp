@@ -10,14 +10,18 @@
 //   tail down only when the erased element is not the last, then destroys the old last element. The empty tag needs a user constructor
 //   (`random_access_iterator_tag() {}`) so its temporary in the frame word's high byte is not zero-initialised; `time < 0.0f` is the
 //   `fcom ; test ah,5 ; jp` erase test.
+// Layout (supersedes any local-model note above): engine/CScriptedMapBrush.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CScriptedMapBrush CScriptedMapBrushDonor
+#include "engine/CScriptedMapBrush.h"
+#undef CScriptedMapBrush
 class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
     CCharString& operator=(const CCharString& other);
 };
-class CScriptedMapBrush { public:
-    unsigned char _pad[0x4c];
-    float CreationTimeSeconds;                     // +0x4c
+class CScriptedMapBrush : public CScriptedMapBrushDonor {
+ public:
 };
 struct CScriptedMapBrushUpdateArea {
     float       TimeLeft;

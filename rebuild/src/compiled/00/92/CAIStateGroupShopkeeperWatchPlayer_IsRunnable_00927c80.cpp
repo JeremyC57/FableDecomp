@@ -43,8 +43,8 @@ struct CAIStateGroup_ShopkeeperWatchPlayer : CAIStateGroupBase {
 bool CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable()
 {
     CThingAICreature* creature = PBrain->Creature;
-    if ((*(unsigned int*)&creature->_pad_0x30[0] & 0x10000) != 0) {
-        CCreatureInterfaceMap* interfaces = (CCreatureInterfaceMap*)&creature->_pad_0x44[0];
+    if ((*(unsigned int*)&creature->_pad_0x20[0x10] & 0x10000) != 0) {
+        CCreatureInterfaceMap* interfaces = (CCreatureInterfaceMap*)&creature->_pad_0x20[0x24];   // +0x44 (the base-region pads merge in the retail STLport 4.6 header)
         long key = 0x90;
         CVectorMapEntry* entry = interfaces->LowerBound(&key);
         CVectorMapEntry* end = interfaces->Finish;

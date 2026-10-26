@@ -14,6 +14,11 @@
 // Shape: the skip is an inline helper called from both arms; VC tail-duplicates the base call into the first arm. The
 //          message manager goes into a named local first: the inline filter temporary in the call chain stores its 0x11
 //          before the `push` (retail stores it after).
+// Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CSubtitleRenderer CSubtitleRendererDonor
+#include "engine/CSubtitleRenderer.h"
+#undef CSubtitleRenderer
 class CThing;
 class CMessageEvent;
 class CMessageEventFilter_IsOfType { public:
@@ -39,9 +44,8 @@ class CMainGameComponent { public:
 };
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 
-class CSubtitleRenderer { public:
-    unsigned char _pad00[0xe5];
-    bool          DisplayingText;                  // +0xE5 (retail; PDB +0xED)
+class CSubtitleRenderer : public CSubtitleRendererDonor {
+ public:
 };
 class CPlayerGui { public:
     unsigned char     _pad00[0x18];

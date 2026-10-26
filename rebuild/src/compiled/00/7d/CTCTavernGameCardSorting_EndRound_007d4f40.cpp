@@ -14,6 +14,11 @@
 //        survives because the stats reads may alias it; the stats pointer is left uninitialised. The def release is
 //        `if (--m_count == 0) Destroy();` (count stored before the copy that is tested; DecRef() then GetRefCount()
 //        copies first).
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 class CCard;
 class C2DVector { public: float X, Y; };
 
@@ -52,10 +57,8 @@ struct CDefPointer {
     CTavernGameCardBaseDef* operator->() const { return Object; }
 };
 
-class CTCHeroStats { public:                           // retail layout (PDB - 0x18 here)
-    unsigned char _pad[0x178];
-    float BestTimePairs;                        // +0x178
-    float BestTimeSorting;                      // +0x17c
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:                           // retail layout (PDB - 0x18 here)
 };
 
 struct CTCTavernGameCardBase {

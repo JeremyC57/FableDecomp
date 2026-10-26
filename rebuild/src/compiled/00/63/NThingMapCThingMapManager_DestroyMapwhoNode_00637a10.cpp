@@ -8,6 +8,11 @@
 // CThingMapManager NoThings at +0x2c (PDB +0x38, retail containers 4 bytes narrower).
 // Shape: one guarded RemoveMapwhoNodeFromCell per node in TL, TR, BR, BL order; `InMapwho = false` on the bit field gives
 // `and byte ptr [esi+50h],0FEh`; `--NoThings` gives `dec [edi+2Ch]`.
+// Layout (supersedes any local-model note above): engine/CThingMapManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CThingMapManager CThingMapManagerDonor
+#include "engine/CThingMapManager.h"
+#undef CThingMapManager
 class CThing {
 public:
     bool IsMapwhoExempt() const;                // 0x004C7E30
@@ -32,9 +37,8 @@ class CTCMapwho { public:
     unsigned char InMapwho : 1;                 // +0x50 bit 0
 };
 namespace NThingMap {
-class CThingMapManager { public:
-    unsigned char _pad00[0x2c];
-    long          NoThings;                     // +0x2c (retail)
+class CThingMapManager : public CThingMapManagerDonor {
+ public:
     void RemoveMapwhoNodeFromCell(CThingMapCell* cell, CMapwhoNode* node);   // 0x00637980
     void DestroyMapwhoNode(CTCMapwho* mapwho);
 };

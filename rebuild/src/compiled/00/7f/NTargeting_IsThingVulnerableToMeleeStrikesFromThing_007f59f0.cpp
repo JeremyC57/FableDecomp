@@ -10,6 +10,11 @@
 // Shape: the PDB's const PeekTC<CTCTargetingAI> with the map in a named local and the one-ternary entry pick (the
 //   component then loads straight into ecx for the virtual call; the if-reassign form goes through eax); the enemy test is `if (...) return true;
 //   return false;` (`test al,al ; setne al` on the callee's bool).
+// Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayer CPlayerDonor
+#include "engine/CPlayer.h"
+#undef CPlayer
 class CTCBase;
 
 struct STCEntry {
@@ -24,10 +29,8 @@ struct CTCMap {
     const STCEntry* LowerBound(const unsigned long& kind) const;   // 0x004365B0
 };
 
-class CPlayer {
+class CPlayer : public CPlayerDonor {
 public:
-    unsigned char _pad000[0x21b];
-    bool          KillEverythingMode;                           // +0x21b
 };
 
 class CThing {

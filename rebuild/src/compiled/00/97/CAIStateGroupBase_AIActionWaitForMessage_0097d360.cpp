@@ -123,8 +123,8 @@ EAIActionReturn CAIStateGroupBaseAccess::AIAction_WaitForMessage(
 
 #if defined(_MSC_VER)
 typedef char fable_abi_assert_base_brain[(offsetof(CAIStateGroupBase, PBrain) == 0x04) ? 1 : -1];
-typedef char fable_abi_assert_brain_size[(sizeof(CAIBrain) == 0xb0) ? 1 : -1];
-typedef char fable_abi_assert_creature_message_id[(offsetof(CThingCreatureBase, LastMessageEventICreatedID) == 0xe8) ? 1 : -1];
+typedef char fable_abi_assert_brain_size[(sizeof(CAIBrain) == 0xa8) ? 1 : -1];
+typedef char fable_abi_assert_creature_message_id[(offsetof(CThingCreatureBase, LastMessageEventICreatedID) == 0xd0) ? 1 : -1];
 typedef char fable_abi_assert_world_manager[(offsetof(CWorld, PMessageEventManager_Data) == 0x60) ? 1 : -1];
 typedef char fable_abi_assert_event_type[(offsetof(CMessageEvent, Type) == 0x08) ? 1 : -1];
 typedef char fable_abi_assert_event_originator[(offsetof(CMessageEvent, OriginatorUID) == 0x28) ? 1 : -1];

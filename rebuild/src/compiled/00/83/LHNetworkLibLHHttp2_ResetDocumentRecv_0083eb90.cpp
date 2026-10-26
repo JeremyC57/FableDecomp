@@ -11,21 +11,18 @@
 // walks is at +0x880), so this is a local model of the retail offsets the body touches, with the PDB member names.
 // Shape: the three cursor/length stores share one zero register (ebx) and run first; the two 2048-byte buffers are
 // intrinsic memsets (`rep stosd` of 0x200 dwords through eax); InChunkMode = false; the final call is a tail jump.
+// Layout (supersedes any local-model note above): engine/LHHttp2.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define LHHttp2 LHHttp2Donor
+#include "engine/LHHttp2.h"
+#undef LHHttp2
 extern "C" void* __cdecl memset(void* dest, int value, unsigned int bytes);
 #pragma intrinsic(memset)
 
 namespace LHNetworkLib {
 
-class LHHttp2 { public:
-    unsigned char _pad0[0x70];                     // +0x00 Host, Hostname, Port, PreparedRequest, headers, timers
-    char          CurrentHeaderPart[2048];         // +0x70
-    unsigned long CurrentHeaderPos;                // +0x870
-    unsigned char _pad874[0x20];                   // +0x874 ProxyHost, ProxyPort, DocumentParts (+0x880), DocumentEncoding
-    unsigned long DocumentEstimatedLength;         // +0x894
-    unsigned long DocumentLength;                  // +0x898
-    char          CurrentDocumentPart[2048];       // +0x89C
-    unsigned long CurrentDocumentPos;              // +0x109C
-    bool          InChunkMode;                     // +0x10A0
+class LHHttp2 : public LHHttp2Donor {
+ public:
     void ResetDocumentParts();                     // 0x0083EB00
     void ResetDocumentRecv();
 };

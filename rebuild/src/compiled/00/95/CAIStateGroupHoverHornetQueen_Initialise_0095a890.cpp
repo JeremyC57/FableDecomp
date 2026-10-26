@@ -7,8 +7,9 @@
 // Shape: StartPos (+0x1c, PDB) copied through registers from the returned reference; the three resets from one
 // zeroed edi (bOneTime +0x34 = true first); the boss lookup used unconditionally (miss path reads the never-written
 // key slot, which VC places in the dead `creature` parameter slot); the call is duplicated on both paths.
-// Layout: engine/CAIStateGroup_HoverHornetQueen.h names; the header puts its Things vector over +0x4c, which the
-// bytes clear as a dword (modelled as m_phaseCounter).
+// Layout: engine/CAIStateGroup_HoverHornetQueen.h names at the retail STLport 4.6 offsets (vector 0xc): the two dword
+// clears are CurrentCirclePoint +0x4c and RouteDirection +0x64 (the Ego_r donor put Things over +0x4c and
+// EnemyKnockDownFrame at +0x64, which is why this model once named them m_phaseCounter / EnemyKnockDownFrame).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 class CTCBase;
 class CThing;
@@ -170,10 +171,13 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_EnemyCreatureBase {
     unsigned char _pad35[3];
     CThing* PEmitter;                           // +0x38
     CThing* PEmitter2;                          // +0x3c
-    unsigned char _pad40[0xc];
-    long m_phaseCounter;                        // +0x4c
-    unsigned char _pad50[0x14];
-    long EnemyKnockDownFrame;                   // +0x64
+    unsigned char Things[0xc];                  // +0x40 vector<CIntelligentPointer<CThing> >
+    long CurrentCirclePoint;                    // +0x4c
+    unsigned char CircleMarkers[0xc];           // +0x50 vector<CIntelligentPointer<CThing> >
+    long EnemyKnockDownFrame;                   // +0x5c
+    bool TimingCritical;                        // +0x60
+    unsigned char _pad61[3];
+    long RouteDirection;                        // +0x64 eWaspDirection
     void Initialise(CAIBrain& brain, CThingAICreature& creature, long id, EScriptAIPriority priority,
                     const CCharString& name);
 };
@@ -184,8 +188,8 @@ void CAIStateGroup_HoverHornetQueen::Initialise(CAIBrain& brain, CThingAICreatur
     StartPos = creature.GetPosition_006a4d00();
     CAIStateGroup_EnemyCreatureBase::Initialise(brain, creature, id, priority, name);
     bOneTime = true;
-    EnemyKnockDownFrame = 0;
-    m_phaseCounter = 0;
+    RouteDirection = 0;
+    CurrentCirclePoint = 0;
     CTCBoss* boss;
     PBrain->PCreature->GetInterface(&boss, 0xad);
     boss->SetNextBossPhase(0, false);

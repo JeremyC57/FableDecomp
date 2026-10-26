@@ -6,6 +6,11 @@
 //   half). Float pool: 0x0122DED8 = 1.0f; 0x01237F00 / 0x0122ED70 = 1.0 / 0.0 (double).
 // Layout: Ego_r.pdb CEnvironmentDef / CEnvironmentThemeDef less 4 (retail CDefBase) and CEnvironmentThemeDaySetDef less 8
 //   (retail 12-byte CArray); CBlendedEnvironmentTheme as the landed Blend 0x00887B70 (texture sets at +0x1ac, 0x18 each).
+// Layout (supersedes any local-model note above): engine/CEnvironmentThemeDaySetDef.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CEnvironmentThemeDaySetDef CEnvironmentThemeDaySetDefDonor
+#include "engine/CEnvironmentThemeDaySetDef.h"
+#undef CEnvironmentThemeDaySetDef
 void StandInSink(void* p, unsigned long n);
 class CRGBFloatColour { public:
     float R, G, B, A;
@@ -64,14 +69,8 @@ class CEnvironmentDef { public:
     long GlowBloomColourLookupRow;             // +0x90
     long SunlightAttenuatorColourLookupRow;
 };
-class CEnvironmentThemeDaySetDef { public:
-    unsigned char _pad00[0x48];
-    float SunTilt;                             // +0x48
-    float SunRotate;
-    float SunHeight;
-    float MoonTilt;
-    float MoonRotate;
-    float MoonHeight;
+class CEnvironmentThemeDaySetDef : public CEnvironmentThemeDaySetDefDonor {
+ public:
 };
 class CEnvironmentThemeDef { public:
     unsigned char _pad00[0x3c];

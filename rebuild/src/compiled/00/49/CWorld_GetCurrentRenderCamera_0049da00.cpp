@@ -9,6 +9,11 @@
 //   Ego_r.pdb CInterpolationInfo (Current +0x00, PausedCurrent +0x10; CInterpolationInfoSet WFInterpolate +0x04).
 // Shape: the selected fraction is homed in the dead `info` argument slot; both returns construct straight into the
 //   hidden result (RVO through the callees' own hidden pointers).
+// Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayer CPlayerDonor
+#include "engine/CPlayer.h"
+#undef CPlayer
 class C3DVector { public:
     float X, Y, Z;
 };
@@ -39,9 +44,8 @@ public:
     CInterpolationInfoSet BulletTimeLast;     // +0x28
     long                  WFServerCurrentTime; // +0x30
 };
-class CPlayer { public:
-    unsigned char _pad[0x220];
-    bool          UsingFreeCamera;            // +0x220
+class CPlayer : public CPlayerDonor {
+ public:
     CCamera GetFreeCamera(float t) const;     // 0x00487180
 };
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970

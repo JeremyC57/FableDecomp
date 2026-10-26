@@ -11,15 +11,19 @@
 //   repeats the default body (VC cross-jumps it into the default after the input load, hoisting that load above the
 //   free-camera test; a fall-through into `default:` does not); every handled case sets the priority itself; the
 //   do-nothing cases just break.
+// Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayer CPlayerDonor
+#include "engine/CPlayer.h"
+#undef CPlayer
 class CProcessedInput { public:
     void SetPriority(long priority);               // 0x00A0D330
 };
 void __fastcall AddManualCameraEvent_0B(bool on, CProcessedInput& input);   // 0x00687E10
 void __fastcall AddManualCameraEvent_0C(bool on, CProcessedInput& input);   // 0x00687E70
 
-class CPlayer { public:
-    unsigned char _pad000[0x220];
-    bool          UsingFreeCamera;                 // +0x220
+class CPlayer : public CPlayerDonor {
+ public:
     long GetCurrentMode();                         // 0x00633BE0
 };
 class CInputProcessMain { public:

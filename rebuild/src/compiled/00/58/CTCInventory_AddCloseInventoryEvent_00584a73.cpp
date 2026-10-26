@@ -12,6 +12,11 @@
 // interface type held in edi; `this` is spilled to [ebp-8] for the base call, the lookup key takes [ebp-4]; the
 // component is used without a null test.
 // Layout: CTCBase ParentThing +0x04; retail CThing interface bitset +0x20, map +0x44.
+// Layout (supersedes any local-model note above): engine/CPlayerGui.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayerGui CPlayerGuiDonor
+#include "engine/CPlayerGui.h"
+#undef CPlayerGui
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -58,9 +63,8 @@ struct CTCInventoryMenu {                            // interface type 0xF6
     void RequestClose();                             // 0x00625920
 };
 
-class CPlayerGui { public:
-    unsigned char _pad_0x000[0x2BE];
-    bool          LiveGuiMode;                     // +0x2BE
+class CPlayerGui : public CPlayerGuiDonor {
+ public:
     void ToggleLiveGui();                            // 0x00438310
 };
 

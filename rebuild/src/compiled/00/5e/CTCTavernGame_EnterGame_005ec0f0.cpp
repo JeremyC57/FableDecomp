@@ -19,6 +19,11 @@
 //        ternary (component straight into ecx); the def is dereferenced before its dtor, so the release has no null test;
 //        the GetSubDef stand-in under `auto_inline(off)` (landed GetTotalWinnings precedent) sinks the def zero store below
 //        the push and gives the plain `dec eax ; mov [ecx+4],eax` release.
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 class CTCBase;
 typedef long ETavernGameStates;
 
@@ -121,9 +126,8 @@ class CTCGamePlayer { public:
 struct CHeroMenuComponent {
     void RequestClose();                        // 0x00625920
 };
-class CTCHeroStats { public:
-    unsigned char _pad_0x00[0x3c];
-    long Money;                                 // +0x3c
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:
 };
 class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0

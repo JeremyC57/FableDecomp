@@ -54,17 +54,16 @@ struct CActionTalkToThing : CActionTalkBase {
     CActionTalkToThing(CThing&, const char*, const char*, const CCharStringValue&, const CCharStringValue&, const CCharStringValue&, bool, bool);
 };
 void __fastcall GetMessagesFromTextName(CSubtitledMessageArray*, const char*, const char*, long); // 0x004cebb0
-// The PDB headers place CPlayerGui::SubtitleRenderer at +0x18 and
-// CSubtitleRenderer::InCutscene at +0xe6, or composite donor offset +0xfe.
-// Native storage is eight bytes smaller before that flag, so this field-free
-// byte view reads retail +0xf6 without inventing a direct PDB member.
+// The engine headers (retail STLport 4.6 layout) place CPlayerGui::SubtitleRenderer at +0x18 and
+// CSubtitleRenderer::InCutscene at +0xde: composite retail +0xf6 (the Ego_r layout had +0xfe and
+// needed an eight-byte correction). SubtitleRenderer is opaque in the flat header, hence the byte view.
 enum {
     NATIVE_PLAYERGUI_INCUTSCENE_OFFSET =
-        offsetof(CPlayerGui_DonorPDB, SubtitleRenderer) + offsetof(CSubtitleRenderer, InCutscene) - 8
+        offsetof(CPlayerGui_DonorPDB, SubtitleRenderer) + offsetof(CSubtitleRenderer, InCutscene)
 };
 #if defined(_MSC_VER)
 typedef char check_playergui_subtitle_renderer_offset[(offsetof(CPlayerGui_DonorPDB, SubtitleRenderer) == 0x18) ? 1 : -1];
-typedef char check_subtitle_renderer_cutscene_offset[(offsetof(CSubtitleRenderer, InCutscene) == 0xe6) ? 1 : -1];
+typedef char check_subtitle_renderer_cutscene_offset[(offsetof(CSubtitleRenderer, InCutscene) == 0xde) ? 1 : -1];
 typedef char check_native_playergui_cutscene_offset[(NATIVE_PLAYERGUI_INCUTSCENE_OFFSET == 0xf6) ? 1 : -1];
 #endif
 extern CPlayerGui_DonorPDB* g_pPlayerGui; // native global type CPlayerGui @ 0x013b8790

@@ -8,6 +8,11 @@
 // Shape: the counted pointer is a local declared after the early `return true` (that exit skips its release); its inline
 //   dtor releases the info block {References, Destroy(__fastcall, Object), Object} and is duplicated on both later exits; the
 //   render info takes the raw mesh pointer (no add-ref).
+// Layout (supersedes any local-model note above): engine/CEngine.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CEngine CEngineDonor
+#include "engine/CEngine.h"
+#undef CEngine
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 
 class C3DMesh2;
@@ -36,9 +41,8 @@ class C3DMeshInfo { public:
     bool GetMesh(CCountedPointer<const C3DMesh2>* mesh, unsigned long lod, unsigned long flags);   // 0x00A25E70
 };
 
-class CEngine { public:
-    unsigned char _pad[0x88];
-    long          CurrentRenderFrame;                  // +0x88 (retail)
+class CEngine : public CEngineDonor {
+ public:
 };
 extern CEngine* g_pEngine_01436ea4;                             // 0x01436EA4
 

@@ -16,6 +16,11 @@
 //   fade = (distance - begin) / (radius - begin); if (fade > 1) fade = 1; }`. Retry pass 3: with <math.h> and a C3DVector with a
 //   user default ctor (the landed 0x00BAA4E0 model) the distance store follows the three x87 pops
 //   as in retail.
+// Layout (supersedes any local-model note above): engine/CEngineSimulationManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CEngineSimulationManager CEngineSimulationManagerDonor
+#include "engine/CEngineSimulationManager.h"
+#undef CEngineSimulationManager
 #include "engine/CEngineCamera.h"
 
 #include <math.h>
@@ -37,12 +42,9 @@ inline const C3DVector& PeekCameraPos(const CEngineCamera* camera)
     return *(const C3DVector*)(camera->CameraDesc + 0x40);   // CameraDesc.WorldPosition
 }
 
-class CEngineSimulationManager {                        // retail layout of the fields used here
+class CEngineSimulationManager : public CEngineSimulationManagerDonor {
+                        // retail layout of the fields used here
 public:
-    unsigned char _pad000[0x1060];
-    float         SimRadius;                            // +0x1060
-    float         SimFadeBegin;                         // +0x1064
-    float         Zoom;                                 // +0x1068
 };
 
 extern CEngineSimulationManager* g_pEngineSimulationManager;   // 0x01436E68

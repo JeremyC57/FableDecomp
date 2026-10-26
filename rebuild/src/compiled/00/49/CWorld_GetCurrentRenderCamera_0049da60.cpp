@@ -7,6 +7,11 @@
 // Layout: local model (engine/CWorld.h models the vptr as a data member, so CWorld's virtuals cannot be declared on it):
 //   PlayerManager +0x0C, PCurrentGameCamera +0x34; CPlayer UsingFreeCamera +0x220.
 // Shape: the shared 1.0f argument is pushed once ahead of the branch (`push 3F800000h` before `je`).
+// Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayer CPlayerDonor
+#include "engine/CPlayer.h"
+#undef CPlayer
 class C3DVector { public:
     float X, Y, Z;
 };
@@ -37,9 +42,8 @@ public:
     CInterpolationInfoSet BulletTimeLast;     // +0x28
     long                  WFServerCurrentTime; // +0x30
 };
-class CPlayer { public:
-    unsigned char _pad[0x220];
-    bool          UsingFreeCamera;            // +0x220
+class CPlayer : public CPlayerDonor {
+ public:
     CCamera GetFreeCamera(float t) const;     // 0x00487180
 };
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970

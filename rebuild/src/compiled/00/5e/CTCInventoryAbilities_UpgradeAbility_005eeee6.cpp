@@ -14,6 +14,11 @@
 // test: `stats->SetAge(stats->Age + GetDefinitions()->PHeroAbilitiesDef->AgeIncreasePerUpgrade)`.
 // Layout: retail CTCInventoryAbilities Abilities vector<pair<long, CDefPointer<const CHeroAbilityDef>>> +0x160
 // (8-byte entries); retail CTCHeroStats Age +0x30; definition holder +0xD0 -> def +0xD0 the age step.
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 #pragma optimize("s", on)
 
 class CTCBase;
@@ -53,9 +58,8 @@ class CThingPlayerCreature : public CThing { public:
     bool LearnAbility(long ability, bool notify, long level, bool updateMorph);   // 0x006AC690
 };
 
-class CTCHeroStats { public:
-    unsigned char _pad_0x00[0x30];
-    float         Age;                               // +0x30
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:
     void SetAge(float age);                          // 0x0057B05F
 };
 

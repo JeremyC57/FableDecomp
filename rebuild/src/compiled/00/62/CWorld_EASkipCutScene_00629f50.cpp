@@ -14,6 +14,11 @@
 // Shape: the CSoundInit default ctor of the landed PlaySoundAtPos (list + body stores) with GainFaderBits = 0x8010; the
 //   sound player's vtable is spilled across the GetSampleBank() call that supplies the first argument; the message
 //   position is a zero C3DVector temporary.
+// Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CSubtitleRenderer CSubtitleRendererDonor
+#include "engine/CSubtitleRenderer.h"
+#undef CSubtitleRenderer
 class CCharString { public: void* PStringData; };
 class C3DVector { public:
     float X, Y, Z;
@@ -48,11 +53,8 @@ class CPlayerGuiDef { public:
     CCharString   TextBoxButtonBSoundCriteria;    // +0x5EC
 };
 CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
-class CSubtitleRenderer { public:
-    unsigned char _pad[0xde];
-    bool          InCutscene;                      // +0xDE
-    bool          CutsceneSkipped;                 // +0xDF
-    bool          CutsceneSkippable;               // +0xE0
+class CSubtitleRenderer : public CSubtitleRendererDonor {
+ public:
     bool IsCutsceneSkippable() const;              // 0x0048DE44
     void Clear(bool all);                          // 0x00492BAB
 };

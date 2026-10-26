@@ -7,7 +7,7 @@
 //   CDefinitionManager::GetDef<CThingDef> @ 0x0042AF3C, CDefClassBase::GetSubDef<CContextSensitiveItemDef> @ 0x005933C8
 //   (landed), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, IS_THING_ALIVE<CThing*> @ 0x0040DCE0 (__fastcall), the
 //   inventory's own virtual slots 33 (+0x84, use by def) and 34 (+0x88, use a thing), the defs' virtual slot 1.
-// Layout: retail CTCInventory (12-byte vectors; PDB offsets differ): QuickAccessItems begin +0x154, the slot item
+// Layout: retail CTCInventory (engine/CTCInventory.h, STLport 4.6 12-byte vectors): ContextSensitiveItems begin +0x154, the slot item
 //   arrays' begin words +0x1E4 / +0x1F0; CContextSensitiveItemDef +0x28 item type, +0x34 slot; retail CThing bitset
 //   +0x20, interface map +0x44, def index +0x8C (unsigned short).
 #pragma optimize("y", off)
@@ -136,7 +136,7 @@ class CTCInventory { public:
 
     CThing*       ParentThing;                              // +0x04 CTCBase
     unsigned char _pad008[0x154 - 0x08];
-    CRetailVector<long> QuickAccessItems;                   // +0x154
+    CRetailVector<long> ContextSensitiveItems;                   // +0x154
     unsigned char _pad160[0x1e4 - 0x160];
     CRetailVector<long> SlotItems;                          // +0x1E4
     CRetailVector<long> PreviousSlotItems;                  // +0x1F0
@@ -149,22 +149,22 @@ void CTCInventory::UseContextSensitiveItem(long quickSlot)
 {
     CTCCarrying* carrying = 0;
     ParentThing->GetInterface(&carrying, 0x46);
-    if (QuickAccessItems[quickSlot] > 0) {
+    if (ContextSensitiveItems[quickSlot] > 0) {
         CDefPointer<CThingDef> thingDef;
-        if (GetDefinitions()->GetDef(QuickAccessItems[quickSlot], &thingDef)) {
+        if (GetDefinitions()->GetDef(ContextSensitiveItems[quickSlot], &thingDef)) {
             CDefPointer<CContextSensitiveItemDef> itemDef;
             if (thingDef->GetSubDef(&itemDef) && itemDef->ItemType == 6 && itemDef->Slot >= 0 && itemDef->Slot < 6) {
                 PreviousSlotItems[itemDef->Slot] = SlotItems[itemDef->Slot];
-                SlotItems[itemDef->Slot] = QuickAccessItems[quickSlot];
+                SlotItems[itemDef->Slot] = ContextSensitiveItems[quickSlot];
             }
         }
         CThing* held = carrying->GetThingInPrimarySlot();
-        if (IS_THING_ALIVE(held) && held->DefIndex == QuickAccessItems[quickSlot]) {
+        if (IS_THING_ALIVE(held) && held->DefIndex == ContextSensitiveItems[quickSlot]) {
             bool used;
             UseItemThing(held, used);
         } else {
             bool used;
-            UseItemDef(QuickAccessItems[quickSlot], used);
+            UseItemDef(ContextSensitiveItems[quickSlot], used);
         }
     }
 }

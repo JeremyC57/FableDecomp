@@ -1,6 +1,11 @@
 // CSubtitleRenderer::Pause(bool updateWhilePaused) -- mark the game paused by the subtitles, remember whether to keep updating, and queue a pause game event (type 9) carrying one byte 1
 // Grade: DIFFER(100v98) -- retail homes AddUBYTE's by-value byte in the unused top byte of the bool parameter slot ([ebp+0Bh]) inside a 0x2c frame; the lane opens a 0x30 frame for it ([ebp-30h]) and copies `this` to eax (lane gap: short-lived local in a dead argument slot)
 // Flags: /GS
+// Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CSubtitleRenderer CSubtitleRendererDonor
+#include "engine/CSubtitleRenderer.h"
+#undef CSubtitleRenderer
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048DD94, 98 bytes; `ret 4`. Callees: CMemoryBuffer::Copy(unsigned long, const void*)
@@ -28,11 +33,8 @@ class CMainGameComponent { public:
 };
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 enum { GAME_EVENT_PAUSE = 9 };
-class CSubtitleRenderer { public:
-    unsigned char _pad000[0xdc];
-    bool          PausedGame;                     // +0xdc
-    unsigned char _pad0dd[9];
-    bool          UpdateWhilePaused;              // +0xe6
+class CSubtitleRenderer : public CSubtitleRendererDonor {
+ public:
     void Pause(bool updateWhilePaused);
 };
 

@@ -13,6 +13,11 @@
 // length +0x20 and two cursor words +0x24/+0x28 that the inline constructor zeroes; CGameEvent::GetData(CMemoryBuffer&)
 // 0x009F17A0 (label "CEventPacket::CopyToBuffer") fills it and CMemoryBuffer::Read(unsigned long, void*) 0x009F18F0
 // (label "CircularBuffer_Read") consumes it.
+// Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayer CPlayerDonor
+#include "engine/CPlayer.h"
+#undef CPlayer
 struct CMemoryBuffer {
     unsigned char Data[0x20];                      // +0x00
     long          Length;                          // +0x20
@@ -32,9 +37,8 @@ class CGameEvent { public:
     long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
 };
 
-class CPlayer { public:
-    unsigned char _pad[0x220];
-    bool          UsingFreeCamera;                 // +0x220 (PDB +0x228)
+class CPlayer : public CPlayerDonor {
+ public:
 };
 
 class CWorld { public:

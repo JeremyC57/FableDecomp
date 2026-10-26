@@ -10,6 +10,11 @@
 //   bitset +0x20 (kind 0xf6 = word +0x3c bit 22), map +0x44, Dead bit +0x91.
 // Shape: two early-return arms each ending in the latch store; the menu pointer is preset to null and set only when
 //   the component is present (`xor ecx,ecx` before the test), then called unconditionally.
+// Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayer CPlayerDonor
+#include "engine/CPlayer.h"
+#undef CPlayer
 class CPlayerGui { public:
     void SetSpecialAbilityButtonsAsDisplaying(bool a, bool b);   // 0x00437580
 };
@@ -46,12 +51,8 @@ class CThing { public:
     unsigned char  _bits91 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-class CPlayer {
+class CPlayer : public CPlayerDonor {
 public:
-    unsigned char _pad000[0x20c];
-    bool          RightTriggerTargetLocked;        // +0x20c
-    unsigned char _pad20d[0x218 - 0x20d];
-    bool          SpellMode;                       // +0x218
     CThing* GetHeroThing();                        // 0x00487DC0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;

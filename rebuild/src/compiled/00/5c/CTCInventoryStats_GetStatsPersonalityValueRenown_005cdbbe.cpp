@@ -13,13 +13,16 @@
 // lookup-key slot as a compiler temporary); returning the quotient directly folds the 0.0f into a constant load (92v94),
 // and a named `maxLevel` local takes a third frame word (95v94).
 // Label: the catalog's ETCInterface_CalculateRatio is this method.
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CTCHeroStats {                                    // interface type 4 (retail offsets)
+class CTCHeroStats : public CTCHeroStatsDonor {
+                                    // interface type 4 (retail offsets)
 public:
-    unsigned char _pad00[0x70];
-    long RenownLevel;                                   // +0x70
-    long RenownMaxLevel;                                // +0x74
 };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType,CTCBase*>
     struct Entry { long type; void* component; };

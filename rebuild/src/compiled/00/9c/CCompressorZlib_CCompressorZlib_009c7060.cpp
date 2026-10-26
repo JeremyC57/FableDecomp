@@ -4,11 +4,10 @@
 // Callees: std::vector<unsigned char>::vector(const vector&) @ 0x005290E0 (OwnWorkspace; the manifest
 // calls it "Vector_CopyAssignFrom"). Vtables: 0x0129B424 = CACompressor (the inlined base copy
 // constructor's store), 0x01245974 = CCompressorZlib (rtti-vtables.tsv).
-// Layout: engine/CACompressor.h is 0x20 bytes with the vector at +0x10 taking 16, and
-// engine/CCompressorZlib.h therefore puts the z_stream at +0x20; in the shipped binary the vector is
+// Layout: in the shipped binary (and in engine/CACompressor.h / CCompressorZlib.h, retail STLport 4.6 layout) the vector is
 // 12 bytes (first/last/end), so CACompressor is 0x1c, the z_stream (56 bytes = 0x38) sits at +0x1c and
-// the flags ZlibInitialised/Compressing/ErrorFlag at +0x54/+0x55/+0x56 (size 0x58) -- hence the
-// `_Retail` models. Both copy constructors are compiler-generated (memberwise): the base's is inlined,
+// the flags ZlibInitialised/Compressing/ErrorFlag at +0x54/+0x55/+0x56 (size 0x58) -- the
+// `_Retail` models carry the constructors the flat headers cannot. Both copy constructors are compiler-generated (memberwise): the base's is inlined,
 // the derived one is spelled out so its `??0` is emitted; the z_stream is a POD struct, which VC7.1
 // copies as a `rep movsd` block through esi/edi, and the bools are copied byte by byte.
 #include "engine/CCompressorZlib.h"
@@ -46,7 +45,7 @@ struct CCompressorZlib_Retail : CACompressor_Retail {
 };
 
 FABLE_STATIC_ASSERT(sizeof(CCompressorZlib_Retail) == 0x58);
-FABLE_STATIC_ASSERT(sizeof(CCompressorZlib) == 0x5c);           // the PDB layout is 4 bytes larger
+FABLE_STATIC_ASSERT(sizeof(CCompressorZlib) == sizeof(CCompressorZlib_Retail)); // engine header: retail STLport 4.6 layout
 
 CCompressorZlib_Retail::CCompressorZlib_Retail(const CCompressorZlib_Retail& other)
     : CACompressor_Retail(other)

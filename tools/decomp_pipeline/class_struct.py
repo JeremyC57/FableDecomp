@@ -14,7 +14,7 @@ Usage:
 import ast, glob, os, re, json, sys
 from pathlib import Path
 
-ROOT = Path(r"D:\Documents\FableTLC")
+ROOT = Path(os.environ.get("FABLE_ROOT", Path(__file__).resolve().parents[2]))
 SRC = ROOT / "rebuild/src/compiled"
 SIZEOF = {"bool": 1, "char": 1, "unsigned char": 1, "signed char": 1, "u8": 1,
           "short": 2, "unsigned short": 2, "wchar_t": 2,

@@ -8,6 +8,11 @@
 // (computed y first into the argument area) and a non-null result is returned as is, else the full query's result.
 // Layout: EnableLightCache is +0xAA in the PDB; the retail ThemeChannels CArray is 12 bytes (PDB 16), so it sits at +0xA6
 // -- modelled locally.
+// Layout (supersedes any local-model note above): engine/CEngineLightingManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CEngineLightingManager CEngineLightingManagerDonor
+#include "engine/CEngineLightingManager.h"
+#undef CEngineLightingManager
 class CEngineLocalLightArray;
 
 class C3DBoundingSphere { public:
@@ -24,9 +29,8 @@ class CEnginePrimitiveThemeChannelDesc { public:
 
 extern const float g_smallObjectLightCacheDiameter_0122dcdc;   // 0x0122DCDC
 
-class CEngineLightingManager { public:
-    unsigned char _pad000[0xa6];
-    bool          EnableLightCache;                // +0xA6
+class CEngineLightingManager : public CEngineLightingManagerDonor {
+ public:
     CEngineLocalLightArray* LookupSmallObjectLightCache(float minX, float minY, long layerMask);   // 0x00B46A30
     CEngineLocalLightArray* GetLightsInSphere(const C3DBoundingSphere& sphere, long layerMask,
                                               const CEnginePrimitiveThemeChannelDesc& theme);     // 0x00B45FB0

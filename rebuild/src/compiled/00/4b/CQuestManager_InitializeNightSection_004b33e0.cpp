@@ -12,6 +12,11 @@
 // Shape: two local STLport set<CCharString> (the landed set model): the load sections, walked with the inline
 // _M_increment, and the NightOnly subset handed to the world map; the CCharString equality is the landed nested-inline
 // operator== (SameText), whose `xor al,al ; mov bl,al` keeps `this` spilled and reloaded after the loop.
+// Layout (supersedes any local-model note above): engine/CQuestManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CQuestManager CQuestManagerDonor
+#include "engine/CQuestManager.h"
+#undef CQuestManager
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);               // 0x00BFEA14
 class CCharStringData { public:
@@ -111,12 +116,8 @@ class CWorld { public:
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();                // slot 12 (+0x30)
 };
-class CQuestManager { public:
-    unsigned char _pad00[0x7c];
-    CWorld*       World;                             // +0x7c
-    unsigned char _pad80[0x0c];
-    bool          DayActive;                         // +0x8c
-    bool          NightActive;                       // +0x8d
+class CQuestManager : public CQuestManagerDonor {
+ public:
     void BuildLoadSections(CSectionSet* sections);   // 0x004B2CA0
     CCharString GetDayOrNightOnlyStringFromFullSectionName(const CCharString& section);   // 0x004AF350
     void InitializeNightSection();

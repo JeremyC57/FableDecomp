@@ -4,6 +4,7 @@
 
 
 // Engine callee: returns a monotonically increasing millisecond tick (int in eax).
+// Layout: retail STLport 4.6 header offsets; member names re-bound by the bytes this body touches: `InsideHeroCount` -> `ControlNoControlMovementStartFrame` (+0xc0).
 #include "engine/CGameCameraManager.h"  // retyped onto the PDB layout; byte parity re-verified
 extern int __cdecl GetEngineTimeMs(void);
 
@@ -13,8 +14,8 @@ extern int   g_noControlTimeDivisor;         // ds:0x1375550, read via fidiv (in
 
 float __fastcall CGameCameraManager_GetNoControlMovementTime(CGameCameraManager *manager)
 {
-    if (manager->InsideHeroCount == 0)
+    if (manager->ControlNoControlMovementStartFrame == 0)
         return g_defaultNoControlMovementTime;
 
-    return (float)(GetEngineTimeMs() - manager->InsideHeroCount) / g_noControlTimeDivisor;
+    return (float)(GetEngineTimeMs() - manager->ControlNoControlMovementStartFrame) / g_noControlTimeDivisor;
 }

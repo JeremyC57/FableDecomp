@@ -132,5 +132,5 @@ typedef char fable_abi_assert_enemy_offset[(offsetof(CAIStateGroup_SeekEnemy, PE
 typedef char fable_abi_assert_brain_offset[(offsetof(CAIStateGroupBase, PBrain) == 0x04) ? 1 : -1];
 typedef char fable_abi_assert_creature_offset[(offsetof(CAIBrain, Creature) == 0x18) ? 1 : -1];
 typedef char fable_abi_assert_perception_frames[(offsetof(CTCPerceiveThing, FramesSinceDirectlyPerceivedThing) == 0x1c) ? 1 : -1];
-typedef char fable_abi_assert_thing_size[(sizeof(CThing) == 0xa8) ? 1 : -1];
+typedef char fable_abi_assert_thing_size[(sizeof(CThing) == 0x98) ? 1 : -1];
 #endif

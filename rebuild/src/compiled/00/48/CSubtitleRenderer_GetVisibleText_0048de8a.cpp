@@ -1,4 +1,9 @@
 // CSubtitleRenderer::GetVisibleText(const CWideString& text, CWideString& visible) -- copy the subtitle text, strip a leading "(HC)" marker (hide cursor), cut it to the characters revealed so far (or finish the reveal); true unless the marker was there
+// Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CSubtitleRenderer CSubtitleRendererDonor
+#include "engine/CSubtitleRenderer.h"
+#undef CSubtitleRenderer
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048DE8A, 237 bytes, `ret 8`. Ego_r.pdb `?GetVisibleText@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z`.
@@ -52,14 +57,8 @@ static inline bool BeginsWith(const CCharString& text, const CCharString& prefix
     return strncmp(text.GetPString(), prefixText, prefixLength) ? false : true;
 }
 
-class CSubtitleRenderer {
+class CSubtitleRenderer : public CSubtitleRendererDonor {
 public:
-    void*         __vftable;                             // +0x00
-    unsigned char _pad04[0x24 - 0x04];
-    long          TextCharactersShowing;                 // +0x24
-    unsigned char _pad28[0xdd - 0x28];
-    bool          AllCharactersDisplayed;                // +0xdd
-    bool          InCutscene;                            // +0xde
     bool GetVisibleText(const CWideString& text, CWideString& visible);
 };
 

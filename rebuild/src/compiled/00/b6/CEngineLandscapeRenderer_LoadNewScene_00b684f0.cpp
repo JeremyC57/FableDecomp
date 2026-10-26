@@ -4,8 +4,8 @@
 // Native scene-state projections: global 0x01436E8C +0x2c is the sentinel list of map-counted-pointer records;
 // global 0x01436EA8 +0x6b0 is CEngineLandscapeMemoryManager. The latter's actual header names its
 // three disposal lists; TexturePool_Clear(0x00BD9CE0) drains them. A byte at renderer +0x63c gates
-// background-LOD requests; this is inside the PDB-opaque MeshBuilder member, so its named projection
-// is the corresponding byte of that actual header member. Map update helpers and statuses are native
+// background-LOD requests; in the retail layout (engine/CEngineLandscapeRenderer.h, TLC MeshBuilder 0x484) it is byte 0x34
+// of the opaque Settings (CLandscapeSettings, +0x608), not part of MeshBuilder as the Ego_r layout suggested. Map update helpers and statuses are native
 // addresses 0x00BDC180 (LOD), 0x00BDC510 (foreground), 0x00BDC020 (background tessellation), and
 // 0x00B68070 (foreground textures). Status values 3=failed, 2=pending.
 #include "engine/CEngineComponent.h"
@@ -105,7 +105,7 @@ bool CEngineLandscapeRendererCallView::LoadNewScene(const CEngineComponentLoadNe
         global->LandscapeMemoryManager)->ClearTexturePool();
 
     CEngineSceneState_01436E8C* const sceneState = g_pEngineSceneState_01436E8C;
-    const bool updateBackgroundLOD = MeshBuilder[0x620] != 0;
+    const bool updateBackgroundLOD = Settings[0x34] != 0;   // +0x63c: CLandscapeSettings at +0x608 in the retail header (not MeshBuilder)
     CEngineMapList* const maps = &sceneState->LoadedLandscapeMaps;
 
     if (updateBackgroundLOD && (params.Flags & 2u) == 0)

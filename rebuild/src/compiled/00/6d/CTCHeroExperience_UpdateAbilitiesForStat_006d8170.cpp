@@ -16,6 +16,11 @@
 // Layout: retail CTCHeroExperience TrainableStatLevels +0x24, PHeroStatsDef +0x5c (landed model, engine header has PDB offsets);
 // CHeroStatsDef MaxHitPointsPerHealthLevel +0x108, MaxStaminaPointsPerMagicPowerLevel +0x114 (as the landed 0x006D64B0 model);
 // retail CTCHeroStats (PDB -8): MaxStamina +0x5c, ExtraMaxHealth +0x8c, ExtraMaxStamina +0x90; CThingPhysical MaxHealth +0xb0.
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 class CTCBase;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -101,12 +106,8 @@ class CThingPhysical : public CThing { public:
     float MaxHealth;                                        // +0xb0
     void SetMaxHealth(float health, bool flag);             // 0x006A5260
 };
-class CTCHeroStats { public:
-    unsigned char _pad00[0x5c];
-    long  MaxStamina;                                       // +0x5c
-    unsigned char _pad60[0x8c - 0x60];
-    float ExtraMaxHealth;                                   // +0x8c
-    long  ExtraMaxStamina;                                  // +0x90
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:
     void SetMaxStamina(long maxStamina);                    // 0x0057A730
     void ModifyStaminaBy(long amount);                      // 0x0057B1DB
 };

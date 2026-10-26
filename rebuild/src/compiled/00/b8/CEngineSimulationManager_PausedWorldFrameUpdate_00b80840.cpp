@@ -4,9 +4,9 @@
 // Callees: virtual slot 1 of the environment provider at +0x198 of the engine state @ 0x01436E8C (returns the current
 // environment), virtual slot 1 of that (returns the wind record: direction C3DVector at +0x14, strength float at +0x20);
 // the chain is walked twice (once per field).
-// Layout: the PDB layout (engine/CEngineSimulationManager.h) has three 12-byte std::lists before the noise table; the
-// retail STLport lists are 4 bytes wide, which moves WindVector from +0x106c to +0x1050 and PausedStepsPending from
-// +0x108c to +0x1070 (both 0x1c lower), so `this` is modelled locally with the PDB names.
+// Layout: a CEngineComponent virtual, so `this` is the CEngineComponent subobject at +4 of the object (the landed constructor
+// 0x00B81BC0 stores its vtable at +4): this+0x1050 / +0x1070 are engine/CEngineSimulationManager.h WindVector +0x1054 and
+// PausedStepsPending +0x1074 (retail STLport 4.6 offsets, which the constructor confirms). Modelled locally as that subobject.
 // Shape: the direction is copied into a C3DVector local through a memberwise user copy constructor (the two first
 // words are read at +0x14/+0x18 before `add eax,14h`; the implicit copy forms the address first), `direction * strength`
 // builds a by-value C3DVector temporary (user constructor) in the second frame vector that is then copied into the
@@ -42,10 +42,10 @@ struct SEngineState_01436e8c {
 extern SEngineState_01436e8c* g_pEngineState_01436e8c;   // 0x01436E8C
 
 class CEngineSimulationManager { public:
-    unsigned char _pad[0x104c];                     // vptr at +0x00
-    C3DVector     WindVector;                      // +0x1050
+    unsigned char _pad[0x104c];                     // CEngineComponent vptr at subobject +0x00 (object +0x04)
+    C3DVector     WindVector;                      // subobject +0x1050 = object +0x1054
     unsigned char _pad105c[0x14];
-    unsigned long PausedStepsPending;              // +0x1070
+    unsigned long PausedStepsPending;              // subobject +0x1070 = object +0x1074
     virtual void PausedWorldFrameUpdate();
 };
 

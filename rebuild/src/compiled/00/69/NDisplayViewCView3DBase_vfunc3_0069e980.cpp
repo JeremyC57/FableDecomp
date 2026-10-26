@@ -109,7 +109,7 @@ class CThingPlayerCreature { public:
     unsigned char _pad4c[0x91-0x4c]; unsigned char Killed:1; unsigned char _padKilled:7;
     unsigned long HasTC(long type) const { return UsingComponents[type>>5] & (1UL<<(type&31)); }
 };
-// Layout: CPlayer.h ControlledCreature+0x2c and CPlayerManager.h MainPlayer+0x20
+// Layout: CPlayer.h ControlledCreature+0x2c and CPlayerManager.h MainPlayer+0x1c (retail STLport 4.6 layout)
 // belong to the external getters. These method-only views do not flatten or read them.
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; const CThingPlayerCreature* PeekPControlledCreature() const; };
 class CPlayerManager { public: CPlayer& GetMainPlayer(); const CPlayer& GetMainPlayer() const; };
@@ -124,13 +124,14 @@ class CTCGamePlayer { public: void* VTable; unsigned char ComponentState[8]; CTC
 // Layout: CSubtitleRenderer.h gives 0x128 bytes of donor storage. Only the
 // receiver address is used here; SubtitleState reserves bounded fixture storage,
 // without claiming that every retail subtitle member has its debug offset.
-class CSubtitleRenderer { public: unsigned char SubtitleState[0x128]; void DrawPreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo&); };
+class CSubtitleRenderer { public: unsigned char SubtitleState[0x120]; void DrawPreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo&); };
 // Layout: CPlayerGui.h SubtitleRenderer+0x18 agrees with native0069e980.
-// ForceAllowSubtitleToRender is donor+0x2cd but RETAIL+0x2bd (native byte load).
+// ForceAllowSubtitleToRender is RETAIL+0x2bd (native byte load), as engine/CPlayerGui.h (retail STLport 4.6 layout) has it;
+// the Ego_r layout had +0x2cd.
 // The unnamed interval is deliberately opaque: debug STL sizes cannot identify
 // its retail subfields. Both accessed regions are separately offset-checked below.
 class CPlayerGui { public:
-    unsigned char _pad00[0x18]; CSubtitleRenderer SubtitleRenderer; unsigned char BeforeForceSubtitle[0x2bd-0x140]; bool ForceAllowSubtitleToRender;
+    unsigned char _pad00[0x18]; CSubtitleRenderer SubtitleRenderer; unsigned char BeforeForceSubtitle[0x2bd-0x138]; bool ForceAllowSubtitleToRender;
     bool IsOpen() const; void SetVWindowForDeprecatedDrawInterface(const C2DBoxF&);
     void DrawPreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo&);
     void ClearGui(); void DrawReceivedItems(const CEnginePrimitivePrepareInfo&); void DrawInventory(const CEnginePrimitivePrepareInfo&);
@@ -248,17 +249,17 @@ typedef char KilledOffsetCheck[sizeof(CThingPlayerCreature)>=0x92?1:-1];
 typedef char GuiSubtitleOffset[offsetof(CPlayerGui,SubtitleRenderer)==0x18?1:-1];
 typedef char GuiFlagOffset[offsetof(CPlayerGui,ForceAllowSubtitleToRender)==0x2bd?1:-1];
 
-typedef char SharedWorldExtent[sizeof(CWorldPdb)==0x1b8?1:-1];
+typedef char SharedWorldExtent[sizeof(CWorldPdb)==0x198?1:-1];
 typedef char SharedRenderManagerExtent[sizeof(CRenderManagerCorePdb)==0x3d20?1:-1];
-typedef char SharedMenuExtent[sizeof(CTCInGameMenuPdb)==0x118?1:-1];
+typedef char SharedMenuExtent[sizeof(CTCInGameMenuPdb)==0xf8?1:-1];
 typedef char SharedPlayerControlledOffset[offsetof(CPlayerPdb,ControlledCreature)==0x2c?1:-1];
-typedef char SharedPlayerManagerIndexOffset[offsetof(CPlayerManagerPdb,MainPlayer)==0x20?1:-1];
+typedef char SharedPlayerManagerIndexOffset[offsetof(CPlayerManagerPdb,MainPlayer)==0x1c?1:-1];
 typedef char SharedDisplayEngineOffset[offsetof(CDisplayEnginePdb,Engine3D)==0x2c?1:-1];
 typedef char RetailDisplayEngineOffset[offsetof(CDisplayEngine,Engine3D)==offsetof(CDisplayEnginePdb,Engine3D)?1:-1];
-typedef char SharedTavernExtent[sizeof(CTCTavernGamePdb)==0x108?1:-1];
+typedef char SharedTavernExtent[sizeof(CTCTavernGamePdb)==0xf0?1:-1];
 typedef char SharedSubtitleExtent[sizeof(CSubtitleRenderer)==sizeof(CSubtitleRendererPdb)?1:-1];
 typedef char SharedGuiSubtitleOffset[offsetof(CPlayerGui,SubtitleRenderer)==offsetof(CPlayerGuiPdb,SubtitleRenderer)?1:-1];
-typedef char GuiFlagRetailDrift[offsetof(CPlayerGui,ForceAllowSubtitleToRender)+0x10==offsetof(CPlayerGuiPdb,ForceAllowSubtitleToRender)?1:-1];
+typedef char GuiFlagRetail[offsetof(CPlayerGui,ForceAllowSubtitleToRender)==offsetof(CPlayerGuiPdb,ForceAllowSubtitleToRender)?1:-1];
 typedef char GuiFlagInBounds[offsetof(CPlayerGui,ForceAllowSubtitleToRender)+sizeof(bool)<=sizeof(CPlayerGui)?1:-1];
 typedef char RetailGamePointerOffset[offsetof(CTCGamePlayer,Game)==0xc?1:-1];
 typedef char RetailGamePlayerExtent[sizeof(CTCGamePlayer)==0x18?1:-1];

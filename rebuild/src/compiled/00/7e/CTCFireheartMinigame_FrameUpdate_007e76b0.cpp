@@ -11,6 +11,11 @@
 //        the interface is absent (the miss path reads the shared frame word), merged into eax for the call.
 // Layout: Ego_r.pdb CTCFireheartMinigame matches retail here (InSession +0x4C, Moving +0x70); CPlayerGui::SubtitleRenderer
 //         +0x18 (PDB); retail CSubtitleRenderer flags sit 8 below the PDB: InCutscene +0xDE, DisplayingText +0xE5.
+// Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CSubtitleRenderer CSubtitleRendererDonor
+#include "engine/CSubtitleRenderer.h"
+#undef CSubtitleRenderer
 class CThing;
 class CTCBase;
 
@@ -20,12 +25,8 @@ class CCharString { public:
     ~CCharString();                                 // 0x0099EAE0
 };
 
-class CSubtitleRenderer {
+class CSubtitleRenderer : public CSubtitleRendererDonor {
 public:
-    unsigned char _pad00[0xde];
-    bool InCutscene;                                // +0xDE
-    unsigned char _padDF[0xe5 - 0xdf];
-    bool DisplayingText;                            // +0xE5
     void SetButton2OverrideText(const CCharString& text);   // 0x0048F881
 };
 

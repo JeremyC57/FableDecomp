@@ -12,6 +12,11 @@
 //   D3DSURFACE_DESC Format +0x00, Width +0x18, Height +0x1c.
 // Shape: height = abs(biHeight) through the abs intrinsic (cdq/xor/sub; a hand-written ?: emits test/jge/neg); pitch = (width * 3 + 3) & ~3; `new CTexture` with an inline zeroing ctor;
 //   the pixel format is a named local (built in the dead pmt slot); two separate surface descriptors.
+// Layout (supersedes any local-model note above): engine/CVideoSys.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CVideoSys CVideoSysDonor
+#include "engine/CVideoSys.h"
+#undef CVideoSys
 struct IDirect3DTexture9 {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
@@ -78,10 +83,8 @@ class CTexture { public:
     bool Initialise(const C2DExtentsI* size, long mipLevels, const CPixelFormat* format, unsigned long usage,
                     ESurfacePool pool, bool a, bool b);           // 0x009FA280
 };
-struct CVideoSys {
-    unsigned char _pad00[0x84];
-    long          Height;               // +0x84 (retail layout)
-    long          Width;                // +0x88
+struct CVideoSys : CVideoSysDonor {
+
 };
 struct CTextureRenderer {
     unsigned char _base[0x160];         // CBaseVideoRenderer

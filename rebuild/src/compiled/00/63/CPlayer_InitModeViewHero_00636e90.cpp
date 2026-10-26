@@ -13,6 +13,11 @@
 // Shape: the landed SetSnapToFirstCamPointMode (0x0069E5D0) by-value CCountedPointer built in the argument area and
 // the landed DecRef/GetRefCount pointee Release (0x00BBDCB0) for the CDefPointer destructor; the camera manager out
 // pointer is not initialised; the mode's constructor is __forceinline inside the new-expression.
+// Layout (supersedes any local-model note above): engine/CPlayerGui.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayerGui CPlayerGuiDonor
+#include "engine/CPlayerGui.h"
+#undef CPlayerGui
 #include "engine/CPlayer.h"
 
 typedef long EPlayerMode;
@@ -31,9 +36,8 @@ class CAInputProcess { public:
     virtual bool AddToInterface(CGamePlayerInterface* playerInterface);   // slot 1 (+0x04)
 };
 
-class CPlayerGui { public:
-    unsigned char _pad000[0x330];
-    bool          DisplayBottomHalfGUI;                // +0x330
+class CPlayerGui : public CPlayerGuiDonor {
+ public:
     void ResetDrawSpiritsHealth();                     // 0x004378E0
 };
 extern CPlayerGui* g_pPlayerGui;                       // 0x013B8790

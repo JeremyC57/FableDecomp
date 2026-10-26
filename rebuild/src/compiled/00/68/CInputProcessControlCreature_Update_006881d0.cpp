@@ -7,12 +7,14 @@
 // Layout: Ego_r.pdb CPlayer with the retail 4-byte PlayerModes list: SpellMode +0x218, ExpressionShiftMode +0x219
 // (PDB +0x220/+0x221); the input-process base as engine/CInputProcessGameBase.h (MyPlayer +0x18, PGamePlayerInterface +0x24).
 // Shape: the interface is read into a local before the player-number call (edi); the first clear stores the call's zero `al` (the result kept in a local and assigned), the second an immediate.
+// Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayer CPlayerDonor
+#include "engine/CPlayer.h"
+#undef CPlayer
 class CProcessedInput;
-class CPlayer {
+class CPlayer : public CPlayerDonor {
 public:
-    unsigned char _pad[0x218];
-    bool          SpellMode;                       // +0x218
-    bool          ExpressionShiftMode;             // +0x219
     long GetPlayerNumber() const;                  // 0x00487510
 };
 class CGamePlayerInterface {

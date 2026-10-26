@@ -13,10 +13,13 @@
 //        if / else-if pair storing the same flag; `best == 0.0f` is `fld [0.0] ; fld best ; fucompp ; test ah,44h ; jnp`,
 //        `score < best` is `fld score ; fcomp best ; test ah,5`; the parent thing comes through an inline accessor so it
 //        is loaded straight into ecx before the literal push; the CDefString temporaries share one frame word.
-class CTCHeroStats { public:                           // retail layout
-    unsigned char _pad[0x184];
-    float BestScoreCoinGolfOakVale;             // +0x184
-    float BestScoreCoinGolfSnowSpire;           // +0x188
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:                           // retail layout
 };
 class CDefString { public:                             // 4-byte def-name handle (user constructor: hidden-pointer return)
     long m_tablePos;

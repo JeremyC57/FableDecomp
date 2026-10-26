@@ -12,6 +12,11 @@
 //          (Ego_r.pdb - 0x18, as the landed CardPairs EndRound 0x007D6150).
 // Label: the catalog calls this CTCTavernGameCardPairs, but the row sits in CTCTavernGameShoveHaPenny vtable 0x0126F2F4 slot
 //          40 and touches the shove-ha-penny stats; 0x007D6F70 is the CardPairs one (the two labels are swapped).
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 class CTCBase;
 
 struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -77,11 +82,8 @@ struct CDefPointer {
     CTavernGameDef* operator->() const { return Object; }
 };
 
-class CTCHeroStats { public:                        // retail layout
-    unsigned char _pad_0x00[0x18c];
-    float BestScoreShoveHaPenny;             // +0x18c
-    unsigned char _pad_0x190[9];
-    bool  PrizeGivenShoveHaPenny;            // +0x199
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:                        // retail layout
 };
 
 class CTCTavernGame { public:

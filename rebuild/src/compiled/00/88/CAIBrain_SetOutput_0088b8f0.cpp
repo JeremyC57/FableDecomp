@@ -8,23 +8,24 @@
 //   0x00910659 in CAIStateGroup_MinionListenToStory::StandUp, 0x00917C9C, 0x0091D74C, ... ) is AI state-group code. FableWin /
 //   Ego_r name set ?SetOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z. The catalog's CQuestManager::RemoveAvailableQuestCardType is
 //   wrong (that member takes a CCharString and CQuestManager has no member at +0x44 / +0x8C of this shape).
-// Model: local -- engine/CAIBrain.h carries the Ego_r offsets (Output +0x48, OutputValid +0x90), 4 bytes off retail here.
+// Model: engine/CAIBrain.h (retail STLport 4.6 layout: Output +0x44, OutputValid +0x8C); the method rides on a
+//   derived class so the symbol keeps its retail name.
+#define CAIBrain CAIBrainDonor
+#include "engine/CAIBrain.h"
+#undef CAIBrain
 class CBrainOutput {                                     // retail 0x48 bytes (only the size and the assignment matter here)
 public:
     unsigned char _body[0x48];
     CBrainOutput& operator=(const CBrainOutput& other);  // 0x0088C840
 };
 
-class CAIBrain {
+class CAIBrain : public CAIBrainDonor {
 public:
-    unsigned char _before_Output[0x44];                  // vptr .. PPendingStateGroup (retail)
-    CBrainOutput  Output;                                // +0x44
-    bool          OutputValid;                           // +0x8C
     void SetOutput(const CBrainOutput& output);
 };
 
 void CAIBrain::SetOutput(const CBrainOutput& output)
 {
-    Output = output;
+    reinterpret_cast<CBrainOutput&>(Output) = output;
     OutputValid = true;
 }

@@ -11,6 +11,11 @@
 // Shape: the card is not null-tested and its quest card comes from the unchecked GetQuestCard helper (an unset local
 // when the TC is absent): VC7.1 seeds that register from the argument word once before the walk, exactly as in
 // GetActiveQuestCardFromScriptName 0x004B0C80; the closing World store is duplicated into both exits.
+// Layout (supersedes any local-model note above): engine/CWorld.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CWorld CWorldDonor
+#include "engine/CWorld.h"
+#undef CWorld
 extern "C" void __cdecl free(void* p);                   // 0x00BFEA14 (MSVCR71)
 
 class CCharStringData { public:                                 // the shared string block
@@ -114,9 +119,8 @@ class CTCQuestCard { public:
     bool IsVignette() const;                             // 0x007022E0
 };
 
-class CWorld { public:
-    unsigned char _pad00[0xda];
-    bool          MapTableShowQuestCardsOnUsed;          // +0xda (PDB +0xe6)
+class CWorld : public CWorldDonor {
+ public:
 };
 
 class CQuestManager { public:

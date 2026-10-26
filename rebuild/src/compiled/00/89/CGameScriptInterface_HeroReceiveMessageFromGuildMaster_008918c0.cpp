@@ -1,4 +1,4 @@
-// CGameScriptInterface::HeroReceiveMessageFromGuildMaster(const CCharString& text, const CCharString& symbol, bool flag, bool force) const -- when creature generation is enabled in the world (CWorld+0xe0) and either `force` is set or the user profile allows it (the singleton @ 0x0040D2A0: the +0xd8 setting when a profile is loaded (+0xc), else the +0x18 default), show the guild master message in the game UI (0x013B8790, 0x00437800) with the text, the id of the symbol (0x006E77F0) and the flag
+// CGameScriptInterface::HeroReceiveMessageFromGuildMaster(const CCharString& text, const CCharString& symbol, bool flag, bool force) const -- when guild master messages are enabled in the world (CWorld::GuildMasterMessagesEnabled +0xe0, engine/CWorld.h at the retail STLport 4.6 offsets) and either `force` is set or the user profile allows it (the singleton @ 0x0040D2A0: the +0xd8 setting when a profile is loaded (+0xc), else the +0x18 default), show the guild master message in the game UI (0x013B8790, 0x00437800) with the text, the id of the symbol (0x006E77F0) and the flag
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008918C0, length 87 bytes.
 // Callees: CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0, the symbol id lookup @ 0x006E77F0 (labelled LTextSystem::GetIDFromSymbol; `this` unused), the game UI call @ 0x00437800 (the label is propagated). Shape: the interface in esi, the profile setting chosen in al through a two-way branch, the id call before the flag and text are pushed, `ret 10h`.
 // Leaf: HeroReceiveMessageFromGuildMaster
@@ -118,7 +118,7 @@ class CWorld { public:
     unsigned char                   _pad6c[8];
     COpinionReactionManager_Retail* POpinionReactionManager_Data;   // +0x74
     unsigned char                   _pad78[0x68];
-    bool                            CreatureGenerationEnabled;  // +0xe0
+    bool                            GuildMasterMessagesEnabled; // +0xe0
     COpinionReactionManager_Retail* GetOpinionReactionManager() { return POpinionReactionManager_Data; }
 };
 typedef unsigned short wchar_t;                // VC7.1 without /Zc:wchar_t: the type of L""
@@ -192,7 +192,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::HeroReceiveMessageFromGuildMaster(const CCharString& text, const CCharString& symbol, bool flag, bool force) const
 {
-    if (World->CreatureGenerationEnabled) {
+    if (World->GuildMasterMessagesEnabled) {
         bool allowed = force;
         if (!allowed) {
             CUserProfileManager_Retail& profile = CUserProfileManager_Retail::Get();

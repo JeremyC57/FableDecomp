@@ -15,6 +15,11 @@
 //        next-round arm returns through SetState(7) and the finish arm falls into the shared SetState(8), so the two
 //        calls tail-merge on `push 7 / push 8`; `(GameWon && best == 0.0f) || Counter < best` is the fucompp/jnp then
 //        fcomp/`test ah,5` pair; the stats pointer is zero-initialised.
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 class CCard;
 class C2DVector { public: float X, Y; };
 
@@ -53,9 +58,8 @@ struct CDefPointer {
     CTavernGameCardBaseDef* operator->() const { return Object; }
 };
 
-class CTCHeroStats { public:                           // retail layout (PDB - 0x18 here)
-    unsigned char _pad[0x178];
-    float BestTimePairs;                        // +0x178
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:                           // retail layout (PDB - 0x18 here)
 };
 
 struct CTCTavernGameCardBase {

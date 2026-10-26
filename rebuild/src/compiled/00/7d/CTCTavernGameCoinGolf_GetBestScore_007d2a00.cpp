@@ -15,6 +15,11 @@
 //        `fld [0.0] ; fld best ; fucompp ; test ah,44h ; jnp`; the table test and the score test share one `&&` per arm
 //        so a set Oakvale name with no score falls through to the Snowspire test; the Snowspire arm reads the parent thing
 //        into a named local (retail loads `mov ecx,[esi+4]` before the literal push there).
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 class CWideString { public:
     void* m_data;
     CWideString(const CWideString& other);      // 0x0099B720
@@ -62,10 +67,8 @@ struct CDefPointer {
     CTavernGameDef* operator->() const { return Object; }
 };
 
-class CTCHeroStats { public:                           // retail layout (PDB - 0x18 here)
-    unsigned char _pad[0x184];
-    float BestScoreCoinGolfOakVale;             // +0x184
-    float BestScoreCoinGolfSnowSpire;           // +0x188
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:                           // retail layout (PDB - 0x18 here)
 };
 
 class CTCTavernGame { public:

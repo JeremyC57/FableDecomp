@@ -15,6 +15,11 @@
 // without one, Degradable parked in bl across the release); `Health < MaxHealth` gives `test ah,5 ; jp`;
 // the navigation flag is read through the member pointer directly (no add-ref); a bool argument loaded from
 // memory is pushed as `xor ecx,ecx ; mov cl` (a long parameter gives movzx); the component comes from the out-parameter GetInterface (`mov eax,[eax+4]` ... `mov ecx,eax`).
+// Layout (supersedes any local-model note above): engine/CThingPhysical.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CThingPhysical CThingPhysicalDonor
+#include "engine/CThingPhysical.h"
+#undef CThingPhysical
 class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -45,10 +50,8 @@ class CThing { public:
     void SetAsGameStatePersisted_004c9c10(bool persisted);           // 0x004C9C10
 };
 
-class CThingPhysical { public:
-    unsigned char _pad0[0xb0];
-    float MaxHealth;                                        // +0xb0
-    float Health;                                           // +0xb4
+class CThingPhysical : public CThingPhysicalDonor {
+ public:
 };
 
 class CDegradableDef { public:

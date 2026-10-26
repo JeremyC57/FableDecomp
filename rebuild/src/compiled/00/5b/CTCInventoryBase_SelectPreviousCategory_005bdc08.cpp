@@ -8,15 +8,17 @@
 // Layout: retail NInventory::CTCInventoryBase 8 bytes below the PDB from +0x58: InventorySelectionState +0x1C,
 //         Categories +0x20 (0x2C-byte CCategory, Selected +0x28), SelectedCategoryIndex +0x70, CategoryMoving +0x89,
 //         CategoryMovement +0x8C, CategoryMovementDirection +0x90 (PDB +0x20/+0x24/+0x78/+0x91/+0x94/+0x98).
+// Layout (supersedes any local-model note above): engine/CCategory.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CCategory CCategoryDonor
+#include "engine/CCategory.h"
+#undef CCategory
 #pragma optimize("s", on)
 
 namespace NInventory {
 
-class CCategory { public:                                   // NInventory::CCategory, retail 0x2C bytes
-    unsigned char _pad_0x00[0x28];
-    bool          Selected;                          // +0x28
-    bool          DisplayItems;                      // +0x29
-    unsigned char _pad_0x2a[0x2];
+class CCategory : public CCategoryDonor {
+ public:                                   // NInventory::CCategory, retail 0x2C bytes
 };
 
 template <class T> struct CRetailVector {            // STLport vector (12 bytes)

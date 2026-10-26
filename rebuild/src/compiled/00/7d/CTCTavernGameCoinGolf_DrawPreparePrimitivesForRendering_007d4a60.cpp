@@ -6,11 +6,15 @@
 // +0x20 is CTCTavernGame::IsBeingPlayed: the PDB places it at +0x28, retail's UIComponents vector is
 // 8 bytes smaller (0x0C vs 0x14), so the engine header's offsets do not apply (local model).
 // Shape: byte member tested with `mov al ; test al,al` (a bool member).
+// Layout (supersedes any local-model note above): engine/CTCTavernGame.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCTavernGame CTCTavernGameDonor
+#include "engine/CTCTavernGame.h"
+#undef CTCTavernGame
 struct CRenderContext;
 
-class CTCTavernGame { public:
-    unsigned char _pad[0x20];
-    bool IsBeingPlayed;                                                 // +0x20
+class CTCTavernGame : public CTCTavernGameDonor {
+ public:
     void DrawPreparePrimitivesForRendering(CRenderContext* context);    // 0x005ECA50
 };
 

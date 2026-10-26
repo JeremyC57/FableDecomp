@@ -14,6 +14,11 @@
 // `mov edi,edi`; converting once before the loop gives a direct `fild [eax+58h]` (10 bytes short).
 // Layout: Ego_r.pdb CTCFireballSpell minus 4 after the 0x34-byte retail timer; PTarget at the packed +0x52 (pack(2) + explicit
 // pads). Def +0x3c / +0x44 and CTCHeroStats +0x58 names inferred. No engine header.
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -100,9 +105,8 @@ public:
 class CTCSoundPlayer { public:                             // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
 };
-class CTCHeroStats { public:                               // interface 4
-    unsigned char _pad00[0x58];
-    long Stamina;                                   // +0x58 (name inferred)
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:                               // interface 4
 };
 
 struct CWillButtonHelperTimer {                     // retail 0x34 bytes

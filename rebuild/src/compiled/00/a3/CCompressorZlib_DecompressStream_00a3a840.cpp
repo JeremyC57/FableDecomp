@@ -38,7 +38,7 @@ struct CCompressorZlib_Retail {
     unsigned long DecompressStream(void* dest, unsigned long destSize, bool* endOfStream);
 };
 
-FABLE_STATIC_ASSERT(sizeof(CCompressorZlib_Retail) == sizeof(CCompressorZlib) - 4);
+FABLE_STATIC_ASSERT(sizeof(CCompressorZlib_Retail) == sizeof(CCompressorZlib)); // engine header: retail STLport 4.6 layout
 
 unsigned long CCompressorZlib_Retail::DecompressStream(void* dest, unsigned long destSize, bool* endOfStream)
 {

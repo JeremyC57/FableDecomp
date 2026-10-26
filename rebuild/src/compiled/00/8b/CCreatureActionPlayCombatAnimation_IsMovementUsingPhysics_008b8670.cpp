@@ -1,5 +1,6 @@
+// Layout: retail STLport 4.6 container sizes put the PDB member on these bytes; renamed `f_2` -> `UsePhysics`.
 #include "engine/CCreatureAction_PlayCombatAnimation.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CCreatureAction_PlayCombatAnimation_Methods : CCreatureAction_PlayCombatAnimation {
     unsigned char M();
 };
-unsigned char CCreatureAction_PlayCombatAnimation_Methods::M(){ return this->f_2; }
+unsigned char CCreatureAction_PlayCombatAnimation_Methods::M(){ return this->UsePhysics; }

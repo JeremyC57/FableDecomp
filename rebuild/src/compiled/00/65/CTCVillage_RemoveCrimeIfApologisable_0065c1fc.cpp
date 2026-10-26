@@ -14,6 +14,11 @@
 //        from the unchecked out-parameter GetInterface (the absent arm reads the handle's argument slot); the effects def
 //        is a named counted-pointer local in the lookup key's frame word, released by its `__forceinline` null-tested
 //        destructor (the clear of its pointer is elided before the return).
+// Layout (supersedes any local-model note above): engine/CTCVillage.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCVillage CTCVillageDonor
+#include "engine/CTCVillage.h"
+#undef CTCVillage
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
@@ -109,9 +114,8 @@ class CTCHeroOpinionDeedLog { public:
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
 
-class CTCVillage { public:
-    unsigned char _pad_0x00[0xd8];
-    long          LastFrameApologised;          // +0xd8
+class CTCVillage : public CTCVillageDonor {
+ public:
     CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
     void RemoveCrime(long deedHandle);          // 0x0065C146
     void RemoveCrimeIfApologisable(long deedHandle);

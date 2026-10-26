@@ -6,6 +6,11 @@
 // CWorld::SaveGameStateInternal(const CWideString&, bool) 0x0049F4C0, ~CWideString 0x0099B510.
 // CWorld: SerialisingHeroState +0x102 (PDB +0x10E; retail containers before it are 12 bytes, not 16).
 // Shape: the path string reuses the dead `name` argument slot; the save result is kept in bl across the two dtors.
+// Layout (supersedes any local-model note above): engine/CWorld.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CWorld CWorldDonor
+#include "engine/CWorld.h"
+#undef CWorld
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
 class CWideStringData;
@@ -24,9 +29,8 @@ class CUserProfileManager { public:
     CWideString GetAutoSaveRegionLeavingFileName() const;   // 0x00406730
 };
 
-class CWorld { public:
-    unsigned char _pad[0x102];
-    bool          SerialisingHeroState;             // +0x102 (PDB +0x10E)
+class CWorld : public CWorldDonor {
+ public:
     bool SaveGameStateInternal(const CWideString& path, bool b);   // 0x0049F4C0
     bool SaveHeroStateInternal(const CWideString& name, bool b);
 };

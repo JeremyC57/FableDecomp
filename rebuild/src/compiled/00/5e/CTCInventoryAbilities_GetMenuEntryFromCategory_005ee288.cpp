@@ -10,6 +10,11 @@
 // list->FindChild(CCharString("UI_...", -1));`: VC hoists the identical lead (list and vtable loads, `push ecx ; mov
 // ecx,esp ; push -1`) above the branch and merges all six ctor/call tails (a ternary on the literal, or on two
 // CCharString temporaries, compiles differently). The zero register also serves the flag compare.
+// Layout (supersedes any local-model note above): engine/CPlayerGui.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayerGui CPlayerGuiDonor
+#include "engine/CPlayerGui.h"
+#undef CPlayerGui
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -27,9 +32,8 @@ struct CComponent {                                  // NUISystem::CComponent
     virtual CComponent* FindChild(CCharString name); // slot 3 (+0x0C)
 };
 
-class CPlayerGui { public:
-    unsigned char _pad_0x000[0x2BE];
-    bool          LiveGuiMode;                 // +0x2BE
+class CPlayerGui : public CPlayerGuiDonor {
+ public:
 };
 
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790

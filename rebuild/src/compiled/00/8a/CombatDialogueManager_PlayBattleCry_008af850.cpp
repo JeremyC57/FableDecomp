@@ -42,7 +42,7 @@ struct CSoundPair {long FirstSound,LastSound;};
 struct CSoundInit {float Volume,Pitch,Pan;long NoPlays,PlaybackType;unsigned long GainFaderBits,PitchFaderBits;long OverrideID;__forceinline CSoundInit(){Volume=1.0f;Pitch=1.0f;Pan=0.0f;NoPlays=1;GainFaderBits=0;PitchFaderBits=0;OverrideID=-1;PlaybackType=1;}};
 struct CTCSoundPlayer {unsigned long PlayAttachedSample(const CSoundPair&,const CSoundInit&,bool,bool,bool);};
 struct Entry {int Type;CTCSoundPlayer* Value;};struct CVectorMap {Entry* Start;Entry* Finish;Entry* End;__declspec(noinline) Entry* LowerBound(const int* key){int length=(int)(Finish-Start);Entry* first=Start;while(length>0){int half=length>>1;Entry* middle=first+half;if(middle->Type<*key){first=middle+1;length-=half+1;}else length=half;}return first;}};
-struct CThingCreatureBase: ::CThingCreatureBase {__forceinline unsigned&Flags(){return *(unsigned*)_pad_0x20;}__forceinline CVectorMap&Interfaces(){return *(CVectorMap*)_pad_0x44;}__forceinline CCreatureDef*&Definition(){return *(CCreatureDef**)_pad_0x70;}};
+struct CThingCreatureBase: ::CThingCreatureBase {__forceinline unsigned&Flags(){return *(unsigned*)_pad_0x20;}__forceinline CVectorMap&Interfaces(){return *(CVectorMap*)(_pad_0x20+0x24);}__forceinline CCreatureDef*&Definition(){return *(CCreatureDef**)_pad_0x70;}};
 __forceinline CTCSoundPlayer* FindSoundInterface(CThingCreatureBase* thing){int type=16;CVectorMap& interfaces=thing->Interfaces();Entry* p=interfaces.LowerBound(&type);return (p==interfaces.Finish||type<p->Type?interfaces.Finish:p)->Value;}
 unsigned int GetWorldFrame();
 struct CombatDialogueManager {unsigned char Pad[0x20];unsigned int LastBattleCryFrame;bool IsSpeechAllowed(const CThingCreatureBase&)const;bool PlayBattleCry(CThingCreatureBase&);};

@@ -7,11 +7,15 @@
 // 4 bytes); the two arms are `!AggressiveMode && on` (stores the immediate 1) and the else-if
 // `AggressiveMode && !on` (stores `on`, i.e. dl), whose re-test of AggressiveMode survives
 // (`test al,al ; je`).
+// Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayer CPlayerDonor
+#include "engine/CPlayer.h"
+#undef CPlayer
 extern unsigned char g_bAggressiveModeAvailable;   // 0x013B85F3
 
-class CPlayer { public:
-    unsigned char _pad00[0x217];
-    bool          AggressiveMode;                  // +0x217 (PDB +0x21f)
+class CPlayer : public CPlayerDonor {
+ public:
     void SetUpControlsBasedOnAggressiveMode();     // 0x00487DE0
     void SetAggressiveMode(bool on);
 };

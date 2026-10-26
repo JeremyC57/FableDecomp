@@ -9,6 +9,11 @@
 //   word, `it == last || key < it->type` -> last, no null test of the component) must be `__forceinline` in this local model or
 //   it is emitted out of line; the component lands in esi because it is used again after the call. `x <= 0.0f` on the stored
 //   health is `fst ; fcomp ; test ah,41h ; jp`.
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -95,9 +100,8 @@ struct CIntelligentPointer {                    // CIntelligentPointer<CThing> (
     void* __vftable;
     void* m_pItem;
 };
-class CTCHeroStats { public:
-    unsigned char _pad00[0x58];
-    long Stamina;                               // +0x58 (PDB +0x60; retail CTCHeroStats sits 8 bytes below the PDB)
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:
     void ModifyStaminaBy(long amount);          // 0x0057B1DB
 };
 namespace NGraphicAppearance {

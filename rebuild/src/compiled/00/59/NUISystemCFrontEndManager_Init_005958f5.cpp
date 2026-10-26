@@ -14,6 +14,11 @@
 // the same -0x14 shift); CManager input pointer +0x20 (stored inline).
 // Opt: size TU (unaligned entry) with a frame pointer (`leave`). Shape: the count and the element pointer are read once
 // before the loop (retail `dec edi / add esi,4`); re-reading names.size() or names[i] each pass reloads both (192v182).
+// Layout (supersedes any local-model note above): engine/CManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CManager CManagerDonor
+#include "engine/CManager.h"
+#undef CManager
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CWideString { public: void* PStringData; };
@@ -58,10 +63,8 @@ public:
 }
 namespace NUISystem {
 class CComponent;
-class CManager {
+class CManager : public CManagerDonor {
 public:
-    unsigned char  _pad00[0x20];
-    CInputManager* PInputManager;                        // +0x20
     static CManager* __fastcall GetInstance();           // 0x0041E5F2
     void SetMeshBank(CCountedPointer<CMeshDataBank> bank);          // 0x0041D198
     void SetDefinitionManager(CDefinitionManager* definitions);    // 0x0041CD89

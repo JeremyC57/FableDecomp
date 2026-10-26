@@ -6,6 +6,11 @@
 // Retail offsets: CWorld PlayerManager +0x0C, AutoSaveLocked +0x100 (PDB +0x10C); CThing Dead +0x91 bit 0 (PDB - 0x10).
 // Shape: the two SaveGameState calls (quest-screen flag true/false) are complete statements that VC7.1 merges into
 // one call after the argument pushes.
+// Layout (supersedes any local-model note above): engine/CWorld.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CWorld CWorldDonor
+#include "engine/CWorld.h"
+#undef CWorld
 class CWideStringData;
 class CWideString { public: CWideStringData* PStringData; };
 
@@ -18,11 +23,8 @@ class CPlayerManager { public: CPlayer* GetMainPlayer(); };          // 0x004499
 class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
 extern CQuestManager* g_pQuestManager;           // 0x013B89FC
 
-class CWorld { public:
-    unsigned char   _pad[0xc];
-    CPlayerManager* PlayerManager;               // +0x0C
-    unsigned char   _pad10[0xf0];
-    bool            AutoSaveLocked;              // +0x100 (PDB +0x10C)
+class CWorld : public CWorldDonor {
+ public:
     void SaveGameState(const CWideString& name, bool questScreens, bool b);   // 0x004A05C0
     bool AutoSaveInternal(const CWideString& name, bool b);
 };

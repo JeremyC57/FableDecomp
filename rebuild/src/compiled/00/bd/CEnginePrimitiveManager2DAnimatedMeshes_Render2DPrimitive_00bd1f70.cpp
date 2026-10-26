@@ -1,6 +1,11 @@
 // CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalPrimitiveBase&, CEngineSubPrimitiveChain&, ESubPrimitiveType) -- queue a 2D animated mesh: the 2D static-mesh culling and load sequence (0x00B9E950), then SetupMesh2D, the LOD transform stored into the render info, generated objects, simulation start, and one pool-allocated CEngineSubPrimitiveAnimatedMesh per sub-mesh whose material is not hidden by the primitive's visibility vector (type 0x26 only)
 // Leaf: Render2DPrimitive
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BD1F70, length 1004 bytes (`ret 0Ch`, virtual).
+// Layout (supersedes any local-model note above): engine/CEngineLightingManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CEngineLightingManager CEngineLightingManagerDonor
+#include "engine/CEngineLightingManager.h"
+#undef CEngineLightingManager
 #include <stddef.h>
 class CEngineInternalPrimitiveBase;
 class CEngineSubPrimitiveChain;
@@ -44,9 +49,8 @@ class C3DMesh2 { public:
     bool           HasSimulation;                  // +0xe4
 };
 class CEngineLocalLightArray;
-class CEngineLightingManager { public:
-    unsigned char _pad[0x44ec];
-    unsigned char EmptyLightArray[0x1a4];          // +0x44ec
+class CEngineLightingManager : public CEngineLightingManagerDonor {
+ public:
 };
 extern CEngineLightingManager* g_pLightingManager;   // 0x01436E9C
 

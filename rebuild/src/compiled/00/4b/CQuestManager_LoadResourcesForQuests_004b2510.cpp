@@ -3,6 +3,11 @@
 // Shape: the three set inserts drop their pair<iterator,bool> results; a same-TU noinline stand-in body for the insert
 //   0x004AC380 (as the landed UpdateHiddenMaterials 0x00706510) lets VC7.1 pack the three results into one 8-byte frame
 //   slot like retail's link-time code generation (declaration only: three slots, 0x34 frame).
+// Layout (supersedes any local-model note above): engine/CQuestManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CQuestManager CQuestManagerDonor
+#include "engine/CQuestManager.h"
+#undef CQuestManager
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);               // 0x00BFEA14
 class CCharString { public:
@@ -61,12 +66,8 @@ class CWorld { public:
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();                // slot 12 (+0x30)
 };
-class CQuestManager { public:
-    unsigned char _pad00[0x7c];
-    CWorld*       World;                             // +0x7c
-    unsigned char _pad80[0x0c];
-    bool          DayActive;                         // +0x8c
-    bool          NightActive;                       // +0x8d
+class CQuestManager : public CQuestManagerDonor {
+ public:
     void LoadResourcesForQuests(const CCharStringVector& questSections);
 };
 

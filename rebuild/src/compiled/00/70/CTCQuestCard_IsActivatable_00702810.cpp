@@ -12,6 +12,11 @@
 // Shape: a const_iterator for loop re-reading `PDef->Prerequisites.end()`, the STLport increment as a static
 //   `_Rb_global<bool>::_M_increment(node)`, the hero fetched per renown prerequisite, the stats pointer `= 0` then
 //   the inline GetInterface (jump-threaded when the bit is clear).
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 namespace std {
 template<class T1, class T2> class pair {
 public:
@@ -97,10 +102,9 @@ public:
     T* operator->() const { return Object; }
 };
 
-class CTCHeroStats {                                      // Ego_r.pdb CTCHeroStats; retail RenownLevel +0x70 (PDB +0x78)
+class CTCHeroStats : public CTCHeroStatsDonor {
+                                      // Ego_r.pdb CTCHeroStats; retail RenownLevel +0x70 (PDB +0x78)
 public:
-    unsigned char _pad00[0x70];
-    long RenownLevel;                                     // +0x70
 };
 
 class CInterfaceMap {                                     // CVectorMap<ETCInterfaceType, CTCBase*>: sorted {type, component} vector

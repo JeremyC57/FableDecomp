@@ -6,6 +6,11 @@
 // CThing PlayerNumber at retail +0x90 (Ego_r.pdb +0xa0; the retail CThing is 0x10 below the PDB there). The byte at +0x10
 // is padding in the Ego_r.pdb layout; it is the thing-type tag that thing filters compare with 1 and 2 (e.g. 0x006A7120),
 // so it keeps a descriptive placeholder name. Both classes are modelled locally (no retail-accurate shared header).
+// Layout (supersedes any local-model note above): engine/CPlayerManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayerManager CPlayerManagerDonor
+#include "engine/CPlayerManager.h"
+#undef CPlayerManager
 class CThing {
 public:
     unsigned char _pad00[0x10];
@@ -13,10 +18,8 @@ public:
     unsigned char _pad11[0x90 - 0x11];
     signed char   PlayerNumber;                          // +0x90
 };
-class CPlayerManager {
+class CPlayerManager : public CPlayerManagerDonor {
 public:
-    unsigned char _pad00[0x1c];
-    long          MainPlayer;                            // +0x1c
     bool IsThingMainPlayer(const CThing& thing) const;
 };
 bool CPlayerManager::IsThingMainPlayer(const CThing& thing) const

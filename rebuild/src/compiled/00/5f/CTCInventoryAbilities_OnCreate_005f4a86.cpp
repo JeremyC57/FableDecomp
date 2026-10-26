@@ -15,6 +15,11 @@
 // world's SerialisingAboutToLoadHeroState (+0x101) as two nested ifs.
 // Layout: retail CTCInventoryBase 0x130 bytes, ParentThing +0x04; CTCInventoryAbilities::Initialised +0x141 (PDB
 // +0x159); CThing PDef +0x70; retail CWorld SerialisingAboutToLoadHeroState +0x101 (PDB +0x10D).
+// Layout (supersedes any local-model note above): engine/CWorld.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CWorld CWorldDonor
+#include "engine/CWorld.h"
+#undef CWorld
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -66,9 +71,8 @@ class CPlayerGui { public:
 };
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
-class CWorld { public:
-    unsigned char _pad00[0x101];
-    bool SerialisingAboutToLoadHeroState;            // +0x101 (PDB +0x10D)
+class CWorld : public CWorldDonor {
+ public:
 };
 
 struct CTCInventoryBase_Abilities {                  // retail 0x130 bytes

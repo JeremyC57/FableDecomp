@@ -6,6 +6,11 @@
 // Dead bit +0x91. The generator component's Destroyed flag sits at +0x89 in retail (PDB CTCCreatureGenerator +0xA5, 0x1C lower).
 // Shape: inline IsThingAlive-style test (GetPItem twice), then an inline accessor that returns an unset local on the absent path
 // (`CTC* tc; if (GetInterface(0x3d,&tc)) ...; return tc;`): retail reads the dead key slot `[esp+4]` when the bit is clear.
+// Layout (supersedes any local-model note above): engine/CTCCreatureGenerator.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCCreatureGenerator CTCCreatureGeneratorDonor
+#include "engine/CTCCreatureGenerator.h"
+#undef CTCCreatureGenerator
 class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -34,9 +39,8 @@ class CThing { public:
         return false;
     }
 };
-class CTCCreatureGenerator { public:                   // interface 0x3d
-    unsigned char _pad00[0x89];
-    bool Destroyed;                             // +0x89 (PDB +0xA5)
+class CTCCreatureGenerator : public CTCCreatureGeneratorDonor {
+ public:                   // interface 0x3d
 };
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {

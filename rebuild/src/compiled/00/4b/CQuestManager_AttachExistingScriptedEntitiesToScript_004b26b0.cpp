@@ -14,6 +14,11 @@
 // inline dtor); the filter is an empty temporary passed by const reference (its byte sits in the frame word below the
 // list); CScriptThing is a named local of the hit block whose inline dtor stores the vtable, releases the counted PImp
 // and calls the out-of-line ~CBaseClass.
+// Layout (supersedes any local-model note above): engine/CQuestManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CQuestManager CQuestManagerDonor
+#include "engine/CQuestManager.h"
+#undef CQuestManager
 extern "C" void* __cdecl malloc(unsigned int size);      // 0x00BFEA0E (MSVCR71)
 extern "C" void __cdecl free(void* p);                   // 0x00BFEA14 (MSVCR71)
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
@@ -136,9 +141,8 @@ class CScriptBase { public:
     void ActivateEntity(unsigned __int64 uid, const CScriptThing& thing);         // 0x00CB8960
 };
 
-class CQuestManager { public:
-    unsigned char _pad00[0x7c];
-    CWorld*       World;                                 // +0x7c (PDB +0xd8)
+class CQuestManager : public CQuestManagerDonor {
+ public:
     void AttachExistingScriptedEntitiesToScript(CScriptBase& script);
 };
 

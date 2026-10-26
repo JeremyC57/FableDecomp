@@ -11,7 +11,8 @@
 //   CConsole ctor 0x009ECD80, CCountedPointer<CConsole>::Reset 0x00413520, CConsole::Get 0x00414C90, CConsole::ProcessInput
 //   0x009EA540 (a `xor al,al` stub); CPlayerGui::MoveCursor 0x004379C0; CProcessedInput::SetHandled 0x00A0D390.
 // Layout: the main game component singleton 0x013B86A0 (PPlayerManager +0x1c, PWorld +0x24 as Ego_r.pdb CMainGameComponent);
-//   CWorld SaveGameLoadStatus +0x104 (PDB offset), +0xf8 a pending-state word (descriptive); g_bAutoSaveProgressShown
+//   CWorld RegionLoadStatus +0x104 and SaveGameLoadStatus +0xf8 (engine/CWorld.h, retail STLport 4.6 offsets; the landed
+//   CDrawMiniMap::Update 0x0064401C reads the same +0x104 region-load stage); g_bAutoSaveProgressShown
 //   0x013B89C1 and the player GUI 0x013B8790 as the landed sources name them; the console counted pointer 0x013CAA40 and
 //   CConsole +0x78 open flag (descriptive) as the landed CInputProcessConsole::ProcessInput 0x00687F80; CThing component bits
 //   +0x20 / map +0x44 as the landed CInputProcessQuickAccessMenu::ProcessInput 0x00690FD0 (kind 0x10E = word 8 bit 14).
@@ -62,9 +63,9 @@ class CPlayerManager { public:
 };
 class CWorld { public:
     unsigned char _pad00[0xf8];
-    long          PendingState;                    // +0xf8 (descriptive)
+    long          SaveGameLoadStatus;              // +0xf8 ESaveGameLoadStatus
     unsigned char _padfc[0x104 - 0xfc];
-    long          SaveGameLoadStatus;              // +0x104
+    long          RegionLoadStatus;                // +0x104 ERegionLoadStatus
 };
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
@@ -110,7 +111,7 @@ void CInputProcessMain::ProcessInput(const CInputEvent& event, CProcessedInput& 
     CInputEvent unused;
     if (IsEventGameAction(0x35, event) && IsEventButtonPressed(event) && g_pMainGameComponent) {
         CWorld* world = g_pMainGameComponent->PWorld;
-        if ((world->SaveGameLoadStatus == 0 || world->SaveGameLoadStatus == 9) && world->PendingState == 0
+        if ((world->RegionLoadStatus == 0 || world->RegionLoadStatus == 9) && world->SaveGameLoadStatus == 0
             && !g_bAutoSaveProgressShown) {
             CThing* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetHeroCreature();
             if (hero->HasTC(0x10e)) {

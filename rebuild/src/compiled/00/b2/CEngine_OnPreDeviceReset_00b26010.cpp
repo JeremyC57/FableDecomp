@@ -1,9 +1,10 @@
-// CEngine::OnPreDeviceReset() -- before the render device is reset: delete every scratch D24S8 z-buffer surface and empty their vector, then tell every engine layer renderer that the device is about to reset
+// CEngine::OnPreDeviceReset() -- before the render device is reset: delete every surface in the 12-byte vector at +0x140 and empty it, then tell every engine layer renderer that the device is about to reset
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B26010, length 151 bytes (+ int3 padding).
 // Callees: CSurface virtual slot 0 (the deleting destructor, `push 1`), memmove @ 0x00BFEAE6 (STLport's trivial copy inside erase),
 // CEngineLayerRenderer virtual slot 11 (+0x2c, the per-layer pre-reset hook). Mangled ?OnPreDeviceReset@CEngine@@EAEXXZ (private virtual).
-// Layout: the engine header CEngine.h has the PDB offsets, which do not hold in retail (vectors are 12 bytes): ScratchZBuffersD24S8
-// +0x140 (PDB +0x154), RenderLayers +0x15c (PDB +0x168); modelled locally.
+// Layout: engine/CEngine.h (retail STLport 4.6 offsets) has ScratchZBuffersD24S8 at +0x14c (GetScratchZBufferD24S8 0x00B27EE0 and
+// Uninitialise 0x00B25D80 read +0x14c/+0x150) and RenderLayers at +0x15c. The surface vector read here at +0x140 falls inside the
+// Ego_r.pdb FrameMemoryPool (CSimpleMemoryPool +0x130..+0x14c), a TLC difference the PDB does not describe; modelled locally.
 // Shape: an index loop bounded by the re-computed unsigned `size()` (`jbe` / `jb`), each element through STLport `*(begin() + i)` and
 // `delete` (null test + virtual deleting destructor); then STLport `clear()` = `erase(begin(), end())`, whose trivial pointer copy is
 // `if (first == last) return result; return memmove(result, first, n) + n;` (`cmp eax,eax ; jne` with first == last == finish; the
@@ -58,7 +59,7 @@ struct CRetailVector {                       // STLport vector of pointers: 12 b
 class CEngine { public:
     virtual void v00();
     unsigned char _pad04[0x140 - 4];
-    CRetailVector<CSurface*>             ScratchZBuffersD24S8;   // +0x140
+    CRetailVector<CSurface*>             Surfaces_0x140;   // +0x140
     unsigned char _pad14c[0x15c - 0x14c];
     CRetailVector<CEngineLayerRenderer*> RenderLayers;           // +0x15c
 private:
@@ -67,9 +68,9 @@ private:
 
 void CEngine::OnPreDeviceReset()
 {
-    for (unsigned long i = 0; i < ScratchZBuffersD24S8.size(); ++i)
-        delete ScratchZBuffersD24S8[i];
-    ScratchZBuffersD24S8.clear();
+    for (unsigned long i = 0; i < Surfaces_0x140.size(); ++i)
+        delete Surfaces_0x140[i];
+    Surfaces_0x140.clear();
     for (CEngineLayerRenderer** it = RenderLayers.begin(); it != RenderLayers.end(); ++it)
         (*it)->OnPreDeviceReset();
 }

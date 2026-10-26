@@ -1,7 +1,7 @@
 // CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf() -- after a failed cover search wait 8 seconds or 15 units of movement; then gather the cover things: none records the failure here, otherwise filter them into the retained cover handles
 // Leaf: IsRunnableLeaf@CAIStateGroup_CreatureUseCoverBase
-// Model: the landed sibling RefreshCoverList 0x009710D0 (same TU). Layout: engine/CAIStateGroup_CreatureUseCoverBase.h with the
-//   retail 12-byte CoverList (donor 16): FailedToFindCover +0x34, FailedTime +0x38, FailedToFindCoverAt +0x3c; PBrain +4.
+// Model: the landed sibling RefreshCoverList 0x009710D0 (same TU). Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (retail
+//   STLport 4.6: 12-byte CoverList): FailedToFindCover +0x34, FailedTime +0x38, FailedToFindCoverAt +0x3c; PBrain +4.
 // Shape: C3DVector offset (operator-, Z dead) keeps retail frame slots; positive !empty() block puts the failure path last.
 #include <stddef.h>
 #include <stdlib.h>
@@ -44,9 +44,9 @@ struct UseCoverMethods:CAIStateGroup_CreatureUseCoverBase {
  CWorld* GetPWorld();                           // 0x008FCFC0
  __forceinline CThingRetail* GetCreature(){return (*(CAIBrainRetail**)_pad_0x04)->Creature;}
  __forceinline CHandleVector& Covers(){return *(CHandleVector*)CoverList;}
- __forceinline bool& RetailFailedToFindCover(){return *(bool*)(CoverList+0xc);}
- __forceinline long& RetailFailedTime(){return *(long*)&FailedToFindCover;}
- __forceinline C3DVector& RetailFailedToFindCoverAt(){return *(C3DVector*)&FailedTime;}
+ __forceinline bool& RetailFailedToFindCover(){return FailedToFindCover;}
+ __forceinline long& RetailFailedTime(){return FailedTime;}
+ __forceinline C3DVector& RetailFailedToFindCoverAt(){return *(C3DVector*)&FailedToFindCoverAt_X;}
 };
 bool UseCoverMethods::IsRunnableLeaf(){
  if(RetailFailedToFindCover()){

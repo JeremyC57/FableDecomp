@@ -5,5 +5,6 @@ struct CThingGameObject_Methods : CThingGameObject {
 
 void CThingGameObject_Methods::SetAddToComboMultiplierOnHit(bool v)
 {
-    flags = (unsigned char)((flags & 0xfe) | (v & 1) | 2);
+    // Layout: retail STLport 4.6 container sizes put the PDB member on these bytes; renamed `flags` -> GiveHeroStatChangesOnBeingHitOverrideSet[0] (+0xc8 bitfield byte).
+    GiveHeroStatChangesOnBeingHitOverrideSet[0] = (unsigned char)((GiveHeroStatChangesOnBeingHitOverrideSet[0] & 0xfe) | (v & 1) | 2);
 }

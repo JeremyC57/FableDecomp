@@ -20,6 +20,11 @@
 //   `== 3` early return lays the return-true epilogue inline); the scripted test sets a flag; the summonable and target
 //   opinion-source components through out-pointer lookups; the opinion-of-hero pointer is assigned under a second
 //   HasTC(0x4F) into an otherwise unset local. Lookups are __forceinline.
+// Layout (supersedes any local-model note above): engine/CTCVillage.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCVillage CTCVillageDonor
+#include "engine/CTCVillage.h"
+#undef CTCVillage
 class CThingAICreature;
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
@@ -166,10 +171,8 @@ public:
     bool PeekWitnessWillNotAttack(const CThingAICreature* witness) const;   // 0x008640C0
 };
 
-class CTCVillage {
+class CTCVillage : public CTCVillageDonor {
 public:
-    unsigned char _pad0[0x7c];
-    bool IsEnemyBecauseOfCrime;                             // +0x7C
 };
 
 class CTCVillageMember {                                    // interface type 0x23

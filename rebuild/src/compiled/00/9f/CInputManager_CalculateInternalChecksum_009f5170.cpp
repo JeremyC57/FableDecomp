@@ -85,7 +85,7 @@ class CMouse : public CBaseClassNonCopyable { public:
     virtual void GetPos(C2DVector*) const =0; // native slot1; DX override00AB46E0
     unsigned char EventStore[0x3400];
     int NoStoredEvents,NoEventScansRunning;
-    unsigned char MaintainedEventsList[12];
+    unsigned char MaintainedEventsList[4];   // retail STLport 4.6 list (head pointer), as engine/CMouse.h
     CInputManager* InputManager;
 };
 // RTTI proves CJoystick has no base class; axes are non-const protected virtuals.
@@ -98,7 +98,7 @@ class CJoystick { public:
     unsigned char EventStore[0xd00];
     CInputManager* InputManager;
     bool ExclusiveMode;
-    unsigned char MaintainedEventsList[12];
+    unsigned char MaintainedEventsList[4];   // retail STLport 4.6 list (head pointer), as engine/CJoystick.h
     int NoStoredEvents,NoEventScansRunning;
 };
 struct CCountedJoystick { CJoystick* Data; void* Info; CJoystick* get() const{return Data;} CJoystick* operator->()const{return Data;} };

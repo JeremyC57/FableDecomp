@@ -8,15 +8,19 @@
 // lays the {1,2} arm out first).
 // Callees: CTCInventoryBase::GetSelectedCategory 0x005BCACE, CCategory::GetCategoryIdentifier 0x005BD1B3.
 // statIndicatorPos is +0x1BC in retail (PDB +0x200; 12-byte STLport containers ahead), local model.
+// Layout (supersedes any local-model note above): engine/CTCInventoryExperience.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCInventoryExperience CTCInventoryExperienceDonor
+#include "engine/CTCInventoryExperience.h"
+#undef CTCInventoryExperience
 #pragma optimize("s", on)
 
 struct CCategory {
     long GetCategoryIdentifier();       // 0x005BD1B3
 };
 
-class CTCInventoryExperience { public:
-    unsigned char _pad_000[0x1BC];
-    long statIndicatorPos;              // +0x1BC
+class CTCInventoryExperience : public CTCInventoryExperienceDonor {
+ public:
     CCategory* GetSelectedCategory();   // 0x005BCACE (CTCInventoryBase)
     void UpdateExperienceSpendStat();   // 0x0057229B
     void UpdateExperienceSpendAbility();    // 0x0057238F

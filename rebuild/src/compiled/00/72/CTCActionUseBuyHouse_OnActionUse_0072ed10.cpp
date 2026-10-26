@@ -13,6 +13,11 @@
 // Shape: nested ifs; the owned-entity lookup is the out-parameter GetInterface with the owner bound to a reference
 //   local (`mov eax,[eax+4] ; lea esi,[eax+0Dh]`; HasTC + GetTC gives `mov esi,[eax+4] ; add esi,0Dh`); the house component is a named local (edi, pushed only on that path); the hero stats come from the
 //   ternary GetTC with the Main flag read before its component load; the two purchase calls are an if/else.
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -66,9 +71,8 @@ class CTCOwnedEntity { public:                         // interface 0x33
 };
 #pragma pack(pop)
 class CTCBuyableHouse;                         // interface 0xD5
-class CTCHeroStats { public:                           // interface 4
-    unsigned char _pad00[0x3c];
-    long Money;                                 // +0x3c
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:                           // interface 4
 };
 class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0

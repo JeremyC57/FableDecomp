@@ -78,5 +78,5 @@ void CAIStateGroupCreatureUseCoverBaseMethods::OnActivate()
     CThingCreatureBase* creature = GetCreature();
     CWorld* world = GetPWorld();
     world->PThingCombatManager->DialogueManager.SaySpeech(*creature, speechGroup);
-    *(long*)&FailedToFindCoverAt_Z = 0;
+    ValidPositionsFound = 0;                            // +0x48 (retail STLport 4.6 header)
 }

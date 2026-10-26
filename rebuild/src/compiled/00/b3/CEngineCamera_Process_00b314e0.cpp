@@ -13,6 +13,11 @@
 // the three pooled constants (written as literals VC7.1 folds `* 360 / 360` away, so they are named constants); up and
 // forward are copied with C3DVector's user copy ctor and normalised in the frame; the right axis comes from an inline
 // out-parameter cross product (forward x up), which keeps retail's x87 operand order; the rotation is stored column-wise.
+// Layout (supersedes any local-model note above): engine/CEngineCamera.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CEngineCamera CEngineCameraDonor
+#include "engine/CEngineCamera.h"
+#undef CEngineCamera
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -61,17 +66,8 @@ struct CEngineCameraDesc {                              // 108 bytes
         ZBufferEnd = 0.99f;
     }
 };
-class CEngineCamera { public:
-    void*         __vftable;                            // +0x00
-    unsigned char _pad04[8];
-    CCamera*      GameCamera;                           // +0x0c
-    C2DBoxF*      GameWindow;                           // +0x10
-    unsigned char _pad14[0x200 - 0x14];
-    long          ConsoleOverrideViewPortWidth;         // +0x200
-    long          ConsoleOverrideViewPortHeight;        // +0x204
-    unsigned char DebugScript[0xc];                     // +0x208 CArray<CDebugScriptElement> (12 bytes in retail)
-    long          CurrentDebugScriptElement;            // +0x214
-    bool          DebugScriptRunning;                   // +0x218
+class CEngineCamera : public CEngineCameraDonor {
+ public:
     void ProcessDebugScript();                          // 0x00B31160
     void SetCameraState(const CEngineCameraDesc& desc, bool a, bool b);   // 0x00B30B50
     void Process(bool flag);

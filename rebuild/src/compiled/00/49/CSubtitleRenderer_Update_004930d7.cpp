@@ -1,4 +1,9 @@
 // CSubtitleRenderer::Update(bool paused) -- per-frame subtitle tick: advance the display timer, clear the text once its display time has run out (click-past text only when the profile does not wait for a click, or in a cutscene) and reveal more characters
+// Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CSubtitleRenderer CSubtitleRendererDonor
+#include "engine/CSubtitleRenderer.h"
+#undef CSubtitleRenderer
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004930D7, 197 bytes, `ret 4`. Ego_r.pdb `?Update@CSubtitleRenderer@@QAEX_N@Z`.
 // Leaf: Update
@@ -34,22 +39,8 @@ template <class T> struct CTBaseSingleton {
     static T& __fastcall Get();                         // 0x0040D2A0
 };
 
-class CSubtitleRenderer {
+class CSubtitleRenderer : public CSubtitleRendererDonor {
 public:
-    void*         __vftable;                            // +0x00
-    unsigned char _pad04[0x24 - 0x04];
-    long          TextCharactersShowing;                // +0x24
-    unsigned char _pad28[0x7c - 0x28];
-    unsigned long DisplayFlags;                         // +0x7c
-    unsigned char _pad80[0x88 - 0x80];
-    float         MaxDisplayTime;                       // +0x88
-    float         TextTimer;                            // +0x8c
-    unsigned char _pad90[0xde - 0x90];
-    bool          InCutscene;                           // +0xde
-    unsigned char _padDF[0xe5 - 0xdf];
-    bool          DisplayingText;                       // +0xe5
-    bool          UpdateWhilePaused;                    // +0xe6
-    bool          UpdateTimer;                          // +0xe7
     void Clear(bool flag);                              // 0x00492BAB
     void Update(bool paused);
 };

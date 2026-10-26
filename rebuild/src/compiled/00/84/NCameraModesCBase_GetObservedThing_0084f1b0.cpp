@@ -8,7 +8,11 @@
 //   CGameCameraManager::PObservedThing is a CIntelligentPointer<const CThingGameObject> (retail +0x100; Ego_r +0x110 less the
 //   smaller STLport list/vector before it); 66 callers, all in the camera-mode code (0x85xxxx-0x87xxxx).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (tail).
-// Layout: local models -- engine/CGameCameraManager.h carries the Ego_r offset (PObservedThing 0x110; header debt).
+// Layout: engine/CGameCameraManager.h (retail STLport 4.6 layout: PObservedThing +0x100); the accessor rides on a derived
+//   class. NCameraModes::CBase has no engine header (local model).
+#define CGameCameraManager CGameCameraManagerDonor
+#include "engine/CGameCameraManager.h"
+#undef CGameCameraManager
 class CBaseObject;
 class CThingGameObject;
 
@@ -24,11 +28,10 @@ public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
-class CGameCameraManager {
+class CGameCameraManager : public CGameCameraManagerDonor {
 public:
-    unsigned char _before_PObservedThing[0x100];
-    CIntelligentPointer<const CThingGameObject> PObservedThing;  // +0x100
-    const CThingGameObject* GetObservedThing() const { return PObservedThing.Get(); }
+    const CThingGameObject* GetObservedThing() const
+    { return reinterpret_cast<const CIntelligentPointer<const CThingGameObject>*>(PObservedThing)->Get(); }
 };
 
 namespace NCameraModes {

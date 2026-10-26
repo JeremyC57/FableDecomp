@@ -1,3 +1,4 @@
+// Layout: retail STLport 4.6 container sizes put the PDB member on these bytes; renamed `m_begin` -> `BridgeVertexBuffer`.
 #include "engine/CLandscapePatchTesselator.h"
 
 struct CBridgeVertexBufferResult {
@@ -15,6 +16,6 @@ struct CLandscapePatchTesselator_Methods : CLandscapePatchTesselator {
 void CLandscapePatchTesselator_Methods::SetBridgeVertexBufferSize(long size)
 {
     CBridgeVertexBufferResult result;
-    CBridgeVertexBufferMethods* buffer = (CBridgeVertexBufferMethods*)&this->m_begin;
+    CBridgeVertexBufferMethods* buffer = (CBridgeVertexBufferMethods*)&this->BridgeVertexBuffer;
     buffer->SetSize(size, &result);
 }

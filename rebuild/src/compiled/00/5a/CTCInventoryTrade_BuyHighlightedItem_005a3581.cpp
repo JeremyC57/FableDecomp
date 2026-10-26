@@ -1,6 +1,11 @@
 // CTCInventoryTrade::BuyHighlightedItem() -- buy the highlighted item of the selected category: when the hero can pay the shop's buy price and the item's inventory can take it, the shop sells it, the hero pays, the item is added and the trade lists are rebuilt; the owned count is refreshed
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -88,9 +93,8 @@ class CTCShop { public:
     long GetCurrentBuyPrice_007743b0(long defIndex, long count) const;   // 0x007743B0
     void SellItem(long defIndex);                           // 0x00774730
 };
-class CTCHeroStats { public:
-    unsigned char _pad00[0x3c];
-    long Money;                                             // +0x3C
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:
     void AddMoney(long amount, bool showMessage);           // 0x0057B327
 };
 

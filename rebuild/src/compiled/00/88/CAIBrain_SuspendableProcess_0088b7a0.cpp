@@ -8,6 +8,11 @@
 // CAIStateGroupBase::Terminated is +0x10 (engine/CAIStateGroupBase.h). Modelled locally because
 // the header's offsets disagree with the bytes. The group pointer is read once into a local
 // so the call reuses the loaded register.
+// Layout (supersedes any local-model note above): engine/CAIBrain.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CAIBrain CAIBrainDonor
+#include "engine/CAIBrain.h"
+#undef CAIBrain
 class CAIStateGroupBase { public:
     void*         __vftable;                // +0x00
     void*         PBrain;                   // +0x04
@@ -19,12 +24,8 @@ class CAIStateGroupBase { public:
     void Process();                         // 0x008FCF30 (forwards to slot 12)
 };
 
-class CAIBrain { public:
-    void*              __vftable;           // +0x00
-    unsigned char      _pad0[0x34];         // +0x04..+0x38
-    CAIStateGroupBase* PActiveStateGroup;   // +0x38 (retail; PDB +0x3c)
-    unsigned char      _pad1[0x51];         // +0x3c..+0x8d
-    bool               UpdatingStateGroup;  // +0x8d (retail; PDB +0x91)
+class CAIBrain : public CAIBrainDonor {
+ public:
     void SuspendableProcess();
 };
 

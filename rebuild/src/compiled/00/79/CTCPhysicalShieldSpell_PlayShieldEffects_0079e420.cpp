@@ -6,6 +6,11 @@
 // Shape: the appearance comes from the out-parameter GetInterface whose entry pick is one end/hit ternary
 //   (`*out = (it == last || k < it->type ? last : it)->component`): the component loads straight into ecx before the
 //   argument pushes and the bool goes through eax. The if-form pick (or a HasTC test + GetTC) loads it after the pushes.
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -77,9 +82,8 @@ struct CIntelligentPointer {                    // CIntelligentPointer<CThing> (
     void* __vftable;
     void* m_pItem;
 };
-class CTCHeroStats { public:
-    unsigned char _pad00[0x58];
-    long Stamina;                               // +0x58 (PDB +0x60; retail CTCHeroStats sits 8 bytes below the PDB)
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:
     void ModifyStaminaBy(long amount);          // 0x0057B1DB
 };
 namespace NGraphicAppearance {

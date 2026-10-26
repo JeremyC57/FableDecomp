@@ -1,3 +1,4 @@
+// Layout: retail STLport 4.6 header offsets; member names re-bound by the bytes this body touches: `InsideHeroCount` -> `ControlNoControlMovementStartFrame` (+0xc0).
 #include "engine/CGameCameraManager.h"
 #include <stdio.h>
 
@@ -20,11 +21,11 @@ int main(void)
     for (int i = 0; i < (int)sizeof(cm); ++i) ((char*)&cm)[i] = 0;
 
     // Case 1: start time == 0 -> returns the default global (fld path).
-    cm.InsideHeroCount = 0;
+    cm.ControlNoControlMovementStartFrame = 0;
     float r0 = CGameCameraManager_GetNoControlMovementTime(&cm);
 
     // Case 2: start time set -> (now - start)/divisor. now=5500 -> (5500-2500)/1000 = 3.0
-    cm.InsideHeroCount = 2500;
+    cm.ControlNoControlMovementStartFrame = 2500;
     float r1 = CGameCameraManager_GetNoControlMovementTime(&cm);
 
     int ok = (r0 == -1.0f) && (r1 == 3.0f);

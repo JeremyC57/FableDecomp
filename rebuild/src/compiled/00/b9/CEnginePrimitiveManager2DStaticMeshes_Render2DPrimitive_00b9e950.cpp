@@ -1,6 +1,11 @@
 // CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive(CEngineInternalPrimitiveBase&, CEngineSubPrimitiveChain&, ESubPrimitiveType) -- queue a 2D static mesh: skip it when off the viewport or outside the active 2D clip box or on a disabled layer; initialise it once, choose its LOD, start (or require) the mesh load, then fetch the mesh and queue one pool-allocated CEngineSubPrimitiveStaticMesh per sub-mesh at the layer's depth (alpha-tested materials, simulated sub-meshes and the mesh's flag bits pick the render flags and sort list)
 // Leaf: Render2DPrimitive
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B9E950, length 901 bytes (`ret 0Ch`, virtual).
+// Layout (supersedes any local-model note above): engine/CEngineLightingManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CEngineLightingManager CEngineLightingManagerDonor
+#include "engine/CEngineLightingManager.h"
+#undef CEngineLightingManager
 #include <stddef.h>
 class CEngineInternalPrimitiveBase;
 class CEngineSubPrimitiveChain;
@@ -44,9 +49,8 @@ class C3DMesh2 { public:
     bool           HasSimulation;                  // +0xe4
 };
 class CEngineLocalLightArray;
-class CEngineLightingManager { public:
-    unsigned char _pad[0x44ec];
-    unsigned char EmptyLightArray[0x1a4];          // +0x44ec
+class CEngineLightingManager : public CEngineLightingManagerDonor {
+ public:
 };
 extern CEngineLightingManager* g_pLightingManager;   // 0x01436E9C
 

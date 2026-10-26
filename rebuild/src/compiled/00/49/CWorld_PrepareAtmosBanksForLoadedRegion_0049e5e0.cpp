@@ -9,10 +9,13 @@
 // 0x58 bytes with SoundThemesEnabled at +0x56 (PDB +0x62: two 12-byte vectors and a 12-byte map ahead of it).
 // Shape: the world map is peeked twice through the virtual (once per call), the mute flag is the negated region
 // byte (`test dl,dl ; sete al`) and the fade time is the 1000.0f immediate.
-class CRegion { public:
-    unsigned char _pad00[0x56];
-    bool          SoundThemesEnabled;           // +0x56 (PDB +0x62)
-    unsigned char _pad57;
+// Layout (supersedes any local-model note above): engine/CRegion.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CRegion CRegionDonor
+#include "engine/CRegion.h"
+#undef CRegion
+class CRegion : public CRegionDonor {
+ public:
 };
 
 class CWorldMap { public:

@@ -11,6 +11,11 @@
 // Shape: the landed CTCTavernGame twin 0x005EB3A0 with the thing reached directly; the found flag and the entry lookup
 //   and return sit in their own block so the flag takes the dead textId slot and the three temporaries share the one
 //   frame slot.
+// Layout (supersedes any local-model note above): engine/CTCOracleMinigame.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCOracleMinigame CTCOracleMinigameDonor
+#include "engine/CTCOracleMinigame.h"
+#undef CTCOracleMinigame
 #include <stddef.h>
 class CTCBase;
 class CWideString {
@@ -66,10 +71,8 @@ class CTCTalk { public:
     long PlaySpeech(unsigned long textId, EDialogueLayer layer, bool a, bool b);   // 0x006E3B10
     CCharString GetDialogueVoice() const { return DialogueVoice; }
 };
-class CTCOracleMinigame { public:
-    void*         __vftable;
-    unsigned char _pad04[0xe4 - 0x04];
-    CThing*       SpeechMarker;                         // +0xe4 (PDB +0xEC)
+class CTCOracleMinigame : public CTCOracleMinigameDonor {
+ public:
     CWideString GetTextWithNarrator(unsigned long textId);
 };
 

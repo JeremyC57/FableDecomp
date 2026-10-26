@@ -1,6 +1,11 @@
 // NInventory::CTCInventoryBase::GetPrerequisitesString(CDefPointer<const CQuestCardDef>) -- "Prerequisites:" plus, per renown prerequisite, "Renown:<n>(<hero renown>)"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+// Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CTCHeroStats CTCHeroStatsDonor
+#include "engine/CTCHeroStats.h"
+#undef CTCHeroStats
 #include <stddef.h>
 class CCharString { public:
     void* PStringData;
@@ -48,9 +53,8 @@ template<class T> class CDefPointer { public:
     __forceinline ~CDefPointer() { if (Object) { CDefPointeeBase* p = (CDefPointeeBase*)Object; if (--p->RefCount == 0) p->Release(); } }
     __forceinline T* operator->() const { return Object; }
 };
-class CTCHeroStats { public:
-    unsigned char _pad00[0x70];
-    long RenownLevel;                                   // +0x70
+class CTCHeroStats : public CTCHeroStatsDonor {
+ public:
 };
 struct CInterfaceMap {
     struct Entry { long type; void* component; };

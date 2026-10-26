@@ -18,6 +18,11 @@
 // m_pFrontEndGraphicBank +0x40, m_pMeshBank +0x48, m_pTextBank +0x60, m_pInputManager +0x68, m_pFrontEndManager +0xb4
 // (Ego_r +0xbc), WindowsMediaPlayerInstalled +0x144 (Ego_r +0x14c). CFrontEndManager PGameComponent +0x1c.
 // Opt: size TU (unaligned entry) with a frame pointer (`leave`).
+// Layout (supersedes any local-model note above): engine/CFrontEndManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CFrontEndManager CFrontEndManagerDonor
+#include "engine/CFrontEndManager.h"
+#undef CFrontEndManager
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CCharString {
@@ -73,12 +78,8 @@ class CManager {
 public:
     static void __fastcall Clear();                      // 0x0042FB40
 };
-class CFrontEndManager {
+class CFrontEndManager : public CFrontEndManagerDonor {
 public:
-    unsigned char               _pad00[0x1c];
-    CNewFrontendGameComponent*  PGameComponent;          // +0x1c
-    unsigned char               _pad20[0xc0 - 0x20];
-    bool                        m_bQuitFromGame;         // +0xc0
     static CFrontEndManager* __fastcall GetInstance_00595582();   // 0x00595582
     void Init(CCountedPointer<CGraphicDataBank> graphics, CCountedPointer<CMeshDataBank> meshes, CInputManager* input,
               CDefinitionManager* defs);                 // 0x005958F5

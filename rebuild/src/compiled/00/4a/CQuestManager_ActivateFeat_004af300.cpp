@@ -8,6 +8,11 @@
 // Shape: a 12-byte frame for the zero position: C3DVector(0, 0, 0) is a float temporary whose three immediate
 // zero stores are scheduled after the eight pushes; the feat index is pushed first (right-to-left evaluation),
 // the manager is fetched last; `mov al,1` returns true.
+// Layout (supersedes any local-model note above): engine/CQuestManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CQuestManager CQuestManagerDonor
+#include "engine/CQuestManager.h"
+#undef CQuestManager
 class CThing;
 
 class C3DVector { public:
@@ -25,9 +30,8 @@ class CWorld { public:
     CMessageEventManager* PMessageEventManager;    // +0x60 (CCountedPointer<CMessageEventManager>::Data)
 };
 
-class CQuestManager { public:
-    unsigned char _pad_0x00[0x7c];
-    CWorld*       World;                           // +0x7c
+class CQuestManager : public CQuestManagerDonor {
+ public:
     bool ActivateFeat(long featIndex);
 };
 

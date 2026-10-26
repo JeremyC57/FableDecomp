@@ -8,11 +8,14 @@
 //   The previous generated Catch_0040d959 stub carried the propagated manifest label "Catch@0040d959".
 // Layout: Ego_r.pdb CPlayerManager MainPlayer +0x20 -> retail +0x1c (Players is STLport's 12-byte vector); local model as in
 //   the landed GetPlayer rows (engine/CPlayerManager.h carries the PDB offsets).
+// Layout (supersedes any local-model note above): engine/CPlayerManager.h now has the retail STLport 4.6 offsets, so the data
+//   members come from the shared header; the class below keeps only the declarations this body needs.
+#define CPlayerManager CPlayerManagerDonor
+#include "engine/CPlayerManager.h"
+#undef CPlayerManager
 class CPlayer;
-class CPlayerManager {
+class CPlayerManager : public CPlayerManagerDonor {
 public:
-    unsigned char _pad00[0x1c];                 // vptr slot, Component, DefinitionManager, Players, PlayerNeutral
-    long          MainPlayer;                   // +0x1c
     CPlayer&       GetPlayer(long number);         // 0x004498C0
     const CPlayer& GetPlayer(long number) const;   // 0x00449910
     CPlayer&       GetMainPlayer();
